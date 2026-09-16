@@ -257,7 +257,7 @@ export default function Page() {
                     <div className="block relative min-w-0 max-w-full gap-y-[1.0625rem] max-md:text-center 2xl:gap-y-[1.9375rem]" data-ditto-id="style-p-10">
                       <div className="block pt-[2.0625rem] 2xl:pt-13" data-ditto-id="style-heading-4">
                         <h1 className="block text-background text-[1.1875rem] font-light leading-5 2xl:text-[1.625rem]" data-ditto-id="style-div-84" data-component="heading">
-                          <span className="inline text-primary font-medium" data-ditto-id="style-span-40">
+                          <span className="inline text-primary-text font-medium" data-ditto-id="style-span-40">
                             FORMATION PRATIQUE
                           </span>
                           {" en Intelligence Artificielle"}
@@ -340,7 +340,7 @@ export default function Page() {
                         <div className="block -mt-[1.5625rem] max-md:pt-17.5 max-md:mt-0">
                           <div className="flex flex-col max-md:text-center" data-ditto-id="style-p-11">
                             <div className="block grow" data-ditto-id="style-p-8">
-                              <h3 className="block mt-2 text-primary text-lg leading-[1.9375rem] max-lg:text-[1rem] 2xl:mb-[0.3125rem] 2xl:text-[1.3125rem]" data-ditto-id="style-p-9" data-component="heading">
+                              <h3 className="block mt-2 text-primary-text text-lg leading-[1.9375rem] max-lg:text-[1rem] 2xl:mb-[0.3125rem] 2xl:text-[1.3125rem]" data-ditto-id="style-p-9" data-component="heading">
                                 <span className="inline" data-ditto-id="interaction-p">
                                   {" L'intelligence artificielle "}
                                 </span>
@@ -453,7 +453,7 @@ export default function Page() {
                   <div className="w-full block relative min-w-0 max-w-full gap-5 max-md:gap-[initial] 2xl:w-[64%]" data-ditto-id="style-span-47">
                     <div className="block">
                       <h2 className="block text-background [font-family:Montserrat,_sans-serif] text-[2.8125rem] leading-16.5 max-md:text-3xl max-md:leading-[2.4375rem] md:max-lg:text-[2.1875rem] md:max-lg:leading-[3.3125rem]" data-component="heading">
-                        <span className="inline text-primary" data-ditto-id="style-p-15">
+                        <span className="inline text-primary-text" data-ditto-id="style-p-15">
                           Formation pratique
                         </span>
                         {" en"}
@@ -521,7 +521,7 @@ export default function Page() {
                           Vous reliez l'IA à vos outils réels : documents, tableaux, boîtes mail, process — pas à des exercices génériques.
                         </p>
                         <p className="block mb-[0.9rem]" data-ditto-id="style-footer">
-                          <span className="inline text-primary" data-ditto-id="style-div-95">
+                          <span className="inline text-primary-text" data-ditto-id="style-div-95">
                             <em className="inline italic">
                               Un livrable par semaine, appliqué à votre métier.
                             </em>
@@ -545,7 +545,7 @@ export default function Page() {
                       <div className="block" data-ditto-id="style-icon-3">
                         <h2 className="block text-background font-bold leading-9 uppercase max-lg:leading-7 2xl:text-[1.6875rem] 2xl:leading-[2.6875rem]" data-ditto-id="style-span-46" data-component="heading">
                           {"LES OUTILS DU MARCHÉ, "}
-                          <span className="inline text-primary">
+                          <span className="inline text-primary-text">
                             {"utilisés sur vos cas réels. "}
                           </span>
                         </h2>
@@ -651,7 +651,7 @@ export default function Page() {
                   <div className="block" data-ditto-id="style-div-98">
                     <h2 className="block text-color-001 [font-family:Montserrat,_sans-serif] text-[2.8125rem] leading-14.5 max-md:text-3xl max-md:leading-9 md:max-lg:text-[2.1875rem] 2xl:leading-16.5" data-component="heading">
                       {"Pourquoi "}
-                      <span className="inline font-bold text-primary" data-ditto-id="style-menu-1-74a24f8">
+                      <span className="inline font-bold text-primary-text" data-ditto-id="style-menu-1-74a24f8">
                         HOJA ACADEMY
                       </span>
                       ?
@@ -892,7 +892,7 @@ export default function Page() {
                         <p className="block mb-[0.9rem]">
                           Vous apprendrez à dominer une soixantaine d'outils et d'architectures d'IA qui transforment déjà tous les secteurs d'activité.
                           <br className="inline" />
-                          <span className="inline text-primary">
+                          <span className="inline text-primary-text">
                             <em className="inline italic" data-ditto-id="style-ld-table-list-item-22013">
                               Des LLMs aux agents autonomes, de la vision par ordinateur à l'automatisation intégrale des workflows.
                             </em>
@@ -1016,7 +1016,7 @@ export default function Page() {
                     <div className="block">
                       <h2 className="block text-color-001 [font-family:Montserrat,_sans-serif] text-[2.8125rem] leading-14.5 max-md:text-3xl max-md:leading-9 md:max-lg:text-[2.1875rem] 2xl:leading-16.5" data-component="heading">
                         {"Notre méthode : "}
-                        <span className="inline text-primary font-bold">
+                        <span className="inline text-primary-text font-bold">
                           apprendre, pratiquer, construire, automatiser, produire
                         </span>
                       </h2>
@@ -1300,7 +1300,7 @@ export default function Page() {
                     <div className="block" data-ditto-id="style-a-4">
                       <h2 className="block text-background [font-family:Montserrat,_sans-serif] text-[2.8125rem] leading-16.5 max-md:text-3xl max-md:leading-10.5 md:max-lg:text-[2.1875rem] md:max-lg:leading-[3.0625rem]" data-ditto-id="style-sin-completar" data-component="heading">
                         {"Jusqu'où "}
-                        <span className="inline text-primary font-bold" data-ditto-id="style-span-29">
+                        <span className="inline text-primary-text font-bold" data-ditto-id="style-span-29">
                           pouvez-vous aller avec l'IA
                         </span>
                         ?
@@ -1510,7 +1510,7 @@ export default function Page() {
                       <p className="block mb-[0.9rem]" data-ditto-id="style-div-42">
                         En complétant le cursus intensif, vous validez vos compétences par la preuve de vos réalisations et obtenez la certification HOJA ACADEMY, avec votre AI Work Kit complet.
                         <br className="inline" />
-                        <span className="inline text-primary italic">
+                        <span className="inline text-primary-text italic">
                           Vous serez pleinement outillé pour diriger et réussir vos projets IA les plus ambitieux.
                         </span>
                       </p>
@@ -1537,7 +1537,7 @@ export default function Page() {
                       <p className="block mb-[0.9rem]" data-ditto-id="style-div-40">
                         Le Programme Intensif est ouvert aux professionnels comme aux organisations. Les modalités (individuel, équipe, facturation à l'organisation) se discutent lors de l'échange de candidature.
                         <br className="inline" data-ditto-id="style-link-13" />
-                        <span className="inline text-primary italic" data-ditto-id="interaction-not-started">
+                        <span className="inline text-primary-text italic" data-ditto-id="interaction-not-started">
                           Huit semaines, un système à la clé.
                         </span>
                       </p>

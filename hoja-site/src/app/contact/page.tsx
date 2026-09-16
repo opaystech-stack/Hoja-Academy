@@ -287,7 +287,7 @@ export default function Page() {
                     <div className="w-full block relative min-w-0 max-w-full gap-5 max-md:text-center 2xl:w-[95%]" data-ditto-id="style-p-14">
                       <div className="block">
                         <h2 className="block text-background [font-family:Montserrat,_sans-serif] text-[2.1875rem] leading-[3.3125rem] max-md:text-[1.5625rem] max-md:leading-[2.375rem] md:max-lg:text-3xl md:max-lg:leading-[2.8125rem] 2xl:text-[2.8125rem] 2xl:leading-16.5" data-ditto-id="style-p-11" data-component="heading">
-                          <span className="inline text-primary font-bold" data-ditto-id="style-p-8">
+                          <span className="inline text-primary-text font-bold" data-ditto-id="style-p-8">
                             {" Parlons de votre projet "}
                           </span>
                           — écrivez-nous par WhatsApp, téléphone ou e-mail
@@ -377,7 +377,7 @@ export default function Page() {
             <h2 className="block mb-2 text-color-001 [font-family:Montserrat,_sans-serif] text-[1.6875rem] font-bold uppercase">Formulaire de contact</h2>
             <p className="block mb-8 text-foreground text-[0.9375rem] leading-6">
               {"Remplissez les champs ci-dessous : votre messagerie s'ouvre avec un e-mail prérempli à destination de "}
-              <a className="inline underline text-primary font-semibold cursor-pointer" href="mailto:info@hoja-academy.com">info@hoja-academy.com</a>
+              <a className="inline underline text-primary-text font-semibold cursor-pointer" href="mailto:info@hoja-academy.com">info@hoja-academy.com</a>
               {". Ce site ne dispose d'aucun serveur : rien n'est envoyé ni enregistré automatiquement."}
             </p>
             <ContactForm />

@@ -80,7 +80,7 @@ export default function Page() {
                   href={d.href}
                   className="flex flex-col gap-4 rounded-[38px] border-4 border-solid border-primary p-8 max-md:p-6 cursor-pointer hover:bg-color-038"
                 >
-                  <div className="text-primary text-xs font-semibold tracking-[0.18em] uppercase">
+                  <div className="text-primary-text text-xs font-semibold tracking-[0.18em] uppercase">
                     Domaine de formation
                   </div>
                   <div>

@@ -147,7 +147,7 @@ export default function Page() {
           <ul className="grid md:grid-cols-2 gap-x-8 gap-y-4 text-color-001 text-sm leading-7">
             {apprendre.map((item) => (
               <li key={item} className="flex gap-3">
-                <span className="text-primary font-bold shrink-0">—</span>
+                <span className="text-primary-text font-bold shrink-0">—</span>
                 <span>{item}</span>
               </li>
             ))}

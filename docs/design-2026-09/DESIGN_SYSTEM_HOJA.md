@@ -114,12 +114,57 @@ source unique. Il n'existe plus de `--clr-NN`, plus de `--gold-opays`, plus de
 --surface-2:      #f1f5f9;
 --border:         #dfeaf0;   /* conservé — déjà utilisé et cohérent */
 --foreground:     #333333;   /* texte principal */
---primary:        #21a87d;   /* vert Hoja — aligné sur --teal */
+--primary:        #21a87d;   /* vert Hoja — couleur de MARQUE (fonds, grands titres) */
+--primary-text:   #17805f;   /* vert Hoja — variante TEXTE (petit texte sur fond clair) */
 --primary-hover:  #1c9269;
 --accent:         #124f72;   /* bleu profond — titres, blocs sombres */
 --muted-foreground: #495255;
 --muted:          #617175;
 ```
+
+#### 2.2.1 Deux verts, une seule marque — et pourquoi
+
+Le vert de marque `#21A87D` ne donne que **3,02:1** sur blanc. C'est conforme au
+**grand texte** (WCAG AA exige ≥ 3:1) mais **pas au petit texte** (≥ 4,5:1).
+
+Plutôt que de disperser des corrections ou d'assombrir toute la marque, **deux
+tokens** cohabitent :
+
+| Token | Valeur | Ratio sur blanc | Usage |
+|---|---|---|---|
+| `--primary` | `#21A87D` | 3,02:1 | **Fonds** de boutons, **grands titres** (≥ 24 px, ou ≥ 19 px gras), aplats décoratifs |
+| `--primary-text` | `#17805F` | **4,83:1** | **Tout texte vert sur fond clair** : liens, libellés, emphases en ligne, textes < 24 px |
+
+Les deux appartiennent à la même famille chromatique : l'identité visuelle est
+préservée, la lisibilité est corrigée. **Règle d'usage :**
+
+```tsx
+/* Texte vert sur fond clair — taille quelconque */
+<a className="text-primary-text">Nous contacter</a>
+
+/* Grand titre vert — conforme avec le vert de marque */
+<h2 className="text-primary text-[2.625rem] font-bold">Titre</h2>
+
+/* Fond de bouton — le texte doit être SOMBRE, pas blanc */
+<a className="bg-primary text-color-001">S'inscrire</a>
+```
+
+**Ne jamais mettre de texte blanc sur `--primary`** : blanc sur `#21A87D` = 3,02:1
+(échec AA). Le texte des boutons verts est `--color-001` (`#0C1B24`), soit **5,81:1**.
+
+#### 2.2.2 Ratios mesurés (fond blanc, sauf mention)
+
+| Paire | Ratio | AA (4,5:1) |
+|---|---|---|
+| `--foreground` `#333333` sur blanc | 12,63 | ✅ |
+| `--accent` `#124F72` sur blanc | 8,80 | ✅ |
+| `--muted-foreground` `#495255` sur blanc | 8,01 | ✅ |
+| `--muted` `#617175` sur blanc | 5,09 | ✅ |
+| `#0C1B24` sur `--primary` (boutons verts) | **5,81** | ✅ |
+| **`--primary-text` `#17805F` sur blanc** | **4,83** | ✅ |
+| `--primary` `#21A87D` sur blanc (grand texte seulement) | 3,02 | ⚠️ grand texte uniquement |
+| blanc sur `--primary` (interdit) | 3,02 | ❌ |
+
 
 ### 2.3 Typographie
 

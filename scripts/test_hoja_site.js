@@ -180,6 +180,31 @@ check('aucun token mort dans globals.css', deadTokenHits.length === 0,
 const fontFaceCount = (globals.match(/@font-face/g) || []).length;
 check('règles @font-face réduites (<= 5)', fontFaceCount <= 5, `${fontFaceCount} règles`);
 
+// ─── 9. Contraste / accessibilité couleur ────────────────────────────
+console.log('\n[9] Contraste');
+check('token --primary-text défini dans globals.css',
+  /--primary-text\s*:/.test(globals), 'absent');
+check('token --primary-text exposé à Tailwind',
+  /--color-primary-text\s*:/.test(globals), 'absent dans @theme');
+
+const cssOut = walk(OUT, (p) => p.endsWith('.css'));
+const cssText = cssOut.map((f) => fs.readFileSync(f, 'utf8')).join('\n');
+check('classe .text-primary-text émise au build',
+  /\.text-primary-text\s*\{/.test(cssText), 'absente du CSS généré');
+
+// Aucun texte blanc sur le vert de marque (3,02:1 -> échec AA)
+const whiteOnGreen = [];
+for (const [f, t] of Object.entries(srcText)) {
+  for (const m of t.matchAll(/className="([^"]*)"/g)) {
+    const c = m[1];
+    if (/\bbg-primary\b/.test(c) && /\btext-(background|white)\b/.test(c)) {
+      whiteOnGreen.push(path.relative(SITE, f));
+    }
+  }
+}
+check('aucun texte blanc sur fond bg-primary', whiteOnGreen.length === 0,
+  whiteOnGreen.slice(0, 3).join(', '));
+
 // ─── Bilan ───────────────────────────────────────────────────────────
 console.log('\n' + '='.repeat(56));
 if (fail === 0) {

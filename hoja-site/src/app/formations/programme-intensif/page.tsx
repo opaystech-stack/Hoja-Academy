@@ -211,7 +211,7 @@ const ListRow4_styles = [
     { className: "" },
     { className: "" }];
 const MediaCard_styles = [
-    { className: "px-12.5 bg-color-001 max-lg:min-h-[7.0625rem] before:opacity-84", className2: "py-12.5 items-center 2xl:py-[4.0625rem]", className3: "md:max-lg:w-[66%]", className4: "gap-4.5 2xl:gap-[1.8125rem]", className5: "text-primary", className6: "w-auto", className7: "mb-[0.6875rem] text-background max-md:leading-7.5 2xl:mb-[2.0625rem]", className8: "text-background max-md:leading-[1.625rem]" },
+    { className: "px-12.5 bg-color-001 max-lg:min-h-[7.0625rem] before:opacity-84", className2: "py-12.5 items-center 2xl:py-[4.0625rem]", className3: "md:max-lg:w-[66%]", className4: "gap-4.5 2xl:gap-[1.8125rem]", className5: "text-primary-text", className6: "w-auto", className7: "mb-[0.6875rem] text-background max-md:leading-7.5 2xl:mb-[2.0625rem]", className8: "text-background max-md:leading-[1.625rem]" },
     { className: "px-12.5 bg-primary before:opacity-79", className2: "py-12.5 items-start 2xl:pt-[4.0625rem] 2xl:pb-[3.0625rem]", className4: "gap-4.5 2xl:gap-[1.8125rem]", className5: "text-color-001", className6: "w-auto", className7: "mb-[0.6875rem] text-color-001 max-md:leading-7.5 2xl:mb-[2.0625rem]", className8: "text-color-001 max-md:leading-[1.625rem]" },
     { className: "px-[2.8125rem] bg-primary before:opacity-79", className2: "py-[2.8125rem] items-start 2xl:py-[4.0625rem]", className4: "gap-[1.6875rem] 2xl:gap-[4.9375rem]", className5: "text-color-001", className6: "w-16 max-md:w-11.5 2xl:w-20.5", className7: "mb-[0.9375rem] text-color-001 max-md:leading-8 2xl:mb-9.5", className8: "text-color-001 max-md:leading-[1.375rem]" }
 ,
@@ -765,7 +765,7 @@ export default function Page() {
                     <div className="block" data-ditto-id="interaction-gt-wrapper-30105788">
                       <h2 className="block text-background text-[1.625rem] leading-[6.3125rem]" data-ditto-id="style-english-2" data-component="heading">
                         Cette édition
-                        <span className="inline text-primary font-bold" data-ditto-id="style-spanish-2">
+                        <span className="inline text-primary-text font-bold" data-ditto-id="style-spanish-2">
                           {" comprend :"}
                         </span>
                       </h2>
@@ -979,7 +979,7 @@ export default function Page() {
                       <div className="block">
                         <h2 className="block text-background [font-family:Montserrat,_sans-serif] text-[2.8125rem] leading-16.5 max-md:text-3xl max-md:leading-[2.4375rem] md:max-lg:text-[2.1875rem] md:max-lg:leading-[2.875rem]" data-component="heading">
                           Pourquoi
-                          <span className="inline text-primary font-bold">
+                          <span className="inline text-primary-text font-bold">
                             {" vous former en "}
                           </span>
                           {" IA ?"}
@@ -1217,7 +1217,7 @@ export default function Page() {
               <div className="block relative min-w-0 max-w-full text-center">
                 <div className="block">
                   <h2 className="block text-background [font-family:Montserrat,_sans-serif] text-[2.8125rem] leading-16.5 max-md:text-3xl max-md:leading-[2.8125rem]" data-component="heading">
-                    <b className="inline text-primary font-bold" data-ditto-id="style-div-26">
+                    <b className="inline text-primary-text font-bold" data-ditto-id="style-div-26">
                       Groupes réduits
                     </b>
                     {" — promotion limitée"}
@@ -1359,7 +1359,7 @@ export default function Page() {
               <div className="block relative min-w-0 max-w-full text-center">
                 <div className="block">
                   <h2 className="block text-background text-[1.6875rem] font-bold leading-[2.6875rem] max-md:[font-size:inherit]" data-component="heading">
-                    <b className="inline text-primary font-black">
+                    <b className="inline text-primary-text font-black">
                       {"Des profils différents, une même façon d'avancer : "}
                     </b>
                     {" appliquer l'IA à bon escient."}

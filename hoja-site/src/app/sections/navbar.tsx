@@ -90,7 +90,7 @@ export default function Navbar() {
                   aria-expanded={openF}
                   onClick={toggle}
                   onKeyDown={(e) => { if (e.key === "ArrowDown") { setOpenF(true); setLocked(true); } }}
-                  className="h-12.5 flex relative mx-[0.5px] px-4 items-center text-color-001 [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespace-nowrap cursor-pointer hover:text-primary focus-visible:text-primary"
+                  className="h-12.5 flex relative mx-[0.5px] px-4 items-center text-color-001 [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespace-nowrap cursor-pointer hover:text-primary-text focus-visible:text-primary-text"
                 >
                   Formations
                   <span className={`flex py-2.5 pl-2 items-center transition-transform duration-200 ${openF ? "rotate-180" : ""}`}>
@@ -110,7 +110,7 @@ export default function Navbar() {
                         <a
                           href={f.href}
                           aria-current={isF(f.href) ? "page" : undefined}
-                          className={`flex relative py-[0.8125rem] px-5 items-center text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-5 whitespace-nowrap cursor-pointer hover:text-primary focus-visible:text-primary ${isF(f.href) ? "font-bold" : ""}`}
+                          className={`flex relative py-[0.8125rem] px-5 items-center text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-5 whitespace-nowrap cursor-pointer hover:text-primary-text focus-visible:text-primary-text ${isF(f.href) ? "font-bold" : ""}`}
                         >
                           {isF(f.href) && <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary mr-2.5" aria-hidden="true" />}
                           {f.label}
@@ -125,7 +125,7 @@ export default function Navbar() {
                   <a
                     href={n.href}
                     aria-current={path === n.href ? "page" : undefined}
-                    className={`h-12.5 flex relative mx-[0.5px] px-4 items-center text-color-001 [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespace-nowrap cursor-pointer hover:text-primary focus-visible:text-primary ${path === n.href ? "font-bold underline decoration-primary underline-offset-8" : ""}`}
+                    className={`h-12.5 flex relative mx-[0.5px] px-4 items-center text-color-001 [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespace-nowrap cursor-pointer hover:text-primary-text focus-visible:text-primary-text ${path === n.href ? "font-bold underline decoration-primary underline-offset-8" : ""}`}
                   >
                     {n.label}
                   </a>

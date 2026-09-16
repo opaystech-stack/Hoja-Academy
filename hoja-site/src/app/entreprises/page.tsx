@@ -164,21 +164,21 @@ const ListRow_styles = [
     { className: "" }];
 const ListRow2_styles = [
     { className: "mx-[0.5px] text-color-001 2xl:mx-[9.5px] before:opacity-0 after:right-[6.5625rem] after:opacity-0 2xl:after:right-29.5" },
-    { className: "mx-[0.5px] text-primary 2xl:mx-[9.5px] before: before:origin-[56.5px_25px] max-lg:before:transform-[none] max-lg:before:origin-[initial] 2xl:before:origin-[65.5px_25px] after:right-[6.0625rem] after: after:origin-[0px_0px] max-lg:after:transform-[none] max-lg:after:origin-[initial] 2xl:after:right-[6.9375rem]" },
+    { className: "mx-[0.5px] text-primary-text 2xl:mx-[9.5px] before: before:origin-[56.5px_25px] max-lg:before:transform-[none] max-lg:before:origin-[initial] 2xl:before:origin-[65.5px_25px] after:right-[6.0625rem] after: after:origin-[0px_0px] max-lg:after:transform-[none] max-lg:after:origin-[initial] 2xl:after:right-[6.9375rem]" },
     { className: "ml-[0.5px] text-color-001 2xl:ml-[9.5px] before:opacity-0 after:right-[5.0625rem] after:opacity-0 2xl:after:right-[5.8125rem]" }
 ,
     { className: "" },
     { className: "" }];
 const ListRow3_styles = [
     { className: "text-color-001" },
-    { className: "text-primary bg-color-001" },
+    { className: "text-primary-text bg-color-001" },
     { className: "text-color-001 max-lg:rounded-br-[10px] max-lg:rounded-bl-[10px]" }
 ,
     { className: "" },
     { className: "" }];
 const ListRow4_styles = [
     { className: "mx-[0.5px] text-color-001 2xl:mx-[9.5px] before:opacity-0 after:right-[6.5625rem] after:opacity-0 2xl:after:right-29.5" },
-    { className: "mx-[0.5px] text-primary 2xl:mx-[9.5px] before: before:origin-[56.5px_25px] max-lg:before:transform-[none] max-lg:before:origin-[initial] 2xl:before:origin-[65.5px_25px] after:right-[6.0625rem] after: after:origin-[0px_0px] max-lg:after:transform-[none] max-lg:after:origin-[initial] 2xl:after:right-[6.9375rem]" },
+    { className: "mx-[0.5px] text-primary-text 2xl:mx-[9.5px] before: before:origin-[56.5px_25px] max-lg:before:transform-[none] max-lg:before:origin-[initial] 2xl:before:origin-[65.5px_25px] after:right-[6.0625rem] after: after:origin-[0px_0px] max-lg:after:transform-[none] max-lg:after:origin-[initial] 2xl:after:right-[6.9375rem]" },
     { className: "ml-[0.5px] text-color-001 2xl:ml-[9.5px] before:opacity-0 after:right-[5.0625rem] after:opacity-0 2xl:after:right-[5.8125rem]" }
 ,
     { className: "" },
@@ -199,7 +199,7 @@ const ListRow_styles2 = [
     { className: "" }];
 const ListRow7_styles = [
     { className: "mx-[17.5px] text-background max-md:mx-[0.5625rem] 2xl:mx-[21.5px]" },
-    { className: "mx-[17.5px] text-primary max-md:mx-[0.5625rem] 2xl:mx-[21.5px]" },
+    { className: "mx-[17.5px] text-primary-text max-md:mx-[0.5625rem] 2xl:mx-[21.5px]" },
     { className: "ml-[17.5px] text-background max-md:ml-[0.5625rem] 2xl:ml-[21.5px]" }
 ,
     { className: "" },
@@ -278,7 +278,7 @@ export default function Page() {
                       {" "}
                       <div className="w-[19.6875rem] block relative min-w-0 max-w-full shrink-0 gap-5 max-md:w-[204.3px] max-md:self-center md:max-lg:w-[7.95rem] 2xl:w-85" data-ditto-id="style-section-2">
                         <div className="block" data-ditto-id="interaction-div-26">
-                          <h3 className="block text-primary text-[1.1875rem] leading-5.5 uppercase max-md:text-[0.75rem] 2xl:text-[1.4375rem]" data-component="heading">
+                          <h3 className="block text-primary-text text-[1.1875rem] leading-5.5 uppercase max-md:text-[0.75rem] 2xl:text-[1.4375rem]" data-component="heading">
                             ENTREPRISES & INSTITUTIONS
                           </h3>
                           {" "}
@@ -303,7 +303,7 @@ export default function Page() {
                         <div className="block pt-[2.0625rem] max-lg:pt-0 2xl:pt-13">
                           <div className="block text-background text-[1.1875rem] font-light leading-6 max-md:text-base max-md:leading-[1.375rem] 2xl:text-[1.625rem]" data-ditto-id="style-div-101" data-component="heading">
                             <p className="block">
-                              <b className="inline text-primary font-normal">
+                              <b className="inline text-primary-text font-normal">
                                 Hoja Academy accompagne les organisations qui passent de la curiosité
                               </b>
                               <br className="inline" />
@@ -726,7 +726,7 @@ export default function Page() {
                 <div className="w-full flex relative min-w-0 px-10 flex-col">
                   <div className="flex max-w-275 mx-12.5 py-20 justify-between items-center grow gap-5 max-md:max-w-[min(100%,_767px)] max-md:flex-wrap max-lg:mx-0 2xl:mx-92.5">
                     <div className="w-full flex relative min-w-0 pr-7.5 flex-col justify-center items-start gap-5 max-md:flex-wrap" data-ditto-id="style-link-27">
-                      <div className="w-full max-w-[9.3125rem] block relative min-w-0 gap-5 text-primary [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem]">
+                      <div className="w-full max-w-[9.3125rem] block relative min-w-0 gap-5 text-primary-text [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem]">
                         <div className="block">
                           <p className="block mb-[0.9rem]">
                             NOTRE DÉMARCHE

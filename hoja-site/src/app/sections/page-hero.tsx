@@ -39,7 +39,7 @@ export default function PageHero({
             <div className="block relative min-w-0 max-w-full gap-y-[1.0625rem] max-md:text-center 2xl:gap-y-[1.9375rem]">
               <div className="block pt-[2.0625rem] 2xl:pt-13">
                 <h1 className="block text-background text-[1.1875rem] font-light leading-5 2xl:text-[1.625rem]" data-component="heading">
-                  <span className="inline text-primary font-medium">
+                  <span className="inline text-primary-text font-medium">
                     {eyebrow}
                   </span>
                   {" " + eyebrowRest}
@@ -102,7 +102,7 @@ export default function PageHero({
                 <div className="block -mt-[1.5625rem] max-md:pt-17.5 max-md:mt-0">
                   <div className="flex flex-col max-md:text-center">
                     <div className="block grow">
-                      <h3 className="block mt-2 text-primary text-lg leading-[1.9375rem] max-lg:text-[1rem] 2xl:mb-[0.3125rem] 2xl:text-[1.3125rem]" data-component="heading">
+                      <h3 className="block mt-2 text-primary-text text-lg leading-[1.9375rem] max-lg:text-[1rem] 2xl:mb-[0.3125rem] 2xl:text-[1.3125rem]" data-component="heading">
                         <span className="inline">
                           {kicker || "L'intelligence artificielle "}
                         </span>
