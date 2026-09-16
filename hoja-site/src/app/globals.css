@@ -335,3 +335,32 @@ header a:not([class*="w-px"]) {
 [class*="bg-color-017"] :focus-visible {
   outline-color: rgb(68, 195, 155);
 }
+
+/* Base du document — hérité du clone, sorti des 8 `ditto.css` où il était dupliqué.
+   Porté par <body> (layout.tsx). Corps éditorial du design system Hoja : 16 px / 26 px. */
+.cn0 {
+  display: block;
+  top: 0;
+  overflow-x: clip;
+  color: var(--foreground);
+  background-color: var(--background);
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 26px;
+  letter-spacing: normal;
+  word-spacing: 0;
+  text-align: start;
+  text-transform: none;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: normal;
+  text-indent: 0;
+  text-shadow: none;
+  font-variant-caps: normal;
+  font-feature-settings: normal;
+  list-style-position: outside;
+  writing-mode: horizontal-tb;
+  direction: ltr;
+}

@@ -1,7 +1,6 @@
 import "./ditto.css";
 import Footer from "../sections/footer";
 import Navbar from "../sections/navbar";
-import DittoWire from "../ditto/DittoWire";
 import ListRow from "./components/list-row";
 import ListRow2 from "./components/list-row2";
 import ListRow3 from "./components/list-row3";
@@ -192,7 +191,7 @@ export default function Page() {
               <div className="w-240 min-h-[16.3125rem] flex relative min-w-0 flex-col justify-end gap-5 max-md:w-[21.5625rem] max-md:min-h-41 max-md:flex-wrap md:max-lg:w-[569.3px] 2xl:w-[106.1875rem] 2xl:p-2.5">
                 <div className="block relative min-w-0 max-w-full gap-5">
                   <div className="block">
-                    <h1 className="block text-primary [font-family:Montserrat,_sans-serif] text-[3rem] font-bold leading-[6.3125rem] max-md:text-[1.75rem] max-md:leading-9" data-ditto-id="style-span-39" data-component="heading">Mentions Légales</h1>
+                    <h1 className="block text-primary [font-family:Montserrat,_sans-serif] text-[3rem] font-bold leading-[6.3125rem] max-md:text-[1.75rem] max-md:leading-9" data-component="heading">Mentions Légales</h1>
                     {" "}
                   </div>
                   {" "}
@@ -203,29 +202,29 @@ export default function Page() {
             </div>
             {" "}
             <div className="min-h-[44.8125rem] flex relative max-w-full py-16 px-[3.2rem] justify-center gap-5 max-md:pt-10 max-md:pb-5 max-md:px-5 max-md:flex-wrap md:max-lg:py-[2.4rem] md:max-lg:px-[30.7px] 2xl:py-24 2xl:px-[4.8rem]" data-ditto-id="style-section">
-              <div className="w-4/5 block relative min-w-0 max-w-full gap-5 text-color-001 max-md:text-[1rem] max-md:leading-[1.3125rem]" data-ditto-id="style-div-83">
-                <div className="h-full block" data-ditto-id="style-p-10">
-                  <p className="block mb-[0.9rem]" data-ditto-id="style-heading-4">
-                    <strong className="inline font-bold" data-ditto-id="style-div-84">
+              <div className="w-4/5 block relative min-w-0 max-w-full gap-5 text-color-001 max-md:text-[1rem] max-md:leading-[1.3125rem]">
+                <div className="h-full block">
+                  <p className="block mb-[0.9rem]">
+                    <strong className="inline font-bold">
                       HOJA ACADEMY
                     </strong>
                     {" Les informations suivantes sont fournies conformément à la législation applicable sur le commerce électronique :"}
-                    <br className="inline" data-ditto-id="style-span-40" />
+                    <br className="inline" />
                     {"Qu'il est titulaire du domaine et du site web : "}
                     <a className="inline [font-family:Montserrat,_sans-serif] text-[1rem] font-medium leading-[1.1875rem] cursor-pointer" data-component="link" href="/">
                       https://hoja-academy.com/
                     </a>
                   </p>
                   {" "}
-                  <p className="block mb-[0.9rem]" data-ditto-id="interaction-span-11">
+                  <p className="block mb-[0.9rem]">
                     <b className="inline font-bold">
                       Que ses données d'identification sont :
                     </b>
                   </p>
                   {" "}
-                  <p className="block mb-[0.9rem]" data-ditto-id="style-section-2">
+                  <p className="block mb-[0.9rem]">
                     HOJA ACADEMY
-                    <br className="inline" data-ditto-id="interaction-div-26" />
+                    <br className="inline" />
                     —
                     <br className="inline" />
                     Contact : info@hoja-academy.com
@@ -243,7 +242,7 @@ export default function Page() {
                     , et il est interdit de procéder à quelque copie ou reproduction que ce soit, de tout ou partie du contenu, sans l'autorisation expresse de son propriétaire.
                   </p>
                   {" "}
-                  <p className="block mb-[0.9rem]" data-ditto-id="style-p-13">
+                  <p className="block mb-[0.9rem]">
                     {"L'utilisateur du site web s'engage à en faire un usage approprié, à ne pas l'employer à des pratiques contraires à la Loi ou à la bonne foi et à ne pas causer de dommages aux systèmes physiques et logiques de "}
                     <strong className="inline font-bold" data-ditto-id="style-p-7">
                       HOJA ACADEMY
@@ -264,7 +263,7 @@ export default function Page() {
       {" "}
       <Footer />
       {" "}
-      <span className="w-1 h-1 border-2 border-inset border-foreground block absolute -top-[624.9375rem] overflow-clip" data-ditto-id="style-image" aria-hidden="true" role="presentation" title="Vidéo témoignage — apprenant HOJA ACADEMY"></span>
+      <span className="w-1 h-1 border-2 border-inset border-foreground block absolute -top-[624.9375rem] overflow-clip" aria-hidden="true" role="presentation" title="Vidéo témoignage — apprenant HOJA ACADEMY"></span>
       {" "}
       <svg className="hidden overflow-hidden" fill="currentColor" />
       {" "}

@@ -1,7 +1,6 @@
 import "./ditto.css";
 import Footer from "../sections/footer";
 import Navbar from "../sections/navbar";
-import DittoWire from "../ditto/DittoWire";
 import ListRow from "./components/list-row";
 import ListRow2 from "./components/list-row2";
 import ListRow3 from "./components/list-row3";
@@ -205,7 +204,7 @@ export default function Page() {
               <div className="w-240 min-h-[16.3125rem] flex relative min-w-0 flex-col justify-end gap-5 max-md:w-[21.5625rem] max-md:min-h-41 max-md:flex-wrap md:max-lg:w-[569.3px] 2xl:w-[106.1875rem] 2xl:p-2.5">
                 <div className="block relative min-w-0 max-w-full gap-5">
                   <div className="block">
-                    <h1 className="block text-primary [font-family:Montserrat,_sans-serif] text-[3rem] font-bold leading-[6.3125rem] max-md:text-[1.75rem] max-md:leading-9 md:max-lg:leading-[3.125rem]" data-ditto-id="style-span-39" data-component="heading">
+                    <h1 className="block text-primary [font-family:Montserrat,_sans-serif] text-[3rem] font-bold leading-[6.3125rem] max-md:text-[1.75rem] max-md:leading-9 md:max-lg:leading-[3.125rem]" data-component="heading">
                       Politique de Confidentialité
                     </h1>
                     {" "}
@@ -218,22 +217,22 @@ export default function Page() {
             </div>
             {" "}
             <div className="min-h-[44.8125rem] flex relative max-w-full py-16 px-[3.2rem] justify-center gap-5 max-md:pt-10 max-md:pb-5 max-md:px-5 max-md:flex-wrap md:max-lg:py-[2.4rem] md:max-lg:px-[30.7px] 2xl:py-24 2xl:px-[4.8rem]" data-ditto-id="style-section">
-              <div className="w-4/5 block relative min-w-0 max-w-full gap-5 text-color-001 max-md:text-[1rem] max-md:leading-[1.3125rem]" data-ditto-id="style-div-83">
-                <div className="h-full block" data-ditto-id="style-p-10">
-                  <p className="block mb-[0.9rem]" data-ditto-id="style-heading-4">
+              <div className="w-4/5 block relative min-w-0 max-w-full gap-5 text-color-001 max-md:text-[1rem] max-md:leading-[1.3125rem]">
+                <div className="h-full block">
+                  <p className="block mb-[0.9rem]">
                     Dans la présente Politique de Confidentialité, vous trouverez toutes les informations relatives à l'usage que nous faisons des données à caractère personnel que vous utilisez pour interagir avec nous en tant qu'utilisateur. Vous disposez de manière permanente de cette Politique de Confidentialité, que vous pouvez consulter chaque fois que vous le jugerez opportun.
                   </p>
                   {" "}
-                  <p className="block mb-[0.9rem]" data-ditto-id="style-div-84">
+                  <p className="block mb-[0.9rem]">
                     {"Si un doute vous vient à la lecture de ces informations, n'hésitez pas à nous poser une question par e-mail à l'adresse "}
-                    <a className="inline [font-family:Montserrat,_sans-serif] text-[1.125rem] font-medium leading-[1.1875rem]" data-ditto-id="style-span-40">
+                    <a className="inline [font-family:Montserrat,_sans-serif] text-[1.125rem] font-medium leading-[1.1875rem]">
                       {"info@hoja-academy.com "}
                     </a>
                     .
                   </p>
                   {" "}
                   <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-component="heading">
-                    <span className="inline font-bold" data-ditto-id="interaction-span-11">
+                    <span className="inline font-bold">
                       Qui sommes-nous ?
                     </span>
                   </h5>
@@ -242,8 +241,8 @@ export default function Page() {
                     HOJA ACADEMY, éditeur du site https://hoja-academy.com/, est responsable du traitement de vos données à caractère personnel, de leurs usages et de leur protection.
                   </p>
                   {" "}
-                  <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-ditto-id="style-section-2" data-component="heading">
-                    <span className="inline font-bold" data-ditto-id="interaction-div-26">
+                  <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-component="heading">
+                    <span className="inline font-bold">
                       Pour quelle finalité utilisons-nous vos données ?
                     </span>
                   </h5>
@@ -262,7 +261,7 @@ export default function Page() {
                     </span>
                   </h6>
                   {" "}
-                  <p className="block mb-[0.9rem]" data-ditto-id="style-p-13">
+                  <p className="block mb-[0.9rem]">
                     Afin de garantir le bon déroulement des cours et la délivrance des certifications, HOJA ACADEMY enregistre l'activité sur le campus virtuel uniquement pour les utilisateurs inscrits en tant qu'apprenants de nos cours.
                   </p>
                   {" "}
@@ -274,7 +273,7 @@ export default function Page() {
                     Le traitement est effectué conformément à l'art. 6.1.b) du RGPD (exécution du contrat de formation) et les données ne sont conservées que pendant le temps nécessaire à la gestion académique et aux obligations légales associées.
                   </p>
                   {" "}
-                  <p className="block mb-[0.9rem]" data-ditto-id="style-div-101">
+                  <p className="block mb-[0.9rem]">
                     En aucun cas la navigation des visiteurs anonymes qui ne sont pas des élèves n'est surveillée.
                   </p>
                   {" "}
@@ -289,13 +288,13 @@ export default function Page() {
                     Si vous demandez à participer au Entreprises de HOJA ACADEMY, nous traiterons vos données personnelles aux fins de gérer votre demande, d'approuver ou de refuser votre participation, d'administrer votre compte affilié, d'assurer le suivi des visites et des ventes attribuées à vos liens ou coupons, de calculer les commissions générées, de gérer les paiements correspondants et de prévenir les utilisations frauduleuses ou contraires aux conditions du Programme.
                   </p>
                   {" "}
-                  <p className="block mb-[0.9rem]" data-ditto-id="style-p-14" />
+                  <p className="block mb-[0.9rem]" />
                   {" "}
                   <p className="block mb-[0.9rem]">
                     Le traitement sera effectué principalement sur la base de l'exécution de la relation contractuelle découlant de votre participation au Entreprises et, le cas échéant, pour le respect des obligations légales applicables.
                   </p>
                   {" "}
-                  <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-ditto-id="style-p-11" data-component="heading">
+                  <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-component="heading">
                     <span className="inline font-bold" data-ditto-id="style-p-8">
                       Quelles données à caractère personnel vous demanderons-nous ?
                     </span>
@@ -305,44 +304,44 @@ export default function Page() {
                     Par le biais de notre formulaire de contact : Nom, adresse e-mail et téléphone.
                   </p>
                   {" "}
-                  <p className="block mb-[0.9rem]" data-ditto-id="interaction-p">
+                  <p className="block mb-[0.9rem]">
                     Dans la Politique relative aux cookies, vous trouverez quel autre type d'informations nous recueillerons par le biais de l'utilisation des cookies.
                   </p>
                   {" "}
-                  <p className="block mb-[0.9rem]" data-ditto-id="style-p-12">
+                  <p className="block mb-[0.9rem]">
                     Rappelez-vous que toutes les données que nous vous demandons à titre obligatoire sont les données minimales nécessaires pour pouvoir vous fournir le service ou vous permettre l'accès à une fonctionnalité déterminée du site web.
                   </p>
                   {" "}
                   <p className="block mb-[0.9rem]" data-ditto-id="style-p-4">
-                    <strong className="inline font-bold" data-ditto-id="interaction-p-2">
+                    <strong className="inline font-bold">
                       Dans le cas du Entreprises :
                     </strong>
                     {" nous pourrons demander le nom et le prénom, l'adresse e-mail, le nom d'utilisateur, des informations sur la manière dont vous allez promouvoir HOJA ACADEMY, le site web ou le canal de promotion lorsqu'il est fourni, ainsi que l'adresse e-mail associée au moyen de paiement sélectionné, par exemple PayPal."}
-                    <span className="inline" data-ditto-id="interaction-p-3" aria-hidden="true" />
+                    <span className="inline" aria-hidden="true" />
                   </p>
                   {" "}
-                  <p className="block mb-[0.9rem]" data-ditto-id="interaction-button" />
+                  <p className="block mb-[0.9rem]" />
                   {" "}
-                  <p className="block mb-[0.9rem]" data-ditto-id="interaction-span-3">
+                  <p className="block mb-[0.9rem]">
                     De même, durant votre participation au Programme, nous pourrons enregistrer des informations relatives aux visites, aux parrainages, aux ventes attribuées, aux commissions générées et aux paiements effectués.
                   </p>
                   {" "}
-                  <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-ditto-id="style-p" data-component="heading">
-                    <span className="inline font-bold" data-ditto-id="interaction-link">
+                  <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-component="heading">
+                    <span className="inline font-bold">
                       Pourquoi utilisons-nous vos données ?
                     </span>
                   </h5>
                   {" "}
-                  <p className="block mb-[0.9rem]" data-ditto-id="interaction-span-4">
+                  <p className="block mb-[0.9rem]">
                     La légitimation du traitement de vos données provient du fait que nous avons besoin de les traiter pour exécuter le contrat que vous acceptez avec nous lors de votre inscription et lors de la jouissance de nos services ou fonctionnalités.
                   </p>
                   {" "}
-                  <p className="block mb-[0.9rem]" data-ditto-id="style-navegaci-n-entre-noticias-del-d-a">
+                  <p className="block mb-[0.9rem]">
                     Il existe d'autres raisons, telles que notre intérêt à répondre à vos consultations ou demandes et le consentement que vous nous accordez pour que nous puissions vous envoyer nos informations commerciales.
                   </p>
                   {" "}
-                  <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-ditto-id="style-link-7" data-component="heading">
-                    <span className="inline font-bold" data-ditto-id="style-br-3">
+                  <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-component="heading">
+                    <span className="inline font-bold">
                       Combien de temps conservons-nous vos données ?
                     </span>
                   </h5>
@@ -363,16 +362,16 @@ export default function Page() {
                     Une fois les délais écoulés, les données seront supprimées de nos registres.
                   </p>
                   {" "}
-                  <div className="block" data-ditto-id="style-br-2">
-                    <p className="block mb-[0.9rem]" data-ditto-id="interaction-br">
+                  <div className="block">
+                    <p className="block mb-[0.9rem]">
                       <span className="inline font-bold">
                         Avec qui partageons-nous vos données ?
                       </span>
                     </p>
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="style-br">
+                    <p className="block mb-[0.9rem]">
                       Pour la réalisation des finalités énoncées, vos données à caractère personnel seront communiquées à des prestataires de services auxiliaires qui facilitent notre gestion ou l'accomplissement de nos obligations légales, tels que, entre autres, des sociétés de transport, de conseil fiscal et juridique et d'hébergement web.
-                      <span className="inline" data-ditto-id="interaction-span" aria-hidden="true" />
+                      <span className="inline" aria-hidden="true" />
                     </p>
                     {" "}
                     <p className="block mb-[0.9rem]">
@@ -381,7 +380,7 @@ export default function Page() {
                     {" "}
                     <p className="block mb-[0.9rem]">
                       {"En utilisant la fonction IA « Alvi », vous acceptez que des données vocales, leurs transcriptions et métadonnées (date, heure, durée) soient collectées et traitées afin de faciliter la communication en temps réel et de garantir la sécurité du service. La base légale de ce traitement est l'exécution du contrat et votre consentement exprès ; les données sont conservées pendant la durée nécessaire conformément à la réglementation en vigueur. Vous pourrez exercer vos droits d'accès, de rectification, d'effacement, de portabilité et d'opposition en envoyant une demande à "}
-                      <a className="inline [font-family:Montserrat,_sans-serif] text-[1rem] font-medium leading-[1.1875rem] cursor-pointer" data-ditto-id="style-span-47" data-component="link" href="mailto:info@hoja-academy.com" rel="noopener">
+                      <a className="inline [font-family:Montserrat,_sans-serif] text-[1rem] font-medium leading-[1.1875rem] cursor-pointer" data-component="link" href="mailto:info@hoja-academy.com" rel="noopener">
                         info@hoja-academy.com
                       </a>
                       .
@@ -392,15 +391,15 @@ export default function Page() {
                     </p>
                     {" "}
                     <p className="block mb-[0.9rem]" />
-                    <p className="block mb-[0.9rem]" data-ditto-id="style-p-15">
+                    <p className="block mb-[0.9rem]">
                       {"Vous pouvez demander la liste de ces sociétés et organismes par le biais de notre adresse e-mail "}
-                      <a className="inline [font-family:Montserrat,_sans-serif] text-[1rem] font-medium leading-[1.1875rem] cursor-pointer" data-ditto-id="style-footer-3" data-component="link" href="mailto:info@hoja-academy.com" rel="noopener">
+                      <a className="inline [font-family:Montserrat,_sans-serif] text-[1rem] font-medium leading-[1.1875rem] cursor-pointer" data-component="link" href="mailto:info@hoja-academy.com" rel="noopener">
                         info@hoja-academy.com
                       </a>
                     </p>
                     {" "}
                     <p className="block mb-[0.9rem]">
-                      <span className="inline font-bold" data-ditto-id="interaction-div-7">
+                      <span className="inline font-bold">
                         Quels droits avez-vous sur vos données à caractère personnel ?
                       </span>
                     </p>
@@ -408,23 +407,23 @@ export default function Page() {
                   </div>
                   {" "}
                   <div className="block">
-                    <p className="block mb-[0.9rem]" data-ditto-id="interaction-div-6">
+                    <p className="block mb-[0.9rem]">
                       {"Indépendamment de la base juridique sur laquelle nous avons effectué le traitement de vos données à caractère personnel, vous disposez d'un ensemble de droits que vous pouvez exercer, par communication à l'adresse e-mail "}
-                      <a className="inline [font-family:Montserrat,_sans-serif] text-[1.125rem] font-medium leading-[1.1875rem]" data-ditto-id="interaction-div-8">
+                      <a className="inline [font-family:Montserrat,_sans-serif] text-[1.125rem] font-medium leading-[1.1875rem]">
                         {"info@hoja-academy.com "}
                       </a>
                       .
                     </p>
                     {" "}
-                    <ul className="block pl-10 [list-style-type:disc] list-outside bg-background max-md:text-[1.375rem]" data-ditto-id="style-menu-2">
+                    <ul className="block pl-10 [list-style-type:disc] list-outside bg-background max-md:text-[1.375rem]">
                       {ListRow5_data.map((d, i) => <ListRow5 key={i} d={d} />)}
                     </ul>
                     {" "}
-                    <div className="block" data-ditto-id="interaction-sm-17672256027865476-1" />
+                    <div className="block" />
                     {" "}
                     <div className="block" data-ditto-id="style-span-6">
-                      <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-ditto-id="style-icon-2" data-component="heading">
-                        <span className="inline font-bold" data-ditto-id="interaction-sm-17672256027865476-2">
+                      <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-component="heading">
+                        <span className="inline font-bold">
                           Modifications de la Politique de Confidentialité
                         </span>
                       </h5>
@@ -450,25 +449,25 @@ export default function Page() {
                     </div>
                     {" "}
                     <div className="block" data-ditto-id="style-ul">
-                      <p className="block mb-[0.9rem]" data-ditto-id="interaction-li-3">
+                      <p className="block mb-[0.9rem]">
                         L'utilisation des services du Site Web, ainsi que l'acquisition de l'un des produits proposés, implique votre acceptation, en tant que Client, sans réserve d'aucune sorte, de toutes les stipulations contenues dans les présentes Conditions Générales.
                       </p>
                       {" "}
-                      <p className="block mb-[0.9rem]" data-ditto-id="style-b">
+                      <p className="block mb-[0.9rem]">
                         Votre inscription au site web et l'utilisation de ses services impliquent que les données à caractère personnel que vous avez fournies feront partie de fichiers destinés à leur traitement, selon les finalités, légitimations, cessions et durées de conservation détaillées dans la Politique de Confidentialité.
                       </p>
                       {" "}
-                      <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-ditto-id="style-li-2" data-component="heading">
-                        <span className="inline font-bold" data-ditto-id="interaction-b-2">
+                      <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-component="heading">
+                        <span className="inline font-bold">
                           Limitaciones
                         </span>
                       </h5>
                       {" "}
-                      <p className="block mb-[0.9rem]" data-ditto-id="style-li">
+                      <p className="block mb-[0.9rem]">
                         Le contenu promotionnel du site web s'adresse à tous les utilisateurs, mais si vous souhaitez vous inscrire en tant que client ou effectuer un achat, vous devez être majeur.
                       </p>
                       {" "}
-                      <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-ditto-id="style-b-3" data-component="heading">
+                      <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-component="heading">
                         <span className="inline font-bold">
                           Garantie et Politique de Remboursement
                         </span>
@@ -478,26 +477,26 @@ export default function Page() {
                         Le Programme Intensif d'IA Générative comprend une garantie de remboursement de 7 jours calendaires à compter du premier jour de cours en direct.
                       </p>
                       {" "}
-                      <p className="block mb-[0.9rem]" data-ditto-id="interaction-div-5">
+                      <p className="block mb-[0.9rem]">
                         Les cours de la gamme « Expert en... » incluent également une garantie de remboursement de 7 jours calendaires à compter de l'accès au contenu du cours, tant que l'apprenant n'a pas progressé au-delà de la première leçon du cours (laquelle comprend environ 4 à 5 thèmes selon le cours concerné).
                       </p>
                       {" "}
-                      <p className="block mb-[0.9rem]" data-ditto-id="interaction-div-3">
+                      <p className="block mb-[0.9rem]">
                         Cette garantie permet à l'élève d'accéder au contenu, de le parcourir et d'évaluer si le cours correspond à ses besoins.
                       </p>
                       {" "}
-                      <p className="block mb-[0.9rem]" data-ditto-id="style-div-16">
+                      <p className="block mb-[0.9rem]">
                         Une fois le délai indiqué écoulé ou les conditions d'utilisation mentionnées dépassées, le remboursement du montant versé ne sera pas dû.
                       </p>
                       {" "}
-                      <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-ditto-id="style-div-15" data-component="heading">
-                        <b className="inline font-bold" data-ditto-id="interaction-div-4">
+                      <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-component="heading">
+                        <b className="inline font-bold">
                           Réservation de places dans les formations
                         </b>
                       </h5>
                       {" "}
                       <div className="block">
-                        <p className="block mb-[0.9rem]" data-ditto-id="style-link-5">
+                        <p className="block mb-[0.9rem]">
                           Dans certaines formations, HOJA ACADEMY pourra offrir la possibilité de réserver une place moyennant le paiement anticipé d'un montant déterminé.
                         </p>
                         <p className="block mb-[0.9rem]">
@@ -506,9 +505,9 @@ export default function Page() {
                         <p className="block mb-[0.9rem]">
                           Si le client ne s'acquitte pas du montant restant dans le délai indiqué, HOJA ACADEMY pourra annuler la réservation et libérer la place.
                         </p>
-                        <p className="block mb-[0.9rem]" data-ditto-id="style-div-10">
+                        <p className="block mb-[0.9rem]">
                           {"Lorsque la souscription est effectuée à distance par un consommateur, ce dernier bénéficiera du droit de rétractation prévu par la loi pendant "}
-                          <strong className="inline font-bold" data-ditto-id="style-div-94">
+                          <strong className="inline font-bold">
                             14 jours calendaires à compter de la conclusion du contrat
                           </strong>
                           {", sauf exceptions prévues par la législation applicable. "}
@@ -523,43 +522,43 @@ export default function Page() {
                       {" "}
                     </div>
                     {" "}
-                    <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-ditto-id="interaction-b" data-component="heading">
+                    <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-component="heading">
                       <span className="inline font-bold">
                         Accès au Contenu
                       </span>
                     </h5>
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="style-b-2">
+                    <p className="block mb-[0.9rem]">
                       L'élève aura accès au contenu du cours pour une durée indéterminée, sans limite de temps, tant que la plateforme et le service resteront actifs.
                     </p>
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="interaction-li">
+                    <p className="block mb-[0.9rem]">
                       HOJA ACADEMY s'engage à maintenir l'accès au contenu et sa disponibilité dans des conditions normales de fonctionnement.
                     </p>
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="style-b-6">
+                    <p className="block mb-[0.9rem]">
                       Toutefois, dans des circonstances exceptionnelles indépendantes de sa volonté, telles que pannes techniques graves, cyberattaques, cas de force majeure, fermeture de la plateforme, changements structurels du service ou toute autre situation échappant à son contrôle raisonnable, l'accès permanent ou à vie au contenu n'est pas garanti.
                     </p>
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="style-li-5">
+                    <p className="block mb-[0.9rem]">
                       En cas d'incident majeur, des efforts raisonnables seront déployés pour rétablir l'accès ou fournir une solution alternative lorsque cela est possible.
                     </p>
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="style-b-7">
+                    <p className="block mb-[0.9rem]">
                       L'acquisition du cours confère à l'élève une licence d'accès au contenu, non la propriété de celui-ci.
                     </p>
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="style-li-4" />
+                    <p className="block mb-[0.9rem]" />
                     {" "}
-                    <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-ditto-id="style-b-4" data-component="heading">
+                    <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-component="heading">
                       <span className="inline font-bold">
                         Modification des Contenus et de l'Organisation
                       </span>
                     </h5>
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="style-footer" />
+                    <p className="block mb-[0.9rem]" />
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="style-div-95">
+                    <p className="block mb-[0.9rem]">
                       HOJA ACADEMY se réserve le droit de mettre à jour, de modifier ou d'améliorer les contenus, outils, structure, méthodologie ou calendrier des cours afin de les adapter aux avancées technologiques, aux améliorations pédagogiques ou aux besoins organisationnels.
                     </p>
                     {" "}
@@ -571,17 +570,17 @@ export default function Page() {
                       Ces modifications ne donneront pas droit à remboursement, dès lors qu'elles n'altèrent pas de manière substantielle la nature du programme de formation souscrit.
                     </p>
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="style-link-2" />
+                    <p className="block mb-[0.9rem]" />
                     {" "}
-                    <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-ditto-id="style-span-2" data-component="heading">
+                    <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-component="heading">
                       <span className="inline font-bold" data-ditto-id="interaction-span-2">
                         Exonération de Responsabilité concernant les Résultats
                       </span>
                     </h5>
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="style-icon-3" />
+                    <p className="block mb-[0.9rem]" />
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="style-span-46">
+                    <p className="block mb-[0.9rem]">
                       Les cours proposés par HOJA ACADEMY ont un caractère formatif et éducatif.
                     </p>
                     {" "}
@@ -589,24 +588,24 @@ export default function Page() {
                       HOJA ACADEMY ne garantit pas l'obtention de résultats économiques, professionnels ou empresariaux spécifiques découlant de l'application des connaissances acquises.
                     </p>
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="interaction-div">
+                    <p className="block mb-[0.9rem]">
                       L'élève reconnaît que la mise en œuvre de ce qui est appris dépend de facteurs individuels, du contexte professionnel et de l'investissement personnel, de sorte que les résultats peuvent varier dans chaque cas.
                     </p>
                     {" "}
                     <div className="block">
                       <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-ditto-id="style-link-4" data-component="heading">
-                        <span className="inline font-bold" data-ditto-id="interaction-image">
+                        <span className="inline font-bold">
                           Protection des Contenus et Interdiction de Téléchargement, de Distribution et de Commercialisation
                         </span>
                       </h5>
                       {" "}
                     </div>
                     {" "}
-                    <div className="block" data-ditto-id="style-div-102">
+                    <div className="block">
                       {" L'utilisateur reconnaît et accepte que tous les contenus audiovisuels, supports pédagogiques, enregistrements de cours (en direct par visioconférence ou enregistrés) et tout autre support mis à disposition via la plateforme constituent des œuvres protégées par les droits de propriété intellectuelle de HOJA ACADEMY et sont couverts par la la législation applicable en matière de propriété intellectuelle. Sauf autorisation préalable et écrite de HOJA ACADEMY, sont expressément interdits :"}
                     </div>
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="style-div-96">
+                    <p className="block mb-[0.9rem]">
                       •Télécharger, copier, reproduire, distribuer, communiquer publiquement ou transformer totalement ou partiellement lesdits contenus.
                     </p>
                     {" "}
@@ -622,17 +621,17 @@ export default function Page() {
                       Le non-respect de l'une de ces obligations sera considéré comme une infraction grave, autorisant HOJA ACADEMY à engager les actions légales appropriées, notamment la demande de mesures conservatoires, la réclamation de dommages et intérêts et, le cas échéant, la plainte pénale conformément à la législation en vigueur. HOJA ACADEMY se réserve le droit de surveiller et d'auditer l'utilisation de la plateforme afin de prévenir et détecter toute activité illicite ou contraire aux stipulations de la présente clause.
                     </p>
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="interaction-div-22" />
+                    <p className="block mb-[0.9rem]" />
                     {" "}
-                    <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-ditto-id="style-div-103" data-component="heading">
-                      <span className="inline font-bold" data-ditto-id="style-div-5">
+                    <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-component="heading">
+                      <span className="inline font-bold">
                         Suspension ou Annulation de l'Accès
                       </span>
                     </h5>
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="style-div-6" />
+                    <p className="block mb-[0.9rem]" />
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="style-menu">
+                    <p className="block mb-[0.9rem]">
                       HOJA ACADEMY se réserve le droit de suspendre ou d'annuler l'accès au campus virtuel des élèves qui ne respecteraient pas les présentes conditions, feraient un usage abusif de la plateforme, partageraient leurs identifiants de connexion ou violeraient des droits de propriété intellectuelle.
                     </p>
                     {" "}
@@ -640,9 +639,9 @@ export default function Page() {
                       La suspension pourra être effectuée de manière immédiate et sans droit à remboursement lorsque le manquement est grave ou répété.
                     </p>
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="style-div-17" />
+                    <p className="block mb-[0.9rem]" />
                     {" "}
-                    <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-ditto-id="style-image" data-component="heading">
+                    <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-component="heading">
                       <span className="inline font-bold">
                         Utilisation Appropriée de la Plateforme
                       </span>
@@ -650,7 +649,7 @@ export default function Page() {
                     {" "}
                     <p className="block mb-[0.9rem]" />
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="style-div-97">
+                    <p className="block mb-[0.9rem]">
                       L'élève s'engage à utiliser le campus virtuel, les forums, les visioconférences et les autres ressources de formation de manière respectueuse et conforme à la loi.
                     </p>
                     {" "}
@@ -658,28 +657,28 @@ export default function Page() {
                       La publication de contenus offensants, illégaux, promotionnels non autorisés ou pouvant affecter négativement le déroulement normal du cours ou d'autres élèves ne sera pas permise.
                     </p>
                     {" "}
-                    <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-ditto-id="style-div-27" data-component="heading">
+                    <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-component="heading">
                       <span className="inline font-bold">
                         Législation Applicable et Juridiction
                       </span>
                     </h5>
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="style-heading-2">
+                    <p className="block mb-[0.9rem]">
                       Les deux clauses, ainsi que tout litige pouvant découler de leur interprétation, de leur exécution ou de leur réalisation, seront régies et interprétées conformément à la législation applicable et, pour ce qui n'est pas prévu, à la réglementation de l'Union européenne.
                     </p>
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="style-link-6">
+                    <p className="block mb-[0.9rem]">
                       Pour la résolution de tout litige, les parties s’efforceront de trouver une solution amiable ; à défaut, la juridiction compétente sera désignée par la législation applicable.
                     </p>
                     {" "}
-                    <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-ditto-id="style-div-7" data-component="heading">
-                      <span className="inline font-bold" data-ditto-id="style-div-98">
+                    <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-component="heading">
+                      <span className="inline font-bold">
                         CONDITIONS GÉNÉRALES DU PROGRAMME D'AFFILIATION DE HOJA ACADEMY
                       </span>
                     </h5>
                     {" "}
                     <p className="block mb-[0.9rem]">
-                      <span className="inline font-bold" data-ditto-id="style-menu-1-74a24f8">
+                      <span className="inline font-bold">
                         1. Acceptation de l'Accord
                       </span>
                     </p>
@@ -698,7 +697,7 @@ export default function Page() {
                       HOJA ACADEMY se réserve le droit, à son entière et absolue discrétion, d'approuver ou de rejeter toute demande d'adhésion au Programme. La décision de rejet ne générera aucun droit à réclamation ou recours légal de la part du demandeur.
                     </p>
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="style-div-99">
+                    <p className="block mb-[0.9rem]">
                       <span className="inline font-bold">
                         3. Commissions
                       </span>
@@ -708,23 +707,23 @@ export default function Page() {
                       •Les commissions seront versées mensuellement, dès lors que le compte parrainé restera actif pendant un minimum de 31 jours.
                     </p>
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="style-span-4">
+                    <p className="block mb-[0.9rem]">
                       •L'auto-promotion ne sera pas autorisée et aucune commission ne sera versée sur des comptes propres.
                     </p>
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="style-icon-4">
+                    <p className="block mb-[0.9rem]">
                       •Seules les transactions dûment finalisées donneront lieu au versement de commissions ; celles donnant lieu à des rétrofacturations ou à des remboursements seront exclues du paiement.
                     </p>
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="style-div-11">
-                      <span className="inline font-bold" data-ditto-id="style-div-21">
+                    <p className="block mb-[0.9rem]">
+                      <span className="inline font-bold">
                         3.1. Conditions Spéciales de Paiement selon le Type de Cours
                       </span>
                     </p>
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="style-div-100">
+                    <p className="block mb-[0.9rem]">
                       {"•Para los "}
-                      <span className="inline font-bold" data-ditto-id="style-div-13">
+                      <span className="inline font-bold">
                         cours spécialisés
                       </span>
                       , le paiement de la commission correspondante sera effectué une fois écoulés 32 jours, pour autant que l'élève concerné n'ait pas demandé de restitution, d'annulation ou de remboursement durant cette période.
@@ -744,7 +743,7 @@ export default function Page() {
                       </span>
                     </p>
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="style-spanish">
+                    <p className="block mb-[0.9rem]">
                       HOJA ACADEMY pourra suspendre ou mettre fin, à tout moment et sans préavis, à la qualité d'Affilié, dans les cas suivants, entre autres :
                     </p>
                     {" "}
@@ -780,8 +779,8 @@ export default function Page() {
                       En tout état de cause, HOJA ACADEMY se réserve le droit de clôturer le compte de l'Affilié sans avoir à justifier sa décision, cette résiliation prenant effet immédiatement.
                     </p>
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="style-iframe-2">
-                      <span className="inline font-bold" data-ditto-id="style-svg-3">
+                    <p className="block mb-[0.9rem]">
+                      <span className="inline font-bold">
                         5. Liens d'affiliation et matériel publicitaire
                       </span>
                     </p>
@@ -808,29 +807,29 @@ export default function Page() {
                       •Ne pas utiliser de textes ou de graphiques trompeurs dans ses liens, boutons ou images pouvant induire en erreur sur la disponibilité ou les conditions des offres autorisées.
                     </p>
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="style-svg">
+                    <p className="block mb-[0.9rem]">
                       •S'abstenir d'enchérir sur des termes liés à « HOJA ACADEMY Coupons », « HOJA ACADEMY Réductions » ou à d'autres expressions pouvant induire l'utilisateur en erreur sur l'existence de coupons officiels.
                     </p>
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="style-f2-main">
+                    <p className="block mb-[0.9rem]">
                       •Ne pas générer de fenêtres surgissantes, de cadres (iframes, frames) ou d'autres actions qui installent des cookies d'affiliation sans le consentement exprès de l'utilisateur, qui doit pouvoir visualiser les informations complètes sur l'offre avant que le lien d'affiliation ne s'active.
                     </p>
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="style-div-14">
+                    <p className="block mb-[0.9rem]">
                       •Éviter toute formulation textuelle du type « Cliquez pour voir les offres/coupons » en l'absence d'offres autorisées, étant motif d'exclusion immédiate du Programme en cas de manquement.
                     </p>
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="interaction-div-24">
+                    <p className="block mb-[0.9rem]">
                       <span className="inline font-bold">
                         7. Politique de Paiement au Clic (PPC)
                       </span>
                     </p>
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="style-chatea-con-nosotros-estamos-online">
+                    <p className="block mb-[0.9rem]">
                       La réalisation d'enchères par le biais de systèmes de Paiement au Clic (PPC) sur des moteurs de recherche ou d'autres plateformes publicitaires n'est pas autorisée sans l'autorisation préalable et écrite de HOJA ACADEMY.
                     </p>
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="interaction-div-25">
+                    <p className="block mb-[0.9rem]">
                       <span className="inline font-bold">
                         8. Responsabilidad
                       </span>
@@ -840,7 +839,7 @@ export default function Page() {
                       HOJA ACADEMY ne sera pas responsable des dommages indirects ou accidentels pouvant découler du fonctionnement du Programme ou du site web.
                     </p>
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="style-div-39">
+                    <p className="block mb-[0.9rem]">
                       Le Programme est fourni « en l'état » et sans garanties expresses ou implicites quant à son fonctionnement, un fonctionnement ininterrompu ou exempt d'erreurs n'étant pas assuré, HOJA ACADEMY étant exonéré de toute responsabilité en cas d'éventuelles interruptions ou défaillances.
                     </p>
                     {" "}
@@ -850,27 +849,27 @@ export default function Page() {
                       </span>
                     </p>
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="style-gt-wrapper-28246617">
+                    <p className="block mb-[0.9rem]">
                       Le présent Accord entre en vigueur à compter de l'acceptation de l'Affilié au Programme et restera en vigueur jusqu'à la clôture de son compte affilié. HOJA ACADEMY se réserve le droit de modifier les termes et conditions du présent Accord à tout moment ; la poursuite de la participation au Programme après de telles modifications vaudra acceptation de celles-ci. En cas de désaccord avec les modifications, l'Affilié devra mettre fin à sa participation.
                     </p>
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="style-div-8">
-                      <span className="inline font-bold" data-ditto-id="style-div-9">
+                    <p className="block mb-[0.9rem]">
+                      <span className="inline font-bold">
                         10. Indemnisation
                       </span>
                     </p>
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="style-menu-3">
+                    <p className="block mb-[0.9rem]">
                       L'Affilié indemnisera et tiendra indemnes HOJA ACADEMY ainsi que ses sociétés affiliées, dirigeants, salariés, licenciés, ayants droit et cessionnaires de toute réclamation, dommage, amende, coût ou dépense (y compris les honoraires d'avocat raisonnables) découlant d'une négligence, d'une déclaration inexacte, d'une omission d'information ou d'une conduite frauduleuse de l'Affilié en relation avec le présent Accord.
                     </p>
                     {" "}
                     <p className="block mb-[0.9rem]">
-                      <span className="inline font-bold" data-ditto-id="style-div-41">
+                      <span className="inline font-bold">
                         11. Signature Électronique et Caractère Contractuel
                       </span>
                     </p>
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="style-image-4">
+                    <p className="block mb-[0.9rem]">
                       Le présent Accord constitue un contrat électronique légalement contraignant. En complétant la demande et en s'inscrivant au Entreprises de HOJA ACADEMY, l'Affilié manifeste son consentement et son acceptation du présent Accord, cet acte valant signature électronique ayant la même valeur et le même effet qu'une signature manuscrite.
                     </p>
                     {" "}
@@ -880,7 +879,7 @@ export default function Page() {
                       </span>
                     </p>
                     {" "}
-                    <p className="block mb-[0.9rem]" data-ditto-id="style-div-31">
+                    <p className="block mb-[0.9rem]">
                       Le présent Accord est régi et interprété conformément à la législation applicable et, pour ce qui en est applicable, à la réglementation de l'Union européenne. Pour la résolution de tout litige découlant du présent Accord, les parties se soumettent à la juridiction des les juridictions compétentes désignées par la législation applicable.
                     </p>
                     {" "}
@@ -904,9 +903,9 @@ export default function Page() {
       {" "}
       <Footer />
       {" "}
-      <span className="w-1 h-1 border-2 border-inset border-foreground block absolute -top-[624.9375rem] overflow-clip" data-ditto-id="style-link-10" aria-hidden="true" role="presentation" title="Vidéo témoignage — apprenant HOJA ACADEMY"></span>
+      <span className="w-1 h-1 border-2 border-inset border-foreground block absolute -top-[624.9375rem] overflow-clip" aria-hidden="true" role="presentation" title="Vidéo témoignage — apprenant HOJA ACADEMY"></span>
       {" "}
-      <svg className="hidden overflow-hidden" data-ditto-id="style-not-started" fill="currentColor" />
+      <svg className="hidden overflow-hidden" fill="currentColor" />
       {" "}
           </>
   );

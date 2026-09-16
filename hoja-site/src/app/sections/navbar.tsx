@@ -70,7 +70,7 @@ export default function Navbar() {
   const isF = (href: string) => path === href || path === href + "/";
 
   return (
-    <header className="block before:content-[''] before:table before:w-0 before:h-0" data-ditto-id="style-header">
+    <header className="block before:content-[''] before:table before:w-0 before:h-0">
       <header className={`h-28 min-h-28 flex fixed inset-x-0 z-9999 max-w-full px-[1.6rem] justify-around items-center gap-x-5 max-md:h-17.5 max-md:min-h-17.5 max-md:pt-[1.175rem] max-md:pr-[11.3px] max-md:pl-[1.175rem] max-md:flex-wrap max-lg:justify-center max-lg:items-start max-md:self-start max-md:gap-x-[initial] md:max-lg:pt-[30.7px] md:max-lg:px-[0.9625rem] 2xl:px-[2.4rem] 2xl:justify-between 2xl:gap-x-[initial] transition-colors duration-300 ${scrolled ? "bg-[rgba(9,19,26,0.96)] backdrop-blur-[6px]" : ""}`}>
         {/* Logo */}
         <div className="w-[23.5%] flex relative min-w-0 flex-col justify-center items-start max-md:w-[52%] max-md:z-999 max-md:flex-wrap md:max-lg:w-[47%] 2xl:w-[21%]">

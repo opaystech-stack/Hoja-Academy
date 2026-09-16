@@ -1,7 +1,6 @@
 import "./ditto.css";
 import Footer from "../sections/footer";
 import Navbar from "../sections/navbar";
-import DittoWire from "../ditto/DittoWire";
 import ListRow from "./components/list-row";
 import ListRow2 from "./components/list-row2";
 import ListRow3 from "./components/list-row3";
@@ -242,7 +241,7 @@ export default function Page() {
             <div className="min-h-[25.3125rem] flex relative max-w-full -mt-[7.0625rem] justify-center items-center gap-5 bg-color-001 bg-cover [background-position:50%_50%] bg-no-repeat max-md:min-h-[15.0625rem] max-md:-mt-22.5 max-md:px-[0.9375rem] max-md:flex-wrap max-md:justify-end md:max-lg:px-[3.3125rem] 2xl:-mt-33 2xl:pl-[13.8125rem]" style={{ backgroundImage: "url(\"/assets/cloned/images/6bfaf6f6a88b.png\")" }}>
               <div className="w-240 min-h-[16.3125rem] flex relative min-w-0 flex-col justify-end gap-5 max-md:w-[21.5625rem] max-md:min-h-41 max-md:flex-wrap md:max-lg:w-[569.3px] 2xl:w-[106.1875rem] 2xl:p-2.5">
                 <div className="block relative min-w-0 max-w-full gap-5">
-                  <div className="block" data-ditto-id="style-span-39">
+                  <div className="block">
                     <h1 className="block text-primary [font-family:Montserrat,_sans-serif] text-[3rem] font-bold leading-[6.3125rem] max-md:text-[1.75rem] max-md:leading-9 md:max-lg:leading-[3.125rem]" data-ditto-id="style-section" data-component="heading">
                       Politique des Cookies
                     </h1>
@@ -255,11 +254,11 @@ export default function Page() {
               {" "}
             </div>
             {" "}
-            <div className="min-h-[44.8125rem] flex relative max-w-full py-16 px-[3.2rem] justify-center gap-5 max-md:pt-10 max-md:pb-5 max-md:px-5 max-md:flex-wrap md:max-lg:py-[2.4rem] md:max-lg:px-[30.7px] 2xl:py-24 2xl:px-[4.8rem]" data-ditto-id="style-div-83">
-              <div className="w-4/5 block relative min-w-0 max-w-full gap-5 text-color-001 max-md:text-[1rem] max-md:leading-[1.3125rem]" data-ditto-id="style-p-10">
-                <div className="h-full block" data-ditto-id="style-heading-4">
-                  <p className="block mb-[0.9rem]" data-ditto-id="style-div-84">
-                    <b className="inline font-bold" data-ditto-id="style-span-40">
+            <div className="min-h-[44.8125rem] flex relative max-w-full py-16 px-[3.2rem] justify-center gap-5 max-md:pt-10 max-md:pb-5 max-md:px-5 max-md:flex-wrap md:max-lg:py-[2.4rem] md:max-lg:px-[30.7px] 2xl:py-24 2xl:px-[4.8rem]">
+              <div className="w-4/5 block relative min-w-0 max-w-full gap-5 text-color-001 max-md:text-[1rem] max-md:leading-[1.3125rem]">
+                <div className="h-full block">
+                  <p className="block mb-[0.9rem]">
+                    <b className="inline font-bold">
                       Que sont les cookies ?
                     </b>
                   </p>
@@ -268,14 +267,14 @@ export default function Page() {
                     Les cookies sont de petits fichiers texte stockés sur l'appareil de l'utilisateur lors de la visite d'un site web. C'est l'opérateur du site qui détermine le type d'informations contenues dans le cookie et son objectif, celui-ci pouvant en outre être utilisé par le serveur web à chaque visite de la page. Les cookies servent à gagner du temps et à rendre l'expérience de navigation bien plus efficace. Ils peuvent néanmoins avoir des finalités variées, par exemple mémoriser les informations de connexion ou le contenu de votre panier d'achat.
                   </p>
                   {" "}
-                  <p className="block mb-[0.9rem]" data-ditto-id="interaction-span-11">
+                  <p className="block mb-[0.9rem]">
                     <b className="inline font-bold">
                       Types de cookies selon l'entité qui les gère :
                     </b>
                   </p>
                   {" "}
-                  <ul className="block pl-10 [list-style-type:disc] list-outside" data-ditto-id="style-section-2">
-                    <li className="list-item" data-ditto-id="interaction-div-26">
+                  <ul className="block pl-10 [list-style-type:disc] list-outside">
+                    <li className="list-item">
                       <b className="inline font-bold">
                         Cookies propias:
                       </b>
@@ -290,14 +289,14 @@ export default function Page() {
                   </ul>
                   {" "}
                   <p className="block mb-[0.9rem]">
-                    <b className="inline font-bold" data-ditto-id="style-p-13">
+                    <b className="inline font-bold">
                       <br className="inline" data-ditto-id="style-p-7" />
                       {" Types de cookies selon la durée pendant laquelle ils restent activés :"}
                     </b>
                   </p>
                   {" "}
                   <ul className="block pl-10 [list-style-type:disc] list-outside">
-                    <li className="list-item" data-ditto-id="style-div-101">
+                    <li className="list-item">
                       <b className="inline font-bold">
                         Cookies de session :
                       </b>
@@ -312,31 +311,31 @@ export default function Page() {
                   </ul>
                   {" "}
                   <p className="block mb-[0.9rem]">
-                    <b className="inline font-bold" data-ditto-id="style-p-14">
+                    <b className="inline font-bold">
                       <br className="inline" />
                       {" Types de cookies selon leur finalité :"}
                     </b>
                   </p>
                   {" "}
-                  <ul className="block pl-10 [list-style-type:disc] list-outside" data-ditto-id="style-p-11">
+                  <ul className="block pl-10 [list-style-type:disc] list-outside">
                     {ListRow5_data.map((d, i) => <ListRow5 key={i} d={d} />)}
                   </ul>
                   {" "}
-                  <p className="block mb-[0.9rem]" data-ditto-id="interaction-span-3">
-                    <b className="inline font-bold" data-ditto-id="style-p">
-                      <br className="inline" data-ditto-id="interaction-link" />
+                  <p className="block mb-[0.9rem]">
+                    <b className="inline font-bold">
+                      <br className="inline" />
                       {" Quels cookies utilisons-nous chez HOJA ACADEMY ?"}
                     </b>
                   </p>
                   {" "}
-                  <p className="block mb-[0.9rem]" data-ditto-id="interaction-span-4">
-                    <b className="inline font-bold" data-ditto-id="style-navegaci-n-entre-noticias-del-d-a">
+                  <p className="block mb-[0.9rem]">
+                    <b className="inline font-bold">
                       Cookies techniques :
                     </b>
                   </p>
                   {" "}
-                  <ul className="block pl-10 [list-style-type:disc] list-outside" data-ditto-id="style-link-7">
-                    <li className="list-item" data-ditto-id="style-br-3">
+                  <ul className="block pl-10 [list-style-type:disc] list-outside">
+                    <li className="list-item">
                       <b className="inline font-bold">
                         moove_gdpr_popup
                       </b>
@@ -349,24 +348,24 @@ export default function Page() {
                       : Permet de vérifier quelles catégories de cookies sont acceptées ou refusées (par exemple, cookies analytiques, cookies de publicité ciblée, etc.). Expire au bout de 1 an.
                     </li>
                     <li className="list-item">
-                      <b className="inline font-bold" data-ditto-id="style-br-2">
+                      <b className="inline font-bold">
                         wordpress_[hash]:
                       </b>
                       {" Cookie restreint à la zone d'administration (wp-admin). Il n'apparaît pas sur le frontend, même lorsque vous êtes inscrit. Il conserve vos données de connexion. "}
-                      <b className="inline font-bold" data-ditto-id="interaction-br">
+                      <b className="inline font-bold">
                         Technique de session. Nécessaire.
                       </b>
                     </li>
                     {ListRow6_data.map((d, i) => <ListRow6 key={i} d={d} meta={ListRow6_meta[i]} />)}
                   </ul>
                   {" "}
-                  <p className="block mb-[0.9rem]" data-ditto-id="style-footer-3">
+                  <p className="block mb-[0.9rem]">
                     <b className="inline font-bold">
                       Cookies analytiques :
                     </b>
                   </p>
                   {" "}
-                  <p className="block mb-[0.9rem]" data-ditto-id="interaction-div-7">
+                  <p className="block mb-[0.9rem]">
                     Qu'elles soient traitées par nous-mêmes ou par des tiers, elles nous permettent de quantifier le nombre d'utilisateurs et d'effectuer la mesure et l'analyse statistique de l'utilisation qui est faite du service proposé. À cette fin, nous analysons votre navigation sur notre site web afin d'améliorer l'offre de produits ou de services que nous vous proposons.
                   </p>
                   {" "}
@@ -374,9 +373,9 @@ export default function Page() {
                     {ListRow5_data2.map((d, i) => <ListRow5 key={i} d={d} />)}
                   </ul>
                   {" "}
-                  <p className="block mb-[0.9rem]" data-ditto-id="interaction-li-2">
+                  <p className="block mb-[0.9rem]">
                     {"Plus d'informations sur ces cookies sur "}
-                    <a className="inline text-accent [font-family:Montserrat,_sans-serif] text-[1rem] font-medium leading-[1.1875rem] cursor-pointer" data-ditto-id="interaction-sm-17672256027865476-1" data-component="link" href="https://www.google.es/analytics/terms/es.html">
+                    <a className="inline text-accent [font-family:Montserrat,_sans-serif] text-[1rem] font-medium leading-[1.1875rem] cursor-pointer" data-component="link" href="https://www.google.es/analytics/terms/es.html">
                       <span className="inline" data-ditto-id="style-span-6">
                         Google Analytics
                       </span>
@@ -384,8 +383,8 @@ export default function Page() {
                     .
                   </p>
                   {" "}
-                  <p className="block mb-[0.9rem]" data-ditto-id="style-icon-2">
-                    <b className="inline font-bold" data-ditto-id="interaction-sm-17672256027865476-2">
+                  <p className="block mb-[0.9rem]">
+                    <b className="inline font-bold">
                       Cookies publicitaires et de réseaux sociaux :
                     </b>
                   </p>
@@ -406,36 +405,36 @@ export default function Page() {
                     </b>
                   </p>
                   {" "}
-                  <p className="block mb-[0.9rem]" data-ditto-id="interaction-li-3">
+                  <p className="block mb-[0.9rem]">
                     Si vous souhaitez révoquer ou reconfigurer votre consentement, vous disposez d'un bouton flottant permanent situé en bas à droite de l'écran, donnant accès aux paramètres des cookies.
                   </p>
                   {" "}
-                  <p className="block mb-[0.9rem]" data-ditto-id="style-b">
-                    <b className="inline font-bold" data-ditto-id="style-li-2">
+                  <p className="block mb-[0.9rem]">
+                    <b className="inline font-bold">
                       Comment les cookies sont-ils gérés ?
                     </b>
                   </p>
                   {" "}
-                  <p className="block mb-[0.9rem]" data-ditto-id="interaction-b-2">
+                  <p className="block mb-[0.9rem]">
                     Les cookies étant de simples fichiers texte, vous pouvez les consulter avec la plupart des éditeurs de texte ou traitements de texte. Vous pouvez cliquer sur un cookie pour l'ouvrir. Vous trouverez ci-après une liste de liens expliquant comment consulter les cookies dans différents navigateurs. Si vous utilisez un autre navigateur, consultez les informations relatives aux cookies dans celui-ci. Si vous utilisez un téléphone mobile, consultez le manuel de l'appareil pour plus d'informations.
                   </p>
                   {" "}
-                  <ul className="block pl-10 [list-style-type:disc] list-outside" data-ditto-id="style-li">
+                  <ul className="block pl-10 [list-style-type:disc] list-outside">
                     {ListRow7_data.map((d, i) => <ListRow7 key={i} d={d} />)}
                   </ul>
                   {" "}
-                  <p className="block mb-[0.9rem]" data-ditto-id="style-b-6">
-                    <b className="inline font-bold" data-ditto-id="style-li-5">
-                      <br className="inline" data-ditto-id="style-b-7" />
+                  <p className="block mb-[0.9rem]">
+                    <b className="inline font-bold">
+                      <br className="inline" />
                       {" Désactivation/activation ou suppression des cookies :"}
                     </b>
                   </p>
                   {" "}
-                  <p className="block mb-[0.9rem]" data-ditto-id="style-li-4">
+                  <p className="block mb-[0.9rem]">
                     Pour restreindre ou bloquer les cookies, cela se fait par le biais de la configuration du navigateur.
                   </p>
                   {" "}
-                  <p className="block mb-[0.9rem]" data-ditto-id="style-b-4">
+                  <p className="block mb-[0.9rem]">
                     Si vous ne souhaitez pas que des sites web déposent des cookies sur votre appareil, vous pouvez configurer votre navigateur pour être averti avant qu'un cookie soit déposé. De même, vous pouvez configurer le navigateur pour qu'il refuse tous les cookies, ou uniquement les cookies tiers. Vous pouvez également supprimer les cookies déjà présents sur votre appareil. Notez que vous devrez configurer séparément chaque navigateur et appareil que vous utilisez.
                   </p>
                   {" "}
@@ -443,18 +442,18 @@ export default function Page() {
                     Notez que si vous ne souhaitez pas recevoir de cookies, nous ne pourrons plus garantir le bon fonctionnement de notre site web. Certaines fonctions du site peuvent être perdues et vous pourriez ne plus pouvoir consulter certains sites. Refuser les cookies ne signifie pas que vous ne verrez plus de publicités ; celles-ci ne seront simplement pas adaptées à vos intérêts et se répéteront plus fréquemment.
                   </p>
                   {" "}
-                  <p className="block mb-[0.9rem]" data-ditto-id="style-footer">
+                  <p className="block mb-[0.9rem]">
                     Chaque navigateur dispose d'une méthode différente pour adapter la configuration. Si nécessaire, consultez la fonction d'aide du navigateur pour définir la configuration correcte.
                   </p>
                   {" "}
-                  <p className="block mb-[0.9rem]" data-ditto-id="style-div-95">
+                  <p className="block mb-[0.9rem]">
                     Pour désactiver les cookies sur le téléphone mobile, consultez le manuel de l'appareil pour obtenir plus d'informations.
                   </p>
                   {" "}
                   <p className="block mb-[0.9rem]">
                     {"Vous pouvez obtenir plus d'informations sur les cookies sur Internet, "}
                     <a className="inline [font-family:Montserrat,_sans-serif] text-[1rem] font-medium leading-[1.1875rem] cursor-pointer" data-ditto-id="interaction-div-2" data-component="link" href="https://www.aboutcookies.org/">
-                      <span className="inline" data-ditto-id="style-link-2">
+                      <span className="inline">
                         https://www.aboutcookies.org
                       </span>
                     </a>

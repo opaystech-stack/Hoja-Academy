@@ -1,7 +1,6 @@
 import "./ditto.css";
 import Footer from "../../sections/footer";
 import Navbar from "../../sections/navbar";
-import DittoWire from "../../ditto/DittoWire";
 import ListRow from "./components/list-row";
 import ListRow2 from "./components/list-row2";
 import ListRow3 from "./components/list-row3";
@@ -283,13 +282,13 @@ export default function Page() {
             <div className="min-h-190 flex relative max-w-full -mt-28 flex-col justify-around items-center max-md:min-h-[48.2125rem] max-md:px-10 max-md:flex-wrap max-lg:gap-y-[1.5625rem] max-lg:bg-cover max-lg:[background-position:50%_50%] max-lg:bg-no-repeat md:max-lg:min-h-[60.8rem] 2xl:min-h-256.5" style={{ backgroundImage: "url(\"/assets/cloned/images/e4f61ba9d3c6.webp\")" }}>
               <div className="w-full min-h-89.5 flex relative min-w-0 flex-col max-md:min-h-[17.9375rem] md:max-lg:min-h-72">
                 <div className="w-full flex max-w-[min(100%,_1140px)] mx-17.5 flex-col justify-end grow max-md:max-w-[min(100%,_767px)] max-md:flex-wrap max-lg:items-center max-lg:mx-0 md:max-lg:max-w-[min(100%,_1024px)] 2xl:mx-97.5">
-                  <div className="w-full flex relative min-w-0 justify-center items-center gap-5 max-md:flex-wrap max-md:gap-x-3.5 max-md:gap-y-[initial]" data-ditto-id="style-span-39">
+                  <div className="w-full flex relative min-w-0 justify-center items-center gap-5 max-md:flex-wrap max-md:gap-x-3.5 max-md:gap-y-[initial]">
                     <div className="block relative min-w-0 max-w-full self-center gap-5 max-md:gap-x-3.5 max-md:gap-y-[initial]" data-ditto-id="style-section">
-                      <div className="block pt-2" data-ditto-id="style-div-83">
-                        <div className="block" data-ditto-id="style-p-10">
-                          <div className="inline-block text-color-001 text-[3rem] leading-[3rem] text-center" data-ditto-id="style-heading-4">
+                      <div className="block pt-2">
+                        <div className="block">
+                          <div className="inline-block text-color-001 text-[3rem] leading-[3rem] text-center">
                             {" "}
-                            <svg className="w-[3.0625rem] h-[3.0625rem] block relative overflow-hidden" data-ditto-id="style-div-84" data-component="image" height="31" viewBox="0 0 69 31" width="69" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                            <svg className="w-[3.0625rem] h-[3.0625rem] block relative overflow-hidden" data-component="image" height="31" viewBox="0 0 69 31" width="69" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                               <g id="Grupo_241" data-name="Grupo 241" transform="translate(-251 -1259)">
                                 <path id="Vector_168" data-name="Vector 168" d="M20.165,0l3.112,3.13L20.165,6.26m3.112-3.13H0" transform="translate(283 1271.37)" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" style={{ isolation: "isolate" }} />
                                 <g id="Rectángulo_144" data-name="Rectángulo 144" transform="translate(251 1259)" fill="none" stroke="#fff" strokeWidth="1">
@@ -307,9 +306,9 @@ export default function Page() {
                       {" "}
                     </div>
                     {" "}
-                    <div className="block relative min-w-0 max-w-full self-center gap-5 text-center max-md:gap-x-3.5 max-md:gap-y-[initial]" data-ditto-id="style-span-40">
+                    <div className="block relative min-w-0 max-w-full self-center gap-5 text-center max-md:gap-x-3.5 max-md:gap-y-[initial]">
                       <div className="block">
-                        <p className="block text-primary text-[1.125rem] leading-5 uppercase max-md:text-[1rem] 2xl:text-[1.75rem]" data-ditto-id="interaction-span-11" data-component="paragraph">
+                        <p className="block text-primary text-[1.125rem] leading-5 uppercase max-md:text-[1rem] 2xl:text-[1.75rem]" data-component="paragraph">
                           PROGRAMME INTENSIF d'IA GÉNÉRATIVE
                         </p>
                         {" "}
@@ -320,8 +319,8 @@ export default function Page() {
                   </div>
                   {" "}
                   <div className="w-full block relative min-w-0 max-w-full text-center">
-                    <div className="block" data-ditto-id="style-section-2">
-                      <h1 className="block text-background [font-family:Montserrat,_sans-serif] text-[5.25rem] leading-[6.3125rem] max-md:text-[1.75rem] max-md:leading-10.5" data-ditto-id="interaction-div-26" data-component="heading">
+                    <div className="block">
+                      <h1 className="block text-background [font-family:Montserrat,_sans-serif] text-[5.25rem] leading-[6.3125rem] max-md:text-[1.75rem] max-md:leading-10.5" data-component="heading">
                         Intelligence Artificielle
                       </h1>
                       {" "}
@@ -337,7 +336,7 @@ export default function Page() {
                 <div className="w-full flex relative min-w-0 p-2.5 flex-col justify-center items-center gap-5 max-md:flex-wrap">
                   <div className="w-full max-w-[48.6875rem] block relative min-w-0 self-center gap-5 text-color-001 [font-family:Montserrat,_sans-serif] text-[1rem] font-medium leading-[1.1875rem] text-center max-md:text-[1rem]" data-ditto-id="style-p-6">
                     <div className="block">
-                      <p className="block mb-[0.9rem]" data-ditto-id="style-p-13">
+                      <p className="block mb-[0.9rem]">
                         <span className="inline text-background" data-ditto-id="style-p-7">
                           18 modules · 4 blocs · une soutenance certifiante. Obtenez une vraie maîtrise grâce à un programme complet, un accompagnement d'experts et un groupe réduit.
                         </span>
@@ -348,7 +347,7 @@ export default function Page() {
                   </div>
                   {" "}
                   <div className="w-[26.9rem] block relative min-w-0 max-w-full self-center shrink-0 gap-5 text-center max-md:w-[16.3125rem] 2xl:w-[32.7375rem]">
-                    <div className="block" data-ditto-id="style-div-101">
+                    <div className="block">
                       <p className="block text-color-027 [font-family:Montserrat,_sans-serif] text-[1rem] font-medium leading-[1.1875rem]" data-component="paragraph">
                         Sessions ouvertes en petits groupes
                       </p>
@@ -360,7 +359,7 @@ export default function Page() {
                   <div className="w-[75.55rem] block relative min-w-0 max-w-full shrink-0 gap-5 max-md:w-[17.1875rem] md:max-lg:w-[717.3px] 2xl:w-[83.95rem]">
                     <div className="block">
                       <div className="block">
-                        <div className="h-12.5 block max-md:h-0" data-ditto-id="style-p-14" />
+                        <div className="h-12.5 block max-md:h-0" />
                         {" "}
                       </div>
                       {" "}
@@ -371,14 +370,14 @@ export default function Page() {
                 </div>
                 {" "}
                 <div className="w-full min-h-[18.6875rem] flex relative min-w-0 gap-x-7 max-lg:flex-col max-md:flex-wrap max-lg:justify-center max-lg:items-center max-lg:gap-y-7 max-lg:gap-x-[initial]">
-                  <div className="w-[23.5%] border-4 border-solid border-primary flex relative min-w-0 p-2.5 rounded-[38px] flex-col justify-around gap-5 max-md:w-full max-md:flex-wrap max-lg:grow max-lg:shrink-0 md:max-lg:w-2/5" data-ditto-id="style-p-11">
+                  <div className="w-[23.5%] border-4 border-solid border-primary flex relative min-w-0 p-2.5 rounded-[38px] flex-col justify-around gap-5 max-md:w-full max-md:flex-wrap max-lg:grow max-lg:shrink-0 md:max-lg:w-2/5">
                     <div className="flex relative min-w-0 p-2.5 flex-col gap-5 max-md:flex-wrap" data-ditto-id="style-p-8">
                       <div className="block relative min-w-0 max-w-full gap-5" data-ditto-id="style-p-9">
-                        <div className="block" data-ditto-id="interaction-p">
-                          <div className="block" data-ditto-id="style-p-12">
+                        <div className="block">
+                          <div className="block">
                             <div className="inline-block text-color-001 text-[3rem] leading-12 text-center" data-ditto-id="style-p-4">
                               {" "}
-                              <svg className="w-auto h-12.5 block relative overflow-hidden" data-ditto-id="interaction-p-2" data-component="image" height="37.836" viewBox="0 0 37.836 37.836" width="37.836" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                              <svg className="w-auto h-12.5 block relative overflow-hidden" data-component="image" height="37.836" viewBox="0 0 37.836 37.836" width="37.836" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                                 <path id="Trazado_341" data-name="Trazado 341" d="M18.768,37.536A18.768,18.768,0,1,1,37.536,18.768,18.789,18.789,0,0,1,18.768,37.536Zm0-35.972a17.2,17.2,0,1,0,17.2,17.2A17.224,17.224,0,0,0,18.768,1.564Zm1.564,16.155-5.638-7.251-1.234.96,5.31,6.825V29.716h1.564v-12Z" transform="translate(0.15 0.15)" fill="#fff" stroke="#fff" strokeWidth="0.3" />
                               </svg>
                               {" "}
@@ -392,10 +391,10 @@ export default function Page() {
                       {" "}
                     </div>
                     {" "}
-                    <div className="w-full flex relative min-w-0 p-2.5 flex-col gap-y-2 max-md:flex-wrap" data-ditto-id="interaction-p-3">
-                      <div className="block relative min-w-0 max-w-full gap-y-2 text-color-009 text-[1rem] leading-px" data-ditto-id="interaction-button">
-                        <div className="block" data-ditto-id="interaction-span-3">
-                          <p className="block mb-[0.9rem]" data-ditto-id="style-p">
+                    <div className="w-full flex relative min-w-0 p-2.5 flex-col gap-y-2 max-md:flex-wrap">
+                      <div className="block relative min-w-0 max-w-full gap-y-2 text-color-009 text-[1rem] leading-px">
+                        <div className="block">
+                          <p className="block mb-[0.9rem]">
                             Durée
                           </p>
                           {" "}
@@ -403,9 +402,9 @@ export default function Page() {
                         {" "}
                       </div>
                       {" "}
-                      <div className="block relative min-w-0 max-w-full gap-y-2" data-ditto-id="interaction-link">
-                        <div className="block" data-ditto-id="interaction-span-4">
-                          <h2 className="block text-background text-[2.25rem] font-bold leading-8" data-ditto-id="style-navegaci-n-entre-noticias-del-d-a" data-component="heading">
+                      <div className="block relative min-w-0 max-w-full gap-y-2">
+                        <div className="block">
+                          <h2 className="block text-background text-[2.25rem] font-bold leading-8" data-component="heading">
                             8 Semaines
                           </h2>
                           {" "}
@@ -413,8 +412,8 @@ export default function Page() {
                         {" "}
                       </div>
                       {" "}
-                      <div className="w-full block relative min-w-0 max-w-full gap-y-2 text-background leading-5.5 2xl:w-[85%]" data-ditto-id="style-link-7">
-                        <div className="block" data-ditto-id="style-br-3">
+                      <div className="w-full block relative min-w-0 max-w-full gap-y-2 text-background leading-5.5 2xl:w-[85%]">
+                        <div className="block">
                           <p className="block mb-[0.9rem]">
                             <strong className="inline font-bold">
                               18 modules
@@ -432,12 +431,12 @@ export default function Page() {
                   {" "}
                   <div className="w-[23.5%] border-4 border-solid border-primary flex relative min-w-0 p-2.5 rounded-[38px] flex-col justify-around gap-5 max-md:w-full max-md:flex-wrap max-lg:grow max-lg:shrink-0 md:max-lg:w-2/5">
                     <div className="flex relative min-w-0 p-2.5 flex-col gap-5 max-md:flex-wrap">
-                      <div className="block relative min-w-0 max-w-full gap-5" data-ditto-id="style-br-2">
-                        <div className="block" data-ditto-id="interaction-br">
+                      <div className="block relative min-w-0 max-w-full gap-5">
+                        <div className="block">
                           <div className="block">
-                            <div className="inline-block text-color-001 text-[3rem] leading-12 text-center" data-ditto-id="style-br">
+                            <div className="inline-block text-color-001 text-[3rem] leading-12 text-center">
                               {" "}
-                              <svg className="w-auto h-12.5 block relative overflow-hidden" data-ditto-id="interaction-span" data-component="image" height="37.536" viewBox="0 0 37.535 37.536" width="37.535" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                              <svg className="w-auto h-12.5 block relative overflow-hidden" data-component="image" height="37.536" viewBox="0 0 37.535 37.536" width="37.535" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                                 <path id="icon_modalidad" data-name="icon modalidad" d="M35.971,19.143a12.67,12.67,0,0,0,1.564-1.5V31.28H19.549v4.692h8.6v1.564H9.384V35.972h8.6V31.28H0V6.256A3.131,3.131,0,0,1,3.128,3.128h14.2a12.289,12.289,0,0,0-.769,1.564H3.128A1.566,1.566,0,0,0,1.564,6.256V29.715H35.971ZM7.038,13.293a3.91,3.91,0,1,1,3.91,3.91A3.914,3.914,0,0,1,7.038,13.293Zm1.564,0a2.346,2.346,0,1,0,2.346-2.346A2.349,2.349,0,0,0,8.6,13.293Zm8.6,11.73V21.9a3.131,3.131,0,0,0-3.128-3.128H7.82A3.131,3.131,0,0,0,4.692,21.9v3.128H6.256V21.9A1.565,1.565,0,0,1,7.82,20.331h6.256A1.565,1.565,0,0,1,15.639,21.9v3.128ZM33.67,9.384l-8.647,4.8V4.579Zm-7.083,2.147,3.865-2.147L26.587,7.236v4.293Zm-7.82-2.147a9.384,9.384,0,1,1,9.384,9.384A9.393,9.393,0,0,1,18.767,9.384Zm1.564,0a7.82,7.82,0,1,0,7.82-7.82A7.829,7.829,0,0,0,20.331,9.384Z" fill="#fff" />
                               </svg>
                               {" "}
@@ -453,7 +452,7 @@ export default function Page() {
                     {" "}
                     <div className="flex relative min-w-0 p-2.5 flex-col gap-y-2 max-md:flex-wrap">
                       <div className="block relative min-w-0 max-w-full gap-y-2 text-color-009 text-[1rem] leading-px">
-                        <div className="block" data-ditto-id="style-span-47">
+                        <div className="block">
                           <p className="block mb-[0.9rem]">
                             Format
                           </p>
@@ -463,8 +462,8 @@ export default function Page() {
                       </div>
                       {" "}
                       <div className="w-[13.7125rem] block relative min-w-0 max-w-full shrink-0 gap-y-2 max-md:w-[227.5px] md:max-lg:w-[14.2125rem] 2xl:w-[141.3px]">
-                        <div className="block" data-ditto-id="style-p-15">
-                          <h2 className="block text-background text-[2.25rem] font-bold leading-9" data-ditto-id="style-footer-3" data-component="heading">
+                        <div className="block">
+                          <h2 className="block text-background text-[2.25rem] font-bold leading-9" data-component="heading">
                             En direct, en petits groupes
                           </h2>
                           {" "}
@@ -473,7 +472,7 @@ export default function Page() {
                       </div>
                       {" "}
                       <div className="w-[12.8rem] block relative min-w-0 max-w-full gap-y-2 text-background leading-5.5 max-md:w-[13.275rem] md:max-lg:w-[212.3px] 2xl:w-53">
-                        <div className="block" data-ditto-id="interaction-div-7">
+                        <div className="block">
                           {" Sessions live de 90 à 120 minutes "}
                         </div>
                         {" "}
@@ -484,13 +483,13 @@ export default function Page() {
                   </div>
                   {" "}
                   <div className="w-[23.5%] border-4 border-solid border-primary flex relative min-w-0 p-2.5 rounded-[38px] flex-col justify-around gap-5 max-md:w-full max-md:flex-wrap max-lg:grow max-lg:shrink-0 md:max-lg:w-2/5">
-                    <div className="flex relative min-w-0 p-2.5 flex-col gap-5 max-md:flex-wrap" data-ditto-id="interaction-div-6">
-                      <div className="block relative min-w-0 max-w-full gap-5" data-ditto-id="interaction-div-8">
-                        <div className="block" data-ditto-id="style-menu-2">
-                          <div className="block" data-ditto-id="interaction-menu-1-516d334">
+                    <div className="flex relative min-w-0 p-2.5 flex-col gap-5 max-md:flex-wrap">
+                      <div className="block relative min-w-0 max-w-full gap-5">
+                        <div className="block">
+                          <div className="block">
                             <div className="inline-block text-color-001 text-[3rem] leading-12 text-center">
                               {" "}
-                              <svg className="w-auto h-12.5 block relative overflow-hidden" data-ditto-id="style-link-32" data-component="image" height="37.536" viewBox="0 0 37.618 37.536" width="37.618" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                              <svg className="w-auto h-12.5 block relative overflow-hidden" data-component="image" height="37.536" viewBox="0 0 37.618 37.536" width="37.618" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                                 <path id="icon_acceso" data-name="icon acceso" d="M26.632,36.779a.783.783,0,0,1-.783.783H20.724a1.911,1.911,0,0,1-1.732-1.094,1.849,1.849,0,0,1,.216-1.968,13.152,13.152,0,0,1,2.821-2.328c1.473-1.011,3-2.057,3-3.18a2.349,2.349,0,1,0-4.7,0,.783.783,0,1,1-1.566,0,3.914,3.914,0,1,1,7.829,0c0,1.946-1.868,3.228-3.675,4.47a12.208,12.208,0,0,0-2.485,2.017.279.279,0,0,0-.028.312.357.357,0,0,0,.321.207H25.85a.783.783,0,0,1,.783.783ZM36.809,25.037a.783.783,0,0,0-.783.783v5.516L32.885,31.3a1.556,1.556,0,0,1-1.556-1.55v-3.93a.783.783,0,1,0-1.566,0v3.93a3.125,3.125,0,0,0,3.111,3.116l3.152.036v3.878a.783.783,0,0,0,1.566,0V25.819A.783.783,0,0,0,36.809,25.037Zm.742-13.268V4.723a.783.783,0,0,0-1.566,0v6.6A18.782,18.782,0,0,0-.023,18.76s0,.009,0,.014v.041s0,.008,0,.011a18.891,18.891,0,0,0,14.744,18.3.782.782,0,0,0,.335-1.528A17.206,17.206,0,1,1,34.8,12.552H28.157a.783.783,0,0,0,0,1.566H35.2a2.351,2.351,0,0,0,2.349-2.349ZM20.328,19.6V8.637a.783.783,0,1,0-1.566,0V18.814H10.151a.783.783,0,0,0,0,1.566h9.394A.783.783,0,0,0,20.328,19.6Z" transform="translate(0.026 -0.026)" fill="#fff" />
                               </svg>
                               {" "}
@@ -504,10 +503,10 @@ export default function Page() {
                       {" "}
                     </div>
                     {" "}
-                    <div className="flex relative min-w-0 p-2.5 flex-col gap-y-2 max-md:flex-wrap" data-ditto-id="interaction-li-2">
-                      <div className="block relative min-w-0 max-w-full gap-y-2 text-color-009 text-[1rem] leading-px" data-ditto-id="interaction-sm-17672256027865476-1">
+                    <div className="flex relative min-w-0 p-2.5 flex-col gap-y-2 max-md:flex-wrap">
+                      <div className="block relative min-w-0 max-w-full gap-y-2 text-color-009 text-[1rem] leading-px">
                         <div className="block" data-ditto-id="style-span-6">
-                          <p className="block mb-[0.9rem]" data-ditto-id="style-icon-2">
+                          <p className="block mb-[0.9rem]">
                             Accès
                           </p>
                           {" "}
@@ -515,7 +514,7 @@ export default function Page() {
                         {" "}
                       </div>
                       {" "}
-                      <div className="w-[52%] block relative min-w-0 max-w-full gap-y-2" data-ditto-id="interaction-sm-17672256027865476-2">
+                      <div className="w-[52%] block relative min-w-0 max-w-full gap-y-2">
                         <div className="block">
                           <h2 className="block text-background text-[2.25rem] font-bold leading-8" data-component="heading">
                             24/7
@@ -540,13 +539,13 @@ export default function Page() {
                   </div>
                   {" "}
                   <div className="w-[23.5%] border-4 border-solid border-primary flex relative min-w-0 p-2.5 rounded-[38px] flex-col justify-around gap-5 max-md:w-full max-md:flex-wrap max-lg:grow max-lg:shrink-0 md:max-lg:w-2/5" data-ditto-id="style-ul">
-                    <div className="flex relative min-w-0 p-2.5 flex-col gap-5 max-md:flex-wrap" data-ditto-id="interaction-li-3">
-                      <div className="block relative min-w-0 max-w-full gap-5" data-ditto-id="style-b">
-                        <div className="block" data-ditto-id="style-li-2">
-                          <div className="block" data-ditto-id="interaction-b-2">
-                            <div className="inline-block text-color-001 text-[3rem] leading-12 text-center" data-ditto-id="style-li">
+                    <div className="flex relative min-w-0 p-2.5 flex-col gap-5 max-md:flex-wrap">
+                      <div className="block relative min-w-0 max-w-full gap-5">
+                        <div className="block">
+                          <div className="block">
+                            <div className="inline-block text-color-001 text-[3rem] leading-12 text-center">
                               {" "}
-                              <svg className="w-12.5 h-12.5 block relative overflow-hidden" data-ditto-id="style-b-3" data-component="image" height="37.536" viewBox="0 0 40.948 37.536" width="40.948" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                              <svg className="w-12.5 h-12.5 block relative overflow-hidden" data-component="image" height="37.536" viewBox="0 0 40.948 37.536" width="40.948" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                                 <path id="icon_certificacion" data-name="icon certificacion" d="M26.446,20.768A5.963,5.963,0,0,0,22.18,30.906v7.012a1.617,1.617,0,0,0,2.79,1.112L26.446,37.4l1.507,1.667a1.617,1.617,0,0,0,2.759-1.145V30.906a5.963,5.963,0,0,0-4.265-10.138Zm2.559,16.915-1.926-2.133a.883.883,0,0,0-1.266,0l-1.926,2.133V32.113a5.768,5.768,0,0,0,5.119,0Zm-2.559-6.678a4.265,4.265,0,1,1,4.265-4.265A4.27,4.27,0,0,1,26.446,31.005Zm5.972-14.5a.853.853,0,0,1-.853.853H9.384a.853.853,0,1,1,0-1.706h22.18A.853.853,0,0,1,32.418,16.5ZM16.209,22.474a.853.853,0,0,1,0,1.706H9.384a.853.853,0,1,1,0-1.706Zm24.74-12.8V28.446a7.672,7.672,0,0,1-5.758,7.436.854.854,0,0,1-.427-1.653,5.967,5.967,0,0,0,4.479-5.784V9.678a5.978,5.978,0,0,0-5.972-5.972H7.678A5.978,5.978,0,0,0,1.706,9.678V28.446a5.978,5.978,0,0,0,5.972,5.972H17.915a.853.853,0,1,1,0,1.706H7.678A7.687,7.687,0,0,1,0,28.446V9.678A7.687,7.687,0,0,1,7.678,2H33.271A7.687,7.687,0,0,1,40.949,9.678Zm-8.531,0a.853.853,0,0,1-.853.853H9.384a.853.853,0,1,1,0-1.706h22.18A.853.853,0,0,1,32.418,9.678Z" transform="translate(0 -2)" fill="#fff" />
                               </svg>
                               {" "}
@@ -562,20 +561,20 @@ export default function Page() {
                     {" "}
                     <div className="flex relative min-w-0 p-2.5 flex-col gap-y-2 max-md:flex-wrap">
                       <div className="block relative min-w-0 max-w-full gap-y-2 text-color-009 text-[1rem] leading-px">
-                        <div className="block" data-ditto-id="interaction-div-5">
-                          <p className="block mb-[0.9rem]" data-ditto-id="interaction-div-3">
-                            <strong className="inline font-bold" data-ditto-id="style-div-16">
+                        <div className="block">
+                          <p className="block mb-[0.9rem]">
+                            <strong className="inline font-bold">
                               {"Certification "}
                             </strong>
                           </p>
-                          <p className="block mb-[0.9rem]" data-ditto-id="style-div-15">
-                            <strong className="inline font-bold" data-ditto-id="interaction-div-4">
+                          <p className="block mb-[0.9rem]">
+                            <strong className="inline font-bold">
                               HOJA ACADEMY
                             </strong>
                             ,
                           </p>
                           <p className="block mb-[0.9rem]">
-                            <span className="inline" data-ditto-id="style-link-5">
+                            <span className="inline">
                               par preuve de compétence
                             </span>
                           </p>
@@ -586,9 +585,9 @@ export default function Page() {
                       {" "}
                       <div className="w-full block relative min-w-0 max-w-full gap-y-2 2xl:w-[72%]">
                         <div className="block">
-                          <h2 className="block text-background text-[2.25rem] font-bold leading-8" data-ditto-id="style-div-10" data-component="heading">
+                          <h2 className="block text-background text-[2.25rem] font-bold leading-8" data-component="heading">
                             {"Soutenance "}
-                            <br className="inline" data-ditto-id="style-div-94" />
+                            <br className="inline" />
                             <span className="inline text-primary text-[1.75rem]">
                               certifiante
                             </span>
@@ -599,7 +598,7 @@ export default function Page() {
                       </div>
                       {" "}
                       <div className="w-[93%] block relative min-w-0 max-w-full gap-y-2 text-background leading-5.5">
-                        <div className="block" data-ditto-id="interaction-b">
+                        <div className="block">
                           <p className="block mb-[0.9rem]">
                             en fin de parcours
                           </p>
@@ -616,11 +615,11 @@ export default function Page() {
                 {" "}
               </div>
               {" "}
-              <div className="w-[85%] min-h-41.5 flex relative min-w-0 flex-col justify-start items-center gap-y-[2.0625rem] max-md:w-full max-lg:min-h-[9.6875rem] max-md:flex-wrap" data-ditto-id="style-b-2">
-                <div className="w-272 block relative min-w-0 max-w-full shrink-0 gap-y-[2.0625rem] max-md:w-[18.4375rem] md:max-lg:w-[40.8rem] 2xl:w-408" data-ditto-id="interaction-li">
-                  <div className="block" data-ditto-id="style-b-6">
-                    <div className="block" data-ditto-id="style-li-5">
-                      <div className="h-2.5 block" data-ditto-id="style-b-7" />
+              <div className="w-[85%] min-h-41.5 flex relative min-w-0 flex-col justify-start items-center gap-y-[2.0625rem] max-md:w-full max-lg:min-h-[9.6875rem] max-md:flex-wrap">
+                <div className="w-272 block relative min-w-0 max-w-full shrink-0 gap-y-[2.0625rem] max-md:w-[18.4375rem] md:max-lg:w-[40.8rem] 2xl:w-408">
+                  <div className="block">
+                    <div className="block">
+                      <div className="h-2.5 block" />
                       {" "}
                     </div>
                     {" "}
@@ -628,12 +627,12 @@ export default function Page() {
                   {" "}
                 </div>
                 {" "}
-                <div className="block relative min-w-0 max-w-full gap-y-[2.0625rem]" data-ditto-id="style-li-4">
-                  <div className="block" data-ditto-id="style-b-4">
+                <div className="block relative min-w-0 max-w-full gap-y-[2.0625rem]">
+                  <div className="block">
                     <div className="block text-center">
-                      <div className="inline-block text-color-001 text-[3rem] leading-12 2xl:text-[3rem] 2xl:leading-[3rem]" data-ditto-id="style-footer">
+                      <div className="inline-block text-color-001 text-[3rem] leading-12 2xl:text-[3rem] 2xl:leading-[3rem]">
                         {" "}
-                        <svg className="w-auto h-11 block relative overflow-hidden 2xl:h-[2.9375rem]" data-ditto-id="style-div-95" data-component="icon" height="37" viewBox="0 0 37 37" width="37" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                        <svg className="w-auto h-11 block relative overflow-hidden 2xl:h-[2.9375rem]" data-component="icon" height="37" viewBox="0 0 37 37" width="37" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                           <g id="icon_scroll" data-name="icon scroll" transform="translate(37) rotate(90)" style={{ mixBlendMode: "normal", isolation: "isolate" }}>
                             <g id="Ellipse_136" data-name="Ellipse 136" fill="none" style={{ mixBlendMode: "normal", isolation: "isolate" }}>
                               <path d="M0,18.5A18.5,18.5,0,1,1,18.5,37,18.5,18.5,0,0,1,0,18.5Z" stroke="none" />
@@ -657,8 +656,8 @@ export default function Page() {
             {" "}
             <div className="min-h-152 flex relative max-w-full flex-col items-center shrink-0 bg-color-019 [background-position:100%_0%] bg-no-repeat max-md:min-h-[617.1px] max-lg:pb-12.5 max-md:flex-wrap md:max-lg:min-h-[48.6375rem] 2xl:min-h-[51.3rem]" style={{ backgroundImage: "url(\"/assets/cloned/svg/88d6f0c03d30.svg\")" }}>
               <div className="w-full block relative min-w-0 max-w-full shrink-0" data-ditto-id="interaction-div-2">
-                <div className="block" data-ditto-id="style-link-2">
-                  <div className="block" data-ditto-id="style-span-2">
+                <div className="block">
+                  <div className="block">
                     <div className="h-12.5 block" data-ditto-id="interaction-span-2" />
                     {" "}
                   </div>
@@ -667,10 +666,10 @@ export default function Page() {
                 {" "}
               </div>
               {" "}
-              <div className="w-full flex relative min-w-0 px-2.5 flex-col" data-ditto-id="style-icon-3">
-                <div className="w-full flex max-w-[min(100%,_1140px)] mx-15 py-2.5 flex-col grow gap-5 max-md:max-w-[min(100%,_767px)] max-md:flex-wrap max-lg:mx-0 md:max-lg:max-w-[min(100%,_1024px)] 2xl:mx-95" data-ditto-id="style-span-46">
+              <div className="w-full flex relative min-w-0 px-2.5 flex-col">
+                <div className="w-full flex max-w-[min(100%,_1140px)] mx-15 py-2.5 flex-col grow gap-5 max-md:max-w-[min(100%,_767px)] max-md:flex-wrap max-lg:mx-0 md:max-lg:max-w-[min(100%,_1024px)] 2xl:mx-95">
                   <div className="w-285 block relative min-w-0 max-w-full shrink-0 gap-5 max-md:w-[22.1875rem] md:max-lg:w-187">
-                    <div className="block" data-ditto-id="interaction-div">
+                    <div className="block">
                       <div className="block">
                         <div className="h-12.5 block max-md:h-0" data-ditto-id="style-link-4" />
                         {" "}
@@ -685,10 +684,10 @@ export default function Page() {
               </div>
               {" "}
               <div className="w-full block text-color-013 text-center py-10 max-md:px-5">{"Les premiers retours d'apprenants seront publiés après la première cohorte."}</div>
-            <div className="w-full flex relative min-w-0 flex-col max-md:flex-wrap" data-ditto-id="interaction-div-24">
+            <div className="w-full flex relative min-w-0 flex-col max-md:flex-wrap">
                 <div className="block relative min-w-0 max-w-full shrink-0">
-                  <div className="block" data-ditto-id="style-chatea-con-nosotros-estamos-online">
-                    <div className="block" data-ditto-id="interaction-div-25">
+                  <div className="block">
+                    <div className="block">
                       <div className="h-14 block" />
                       {" "}
                     </div>
@@ -702,12 +701,12 @@ export default function Page() {
             </div>
             {" "}
             <div className="min-h-screen flex relative max-w-full flex-col shrink-0 overflow-hidden bg-color-001 bg-cover [background-position:20px_80px] bg-no-repeat max-md:pt-12.5 max-md:px-10 max-md:flex-wrap max-lg:[background-position:initial]" style={{ backgroundImage: "url(\"/assets/cloned/svg/1b3f50d6645a.svg\")" }}>
-              <div className="w-full min-h-96 flex relative z-1 min-w-0 justify-center items-center shrink-0 max-md:w-[19.125rem] max-md:min-h-[16.2375rem] max-md:flex-wrap md:max-lg:min-h-[327.7px] 2xl:min-h-[47.925rem]" data-ditto-id="style-div-39">
+              <div className="w-full min-h-96 flex relative z-1 min-w-0 justify-center items-center shrink-0 max-md:w-[19.125rem] max-md:min-h-[16.2375rem] max-md:flex-wrap md:max-lg:min-h-[327.7px] 2xl:min-h-[47.925rem]">
                 <div className="w-[56.7rem] flex relative z-1 min-w-0 rounded-[38px] flex-col justify-start items-center shrink-0 gap-5 max-md:w-[19.125rem] max-md:min-h-[11.0625rem] max-md:flex-wrap 2xl:w-336">
                   <div className="w-[56.7rem] block relative min-w-0 max-w-full shrink-0 gap-5 max-md:w-[19.125rem] 2xl:w-336">
-                    <div className="block" data-ditto-id="style-gt-wrapper-28246617">
-                      <div className="block" data-ditto-id="style-div-8">
-                        <div className="h-3 block" data-ditto-id="style-div-9" />
+                    <div className="block">
+                      <div className="block">
+                        <div className="h-3 block" />
                         {" "}
                       </div>
                       {" "}
@@ -715,10 +714,10 @@ export default function Page() {
                     {" "}
                   </div>
                   {" "}
-                  <div className="block relative min-w-0 max-w-full gap-5 text-color-001" data-ditto-id="style-menu-3">
+                  <div className="block relative min-w-0 max-w-full gap-5 text-color-001">
                     <div className="block">
-                      <p className="block mb-[0.9rem]" data-ditto-id="style-div-41">
-                        <span className="inline text-background" data-ditto-id="style-image-4">
+                      <p className="block mb-[0.9rem]">
+                        <span className="inline text-background">
                           Voir la vidéo
                         </span>
                       </p>
@@ -729,9 +728,9 @@ export default function Page() {
                   {" "}
                   <div className="w-full block relative min-w-0 max-w-full gap-5">
                     <div className="block rounded-[38px] overflow-hidden">
-                      <div className="block aspect-[1.77777/1] [filter:brightness(1)_contrast(1)_saturate(1)_blur(0px)_hue-rotate(0deg)]" data-ditto-id="style-div-31">
+                      <div className="block aspect-[1.77777/1] [filter:brightness(1)_contrast(1)_saturate(1)_blur(0px)_hue-rotate(0deg)]">
                         <span className="hidden 2xl:w-336 2xl:h-189 2xl:flex 2xl:max-w-full 2xl:overflow-clip 2xl:leading-5 2xl:bg-color-007" height="360" id="widget10" title="Vidéo témoignage — apprenant HOJA ACADEMY" width="640"></span>
-                        <div className="block 2xl:hidden" data-ditto-id="style-iframe" />
+                        <div className="block 2xl:hidden" />
                         {" "}
                         <div className="h-[510.3px] block absolute top-0 inset-x-0 text-center bg-cover [background-position:50%_50%] cursor-pointer max-md:h-[172.1px] 2xl:hidden" style={{ backgroundImage: "url(\"/assets/hoja/hoja-promo-1.jpg\")" }}>
                           <div className="w-25 h-[6.8125rem] block absolute top-[clamp(86px,_50%,_calc(100%_-_86px))] left-[clamp(153px,_50%,_calc(100%_-_153px))] transform-[matrix(1,0,0,1,-50,-54.5)] 2xl:hidden" data-component="button" aria-label="Lire la vidéo" role="button">
@@ -750,7 +749,7 @@ export default function Page() {
                     {" "}
                   </div>
                   {" "}
-                  <div className="w-[56.7rem] block relative min-w-0 max-w-full shrink-0 gap-5 max-md:w-[19.125rem] 2xl:w-336" data-ditto-id="style-div-12">
+                  <div className="w-[56.7rem] block relative min-w-0 max-w-full shrink-0 gap-5 max-md:w-[19.125rem] 2xl:w-336">
                     <div className="block">
                       <div className="block">
                         <div className="h-px block" />
@@ -761,8 +760,8 @@ export default function Page() {
                     {" "}
                   </div>
                   {" "}
-                  <div className="block relative min-w-0 max-w-full gap-5 text-center" data-ditto-id="style-div-25">
-                    <div className="block" data-ditto-id="interaction-gt-wrapper-30105788">
+                  <div className="block relative min-w-0 max-w-full gap-5 text-center">
+                    <div className="block">
                       <h2 className="block text-background text-[1.75rem] leading-[6.3125rem]" data-ditto-id="style-english-2" data-component="heading">
                         Cette édition
                         <span className="inline text-primary-text font-bold" data-ditto-id="style-spanish-2">
@@ -776,7 +775,7 @@ export default function Page() {
                   {" "}
                   <div className="block relative min-w-0 max-w-full gap-5">
                     <div className="block" data-ditto-id="interaction-div-9">
-                      <div className="block relative" data-ditto-id="interaction-div-23">
+                      <div className="block relative">
                         <div className="block z-1 overflow-hidden" aria-label="Diapositivas" aria-roledescription="carousel" dir="ltr" role="region">
                           <div className="box-content flex relative z-1 coursr-grab" data-ditto-id="style-div-90" aria-live="off" id="swiper-wrapper-4e3bfcdee84510aec">
                             <div className="w-[56.6875rem] h-100 block relative opacity-0 shrink-0 pointer-events-none" data-ditto-id="style-div-91" aria-label="1 / 3" aria-roledescription="slide" role="group">
@@ -792,10 +791,10 @@ export default function Page() {
                               </div>
                             </div>
                             <div className="w-[56.6875rem] h-100 block relative opacity-0 shrink-0 transform-[matrix(1,0,0,1,-907,0)] pointer-events-none" aria-label="2 / 3" aria-roledescription="slide" role="group">
-                              <div className="min-h-full block min-w-full bg-cover [background-position:50%_50%] bg-no-repeat pointer-events-none" style={{ backgroundImage: "url(\"/assets/cloned/images/87cbd330f76e.png\")" }} data-ditto-id="style-div-92" aria-label="openai sin fondo" role="img" />
+                              <div className="min-h-full block min-w-full bg-cover [background-position:50%_50%] bg-no-repeat pointer-events-none" style={{ backgroundImage: "url(\"/assets/cloned/images/87cbd330f76e.png\")" }} aria-label="openai sin fondo" role="img" />
                               <div className="h-full flex absolute top-0 inset-x-0 p-12.5 justify-center items-center text-background text-center [background-position:50%_50%] bg-no-repeat pointer-events-none max-md:p-7.5">
                                 <div className="block max-w-[66%] ml-[17.15rem] [animation-name:fadeInUp] [animation-duration:1.25s] pointer-events-none max-md:max-w-full max-md:ml-0 2xl:ml-[26.4375rem]">
-                                  <div className="block mb-7.5 [font-family:Montserrat,_sans-serif] text-[3rem] font-medium leading-16.5 pointer-events-none" data-ditto-id="style-svg-2">
+                                  <div className="block mb-7.5 [font-family:Montserrat,_sans-serif] text-[3rem] font-medium leading-16.5 pointer-events-none">
                                     ACCOMPAGNEMENT
                                   </div>
                                   <div className="block text-[1rem] leading-[1.5rem] pointer-events-none max-md:mb-[0.9375rem] max-md:text-[0.875rem] max-md:leading-[1.125rem]"> L'acc[èe]s aux outils est fourni et accompagn[ée] pendant toute la dur[ée]e du parcours. </div>
@@ -846,14 +845,14 @@ export default function Page() {
                                   <div className="block mb-7.5 [font-family:Montserrat,_sans-serif] text-[3rem] font-medium leading-16.5 pointer-events-none">
                                     Session de conseil
                                   </div>
-                                  <div className="block text-[1rem] leading-[1.5rem] pointer-events-none max-md:mb-[0.9375rem] max-md:text-[0.875rem] max-md:leading-[1.125rem]" data-ditto-id="style-button-2">
+                                  <div className="block text-[1rem] leading-[1.5rem] pointer-events-none max-md:mb-[0.9375rem] max-md:text-[0.875rem] max-md:leading-[1.125rem]">
                                     En complément de l'accompagnement continu de l'équipe pédagogique pendant tout le cours, nous incluons une session privée à la fin pour résoudre toute question et avancer avec une totale clarté.
                                   </div>
                                 </div>
                               </div>
                             </div>
                             {" "}
-                            <div className="w-[56.6875rem] h-100 block relative opacity-0 shrink-0 transform-[matrix(1,0,0,1,-5442,0)] pointer-events-none" data-ditto-id="style-span-14" aria-label="1 / 3" aria-roledescription="slide" role="group">
+                            <div className="w-[56.6875rem] h-100 block relative opacity-0 shrink-0 transform-[matrix(1,0,0,1,-5442,0)] pointer-events-none" aria-label="1 / 3" aria-roledescription="slide" role="group">
                               <div className="min-h-full block min-w-full bg-color-053 bg-cover [background-position:50%_50%] bg-no-repeat pointer-events-none" style={{ backgroundImage: "url(\"/assets/cloned/images/1e6f7b1718f8.png\")" }} data-ditto-id="style-span-45" aria-label="Make Planes" role="img" />
                               <div className="h-full block absolute top-0 inset-x-0 bg-color-049 pointer-events-none" data-ditto-id="style-span-31" />
                               <div className="h-full flex absolute top-0 inset-x-0 p-12.5 justify-center items-center text-background text-center [background-position:50%_50%] bg-no-repeat pointer-events-none max-md:p-7.5">
@@ -867,7 +866,7 @@ export default function Page() {
                             </div>
                             <div className="w-[56.6875rem] h-100 block relative opacity-0 shrink-0 transform-[matrix(1,0,0,1,-6349,0)] pointer-events-none" aria-label="2 / 3" aria-roledescription="slide" role="group">
                               <div className="min-h-full block min-w-full bg-cover [background-position:50%_50%] bg-no-repeat pointer-events-none" style={{ backgroundImage: "url(\"/assets/cloned/images/87cbd330f76e.png\")" }} aria-label="openai sin fondo" role="img" />
-                              <div className="h-full flex absolute top-0 inset-x-0 p-12.5 justify-center items-center text-background text-center [background-position:50%_50%] bg-no-repeat pointer-events-none max-md:p-7.5" data-ditto-id="style-span-10">
+                              <div className="h-full flex absolute top-0 inset-x-0 p-12.5 justify-center items-center text-background text-center [background-position:50%_50%] bg-no-repeat pointer-events-none max-md:p-7.5">
                                 <div className="block max-w-[66%] ml-[17.15rem] [animation-name:fadeInUp] [animation-duration:1.25s] pointer-events-none max-md:max-w-full max-md:ml-0 2xl:ml-[26.4375rem]">
                                   <div className="block mb-7.5 [font-family:Montserrat,_sans-serif] text-[3rem] font-medium leading-16.5 pointer-events-none">
                                     ACCOMPAGNEMENT
@@ -876,7 +875,7 @@ export default function Page() {
                                 </div>
                               </div>
                             </div>
-                            <div className="w-[56.6875rem] h-100 block relative opacity-0 shrink-0 transform-[matrix(1,0,0,1,-7256,0)] pointer-events-none" data-ditto-id="interaction-span-5" aria-label="3 / 3" aria-roledescription="slide" role="group">
+                            <div className="w-[56.6875rem] h-100 block relative opacity-0 shrink-0 transform-[matrix(1,0,0,1,-7256,0)] pointer-events-none" aria-label="3 / 3" aria-roledescription="slide" role="group">
                               <div className="min-h-full block min-w-full bg-clr-25 bg-cover [background-position:50%_50%] bg-no-repeat pointer-events-none" />
                               <div className="h-full flex absolute top-0 inset-x-0 p-12.5 justify-center items-center text-background text-center [background-position:50%_50%] bg-no-repeat pointer-events-none max-md:p-7.5">
                                 <div className="block max-w-[66%] mx-[8.575rem] [animation-name:fadeInUp] [animation-duration:1.25s] pointer-events-none max-md:max-w-full max-md:mx-0 2xl:mx-[211.5px]">
@@ -898,7 +897,7 @@ export default function Page() {
                             {" "}
                           </div>
                           {" "}
-                          <div className="touch-target w-11 h-11 flex items-center justify-center absolute top-50 right-2.5 z-1 text-color-048 text-[1.75rem] transform-[matrix(1,0,0,1,0,-12.5)] cursor-pointer" data-ditto-id="style-div-93" data-component="button" aria-controls="swiper-wrapper-4e3bfcdee84510aec" aria-label="Next slide" role="button">
+                          <div className="touch-target w-11 h-11 flex items-center justify-center absolute top-50 right-2.5 z-1 text-color-048 text-[1.75rem] transform-[matrix(1,0,0,1,0,-12.5)] cursor-pointer" data-component="button" aria-controls="swiper-wrapper-4e3bfcdee84510aec" aria-label="Next slide" role="button">
                             <svg className="w-auto h-[1.5625rem] block overflow-hidden" data-ditto-id="style-a-5" data-component="icon" aria-hidden="true" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                               <path d="M696 533C708 521 713 504 713 487 713 471 708 454 696 446L400 146C388 133 375 125 354 125 338 125 325 129 313 142 300 154 292 171 292 187 292 204 296 221 308 233L563 492 304 771C292 783 288 800 288 817 288 833 296 850 308 863 321 871 338 875 354 875 371 875 388 867 400 854L696 533Z" />
                             </svg>
@@ -906,8 +905,8 @@ export default function Page() {
                           </div>
                           {" "}
                           <div className="h-[2.0625rem] block absolute bottom-[0.3125rem] inset-x-0 z-10 text-center">
-                            <span className="h-1.5 inline-block mx-1.5 rounded-[50%] bg-color-007 cursor-pointer" data-ditto-id="style-span-44" data-component="button" aria-current="true" aria-label="Go to slide 1" role="button" />
-                            <span className="h-1.5 inline-block opacity-20 mx-1.5 rounded-[50%] bg-color-007 cursor-pointer" data-ditto-id="interaction-div-20" data-component="button" aria-label="Go to slide 2" role="button" />
+                            <span className="h-1.5 inline-block mx-1.5 rounded-[50%] bg-color-007 cursor-pointer" data-component="button" aria-current="true" aria-label="Go to slide 1" role="button" />
+                            <span className="h-1.5 inline-block opacity-20 mx-1.5 rounded-[50%] bg-color-007 cursor-pointer" data-component="button" aria-label="Go to slide 2" role="button" />
                             <span className="h-1.5 inline-block opacity-20 mx-1.5 rounded-[50%] bg-color-007 cursor-pointer" data-component="button" aria-label="Go to slide 3" role="button" />
                           </div>
                           {" "}
@@ -989,7 +988,7 @@ export default function Page() {
                       {" "}
                     </div>
                     {" "}
-                    <div className="block relative min-w-0 max-w-full gap-5 max-md:gap-[initial]" data-ditto-id="style-link-27">
+                    <div className="block relative min-w-0 max-w-full gap-5 max-md:gap-[initial]">
                       <div className="block">
                         <div className="block py-8 px-3 [font-family:Roboto,_sans-serif] text-[1rem] text-center [background-attachment:fixed]">
                           <div className="block" id="sib-form-container">
@@ -1053,7 +1052,7 @@ export default function Page() {
                     {" "}
                   </div>
                   {" "}
-                  <div className="w-[96%] min-h-[20.8125rem] border border-solid border-foreground flex relative min-w-0 p-18 rounded-[38px] flex-col gap-y-[1.1875rem] bg-surface-9 [backdrop-filter:blur(6.4px)] max-md:w-full max-lg:p-7.5 max-md:flex-wrap 2xl:min-h-[18.9375rem]" data-ditto-id="style-link-28" id="containerFormacion">
+                  <div className="w-[96%] min-h-[20.8125rem] border border-solid border-foreground flex relative min-w-0 p-18 rounded-[38px] flex-col gap-y-[1.1875rem] bg-surface-9 [backdrop-filter:blur(6.4px)] max-md:w-full max-lg:p-7.5 max-md:flex-wrap 2xl:min-h-[18.9375rem]" id="containerFormacion">
                     <div className="block relative min-w-0 max-w-full gap-y-[1.1875rem]">
                       <div className="block">
                         <h2 className="block text-background text-[1.75rem] font-bold uppercase max-md:leading-7.5 max-md:[font-size:inherit] 2xl:leading-9" data-ditto-id="style-span-32" data-component="heading">
@@ -1084,7 +1083,7 @@ export default function Page() {
             {" "}
             <div className="min-h-screen flex relative max-w-[min(100%,_1057px)] flex-col justify-center items-center shrink-0 gap-y-10 overflow-hidden bg-color-047 [background-size:100%] [background-position:0px_139px] bg-no-repeat max-md:min-h-[34rem] max-md:max-w-full max-md:pt-12.5 max-md:px-10 max-md:flex-wrap max-lg:[background-size:1000px] max-md:[background-position:0px_150px] md:max-lg:min-h-[42.875rem] md:max-lg:[background-position:0px_84px] 2xl:min-h-301 2xl:max-w-full 2xl:pt-12.5 2xl:gap-y-17.5" style={{ backgroundImage: "url(\"/assets/cloned/svg/98e44877f5f9.svg\")" }}>
               <div className="w-full flex relative min-w-0 p-2.5 flex-col justify-center items-center max-md:flex-wrap">
-                <div className="block relative min-w-0 max-w-full text-center" data-ditto-id="style-span-21">
+                <div className="block relative min-w-0 max-w-full text-center">
                   <div className="block">
                     <h2 className="block text-color-001 [font-family:Montserrat,_sans-serif] text-[3rem] leading-14.5 max-md:text-[1.75rem] max-md:leading-9 md:max-lg:text-[2.25rem] 2xl:leading-16.5" data-component="heading">
                       Que allez-vous apprendre ?
@@ -1095,11 +1094,11 @@ export default function Page() {
                 </div>
                 {" "}
                 <div className="w-full max-w-[52.1875rem] block relative min-w-0 text-color-001 [font-family:Montserrat,_sans-serif] text-[1.125rem] font-medium leading-[1.1875rem] text-center max-md:text-[1rem]">
-                  <div className="block mt-5" data-ditto-id="interaction-div-16">
+                  <div className="block mt-5">
                     <p className="block mb-[0.9rem]">
                       {"Vous n'apprendrez pas un seul outil. "}
                     </p>
-                    <p className="block mb-[0.9rem]" data-ditto-id="style-link-11">
+                    <p className="block mb-[0.9rem]">
                       Vous apprendrez à comprendre, choisir et appliquer l'intelligence artificielle dans n'importe quel projet.
                     </p>
                     {" "}
@@ -1118,21 +1117,21 @@ export default function Page() {
               </div>
               {" "}
               <div className="w-full min-h-[21.8125rem] flex relative min-w-0 pl-25 rounded-[44px] justify-center items-center gap-5 max-lg:min-h-[35.3125rem] max-md:flex-wrap max-md:pl-0 2xl:min-h-141.5 before:content-[''] before:block before:absolute before:inset-0 before:opacity-50 before:rounded-tl-[44px]">
-                <div className="block relative min-w-0 max-w-full gap-5" data-ditto-id="style-span-42">
-                  <div className="block" data-ditto-id="style-span-43">
-                    <div className="flex relative z-1 pb-9.5 overflow-hidden 2xl:pb-15" data-ditto-id="interaction-ld-lesson-row-tooltip-17973" aria-label="Carrousel" aria-roledescription="carousel" dir="ltr" role="region">
+                <div className="block relative min-w-0 max-w-full gap-5">
+                  <div className="block">
+                    <div className="flex relative z-1 pb-9.5 overflow-hidden 2xl:pb-15" aria-label="Carrousel" aria-roledescription="carousel" dir="ltr" role="region">
                       <div className="box-content w-full flex relative z-1 transform-[matrix(1,0,0,1,-501,0)] max-md:transform-[matrix(1,0,0,1,-312,0)] md:max-lg:transform-[matrix(1,0,0,1,-685,0)] 2xl:transform-[matrix(1,0,0,1,-1243.34,0)]" aria-live="off" id="swiper-wrapper-c16d10d164a1f62ab">
                         <div className="w-114 block relative mr-[2.8125rem] shrink-0 max-md:w-[18.4375rem] max-lg:mr-[1.0625rem] md:max-lg:w-167 2xl:w-[576.7px]" data-ditto-id="style-button-4" aria-hidden="true" aria-label="6 / 6" aria-roledescription="slide" role="group">
-                          <div className="h-full min-h-42 flex relative max-w-full px-[2.8125rem] rounded-[44px] flex-col bg-primary 2xl:min-h-87.5 2xl:px-[4.0625rem] before:content-[''] before:block before:absolute before:inset-0 before:opacity-79 before:rounded-tl-[44px]" data-ditto-id="interaction-span-10">
+                          <div className="h-full min-h-42 flex relative max-w-full px-[2.8125rem] rounded-[44px] flex-col bg-primary 2xl:min-h-87.5 2xl:px-[4.0625rem] before:content-[''] before:block before:absolute before:inset-0 before:opacity-79 before:rounded-tl-[44px]">
                             <div className="w-full flex max-w-151 py-[2.8125rem] flex-col justify-center items-start grow gap-5 max-md:max-w-[min(100%,_767px)] max-md:flex-wrap 2xl:py-[4.0625rem]">
                               <div className="w-91.5 block relative min-w-0 max-w-full gap-5 max-md:w-[12.8125rem] md:max-lg:w-93.5 2xl:w-[446.7px]">
-                                <div className="block" data-ditto-id="interaction-ld-expand-17973-container">
+                                <div className="block">
                                   <div className="flex flex-col gap-4.5 2xl:gap-[1.8125rem]">
-                                    <div className="block shrink-0 leading-0" data-ditto-id="style-div-87">
+                                    <div className="block shrink-0 leading-0">
                                       {" "}
                                     </div>
                                     {" "}
-                                    <div className="block grow" data-ditto-id="interaction-div-19">
+                                    <div className="block grow">
                                       <h3 className="block mt-2 mb-[0.6875rem] text-color-001 [font-family:Montserrat,_sans-serif] text-[1.75rem] leading-10 max-md:leading-7.5 max-md:[font-size:inherit] 2xl:mb-[2.0625rem] 2xl:text-[2.25rem] 2xl:leading-[3.5625rem]" data-component="heading">
                                         <span className="inline">
                                           {" Projet final : AI Work System "}
@@ -1140,7 +1139,7 @@ export default function Page() {
                                         {" "}
                                       </h3>
                                       {" "}
-                                      <p className="block text-color-001 text-[1.125rem] leading-6.5 max-md:text-[1rem] max-md:leading-[1.625rem] 2xl:[font-size:inherit] 2xl:leading-[inherit]" data-ditto-id="style-span-15">
+                                      <p className="block text-color-001 text-[1.125rem] leading-6.5 max-md:text-[1rem] max-md:leading-[1.625rem] 2xl:[font-size:inherit] 2xl:leading-[inherit]">
                                         {" Réorganisez votre travail : votre système IA complet, présenté en soutenance et certifié par la preuve de vos compétences. "}
                                       </p>
                                       {" "}
@@ -1196,9 +1195,9 @@ export default function Page() {
             {" "}
             <div className="min-h-146 flex relative max-w-[min(100%,_1349px)] flex-col shrink-0 bg-color-001 [background-size:1250px] [background-position:100%_100%] bg-no-repeat max-md:min-h-[37.05rem] max-md:max-w-full max-md:pb-12.5 max-lg:px-10 max-md:flex-wrap md:max-lg:min-h-[747.5px] md:max-lg:pb-25 2xl:min-h-[51.3rem] 2xl:max-w-full 2xl:[background-size:75%]" style={{ backgroundImage: "url(\"/assets/cloned/svg/1b3f50d6645a.svg\")" }}>
               <div className="block relative min-w-0 max-w-full shrink-0">
-                <div className="block" data-ditto-id="style-link-12">
+                <div className="block">
                   <div className="block" data-ditto-id="style-not-started-4">
-                    <div className="h-12.5 block" data-ditto-id="style-div-32" />
+                    <div className="h-12.5 block" />
                     {" "}
                   </div>
                   {" "}
@@ -1217,7 +1216,7 @@ export default function Page() {
               <div className="block relative min-w-0 max-w-full text-center">
                 <div className="block">
                   <h2 className="block text-background [font-family:Montserrat,_sans-serif] text-[3rem] leading-16.5 max-md:text-[1.75rem] max-md:leading-[2.8125rem]" data-component="heading">
-                    <b className="inline text-primary-text font-bold" data-ditto-id="style-div-26">
+                    <b className="inline text-primary-text font-bold">
                       Groupes réduits
                     </b>
                     {" — promotion limitée"}
@@ -1228,7 +1227,7 @@ export default function Page() {
               </div>
               {" "}
               <div className="block relative min-w-0 max-w-full text-background text-center max-md:text-[1rem] max-md:leading-[1.625rem]">
-                <div className="block mt-3" data-ditto-id="style-div-28">
+                <div className="block mt-3">
                   <p className="block mb-[0.9rem]">
                     Formation en IA générative en direct et en groupes réduits, où le suivi et la proximité font la différence.
                   </p>
@@ -1237,9 +1236,9 @@ export default function Page() {
                 {" "}
               </div>
               {" "}
-              <div className="flex relative min-w-0 px-2.5 flex-col" data-ditto-id="interaction-div-10">
+              <div className="flex relative min-w-0 px-2.5 flex-col">
                 <div className="flex max-w-[min(100%,_1140px)] mx-15 py-2.5 grow gap-5 max-md:max-w-[min(100%,_767px)] max-md:flex-col max-md:flex-wrap max-lg:mx-0 md:max-lg:max-w-[min(100%,_1024px)] 2xl:mx-95">
-                  <div className="w-[49%] flex relative min-w-0 p-2.5 flex-col gap-5 max-md:w-full max-md:flex-wrap md:max-lg:w-[48.5%]" data-ditto-id="interaction-div-11">
+                  <div className="w-[49%] flex relative min-w-0 p-2.5 flex-col gap-5 max-md:w-full max-md:flex-wrap md:max-lg:w-[48.5%]">
                     <div className="block relative min-w-0 max-w-full gap-5 text-center">
                       <div className="h-[24.75rem] block m-[0.9375rem] rounded-[15px] max-md:h-auto md:max-lg:h-[226.7px]">
                         <img className="w-127.5 h-91.5 inline-block max-w-full overflow-clip aspect-[auto_800/574] align-middle max-md:w-[14.0625rem] max-md:h-[10.0625rem] md:max-lg:w-68.5 md:max-lg:h-[12.3125rem]" data-component="image" alt="Apprenants de la première édition du Programme Intensif d'Intelligence Artificielle Générative de HOJA ACADEMY" height="574" sizes="(max-width: 800px) 100vw, 800px" src="/assets/hoja/hoja-promo-1.jpg" srcSet="/assets/hoja/hoja-promo-1.jpg 1024w, /assets/hoja/hoja-promo-1.jpg 300w, /assets/hoja/hoja-promo-1.jpg 768w, /assets/hoja/hoja-promo-1.jpg 1536w, /assets/hoja/hoja-promo-1.jpg 1600w" width="800" />
@@ -1299,13 +1298,13 @@ export default function Page() {
                     {" "}
                     <div className="block relative min-w-0 max-w-full gap-5 text-center">
                       <div className="h-[359.9px] block mt-14.5 mb-[0.9375rem] mx-[0.9375rem] rounded-[15px] max-md:mt-[0.9375rem] max-md:h-auto md:max-lg:h-[227.1px]">
-                        <img className="w-127.5 h-[17.9375rem] inline-block max-w-full overflow-clip aspect-[auto_800/450] align-middle max-md:w-[14.0625rem] max-md:h-[7.9375rem] md:max-lg:w-68.5 md:max-lg:h-38.5" data-ditto-id="style-div-85" data-component="image" alt="Apprenants de la quatrième édition du Programme Intensif d'Intelligence Artificielle Générative de HOJA ACADEMY" height="450" sizes="(max-width: 800px) 100vw, 800px" src="/assets/hoja/hoja-promo-4.jpg" srcSet="/assets/hoja/hoja-promo-4.jpg 1024w, /assets/hoja/hoja-promo-4.jpg 300w, /assets/hoja/hoja-promo-4.jpg 768w, /assets/hoja/hoja-promo-4.jpg 1536w, /assets/hoja/hoja-promo-4.jpg 2048w, /assets/hoja/hoja-promo-4.jpg 600w" width="800" />
+                        <img className="w-127.5 h-[17.9375rem] inline-block max-w-full overflow-clip aspect-[auto_800/450] align-middle max-md:w-[14.0625rem] max-md:h-[7.9375rem] md:max-lg:w-68.5 md:max-lg:h-38.5" data-component="image" alt="Apprenants de la quatrième édition du Programme Intensif d'Intelligence Artificielle Générative de HOJA ACADEMY" height="450" sizes="(max-width: 800px) 100vw, 800px" src="/assets/hoja/hoja-promo-4.jpg" srcSet="/assets/hoja/hoja-promo-4.jpg 1024w, /assets/hoja/hoja-promo-4.jpg 300w, /assets/hoja/hoja-promo-4.jpg 768w, /assets/hoja/hoja-promo-4.jpg 1536w, /assets/hoja/hoja-promo-4.jpg 2048w, /assets/hoja/hoja-promo-4.jpg 600w" width="800" />
                         {" "}
                       </div>
                       {" "}
                     </div>
                     {" "}
-                    <div className="block relative min-w-0 max-w-full gap-5 text-color-012 [font-family:Montserrat,_sans-serif] text-[0.75rem] leading-[1.1875rem] text-center max-md:text-[0.875rem]" data-ditto-id="style-div-86">
+                    <div className="block relative min-w-0 max-w-full gap-5 text-color-012 [font-family:Montserrat,_sans-serif] text-[0.75rem] leading-[1.1875rem] text-center max-md:text-[0.875rem]">
                       <div className="h-[2.5875rem] block mt-2 max-md:h-auto">
                         <p className="block mb-[0.9rem]">
                           4ᵉ édition – En ligne
@@ -1341,9 +1340,9 @@ export default function Page() {
                     {" "}
                   </div>
                   {" "}
-                  <div className="w-285 block relative min-w-0 max-w-full shrink-0 gap-5 max-md:w-[17.1875rem] md:max-lg:w-167" data-ditto-id="style-span-16">
+                  <div className="w-285 block relative min-w-0 max-w-full shrink-0 gap-5 max-md:w-[17.1875rem] md:max-lg:w-167">
                     <div className="block">
-                      <div className="block" data-ditto-id="style-div-42">
+                      <div className="block">
                         <div className="h-12.5 block" />
                         {" "}
                       </div>
@@ -1370,20 +1369,20 @@ export default function Page() {
               </div>
               {" "}
               <div className="block relative min-w-0 max-w-full text-background text-center max-md:text-[1rem]">
-                <div className="block" data-ditto-id="style-ld-expand-28724">
+                <div className="block">
                   <p className="block mb-[0.9rem]">
                     Des professionnels aux chefs d'entreprise, chaque groupe est unique par les personnes qui le composent.
-                    <b className="inline font-bold" data-ditto-id="style-div-40" />
+                    <b className="inline font-bold" />
                   </p>
                   {" "}
                 </div>
                 {" "}
               </div>
               {" "}
-              <div className="block relative min-w-0 max-w-full shrink-0" data-ditto-id="style-link-13">
-                <div className="block" data-ditto-id="interaction-not-started">
+              <div className="block relative min-w-0 max-w-full shrink-0">
+                <div className="block">
                   <div className="block">
-                    <div className="h-12.5 block" data-ditto-id="interaction-image-2" />
+                    <div className="h-12.5 block" />
                     {" "}
                   </div>
                   {" "}
@@ -1396,7 +1395,7 @@ export default function Page() {
                   <div className="block text-center">
                     <div className="inline-block text-color-001 text-[3rem] leading-12 2xl:text-[3rem] 2xl:leading-[3rem]">
                       {" "}
-                      <svg className="w-auto h-11 block relative overflow-hidden 2xl:h-[2.9375rem]" data-ditto-id="style-button-5" data-component="icon" height="37" viewBox="0 0 37 37" width="37" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                      <svg className="w-auto h-11 block relative overflow-hidden 2xl:h-[2.9375rem]" data-component="icon" height="37" viewBox="0 0 37 37" width="37" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                         <g id="icon_scroll" data-name="icon scroll" transform="translate(37) rotate(90)" style={{ mixBlendMode: "normal", isolation: "isolate" }}>
                           <g id="Ellipse_136" data-name="Ellipse 136" fill="none" style={{ mixBlendMode: "normal", isolation: "isolate" }}>
                             <path d="M0,18.5A18.5,18.5,0,1,1,18.5,37,18.5,18.5,0,0,1,0,18.5Z" stroke="none" />
@@ -1425,7 +1424,7 @@ export default function Page() {
                 {" "}
               </div>
               {" "}
-              <div className="block relative min-w-0 max-w-full" data-ditto-id="interaction-ld-expand-28724-container">
+              <div className="block relative min-w-0 max-w-full">
                 <div className="block">
                   
                   {" "}
@@ -1436,7 +1435,7 @@ export default function Page() {
               <div className="block relative min-w-0 max-w-full shrink-0">
                 <div className="block">
                   <div className="block">
-                    <div className="h-12.5 block" data-ditto-id="style-div-43" />
+                    <div className="h-12.5 block" />
                     {" "}
                   </div>
                   {" "}
@@ -1445,7 +1444,7 @@ export default function Page() {
               </div>
               {" "}
               <div className="block relative min-w-0 max-w-full shrink-0">
-                <div className="block" data-ditto-id="style-link-14">
+                <div className="block">
                   <div className="block">
                     <div className="h-12.5 block" />
                     {" "}
@@ -1461,7 +1460,7 @@ export default function Page() {
               <div className="w-300 block relative min-w-0 max-w-full shrink-0 gap-y-[3.4375rem] max-md:w-[18.4375rem] max-md:gap-y-5 md:max-lg:w-172 2xl:w-460">
                 <div className="block">
                   <div className="block">
-                    <div className="h-12.5 block max-md:h-0" data-ditto-id="style-ld-lesson-row-tooltip-17993" />
+                    <div className="h-12.5 block max-md:h-0" />
                     {" "}
                   </div>
                   {" "}
@@ -1469,10 +1468,10 @@ export default function Page() {
                 {" "}
               </div>
               {" "}
-              <div className="w-full flex relative min-w-0 justify-start max-md:flex-wrap" data-ditto-id="style-div-33">
-                <div className="block relative min-w-0 max-w-full self-center" data-ditto-id="style-button-6">
+              <div className="w-full flex relative min-w-0 justify-start max-md:flex-wrap">
+                <div className="block relative min-w-0 max-w-full self-center">
                   <div className="block">
-                    <h2 className="block text-color-001 [font-family:Montserrat,_sans-serif] text-[3rem] leading-16.5" data-ditto-id="interaction-span-8" data-component="heading">
+                    <h2 className="block text-color-001 [font-family:Montserrat,_sans-serif] text-[3rem] leading-16.5" data-component="heading">
                       Plateforme
                     </h2>
                     {" "}
@@ -1488,7 +1487,7 @@ export default function Page() {
                   <div className="block relative min-w-0 max-w-full gap-5">
                     <div className="border-b border-solid border-b-foreground block pb-3">
                       <ul className="block [list-style-type:none] list-outside">
-                        <li className="flex relative items-center" data-ditto-id="style-span-24">
+                        <li className="flex relative items-center">
                           <span className="flex relative">
                             {" "}
                             <svg className="w-auto h-[1.5625rem] block mr-[6.3px] overflow-hidden 2xl:h-9 2xl:mr-[0.5625rem]" data-component="icon" height="40.115" viewBox="0 0 40.127 40.115" width="40.127" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
@@ -1519,7 +1518,7 @@ export default function Page() {
                       </span>
                     </p>
                     <p className="block mb-[0.9rem]">
-                      <em className="inline italic" data-ditto-id="style-ld-expand-21412">
+                      <em className="inline italic">
                         certification par la preuve de vos réalisations
                       </em>
                       <span className="inline">
@@ -1536,8 +1535,8 @@ export default function Page() {
             </div>
             {" "}
             <div className="min-h-86 flex relative max-w-full px-10 flex-col justify-center items-start gap-y-[3.4375rem] bg-color-019 max-md:min-h-[35.525rem] max-md:pt-7.5 max-md:flex-wrap max-lg:justify-start max-md:gap-y-[0.8125rem] md:max-lg:min-h-[44.8rem] md:max-lg:pt-10 2xl:min-h-[25.65rem]">
-              <div className="w-full flex relative min-w-0 justify-start max-md:flex-wrap" data-ditto-id="style-link-23">
-                <div className="w-full max-w-74.5 block relative min-w-0 self-center" data-ditto-id="interaction-not-started-4">
+              <div className="w-full flex relative min-w-0 justify-start max-md:flex-wrap">
+                <div className="w-full max-w-74.5 block relative min-w-0 self-center">
                   <div className="block">
                     <h2 className="block text-color-001 [font-family:Montserrat,_sans-serif] text-[3rem] leading-16.5" data-component="heading">
                       Notre méthode
@@ -1571,7 +1570,7 @@ export default function Page() {
               </div>
               {" "}
               <div className="flex relative min-w-0 items-start gap-5 max-md:flex-wrap">
-                <div className="w-full flex relative min-w-0 flex-col items-start gap-5 max-md:flex-wrap" data-ditto-id="style-a-2">
+                <div className="w-full flex relative min-w-0 flex-col items-start gap-5 max-md:flex-wrap">
                   <div className="w-full border-b border-solid border-b-color-011 flex relative min-w-0 flex-col items-start gap-5 max-md:flex-wrap">
                     <div className="block relative min-w-0 max-w-full gap-5">
                       <div className="block pb-3">
@@ -1591,8 +1590,8 @@ export default function Page() {
                   </div>
                   {" "}
                   <div className="block relative min-w-0 max-w-full gap-5 text-color-001 text-[1rem] leading-[1.5625rem] 2xl:[font-size:inherit] 2xl:leading-[inherit]">
-                    <div className="block" data-ditto-id="style-link-24">
-                      <p className="block mb-[0.9rem]" data-ditto-id="style-not-started-2">
+                    <div className="block">
+                      <p className="block mb-[0.9rem]">
                         {" Comprendre l'IA · Découvrir l'écosystème · Bien utiliser l'IA (prompt C.O.R.E.) · L'IA dans mon travail · Documents & données (M1–M5)."}
                       </p>
                       {" "}
@@ -1605,9 +1604,9 @@ export default function Page() {
                 <div className="w-full flex relative min-w-0 flex-col items-start gap-5 max-md:flex-wrap">
                   <div className="w-full border-b border-solid border-b-color-011 flex relative min-w-0 flex-col items-start gap-5 max-md:flex-wrap">
                     <div className="block relative min-w-0 max-w-full gap-5">
-                      <div className="block pb-3" data-ditto-id="interaction-div-17">
+                      <div className="block pb-3">
                         <ul className="block [list-style-type:none] list-outside">
-                          <li className="flex relative items-center" data-ditto-id="style-link-16">
+                          <li className="flex relative items-center">
                             <span className="block text-color-001 font-medium whitespace-nowrap 2xl:text-[1.75rem]">
                               BLOC 2 · SKILLS, WORKFLOWS & ASSISTANTS (M6–M9)
                             </span>
@@ -1621,7 +1620,7 @@ export default function Page() {
                     {" "}
                   </div>
                   {" "}
-                  <div className="block relative min-w-0 max-w-full gap-5 text-color-001 text-[1rem] leading-[1.5625rem] 2xl:[font-size:inherit] 2xl:leading-[inherit]" data-ditto-id="style-div-29">
+                  <div className="block relative min-w-0 max-w-full gap-5 text-color-001 text-[1rem] leading-[1.5625rem] 2xl:[font-size:inherit] 2xl:leading-[inherit]">
                     <div className="block">
                       {" Skills métiers · Workflows & loops · Construire son assistant (Agent.md, mémoire) · Connecteurs, outils & MCP (M6–M9). "}
                     </div>
@@ -1634,10 +1633,10 @@ export default function Page() {
               {" "}
               <div className="flex relative min-w-0 items-start gap-5 max-md:flex-wrap">
                 <div className="w-full flex relative min-w-0 flex-col items-start gap-5 max-md:flex-wrap">
-                  <div className="w-full border-b border-solid border-b-color-011 flex relative min-w-0 flex-col items-start gap-5 max-md:flex-wrap 2xl:[align-items:initial]" data-ditto-id="interaction-span-7">
+                  <div className="w-full border-b border-solid border-b-color-011 flex relative min-w-0 flex-col items-start gap-5 max-md:flex-wrap 2xl:[align-items:initial]">
                     <div className="block relative min-w-0 max-w-full gap-5">
                       <div className="block pb-3">
-                        <ul className="block [list-style-type:none] list-outside" data-ditto-id="style-button-8">
+                        <ul className="block [list-style-type:none] list-outside">
                           <li className="flex relative items-center">
                             <span className="block text-color-001 font-medium 2xl:text-[1.75rem]">
                               BLOC 3 · AGENTS, ÉCOSYSTÈMES & SÉCURITÉ (M10–M13)
@@ -1653,7 +1652,7 @@ export default function Page() {
                   </div>
                   {" "}
                   <div className="block relative min-w-0 max-w-full gap-5 text-color-001 text-[1rem] leading-[1.5625rem] 2xl:[font-size:inherit] 2xl:leading-[inherit]">
-                    <div className="block" data-ditto-id="interaction-ld-expand-18012-container">
+                    <div className="block">
                       <p className="block mb-[0.9rem]">
                         {" Construire son premier agent · Grands écosystèmes IA · Recherche & vérification (pyramide des sources) · Sécurité & confidentialité (M10–M13)."}
                       </p>
@@ -1734,26 +1733,26 @@ export default function Page() {
                 {" "}
               </div>
               {" "}
-              <div className="w-full flex relative min-w-0 items-start gap-5 max-md:flex-wrap" data-ditto-id="style-span-25">
+              <div className="w-full flex relative min-w-0 items-start gap-5 max-md:flex-wrap">
                 <div className="flex relative min-w-0 flex-col items-start gap-5 max-md:flex-wrap max-lg:[flex-direction:initial]">
                   <div className="block relative min-w-0 max-w-full gap-5">
                     <div className="block">
                       <div className="flex items-center text-left">
                         <div className="block mr-8 self-center shrink-0 max-lg:mr-0">
-                          <img className="w-full h-43 inline max-w-full overflow-clip object-cover" data-ditto-id="style-link-17" data-component="image" alt="Visuel HOJA ACADEMY" src="/assets/hoja/hoja-team-tile.jpg" />
+                          <img className="w-full h-43 inline max-w-full overflow-clip object-cover" data-component="image" alt="Visuel HOJA ACADEMY" src="/assets/hoja/hoja-team-tile.jpg" />
                           {" "}
                         </div>
                         {" "}
                         <div className="block grow text-[1rem]">
                           <div className="block">
-                            <h2 className="block mt-2 text-color-001 text-[3rem] leading-[3.3125rem] max-md:text-[1.75rem] max-md:leading-[1.4375rem]" data-ditto-id="style-span-22" data-component="heading">
+                            <h2 className="block mt-2 text-color-001 text-[3rem] leading-[3.3125rem] max-md:text-[1.75rem] max-md:leading-[1.4375rem]" data-component="heading">
                               {" ÉQUIPE PÉDAGOGIQUE "}
                             </h2>
                             {" "}
                           </div>
                           {" "}
                           <div className="block mb-5 text-color-001 text-[1.375rem] max-md:mb-1.5 max-md:text-[1rem]">
-                            <p className="block" data-ditto-id="style-ld-lesson-row-tooltip-18020">
+                            <p className="block">
                               Notre équipe pédagogique
                               <br className="inline" />
                               {" de HOJA ACADEMY"}
@@ -1769,7 +1768,7 @@ export default function Page() {
                     {" "}
                   </div>
                   {" "}
-                  <div className="w-full block relative min-w-0 max-w-full gap-5 text-color-001 text-[1rem] leading-[1.5625rem] 2xl:[font-size:inherit] 2xl:leading-[inherit]" data-ditto-id="style-button-9">
+                  <div className="w-full block relative min-w-0 max-w-full gap-5 text-color-001 text-[1rem] leading-[1.5625rem] 2xl:[font-size:inherit] 2xl:leading-[inherit]">
                     <div className="block">
                       <p className="block mb-[0.9rem]">
                         Notre équipe pédagogique réunit des praticiens de terrain : chaque formateur utilise quotidiennement l'IA, l'automatisation et les agents sur des projets professionnels réels, et transpose cette expérience dans ses séances.
@@ -1777,14 +1776,14 @@ export default function Page() {
                       <p className="block mb-[0.9rem]">
                         
                       </p>
-                      <p className="block mb-[0.9rem]" data-ditto-id="interaction-ld-expand-18020-container">
+                      <p className="block mb-[0.9rem]">
                         <span className="inline">
                           {"Chaque promotion bénéficie d'un "}
                         </span>
                         <b className="inline font-bold">
                           référent pédagogique du groupe
                         </b>
-                        <span className="inline" data-ditto-id="style-div-30">
+                        <span className="inline">
                           {", "}
                         </span>
                         {" dédié, qui anime la majeure partie des sessions et accompagne les apprenants tout au long du programme."}
@@ -1799,7 +1798,7 @@ export default function Page() {
                   {" "}
                   <div className="w-300 block relative min-w-0 max-w-full shrink-0 gap-5 max-lg:w-12.5 max-lg:self-stretch 2xl:w-460">
                     <div className="block md:max-lg:h-[79.2625rem]">
-                      <div className="block md:max-lg:h-[79.2625rem]" data-ditto-id="interaction-div-12">
+                      <div className="block md:max-lg:h-[79.2625rem]">
                         <div className="h-12.5 block max-md:h-0 md:max-lg:h-[79.2625rem]" />
                         {" "}
                       </div>
@@ -1877,7 +1876,7 @@ export default function Page() {
             {" "}
             <div className="min-h-78 flex relative max-w-full pb-20 px-10 flex-col justify-center items-start gap-y-[3.4375rem] bg-color-019 max-md:min-h-[316.7px] max-md:py-12.5 max-md:flex-wrap max-md:gap-y-[initial] md:max-lg:min-h-[24.9625rem] md:max-lg:pt-10 2xl:min-h-[46.0625rem] 2xl:pb-12.5">
               <div className="w-full flex relative min-w-0 justify-start max-md:min-h-44.5 max-md:flex-wrap max-md:justify-center max-md:items-start">
-                <div className="w-full max-w-211 block relative min-w-0 self-center" data-ditto-id="style-link-18">
+                <div className="w-full max-w-211 block relative min-w-0 self-center">
                   <div className="block">
                     <h2 className="block text-color-001 [font-family:Montserrat,_sans-serif] text-[3rem] leading-16.5" data-component="heading">
                       Questions fréquentes (déplie) :

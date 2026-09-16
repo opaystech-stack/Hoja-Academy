@@ -5,7 +5,7 @@ import ListRow6 from "../components/list-row6";
 import Icon13 from "../svgs/svg-icon13";
 import ListRow7 from "../components/list-row7";
 import ListRow8 from "../components/list-row8";
-import { ListRow_meta2, ListRow6_meta, ListRow8_meta } from "../ditto-meta";
+import { ListRow6_meta, ListRow8_meta } from "../ditto-meta";
 import { ListRow_styles2, ListRow5_styles, ListRow7_styles, ListRow8_styles } from "../_styles";
 import { listRowData2 as listRowData2Content, listRow5Data as listRow5DataContent, listRow6Data as listRow6DataContent, listRow7Data as listRow7DataContent, listRow8Data as listRow8DataContent } from "../content";
 /** Site footer. */
@@ -15,7 +15,7 @@ export default function Footer({ listRowData2 = listRowData2Content, listRow5Dat
       <footer className="min-h-123.5 text-background flex relative max-w-full px-10 flex-col justify-around gap-5 bg-accent [background-size:93%] [background-position:0%_100%] bg-no-repeat max-md:p-5 max-md:flex-wrap max-lg:gap-y-[3.8125rem] max-lg:gap-x-[initial] md:max-lg:py-10 2xl:[background-size:initial]" style={{ backgroundImage: "url(\"/assets/cloned/images/7ce694e1013a.png\")" }}>
         <div className="flex relative min-w-0 gap-5 max-md:pt-7.5 max-lg:flex-col max-md:flex-wrap max-lg:items-start max-md:gap-y-9 max-lg:gap-x-[initial] md:max-lg:gap-y-14">
           <div className="w-1/3 flex relative min-w-0 pt-2.5 flex-col gap-y-7.5 max-md:w-full max-md:flex-wrap max-lg:items-start md:max-lg:w-[78%] 2xl:pt-0">
-            <div className="block relative min-w-0 max-w-full gap-y-7.5" data-ditto-id="interaction-ld-expand-28724-container">
+            <div className="block relative min-w-0 max-w-full gap-y-7.5">
               <div className="flex flex-col">
                 <nav className="flex" data-component="nav" aria-label="Menu">
                   <ul className="flex relative z-2 flex-wrap justify-start leading-6 [list-style-type:none] list-outside 2xl:mr-2.5 after:content-[' '] after:block after:w-0 after:h-0 after:text-foreground after:text-[0rem] after:leading-0 after:[overflow:hidden]" id="menu-1-516d334">
@@ -43,9 +43,9 @@ export default function Footer({ listRowData2 = listRowData2Content, listRow5Dat
             <div className="w-full flex relative min-w-0 flex-col gap-y-[0.1875rem] max-md:flex-wrap">
               <div className="block relative min-w-0 max-w-full gap-y-[0.1875rem]">
                 <div className="block">
-                  <div className="flex flex-col" data-ditto-id="style-div-43">
+                  <div className="flex flex-col">
                     <div className="block grow">
-                      <h3 className="block mt-2 mb-1.5 text-background [font-family:Montserrat,_sans-serif] text-[0.875rem] leading-1.5 uppercase" data-ditto-id="style-link-14" data-component="heading">
+                      <h3 className="block mt-2 mb-1.5 text-background [font-family:Montserrat,_sans-serif] text-[0.875rem] leading-1.5 uppercase" data-component="heading">
                         <a className="inline cursor-pointer" data-component="link" href="mailto:info@hoja-academy.com">
                           {" Email "}
                         </a>
@@ -79,7 +79,7 @@ export default function Footer({ listRowData2 = listRowData2Content, listRow5Dat
               {" "}
               <div className="block relative min-w-0 max-w-full gap-y-[0.1875rem]">
                 <div className="block">
-                  <div className="block" data-ditto-id="interaction-span-6">
+                  <div className="block">
                     <a className="w-42 h-11 inline-block min-h-11 py-3 px-6 rounded-[33px] text-color-001 [font-family:Montserrat,_sans-serif] text-[0.875rem] font-medium leading-[1.1875rem] text-center bg-primary cursor-pointer hover:bg-clr-22 hover:border-clr-23 focus:bg-clr-32 focus:border-primary" data-ditto-id="style-span-33" data-component="link" href="/contact">
                       {" "}
                       <span className="flex flex-row-reverse justify-center gap-[1.9375rem]">
@@ -155,7 +155,7 @@ export default function Footer({ listRowData2 = listRowData2Content, listRow5Dat
               {" "}
             </div>
             {" "}
-            <div className="hidden relative min-w-0 max-w-full gap-y-[1.8125rem] max-md:block" data-ditto-id="style-span-24">
+            <div className="hidden relative min-w-0 max-w-full gap-y-[1.8125rem] max-md:block">
               <div className="flex flex-col">
                 <nav className="flex min-w-0" aria-label="Menu">
                   <ul className="flex relative z-2 min-w-0 flex-wrap justify-start leading-6 [list-style-type:none] list-outside after:content-[' '] after:block after:h-0 after:text-foreground after:text-[0rem] after:leading-0 after:[overflow:hidden] max-md:after:w-0" id="menu-1-74a24f8">
@@ -188,7 +188,7 @@ export default function Footer({ listRowData2 = listRowData2Content, listRow5Dat
           {" "}
           <div className="w-full flex relative min-w-0 flex-col gap-5 max-md:flex-wrap max-lg:items-center">
             <div className="block relative min-w-0 max-w-full gap-5 text-center">
-              <div className="block" data-ditto-id="style-link-15">
+              <div className="block">
                 <span className="inline-block text-background [font-family:Montserrat,_sans-serif] text-[1.125rem] font-bold tracking-[0.4em] uppercase">LEARN AI</span>
                 {" "}
               </div>
