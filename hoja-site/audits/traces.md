@@ -1,0 +1,272 @@
+# RAPPORT TRACES
+Total 249 occurrences distinctes.
+## marque-ancienne — 96
+- `src\app\page.tsx:22` [NoticIAS] — { href: "/noticias-ia", label: "Actualités" }
+- `src\app\page.tsx:27` [NoticIAS] — { href: "/noticias-ia", label: "Actualités" }
+- `src\app\page.tsx:32` [NoticIAS] — { href: "/noticias-ia", label: "Actualités" }
+- `src\app\page.tsx:89` [NoticIAS] — { href: "/noticias-ia", label: "Actualités" }
+- `src\app\page.tsx:584` [NoticIAS] — <div className="block" data-ditto-id="style-navegaci-n-entre-noticias-del-d-a">
+- `src\app\page.tsx:1959` [NoticIAS] — <a className="flex relative mr-[17.5px] py-4 items-center grow text-background [font-family:Montserrat,_sans-serif] text-sm leading-0 whitespace-nowra
+- `src\app\accesibilidad\page.tsx:219` [NoticIAS] — <a className="h-12.5 flex relative mr-[0.5px] px-4 items-center grow text-color-001 [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespa
+- `src\app\accesibilidad\page.tsx:286` [NoticIAS] — <a className="flex relative py-2.5 px-5 justify-center items-center text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium l
+- `src\app\accesibilidad\page.tsx:331` [NoticIAS] — <a className="h-12.5 flex relative mr-[0.5px] px-4 items-center grow text-color-001 [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespa
+- `src\app\accesibilidad\page.tsx:494` [NoticIAS] — <span className="inline" data-ditto-id="style-navegaci-n-entre-noticias-del-d-a">
+- `src\app\accesibilidad\page.tsx:706` [NoticIAS] — <a className="flex relative mr-[17.5px] py-4 items-center grow text-background [font-family:Montserrat,_sans-serif] text-sm leading-0 whitespace-nowra
+- `src\app\aviso-legal\page.tsx:85` [NoticIAS] — ["style-navegaci-n-entre-noticias-del-d-a", "style-link-7"]
+- `src\app\aviso-legal\page.tsx:190` [NoticIAS] — <a className="h-12.5 flex relative mr-[0.5px] px-4 items-center grow text-color-001 [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespa
+- `src\app\aviso-legal\page.tsx:257` [NoticIAS] — <a className="flex relative py-2.5 px-5 justify-center items-center text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium l
+- `src\app\aviso-legal\page.tsx:302` [NoticIAS] — <a className="h-12.5 flex relative mr-[0.5px] px-4 items-center grow text-color-001 [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespa
+- `src\app\aviso-legal\page.tsx:459` [NoticIAS] — <a className="flex relative mr-[17.5px] py-4 items-center grow text-background [font-family:Montserrat,_sans-serif] text-sm leading-0 whitespace-nowra
+- `src\app\contacto\page.tsx:190` [NoticIAS] — <a className="h-12.5 flex relative mr-[0.5px] px-4 items-center grow text-color-001 [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespa
+- `src\app\contacto\page.tsx:257` [NoticIAS] — <a className="flex relative py-2.5 px-5 justify-center items-center text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium l
+- `src\app\contacto\page.tsx:302` [NoticIAS] — <a className="h-12.5 flex relative mr-[0.5px] px-4 items-center grow text-color-001 [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespa
+- `src\app\contacto\page.tsx:505` [NoticIAS] — <strong className="inline font-bold" data-ditto-id="style-navegaci-n-entre-noticias-del-d-a">
+- `src\app\contacto\page.tsx:593` [NoticIAS] — <a className="flex relative mr-[17.5px] py-4 items-center grow text-background [font-family:Montserrat,_sans-serif] text-sm leading-0 whitespace-nowra
+- `src\app\curso-de-chatgpt\page.tsx:375` [NoticIAS] — <a className="h-12.5 flex relative mr-[0.5px] px-4 items-center grow text-color-001 [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespa
+- `src\app\curso-de-chatgpt\page.tsx:442` [NoticIAS] — <a className="flex relative py-2.5 px-5 justify-center items-center text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium l
+- `src\app\curso-de-chatgpt\page.tsx:487` [NoticIAS] — <a className="h-12.5 flex relative mr-[0.5px] px-4 items-center grow text-color-001 [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespa
+- `src\app\curso-de-chatgpt\page.tsx:688` [NoticIAS] — <p className="block mb-[0.9rem]" data-ditto-id="style-navegaci-n-entre-noticias-del-d-a">
+- `src\app\curso-de-chatgpt\page.tsx:3408` [NoticIAS] — <a className="flex relative mr-[17.5px] py-4 items-center grow text-background [font-family:Montserrat,_sans-serif] text-sm leading-0 whitespace-nowra
+- `src\app\curso-de-gemini\page.tsx:402` [NoticIAS] — <a className="h-12.5 flex relative mr-[0.5px] px-4 items-center grow text-color-001 [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespa
+- `src\app\curso-de-gemini\page.tsx:469` [NoticIAS] — <a className="flex relative py-2.5 px-5 justify-center items-center text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium l
+- `src\app\curso-de-gemini\page.tsx:514` [NoticIAS] — <a className="h-12.5 flex relative mr-[0.5px] px-4 items-center grow text-color-001 [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespa
+- `src\app\curso-de-gemini\page.tsx:716` [NoticIAS] — <div className="block" data-ditto-id="style-navegaci-n-entre-noticias-del-d-a">
+- `src\app\curso-de-gemini\page.tsx:3150` [NoticIAS] — <a className="flex relative mr-[17.5px] py-4 items-center grow text-background [font-family:Montserrat,_sans-serif] text-sm leading-0 whitespace-nowra
+- `src\app\curso-de-make\page.tsx:388` [NoticIAS] — <a className="h-12.5 flex relative mr-[0.5px] px-4 items-center grow text-color-001 [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespa
+- `src\app\curso-de-make\page.tsx:455` [NoticIAS] — <a className="flex relative py-2.5 px-5 justify-center items-center text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium l
+- `src\app\curso-de-make\page.tsx:500` [NoticIAS] — <a className="h-12.5 flex relative mr-[0.5px] px-4 items-center grow text-color-001 [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespa
+- `src\app\curso-de-make\page.tsx:692` [NoticIAS] — <svg className="w-auto h-12.5 block relative overflow-hidden" data-ditto-id="style-navegaci-n-entre-noticias-del-d-a" data-component="image" height="3
+- `src\app\curso-de-make\page.tsx:2915` [NoticIAS] — <a className="flex relative mr-[17.5px] py-4 items-center grow text-background [font-family:Montserrat,_sans-serif] text-sm leading-0 whitespace-nowra
+- `src\app\curso-ia\page.tsx:276` [NoticIAS] — <a className="h-12.5 flex relative mr-[0.5px] px-4 items-center grow text-color-001 [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespa
+- `src\app\curso-ia\page.tsx:343` [NoticIAS] — <a className="flex relative py-2.5 px-5 justify-center items-center text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium l
+- `src\app\curso-ia\page.tsx:388` [NoticIAS] — <a className="h-12.5 flex relative mr-[0.5px] px-4 items-center grow text-color-001 [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespa
+- `src\app\curso-ia\page.tsx:585` [NoticIAS] — <h2 className="block text-background text-[2.0625rem] font-bold leading-8" data-ditto-id="style-navegaci-n-entre-noticias-del-d-a" data-component="hea
+- `src\app\curso-ia\page.tsx:2405` [NoticIAS] — <a className="flex relative mr-[17.5px] py-4 items-center grow text-background [font-family:Montserrat,_sans-serif] text-sm leading-0 whitespace-nowra
+- `src\app\empresas\page.tsx:264` [NoticIAS] — <a className="h-12.5 flex relative mr-[0.5px] px-4 items-center grow text-color-001 [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespa
+- `src\app\empresas\page.tsx:331` [NoticIAS] — <a className="flex relative py-2.5 px-5 justify-center items-center text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium l
+- `src\app\empresas\page.tsx:376` [NoticIAS] — <a className="h-12.5 flex relative mr-[0.5px] px-4 items-center grow text-color-001 [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespa
+- `src\app\empresas\page.tsx:580` [NoticIAS] — <div className="inline-block text-color-001 text-[2.75rem] leading-11 2xl:text-[2.9375rem] 2xl:leading-[2.9375rem]" data-ditto-id="style-navegaci-n-en
+- `src\app\empresas\page.tsx:1304` [NoticIAS] — <a className="flex relative mr-[17.5px] py-4 items-center grow text-background [font-family:Montserrat,_sans-serif] text-sm leading-0 whitespace-nowra
+- `src\app\institution\page.tsx:206` [NoticIAS] — <a className="h-12.5 flex relative mr-[0.5px] px-4 items-center grow text-color-001 [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespa
+- `src\app\institution\page.tsx:273` [NoticIAS] — <a className="flex relative py-2.5 px-5 justify-center items-center text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium l
+- `src\app\institution\page.tsx:318` [NoticIAS] — <a className="h-12.5 flex relative mr-[0.5px] px-4 items-center grow text-color-001 [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespa
+- `src\app\institution\page.tsx:551` [NoticIAS] — <div className="block" data-ditto-id="style-navegaci-n-entre-noticias-del-d-a">
+- `src\app\institution\page.tsx:1231` [NoticIAS] — <a className="flex relative mr-[17.5px] py-4 items-center grow text-background [font-family:Montserrat,_sans-serif] text-sm leading-0 whitespace-nowra
+- `src\app\noticias-ia\page.tsx:210` [NoticIAS] — <a className="h-12.5 flex relative mr-[0.5px] px-4 items-center grow text-primary [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespace
+- `src\app\noticias-ia\page.tsx:277` [NoticIAS] — <a className="flex relative py-2.5 px-5 justify-center items-center text-primary [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium lea
+- `src\app\noticias-ia\page.tsx:322` [NoticIAS] — <a className="h-12.5 flex relative mr-[0.5px] px-4 items-center grow text-primary [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespace
+- `src\app\noticias-ia\page.tsx:397` [NoticIAS] — <a className="w-9 h-9 border border-solid border-surface-3 flex rounded-[999px] justify-center items-center text-color-032 [font-family:Montserrat,_sa
+- `src\app\noticias-ia\page.tsx:403` [NoticIAS] — <a className="w-9 h-9 border border-solid border-surface-3 flex rounded-[999px] justify-center items-center text-color-032 [font-family:Montserrat,_sa
+- `src\app\noticias-ia\page.tsx:408` [NoticIAS] — <a className="w-9 h-9 border border-solid border-surface-3 flex rounded-[999px] justify-center items-center text-color-032 [font-family:Montserrat,_sa
+- `src\app\noticias-ia\page.tsx:411` [NoticIAS] — <a className="w-9 h-9 border border-solid border-surface-3 flex rounded-[999px] justify-center items-center text-color-032 [font-family:Montserrat,_sa
+- `src\app\noticias-ia\page.tsx:514` [NoticIAS] — <a className="flex relative mr-[17.5px] py-4 items-center grow text-primary [font-family:Montserrat,_sans-serif] text-sm leading-0 whitespace-nowrap t
+- `src\app\politica-de-cookies\page.tsx:241` [NoticIAS] — <a className="h-12.5 flex relative mr-[0.5px] px-4 items-center grow text-color-001 [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespa
+- `src\app\politica-de-cookies\page.tsx:308` [NoticIAS] — <a className="flex relative py-2.5 px-5 justify-center items-center text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium l
+- `src\app\politica-de-cookies\page.tsx:353` [NoticIAS] — <a className="h-12.5 flex relative mr-[0.5px] px-4 items-center grow text-color-001 [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespa
+- `src\app\politica-de-cookies\page.tsx:516` [NoticIAS] — <b className="inline font-bold" data-ditto-id="style-navegaci-n-entre-noticias-del-d-a">
+- `src\app\politica-de-cookies\page.tsx:668` [NoticIAS] — <a className="flex relative mr-[17.5px] py-4 items-center grow text-background [font-family:Montserrat,_sans-serif] text-sm leading-0 whitespace-nowra
+- `src\app\politica-de-privacidad\page.tsx:203` [NoticIAS] — <a className="h-12.5 flex relative mr-[0.5px] px-4 items-center grow text-color-001 [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespa
+- `src\app\politica-de-privacidad\page.tsx:270` [NoticIAS] — <a className="flex relative py-2.5 px-5 justify-center items-center text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium l
+- `src\app\politica-de-privacidad\page.tsx:315` [NoticIAS] — <a className="h-12.5 flex relative mr-[0.5px] px-4 items-center grow text-color-001 [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespa
+- `src\app\politica-de-privacidad\page.tsx:523` [NoticIAS] — <p className="block mb-[0.9rem]" data-ditto-id="style-navegaci-n-entre-noticias-del-d-a">
+- `src\app\politica-de-privacidad\page.tsx:1097` [NoticIAS] — <a className="flex relative mr-[17.5px] py-4 items-center grow text-background [font-family:Montserrat,_sans-serif] text-sm leading-0 whitespace-nowra
+- `src\app\programa-afiliados\page.tsx:234` [NoticIAS] — <a className="h-12.5 flex relative mr-[0.5px] px-4 items-center grow text-color-001 [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespa
+- `src\app\programa-afiliados\page.tsx:301` [NoticIAS] — <a className="flex relative py-2.5 px-5 justify-center items-center text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium l
+- `src\app\programa-afiliados\page.tsx:346` [NoticIAS] — <a className="h-12.5 flex relative mr-[0.5px] px-4 items-center grow text-color-001 [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespa
+- `src\app\programa-afiliados\page.tsx:528` [NoticIAS] — <div className="w-full flex max-w-[min(100%,_1140px)] mx-15 py-2.5 flex-col grow gap-5 max-md:max-w-[min(100%,_767px)] max-md:flex-wrap max-lg:mx-0 md
+- `src\app\programa-afiliados\page.tsx:698` [NoticIAS] — <a className="flex relative mr-[17.5px] py-4 items-center grow text-background [font-family:Montserrat,_sans-serif] text-sm leading-0 whitespace-nowra
+- `src\app\registration\page.tsx:203` [NoticIAS] — <a className="h-12.5 flex relative mr-[0.5px] px-4 items-center grow text-color-001 [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespa
+- `src\app\registration\page.tsx:270` [NoticIAS] — <a className="flex relative py-2.5 px-5 justify-center items-center text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium l
+- `src\app\registration\page.tsx:315` [NoticIAS] — <a className="h-12.5 flex relative mr-[0.5px] px-4 items-center grow text-color-001 [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespa
+- `src\app\registration\page.tsx:440` [NoticIAS] — <input className="w-[34.4375rem] h-13 border border-solid border-color-015 block py-3 px-4 rounded-sm grow overflow-clip text-color-015 [font-family:i
+- `src\app\registration\page.tsx:563` [NoticIAS] — <a className="flex relative mr-[17.5px] py-4 items-center grow text-background [font-family:Montserrat,_sans-serif] text-sm leading-0 whitespace-nowra
+- `src\app\reset-password\page.tsx:83` [NoticIAS] — ["style-navegaci-n-entre-noticias-del-d-a", "style-link-7"],
+- `src\app\reset-password\page.tsx:190` [NoticIAS] — <a className="h-12.5 flex relative mr-[0.5px] px-4 items-center grow text-color-001 [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespa
+- `src\app\reset-password\page.tsx:257` [NoticIAS] — <a className="flex relative py-2.5 px-5 justify-center items-center text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium l
+- `src\app\reset-password\page.tsx:302` [NoticIAS] — <a className="h-12.5 flex relative mr-[0.5px] px-4 items-center grow text-color-001 [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespa
+- `src\app\reset-password\page.tsx:480` [NoticIAS] — <a className="flex relative mr-[17.5px] py-4 items-center grow text-background [font-family:Montserrat,_sans-serif] text-sm leading-0 whitespace-nowra
+- `src\app\sections\footer.tsx:23` [NoticIAS] — <a className="flex relative mr-[17.5px] py-4 items-center grow text-background [font-family:Montserrat,_sans-serif] text-sm leading-0 whitespace-nowra
+- `src\app\sections\hero-section.tsx:123` [NoticIAS] — <div className="block" data-ditto-id="style-navegaci-n-entre-noticias-del-d-a">
+- `src\app\sections\navbar.tsx:41` [NoticIAS] — <a className="h-12.5 flex relative mr-[0.5px] px-4 items-center grow text-color-001 [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespa
+- `src\app\sections\navbar.tsx:102` [NoticIAS] — <a className="flex relative py-2.5 px-5 justify-center items-center text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium l
+- `src\app\sections\navbar.tsx:145` [NoticIAS] — <a className="h-12.5 flex relative mr-[0.5px] px-4 items-center grow text-color-001 [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespa
+- `src\app\content.ts:21` [NoticIAS] — { href: "/noticias-ia/", label: "Actualités" }
+- `src\app\content.ts:31` [NoticIAS] — { href: "/noticias-ia/", label: "Actualités" }
+- `src\app\content.ts:41` [NoticIAS] — { href: "/noticias-ia/", label: "Actualités" }
+- `src\app\sitemap.ts:55` [NoticIAS] — url: SITE_ORIGIN + "/noticias-ia",
+- `src\app\registration\ditto.css:8` [NoticIAS] — [data-ditto-id="style-navegaci-n-entre-noticias-del-d-a"]{transition:0.3s}
+- `src\app\registration\ditto.css:29` [NoticIAS] — [data-ditto-id="style-navegaci-n-entre-noticias-del-d-a"]:hover{background-color:rgb(254, 255, 255)}
+- `src\app\registration\ditto.css:47` [NoticIAS] — [data-ditto-id="style-navegaci-n-entre-noticias-del-d-a"]:focus{background-color:rgb(245, 251, 254);border-bottom-color:rgb(60, 161, 220);border-left-
+
+## personnes — 36
+- `src\app\curso-de-chatgpt\page.tsx:3255` [Alejavi] — <img className="w-full h-33 inline max-w-full overflow-clip object-cover" data-component="image" alt="Imagen de ALEJAVI RIVERA" src="/assets/cloned/im
+- `src\app\curso-de-chatgpt\page.tsx:3262` [Alejavi] — {" ALEJAVI RIVERA "}
+- `src\app\curso-de-chatgpt\page.tsx:3287` [Alejavi] — Alejavi Rivera est une référence en vulgarisation et enseignement de l'intelligence artificielle. Ces trois dernières années, il a publié du contenu p
+- `src\app\curso-de-chatgpt\page.tsx:3291` [Alejavi] — Depuis 2019, avant l'essor d'outils comme ChatGPT, Alejavi a occupé des postes de direction en pilotant des projets de digitalisation et d'IA pour des
+- `src\app\curso-de-gemini\page.tsx:2997` [Alejavi] — <img className="w-full h-33 inline max-w-full overflow-clip object-cover" data-ditto-id="style-heading-3" data-component="image" alt="Imagen de ALEJAV
+- `src\app\curso-de-gemini\page.tsx:3004` [Alejavi] — {" ALEJAVI RIVERA "}
+- `src\app\curso-de-gemini\page.tsx:3029` [Alejavi] — Alejavi Rivera est une référence en vulgarisation et enseignement de l'intelligence artificielle. Ces trois dernières années, il a publié du contenu p
+- `src\app\curso-de-gemini\page.tsx:3033` [Alejavi] — Depuis 2019, avant l'essor d'outils comme ChatGPT, Alejavi a occupé des postes de direction en pilotant des projets de digitalisation et d'IA pour des
+- `src\app\curso-de-make\page.tsx:2705` [Jose Moral] — <img className="w-full h-33 inline max-w-full rounded-[75px] overflow-clip object-cover" data-component="avatar" alt="Imagen de JOSE MORAL" src="/asse
+- `src\app\curso-de-make\page.tsx:2712` [Jose Moral] — {" JOSE MORAL "}
+- `src\app\curso-de-make\page.tsx:2735` [Jose Moral] — Jose Moral est passionné de business digitaux et d'automatisation appliquée à la croissance des entreprises. Depuis 2021, il met en œuvre et développe
+- `src\app\curso-de-make\page.tsx:2738` [Bizum] — Il a travaillé sur des projets d'automatisation avec des entreprises comme Bizum, Realia et Grupo Giunti, entre autres, en transformant la complexité 
+- `src\app\curso-de-make\page.tsx:2741` [Jose Moral] — {"Il sera le formateur en charge de cette formation. Vous pouvez consulter le parcours de Jose Moral sur "}
+- `src\app\curso-de-make\page.tsx:2742` [josemmoral] — <a className="inline [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] bg-color-019 coursr-pointer" data-component
+- `src\app\curso-ia\page.tsx:901` [Yahir] — <iframe className="w-100.5 h-56.5 flex max-w-full overflow-clip leading-5 bg-color-007 [background-size:100%_100%] bg-no-repeat max-md:w-[22.1875rem] 
+- `src\app\curso-ia\page.tsx:913` [Yago] — Yago — Musicien et nutritionniste
+- `src\app\curso-ia\page.tsx:1172` [Alejavi] — En complément de l'accompagnement continu d'Alejavi Rivera et de l'équipe pendant tout le cours, nous incluons une session privée à la fin pour résoud
+- `src\app\curso-ia\page.tsx:1213` [Alejavi] — En complément de l'accompagnement continu d'Alejavi Rivera et de l'équipe pendant tout le cours, nous incluons une session privée à la fin pour résoud
+- `src\app\curso-ia\page.tsx:1254` [Alejavi] — En complément de l'accompagnement continu d'Alejavi Rivera et de l'équipe pendant tout le cours, nous incluons une session privée à la fin pour résoud
+- `src\app\curso-ia\page.tsx:2203` [Alejavi] — – Alejavi Rivera
+- `src\app\curso-ia\page.tsx:2238` [Alejavi] — <img className="w-full h-43 inline max-w-full overflow-clip object-cover" data-ditto-id="style-link-17" data-component="image" alt="Imagen de ALEJAVI 
+- `src\app\curso-ia\page.tsx:2245` [Alejavi] — {" ALEJAVI RIVERA "}
+- `src\app\curso-ia\page.tsx:2270` [Alejavi] — Alejavi Rivera est une référence en vulgarisation et enseignement de l'intelligence artificielle. Ces trois dernières années, il a partagé du contenu 
+- `src\app\curso-ia\page.tsx:2273` [Alejavi] — Depuis 2019, avant l'essor d'outils comme ChatGPT, Alejavi occupait déjà des postes de direction en pilotant des projets de digitalisation et d'IA ave
+- `src\app\curso-ia\page.tsx:2285` [Alejavi] — {"en dispensant la majeure partie de la formation et en accompagnant les apprenants tout au long du programme. Vous pouvez voir le parcours d'Alejavi 
+- `src\app\curso-ia\page.tsx:2286` [Alejavi] — <a className="inline [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] bg-color-019 coursr-pointer" data-component
+- `src\app\curso-ia\page.tsx:2310` [Jose Moral] — <img className="w-full h-25 inline max-w-full rounded-[75px] overflow-clip object-cover" data-component="avatar" alt="Imagen de JOSE MORAL" src="/asse
+- `src\app\curso-ia\page.tsx:2317` [Jose Moral] — {" JOSE MORAL "}
+- `src\app\curso-ia\page.tsx:2340` [Jose Moral] — Jose Moral est passionné de business digitaux et d'automatisation appliquée à la croissance des entreprises. Depuis 2021, il met en œuvre et développe
+- `src\app\curso-ia\page.tsx:2343` [Bizum] — Il a travaillé sur des projets d'automatisation avec des entreprises comme Bizum, Realia et Grupo Giunti, entre autres, en transformant la complexité 
+- `src\app\curso-ia\page.tsx:2346` [Jose Moral] — {"Il sera le formateur en charge du module automatisation. Vous pouvez voir le parcours de Jose Moral sur "}
+- `src\app\curso-ia\page.tsx:2347` [josemmoral] — <a className="inline [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] bg-color-019 coursr-pointer" data-component
+- `src\app\empresas\page.tsx:1137` [Alejavi] — Alejavi Rivera pilote la formation principale du programme, entouré de spécialistes en automatisation et en application concrète de l'IA en entreprise
+- `src\app\empresas\page.tsx:1169` [Alejavi] — <img className="w-73.5 h-73.5 inline-block max-w-full rounded-xl overflow-clip aspect-[auto_242/242] align-middle max-md:w-[7.0625rem] max-md:h-[7.062
+- `src\app\institution\page.tsx:615` [Yahir] — <iframe className="w-100.5 h-56.5 flex max-w-full overflow-clip leading-5 bg-color-007 [background-size:100%_100%] bg-no-repeat max-md:w-[22.1875rem] 
+- `src\app\institution\page.tsx:627` [Yago] — Yago — Musicien et nutritionniste
+
+## entites-es — 44
+- `src\app\accesibilidad\page.tsx:426` [Real Decreto] — {" L'entreprise gestionnaire de la marque «HOJA ACADEMY» s'est engagée à rendre son site web accessible conformément au Real Decreto 1112/2018, du 7 s
+- `src\app\accesibilidad\page.tsx:444` [ECTS] — {" en raison des exceptions et de la non-conformité des aspects indiqués ci-après."}
+- `src\app\accesibilidad\page.tsx:457` [RD 1112] — Falta de conformidad con el RD 1112/2018:
+- `src\app\accesibilidad\page.tsx:514` [RD 1112] — Vous pouvez effectuer des communications concernant les exigences d'accessibilité (article 10.2.a du RD 1112/2018), par exemple :
+- `src\app\accesibilidad\page.tsx:521` [sedeagpd] — <a className="inline text-color-007 [font-family:Montserrat,_sans-serif] text-base font-medium leading-[1.1875rem] coursr-pointer max-md:[font-size:in
+- `src\app\accesibilidad\page.tsx:539` [sedeagpd] — <a className="inline text-color-007 [font-family:Montserrat,_sans-serif] text-base font-medium leading-[1.1875rem] coursr-pointer max-md:[font-size:in
+- `src\app\accesibilidad\page.tsx:549` [RD 1112] — une Réclamation relative au respect des exigences du RD 1112/2018 ou
+- `src\app\accesibilidad\page.tsx:556` [RD 1112] — contenus exclus du champ d'application du RD 1112/2018 conformément à ce que prévoit l'article 3, paragraphe 4
+- `src\app\accesibilidad\page.tsx:573` [RD 1112] — Si une demande d'informations accessibles ou une réclamation reste sans réponse favorable, si vous n'êtes pas d'accord avec la décision prise, ou si l
+- `src\app\accesibilidad\page.tsx:576` [RD 1112] — {"La procédure de réclamation prévue à l'article 13 du RD 1112/2018 peut être engagée par le biais de "}
+- `src\app\accesibilidad\page.tsx:577` [sedeagpd] — <a className="inline [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] coursr-pointer" data-component="link" href=
+- `src\app\aviso-legal\page.tsx:397` [Ley 34] — {" Conformément à l'article 10 de la Ley 34/2002 relative aux Services de la Société de l'Information et au Commerce Électronique, les informations su
+- `src\app\aviso-legal\page.tsx:416` [Caser] — C/ Casería Aguirre, 44, 18013. Granada
+- `src\app\curso-de-chatgpt\page.tsx:1054` [ECTS] — Les aspects les plus récurrents des avis sur nos formations.
+- `src\app\curso-de-gemini\page.tsx:1072` [ECTS] — Les aspects les plus récurrents des avis sur nos formations.
+- `src\app\curso-de-make\page.tsx:2844` [ECTS] — Les aspects les plus récurrents des avis sur nos formations.
+- `src\app\curso-ia\page.tsx:599` [ECTS] — {" (2 ECTS, Crédit Universitaire Européen)"}
+- `src\app\curso-ia\page.tsx:1893` [ECTS] — {" Les aspects les plus récurrents des avis sur nos formations. "}
+- `src\app\curso-ia\page.tsx:2013` [Isabel I] — {" la possibilité d'obtenir un certificat universitaire en Intelligence Artificielle de l'Universidad Isabel I valant également 2 crédits ECTS.* "}
+- `src\app\empresas\page.tsx:37` [FUNDAE] — { text: "Éligible au financement FUNDAE" }
+- `src\app\empresas\page.tsx:767` [FUNDAE] — <img className="w-[8.9375rem] h-[5.9375rem] inline-block max-w-full overflow-clip aspect-[auto_800/534] align-middle max-md:w-32 max-md:h-[5.3125rem] 
+- `src\app\empresas\page.tsx:962` [FUNDAE] — Formation en IA pour entreprises éligible au financement FUNDAE
+- `src\app\empresas\page.tsx:975` [FUNDAE] — {"FUNDAE est une initiative qui permet aux entreprises de former leurs salariés grâce à des bonifications sur les cotisations de Sécurité sociale, et 
+- `src\app\empresas\page.tsx:1010` [FUNDAE] — <a className="h-[3.8375rem] inline-block p-3.5 rounded-[25px] text-background [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leadin
+- `src\app\politica-de-cookies\page.tsx:626` [NIF] — Notez que si vous ne souhaitez pas recevoir de cookies, nous ne pourrons plus garantir le bon fonctionnement de notre site web. Certaines fonctions du
+- `src\app\politica-de-privacidad\page.tsx:33` [NIF] — { text: "Droit à la limitation du traitement de vos données, ce qui signifie que dans certains cas vous pouvez nous demander d'en suspendre temporaire
+- `src\app\politica-de-privacidad\page.tsx:34` [NIF] — { text: "Droit de demander la portabilité de vos données personnelles. Cela signifie que vous aurez le droit de recevoir, dans un format structuré, co
+- `src\app\politica-de-privacidad\page.tsx:35` [Agencia Esp] — { text: "Vous pouvez également introduire une réclamation auprès de l'autorité de contrôle en matière de protection des données, notamment auprès de l
+- `src\app\politica-de-privacidad\page.tsx:425` [AI VENTURE] — AI VENTURE S.L., avec NIF B19870641 A et domicile fiscal à C/ Casería Aguirre, 44, 18013. Granada, titulaire du site web https://hoja-academy.com/ et 
+- `src\app\politica-de-privacidad\page.tsx:449` [FUNDAE] — Afin de garantir le bon déroulement des cours, la délivrance de certificats officiels et le respect des exigences d'entités externes (par exemple FUND
+- `src\app\politica-de-privacidad\page.tsx:720` [AI VENTURE] — AI VENTURE S.L. s'engage à maintenir l'accès au contenu et sa disponibilité dans des conditions normales de fonctionnement.
+- `src\app\politica-de-privacidad\page.tsx:746` [AI VENTURE] — AI VENTURE S.L. se réserve le droit de mettre à jour, de modifier ou d'améliorer les contenus, outils, structure, méthodologie ou calendrier des cours
+- `src\app\politica-de-privacidad\page.tsx:772` [AI VENTURE] — AI VENTURE S.L. ne garantit pas l'obtention de résultats économiques, professionnels ou empresariaux spécifiques découlant de l'application des connai
+- `src\app\politica-de-privacidad\page.tsx:789` [AI VENTURE] — {" L'utilisateur reconnaît et accepte que tous les contenus audiovisuels, supports pédagogiques, enregistrements de cours (en direct par visioconféren
+- `src\app\politica-de-privacidad\page.tsx:805` [AI VENTURE] — Le non-respect de l'une de ces obligations sera considéré comme une infraction grave, autorisant AI VENTURE S.L. à engager les actions légales appropr
+- `src\app\politica-de-privacidad\page.tsx:819` [AI VENTURE] — AI VENTURE S.L. se réserve le droit de suspendre ou d'annuler l'accès au campus virtuel des élèves qui ne respecteraient pas les présentes conditions,
+- `src\app\politica-de-privacidad\page.tsx:855` [Granada] — Pour la résolution de tout litige, les parties se soumettent expressément à la juridiction des tribunaux de Granada, Espagne, renonçant à tout autre f
+- `src\app\politica-de-privacidad\page.tsx:1023` [ECTS] — HOJA ACADEMY ne sera pas responsable des dommages indirects ou accidentels (perte de revenus, de commissions ou autres) pouvant découler de défaillanc
+- `src\app\politica-de-privacidad\page.tsx:1057` [NIF] — Le présent Accord constitue un contrat électronique légalement contraignant. En complétant la demande et en s'inscrivant au Programme Partenaires & Af
+- `src\app\politica-de-privacidad\page.tsx:1067` [Grenade] — Le présent Accord est régi et interprété conformément à la législation espagnole et, pour ce qui en est applicable, à la réglementation de l'Union eur
+- `src\app\sections\en-solo8-section.tsx:92` [FUNDAE] — <img className="w-[15.3125rem] h-[10.1875rem] inline-block max-w-full overflow-clip aspect-[auto_800/534] align-middle max-md:w-45 max-md:h-30 md:max-
+- `src\app\sections\feature-grid-section2.tsx:123` [Isabel I] — À la fin du Programme, vous n'aurez pas seulement appris. Vous pourrez aussi obtenir une double certification délivrée par HOJA ACADEMY et l'Universid
+- `src\app\sections\feature-grid-section2.tsx:150` [FUNDAE] — Le Programme Intensif est finançable par les entreprises via FUNDAE. Nous proposons également des plans de financement en paiements échelonnés.
+- `src\app\globals.css:454` [NIF] — src: url("/assets/cloned/fonts/d3676560281b.ttf") format("truetype"), url(data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAHvwAAsAAAAA3E
+
+## emails-tel — 0
+
+## urls — 62
+- `src\app\page.tsx:136` [brevo] — ["style-image-4", "n306", "n307", "style-div-31", "n309", "style-iframe", "n311", "n312", "style-brevo-conversations", "style-div-12", "n315", "n316",
+- `src\app\page.tsx:2193` [brevo] — <div className="box-content w-15 h-15 block fixed right-5 bottom-5 z-9999 max-w-[calc(100%_-_40px)] max-h-[calc(100%_-_40px)]" id="brevo-conversations
+- `src\app\page.tsx:2195` [brevo] — <div className="w-15 h-15 min-h-full block absolute min-w-full max-w-full max-h-full overflow-hidden" title="Brevo live chat">
+- `src\app\page.tsx:2227` [brevo] — <symbol id="chat-icon-brevo" fill="none" viewBox="0 0 40 40">
+- `src\app\page.tsx:2231` [brevo] — <symbol id="brevo-bot" viewBox="0 0 24 22">
+- `src\app\accesibilidad\page.tsx:139` [brevo] — ["n312", "style-brevo-conversations"]
+- `src\app\accesibilidad\page.tsx:940` [brevo] — <div className="box-content w-15 h-15 block fixed right-5 bottom-5 z-9999 max-w-[calc(100%_-_40px)] max-h-[calc(100%_-_40px)]" id="brevo-conversations
+- `src\app\accesibilidad\page.tsx:942` [brevo] — <div className="w-15 h-15 min-h-full block absolute min-w-full max-w-full max-h-full overflow-hidden" data-ditto-id="style-div-92" title="Brevo live c
+- `src\app\accesibilidad\page.tsx:974` [brevo] — <symbol id="chat-icon-brevo" fill="none" viewBox="0 0 40 40">
+- `src\app\accesibilidad\page.tsx:978` [brevo] — <symbol id="brevo-bot" viewBox="0 0 24 22">
+- `src\app\aviso-legal\page.tsx:693` [brevo] — <div className="box-content w-15 h-15 block fixed right-5 bottom-5 z-9999 max-w-[calc(100%_-_40px)] max-h-[calc(100%_-_40px)]" data-ditto-id="style-di
+- `src\app\aviso-legal\page.tsx:695` [brevo] — <div className="w-15 h-15 min-h-full block absolute min-w-full max-w-full max-h-full overflow-hidden" data-ditto-id="style-div-27" title="Brevo live c
+- `src\app\aviso-legal\page.tsx:727` [brevo] — <symbol id="chat-icon-brevo" fill="none" viewBox="0 0 40 40">
+- `src\app\aviso-legal\page.tsx:731` [brevo] — <symbol id="brevo-bot" viewBox="0 0 24 22">
+- `src\app\curso-de-chatgpt\page.tsx:1175` [brevo] — <img className="w-[0.9375rem] h-[0.9375rem] inline max-w-full mx-px overflow-clip [vertical-align:-1.5px]" data-ditto-id="style-brevo-conversations" d
+- `src\app\curso-de-gemini\page.tsx:1200` [brevo] — <span className="inline" data-ditto-id="style-brevo-conversations">
+- `src\app\curso-de-make\page.tsx:1230` [brevo] — <div className="flex justify-end items-center max-md:ml-10" data-ditto-id="style-brevo-conversations">
+- `src\app\curso-ia\page.tsx:1093` [brevo] — <svg className="w-auto h-25 inline opacity-80 overflow-hidden [filter:drop-shadow(var(--clr-7)_1px_0px_6px)] 2xl:hidden" data-ditto-id="style-brevo-co
+- `src\app\curso-ia\page.tsx:2637` [brevo] — <div className="box-content w-15 h-15 block fixed right-5 bottom-5 z-9999 max-w-[calc(100%_-_40px)] max-h-[calc(100%_-_40px)]" id="brevo-conversations
+- `src\app\curso-ia\page.tsx:2639` [brevo] — <div className="w-15 h-15 min-h-full block absolute min-w-full max-w-full max-h-full overflow-hidden" title="Brevo live chat">
+- `src\app\curso-ia\page.tsx:2671` [brevo] — <symbol id="chat-icon-brevo" fill="none" viewBox="0 0 40 40">
+- `src\app\curso-ia\page.tsx:2675` [brevo] — <symbol id="brevo-bot" viewBox="0 0 24 22">
+- `src\app\empresas\page.tsx:128` [brevo] — ["style-menu-3", "n303", "style-div-41", "style-image-4", "n306", "n307", "style-div-31", "n309", "style-iframe", "n311", "n312", "style-brevo-convers
+- `src\app\empresas\page.tsx:881` [brevo] — <a className="h-[2.9375rem] inline-block p-3.5 rounded-[25px] text-background [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leadin
+- `src\app\empresas\page.tsx:1226` [brevo] — <a className="h-[3.1875rem] inline-block py-4 px-10 rounded-[30px] text-color-052 [font-family:Montserrat,_sans-serif] text-lg font-medium leading-[1.
+- `src\app\empresas\page.tsx:1538` [brevo] — <div className="box-content w-15 h-15 block fixed right-5 bottom-5 z-9999 max-w-[calc(100%_-_40px)] max-h-[calc(100%_-_40px)]" id="brevo-conversations
+- `src\app\empresas\page.tsx:1540` [brevo] — <div className="w-15 h-15 min-h-full block absolute min-w-full max-w-full max-h-full overflow-hidden" title="Brevo live chat">
+- `src\app\empresas\page.tsx:1572` [brevo] — <symbol id="chat-icon-brevo" fill="none" viewBox="0 0 40 40">
+- `src\app\empresas\page.tsx:1576` [brevo] — <symbol id="brevo-bot" viewBox="0 0 24 22">
+- `src\app\institution\page.tsx:1050` [brevo] — <div className="h-12.5 block" data-ditto-id="style-brevo-conversations" />
+- `src\app\institution\page.tsx:1465` [brevo] — <div className="box-content w-15 h-15 block fixed right-5 bottom-5 z-9999 max-w-[calc(100%_-_40px)] max-h-[calc(100%_-_40px)]" id="brevo-conversations
+- `src\app\institution\page.tsx:1467` [brevo] — <div className="w-15 h-15 min-h-full block absolute min-w-full max-w-full max-h-full overflow-hidden" title="Brevo live chat">
+- `src\app\institution\page.tsx:1499` [brevo] — <symbol id="chat-icon-brevo" fill="none" viewBox="0 0 40 40">
+- `src\app\institution\page.tsx:1503` [brevo] — <symbol id="brevo-bot" viewBox="0 0 24 22">
+- `src\app\politica-de-cookies\page.tsx:156` [brevo] — ["n312", "style-brevo-conversations"],
+- `src\app\politica-de-cookies\page.tsx:900` [brevo] — <div className="box-content w-15 h-15 block fixed right-5 bottom-5 z-9999 max-w-[calc(100%_-_40px)] max-h-[calc(100%_-_40px)]" data-ditto-id="style-sv
+- `src\app\politica-de-cookies\page.tsx:902` [brevo] — <div className="w-15 h-15 min-h-full block absolute min-w-full max-w-full max-h-full overflow-hidden" title="Brevo live chat">
+- `src\app\politica-de-cookies\page.tsx:934` [brevo] — <symbol id="chat-icon-brevo" fill="none" viewBox="0 0 40 40">
+- `src\app\politica-de-cookies\page.tsx:938` [brevo] — <symbol id="brevo-bot" viewBox="0 0 24 22">
+- `src\app\politica-de-privacidad\page.tsx:1091` [brevo] — <div className="w-1/3 flex relative min-w-0 pt-2.5 flex-col gap-y-7.5 max-md:w-full max-md:flex-wrap max-lg:items-start md:max-lg:w-[78%] 2xl:pt-0" da
+- `src\app\politica-de-privacidad\page.tsx:1331` [brevo] — <div className="box-content w-15 h-15 block fixed right-5 bottom-5 z-9999 max-w-[calc(100%_-_40px)] max-h-[calc(100%_-_40px)]" id="brevo-conversations
+- `src\app\politica-de-privacidad\page.tsx:1333` [brevo] — <div className="w-15 h-15 min-h-full block absolute min-w-full max-w-full max-h-full overflow-hidden" data-ditto-id="style-span-41" title="Brevo live 
+- `src\app\politica-de-privacidad\page.tsx:1365` [brevo] — <symbol id="chat-icon-brevo" fill="none" viewBox="0 0 40 40">
+- `src\app\politica-de-privacidad\page.tsx:1369` [brevo] — <symbol id="brevo-bot" viewBox="0 0 24 22">
+- `src\app\programa-afiliados\page.tsx:729` [brevo] — <h3 className="block mt-2 mb-1.5 text-color-014 [font-family:Montserrat,_sans-serif] text-[0.8125rem] leading-1.5 uppercase" data-ditto-id="style-brev
+- `src\app\programa-afiliados\page.tsx:930` [brevo] — <div className="box-content w-15 h-15 block fixed right-5 bottom-5 z-9999 max-w-[calc(100%_-_40px)] max-h-[calc(100%_-_40px)]" id="brevo-conversations
+- `src\app\programa-afiliados\page.tsx:932` [brevo] — <div className="w-15 h-15 min-h-full block absolute min-w-full max-w-full max-h-full overflow-hidden" title="Brevo live chat">
+- `src\app\programa-afiliados\page.tsx:964` [brevo] — <symbol id="chat-icon-brevo" fill="none" viewBox="0 0 40 40">
+- `src\app\programa-afiliados\page.tsx:968` [brevo] — <symbol id="brevo-bot" viewBox="0 0 24 22">
+- `src\app\registration\page.tsx:797` [brevo] — <div className="box-content w-15 h-15 block fixed right-5 bottom-5 z-9999 max-w-[calc(100%_-_40px)] max-h-[calc(100%_-_40px)]" data-ditto-id="style-ch
+- `src\app\registration\page.tsx:799` [brevo] — <div className="w-15 h-15 min-h-full block absolute min-w-full max-w-full max-h-full overflow-hidden" title="Brevo live chat">
+- `src\app\registration\page.tsx:831` [brevo] — <symbol id="chat-icon-brevo" fill="none" viewBox="0 0 40 40">
+- `src\app\registration\page.tsx:835` [brevo] — <symbol id="brevo-bot" viewBox="0 0 24 22">
+- `src\app\reset-password\page.tsx:714` [brevo] — <div className="box-content w-15 h-15 block fixed right-5 bottom-5 z-9999 max-w-[calc(100%_-_40px)] max-h-[calc(100%_-_40px)]" data-ditto-id="style-he
+- `src\app\reset-password\page.tsx:716` [brevo] — <div className="w-15 h-15 min-h-full block absolute min-w-full max-w-full max-h-full overflow-hidden" data-ditto-id="style-div-7" title="Brevo live ch
+- `src\app\reset-password\page.tsx:748` [brevo] — <symbol id="chat-icon-brevo" fill="none" viewBox="0 0 40 40">
+- `src\app\reset-password\page.tsx:752` [brevo] — <symbol id="brevo-bot" viewBox="0 0 24 22">
+- `src\app\svgs\svg-icon20.tsx:33` [brevo] — <symbol id="chat-icon-brevo" fill="none" viewBox="0 0 40 40">
+- `src\app\svgs\svg-icon20.tsx:37` [brevo] — <symbol id="brevo-bot" viewBox="0 0 24 22">
+- `src\app\ditto-meta.ts:20` [brevo] — { 0: { anchor: "style-image-4" }, 3: { anchor: "style-div-31" }, 5: { anchor: "style-iframe" }, 8: { anchor: "style-brevo-conversations" }, 9: { ancho
+- `src\app\curso-ia\ditto.css:7` [brevo] — [data-ditto-id="style-brevo-conversations"]{transition:0.5s}
+- `src\app\curso-ia\ditto.css:44` [brevo] — [data-ditto-id="style-brevo-conversations"]:focus{outline-color:rgb(29, 29, 29);outline-style:auto;outline-width:3px}
+
+## es-visible — 9
+- `src\app\curso-de-chatgpt\page.tsx:2459` [videollamada] — <a className="flex py-5 justify-start items-start [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] [overflow-wrap
+- `src\app\curso-de-gemini\page.tsx:89` [videollamada] — { id: "ld-table-list-item-21495", href: "https://hoja-academy.com/courses/experto-en-gemini/lessons/8-videollamadas/topics/8-1-videollamada-desde-app/
+- `src\app\curso-de-gemini\page.tsx:90` [videollamada] — { id: "ld-table-list-item-21497", href: "https://hoja-academy.com/courses/experto-en-gemini/lessons/8-videollamadas/topics/8-2-compartir-pantalla-desd
+- `src\app\curso-de-gemini\page.tsx:91` [videollamada] — { id: "ld-table-list-item-21499", href: "https://hoja-academy.com/courses/experto-en-gemini/lessons/8-videollamadas/topics/8-3-videollamada-y-comparti
+- `src\app\curso-de-gemini\page.tsx:2062` [videollamada] — <a className="flex flex-1 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem]" data-ditto-id="style-link-23" data-co
+- `src\app\curso-de-gemini\page.tsx:2067` [videollamada] — {" 8. Videollamadas "}
+- `src\app\curso-de-gemini\page.tsx:2103` [videollamada] — {" 8. Videollamadas "}
+- `src\app\curso-de-gemini\page.tsx:2147` [videollamada] — <a className="flex py-5 justify-start items-start [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] [overflow-wrap
+- `src\app\sections\el-mundo-est-section.tsx:20` [videollamada] — </>, kind2: "heading", title: "\n\t\t\t\t\t\t\tFormation ", title2: "personalizada\t\t\t\t\t\t", description: "\n\t\t\t\t\t\tAprende de forma práctica
+
+## i18n — 2
+- `src\app\curso-de-gemini\page.tsx:43` [es-ES] — { id: "ld-table-list-item-21430", href: "https://hoja-academy.com/courses/experto-en-gemini/lessons/1-introduccion-2/topics/1-4-ajustes-esenciales/", 
+- `src\app\politica-de-cookies\page.tsx:54` [es-ES] — { text: "Opera: ", href: "https://help.opera.com/Windows/12.00/es-ES/cookies.html", label: "https://help.opera.com/Windows/12.00/es-ES/cookies.html" }
+
+
+---
+## Rejeu post-nettoyage (21:10) — VALIDATION AUDIT
+- Grep visibles sur `out/*.html` (textes rendus) : **0 trace** (marque, personnes, entites, assets critiques).
+- Seules correspondances brutes restantes : la route `/noticias-ia` (nom de route volontairement conserve, 'noticias' = mot espagnol courant) et les hashes de chunks JS.
+- Decision enregistree: Alexis/Pablo -> 'Apprenant — secteur ...' ; 10.3 Edicion -> 'Edition d'images' ; meet.brevo.com/hoja-academy = outils RDV de HOJA (non herite) -> conserve.
+- **Carte 'Recherche finale des traces' : DONE** (re-jeu prevu encore une fois apres phase contenu + QA).

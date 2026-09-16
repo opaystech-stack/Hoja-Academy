@@ -1,0 +1,18 @@
+import type { DittoNodeMetaMap } from "../ditto-meta";
+import type { ListRow8Styles } from "../_styles";
+import { cn } from "../../../lib/utils";
+export type ListRow8Data = {
+  ariacurrent?: string;
+  href: string;
+  label: string;
+};
+/** A list row. */
+export default function ListRow8({ d, meta, styles }: { d: ListRow8Data; meta: DittoNodeMetaMap; styles: ListRow8Styles }) {
+  return (
+    <li data-ditto-id={meta[0]?.anchor} className="flex relative">
+      <a data-ditto-id={meta[1]?.anchor} className={cn("h-[1.5625rem] flex relative py-3 items-center grow text-background text-[0.8125rem] leading-px tracking-[0.1px] whitespace-nowrap text-nowrap coursr-pointer 2xl:text-[0.9375rem]", styles.className)} data-component="link" aria-current={d.ariacurrent} href={d.href}>
+        {d.label}
+      </a>
+    </li>
+  );
+}

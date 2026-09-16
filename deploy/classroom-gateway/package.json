@@ -1,0 +1,13 @@
+{
+  "name": "opays-classroom-gateway",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Passerelle OAuth Google Classroom — Académie OPAYS (aucune dépendance externe)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Espace apprenant — HOJA ACADEMY</title>
+<link rel="icon" type="image/png" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/icon.png">
+<meta name="robots" content="noindex">
+<style>
+  /* ---- Tokens (harmonisés Hoja SaaS) ---- */
+  :root{
+    --bg:#090d16;--card:#111726;--card-hover:#151d30;--line:#1e293b;
+    --text:#f1f5f9;--muted:#94a3b8;--teal:#10b981;--teal-light:#34d399;--blue:#38bdf8;
+    --amber:#f59e0b;--red:#f43f5e;--radius:10px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{background:var(--bg);}
+  body{font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.5;-webkit-font-smoothing:antialiased;}
+  a{color:var(--blue);text-decoration:none;}
+  a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--teal);outline-offset:2px;border-radius:6px;}
+
+  /* ---- Header collant compact ---- */
+  .top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:10px;padding:10px 16px;background:rgba(9,13,22,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+  .brand{display:flex;align-items:center;gap:8px;min-width:0;}
+  .brand svg,.brand img{width:26px;height:26px;flex:0 0 auto;}
+  .brand b{font-size:12.5px;letter-spacing:.12em;white-space:nowrap;}
+  .brand small{display:block;color:var(--teal);font-size:10px;letter-spacing:.28em;}
+  .top .who{margin-left:auto;text-align:right;min-width:0;}
+  .top .who .nm{font-size:12.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:40vw;}
+  .top .who .rl{font-size:10px;color:var(--muted);letter-spacing:.06em;}
+  .logout{background:none;border:1px solid var(--line);color:var(--muted);font-size:10.5px;border-radius:999px;padding:8px 12px;min-height:44px;cursor:pointer;font-family:inherit;}
+  .logout:hover{color:var(--text);border-color:rgba(255,255,255,.2);}
+
+  main{max-width:960px;margin:0 auto;padding:14px 14px 56px;display:flex;flex-direction:column;gap:14px;word-wrap:break-word;overflow-wrap:break-word;}
+
+  /* ---- Cartes ---- */
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 16px;}
+  .card h2{font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;margin-bottom:10px;}
+  .kicker{font-size:12px;color:var(--muted);}
+  .big{font-size:19px;font-weight:700;}
+  @media (min-width:640px){ .big{font-size:22px;} .card{padding:20px;} }
+
+  /* ---- Bannières ---- */
+  .banner{border-radius:var(--radius);padding:12px 14px;font-size:13px;border:1px solid var(--line);}
+  .banner.info{background:rgba(56,189,248,.08);border-color:rgba(56,189,248,.35);color:#bae6fd;}
+  .banner.warn{background:rgba(245,158,11,.09);border-color:rgba(245,158,11,.35);color:#fcd34d;}
+  .banner .bt{font-weight:700;font-size:12.5px;letter-spacing:.04em;margin-bottom:2px;}
+  [hidden]{display:none !important;}
+
+  /* ---- Q1 Où je suis + Q3 Progression ---- */
+  .pos-meta{display:flex;flex-wrap:wrap;gap:6px 14px;color:var(--muted);font-size:12.5px;margin-top:4px;}
+  .prog{margin-top:14px;}
+  .prog-row{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:13px;}
+  .prog-row .n{font-weight:800;font-size:16px;color:var(--teal);}
+  .bar{height:10px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid var(--line);overflow:hidden;margin-top:6px;}
+  .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--teal),#4ade80);border-radius:999px;transition:width .5s ease;}
+  .prog-note{font-size:11px;color:var(--muted);margin-top:5px;}
+
+  /* ---- Q2 CTA prochaine action ---- */
+  .cta-card{border-color:rgba(34,197,94,.35);background:linear-gradient(180deg,rgba(34,197,94,.07),var(--card) 55%);}
+  .cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 20px;border-radius:999px;background:var(--teal);color:#04140a;font-weight:800;font-size:15px;letter-spacing:.02em;margin-top:10px;width:100%;}
+  @media (min-width:640px){ .cta{width:auto;} }
+  a.cta:hover{filter:brightness(1.08);}
+  .cta.alt{background:var(--blue);color:#04121c;}
+  .cta-meta{font-size:12.5px;color:var(--muted);margin-top:8px;}
+  .cta-meta b{color:var(--text);}
+
+  /* ---- Badges ---- */
+  .badge{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:700;letter-spacing:.05em;padding:4px 9px;border-radius:999px;border:1px solid var(--line);white-space:nowrap;}
+  .b-assigned{background:rgba(56,189,248,.12);border-color:rgba(56,189,248,.4);color:#7dd3fc;}
+  .b-draft{background:rgba(148,163,184,.12);border-color:rgba(148,163,184,.4);color:#cbd5e1;}
+  .b-submitted{background:rgba(245,158,11,.12);border-color:rgba(245,158,11,.4);color:#fcd34d;}
+  .b-returned{background:rgba(167,139,250,.14);border-color:rgba(167,139,250,.45);color:#d8b4fe;}
+  .b-graded{background:rgba(34,197,94,.12);border-color:rgba(34,197,94,.45);color:#86efac;}
+  .b-late{background:rgba(239,68,68,.13);border-color:rgba(239,68,68,.45);color:#fca5a5;}
+  .b-pending{background:rgba(148,163,184,.08);color:var(--muted);}
+  .b-cur{background:rgba(56,189,248,.14);border-color:rgba(56,189,248,.5);color:#7dd3fc;}
+
+  /* ---- Q4 Missions ---- */
+  .missions-grid{display:grid;gap:12px;}
+  @media (min-width:720px){ .missions-grid{grid-template-columns:1fr 1fr;} }
+  .mission{border:1px solid var(--line);border-radius:12px;padding:14px;background:rgba(255,255,255,.02);display:flex;flex-direction:column;gap:8px;}
+  .mission .m-top{display:flex;flex-wrap:wrap;gap:6px;align-items:center;}
+  .mission .m-title{font-size:14.5px;font-weight:700;}
+  .mission .m-meta{font-size:12px;color:var(--muted);}
+  .mission .m-link{min-height:44px;display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:700;border:1px solid rgba(56,189,248,.4);color:var(--blue);border-radius:10px;padding:8px 14px;width:100%;justify-content:center;}
+  @media (min-width:640px){ .mission .m-link{width:auto;} }
+  .mission .m-link:hover{background:rgba(56,189,248,.08);}
+  .m-nolink{font-size:11.5px;color:var(--muted);font-style:italic;}
+  .m-modules a{margin-right:8px;}
+  .chip-mod{display:inline-flex;align-items:center;font-size:11px;font-weight:700;padding:3px 8px;border-radius:8px;border:1px solid var(--line);color:var(--blue);background:rgba(56,189,248,.06);}
+
+  /* ---- Q6 Classroom ---- */
+  .cl-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
+  .cl-state{font-size:14px;font-weight:700;}
+  .btn-line{min-height:44px;display:inline-flex;align-items:center;justify-content:center;padding:10px 18px;border-radius:999px;border:1px solid rgba(56,189,248,.45);color:var(--blue);font-weight:700;font-size:13.5px;background:transparent;cursor:pointer;font-family:inherit;}
+  .btn-line:hover{background:rgba(56,189,248,.08);}
+
+  /* ---- Q5 Planning ---- */
+  details.week{border:1px solid var(--line);border-radius:12px;margin-bottom:8px;background:rgba(255,255,255,.02);overflow:hidden;}
+  details.week summary{display:flex;align-items:center;gap:10px;min-height:48px;padding:12px 14px;cursor:pointer;font-weight:700;font-size:13.5px;list-style:none;}
+  details.week summary::-webkit-details-marker{display:none;}
+  details.week summary .chev{margin-left:auto;color:var(--muted);transition:transform .2s;font-size:12px;}
+  details.week[open] summary .chev{transform:rotate(90deg);}
+  .wk-count{font-size:11px;font-weight:400;color:var(--muted);}
+  .mod-row{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;padding:11px 14px;border-top:1px solid var(--line);font-size:13.5px;}
+  .mod-row .num{font-weight:800;color:var(--muted);font-size:12px;letter-spacing:.04em;min-width:34px;}
+  .mod-row .t{flex:1 1 auto;min-width:0;}
+  .mod-row .t a{color:var(--text);font-weight:600;}
+  .mod-row .t a:hover{color:var(--blue);}
+  .mod-row .sub{font-size:11px;color:var(--muted);}
+  .mod-row.current{background:rgba(56,189,248,.05);}
+  .mod-row .seance{font-size:11px;color:var(--muted);white-space:nowrap;}
+
+  /* ---- Skeleton / erreur ---- */
+  .sk{display:flex;flex-direction:column;gap:14px;}
+  .sk .box{border-radius:var(--radius);background:linear-gradient(90deg,rgba(255,255,255,.04) 25%,rgba(255,255,255,.09) 50%,rgba(255,255,255,.04) 75%);background-size:200% 100%;animation:pulse 1.3s ease-in-out infinite;}
+  @keyframes pulse{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
+  .err-card{text-align:center;padding:28px 18px;}
+  .err-card p{color:var(--muted);font-size:13.5px;margin:8px 0 16px;}
+  .retry{min-height:44px;padding:10px 26px;border:0;border-radius:999px;background:var(--teal);color:#04140a;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit;}
+
+  .foot{color:var(--muted);font-size:10.5px;text-align:center;margin-top:10px;letter-spacing:.03em;}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <img src="/favicon.ico" alt="Hoja Academy">
+    <span><b>HOJA ACADEMY</b><small>LEARN AI</small></span>
+  </div>
+  <div class="who" id="hdr-who" hidden>
+    <div class="nm" id="hdr-name"></div>
+    <div class="rl">Espace apprenant</div>
+  </div>
+  <button class="logout" id="btn-logout" type="button" hidden>Se déconnecter</button>
+</header>
+
+<main>
+  <!-- Chargement -->
+  <div class="sk" id="skeleton" aria-hidden="true">
+    <div class="box" style="height:96px;"></div>
+    <div class="box" style="height:120px;"></div>
+    <div class="box" style="height:160px;"></div>
+    <div class="box" style="height:220px;"></div>
+  </div>
+
+  <!-- Erreur réseau -->
+  <div class="card err-card" id="errbox" hidden role="alert">
+    <h2 style="justify-content:center;">Connexion indisponible</h2>
+    <p id="errmsg">Impossible de charger vos données. Vérifiez votre connexion, puis réessayez.</p>
+    <button class="retry" id="btn-retry" type="button">Ressayer</button>
+  </div>
+
+  <!-- Contenu (rendu depuis /api/me) -->
+  <div id="app" hidden style="display:flex;flex-direction:column;gap:14px;">
+
+    <!-- Bannière mot de passe -->
+    <div class="banner warn" id="b-pass" hidden>
+      <div class="bt">Changez votre mot de passe provisoire</div>
+      <form id="f-pass" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;">
+        <input id="p-cur" type="password" autocomplete="current-password" placeholder="Mot de passe actuel" style="flex:1 1 160px;min-height:44px;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:#0a101c;color:var(--text);font-size:14px;">
+        <input id="p-new" type="password" autocomplete="new-password" placeholder="Nouveau (10+ caractères)" style="flex:1 1 160px;min-height:44px;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:#0a101c;color:var(--text);font-size:14px;">
+        <button class="btn" type="submit" id="p-btn" style="min-height:44px;">Mettre à jour</button>
+      </form>
+      <div id="p-msg" style="margin-top:6px;font-size:12.5px;"></div>
+    </div>
+
+    <!-- Bannière état vide global -->
+    <div class="banner info" id="b-empty" hidden>
+      <div class="bt">État actuel de votre classe</div>
+      <div id="b-empty-msgs"></div>
+    </div>
+
+    <!-- Q1 Où je suis + Q3 Progression -->
+    <section class="card" aria-label="Ma position et ma progression">
+      <h2>Où je suis</h2>
+      <div class="big" id="pos-title">—</div>
+      <div class="pos-meta" id="pos-meta"></div>
+      <div class="prog">
+        <div class="prog-row">
+          <span class="kicker">Progression réelle — modules validés par votre formateur</span>
+          <span class="n"><span id="prog-n">0</span> / <span id="prog-t">18</span></span>
+        </div>
+        <div class="bar" role="progressbar" aria-label="Progression des modules validés" aria-valuemin="0" aria-valuemax="100" id="prog-bar-wrap"><i id="prog-bar" style="width:0%;"></i></div>
+        <div class="prog-note" id="prog-note"></div>
+      </div>
+    </section>
+
+    <!-- Q2 Prochaine action -->
+    <section class="card cta-card" aria-label="Ma prochaine action">
+      <h2>Ma prochaine action</h2>
+      <div class="big" id="cta-label">—</div>
+      <div class="cta-meta" id="cta-meta"></div>
+      <a class="cta" id="cta-btn" href="#">Passer à l'action</a>
+    </section>
+
+    <!-- Q4 Mes missions -->
+    <section class="card" aria-label="Mes missions">
+      <h2>Mes missions</h2>
+      <div class="missions-grid" id="missions"></div>
+      <div id="missions-empty" class="kicker" hidden></div>
+    </section>
+
+    <!-- Q6 Classroom -->
+    <section class="card" aria-label="Ma classe Google Classroom">
+      <h2>Ma classe Google Classroom</h2>
+      <div class="cl-row">
+        <span class="badge" id="cl-badge">—</span>
+        <span class="cl-state" id="cl-state"></span>
+        <a class="btn-line" id="cl-link" href="#" hidden>Ouvrir ma classe</a>
+      </div>
+      <div class="cta-meta" id="cl-note"></div>
+    </section>
+
+    <!-- Q5 Planning des 18 modules -->
+    <section class="card" aria-label="Planning du parcours">
+      <h2>Planning du parcours — 18 modules</h2>
+      <div class="kicker" style="margin-bottom:10px;">Groupé par semaine. Le module en cours est mis en évidence.</div>
+      <div id="planning"></div>
+    </section>
+
+    <div class="foot" id="foot">HOJA ACADEMY · LEARN AI — données réelles Google Classroom, mises à jour à <span id="ts"></span>.</div>
+  </div>
+</main>
+
+<script>
+'use strict';
+/* ============================================================
+   HOJA ACADEMY — tableau de bord apprenant (coquille statique).
+   Source unique : GET /api/me (credentials:'include').
+   Règle d'or : ZÉRO donnée inventée. Tout ce qui n'est pas
+   renvoyé par l'API est affiché comme manquant, jamais simulé.
+   ============================================================ */
+var MOIS = ['janv.','févr.','mars','avr.','mai','juin','juil.','août','sept.','oct.','nov.','déc.'];
+var STATE_LABEL = { assigned:'Mission à faire', draft:'Brouillon', submitted:'Déposé', returned:'En correction', graded:'Validé' };
+var STATE_CLASS = { assigned:'b-assigned', draft:'b-draft', submitted:'b-submitted', returned:'b-returned', graded:'b-graded' };
+
+function $(id){ return document.getElementById(id); }
+function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+function safeUrl(u){ return (typeof u === 'string' && /^https?:\/\//i.test(u)) ? u : null; }
+function pad2(n){ return (n<10?'0':'')+n; }
+function fmtDue(d){
+  if(!d || typeof d !== 'object' || !d.year || !d.month || !d.day) return null;
+  return d.day + ' ' + MOIS[d.month-1] + ' ' + d.year;
+}
+function fmtDateIso(s){
+  var m = typeof s === 'string' ? s.match(/^(\d{4})-(\d{2})-(\d{2})/) : null;
+  if(!m) return null;
+  return Number(m[3]) + ' ' + MOIS[Number(m[2])-1] + ' ' + m[1];
+}
+function modUrl(num){ return '/modules/' + pad2(num) + '/'; }
+
+function render(d){
+  /* ---- identité (Q0 : qui je suis) ---- */
+  var idn = d.identity || {};
+  $('hdr-who').hidden = false;
+  $('hdr-name').textContent = idn.name || 'Apprenant';
+  $('btn-logout').hidden = false;
+  $('b-pass').hidden = idn.mustChange !== true;
+
+/* ---- changement de mot de passe provisoire ---- */
+  (function(){
+    var f = $('f-pass'); if (!f || f.__bound) return; f.__bound = true;
+    f.addEventListener('submit', async function(e){
+      e.preventDefault();
+      var msg = $('p-msg'); $('p-btn').disabled = true; msg.textContent = 'Envoi…';
+      try{
+        var r = await fetch('/api/password',{method:'POST',credentials:'include',headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({currentPassword: $('p-cur').value, newPassword: $('p-new').value})});
+        var d = await r.json().catch(function(){return {};});
+        if(!r.ok) throw new Error(d.error || ('HTTP '+r.status));
+        msg.style.color = 'var(--teal)'; msg.textContent = '✅ Mot de passe mis à jour.';
+        $('p-cur').value = ''; $('p-new').value = '';
+        setTimeout(function(){ $('b-pass').hidden = true; }, 1800);
+      }catch(err){ msg.style.color = '#fda4a4'; msg.textContent = '❌ ' + err.message; }
+      finally{ $('p-btn').disabled = false; }
+    });
+  })();
+
+  /* ---- état vide global ---- */
+  var empties = Array.isArray(d.empty) ? d.empty : [];
+  $('b-empty').hidden = empties.length === 0;
+  $('b-empty-msgs').innerHTML = empties.map(function(msg){
+    return '<div>• ' + esc(msg) + ' Revenez vers votre formateur.</div>';
+  }).join('') + '<div style="margin-top:6px;opacity:.8;">Aucune donnée n&#39;est simulée&#160;: ce tableau reflète uniquement l&#39;état réel de votre classe.</div>';
+
+  var modules = Array.isArray(d.modules) ? d.modules : [];
+  var missions = Array.isArray(d.missions) ? d.missions : [];
+  var done = Number(d.done) || 0, total = Number(d.total) || modules.length || 18;
+
+  /* ---- Q1 Où je suis : premier module non validé = position courante ---- */
+  var current = null;
+  for(var i=0;i<modules.length;i++){ if(!modules[i].done){ current = modules[i]; break; } }
+  var coh = d.cohort || {};
+  if(modules.length === 0){
+    $('pos-title').textContent = 'Parcours non disponible';
+    $('pos-meta').innerHTML = '<span>Aucun module renvoyé par votre espace — rapprochez-vous de votre formateur.</span>';
+  } else if(!current){
+    $('pos-title').textContent = 'Parcours terminé — tous vos modules sont validés';
+    $('pos-meta').innerHTML = '<span>' + esc(total) + '/' + esc(total) + ' modules validés</span>';
+  } else {
+    $('pos-title').innerHTML = 'Module ' + esc(pad2(current.num)) + ' — ' + esc(current.title);
+    var meta = ['Semaine ' + esc(current.week) + ' · Séance ' + esc(current.seance),
+                esc(total) + ' modules au programme'];
+    if(coh.nom) meta.push(esc(coh.nom));
+    if(coh.start){ var st = fmtDateIso(coh.start); if(st) meta.push('démarrée le ' + st); }
+    else meta.push('date de démarrage non communiquée');
+    $('pos-meta').innerHTML = meta.map(function(t){ return '<span>'+t+'</span>'; }).join('');
+  }
+
+  /* ---- Q3 Progression : done = graded réels uniquement ---- */
+  $('prog-n').textContent = done;
+  $('prog-t').textContent = total;
+  var pct = Math.max(0, Math.min(100, Math.round(done/total*100)));
+  $('prog-bar').style.width = pct + '%';
+  $('prog-bar-wrap').setAttribute('aria-valuenow', pct);
+  $('prog-note').textContent = done === 0
+    ? '0 module validé à ce jour. Cette barre ne compte que les notes réelles de votre formateur — aucun pourcentage n\u2019est estimé.'
+    : 'Seuls les modules notés par votre formateur comptent ici — aucun pourcentage n\u2019est estimé.';
+
+  /* ---- Q2 Prochaine action : CTA principal ---- */
+  var cl = d.classroom || {};
+  var next = d.next || null;
+  var ctaBtn = $('cta-btn');
+  var showCta = function(label, url, metaHtml){
+    $('cta-label').innerHTML = label;
+    $('cta-meta').innerHTML = metaHtml || '';
+    if(url){ ctaBtn.hidden = false; ctaBtn.href = url; } else { ctaBtn.hidden = true; }
+  };
+  if(cl.configured && !cl.joined){
+    showCta('Rejoindre votre classe Google Classroom',
+      safeUrl(cl.url),
+      'Étape obligatoire&#160;: vos missions et dépôts passent par Classroom.');
+  } else if(next && next.type === 'mission'){
+    var due = fmtDue(next.due);
+    var lbl = esc(next.label || 'Mission en cours');
+    if(next.state && STATE_LABEL[next.state] && next.state !== 'assigned') lbl += ' <span class="badge '+(STATE_CLASS[next.state]||'')+'">'+esc(STATE_LABEL[next.state])+'</span>';
+    showCta(lbl, safeUrl(next.url),
+      (due ? 'À rendre avant le <b>'+esc(due)+'</b>. ' : 'Échéance non communiquée. ') +
+      (safeUrl(next.url) ? 'Le dépôt se fait sur Google Classroom.' : 'Lien de dépôt indisponible — voyez avec votre formateur.'));
+  } else if(next && (next.type === 'module' || next.type === 'session') && next.url){
+    showCta(esc(next.label || 'Continuer'), safeUrl(next.url), 'Reprendre là où vous en étiez.');
+  } else if(current){
+    showCta('Ouvrir le Module ' + pad2(current.num) + ' — ' + esc(current.title), modUrl(current.num),
+      'Cours suivant de votre parcours (Semaine ' + esc(current.week) + ' · Séance ' + esc(current.seance) + ').');
+  } else if(modules.length === 0){
+    showCta('Aucune action disponible pour l\u2019instant', null,
+      'Rien n\u2019est encore publié pour votre cohorte — revenez vers votre formateur.');
+  } else {
+    showCta('Tout est déposé — attendez le retour de votre formateur', cl.configured ? safeUrl(cl.url) : null,
+      'Vous pouvez consulter vos retours dans Google Classroom.');
+  }
+
+  /* ---- Q4 Mes missions ---- */
+  var mBox = $('missions'), mEmpty = $('missions-empty');
+  if(missions.length === 0){
+    mBox.innerHTML = '';
+    mEmpty.hidden = false;
+    mEmpty.innerHTML = done === 0
+      ? '<b>Aucune mission publiée.</b> Votre classe n\u2019est pas encore peuplée — rien ne vous est demandé pour l\u2019instant. Revenez vers votre formateur.'
+      : 'Aucune mission affichée par votre espace pour le moment.';
+  } else {
+    mEmpty.hidden = true;
+    mBox.innerHTML = missions.map(function(m){
+      var sLabel = STATE_LABEL[m.state] || 'État inconnu';
+      var sCls = STATE_CLASS[m.state] || 'b-pending';
+      var due = fmtDue(m.dueDate);
+      var chips = (m.modules && m.modules.length)
+        ? '<div class="m-modules">' + m.modules.map(function(n){ return '<a class="chip-mod" href="'+modUrl(n)+'">M'+pad2(n)+'</a>'; }).join('') + '</div>'
+        : '';
+      var u = safeUrl(m.url);
+      var link = u
+        ? '<a class="m-link" href="'+esc(u)+'" target="_blank" rel="noopener">Ouvrir sur Classroom ↗</a>'
+        : '<div class="m-nolink">Lien de dépôt indisponible — voyez avec votre formateur.</div>';
+      return '<article class="mission">' +
+        '<div class="m-top"><span class="badge '+sCls+'">'+esc(sLabel)+'</span>' +
+          (m.late ? '<span class="badge b-late">Retard</span>' : '') +
+          (m.submissionId ? '<span class="badge b-pending">Dépôt enregistré</span>' : '') +
+        '</div>' +
+        '<div class="m-title">'+esc(m.title)+'</div>' +
+        '<div class="m-meta">' + (due ? 'À rendre avant le <b style="color:var(--text)">'+esc(due)+'</b>' : 'Échéance non communiquée') + '</div>' +
+        (m.feedback ? '<div class="m-meta">Un retour de votre formateur est disponible.</div>' : '') +
+        chips + link +
+      '</article>';
+    }).join('');
+  }
+
+  /* ---- Q6 Classroom ---- */
+  var badge = $('cl-badge'), state = $('cl-state'), link = $('cl-link'), note = $('cl-note');
+  link.hidden = true;
+  if(!cl.configured){
+    badge.className = 'badge b-pending'; badge.textContent = 'Non configuré';
+    state.textContent = 'Espace de classe non configuré';
+    note.innerHTML = 'Votre cohorte n\u2019est pas encore reliée à Google Classroom. Revenez vers votre formateur — aucune donnée n\u2019est simulée en attendant.';
+  } else if(cl.joined){
+    badge.className = 'badge b-graded'; badge.textContent = 'Inscrit';
+    state.textContent = 'Vous êtes inscrit à votre classe';
+    var cu = safeUrl(cl.url);
+    if(cu){ link.hidden = false; link.href = cu; link.target = '_blank'; link.rel = 'noopener'; }
+    else { note.textContent = 'Lien de classe non communiqué par votre formateur.'; }
+  } else {
+    badge.className = 'badge b-submitted'; badge.textContent = 'Non inscrit';
+    state.textContent = 'Rejoignez votre classe pour recevoir vos missions';
+    var ju = safeUrl(cl.url);
+    if(ju){ link.hidden = false; link.href = ju; link.textContent = 'Rejoindre la classe'; link.target = '_blank'; link.rel = 'noopener'; }
+    note.innerHTML = 'Sans inscription, le dépôt de vos missions est impossible.';
+  }
+
+  /* ---- Q5 Planning groupable par semaine ---- */
+  var weeks = {};
+  modules.forEach(function(m){ (weeks[m.week] = weeks[m.week] || []).push(m); });
+  var wkKeys = Object.keys(weeks).sort(function(a,b){ return a-b; });
+  $('planning').innerHTML = wkKeys.map(function(w){
+    var isCurrent = !!(current && String(current.week) === String(w));
+    var rows = weeks[w].map(function(m){
+      var b = m.done
+        ? '<span class="badge b-graded">Validé</span>'
+        : (current && m.num === current.num)
+          ? '<span class="badge b-cur">En cours</span>'
+          : '<span class="badge b-pending">À venir</span>';
+      return '<div class="mod-row'+((current && m.num===current.num)?' current':'')+'">' +
+        '<span class="num">M'+esc(pad2(m.num))+'</span>' +
+        '<span class="t"><a href="'+modUrl(m.num)+'">'+esc(m.title)+'</a><span class="sub"> — accès public au cours</span></span>' +
+        '<span class="seance">Séance '+esc(m.seance)+'</span>' + b +
+      '</div>';
+    }).join('');
+    return '<details class="week"'+(isCurrent?' open':'')+'><summary>Semaine '+esc(w)+
+      ' <span class="wk-count">('+weeks[w].length+' module'+(weeks[w].length>1?'s':'')+')</span>' +
+      (isCurrent?' <span class="badge b-cur">Votre semaine</span>':'') +
+      '<span class="chev">▶</span></summary>'+rows+'</details>';
+  }).join('') || '<div class="kicker">Planning non disponible — aucun module renvoyé.</div>';
+
+  /* ---- horodatage réel du chargement ---- */
+  var now = new Date();
+  $('ts').textContent = pad2(now.getHours()) + ':' + pad2(now.getMinutes());
+
+  $('app').hidden = false;
+}
+
+/* ---------- boot : fetch /api/me, 401/403 -> login, erreur -> retry ---------- */
+function boot(){
+  $('skeleton').hidden = false; $('errbox').hidden = true; $('app').hidden = true;
+  fetch('/api/me', { credentials:'include', headers:{'Accept':'application/json'} })
+    .then(function(r){
+      if(r.status === 401 || r.status === 403){ location.replace('/ui/login/'); throw new Error('__auth__'); }
+      if(!r.ok) throw new Error('HTTP '+r.status);
+      return r.json();
+    })
+    .then(function(d){ $('skeleton').hidden = true; render(d); })
+    .catch(function(e){
+      if(e && e.message === '__auth__') return; /* redirection en cours */
+      $('skeleton').hidden = true;
+      $('errmsg').textContent = 'Impossible de charger vos données (erreur réseau ou service indisponible). Réessayez — si le problème persiste, prévenez votre formateur.';
+      $('errbox').hidden = false;
+    });
+}
+
+document.getElementById('btn-retry').addEventListener('click', boot);
+document.getElementById('btn-logout').addEventListener('click', function(){
+  fetch('/api/logout', { method:'POST', credentials:'include' }).catch(function(){}).then(function(){
+    location.replace('/ui/login/');
+  });
+});
+if(typeof window !== 'undefined' && typeof document !== 'undefined' && document.getElementById('app')){ boot(); }
+</script>
+</body>
+</html>

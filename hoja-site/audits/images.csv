@@ -1,0 +1,184 @@
+asset,type,taille_octets,refs,pages_usages,alt_contextes,risque_nouveau
+images/027064cfa81b.jpg,bitmap,19198,2,app\curso-ia\page.tsx; app\institution\page.tsx,alt=Apprenants de la première édition du Programme Intensif d'Intelligence Artificielle Générative de HOJA ACADEMY | alt=Apprenants de la première édition du Programme Intensif d’Intelligence Artificielle Générative de HOJA ACADEMY,CRITIQUE|PHOTO_PERSONNE_REELLE
+images/046b18bc6c97.png,bitmap,49114,2,app\empresas\page.tsx; app\institution\page.tsx,title=Expert en ChatGPT | title=Expert en Gemini | title=Expert en Make | label=L'Institution,NEUTRE|-
+images/04ebc4d2e02c.webp,bitmap,161612,3,app\institution\page.tsx; app\page.tsx; app\sections\metodolog-propia-deac-section.tsx,,NEUTRE|-
+images/063481405e7e.png,bitmap,67114,3,app\curso-de-chatgpt\page.tsx; app\curso-de-gemini\page.tsx; app\curso-de-make\page.tsx,alt=Certificat de Cours Expert,A-CHECK|-
+images/065d78c673ad.png,bitmap,177268,5,app\curso-ia\page.tsx; app\page.tsx; app\sections\el-futuro-est-section.tsx; app\sections\en-solo8-section.tsx,,NEUTRE|-
+images/06c64cffc9dd.png,bitmap,26392,2,app\curso-ia\page.tsx; app\institution\page.tsx,alt=Apprenants de la deuxième édition du Programme Intensif d'Intelligence Artificielle Générative de HOJA ACADEMY | alt=Apprenants de la deuxième édition du Programme Intensif d’Intelligence Artificielle Générative de HOJA ACADEMY,CRITIQUE|PHOTO_PERSONNE_REELLE
+images/06cae0b3370e.png,bitmap,17310,1,app\empresas\page.tsx,alt=Programa de IA para empresas,NEUTRE|-
+images/075765901810.png,bitmap,17287,5,app\curso-ia\page.tsx; app\page.tsx; app\sections\el-futuro-est-section.tsx; app\sections\en-solo8-section.tsx,,NEUTRE|-
+images/075d4d6a430e.png,bitmap,792457,2,app\curso-ia\page.tsx; app\institution\page.tsx,alt=Apprenants de la quatrième édition du Programme Intensif d'Intelligence Artificielle Générative de HOJA ACADEMY | alt=Apprenants de la quatrième édition du Programme Intensif d’Intelligence Artificielle Générative de HOJA ACADEMY,CRITIQUE|PHOTO_PERSONNE_REELLE
+images/081b9bd99eaa.png,bitmap,132433,2,app\curso-ia\page.tsx; app\institution\page.tsx,alt=Apprenants de la deuxième édition du Programme Intensif d'Intelligence Artificielle Générative de HOJA ACADEMY | alt=Apprenants de la deuxième édition du Programme Intensif d’Intelligence Artificielle Générative de HOJA ACADEMY,CRITIQUE|PHOTO_PERSONNE_REELLE
+images/08f3e06b1245.jpg,bitmap,20404,1,app\institution\page.tsx,title=Jose María - Programme Intensif d'IA Générative | title=Jose María - Programme Intensif d'IA Générative,NEUTRE|-
+images/08fcd45ca6af.png,bitmap,253153,4,app\empresas\page.tsx; app\institution\page.tsx,title=Expert en ChatGPT | title=Expert en Gemini | title=Expert en Make | label=L'Institution,NEUTRE|-
+images/0a61ce2d5479.png,bitmap,763552,3,app\page.tsx; app\sections\hero-section.tsx,alt=HOJA ACADEMY | alt=académie IA,NEUTRE|-
+images/0c07842406dd.png,bitmap,1773495,2,app\curso-ia\page.tsx; app\institution\page.tsx,alt=Apprenants de la cinquième édition du Programme Intensif d'Intelligence Artificielle Générative de HOJA ACADEMY | alt=Apprenants de la cinquième édition du Programme Intensif d’Intelligence Artificielle Générative de HOJA ACADEMY,CRITIQUE|PHOTO_PERSONNE_REELLE
+images/0e371e4cdc12.png,bitmap,13465,1,app\empresas\page.tsx,alt=Programme IA pour entreprises en direct,NEUTRE|-
+images/0eeff7f0d507.jpg,bitmap,18390,1,app\institution\page.tsx,title=Alexis - Programme Intensif d'IA Générative | title=Alexis - Programme Intensif d'IA Générative,NEUTRE|-
+images/0f23e139c391.png,bitmap,771268,2,app\curso-ia\page.tsx; app\institution\page.tsx,alt=Apprenants de la deuxième édition du Programme Intensif d'Intelligence Artificielle Générative de HOJA ACADEMY | alt=Apprenants de la deuxième édition du Programme Intensif d’Intelligence Artificielle Générative de HOJA ACADEMY,CRITIQUE|PHOTO_PERSONNE_REELLE
+images/0f28951d4da3.webp,bitmap,179794,2,app\page.tsx; app\sections\el-mundo-est-section.tsx,name=Trazado 216 | name=Trazado 217 | name=Trazado 218 | name=Trazado 219,NEUTRE|-
+images/1042c7c14bbd.png,bitmap,7400,1,app\empresas\page.tsx,alt=Formation en IA,NEUTRE|-
+images/10e93319438a.png,bitmap,188848,6,app\curso-ia\page.tsx; app\page.tsx; app\sections\el-mundo-est-section.tsx,alt=AI,NEUTRE|-
+images/169bbdf891b7.webp,bitmap,43774,1,app\contacto\page.tsx,,NEUTRE|-
+images/172c0b446a01.png,bitmap,33040,1,app\empresas\page.tsx,"alt=Alejavi Rivera, formateur chez HOJA ACADEMY",NEUTRE|-
+images/177827e265b2.png,bitmap,221128,34,app\accesibilidad\page.tsx; app\aviso-legal\page.tsx; app\contacto\page.tsx; app\curso-de-chatgpt\page.tsx; app\curso-de-gemini\page.tsx,alt=HOJA ACADEMY,NEUTRE|LOGO_VERIFIE_NOUVEAU
+images/18b783dffdb9.png,bitmap,703704,2,app\curso-ia\page.tsx; app\institution\page.tsx,alt=Apprenants de la troisième édition du Programme Intensif d'Intelligence Artificielle Générative de HOJA ACADEMY | alt=Apprenants de la troisième édition du Programme Intensif d’Intelligence Artificielle Générative de HOJA ACADEMY,CRITIQUE|PHOTO_PERSONNE_REELLE
+images/1d4a8619ae39.webp,bitmap,116454,4,app\page.tsx; app\sections\el-mundo-est-section.tsx,aria-label=Carrousel | aria-label=5 / 5 | name=Grupo 254 | name=Rectángulo 178 | title=\n\t\t\t\t\t\t\tImpact  | title2=opérationnel\t\t\t\t\t\t,NEUTRE|-
+images/1e6f7b1718f8.png,bitmap,697258,3,app\curso-ia\page.tsx,aria-label=Diapositivas | aria-label=1 / 3 | aria-label=Make Planes | label=Diapositivas | label=1 / 3 | label=Make Planes,NEUTRE|-
+images/1f72a22adc18.webp,bitmap,37836,1,app\curso-ia\page.tsx,,NEUTRE|-
+images/24c36c36c5ea.png,bitmap,186964,2,app\curso-ia\page.tsx; app\institution\page.tsx,,NEUTRE|-
+images/253b10601ca3.png,bitmap,80059,1,app\empresas\page.tsx,title=Expert en ChatGPT | title=Expert en Gemini | title=Expert en Make,NEUTRE|-
+images/27b42311f2ad.png,bitmap,598481,1,app\empresas\page.tsx,,NEUTRE|-
+images/29e4a6245e18.png,bitmap,26712,1,app\empresas\page.tsx,title=Expert en ChatGPT | title=Expert en Gemini | title=Expert en Make,NEUTRE|-
+images/2b80c1f328a5.png,bitmap,104679,2,app\empresas\page.tsx; app\institution\page.tsx,title=Expert en ChatGPT | title=Expert en Gemini | title=Expert en Make | label=L'Institution,NEUTRE|-
+images/2f90436459cc.jpg,bitmap,19826,1,app\curso-ia\page.tsx,title=Yahir - Programme Intensif d'IA Générative | title=Yahir - Programme Intensif d'IA Générative,CRITIQUE|-
+images/31f11f656d9f.jpg,bitmap,19826,1,app\institution\page.tsx,title=Yahir - Programme Intensif d’IA Générative | title=Yahir - Programme Intensif d’IA Générative,CRITIQUE|-
+images/32476298cfab.png,bitmap,454869,2,app\curso-ia\page.tsx; app\institution\page.tsx,alt=Apprenants de la deuxième édition du Programme Intensif d'Intelligence Artificielle Générative de HOJA ACADEMY | alt=Apprenants de la deuxième édition du Programme Intensif d’Intelligence Artificielle Générative de HOJA ACADEMY,CRITIQUE|PHOTO_PERSONNE_REELLE
+images/32e879be06a1.png,bitmap,6904,1,app\institution\page.tsx,label=L'Institution | label=Entreprises,NEUTRE|-
+images/387a0afb776d.webp,bitmap,156632,3,app\institution\page.tsx; app\page.tsx; app\sections\metodolog-propia-deac-section.tsx,alt=HOJA ACADEMY | alt=INSTITUTION DE L’INTELLIGENCE ARTIFICIELLE,NEUTRE|-
+images/3a97aacea952.png,bitmap,221128,34,app\accesibilidad\page.tsx; app\aviso-legal\page.tsx; app\contacto\page.tsx; app\curso-de-chatgpt\page.tsx; app\curso-de-gemini\page.tsx,alt=HOJA ACADEMY,NEUTRE|LOGO_VERIFIE_NOUVEAU
+images/3ad1a73e9335.png,bitmap,92897,1,app\institution\page.tsx,label=L'Institution | label=Entreprises,NEUTRE|-
+images/3b09c1ba2de0.png,bitmap,67775,2,app\empresas\page.tsx; app\institution\page.tsx,title=Expert en ChatGPT | title=Expert en Gemini | title=Expert en Make | label=L'Institution,NEUTRE|-
+images/3b3e1d8510e4.png,bitmap,407595,1,app\curso-de-make\page.tsx,alt=Make Planes,NEUTRE|-
+images/3bffbd361d1e.webp,bitmap,203052,4,app\page.tsx; app\sections\el-mundo-est-section.tsx,label=L'Institution | label=Entreprises | label=Actualités | name=icon una academia artificial,NEUTRE|-
+images/3efea38a1e80.png,bitmap,66984,2,app\empresas\page.tsx,alt=Programme IA pour entreprises en direct,NEUTRE|-
+images/40c7c81b1b80.png,bitmap,221128,34,app\accesibilidad\page.tsx; app\aviso-legal\page.tsx; app\contacto\page.tsx; app\curso-de-chatgpt\page.tsx; app\curso-de-gemini\page.tsx,alt=HOJA ACADEMY,NEUTRE|LOGO_VERIFIE_NOUVEAU
+images/4302034ebf4d.webp,bitmap,54040,3,app\institution\page.tsx; app\page.tsx; app\sections\metodolog-propia-deac-section.tsx,alt=HOJA ACADEMY | alt=INSTITUTION DE L’INTELLIGENCE ARTIFICIELLE,NEUTRE|-
+images/448389e690ec.png,bitmap,32256,1,app\empresas\page.tsx,alt=Programa de IA para empresas,NEUTRE|-
+images/44ff4277a669.jpg,bitmap,84129,2,app\curso-ia\page.tsx; app\institution\page.tsx,alt=Apprenants de la première édition du Programme Intensif d'Intelligence Artificielle Générative de HOJA ACADEMY | alt=Apprenants de la première édition du Programme Intensif d’Intelligence Artificielle Générative de HOJA ACADEMY,CRITIQUE|PHOTO_PERSONNE_REELLE
+images/46e403eb3cce.png,bitmap,702820,1,app\curso-de-make\page.tsx,alt=Make Planes,NEUTRE|-
+images/49bfa8135472.png,bitmap,251230,3,app\curso-de-chatgpt\page.tsx; app\curso-de-gemini\page.tsx; app\curso-de-make\page.tsx,alt=Certificat de Cours Expert,A-CHECK|-
+images/4ce658658335.png,bitmap,35484,1,app\empresas\page.tsx,alt=Programme IA pour entreprises en direct,NEUTRE|-
+images/50a36a29b6e5.png,bitmap,3699,2,app\page.tsx; app\sections\metodolog-propia-deac-section.tsx,,NEUTRE|-
+images/53d35d6d2743.png,bitmap,4104,2,app\page.tsx; app\sections\metodolog-propia-deac-section.tsx,,NEUTRE|-
+images/591162166442.png,bitmap,49670,1,app\institution\page.tsx,label=L'Institution | label=Entreprises,NEUTRE|-
+images/591a5138b96f.png,bitmap,186964,1,app\empresas\page.tsx,alt=Formation en IA,NEUTRE|-
+images/59748a15b9ec.jpg,bitmap,249504,2,app\curso-ia\page.tsx; app\institution\page.tsx,alt=Apprenants de la première édition du Programme Intensif d'Intelligence Artificielle Générative de HOJA ACADEMY | alt=Apprenants de la première édition du Programme Intensif d’Intelligence Artificielle Générative de HOJA ACADEMY,CRITIQUE|PHOTO_PERSONNE_REELLE
+images/5c136992c305.png,bitmap,27899,1,app\empresas\page.tsx,alt=Programa de IA para empresas,NEUTRE|-
+images/5cb5593fe7a9.png,bitmap,763552,2,app\empresas\page.tsx; app\layout.tsx,alt=Programme IA pour entreprises en direct,NEUTRE|-
+images/5e41487e08e8.png,bitmap,33014,3,app\empresas\page.tsx; app\page.tsx; app\sections\en-solo8-section.tsx,alt=Formation en IA pour entreprises et organisations | alt=Formation en IA pour entreprises (financement FUNDAE),A-CHECK|-
+images/5f23638a750d.png,bitmap,2203239,3,app\empresas\page.tsx; app\page.tsx; app\sections\en-solo8-section.tsx,alt=Formation en IA pour entreprises et organisations | alt=Formation en IA pour entreprises (financement FUNDAE),A-CHECK|-
+images/63b1ab385780.png,bitmap,1115899,2,app\curso-ia\page.tsx; app\institution\page.tsx,alt=Apprenants de la cinquième édition du Programme Intensif d'Intelligence Artificielle Générative de HOJA ACADEMY | alt=Apprenants de la cinquième édition du Programme Intensif d’Intelligence Artificielle Générative de HOJA ACADEMY,CRITIQUE|PHOTO_PERSONNE_REELLE
+images/66a902c3b454.png,bitmap,125860,5,app\curso-ia\page.tsx; app\page.tsx; app\sections\el-futuro-est-section.tsx; app\sections\en-solo8-section.tsx,,NEUTRE|-
+images/66cca504e7e1.png,bitmap,572541,4,app\curso-ia\page.tsx; app\institution\page.tsx,alt=Apprenants de la cinquième édition du Programme Intensif d'Intelligence Artificielle Générative de HOJA ACADEMY | alt=Apprenants de la cinquième édition du Programme Intensif d’Intelligence Artificielle Générative de HOJA ACADEMY,CRITIQUE|PHOTO_PERSONNE_REELLE
+images/6899ae65c220.png,bitmap,213197,3,app\curso-de-chatgpt\page.tsx; app\curso-de-gemini\page.tsx; app\curso-de-make\page.tsx,alt=Certificat de Cours Expert,A-CHECK|-
+images/69ec741fba82.webp,bitmap,13328,3,app\institution\page.tsx; app\page.tsx; app\sections\metodolog-propia-deac-section.tsx,alt=HOJA ACADEMY | alt=INSTITUTION DE L’INTELLIGENCE ARTIFICIELLE,NEUTRE|-
+images/6bfaf6f6a88b.png,bitmap,191456,20,app\accesibilidad\page.tsx; app\aviso-legal\page.tsx; app\curso-ia\page.tsx; app\institution\page.tsx; app\page.tsx,alt=AI | alt=HOJA ACADEMY | alt=INSTITUTION DE L’INTELLIGENCE ARTIFICIELLE,NEUTRE|-
+images/6c7d700aae47.png,bitmap,487049,1,app\curso-ia\page.tsx,,NEUTRE|-
+images/6ca15daf6c76.png,bitmap,50240,4,app\empresas\page.tsx; app\institution\page.tsx,title=Expert en ChatGPT | title=Expert en Gemini | title=Expert en Make | label=L'Institution,NEUTRE|-
+images/6e17ec0a3f10.png,bitmap,10786,1,app\curso-de-make\page.tsx,alt=Cours Make Partners,NEUTRE|-
+images/715aa8527076.png,bitmap,87635,5,app\curso-de-chatgpt\page.tsx; app\curso-de-gemini\page.tsx; app\curso-ia\page.tsx; app\empresas\page.tsx,"alt=Imagen de ALEJAVI RIVERA | alt=Alejavi Rivera, formateur chez HOJA ACADEMY","CRITIQUE|ALT_ES_HERITE,PHOTO_PERSONNE_REELLE"
+images/7300513b1bf8.png,bitmap,59408,2,app\curso-ia\page.tsx; app\institution\page.tsx,,NEUTRE|-
+images/7341b2ddddf4.png,bitmap,71409,2,app\curso-ia\page.tsx; app\institution\page.tsx,alt=Apprenants de la cinquième édition du Programme Intensif d'Intelligence Artificielle Générative de HOJA ACADEMY | alt=Apprenants de la cinquième édition du Programme Intensif d’Intelligence Artificielle Générative de HOJA ACADEMY,CRITIQUE|PHOTO_PERSONNE_REELLE
+images/734d92c11395.png,bitmap,233931,2,app\curso-ia\page.tsx; app\institution\page.tsx,alt=Apprenants de la cinquième édition du Programme Intensif d'Intelligence Artificielle Générative de HOJA ACADEMY | alt=Apprenants de la cinquième édition du Programme Intensif d’Intelligence Artificielle Générative de HOJA ACADEMY,CRITIQUE|PHOTO_PERSONNE_REELLE
+images/73b01114dd06.png,bitmap,356552,1,app\institution\page.tsx,,NEUTRE|-
+images/73d4b764b0e4.webp,bitmap,84402,6,app\institution\page.tsx; app\page.tsx; app\sections\metodolog-propia-deac-section.tsx,alt=HOJA ACADEMY | alt=INSTITUTION DE L’INTELLIGENCE ARTIFICIELLE,NEUTRE|-
+images/76bf00c0023a.webp,bitmap,64826,2,app\page.tsx; app\sections\el-futuro-est-section.tsx,,NEUTRE|-
+images/7bbbe3fd9a00.png,bitmap,210004,2,app\curso-de-make\page.tsx,alt=Make Planes,NEUTRE|-
+images/7cca3036e36a.png,bitmap,30485,1,app\empresas\page.tsx,alt=Programme IA pour entreprises en direct,NEUTRE|-
+images/7ccb43d77c17.png,bitmap,37010,2,app\empresas\page.tsx; app\institution\page.tsx,title=Expert en ChatGPT | title=Expert en Gemini | title=Expert en Make | label=L'Institution,NEUTRE|-
+images/7ce694e1013a.png,bitmap,73731,17,app\accesibilidad\page.tsx; app\aviso-legal\page.tsx; app\contacto\page.tsx; app\curso-de-chatgpt\page.tsx; app\curso-de-gemini\page.tsx,title=Blank | title=Blank,NEUTRE|-
+images/7daa26c0275d.png,bitmap,7878,2,app\empresas\page.tsx; app\institution\page.tsx,title=Expert en ChatGPT | title=Expert en Gemini | title=Expert en Make | label=L'Institution,NEUTRE|-
+images/7fdddd08eb84.png,bitmap,140354,1,app\curso-de-make\page.tsx,alt=Make Planes,NEUTRE|-
+images/8342ed615af2.png,bitmap,7400,2,app\curso-ia\page.tsx; app\institution\page.tsx,,NEUTRE|-
+images/83ce441403c2.webp,bitmap,644740,1,app\ditto.css,,NEUTRE|-
+images/84dafdd3fb7a.png,bitmap,68847,17,app\accesibilidad\page.tsx; app\aviso-legal\page.tsx; app\contacto\page.tsx; app\curso-de-chatgpt\page.tsx; app\curso-de-gemini\page.tsx,,NEUTRE|-
+images/855624279933.png,bitmap,4133,2,app\page.tsx; app\sections\metodolog-propia-deac-section.tsx,,NEUTRE|-
+images/874795be0693.png,bitmap,220965,4,app\curso-ia\page.tsx; app\institution\page.tsx,alt=Apprenants de la deuxième édition du Programme Intensif d'Intelligence Artificielle Générative de HOJA ACADEMY | alt=Apprenants de la deuxième édition du Programme Intensif d’Intelligence Artificielle Générative de HOJA ACADEMY,CRITIQUE|PHOTO_PERSONNE_REELLE
+images/87b3a88d3b83.webp,bitmap,13826,2,app\empresas\page.tsx; app\institution\page.tsx,,NEUTRE|-
+images/87cbd330f76e.png,bitmap,202244,3,app\curso-ia\page.tsx,aria-label=2 / 3 | aria-label=openai sin fondo | label=2 / 3 | label=openai sin fondo,NEUTRE|-
+images/886d5a796184.png,bitmap,59006,2,app\empresas\page.tsx,alt=Programa de IA para empresas,NEUTRE|-
+images/8912c83b9f13.png,bitmap,35940,34,app\accesibilidad\page.tsx; app\aviso-legal\page.tsx; app\contacto\page.tsx; app\curso-de-chatgpt\page.tsx; app\curso-de-gemini\page.tsx,,NEUTRE|-
+images/89dd3dac41c1.png,bitmap,1268580,2,app\curso-ia\page.tsx; app\institution\page.tsx,alt=Apprenants de la quatrième édition du Programme Intensif d'Intelligence Artificielle Générative de HOJA ACADEMY | alt=Apprenants de la quatrième édition du Programme Intensif d’Intelligence Artificielle Générative de HOJA ACADEMY,CRITIQUE|PHOTO_PERSONNE_REELLE
+images/8a5f784e8e7a.png,bitmap,12369,1,app\empresas\page.tsx,alt=Programa de IA para empresas,NEUTRE|-
+images/8aa42100287d.png,bitmap,37382,6,app\curso-ia\page.tsx; app\page.tsx; app\sections\el-mundo-est-section.tsx,alt=AI,NEUTRE|-
+images/8d1544118b55.png,bitmap,51893,2,app\curso-ia\page.tsx; app\institution\page.tsx,alt=Apprenants de la quatrième édition du Programme Intensif d'Intelligence Artificielle Générative de HOJA ACADEMY | alt=Apprenants de la quatrième édition du Programme Intensif d’Intelligence Artificielle Générative de HOJA ACADEMY,CRITIQUE|PHOTO_PERSONNE_REELLE
+images/8e8a7c414e0d.jpg,bitmap,19616,1,app\institution\page.tsx,title=Pablo - Programme Intensif d'IA Générative | title=Pablo - Programme Intensif d'IA Générative,NEUTRE|-
+images/8fc37292e33b.png,bitmap,92313,2,app\institution\page.tsx,label=L'Institution | label=Entreprises,NEUTRE|-
+images/93a5deec8df1.webp,bitmap,255424,3,app\institution\page.tsx; app\page.tsx; app\sections\metodolog-propia-deac-section.tsx,alt=HOJA ACADEMY | alt=INSTITUTION DE L’INTELLIGENCE ARTIFICIELLE,NEUTRE|-
+images/93b64304acb8.png,bitmap,3363,1,app\empresas\page.tsx,title=Expert en ChatGPT | title=Expert en Gemini | title=Expert en Make,NEUTRE|-
+images/9470b406091e.png,bitmap,134728,2,app\curso-ia\page.tsx; app\institution\page.tsx,alt=Apprenants de la troisième édition du Programme Intensif d'Intelligence Artificielle Générative de HOJA ACADEMY | alt=Apprenants de la troisième édition du Programme Intensif d’Intelligence Artificielle Générative de HOJA ACADEMY,CRITIQUE|PHOTO_PERSONNE_REELLE
+images/95807a59171f.png,bitmap,9823,1,app\curso-de-make\page.tsx,alt=Cours Make Partners,NEUTRE|-
+images/9909177fd645.png,bitmap,99274,1,app\curso-de-make\page.tsx,alt=Make Planes,NEUTRE|-
+images/9996145b2261.png,bitmap,65131,1,app\institution\page.tsx,label=L'Institution | label=Entreprises,NEUTRE|-
+images/99f835d137ca.png,bitmap,59408,1,app\empresas\page.tsx,alt=Formation en IA,NEUTRE|-
+images/9b95e9eb908e.png,bitmap,62178,17,app\accesibilidad\page.tsx; app\aviso-legal\page.tsx; app\contacto\page.tsx; app\curso-de-chatgpt\page.tsx; app\curso-de-gemini\page.tsx,,NEUTRE|-
+images/9c316e41c226.png,bitmap,4841,2,app\empresas\page.tsx; app\institution\page.tsx,title=Expert en ChatGPT | title=Expert en Gemini | title=Expert en Make | label=L'Institution,NEUTRE|-
+images/9d51657c72e8.png,bitmap,6100,17,app\accesibilidad\page.tsx; app\aviso-legal\page.tsx; app\contacto\page.tsx; app\curso-de-chatgpt\page.tsx; app\curso-de-gemini\page.tsx,,NEUTRE|-
+images/9dd92c8d35ca.jpg,bitmap,10582,2,app\curso-de-make\page.tsx; app\curso-ia\page.tsx,alt=Imagen de JOSE MORAL,"CRITIQUE|ALT_ES_HERITE,PHOTO_PERSONNE_REELLE"
+images/9f7e39870362.png,bitmap,50098,2,app\empresas\page.tsx,title=Expert en ChatGPT | title=Expert en Gemini | title=Expert en Make,NEUTRE|-
+images/a23cb2ac51e4.png,bitmap,6304,2,app\empresas\page.tsx; app\institution\page.tsx,title=Expert en ChatGPT | title=Expert en Gemini | title=Expert en Make | label=L'Institution,NEUTRE|-
+images/a3f6f46a8a9b.png,bitmap,21291,2,app\empresas\page.tsx; app\institution\page.tsx,title=Expert en ChatGPT | title=Expert en Gemini | title=Expert en Make | label=L'Institution,NEUTRE|-
+images/a45a135c8728.png,bitmap,81923,4,app\curso-ia\page.tsx; app\institution\page.tsx,,NEUTRE|-
+images/a5b5e8504da2.png,bitmap,165828,2,app\curso-ia\page.tsx; app\institution\page.tsx,alt=Apprenants de la quatrième édition du Programme Intensif d'Intelligence Artificielle Générative de HOJA ACADEMY | alt=Apprenants de la quatrième édition du Programme Intensif d’Intelligence Artificielle Générative de HOJA ACADEMY,CRITIQUE|PHOTO_PERSONNE_REELLE
+images/a68d49a3ce64.png,bitmap,405136,4,app\curso-ia\page.tsx; app\institution\page.tsx,alt=Apprenants de la quatrième édition du Programme Intensif d'Intelligence Artificielle Générative de HOJA ACADEMY | alt=Apprenants de la quatrième édition du Programme Intensif d’Intelligence Artificielle Générative de HOJA ACADEMY,CRITIQUE|PHOTO_PERSONNE_REELLE
+images/a6dfee636778.png,bitmap,35386,1,app\empresas\page.tsx,title=Expert en ChatGPT | title=Expert en Gemini | title=Expert en Make,NEUTRE|-
+images/a8f6e7352c64.png,bitmap,18391,2,app\curso-ia\page.tsx; app\institution\page.tsx,,NEUTRE|-
+images/aa589c4c569a.jpg,bitmap,230782,2,app\curso-ia\page.tsx; app\institution\page.tsx,alt=Apprenants de la première édition du Programme Intensif d'Intelligence Artificielle Générative de HOJA ACADEMY | alt=Apprenants de la première édition du Programme Intensif d’Intelligence Artificielle Générative de HOJA ACADEMY,CRITIQUE|PHOTO_PERSONNE_REELLE
+images/acc45f66e07e.png,bitmap,221128,34,app\accesibilidad\page.tsx; app\aviso-legal\page.tsx; app\contacto\page.tsx; app\curso-de-chatgpt\page.tsx; app\curso-de-gemini\page.tsx,alt=HOJA ACADEMY,NEUTRE|LOGO_VERIFIE_NOUVEAU
+images/acf6209c67fd.png,bitmap,3783,2,app\curso-de-make\page.tsx,alt=Cours Make Partners,NEUTRE|-
+images/ad6a71119bb2.webp,bitmap,213194,2,app\page.tsx; app\sections\el-mundo-est-section.tsx,title=\n\t\t\t\t\t\t\tFormation  | title2=personnalisée\t\t\t\t\t\t | name=icon flexibilidad total | name=Trazado 220,NEUTRE|-
+images/b021b33b384f.png,bitmap,22673,1,app\institution\page.tsx,label=L'Institution | label=Entreprises,NEUTRE|-
+images/b1bdc7739899.png,bitmap,32446,1,app\curso-de-make\page.tsx,alt=Make Planes,NEUTRE|-
+images/b2a5fd48aa51.jpg,bitmap,20327,1,app\curso-ia\page.tsx,title=Pablo - Programme Intensif d'IA Générative | title=Pablo - Programme Intensif d'IA Générative,NEUTRE|-
+images/b3f4d804c887.webp,bitmap,27156,3,app\curso-de-chatgpt\page.tsx; app\curso-de-gemini\page.tsx; app\curso-ia\page.tsx,title=NOUVEAU Cours de ChatGPT de zéro à Expert | aria-label=Lire la vidéo | title=Cours Expert en Gemini | title=Intensive AI Course on Expanded Artificial Intelligence | title=NOUVEAU Cours de ChatGPT de zéro à Expert | label=Lire la vidéo | name=icon play | title=Cours Expert en Gemini,CRITIQUE|Miniature_temoignage_video
+images/b4bbb606ef58.png,bitmap,6647,5,app\curso-ia\page.tsx; app\page.tsx; app\sections\el-futuro-est-section.tsx; app\sections\en-solo8-section.tsx,,NEUTRE|-
+images/b6863b551f02.png,bitmap,143452,3,app\empresas\page.tsx; app\page.tsx; app\sections\en-solo8-section.tsx,alt=Formation en IA pour entreprises et organisations | alt=Formation en IA pour entreprises (financement FUNDAE),A-CHECK|-
+images/b97f813e2591.png,bitmap,267591,1,app\curso-de-make\page.tsx,alt=Captura de pantalla 2026-02-23 a las 13.02.51 | title=Captura de pantalla 2026-02-23 a las 13.02.51 | aria-label=Lire la vidéo | title=Captura de pantalla 2026-02-23 a las 13.02.51 | label=Lire la vidéo,"CRITIQUE|ALT_ES_HERITE,CAPTURE_INTERFACE,Miniature_temoignage_video"
+images/bc38ddb8657d.png,bitmap,15802,1,app\empresas\page.tsx,alt=Programa de IA para empresas,NEUTRE|-
+images/bfbb15ed4aab.png,bitmap,11461,1,app\empresas\page.tsx,title=Expert en ChatGPT | title=Expert en Gemini | title=Expert en Make,NEUTRE|-
+images/c0b2ff282886.png,bitmap,96023,3,app\empresas\page.tsx; app\page.tsx; app\sections\en-solo8-section.tsx,alt=Formation en IA pour entreprises et organisations | alt=Formation en IA pour entreprises (financement FUNDAE),A-CHECK|-
+images/c6dab932b168.png,bitmap,244880,6,app\empresas\page.tsx; app\page.tsx; app\sections\en-solo8-section.tsx,alt=Formation en IA pour entreprises et organisations | alt=Formation en IA pour entreprises (financement FUNDAE),A-CHECK|-
+images/c91a68c0d142.png,bitmap,763552,2,app\empresas\page.tsx; app\layout.tsx,alt=Programme IA pour entreprises en direct,NEUTRE|-
+images/c99f637e922d.png,bitmap,8026,1,app\curso-de-make\page.tsx,alt=Cours Make Partners,NEUTRE|-
+images/ca7c98260b3d.png,bitmap,221128,17,app\accesibilidad\page.tsx; app\aviso-legal\page.tsx; app\contacto\page.tsx; app\curso-de-chatgpt\page.tsx; app\curso-de-gemini\page.tsx,,NEUTRE|LOGO_VERIFIE_NOUVEAU
+images/cbc985dce3f0.png,bitmap,24020,17,app\accesibilidad\page.tsx; app\aviso-legal\page.tsx; app\contacto\page.tsx; app\curso-de-chatgpt\page.tsx; app\curso-de-gemini\page.tsx,,NEUTRE|-
+images/cc0d8ce9158d.jpg,bitmap,20483,1,app\curso-ia\page.tsx,title=Jose María - Programme Intensif d'IA Générative | title=Jose María - Programme Intensif d'IA Générative,NEUTRE|-
+images/cdb9c3c57c7a.png,bitmap,26142,3,app\curso-de-chatgpt\page.tsx; app\curso-de-gemini\page.tsx; app\curso-de-make\page.tsx,alt=Certificat de Cours Expert,A-CHECK|-
+images/cf21e800176b.png,bitmap,205401,2,app\curso-ia\page.tsx; app\institution\page.tsx,alt=Apprenants de la troisième édition du Programme Intensif d'Intelligence Artificielle Générative de HOJA ACADEMY | alt=Apprenants de la troisième édition du Programme Intensif d’Intelligence Artificielle Générative de HOJA ACADEMY,CRITIQUE|PHOTO_PERSONNE_REELLE
+images/d3cda16ace61.webp,bitmap,122368,2,app\page.tsx; app\sections\en-solo8-section.tsx,,NEUTRE|-
+images/d47ec3e4203c.png,bitmap,81923,2,app\empresas\page.tsx,alt=Formation en IA,NEUTRE|-
+images/d7f65ca5da65.png,bitmap,4116,2,app\page.tsx; app\sections\metodolog-propia-deac-section.tsx,,NEUTRE|-
+images/d84b972b2df3.png,bitmap,91215,3,app\curso-de-chatgpt\page.tsx; app\curso-de-gemini\page.tsx; app\curso-de-make\page.tsx,alt=Certificat de Cours Expert,A-CHECK|-
+images/d91bbe528cd7.jpg,bitmap,132736,4,app\curso-ia\page.tsx; app\institution\page.tsx,alt=Apprenants de la première édition du Programme Intensif d'Intelligence Artificielle Générative de HOJA ACADEMY | alt=Apprenants de la première édition du Programme Intensif d’Intelligence Artificielle Générative de HOJA ACADEMY,CRITIQUE|PHOTO_PERSONNE_REELLE
+images/da3580333410.jpg,bitmap,18390,1,app\curso-ia\page.tsx,title=Alexis - Programme Intensif d'IA Générative | title=Alexis - Programme Intensif d'IA Générative,NEUTRE|-
+images/da62aa277dfc.png,bitmap,14000,1,app\curso-de-make\page.tsx,alt=Cours Make Partners,NEUTRE|-
+images/dcea3cfe0cb3.png,bitmap,339708,4,app\curso-ia\page.tsx; app\institution\page.tsx,alt=Apprenants de la troisième édition du Programme Intensif d'Intelligence Artificielle Générative de HOJA ACADEMY | alt=Apprenants de la troisième édition du Programme Intensif d’Intelligence Artificielle Générative de HOJA ACADEMY,CRITIQUE|PHOTO_PERSONNE_REELLE
+images/dd8eef8ff2e9.webp,bitmap,134076,3,app\institution\page.tsx; app\page.tsx; app\sections\metodolog-propia-deac-section.tsx,,NEUTRE|-
+images/e34dbaa8f713.png,bitmap,130208,6,app\curso-de-chatgpt\page.tsx; app\curso-de-gemini\page.tsx; app\curso-de-make\page.tsx,alt=Certificat de Cours Expert,A-CHECK|-
+images/e39455089704.png,bitmap,763552,2,app\empresas\page.tsx; app\layout.tsx,alt=Programme IA pour entreprises en direct,NEUTRE|-
+images/e412ba825821.png,bitmap,133506,1,app\empresas\page.tsx,alt=Formation en IA,NEUTRE|-
+images/e4610973a2ef.png,bitmap,115103,1,app\empresas\page.tsx,title=Expert en ChatGPT | title=Expert en Gemini | title=Expert en Make,NEUTRE|-
+images/e4f61ba9d3c6.webp,bitmap,40174,4,app\curso-de-chatgpt\page.tsx; app\curso-de-gemini\page.tsx; app\curso-de-make\page.tsx; app\curso-ia\page.tsx,,NEUTRE|-
+images/e7f85ce8fd03.webp,bitmap,39578,2,app\page.tsx; app\sections\feature-grid-section.tsx,,NEUTRE|-
+images/e853281d170b.png,bitmap,2087258,2,app\curso-ia\page.tsx; app\institution\page.tsx,alt=Apprenants de la troisième édition du Programme Intensif d'Intelligence Artificielle Générative de HOJA ACADEMY | alt=Apprenants de la troisième édition du Programme Intensif d’Intelligence Artificielle Générative de HOJA ACADEMY,CRITIQUE|PHOTO_PERSONNE_REELLE
+images/ed05935549e6.webp,bitmap,258748,2,app\contacto\page.tsx; app\reset-password\page.tsx,,NEUTRE|-
+images/ed3f0a2a37d9.png,bitmap,14383,2,app\empresas\page.tsx; app\institution\page.tsx,title=Expert en ChatGPT | title=Expert en Gemini | title=Expert en Make | label=L'Institution,NEUTRE|-
+images/ee6603880740.png,bitmap,4351,2,app\empresas\page.tsx; app\institution\page.tsx,title=Expert en ChatGPT | title=Expert en Gemini | title=Expert en Make | label=L'Institution,NEUTRE|-
+images/ef5940dfac98.webp,bitmap,122036,2,app\page.tsx; app\sections\el-mundo-est-section.tsx,label=Actualités | name=icon una academia artificial | title=\n\t\t\t\t\t\t\tUne académie  | title2=d'excellence\t\t\t\t\t\t,NEUTRE|-
+images/efb377a05fdc.png,bitmap,133506,2,app\curso-ia\page.tsx; app\institution\page.tsx,,NEUTRE|-
+images/f033dfba39b9.png,bitmap,44797,2,app\curso-ia\page.tsx; app\institution\page.tsx,alt=Apprenants de la troisième édition du Programme Intensif d'Intelligence Artificielle Générative de HOJA ACADEMY | alt=Apprenants de la troisième édition du Programme Intensif d’Intelligence Artificielle Générative de HOJA ACADEMY,CRITIQUE|PHOTO_PERSONNE_REELLE
+images/f2ae5bd2283f.png,bitmap,54944,5,app\curso-ia\page.tsx; app\page.tsx; app\sections\el-futuro-est-section.tsx; app\sections\en-solo8-section.tsx,,NEUTRE|-
+images/f3d33ba313e5.png,bitmap,10352,1,app\institution\page.tsx,label=L'Institution | label=Entreprises,NEUTRE|-
+images/f687d3864209.webp,bitmap,156174,2,app\page.tsx; app\sections\el-futuro-est-section.tsx,,NEUTRE|-
+images/f6f5a0c5ba99.webp,bitmap,808306,1,app\ditto.css,,NEUTRE|-
+images/f7b4b5ff001a.png,bitmap,76641,10,app\curso-ia\page.tsx; app\page.tsx; app\sections\el-futuro-est-section.tsx; app\sections\en-solo8-section.tsx,,NEUTRE|-
+images/f8bf71f6840c.png,bitmap,250395,2,app\curso-ia\page.tsx; app\institution\page.tsx,alt=Apprenants de la quatrième édition du Programme Intensif d'Intelligence Artificielle Générative de HOJA ACADEMY | alt=Apprenants de la quatrième édition du Programme Intensif d’Intelligence Artificielle Générative de HOJA ACADEMY,CRITIQUE|PHOTO_PERSONNE_REELLE
+images/fa64729e9a88.png,bitmap,221128,70,app\accesibilidad\page.tsx; app\aviso-legal\page.tsx; app\contacto\page.tsx; app\curso-de-chatgpt\page.tsx; app\curso-de-gemini\page.tsx,alt=HOJA ACADEMY,NEUTRE|LOGO_VERIFIE_NOUVEAU
+images/ff52ab84d186.png,bitmap,354184,2,app\curso-ia\page.tsx; app\institution\page.tsx,alt=Apprenants de la cinquième édition du Programme Intensif d'Intelligence Artificielle Générative de HOJA ACADEMY | alt=Apprenants de la cinquième édition du Programme Intensif d’Intelligence Artificielle Générative de HOJA ACADEMY,CRITIQUE|PHOTO_PERSONNE_REELLE
+images/ffc46ef4b1da.png,bitmap,18391,1,app\empresas\page.tsx,alt=Formation en IA,NEUTRE|-
+images/fffccc471822.png,bitmap,1508,1,app\empresas\page.tsx,alt=Programa de IA para empresas,NEUTRE|-
+svg/13f2fd4da1c4.svg,svg,767,3,app\empresas\page.tsx,,NEUTRE|-
+svg/18215837ce47.svg,svg,656,1,app\curso-de-make\page.tsx,aria-label=Not completed | alt=🎁 | label=Not completed,NEUTRE|-
+svg/196cb07cc4a8.svg,svg,1290,17,app\curso-de-chatgpt\components\media-tile.tsx; app\curso-de-chatgpt\page.tsx; app\curso-de-gemini\page.tsx; app\curso-de-make\page.tsx,aria-label=Not started | alt=🆕 | aria-label=Not completed | label=Not started | label=Not completed,NEUTRE|-
+svg/1b3f50d6645a.svg,svg,2415,11,app\curso-de-chatgpt\page.tsx; app\curso-de-gemini\page.tsx; app\curso-de-make\page.tsx; app\curso-ia\page.tsx; app\empresas\page.tsx,,NEUTRE|-
+svg/4d2dff60794f.svg,svg,1074,2,app\page.tsx; app\sections\el-futuro-est-section.tsx,alt=📩,NEUTRE|-
+svg/5a114231c575.svg,svg,22059,2,app\page.tsx; app\sections\en-solo8-section.tsx,,NEUTRE|-
+svg/88d6f0c03d30.svg,svg,21601,3,app\curso-ia\page.tsx; app\empresas\page.tsx; app\institution\page.tsx,,NEUTRE|-
+svg/98e44877f5f9.svg,svg,52964,6,app\curso-de-chatgpt\page.tsx; app\curso-de-gemini\page.tsx; app\curso-de-make\page.tsx; app\curso-ia\page.tsx; app\page.tsx,name=icon una academia artificial | title=\n\t\t\t\t\t\t\tUna academia  | title2=artificial\t\t\t\t\t\t,NEUTRE|-
+svg/9c4469efeb42.svg,svg,548,2,app\programa-afiliados\page.tsx; app\registration\page.tsx,alt=⚠️,NEUTRE|-
+svg/b0c27daccbe6.svg,svg,240,1,app\programa-afiliados\page.tsx,alt=⬇️,NEUTRE|-
+svg/bd3b0124deae.svg,svg,14819,16,app\accesibilidad\page.tsx; app\aviso-legal\page.tsx; app\contacto\page.tsx; app\curso-de-chatgpt\page.tsx; app\curso-de-gemini\page.tsx,,NEUTRE|-
+svg/cdac22d0b300.svg,svg,1207,6,app\curso-de-chatgpt\page.tsx; app\curso-de-gemini\page.tsx; app\curso-de-make\page.tsx,aria-label=Not started | alt=📨 | label=Not started,NEUTRE|-
+svg/f485e8b2a2dd.svg,svg,677,3,app\curso-de-chatgpt\page.tsx; app\curso-de-gemini\page.tsx; app\curso-de-make\page.tsx,alt=🚀,NEUTRE|-
+svg/f8139be7608e.svg,svg,22097,2,app\ditto.css; app\institution\ditto.css,,NEUTRE|-

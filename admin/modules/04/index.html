@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#070b12" name="theme-color"/>
+<title>OPAYS Academy — Module 04 : L'IA dans Mon Travail</title>
+<meta content="Présentation interactive officielle de l'Académie OPAYS : Module 04 — L'IA dans Mon Travail." name="description"/>
+<style>
+:root {
+  --bg: #070b12;
+  --surface: #0d1522;
+  --surface2: #111b2b;
+  --surface3: #162438;
+  --blue-opays: #0066FF;
+  --blue-hover: #1e75ff;
+  --blue-light: #38BDF8;
+  --blue-glow: rgba(0, 102, 255, 0.25);
+  --gold-opays: #D4AF37;
+  --gold-light: #FFE08A;
+  --gold-glow: rgba(212, 175, 55, 0.2);
+  --navy: #001F4D;
+  --text: #F8FAFC;
+  --muted: #94A3B8;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-blue: rgba(0, 102, 255, 0.3);
+  --line-gold: rgba(212, 175, 55, 0.3);
+  --danger: #FF6E78;
+  --warn: #FFB84D;
+  --ok: #55DCA1;
+  --shadow: 0 34px 90px rgba(0,0,0,0.5);
+  --radius: 20px;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; width: 100%; height: 100%; overflow: hidden;
+  overflow-x: clip;
+  max-width: 100vw;
+  background: var(--bg); color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+button, a, input { font: inherit; }
+
+/* Ambient Lighting & Noise */
+.ambient { position: fixed; border-radius: 999px; filter: blur(120px); opacity: 0.18; pointer-events: none; z-index: 0; }
+.ambient-blue { width: 600px; height: 600px; background: var(--blue-opays); top: -250px; right: -180px; }
+.ambient-gold { width: 500px; height: 500px; background: var(--gold-opays); bottom: -250px; left: -180px; opacity: 0.12; }
+.grain {
+  position: fixed; inset: 0; opacity: 0.022; pointer-events: none; z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+}
+
+/* Topbar */
+.topbar {
+  position: fixed; z-index: 50; top: 0; left: 0; right: 0; height: 72px;
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+  padding: 0 30px; border-bottom: 1px solid var(--line);
+  background: rgba(7, 11, 18, 0.82); backdrop-filter: blur(20px);
+}
+.brand {
+  display: flex; align-items: center; gap: 12px; background: none; border: 0;
+  color: inherit; text-align: left; cursor: pointer; width: max-content;
+}
+.brand-logo {
+  width: 38px; height: 38px; display: flex; align-items: center; justify-content: center;
+}
+.brand-logo svg { width: 100%; height: 100%; }
+.brand span { display: flex; flex-direction: column; }
+.brand b { font-size: 13px; letter-spacing: 0.12em; color: var(--text); font-weight: 900; }
+.brand small { font-size: 10px; letter-spacing: 0.22em; color: var(--blue-light); margin-top: 2px; font-weight: 700; }
+.chapter-pill {
+  display: flex; gap: 9px; align-items: center; font-size: 10px; letter-spacing: 0.16em;
+  border: 1px solid var(--line); border-radius: 999px; padding: 8px 16px;
+  color: var(--muted); background: rgba(255,255,255,0.02);
+}
+.chapter-pill span { color: var(--blue-light); font-weight: 900; }
+.chapter-pill b { font-size: 10px; color: #e2e8f0; }
+.top-actions { justify-self: end; display: flex; align-items: center; gap: 8px; }
+.icon-btn, .resource-main {
+  border: 1px solid var(--line); background: rgba(255,255,255,0.035);
+  color: var(--text); border-radius: 12px; height: 38px; cursor: pointer;
+  transition: 0.2s ease;
+}
+.icon-btn { width: 38px; display: grid; place-items: center; font-size: 14px; }
+.resource-main {
+  padding: 0 16px; font-size: 11px; font-weight: 800; display: inline-flex;
+  align-items: center; gap: 6px;
+}
+.resource-main kbd {
+  margin-left: 6px; background: rgba(255,255,255,0.08); padding: 3px 6px;
+  border-radius: 6px; color: var(--muted); font-size: 10px;
+}
+.icon-btn:hover, .resource-main:hover {
+  border-color: var(--line-blue); background: rgba(0, 102, 255, 0.08); color: #fff;
+}
+
+/* Chapter Rail (Left) */
+.chapter-rail {
+  position: fixed; z-index: 40; left: 20px; top: 50%; transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 10px;
+}
+.chapter-rail button {
+  width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;
+  border: 0; background: none; color: var(--muted); cursor: pointer; padding: 0; position: relative;
+}
+.chapter-rail i {
+  display: block; width: 6px; height: 6px; border-radius: 99px;
+  background: rgba(255,255,255,0.2); transition: 0.25s ease;
+}
+.chapter-rail span {
+  position: absolute; left: 30px; opacity: 0; pointer-events: none; white-space: nowrap;
+  font-size: 10px; letter-spacing: 0.08em; background: #0d1522; border: 1px solid var(--line);
+  padding: 6px 10px; border-radius: 8px; transform: translateX(-5px); transition: 0.2s ease;
+  color: var(--text); box-shadow: var(--shadow);
+}
+.chapter-rail button:hover span { opacity: 1; transform: none; }
+.chapter-rail button.active i {
+  background: var(--blue-opays); box-shadow: 0 0 0 5px rgba(0, 102, 255, 0.2);
+}
+
+/* Deck & Scene System */
+.deck { position: relative; z-index: 2; width: 100%; height: 100%; }
+.scene {
+  position: absolute; inset: 0; padding: 92px 74px 80px 80px; overflow: auto;
+  opacity: 0; visibility: hidden; transform: translateX(30px);
+  transition: opacity 0.4s ease, transform 0.48s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0.4s;
+}
+.scene.active { opacity: 1; visibility: visible; transform: none; }
+.scene.exit-left { transform: translateX(-30px); opacity: 0; }
+.scene-inner {
+  width: min(1300px, 100%); min-height: calc(100vh - 172px);
+  margin: auto; display: flex; flex-direction: column; justify-content: center;
+}
+.scene-inner.center { align-items: center; text-align: center; }
+
+/* Typography */
+.kicker, .step-label {
+  font-size: 10px; letter-spacing: 0.22em; color: var(--blue-light);
+  font-weight: 900; text-transform: uppercase; margin-bottom: 8px; display: block;
+}
+.gold { color: var(--gold-opays); }
+.blue { color: var(--blue-light); }
+.danger { color: var(--danger); }
+.muted { color: var(--muted); }
+.ok { color: var(--ok); }
+h1, h2, h3, p { margin-top: 0; }
+h1 {
+  font-size: clamp(48px, 6vw, 92px); line-height: 0.95; letter-spacing: -0.05em;
+  margin: 14px 0 20px; max-width: 960px; font-weight: 900;
+}
+h1 em, h2 em { font-style: normal; color: var(--blue-light); }
+h2 {
+  font-size: clamp(34px, 4.2vw, 64px); line-height: 1.05; letter-spacing: -0.04em;
+  margin: 12px 0 18px; max-width: 1050px; font-weight: 900;
+}
+h2 strong { color: var(--blue-light); }
+.lead, .hero-lead {
+  font-size: clamp(17px, 1.7vw, 24px); line-height: 1.5; color: #cbd5e1;
+  max-width: 860px; margin-bottom: 24px;
+}
+.lead strong, .hero-lead strong { color: #fff; }
+
+/* Buttons & Hero Elements */
+.primary, .secondary, .link-btn {
+  border-radius: 13px; padding: 13px 20px; font-weight: 900; font-size: 11px;
+  letter-spacing: 0.04em; cursor: pointer; text-decoration: none; display: inline-flex;
+  align-items: center; gap: 10px; transition: 0.2s ease;
+}
+.primary {
+  background: var(--blue-opays); border: 1px solid var(--blue-opays); color: #fff;
+  box-shadow: 0 10px 28px rgba(0, 102, 255, 0.25);
+}
+.primary:hover { transform: translateY(-2px); filter: brightness(1.1); box-shadow: 0 14px 34px rgba(0, 102, 255, 0.35); }
+.secondary {
+  background: rgba(255, 255, 255, 0.04); border: 1px solid var(--line); color: var(--text);
+}
+.secondary:hover { border-color: var(--line-blue); background: rgba(0, 102, 255, 0.06); }
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px; }
+.hero-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 28px; }
+.hero-meta span {
+  border: 1px solid var(--line); background: rgba(255,255,255,0.025);
+  border-radius: 999px; padding: 7px 12px; font-size: 10px; color: #94a3b8; font-weight: 700;
+}
+
+/* Hero Stage Layout */
+.hero-layout { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 60px; align-items: center; }
+.hero-stage { position: relative; height: 480px; display: grid; place-items: center; }
+.logo-halo {
+  width: 250px; height: 250px; border-radius: 50%; display: grid; place-items: center;
+  background: radial-gradient(circle, rgba(0, 102, 255, 0.22), rgba(0, 102, 255, 0.02) 60%, transparent 72%);
+  box-shadow: 0 0 0 1px rgba(0, 102, 255, 0.15), 0 0 100px rgba(0, 102, 255, 0.15);
+}
+.logo-halo svg { width: 180px; height: 180px; filter: drop-shadow(0 18px 28px rgba(0,0,0,0.5)); }
+.orbit {
+  position: absolute; border: 1px solid rgba(255,255,255,0.08); border-radius: 999px;
+  padding: 8px 14px; background: #0d1522; box-shadow: var(--shadow);
+  font-size: 10px; letter-spacing: 0.12em; font-weight: 800; color: #cbd5e1;
+}
+.orbit::before {
+  content: ""; position: absolute; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--blue-light); top: 50%; left: -3px; transform: translateY(-50%);
+}
+.orbit-1 { top: 12%; left: 6%; }
+.orbit-2 { top: 22%; right: 0%; }
+.orbit-3 { bottom: 24%; left: 0%; }
+.orbit-4 { bottom: 12%; right: 6%; }
+
+/* Grid Components */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.card {
+  padding: 24px; border: 1px solid var(--line);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.015));
+  border-radius: var(--radius); transition: 0.25s ease; position: relative;
+}
+.card:hover { border-color: var(--line-blue); transform: translateY(-2px); }
+.card > span { font-size: 10px; letter-spacing: 0.16em; color: var(--blue-light); font-weight: 900; }
+.card b { display: block; font-size: 18px; margin: 16px 0 8px; color: #fff; }
+.card p { font-size: 12px; line-height: 1.6; color: var(--muted); margin: 0; }
+.card.gold-border { border-color: var(--line-gold); background: rgba(212, 175, 55, 0.03); }
+.card.gold-border > span { color: var(--gold-opays); }
+
+/* Comparison Cards */
+.versus { display: grid; grid-template-columns: 1fr 60px 1fr; align-items: center; gap: 16px; margin-top: 10px; }
+.vs-card {
+  border: 1px solid var(--line); background: var(--surface);
+  border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow);
+}
+.vs-card.active-blue { border-color: var(--line-blue); background: linear-gradient(145deg, rgba(0, 102, 255, 0.06), var(--surface)); }
+.vs-card.active-gold { border-color: var(--line-gold); background: linear-gradient(145deg, rgba(212, 175, 55, 0.06), var(--surface)); }
+.vs-card small { font-size: 10px; letter-spacing: 0.16em; color: var(--muted); font-weight: 900; }
+.vs-card h3 { font-size: 26px; margin: 18px 0 10px; color: #fff; }
+.vs-card p { color: var(--muted); font-size: 13px; line-height: 1.6; margin: 0; }
+.vs-mark { text-align: center; font-size: 28px; font-weight: 900; color: #475569; }
+
+/* Timeline Trajectory */
+.trajectory-ladder { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 14px; }
+.traj-step {
+  border: 1px solid var(--line); background: var(--surface); border-radius: var(--radius);
+  padding: 24px; position: relative; overflow: hidden;
+}
+.traj-step.current { border-color: var(--blue-opays); box-shadow: 0 0 40px rgba(0, 102, 255, 0.12); }
+.traj-step small { font-size: 10px; color: var(--blue-light); font-weight: 900; letter-spacing: 0.15em; }
+.traj-step h3 { font-size: 22px; margin: 14px 0 8px; color: #fff; }
+.traj-step p { font-size: 12px; color: var(--muted); line-height: 1.55; margin: 0; }
+.traj-badge {
+  margin-top: 16px; display: inline-block; padding: 4px 8px; border-radius: 6px;
+  background: rgba(255,255,255,0.05); font-size: 10px; font-weight: 800; color: #e2e8f0;
+}
+.traj-step.current .traj-badge { background: var(--blue-opays); color: #fff; }
+
+/* Prompt Box & Code Windows */
+.prompt-card {
+  border: 1px solid var(--line); background: #050a11; border-radius: 16px;
+  padding: 18px; position: relative; margin-top: 12px;
+}
+.prompt-header {
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 10px;
+}
+.prompt-header span { font-size: 10px; letter-spacing: 0.14em; color: var(--blue-light); font-weight: 900; }
+.copy-btn {
+  border: 1px solid var(--line); background: rgba(255,255,255,0.04);
+  color: var(--text); border-radius: 8px; padding: 6px 12px; font-size: 10px;
+  font-weight: 800; cursor: pointer; transition: 0.2s ease; display: inline-flex; align-items: center; gap: 6px;
+}
+.copy-btn:hover { border-color: var(--blue-opays); background: rgba(0, 102, 255, 0.15); color: #fff; }
+.copy-btn.copied { border-color: var(--ok); background: rgba(85, 220, 161, 0.15); color: var(--ok); }
+.prompt-text {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 11px; line-height: 1.7; color: #cbd5e1; white-space: pre-wrap; margin: 0;
+}
+.prompt-var { color: var(--gold-light); font-weight: 900; background: rgba(212, 175, 55, 0.12); padding: 1px 4px; border-radius: 4px; }
+
+/* Before / After ROI Box */
+.roi-box {
+  display: grid; grid-template-columns: 1fr 80px 1fr; align-items: center; gap: 16px;
+  padding: 24px; border: 1px solid var(--line-blue); border-radius: var(--radius);
+  background: linear-gradient(145deg, rgba(0, 102, 255, 0.08), var(--surface)); margin-top: 14px;
+}
+.roi-side { text-align: center; padding: 18px; border-radius: 14px; background: rgba(0,0,0,0.25); }
+.roi-side small { font-size: 10px; letter-spacing: 0.14em; color: var(--muted); font-weight: 800; }
+.roi-side b { display: block; font-size: 32px; margin: 8px 0 4px; color: #fff; }
+.roi-side.gain b { color: var(--ok); }
+.roi-arrow { text-align: center; font-size: 28px; color: var(--blue-light); }
+
+/* Interactive Tabs (Sector Declinations) */
+.tab-nav { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+.tab-btn {
+  border: 1px solid var(--line); background: rgba(255,255,255,0.03);
+  color: var(--muted); border-radius: 10px; padding: 8px 14px; font-size: 10px;
+  font-weight: 800; cursor: pointer; transition: 0.2s ease;
+}
+.tab-btn:hover { border-color: var(--line-blue); color: var(--text); }
+.tab-btn.active { border-color: var(--blue-opays); background: var(--blue-opays); color: #fff; }
+.tab-pane {
+  display: none; padding: 22px; border: 1px solid var(--line); background: var(--surface);
+  border-radius: var(--radius); animation: fadeIn 0.3s ease;
+}
+.tab-pane.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+/* Progressive Reveals */
+.reveal {
+  opacity: 0; transform: translateY(16px) scale(0.99); filter: blur(2px);
+  transition: opacity 0.45s ease, transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.45s;
+}
+.reveal.visible { opacity: 1; transform: none; filter: none; }
+
+/* Bottom Nav */
+.bottom-nav {
+  position: fixed; z-index: 45; left: 0; right: 0; bottom: 0; height: 62px;
+  border-top: 1px solid var(--line); background: rgba(7, 11, 18, 0.85);
+  backdrop-filter: blur(18px); display: grid; grid-template-columns: 48px 1fr auto 48px;
+  align-items: center; gap: 14px; padding: 0 24px;
+}
+.bottom-nav > button {
+  width: 40px; height: 40px; border: 1px solid var(--line); background: rgba(255,255,255,0.03);
+  color: var(--text); border-radius: 11px; cursor: pointer; display: grid; place-items: center;
+  transition: 0.2s ease;
+}
+.bottom-nav > button:hover:not(:disabled) { border-color: var(--line-blue); background: rgba(0, 102, 255, 0.1); }
+.bottom-nav > button:disabled { opacity: 0.3; cursor: not-allowed; }
+.progress-wrap { display: grid; gap: 7px; }
+.progress { height: 4px; background: rgba(255,255,255,0.06); border-radius: 99px; overflow: hidden; }
+.progress i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--blue-opays), var(--blue-light)); transition: 0.35s ease; }
+.progress-wrap small { display: flex; justify-content: space-between; font-size: 10px; color: #64748b; }
+.progress-wrap small span:first-child { color: #cbd5e1; font-weight: 700; }
+.hint { font-size: 10px; letter-spacing: 0.08em; color: #64748b; }
+
+/* Modals & Slide-out Panels */
+.overlay {
+  position: fixed; z-index: 70; inset: 0; background: rgba(0,0,0,0.68);
+  backdrop-filter: blur(8px); opacity: 0; visibility: hidden; transition: 0.25s ease;
+}
+.overlay.open { opacity: 1; visibility: visible; }
+.resource-dock, .notes-panel {
+  position: fixed; z-index: 90; top: 0; bottom: 0; width: min(540px, 96vw);
+  background: #090f18; border-left: 1px solid var(--line);
+  box-shadow: -40px 0 100px rgba(0,0,0,0.6); transform: translateX(105%);
+  transition: 0.38s cubic-bezier(0.2, 0.8, 0.2, 1); overflow: auto; padding: 28px;
+}
+.resource-dock { right: 0; }
+.notes-panel { right: 0; left: auto; }
+.resource-dock.open, .notes-panel.open { transform: none; }
+.dock-head, .notes-head, .overview-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+.dock-head h3, .notes-head h3 { font-size: 24px; margin: 4px 0 0; color: #fff; font-weight: 900; }
+.close-panel-btn {
+  width: 36px; height: 36px; border: 1px solid var(--line); background: rgba(255,255,255,0.04);
+  color: var(--text); border-radius: 10px; cursor: pointer; font-size: 18px; display: grid; place-items: center;
+}
+.dock-search { width: 100%; border: 1px solid var(--line); background: #060a10; color: var(--text); border-radius: 10px; padding: 11px 14px; outline: none; margin-bottom: 18px; font-size: 12px; }
+.dock-search:focus { border-color: var(--blue-opays); }
+.dock-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.dock-item {
+  border: 1px solid var(--line); background: var(--surface); color: var(--text);
+  border-radius: 13px; padding: 14px; text-align: left; cursor: pointer; transition: 0.2s ease;
+}
+.dock-item:hover { border-color: var(--blue-opays); transform: translateY(-2px); }
+.dock-item small { display: block; font-size: 10px; color: var(--blue-light); font-weight: 800; }
+.dock-item b { display: block; font-size: 12px; margin-top: 10px; color: #fff; }
+
+/* Prompt Modal */
+.modal {
+  position: fixed; z-index: 100; inset: 0; display: grid; place-items: center; padding: 20px;
+  opacity: 0; visibility: hidden; pointer-events: none; transition: 0.25s ease;
+}
+.modal.open { opacity: 1; visibility: visible; pointer-events: auto; }
+.modal-shell {
+  width: min(860px, 96vw); max-height: 86vh; background: #0a111a; border: 1px solid var(--line-blue);
+  border-radius: 20px; box-shadow: 0 45px 120px rgba(0,0,0,0.7); overflow: hidden;
+  display: flex; flex-direction: column; transform: translateY(20px) scale(0.985); transition: 0.3s ease;
+}
+.modal.open .modal-shell { transform: none; }
+.modal-head { padding: 18px 24px; border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; }
+.modal-category { font-size: 10px; color: var(--blue-light); letter-spacing: 0.16em; font-weight: 900; }
+.modal-head h3 { font-size: 22px; margin: 4px 0 0; color: #fff; }
+.modal-body { padding: 20px 24px; overflow: auto; }
+.modal-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+.modal-meta > div { border: 1px solid var(--line); background: var(--surface); border-radius: 12px; padding: 12px; }
+.modal-meta small { font-size: 10px; color: var(--blue-light); font-weight: 900; }
+.modal-meta p { font-size: 11px; color: var(--muted); margin: 4px 0 0; line-height: 1.5; }
+.modal-foot { padding: 14px 24px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; }
+
+/* Notes Formateur Panel */
+.notes-body { display: grid; gap: 14px; margin-top: 16px; }
+.notes-body section { border: 1px solid var(--line); background: var(--surface); border-radius: 14px; padding: 16px; }
+.notes-body small { font-size: 10px; color: var(--blue-light); letter-spacing: 0.14em; font-weight: 900; }
+.notes-body p { font-size: 12px; color: #cbd5e1; line-height: 1.65; margin: 8px 0 0; }
+.transition-note { border-color: var(--line-gold) !important; background: rgba(212, 175, 55, 0.04) !important; }
+.transition-note small { color: var(--gold-opays); }
+
+/* Overview Grid */
+.overview {
+  position: fixed; z-index: 95; inset: 0; background: rgba(5,8,13,0.96); backdrop-filter: blur(16px);
+  padding: 30px; opacity: 0; visibility: hidden; transition: 0.3s ease; overflow: auto;
+}
+.overview.open { opacity: 1; visibility: visible; }
+.overview-shell { max-width: 1200px; margin: auto; }
+.overview-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 20px; }
+.overview-item {
+  min-height: 95px; text-align: left; color: var(--text); border: 1px solid var(--line);
+  background: var(--surface); border-radius: 14px; padding: 14px; cursor: pointer; transition: 0.2s ease;
+}
+.overview-item:hover { border-color: var(--blue-opays); transform: translateY(-2px); }
+.overview-item span { font-size: 10px; color: var(--blue-light); font-weight: 800; }
+.overview-item b { display: block; font-size: 11px; margin-top: 14px; color: #fff; line-height: 1.4; }
+
+/* Responsive adjustments */
+@media (max-width: 1050px) {
+  .chapter-rail { display: none; }
+  .scene { padding-left: 24px; padding-right: 24px; }
+  .hero-layout, .versus, .roi-box { grid-template-columns: 1fr; }
+  .hero-stage { display: none; }
+  .grid-4 { grid-template-columns: 1fr 1fr; }
+  .trajectory-ladder { grid-template-columns: 1fr; }
+  .overview-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 650px) {
+  .topbar { padding: 0 12px; }
+  .chapter-pill { display: none; }
+  .brand small, .top-actions .icon-btn:not(#fullscreenBtn), .resource-main kbd, .hint { display: none; }
+  .grid-2, .grid-3, .grid-4, .overview-grid, .dock-grid { grid-template-columns: 1fr; }
+  h1 { font-size: 42px; } h2 { font-size: 32px; }
+  .bottom-nav { grid-template-columns: 42px 1fr 42px; padding: 0 12px; }
+}
+
+</style>
+<style>.admin-home-link{position:fixed;top:82px;left:14px;z-index:200;background:rgba(13,21,34,.92);border:1px solid rgba(212,175,55,.4);color:var(--gold);font-size:11px;font-weight:800;letter-spacing:.06em;padding:7px 14px;border-radius:999px;text-decoration:none;z-index:300;box-shadow:0 4px 20px rgba(0,0,0,.4);} .admin-home-link:hover{color:#fff;border-color:var(--gold);} @media(max-width:650px){.admin-home-link{top:80px;left:8px;font-size:10px;padding:6px 10px;}}</style></head>
+<body><a href="../../index.html" class="admin-home-link" title="Revenir au Hub formateur">← Hub formateur</a>
+
+<div class="ambient ambient-blue"></div>
+<div class="ambient ambient-gold"></div>
+<div class="grain"></div>
+
+<!-- Topbar Navigation -->
+<header class="topbar">
+  <button class="brand" id="homeBtn">
+    <div class="brand-logo">
+      <svg viewBox="0 0 1000 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 680 200 A 380 380 0 1 0 680 800" fill="none" stroke="#001f4d" stroke-width="120" stroke-linecap="butt"/>
+        <g fill="#0066FF">
+          <path d="M 280 400 L 780 380 L 820 440 L 740 480 L 560 510 L 420 820 L 320 820 L 460 510 L 280 480 Z" />
+          <rect x="850" y="340" width="100" height="100" rx="16"/>
+          <rect x="960" y="440" width="80" height="80" rx="14"/>
+        </g>
+      </svg>
+    </div>
+    <span>
+      <b>OPAYS ACADEMY</b>
+      <small>MODULE 04 • AUDIT DE POSTE, MICROSCOPE MÉTIER & ROI</small>
+    </span>
+  </button>
+
+  <div class="chapter-pill">
+    <span id="chapterIndex">01</span>
+    <b id="chapterName">LE DIAGNOSTIC DE POSTE</b>
+  </div>
+
+  <div class="top-actions">
+    <button class="icon-btn" id="overviewBtn" title="Vue d'ensemble [O]">⊞</button>
+    <button class="resource-main" id="resourceDockBtn" title="Boîte à Prompts & Outils [R]">
+      🧰 Prompts <kbd>R</kbd>
+    </button>
+    <button class="icon-btn" id="notesBtn" title="Notes Formateur [N]">📝</button>
+    <button class="icon-btn" id="fullscreenBtn" title="Plein écran [F]">⛶</button>
+  </div>
+</header>
+
+<!-- Left Chapter Rail -->
+<nav class="chapter-rail" aria-label="Chapitres">
+  <button class="active" title="0. LE DIAGNOSTIC DE POSTE"><i></i><span>00. LE DIAGNOSTIC DE POSTE</span></button>
+  <button class="" title="1. LA MATRICE FRÉQUENCE / PÉNIBILITÉ"><i></i><span>01. LA MATRICE FRÉQUENCE / PÉNIBILITÉ</span></button>
+  <button class="" title="2. LES 3 TÂCHES CIBLES À FORT ROI"><i></i><span>02. LES 3 TÂCHES CIBLES À FORT ROI</span></button>
+  <button class="" title="3. PLAN DE DÉLÉGATION À L'IA"><i></i><span>03. PLAN DE DÉLÉGATION À L'IA</span></button>
+  <button class="" title="4. MISSION HEBDOMADAIRE"><i></i><span>04. MISSION HEBDOMADAIRE</span></button>
+</nav>
+
+<!-- Main Deck Container -->
+<main class="deck" id="deck">
+<section class="scene active" data-chapter="0" data-note="cover" data-title="Module 04 — L'IA dans Mon Travail">
+        <div class="scene-inner hero-layout">
+          <div>
+            <span class="kicker">Académie OPAYS • Séance 04</span>
+            <h1>L'IA dans <em>Mon Travail</em>.</h1>
+            <p class="hero-lead">Passez votre quotidien professionnel au microscope. <strong>Identifiez les tâches à fort ROI et libérez 5h chaque semaine</strong>.</p>
+            <div class="hero-actions">
+              <button class="primary" data-next>Auditer mon poste ➔</button>
+              <button class="secondary" id="openPromptsHero">Outil d'audit 🧰</button>
+            </div>
+            <div class="hero-meta">
+              <span>🔬 MICROSCOPE MÉTIER</span>
+              <span>📊 MATRICE ROI</span>
+              <span>⏳ 5H LIBÉRÉES / SEMAINE</span>
+            </div>
+          </div>
+          <div class="hero-stage">
+            <div class="logo-halo">
+              <svg viewBox="0 0 1000 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 680 200 A 380 380 0 1 0 680 800" fill="none" stroke="#001f4d" stroke-width="120" stroke-linecap="butt"/>
+                <g fill="#0066FF">
+                  <path d="M 280 400 L 780 380 L 820 440 L 740 480 L 560 510 L 420 820 L 320 820 L 460 510 L 280 480 Z" />
+                  <rect x="850" y="340" width="100" height="100" rx="16"/>
+                  <rect x="960" y="440" width="80" height="80" rx="14"/>
+                </g>
+              </svg>
+            </div>
+            <div class="orbit orbit-1">📋 10 Tâches Clés</div>
+            <div class="orbit orbit-2">📈 Fréquence & Temps</div>
+            <div class="orbit orbit-3">🎯 Top 3 Cibles</div>
+            <div class="orbit orbit-4">💼 AI Work Kit</div>
+          </div>
+        </div>
+      </section>
+
+<section class="scene" data-chapter="1" data-note="matrix" data-title="La Matrice d'Arbitrage">
+        <div class="scene-inner">
+          <span class="kicker">Priorisation Stratégique</span>
+          <h2>La Matrice <strong>Fréquence × Pénibilité</strong></h2>
+          <div class="grid-2 reveal" style="margin-top:14px;">
+            <div class="card gold-border">
+              <span>ZONE 1 • PRIORITÉ ABSOLUE (FORT ROI)</span>
+              <b>Tâches Fréquentes & Répétitives</b>
+              <p>Réponses aux emails courants, comptes-rendus de réunion, synthèses de pièces jointes, tableaux de reporting.</p>
+            </div>
+            <div class="card">
+              <span>ZONE 2 • ASSISTANCE PONCTUELLE</span>
+              <b>Tâches Complexes & Stratégiques</b>
+              <p>Relecture critique d'une convention, brainstorming d'offres commerciales, cadrage d'un projet.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+<section class="scene" data-chapter="2" data-note="plan" data-title="Audit de Poste Live">
+        <div class="scene-inner">
+          <span class="kicker">Démonstration & Prompt d'Audit</span>
+          <h2>Le Prompt <strong>Microscope Métier</strong></h2>
+          <div class="prompt-card reveal">
+            <div class="prompt-header">
+              <span>PROMPT AUDIT DE POSTE</span>
+              <button class="copy-btn" data-copy="auditPrompt">📋 Copier le prompt</button>
+            </div>
+            <p class="prompt-text" id="auditPromptText">Agis en tant qu'expert en organisation du travail et productivité par l'IA.
+Voici mes responsabilités et mes tâches hebdomadaires :
+<span class="prompt-var">[LISTER 5 À 10 TÂCHES DE VOTRE POSTE]</span>
+
+1. Classe ces tâches selon la matrice Fréquence / Pénibilité.
+2. Identifie les 3 tâches prioritaires à déléguer à l'IA avec le plus fort gain de temps.
+3. Pour chaque tâche cible, précise la part exacte à confier à l'IA et la part à conserver sous contrôle humain.</p>
+          </div>
+        </div>
+      </section>
+
+<section class="scene" data-chapter="4" data-note="mission" data-title="Mission & Work Kit">
+        <div class="scene-inner center">
+          <span class="kicker">Mission n°4 • Google Classroom</span>
+          <h2>Validez vos 3 Tâches Prioritaires dans votre <strong>AI Work Kit</strong></h2>
+          <p class="lead">Complétez le <strong>Volet 04 — Mon Audit de Poste & Mes 3 Tâches Cibles</strong> pour préparer la construction de vos Skills.</p>
+          <div class="hero-meta reveal" style="justify-content:center;">
+            <span>📁 WORK KIT : VOLET 04</span>
+            <span>📝 DÉPÔT CLASSROOM</span>
+            <span>📅 AVANT LUNDI 23H59</span>
+          </div>
+        </div>
+      </section>
+</main>
+
+<!-- Bottom Navigation Bar -->
+<footer class="bottom-nav">
+  <button id="prevBtn" title="Slide précédente [⬅️]">◀</button>
+  <div class="progress-wrap">
+    <div class="progress"><i id="progressBar"></i></div>
+    <small>
+      <span id="slideTitle">Module 04 — L'IA dans Mon Travail</span>
+      <span><b id="currentIndex">01</b> / <span id="totalSlides">4</span></span>
+    </small>
+  </div>
+  <div class="hint">[Espace / ➔] Avancer • [R] Prompts • [N] Notes • [O] Vue globale</div>
+  <button id="nextBtn" title="Slide suivante [➔]">▶</button>
+</footer>
+
+<!-- Overlay Background -->
+<div class="overlay" id="overlay"></div>
+
+<!-- Slide-out Resource Drawer (Prompts Hub) -->
+<aside class="resource-dock" id="resourceDock" aria-hidden="true">
+  <div class="dock-head">
+    <div>
+      <small>ACADÉMIE OPAYS • BOÎTE À PROMPTS</small>
+      <h3>Ressources du Module 04</h3>
+    </div>
+    <button class="close-panel-btn" id="closeDock">✕</button>
+  </div>
+  <input class="dock-search" id="resourceSearch" placeholder="Rechercher un prompt, un exercice..." type="text"/>
+  <div class="dock-grid" id="dockGrid"></div>
+</aside>
+
+<!-- Slide-out Facilitator Notes Drawer -->
+<aside class="notes-panel" id="notesPanel" aria-hidden="true">
+  <div class="notes-head">
+    <div>
+      <small>NOTES FORMATEUR • AIDE-MÉMOIRE</small>
+      <h3 id="notesTitle">Titre de la slide</h3>
+    </div>
+    <button class="close-panel-btn" id="closeNotes">✕</button>
+  </div>
+  <div class="notes-body">
+    <section>
+      <small>🎯 OBJECTIF PÉDAGOGIQUE</small>
+      <p id="noteGoal">Objectif...</p>
+    </section>
+    <section>
+      <small>🗣️ ARGUMENTS À L'ORAL & EXEMPLES</small>
+      <p id="noteTalk">Discours oral...</p>
+    </section>
+    <section class="transition-note">
+      <small>🔗 PHRASE DE TRANSITION</small>
+      <p id="noteTransition">Transition...</p>
+    </section>
+  </div>
+</aside>
+
+<!-- Overview Grid Modal -->
+<div class="overview" id="overview" aria-hidden="true">
+  <div class="overview-shell">
+    <div class="overview-head">
+      <div>
+        <small>NAVIGATION RAPIDE</small>
+        <h2>Vue d'ensemble des 4 Slides</h2>
+      </div>
+      <button class="close-panel-btn" id="closeOverview">✕</button>
+    </div>
+    <div class="overview-grid" id="overviewGrid"></div>
+  </div>
+</div>
+
+<!-- Prompt Detail Modal -->
+<div class="modal" id="resourceModal" aria-hidden="true">
+  <div class="modal-shell">
+    <div class="modal-head">
+      <div>
+        <span class="modal-category" id="modalCategory">CATÉGORIE</span>
+        <h3 id="modalTitle">Titre du Prompt</h3>
+      </div>
+      <button class="close-panel-btn" id="modalClose">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-meta">
+        <div>
+          <small>OBJECTIF</small>
+          <p id="modalObjective">Objectif du prompt...</p>
+        </div>
+        <div>
+          <small>CONSEIL D'UTILISATION</small>
+          <p id="modalDescription">Conseil...</p>
+        </div>
+      </div>
+      <div class="prompt-card" style="margin-top:0;">
+        <div class="prompt-header">
+          <span>TEXTE DU PROMPT (PRÊT À L'EMPLOI)</span>
+          <button class="copy-btn" id="modalCopyBtn">📋 Copier le prompt</button>
+        </div>
+        <p class="prompt-text" id="modalPromptText"></p>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <span id="modalCopyFeedback" style="font-size:10px; color:var(--muted);">Prêt à copier dans votre outil IA.</span>
+      <button class="secondary" id="modalCloseBottom" style="padding:6px 14px;">Fermer</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ==================== DONNÉES PÉDAGOGIQUES DES PROMPTS ====================
+const resources = {
+  "auditPrompt": {
+    "category": "DIAGNOSTIC DE POSTE",
+    "title": "Prompt Microscope Métier",
+    "objective": "Faire décomposer une journée de travail pour identifier les gisements d'automatisation.",
+    "description": "Collez la liste brute de vos tâches quotidiennes.",
+    "prompt": "Agis en tant qu'expert en organisation du travail et productivité par l'IA.\nVoici mes responsabilités et mes tâches hebdomadaires :\n[LISTER 5 À 10 TÂCHES RÉELLES DE VOTRE POSTE]\n\n1. Classe ces tâches selon la matrice Fréquence / Pénibilité.\n2. Identifie les 3 tâches prioritaires à déléguer à l'IA avec le plus fort gain de temps.\n3. Pour chaque tâche cible, précise la part exacte à confier à l'IA et la part à conserver sous contrôle humain."
+  }
+};
+
+// ==================== NOTES FORMATEUR ====================
+const notes = {
+  "cover": [
+    "Module pivot : passer de l'expérimentation générale à l'ancrage sur son propre bureau.",
+    "Objectif : identifier concrètement où gagner 3 à 5 heures par semaine."
+  ],
+  "diagnostic": [
+    "Expliquer le principe du microscope métier : décomposer son activité tâche par tâche."
+  ],
+  "matrix": [
+    "Présenter la matrice Fréquence x Pénibilité (les corvées répétitives prioritaires)."
+  ],
+  "plan": [
+    "Construire le plan de délégation : l'IA prépare le brouillon, l'humain valide."
+  ],
+  "mission": [
+    "Devoir n°4 : Remplir le Volet 04 du Work Kit (Audit des 10 tâches) et déposer sur Classroom."
+  ]
+};
+
+// ==================== MOTEUR DE NAVIGATION ====================
+const scenes = [...document.querySelectorAll('.scene')];
+let current = 0, animating = false, revealIndex = 0;
+const q = s => document.querySelector(s), qa = s => [...document.querySelectorAll(s)];
+const chapterNames = ["LE DIAGNOSTIC DE POSTE","LA MATRICE FRÉQUENCE / PÉNIBILITÉ","LES 3 TÂCHES CIBLES À FORT ROI","PLAN DE DÉLÉGATION À L'IA","MISSION HEBDOMADAIRE"];
+
+q('#totalSlides').textContent = String(scenes.length).padStart(2, '0');
+
+function hideReveals(scene) {
+  scene.querySelectorAll('.reveal').forEach(el => el.classList.remove('visible'));
+  revealIndex = 0;
+}
+
+function revealNext() {
+  const scene = scenes[current];
+  const els = [...scene.querySelectorAll('.reveal')];
+  if (revealIndex < els.length) {
+    els[revealIndex++].classList.add('visible');
+    return true;
+  }
+  return false;
+}
+
+function revealAll(scene = scenes[current]) {
+  const els = [...scene.querySelectorAll('.reveal')];
+  els.forEach((el, i) => setTimeout(() => el.classList.add('visible'), i * 40));
+  revealIndex = els.length;
+}
+
+function enterScene(scene) {
+  hideReveals(scene);
+  setTimeout(() => revealNext(), 80);
+  updateNotes();
+}
+
+function goTo(index, revealEverything = false) {
+  if (animating || index < 0 || index >= scenes.length || index === current) return;
+  animating = true;
+  const prev = scenes[current];
+  const dir = index > current ? 1 : -1;
+  prev.classList.remove('active');
+  if (dir > 0) prev.classList.add('exit-left');
+  
+  current = index;
+  const next = scenes[current];
+  next.classList.remove('exit-left');
+  next.classList.add('active');
+  next.scrollTop = 0;
+  
+  updateNav();
+  enterScene(next);
+  
+  if (revealEverything) setTimeout(() => revealAll(next), 100);
+  setTimeout(() => { prev.classList.remove('exit-left'); animating = false; }, 480);
+  location.hash = 's' + (current + 1);
+}
+
+function advance() {
+  if (!revealNext()) goTo(current + 1);
+}
+
+function updateNav() {
+  q('#currentIndex').textContent = String(current + 1).padStart(2, '0');
+  q('#progressBar').style.width = ((current + 1) / scenes.length * 100) + '%';
+  q('#slideTitle').textContent = scenes[current].dataset.title;
+  q('#prevBtn').disabled = current === 0;
+  q('#nextBtn').disabled = current === scenes.length - 1;
+  
+  const ch = Number(scenes[current].dataset.chapter || 0);
+  q('#chapterIndex').textContent = String(ch + 1).padStart(2, '0');
+  q('#chapterName').textContent = chapterNames[ch] || 'MODULE 04';
+  qa('.chapter-rail button').forEach((b, i) => b.classList.toggle('active', i === ch));
+}
+
+q('#nextBtn').onclick = advance;
+q('#prevBtn').onclick = () => goTo(current - 1, true);
+q('#homeBtn').onclick = () => goTo(0);
+qa('[data-next]').forEach(b => b.addEventListener('click', () => goTo(current + 1)));
+qa('.chapter-rail button').forEach((b, i) => b.onclick = () => {
+  const idx = scenes.findIndex(s => Number(s.dataset.chapter) === i);
+  if (idx >= 0) goTo(idx);
+});
+
+// Key navigation
+function modalOpen() {
+  return q('#resourceModal').classList.contains('open') ||
+         q('#resourceDock').classList.contains('open') ||
+         q('#overview').classList.contains('open') ||
+         q('#notesPanel').classList.contains('open');
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeAll(); return; }
+  if (modalOpen()) return;
+  if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); advance(); }
+  if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); goTo(current - 1, true); }
+  if (e.key.toLowerCase() === 'r') openDock();
+  if (e.key.toLowerCase() === 'o') openOverview();
+  if (e.key.toLowerCase() === 'n') toggleNotes();
+  if (e.key.toLowerCase() === 'f') toggleFullscreen();
+});
+
+// Overlays & Panels
+function openOverlay() { q('#overlay').classList.add('open'); }
+function closeOverlay() { if (!modalOpen()) q('#overlay').classList.remove('open'); }
+
+function openDock() {
+  q('#resourceDock').classList.add('open');
+  q('#resourceDock').setAttribute('aria-hidden', 'false');
+  openOverlay();
+  setTimeout(() => q('#resourceSearch').focus(), 150);
+}
+function closeDock() {
+  q('#resourceDock').classList.remove('open');
+  q('#resourceDock').setAttribute('aria-hidden', 'true');
+  setTimeout(closeOverlay, 20);
+}
+q('#resourceDockBtn').onclick = openDock;
+q('#closeDock').onclick = closeDock;
+if (q('#openPromptsHero')) q('#openPromptsHero').onclick = openDock;
+
+function openModal(key) {
+  const r = resources[key];
+  if (!r) return;
+  q('#modalCategory').textContent = r.category;
+  q('#modalTitle').textContent = r.title;
+  q('#modalObjective').textContent = r.objective;
+  q('#modalDescription').textContent = r.description;
+  q('#modalPromptText').textContent = r.prompt;
+  q('#resourceModal').dataset.key = key;
+  q('#modalCopyFeedback').textContent = 'Prêt à copier dans votre outil IA.';
+  q('#modalCopyBtn').classList.remove('copied');
+  q('#modalCopyBtn').textContent = '📋 Copier le prompt';
+  q('#resourceModal').classList.add('open');
+  q('#resourceModal').setAttribute('aria-hidden', 'false');
+  openOverlay();
+}
+function closeModal() {
+  q('#resourceModal').classList.remove('open');
+  q('#resourceModal').setAttribute('aria-hidden', 'true');
+  setTimeout(closeOverlay, 20);
+}
+q('#modalClose').onclick = closeModal;
+q('#modalCloseBottom').onclick = closeModal;
+
+// Modal Copy Button
+q('#modalCopyBtn').onclick = async () => {
+  const txt = q('#modalPromptText').textContent;
+  try {
+    await navigator.clipboard.writeText(txt);
+    q('#modalCopyBtn').classList.add('copied');
+    q('#modalCopyBtn').textContent = '✓ Copié !';
+    q('#modalCopyFeedback').textContent = '✓ Prompt copié dans votre presse-papier.';
+  } catch (err) {
+    const ta = document.createElement('textarea');
+    ta.value = txt; document.body.appendChild(ta);
+    ta.select(); document.execCommand('copy'); ta.remove();
+    q('#modalCopyBtn').classList.add('copied');
+    q('#modalCopyBtn').textContent = '✓ Copié !';
+  }
+};
+
+// In-slide Copy Buttons
+qa('.copy-btn[data-copy]').forEach(btn => {
+  btn.onclick = async () => {
+    const key = btn.dataset.copy;
+    const textEl = q('#' + key + 'Text');
+    const txt = textEl ? textEl.textContent : (resources[key] ? resources[key].prompt : '');
+    try {
+      await navigator.clipboard.writeText(txt);
+      btn.classList.add('copied');
+      btn.textContent = '✓ Copié !';
+      setTimeout(() => { btn.classList.remove('copied'); btn.textContent = '📋 Copier le prompt'; }, 3000);
+    } catch {
+      const ta = document.createElement('textarea');
+      ta.value = txt; document.body.appendChild(ta);
+      ta.select(); document.execCommand('copy'); ta.remove();
+      btn.classList.add('copied');
+      btn.textContent = '✓ Copié !';
+      setTimeout(() => { btn.classList.remove('copied'); btn.textContent = '📋 Copier le prompt'; }, 3000);
+    }
+  };
+});
+
+// Render Resource Dock Items
+const dockGrid = q('#dockGrid');
+function renderDock(filter = '') {
+  dockGrid.innerHTML = '';
+  Object.entries(resources).filter(([k, r]) => (r.title + ' ' + r.category + ' ' + r.description).toLowerCase().includes(filter.toLowerCase()))
+    .forEach(([k, r]) => {
+      const b = document.createElement('button');
+      b.className = 'dock-item';
+      b.innerHTML = `<small>${r.category}</small><b>${r.title}</b>`;
+      b.onclick = () => { closeDock(); openModal(k); };
+      dockGrid.appendChild(b);
+    });
+}
+renderDock();
+q('#resourceSearch').oninput = e => renderDock(e.target.value);
+
+// Overview Modal
+function openOverview() {
+  q('#overview').classList.add('open');
+  q('#overview').setAttribute('aria-hidden', 'false');
+  openOverlay();
+}
+function closeOverview() {
+  q('#overview').classList.remove('open');
+  q('#overview').setAttribute('aria-hidden', 'true');
+  setTimeout(closeOverlay, 20);
+}
+q('#overviewBtn').onclick = openOverview;
+q('#closeOverview').onclick = closeOverview;
+const og = q('#overviewGrid');
+scenes.forEach((s, i) => {
+  const b = document.createElement('button');
+  b.className = 'overview-item';
+  b.innerHTML = `<span>SLIDE ${String(i + 1).padStart(2, '0')}</span><b>${s.dataset.title}</b>`;
+  b.onclick = () => { closeOverview(); goTo(i); };
+  og.appendChild(b);
+});
+
+// Notes Formateur
+function updateNotes() {
+  const key = scenes[current].dataset.note;
+  const n = notes[key] || ['Objectif de la slide', 'Points à aborder', 'Transition vers la suite'];
+  q('#notesTitle').textContent = scenes[current].dataset.title;
+  q('#noteGoal').textContent = n[0] || '';
+  q('#noteTalk').textContent = n.length >= 2 ? n[1] : n[0] || '';
+  q('#noteTransition').textContent = n.length >= 3 ? n[2] : 'Enchaîner avec la slide suivante.';
+}
+function toggleNotes() {
+  const p = q('#notesPanel');
+  const open = !p.classList.contains('open');
+  p.classList.toggle('open', open);
+  p.setAttribute('aria-hidden', String(!open));
+  if (open) { updateNotes(); openOverlay(); }
+  else setTimeout(closeOverlay, 20);
+}
+q('#notesBtn').onclick = toggleNotes;
+q('#closeNotes').onclick = toggleNotes;
+
+// Close All Overlays
+function closeAll() {
+  closeModal(); closeDock(); closeOverview();
+  if (q('#notesPanel').classList.contains('open')) toggleNotes();
+  q('#overlay').classList.remove('open');
+}
+q('#overlay').onclick = closeAll;
+
+// Fullscreen
+async function toggleFullscreen() {
+  try {
+    if (!document.fullscreenElement) await document.documentElement.requestFullscreen();
+    else await document.exitFullscreen();
+  } catch {}
+}
+q('#fullscreenBtn').onclick = toggleFullscreen;
+
+// Sector Tabs
+qa('.tab-btn').forEach(btn => {
+  btn.onclick = () => {
+    qa('.tab-btn').forEach(b => b.classList.remove('active'));
+    qa('.tab-pane').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    const target = q('#tab-' + btn.dataset.tab);
+    if (target) target.classList.add('active');
+  };
+});
+
+// Initial Hash Routing & Start
+const hash = location.hash.match(/s(\d+)/);
+if (location.hash === '#notes') { requestAnimationFrame(() => { if (typeof toggleNotes === 'function' && !q('#notesPanel').classList.contains('open')) toggleNotes(); }); }
+if (hash) {
+  const idx = Math.max(0, Math.min(scenes.length - 1, Number(hash[1]) - 1));
+  if (idx !== 0) {
+    scenes[0].classList.remove('active');
+    current = idx;
+    scenes[current].classList.add('active');
+  }
+}
+updateNav();
+enterScene(scenes[current]);
+
+
+</script>
+</body>
+</html>

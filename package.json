@@ -1,0 +1,42 @@
+{
+  "name": "accademy-opays",
+  "version": "2.0.0",
+  "description": "Académie OPAYS — Système de formation à l'IA pour professionnels : 18 modules, hub formateur, dashboard de séance, tests automatisés.",
+  "private": true,
+  "scripts": {
+    "test": "node scripts/test_coherence.js && node scripts/verify_all_presentations.js",
+    "test:browser": "node scripts/test_browser_real.js",
+    "test:hub": "node scripts/check_hub_dashboard.js",
+    "test:all": "npm test && npm run test:hub && npm run test:browser",
+    "build:registry": "node scripts/build_registry.js",
+    "build:cockpit": "node scripts/build_cockpit_data.js",
+    "build:presentations": "node scripts/build_all_presentations.js",
+    "release": "npm run build:registry && npm run build:cockpit && npm test && npm run test:hub && npm run test:browser && npm run build:public && npm run test:public && npm run test:parcours && npm run test:formateur && npm run test:admin && npm run test:identity && npm run test:e2e && npm run check:classroom",
+    "classroom:kit": "node scripts/generate_classroom_posts.js",
+    "check:classroom": "node scripts/check_classroom_kit.js",
+    "build:public": "node scripts/build_public.js",
+    "test:public": "node scripts/test_public.js",
+    "test:parcours": "node scripts/test_parcours_apprenant.js",
+    "test:formateur": "node scripts/test_parcours_formateur.js",
+    "build:admin": "node scripts/build_admin.js",
+    "build:landing": "node scripts/build_landing.js",
+    "test:prod": "node scripts/test_production_remote.js",
+    "test:admin": "node scripts/test_parcours_formateur_admin.js",
+    "mock:2b": "node scripts/mock_api_2b.js",
+    "test:identity": "node scripts/test_identity_2b.js",
+    "test:e2e": "node scripts/test_e2e_2b.js"
+  },
+  "keywords": [
+    "opays",
+    "academy",
+    "formation",
+    "ia",
+    "pedagogie"
+  ],
+  "author": "Opays Tech",
+  "license": "UNLICENSED",
+  "type": "commonjs",
+  "dependencies": {
+    "puppeteer-core": "^25.8.0"
+  }
+}

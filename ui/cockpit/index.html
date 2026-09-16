@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Administration — HOJA ACADEMY</title>
+<link rel="icon" type="image/png" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/icon.png">
+<meta name="robots" content="noindex">
+<style>
+  :root{
+    --bg:#090d16;
+    --card:#111726;
+    --card-hover:#151d30;
+    --card2:#0d1322;
+    --line:#1e293b;
+    --line2:rgba(255,255,255,.12);
+    --text:#f1f5f9;
+    --text-bright:#ffffff;
+    --muted:#94a3b8;
+    --muted-dark:#64748b;
+    --teal:#10b981;
+    --teal-light:#34d399;
+    --teal-soft:rgba(16,185,129,.12);
+    --blue:#38bdf8;
+    --blue-soft:rgba(56,189,248,.12);
+    --red:#f43f5e;
+    --red-soft:rgba(244,63,94,.12);
+    --amber:#f59e0b;
+    --amber-soft:rgba(245,158,11,.12);
+    --sb:240px;
+    --radius:10px;
+    --radius-sm:6px;
+    --radius-lg:12px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;background:var(--bg);}
+  body{font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:13px;line-height:1.5;background:var(--bg);color:var(--text);overflow-x:clip;-webkit-font-smoothing:antialiased;}
+  a{color:var(--blue);text-decoration:none;}
+  :is(a,button,summary,[tabindex]):focus-visible{outline:2px solid var(--teal);outline-offset:2px;}
+  .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+
+  /* ---------- Sidebar ---------- */
+  aside.sidebar{position:fixed;top:0;left:0;bottom:0;width:var(--sb);background:#0c111e;border-right:1px solid var(--line);display:flex;flex-direction:column;overflow-y:auto;z-index:30;}
+  .sb-brand{display:flex;align-items:center;gap:10px;height:58px;padding:0 18px;border-bottom:1px solid var(--line);text-decoration:none;color:var(--text);flex:none;}
+  .sb-brand svg,.sb-brand img{width:24px;height:24px;flex:none;border-radius:50%;}
+  .sb-brand span{font-size:13px;font-weight:700;letter-spacing:.08em;color:var(--text-bright);}
+  .sb-brand span em{display:block;font-style:normal;color:var(--teal-light);font-size:9.5px;letter-spacing:.22em;font-weight:600;}
+  .sb-group{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-dark);padding:18px 16px 6px;}
+  .sb-nav{display:flex;flex-direction:column;gap:3px;padding:0 10px;}
+  .sb-nav a{display:flex;align-items:center;gap:10px;height:36px;padding:0 10px;border-radius:var(--radius-sm);font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;background:transparent;transition:background-color .12s,color .12s;}
+  .sb-nav a:hover{background:rgba(255,255,255,.05);color:var(--text);}
+  .sb-nav a.on{background:var(--teal-soft);color:var(--teal-light);font-weight:600;}
+  .sb-nav a .sb-icon{width:16px;height:16px;flex:none;color:var(--muted);transition:color .12s;}
+  .sb-nav a.on .sb-icon{color:var(--teal-light);}
+  .sb-nav a:hover .sb-icon{color:var(--text);}
+  .sb-nav a .ext-icon{margin-left:auto;width:12px;height:12px;color:var(--muted-dark);}
+  .sb-hr{height:1px;background:var(--line);margin:14px 16px;border:0;}
+  .sb-spacer{margin-top:auto;}
+  .sb-session{border-top:1px solid var(--line);padding:12px 16px;display:flex;gap:10px;align-items:center;background:rgba(0,0,0,.15);}
+  .sb-session .avatar{width:28px;height:28px;border-radius:50%;background:#162033;border:1px solid var(--line);flex:none;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--teal-light);position:relative;}
+  .sb-session .avatar::after{content:"";position:absolute;bottom:-1px;right:-1px;width:7px;height:7px;border-radius:50%;background:var(--teal);border:1.5px solid #0c111e;}
+  .sb-session .info{min-width:0;flex:1;font-size:12.5px;font-weight:600;color:var(--text-bright);overflow-wrap:anywhere;}
+  .sb-session .info small{display:block;color:var(--muted-dark);font-size:11px;font-weight:400;}
+  .sb-session .info button{background:none;border:0;color:var(--muted);font-size:11px;padding:2px 0 0;height:auto;min-height:0;font-weight:500;text-decoration:none;font-family:inherit;cursor:pointer;transition:color .12s;}
+  .sb-session .info button:hover{color:var(--red);text-decoration:underline;}
+
+  /* ---------- Layout ---------- */
+  .main{margin-left:var(--sb);min-height:100vh;display:flex;flex-direction:column;background:var(--bg);}
+  header.topbar{position:sticky;top:0;z-index:20;height:54px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 28px;background:rgba(9,13,22,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+  .topbar-left{display:flex;align-items:center;gap:10px;min-width:0;}
+  .breadcrumb{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--muted);}
+  .breadcrumb .bc-root{color:var(--muted-dark);}
+  .breadcrumb .bc-sep{color:var(--line2);font-size:12px;}
+  .breadcrumb .view{color:var(--text-bright);font-weight:600;}
+  .topbar-right{display:flex;align-items:center;gap:10px;}
+  .burger{display:none;align-items:center;justify-content:center;width:38px;height:38px;margin-left:-8px;border:0;border-radius:var(--radius-sm);background:none;color:var(--text);cursor:pointer;flex:none;}
+  .burger:hover{background:rgba(255,255,255,.06);}
+  .content{flex:1;padding:28px 32px 48px;max-width:1040px;width:100%;margin:0 auto;}
+
+  h1{font-size:22px;font-weight:700;line-height:1.25;letter-spacing:-0.02em;color:var(--text-bright);}
+  p.lead{color:var(--muted);font-size:13px;margin-top:6px;line-height:1.5;max-width:70ch;}
+  h2.zone{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-dark);margin:26px 0 12px;display:flex;align-items:center;gap:10px;}
+  h2.zone::after{content:"";flex:1;height:1px;background:var(--line);opacity:.6;}
+
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:18px 20px;margin-bottom:14px;overflow-wrap:break-word;box-shadow:0 1px 3px rgba(0,0,0,.15);}
+  section.card>h3{font-size:14px;font-weight:600;display:flex;align-items:center;gap:10px;flex-wrap:wrap;color:var(--text-bright);}
+  section.card>p.sub{color:var(--muted);font-size:12px;margin:4px 0 12px;line-height:1.5;}
+  .chip{display:inline-flex;align-items:center;gap:6px;height:22px;border-radius:999px;padding:0 9px;font-size:11.5px;font-weight:600;letter-spacing:.02em;border:1px solid var(--line);}
+  .chip.ok{color:var(--teal-light);background:var(--teal-soft);border-color:rgba(16,185,129,.35);}
+  .chip.ko{color:#fda4af;background:var(--red-soft);border-color:rgba(244,63,94,.35);}
+  .chip.warn{color:#fde68a;background:var(--amber-soft);border-color:rgba(245,158,11,.35);}
+  .chip.neutral{color:var(--muted);background:rgba(255,255,255,.04);border-color:var(--line);}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--muted);flex:none;}
+  .dot.ok{background:var(--teal);box-shadow:0 0 6px rgba(16,185,129,.5);}
+  .dot.ko{background:var(--red);box-shadow:0 0 6px rgba(244,63,94,.5);}
+  .dot.warn{background:var(--amber);box-shadow:0 0 6px rgba(245,158,11,.5);}
+
+  /* État de l'Academy & Métriques SaaS */
+  .statgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;border:0;border-radius:0;background:transparent;overflow:visible;margin-bottom:14px;}
+  a.stat{display:flex;flex-direction:column;justify-content:space-between;padding:16px 18px;border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--card);color:var(--text);text-decoration:none;transition:border-color .15s,background-color .15s,transform .15s;min-height:108px;box-shadow:0 1px 3px rgba(0,0,0,.15);}
+  a.stat:hover{background:var(--card-hover);border-color:rgba(255,255,255,.16);transform:translateY(-1px);}
+  a.stat .k{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;justify-content:space-between;gap:8px;}
+  a.stat .stat-ico{width:26px;height:26px;border-radius:var(--radius-sm);background:rgba(255,255,255,.04);border:1px solid var(--line);display:inline-flex;align-items:center;justify-content:center;color:var(--teal-light);flex:none;}
+  a.stat .v{display:block;font-size:24px;font-weight:700;font-variant-numeric:tabular-nums;margin-top:8px;line-height:1.2;color:var(--text-bright);letter-spacing:-0.02em;}
+  a.stat .v .chip{vertical-align:2px;}
+  a.stat .s{display:block;font-size:12px;color:var(--muted);margin-top:6px;line-height:1.4;}
+
+  /* Bannière cohorte */
+  #home-cohort{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:14px 18px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);margin-bottom:14px;}
+
+  /* Mini-blocs programme */
+  .blocs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;}
+  a.blocmini{display:flex;flex-direction:column;justify-content:space-between;border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--card);padding:14px 16px;text-decoration:none;color:var(--text);transition:border-color .15s,background-color .15s,transform .15s;min-height:86px;}
+  a.blocmini:hover{background:var(--card-hover);border-color:rgba(255,255,255,.16);transform:translateY(-1px);}
+  a.blocmini b{font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px;color:var(--text-bright);}
+  a.blocmini b .bid{color:var(--teal-light);font-size:10.5px;font-weight:700;letter-spacing:.06em;background:var(--teal-soft);border:1px solid rgba(16,185,129,.25);padding:2px 6px;border-radius:4px;}
+  a.blocmini span{display:block;font-size:12px;color:var(--muted);margin-top:8px;}
+
+  /* Boutons */
+  .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;}
+  a.btn,button{padding:0 15px;border:0;border-radius:var(--radius-sm);background:var(--teal);color:#04140a;font-weight:600;font-size:13px;line-height:1;cursor:pointer;min-height:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:inherit;text-decoration:none;white-space:nowrap;transition:background-color .12s,color .12s,border-color .12s,transform .12s;box-shadow:0 1px 2px rgba(0,0,0,.2);}
+  a.btn:hover,button:hover{background:#059669;color:#ffffff;}
+  a.btn.secondary,button.secondary{background:rgba(255,255,255,.04);border:1px solid var(--line2);color:var(--text);box-shadow:none;}
+  a.btn.secondary:hover,button.secondary:hover{background:rgba(255,255,255,.08);border-color:var(--muted);color:var(--text-bright);}
+  a.btn.ghost,button.ghost{background:transparent;border:1px solid var(--line);color:var(--blue);box-shadow:none;}
+  a.btn.ghost:hover,button.ghost:hover{background:var(--blue-soft);border-color:rgba(56,189,248,.35);}
+  a.btn.small,button.small{height:32px;min-height:32px;padding:0 11px;font-size:12px;}
+  button:disabled{opacity:.55;cursor:wait;}
+
+  /* À faire & Activité (Action Center) */
+  ul.todo{list-style:none;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.15);}
+  ul.todo li{display:flex;gap:14px;align-items:center;min-height:50px;padding:12px 18px;border-bottom:1px solid var(--line);font-size:13px;transition:background-color .12s;}
+  ul.todo li:hover{background:rgba(255,255,255,.015);}
+  ul.todo li:last-child{border-bottom:0;}
+  ul.todo .todo-ico-wrap{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none;background:rgba(255,255,255,.03);border:1px solid var(--line);}
+  ul.todo .lbl{flex:1;min-width:0;line-height:1.45;}
+  ul.todo .lbl a{color:var(--text-bright);font-weight:600;text-decoration:none;transition:color .12s;}
+  ul.todo .lbl a:hover{color:var(--teal-light);}
+  ul.todo .lbl small{display:block;color:var(--muted);font-size:12px;margin-top:2px;}
+  .st{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:4px 10px;border-radius:999px;flex:none;border:1px solid var(--line);color:var(--muted);line-height:1.2;}
+  .st::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;flex:none;}
+  .st.todo{color:#fbbf24;border-color:rgba(245,158,11,.3);background:rgba(245,158,11,.09);}
+  .st.done{color:var(--teal-light);border-color:rgba(16,185,129,.35);background:rgba(16,185,129,.09);}
+  .st.blocked{color:#fb7185;border-color:rgba(244,63,94,.3);background:rgba(244,63,94,.09);}
+  .st.wait{color:var(--muted);border-color:rgba(148,163,184,.25);background:rgba(148,163,184,.07);}
+
+  /* Formulaires */
+  .tool{border:1px solid var(--line);border-radius:var(--radius);background:var(--card2);padding:0 16px;margin-top:10px;}
+  .tool summary,.tech summary{cursor:pointer;font-weight:600;font-size:13px;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:44px;position:relative;padding:0;color:var(--text-bright);}
+  .tool summary::-webkit-details-marker,.tech summary::-webkit-details-marker{display:none;}
+  .tool summary::after,.tech summary::after{content:"";width:14px;height:14px;flex:none;background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%2394a3b8" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>') center/contain no-repeat;transition:transform .15s;}
+  .tool[open] summary::after,.tech[open] summary::after{transform:rotate(180deg);}
+  .tool label{display:block;font-size:12px;font-weight:500;color:var(--muted);margin:14px 0 6px;}
+  .tool textarea,.tool input{width:100%;padding:10px 12px;border-radius:var(--radius-sm);border:1px solid var(--line);background:var(--bg);color:var(--text);font-size:13px;font-family:inherit;transition:border-color .12s;}
+  .tool textarea:focus,.tool input:focus{border-color:var(--teal);}
+  .tool textarea{min-height:120px;resize:vertical;line-height:1.5;}
+  .tool .btnrow{margin:14px 0 16px;}
+  .tool[open]{padding:0 16px;}
+  .hint{color:var(--muted);font-size:12px;line-height:1.5;margin-top:8px;}
+
+  .alert{margin-top:10px;padding:12px 14px;border-radius:var(--radius-sm);font-size:12.5px;line-height:1.5;}
+  .alert.warn{background:rgba(245,158,11,.10);border:1px solid rgba(245,158,11,.35);color:#fde68a;}
+  .alert.err{background:rgba(244,63,94,.12);border:1px solid rgba(244,63,94,.35);color:#fecdd3;}
+  .alert.info{background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.3);color:#bae6fd;}
+  .empty{color:var(--muted);font-size:13px;line-height:1.55;padding:12px 0;}
+  .tablewrap{overflow-x:auto;margin-top:10px;border-radius:var(--radius);border:1px solid var(--line);background:var(--card);}
+  table{width:100%;border-collapse:collapse;font-size:13px;min-width:420px;}
+  th,td{padding:11px 14px;text-align:left;border:0;border-bottom:1px solid var(--line);vertical-align:middle;}
+  tr:last-child td{border-bottom:0;}
+  th{color:var(--muted);font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;background:var(--card2);}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;}
+  td code,code{font-family:ui-monospace,Consolas,monospace;font-size:12px;overflow-wrap:anywhere;background:var(--card2);padding:2px 6px;border-radius:4px;border:1px solid var(--line);}
+
+  ul.facts{list-style:none;margin:4px 0 4px;}
+  ul.facts li{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:13px;flex-wrap:wrap;}
+  ul.facts li:last-child{border-bottom:0;}
+  ul.facts .k{color:var(--muted);flex:none;}
+  ul.facts .v{text-align:right;min-width:0;font-weight:600;font-variant-numeric:tabular-nums;}
+  .v.ok{color:var(--teal-light);}.v.ko{color:#fda4af;}.v.mut{color:var(--muted);font-weight:500;}
+
+  details.tech{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:0 16px;margin-bottom:12px;}
+  details.tech>summary{color:var(--muted);font-size:12.5px;}
+  details.tech .body{padding-bottom:14px;}
+  pre.out{background:var(--card2);border:1px solid var(--line);border-radius:var(--radius-sm);padding:10px 12px;font-size:12px;color:#bae6fd;overflow-x:auto;white-space:pre-wrap;overflow-wrap:anywhere;margin-top:10px;font-family:ui-monospace,Consolas,monospace;}
+
+  .pw-item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);flex-wrap:wrap;font-size:13px;}
+  .pw-item:last-child{border-bottom:0;}
+  .pw-item .mail{color:var(--muted);min-width:0;overflow-wrap:anywhere;}
+  .pw-item .pw{font-family:ui-monospace,Consolas,monospace;background:var(--card2);border:1px solid var(--line);border-radius:var(--radius-sm);padding:5px 8px;font-size:12.5px;overflow-wrap:anywhere;}
+  .note{color:var(--muted);font-size:11.5px;line-height:1.5;margin-top:10px;}
+  footer{color:var(--muted-dark);font-size:11.5px;margin-top:36px;line-height:1.6;border-top:1px solid var(--line);padding-top:18px;}
+  main section[hidden]{display:none;}
+
+  /* ---------- Programme (listes denses) ---------- */
+  .bloc{border:1px solid var(--line);border-radius:12px;background:var(--card);overflow:hidden;margin-bottom:14px;}
+  .bloc-h{display:flex;align-items:baseline;gap:10px;padding:12px 16px 10px;border-bottom:1px solid var(--line);font-size:13px;font-weight:600;flex-wrap:wrap;}
+  .bloc-h .bid{color:var(--teal);}
+  .bloc-h small{font-size:12px;font-weight:400;color:var(--muted);}
+  .modlist{display:flex;flex-direction:column;}
+  .mrow{display:flex;align-items:center;gap:12px;width:100%;text-align:left;height:44px;padding:0 16px;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--text);font:inherit;cursor:pointer;transition:background-color .12s;}
+  .mrow:last-child{border-bottom:0;}
+  .mrow:hover,.mrow:focus-visible{background:rgba(255,255,255,.03);}
+  .mrow .mnum{flex:none;width:42px;font-size:12.5px;font-family:ui-monospace,Consolas,monospace;color:var(--teal);font-variant-numeric:tabular-nums;font-weight:500;}
+  .mrow .mt{flex:1;min-width:0;font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .mrow .mt small{font-weight:400;color:var(--muted);margin-left:8px;font-size:12px;}
+  .mrow .w{flex:none;width:124px;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap;}
+  .mrow .st{height:20px;padding:0 8px;font-size:11px;}
+  .mrow .arw{flex:none;color:var(--muted);font-size:14px;}
+
+  /* ---------- Vue module ---------- */
+  .back{display:inline-flex;align-items:center;gap:6px;height:32px;margin:4px 0 8px;font-size:12.5px;color:var(--muted);text-decoration:none;background:none;border:0;cursor:pointer;font-family:inherit;padding:0 6px 0 0;}
+  .back:hover{color:var(--text);}
+  .mod-h h2{font-size:18px;font-weight:600;line-height:1.35;}
+  .mod-meta{font-size:12px;color:var(--muted);margin-top:4px;font-variant-numeric:tabular-nums;}
+  .mod-tabs{display:flex;gap:2px;margin-top:16px;border-bottom:1px solid var(--line);overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .mod-tabs button{flex:0 0 auto;height:40px;padding:0 12px;background:none;border:0;border-bottom:2px solid transparent;margin-bottom:-1px;font-size:13px;font-weight:500;color:var(--muted);cursor:pointer;font-family:inherit;white-space:nowrap;}
+  .mod-tabs button:hover{color:var(--text);}
+  .mod-tabs button.on{color:var(--text);border-bottom-color:var(--teal);}
+  .mod-wrap{max-width:820px;}
+  .mod-chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;align-items:center;}
+  .mchip{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 9px;border-radius:999px;border:1px solid var(--line);font-size:11.5px;font-weight:500;color:var(--muted);background:var(--card);}
+  .mchip.bloc{color:var(--teal-light);border-color:rgba(34,197,94,.4);background:var(--teal-soft);}
+  .mod-obj{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-left:2px solid var(--teal);border-radius:10px;background:var(--card);padding:11px 13px;margin:12px 0 2px;font-size:13.5px;line-height:1.55;}
+  .mod-obj svg{flex:none;width:15px;height:15px;margin-top:2px;color:var(--teal-light);}
+  .mod-obj b{display:block;font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;}
+  .phases{list-style:none;margin:6px 0 0;position:relative;}
+  .phases::before{content:"";position:absolute;left:11px;top:10px;bottom:10px;width:1px;background:var(--line);}
+  .phases li{display:flex;gap:14px;align-items:baseline;padding:9px 0 9px 0;border-bottom:0;position:relative;}
+  .phases li::before{content:"";position:absolute;left:8px;top:16px;width:7px;height:7px;border-radius:50%;background:var(--card);border:1.5px solid var(--teal);}
+  .phases li+li{margin-top:0;}
+  .phases .ptime{flex:none;min-width:86px;padding-left:30px;}
+  details.guide{border:1px solid var(--line);border-radius:10px;background:var(--card);margin-top:14px;}
+  details.guide summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:40px;padding:0 14px;font-size:13px;font-weight:500;color:var(--muted);position:relative;}
+  details.guide summary::-webkit-details-marker{display:none;}
+  details.guide summary::after{content:"";width:14px;height:14px;background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%2394a3b8" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>') center/contain no-repeat;transition:transform .12s;}
+  details.guide[open] summary::after{transform:rotate(180deg);}
+  details.guide .gbody{padding:2px 16px 14px;}
+  .pres-frame{border:1px solid var(--line);border-radius:10px;background:var(--card);overflow:hidden;margin-top:12px;}
+  .pres-frame .ptool{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 12px;border-bottom:1px solid var(--line);font-size:12px;color:var(--muted);}
+  .pres-frame iframe{width:100%;height:72vh;border:0;display:block;background:#0a101c;}
+  .md{font-size:14px;line-height:1.65;overflow-wrap:anywhere;}
+  .md p,.md li,.md td,.md th{overflow-wrap:anywhere;word-break:normal;}
+  .md h3,.md h4,.md h5{margin:18px 0 8px;line-height:1.3;}
+  .md p{margin:8px 0;}
+  .md ul,.md ol{margin:8px 0 8px 22px;}
+  .md li{margin:4px 0;}
+  .md pre{background:var(--card2);border:1px solid var(--line);border-radius:8px;padding:10px;overflow-x:auto;font-size:12.5px;margin:10px 0;white-space:pre-wrap;overflow-wrap:anywhere;}
+  .md code{background:var(--card2);border:1px solid var(--line);border-radius:6px;padding:1px 6px;}
+  .md pre code{border:0;background:none;padding:0;}
+  .md blockquote{border-left:2px solid var(--teal);padding:4px 12px;margin:10px 0;color:var(--muted);background:var(--card2);border-radius:0 8px 8px 0;}
+  .md hr{border:0;border-top:1px solid var(--line);margin:16px 0;}
+  .md table{min-width:320px;}
+  .phases li{display:flex;gap:12px;align-items:baseline;padding:8px 0;border-bottom:1px solid var(--line);font-size:13.5px;}
+  .phases li:last-child{border-bottom:0;}
+  .phases .ptime{flex:none;color:var(--teal);font-weight:600;font-variant-numeric:tabular-nums;min-width:86px;font-family:ui-monospace,Consolas,monospace;font-size:12.5px;}
+  .keybox{background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:12px;margin:10px 0;font-size:14px;line-height:1.55;}
+  .keybox b{color:var(--muted);font-size:11px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:4px;font-weight:600;}
+  #pres-frame iframe{width:100%;height:70vh;border:1px solid var(--line);border-radius:8px;background:var(--card2);margin-top:10px;display:block;}
+  .overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:25;display:none;}
+  .overlay.on{display:block;}
+  .fchip{height:28px;padding:0 10px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);font-size:12px;font-weight:500;cursor:pointer;font-family:inherit;}
+  .fchip.on{color:var(--teal);border-color:rgba(34,197,94,.45);background:rgba(34,197,94,.08);}
+  .lrow{display:flex;align-items:center;gap:12px;width:100%;text-align:left;min-height:48px;padding:8px 10px;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--text);font:inherit;cursor:pointer;border-radius:8px;transition:background-color .12s;}
+  .lrow:last-child{border-bottom:0;}
+  .lrow:hover{background:rgba(255,255,255,.03);}
+  .lrow .who2{flex:1;min-width:0;}
+  .lrow .who2 b{font-size:13px;font-weight:600;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .lrow .who2 small{color:var(--muted);font-size:12px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .lrow .w{flex:none;width:118px;font-size:12px;color:var(--muted);}
+  @media(max-width:639px){.lrow .w{display:none;}}
+  .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;align-items:start;}
+  @media(max-width:900px){.pgrid{grid-template-columns:1fr;}}
+  .psec{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:14px 16px;}
+  .psec h3{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+  .psec .kv{display:grid;grid-template-columns:minmax(96px,128px) 1fr;gap:4px 14px;padding:7px 0;border-bottom:1px solid var(--line);align-items:baseline;}
+  .psec .kv:last-child{border-bottom:0;}
+  .psec .kv .k{color:var(--muted);font-size:12px;font-weight:400;}
+  .psec .kv .v{min-width:0;overflow-wrap:anywhere;font-size:13px;font-weight:500;text-align:left;}
+  .pstrip{display:grid;grid-template-columns:repeat(6,1fr);border:1px solid var(--line);border-radius:12px;background:var(--card);overflow:hidden;margin-top:16px;counter-reset:step;}
+  .pstrip .ps{padding:10px 12px 10px 26px;border-right:1px solid var(--line);position:relative;}
+  .pstrip .ps:last-child{border-right:0;}
+  .pstrip .ps::before{counter-increment:step;content:counter(step);position:absolute;left:11px;top:11px;width:10px;text-align:center;font-size:10px;color:var(--muted);font-variant-numeric:tabular-nums;}
+  .pstrip .ps.done::before{content:"\2713";color:var(--teal);}
+  .pstrip .ps.cur{background:rgba(34,197,94,.06);}
+  .pstrip .ps.cur .k{color:var(--text);}
+  .pstrip .ps .k{display:block;font-size:11.5px;color:var(--muted);margin-bottom:5px;}
+  .pcta{display:flex;align-items:center;gap:14px;margin-top:14px;padding:11px 12px 11px 14px;border:1px solid var(--line);border-left:2px solid var(--teal);border-radius:10px;background:var(--card);flex-wrap:wrap;position:sticky;top:52px;z-index:4;}
+  .pcta .why{font-size:13px;min-width:0;}
+  .pcta .why small{display:block;color:var(--muted);font-size:12px;margin-top:2px;}
+  .phead{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;flex-wrap:wrap;}
+  .phead .nm{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .phead h2{font-size:20px;font-weight:600;line-height:1.3;}
+  .phead .meta{font-size:12.5px;color:var(--muted);margin-top:4px;font-variant-numeric:tabular-nums;}
+  .contactrow{display:flex;gap:8px;flex-wrap:wrap;}
+  .contactrow a{display:inline-flex;align-items:center;gap:6px;}
+  .contactrow svg{width:13px;height:13px;flex:none;}
+  .pbar{height:6px;border-radius:3px;background:var(--card2);border:1px solid var(--line);overflow:hidden;margin:6px 0 2px;}
+  .pbar i{display:block;height:100%;background:var(--teal);}
+  .mstat{display:flex;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid var(--line);font-size:12.5px;}
+  .mstat:last-child{border-bottom:0;}
+  .mstat .mm{flex:none;width:42px;font-family:ui-monospace,Consolas,monospace;color:var(--teal);font-size:12px;}
+  .mstat .mw{flex:1;min-width:0;color:var(--muted);font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .evt{display:flex;gap:12px;padding:7px 0;border-bottom:1px solid var(--line);font-size:12.5px;}
+  .evt:last-child{border-bottom:0;}
+  .evt time{flex:none;color:var(--muted);font-size:11.5px;font-variant-numeric:tabular-nums;min-width:74px;}
+
+  /* ---------- Responsive : 820 (drawer) ---------- */
+  @media(max-width:1099px){
+    :root{--sb:260px;}
+    .pstrip{grid-template-columns:repeat(3,1fr);}
+    .pstrip .ps{border-bottom:1px solid var(--line);}
+    .pstrip .ps:nth-child(3n){border-right:0;}
+    .pstrip .ps:nth-child(n+4){border-bottom:0;}
+    aside.sidebar{transform:translateX(-100%);transition:transform .12s;box-shadow:none;}
+    body.sb-open aside.sidebar{transform:none;box-shadow:0 4px 24px rgba(0,0,0,.4);}
+    body.sb-open .overlay{display:block;}
+    .main{margin-left:0;}
+    .burger{display:inline-flex;}
+    .content{padding:20px 16px;}
+  }
+  .bottombar{display:none;}
+  /* ---------- Responsive : 390 — mobile first ---------- */
+  @media (max-width:639px){
+    .content{padding:16px 12px 92px;}
+    .topbar .burger{display:none;}
+    .bottombar{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));position:fixed;left:0;right:0;bottom:0;z-index:31;background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom);}
+    .bottombar a,.bottombar button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:56px;padding:8px 2px 6px;background:none;border:0;color:var(--muted);font-size:10px;font-weight:500;font-family:inherit;text-decoration:none;position:relative;min-width:0;overflow:hidden;}
+    .bottombar span{max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .bottombar svg{width:20px;height:20px;flex:none;}
+    .bottombar a.on,.bottombar button.on{color:var(--teal-light);}
+    .bottombar a.on::before,.bottombar button.on::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:22px;height:2px;background:var(--teal);border-radius:1px;}
+    aside.sidebar{z-index:32;padding-bottom:76px;}
+    .statgrid{grid-template-columns:1fr 1fr;}
+    a.stat{border-bottom:1px solid var(--line);padding:12px;}
+    .sb-nav a{height:44px;}
+    .mrow{height:auto;min-height:60px;padding:10px 14px;flex-wrap:wrap;align-items:flex-start;}
+    .mrow .mt{flex:1 1 auto;white-space:normal;}
+    .mrow .mt small{display:block;margin-left:0;}
+    .mrow .w{flex-basis:100%;width:auto;margin-left:54px;}
+    .md table{display:block;overflow-x:auto;max-width:100%;min-width:0;}
+    table thead{display:none;}
+    table tr{display:block;border-bottom:1px solid var(--line);padding:6px 0;}
+    table td{display:block;border:0;padding:2px 12px;}
+    table td::before{content:attr(data-label);display:block;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:2px;}
+    a:not([class]) {padding:6px 4px;display:inline-block;}
+    button{min-height:44px;height:auto;}
+    a.btn,button{min-height:44px;}
+    a.btn.small,button.small{height:44px;min-height:44px;}
+    .fchip{height:44px;}
+    .mod-tabs button{min-height:44px;}
+    .mod-tabs{scroll-snap-type:x proximity;}
+    .mod-tabs button{scroll-snap-align:start;}
+  }
+</style>
+</head>
+<body>
+<a id="skipnav" class="sr-only" href="#main">Aller au contenu</a>
+<aside class="sidebar" id="sidebar" aria-label="Navigation du cockpit">
+  <a class="sb-brand" href="#accueil">
+    <img src="/favicon.ico" alt="Hoja Academy">
+    <span>HOJA<em>ACADEMY</em></span>
+  </a>
+  <div class="sb-group">Cockpit</div>
+  <nav class="sb-nav" aria-label="Vues">
+    <a href="#accueil" data-tab="accueil">
+      <svg class="sb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="7" height="7" x="3" y="3" rx="1.5"/><rect width="7" height="7" x="14" y="3" rx="1.5"/><rect width="7" height="7" x="14" y="14" rx="1.5"/><rect width="7" height="7" x="3" y="14" rx="1.5"/></svg>
+      <span>Accueil</span>
+    </a>
+    <a href="#inscriptions" data-tab="inscriptions">
+      <svg class="sb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/></svg>
+      <span>Inscriptions</span>
+    </a>
+    <a href="#apprenants" data-tab="apprenants">
+      <svg class="sb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <span>Apprenants</span>
+    </a>
+    <a href="#programme" data-tab="programme">
+      <svg class="sb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+      <span>Programme</span>
+    </a>
+    <a href="#classroom" data-tab="classroom">
+      <svg class="sb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
+      <span>Classroom</span>
+    </a>
+    <a href="#formateurs" data-tab="formateurs">
+      <svg class="sb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>
+      <span>Formateurs</span>
+    </a>
+  </nav>
+  <hr class="sb-hr">
+  <div class="sb-group">Outils</div>
+  <nav class="sb-nav" aria-label="Outils externes">
+    <a href="https://classroom.google.com/" target="_blank" rel="noopener noreferrer">
+      <span>Google Classroom</span>
+      <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+    </a>
+    <a href="https://meet.google.com/" target="_blank" rel="noopener noreferrer">
+      <span>Google Meet</span>
+      <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+    </a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfGQL_eANGDh2AKWJpnKbvKHuXR9rKlGcKxwOJeVBma3vcleA/viewform" target="_blank" rel="noopener noreferrer">
+      <span>Google Form</span>
+      <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+    </a>
+    <a href="/ui/suivi/" target="_blank" rel="noopener noreferrer">
+      <span>Espace formateur</span>
+      <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+    </a>
+  </nav>
+  <div class="sb-spacer"></div>
+  <div class="sb-session">
+    <span class="avatar" aria-hidden="true">A</span>
+    <div class="info"><span id="who">Session en cours…</span>
+      <small id="who-role">session administrateur</small>
+      <button type="button" id="btn-logout">Déconnexion</button>
+    </div>
+  </div>
+</aside>
+<div class="overlay" id="sb-overlay"></div>
+<nav class="bottombar" aria-label="Navigation principale">
+  <a href="#accueil" data-tab="accueil"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="7" height="7" x="3" y="3" rx="1.5"/><rect width="7" height="7" x="14" y="3" rx="1.5"/><rect width="7" height="7" x="14" y="14" rx="1.5"/><rect width="7" height="7" x="3" y="14" rx="1.5"/></svg><span>Accueil</span></a>
+  <a href="#inscriptions" data-tab="inscriptions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/></svg><span>Inscriptions</span></a>
+  <a href="#apprenants" data-tab="apprenants"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Apprenants</span></a>
+  <a href="#programme" data-tab="programme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg><span>Programme</span></a>
+  <button type="button" id="btn-menu" aria-label="Menu — autres sections et outils" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="14" y1="18" y2="18"/><circle cx="18" cy="18" r="2.5"/></svg><span>Menu</span></button>
+</nav>
+<div class="main">
+  <header class="topbar">
+    <div class="topbar-left">
+      <button class="burger" id="btn-burger" type="button" aria-label="Ouvrir la navigation" aria-expanded="false">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <div class="breadcrumb">
+        <span class="bc-root">Cockpit</span>
+        <span class="bc-sep">/</span>
+        <div class="view" id="view-label">Accueil</div>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <span class="chip ok"><span class="dot ok"></span>Cohorte 01</span>
+    </div>
+  </header>
+
+  <main id="main" class="content">
+  <!-- ================= ACCUEIL ================= -->
+  <section id="tab-accueil">
+    <h1>Vue d'ensemble</h1>
+    <p class="lead">Cohorte 01 — inscriptions, apprenants, import &amp; invitations, programme et Classroom. Données réelles via l'API, rien d'inventé.</p>
+
+    <h2 class="zone">À faire</h2>
+    <ul class="todo card" id="todo" style="padding:0;"><li><span class="lbl">Chargement des données (passerelle, roster, candidatures)…</span></li></ul>
+
+    <h2 class="zone">État de l'Academy</h2>
+    <div class="statgrid" id="statgrid"><a class="stat"><span class="k">Chargement…</span></a></div>
+
+    <h2 class="zone">Facturation</h2>
+    <div class="statgrid" id="billing"><a class="stat"><span class="k">Chargement…</span></a></div>
+
+    <h2 class="zone">Prochaine cohorte</h2>
+    <div id="home-cohort" class="card" style="padding:12px 16px;margin-bottom:0"><span class="empty">Chargement…</span></div>
+
+    <h2 class="zone">Activité récente</h2>
+    <ul class="todo card" id="activity" style="padding:0"><li><span class="lbl">Chargement…</span></li></ul>
+
+    <h2 class="zone">Programme</h2>
+    <div class="blocs" id="home-blocs"><p class="empty">Chargement…</p></div>
+  </section>
+
+  <!-- ================= INSCRIPTIONS ================= -->
+  <section id="tab-inscriptions" hidden>
+    <h1>Inscriptions</h1>
+    <p class="lead">Candidatures reçues du Google Form officiel — vérification, paiement (humain), admission, puis apprenant. Le formulaire reste le point d'entrée public.</p>
+    <div id="cand-sync"></div>
+    <div class="statgrid" id="cand-counts" style="margin-top:16px"></div>
+    <div class="btnrow" style="margin:14px 0 2px">
+      <button type="button" class="secondary" id="btn-cand-refresh">Rafraîchir depuis le formulaire</button>
+      <a class="btn ghost" href="https://docs.google.com/forms/d/e/1FAIpQLSfGQL_eANGDh2AKWJpnKbvKHuXR9rKlGcKxwOJeVBma3vcleA/viewform" target="_blank" rel="noopener noreferrer">Voir le Google Form</a>
+    </div>
+    <div id="cand-list" style="margin-top:14px"><p class="empty">Chargement des candidatures…</p></div>
+    <p class="note">Candidature ≠ paiement ≠ admission ≠ apprenant : chaque étape est une action humaine distincte. Le paiement n'est jamais automatique — marquer « PAYÉ » exige le montant réellement reçu.</p>
+  </section>
+
+  <!-- ================= APPRENANTS ================= -->
+  <section id="tab-apprenants" hidden>
+    <div id="learners-head">
+    <h1>Apprenants</h1>
+    <p class="lead"><span id="learners-count">—</span> — personnes admises ou importées, avec leur état Classroom. Cliquez une ligne pour ouvrir la fiche 360°.</p>
+    </div>
+    <div id="learners-list">
+    <section class="card" style="margin-top:16px;padding:12px 14px;">
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+        <div style="flex:1 1 240px;position:relative;display:flex;align-items:center;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;left:11px;color:var(--muted);pointer-events:none" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input id="learner-search" type="search" placeholder="Rechercher un nom, email ou téléphone…" aria-label="Rechercher un apprenant" style="width:100%;padding:9px 12px 9px 34px;border-radius:var(--radius-sm);border:1px solid var(--line);background:var(--card2);color:var(--text);font-size:13px;font-family:inherit;">
+        </div>
+        <div class="chip-row" id="learner-filters" role="group" aria-label="Filtres">
+          <button class="fchip on" data-f="tous" type="button">Tous</button>
+          <button class="fchip" data-f="actif" type="button">Dans Classroom</button>
+          <button class="fchip" data-f="inviter" type="button">À inviter</button>
+        </div>
+      </div>
+      <div id="learners-table" style="margin-top:10px"><p class="empty">Chargement…</p></div>
+    </section>
+    </div>
+    <div id="person-view" hidden></div>
+    <div id="learners-tools">
+    <section class="card" id="import" style="margin-top:16px;">
+      <details class="tool" open>
+        <summary>Importer les apprenants</summary>
+        <label for="csv">Liste des apprenants — un par ligne : <b>Nom complet, email</b></label>
+        <textarea id="csv" spellcheck="false" placeholder="Awa Diallo, awa.diallo@exemple.com&#10;Jean Mbala, jean.mbala@exemple.com"></textarea>
+        <div class="btnrow"><button id="btn-import" type="button">Importer les apprenants</button></div>
+        <p class="hint">Chaque ligne crée un compte apprenant avec un mot de passe initial généré, affiché une seule fois. Format avancé JSON également accepté (tableau d'objets {name, email}).</p>
+        <div id="import-out"></div>
+      </details>
+    </section>
+    <section class="card" id="inviter">
+      <details class="tool">
+        <summary>Inviter les apprenants dans Classroom</summary>
+        <p class="hint" id="invite-summary">Chargement…</p>
+        <div class="btnrow"><button id="btn-invite" type="button" class="secondary">Inviter les apprenants importés</button></div>
+        <p class="note">L'invitation utilise la liste réelle des apprenants importés — pas une liste ressaisie. Si le serveur bloque les invitations (droit Google manquant), le motif exact est affiché ici.</p>
+        <div id="invite-out"></div>
+      </details>
+    </section>
+    </div>
+  </section>
+
+  <!-- ================= PROGRAMME ================= -->
+  <section id="tab-programme" hidden>
+    <h2 class="zone" style="margin-top:4px">Programme — 4 blocs · 18 modules · 8 semaines</h2>
+    <div id="programme-body"><p class="empty">Chargement du programme…</p></div>
+    <div id="mod-view" style="display:none">
+      <div id="mod-head"></div>
+      <div class="mod-tabs" id="mod-tabs" role="tablist"></div>
+      <div class="mod-wrap"><div id="mod-body"></div></div>
+    </div>
+  </section>
+
+  <!-- ================= CLASSROOM ================= -->
+  <section id="tab-classroom" hidden>
+    <h1>Google Classroom</h1>
+    <p class="lead">État de la connexion, suivi des apprenants et pilotage des publications.</p>
+    <section class="card" style="margin-top:16px;">
+      <h3><span class="dot" id="d-classroom2"></span>État de la passerelle <span class="chip neutral" id="chip-classroom2">chargement…</span></h3>
+      <ul class="facts">
+        <li><span class="k">Connexion</span><span class="v" id="g-status2">—</span></li>
+        <li><span class="k">Compte Google</span><span class="v mut" id="g-account2">—</span></li>
+        <li><span class="k">Apprenants dans la classe</span><span class="v" id="g-students2">—</span></li>
+        <li><span class="k">Invitations Classroom</span><span class="v" id="inv-list">—</span></li>
+        <li><span class="k">Coursework publié</span><span class="v" id="cw-list">—</span></li>
+      </ul>
+      <div class="btnrow">
+        <a class="btn" href="https://classroom.google.com/" target="_blank" rel="noopener noreferrer">Ouvrir Google Classroom</a>
+        <a class="btn secondary" href="/admin/classroom.html">Reconnexion OAuth Classroom</a>
+      </div>
+      <p class="note">La préparation et la publication des missions depuis ce cockpit arrivent à l'étape P7. Publier reste toujours une action explicite.</p>
+    </section>
+    <details class="tech" id="technique">
+      <summary>Détails techniques</summary>
+      <div class="body" id="tech-body"><p class="empty">Chargement…</p></div>
+    </details>
+  </section>
+
+  <!-- ================= FORMATEURS ================= -->
+  <section id="tab-formateurs" hidden>
+    <h1>Formateurs</h1>
+    <p class="lead">Création des comptes d'accès au suivi.</p>
+    <section class="card" id="formateur" style="margin-top:16px;">
+      <details class="tool" open>
+        <summary>Créer un compte formateur</summary>
+        <label for="u-name">Nom</label>
+        <input id="u-name" type="text" autocomplete="off" placeholder="Prénom Nom">
+        <label for="u-email">Adresse e-mail</label>
+        <input id="u-email" type="email" autocomplete="off" placeholder="formateur@exemple.com">
+        <div class="btnrow"><button id="btn-user" type="button">Créer le compte formateur</button></div>
+        <p class="hint">Le mot de passe initial est généré et affiché une seule fois — à transmettre au formateur en personne.</p>
+        <div id="users-out"></div>
+      </details>
+      <p class="note">Liste des comptes formateurs : l'API ne l'expose pas en lecture aujourd'hui (ajout prévu aux étapes backend minimales P3/P6). Aucun nombre inventé.</p>
+    </section>
+  </section>
+
+  <footer>HOJA ACADEMY · cockpit admin — données réelles via l'API de la passerelle, aucun chiffre inventé.<br><span id="demoHint" hidden>Environnement de test : <a href="/api/mock/login-as?role=admin">basculer de rôle (mock)</a></span></footer>
+  </main>
+</div>
+
+<script src="programme.js"></script>
+<script src="md.js"></script>
+<script>
+'use strict';
+const $ = s => document.querySelector(s);
+const esc = v => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const pretty = o => { try { return JSON.stringify(o, null, 2); } catch (e) { return String(o); } };
+const pad2 = n => String(n).padStart(2, '0');
+
+async function api(path, opts) {
+  const r = await fetch(path, Object.assign({ credentials: 'include', headers: { 'Content-Type': 'application/json' } }, opts || {}));
+  let d = null, parseErr = false;
+  try { d = await r.clone().json(); } catch (e) { d = { error: 'Réponse non-JSON du serveur (HTTP ' + r.status + ')' }; parseErr = true; }
+  return { ok: r.ok, status: r.status, data: d, raw: parseErr ? '' : await r.text().catch(() => '') };
+}
+function setDot(sel, cls) { const el = $(sel); if (el) el.className = 'dot ' + cls; }
+function chip(sel, cls, txt) { const el = $(sel); if (el) { el.className = 'chip ' + cls; el.textContent = txt; } }
+function errBox(msg) { return '<div class="alert err" role="alert">' + esc(msg) + '</div>'; }
+
+let ROSTER = null, CLASSROOM = null, COURSEWORK = null;
+
+/* ---------- Hash-router : #vue · #programme/m/NN?t=tab ---------- */
+const TABS = ['accueil', 'inscriptions', 'apprenants', 'programme', 'classroom', 'formateurs'];
+const VIEW_LABELS = { accueil: 'Accueil', inscriptions: 'Inscriptions', apprenants: 'Apprenants', programme: 'Programme', classroom: 'Classroom', formateurs: 'Formateurs' };
+function parseHash() {
+  const h = location.hash.replace(/^#/, '');
+  let t = h.split('?')[0];
+  if (!t) return { tab: 'accueil', mod: null, person: null, query: '' };
+  let mod = null, person = null;
+  const pm = t.match(/^apprenants\/p\/(.+)$/);
+  if (pm) { person = decodeURIComponent(pm[1]); t = 'apprenants'; }
+  const mm = t.match(/^programme\/m\/(\d+)/);
+  if (mm) { mod = Number(mm[1]); t = 'programme'; }
+  const query = h.indexOf('?') >= 0 ? h.slice(h.indexOf('?') + 1) : '';
+  if (!TABS.includes(t)) t = 'accueil';
+  return { tab: t, mod, person, query };
+}
+function showTab() {
+  const { tab, mod, person } = parseHash();
+  for (const t of TABS) { const el = $('#tab-' + t); if (el) el.hidden = t !== tab; }
+  document.querySelectorAll('.sb-nav a[data-tab], .bottombar a[data-tab]').forEach(a => {
+    const on = a.dataset.tab === tab;
+    a.classList.toggle('on', on);
+    if (on) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+  });
+  const mb = $('#btn-menu'); if (mb) mb.classList.toggle('on', document.body.classList.contains('sb-open'));
+  let label = VIEW_LABELS[tab];
+  if (tab === 'programme' && mod != null) label = 'M' + pad2(mod) + ' — ' + ((MOD_LABELS && MOD_LABELS[mod]) || 'module');
+  if (tab === 'apprenants' && person) label = 'Fiche — ' + (String(person).includes('@') ? person : 'candidat');
+  $('#view-label').textContent = label;
+  closeSidebar();
+  if (tab === 'programme') { renderProgramme(); showModRoute(mod); }
+  if (tab === 'inscriptions') { renderBillingConfig(); if (!CANDIDATES) loadCandidates(); }
+  if (tab === 'apprenants') {
+    const pend = [];
+    if (!ROSTER) pend.push(loadRoster());
+    if (!CANDIDATES) pend.push(loadCandidates());
+    if (!INVITATIONS && !(CLASSROOM && CLASSROOM.connected === false)) pend.push(loadInvitations());
+    Promise.all(pend).then(() => { if (person) openPerson(person); else closePerson(); });
+  }
+  window.scrollTo(0, 0);
+}
+window.addEventListener('hashchange', showTab);
+
+/* ---------- Sidebar (drawer <=1099px) ---------- */
+function openSidebar() { document.body.classList.add('sb-open'); $('#btn-burger').setAttribute('aria-expanded', 'true'); }
+function closeSidebar() { document.body.classList.remove('sb-open'); const bb = $('#btn-burger'); if (bb) bb.setAttribute('aria-expanded', 'false'); const mb = $('#btn-menu'); if (mb) mb.classList.remove('on'); }
+function toggleSidebar() { document.body.classList.contains('sb-open') ? closeSidebar() : openSidebar(); const mb = $('#btn-menu'); if (mb) mb.classList.toggle('on', document.body.classList.contains('sb-open')); const bb = $('#btn-burger'); if (bb) bb.setAttribute('aria-expanded', document.body.classList.contains('sb-open') ? 'true' : 'false'); }
+$('#btn-burger').addEventListener('click', toggleSidebar);
+$('#btn-menu').addEventListener('click', toggleSidebar);
+$('#sb-overlay').addEventListener('click', closeSidebar);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSidebar(); });
+
+/* ---------- Cohorte + Apprenants ---------- */
+async function loadRoster() {
+  const r = await api('/api/roster');
+  if (!r.ok) {
+    ROSTER = null;
+    renderTodo();
+    renderHome(); renderInscriptions(null, 'Roster indisponible');
+    return null;
+  }
+  ROSTER = r.data || {};
+  const learners = Array.isArray(ROSTER.learners) ? ROSTER.learners : [];
+  const cc = typeof ROSTER.classroomCount === 'number' ? ROSTER.classroomCount : null;
+  const pending = cc == null ? null : Math.max(0, learners.length - cc);
+  const invite = $('#invite-summary');
+  if (invite) invite.innerHTML = learners.length
+    ? 'Apprenants importés prêts à inviter : <b>' + (pending == null ? '?' : pending) + '</b> sur ' + learners.length + ' (déjà présents dans la classe : ' + (cc == null ? '?' : cc) + ').'
+    : 'Aucun apprenant importé — les admissions depuis Inscriptions créent les comptes automatiquement.';
+  renderTodo(); renderHome(); renderLearners();
+  const pv = $('#person-view'); if (pv && !pv.hidden && pv.dataset.id) openPerson(pv.dataset.id);
+  return ROSTER;
+}
+
+/* ---------- Classroom (etat operationnel reel) ---------- */
+let INVITATIONS = null; let INV_NOTE = null;
+async function loadClassroom() {
+  const r = await api('/api/classroom/status');
+  if (!r.ok) {
+    CLASSROOM = { connected: false, error: 'indisponible (HTTP ' + r.status + ')' };
+    setDot('#d-classroom2', 'ko'); chip('#chip-classroom2', 'ko', 'indisponible');
+    renderTech(); renderHome(); return;
+  }
+  CLASSROOM = r.data || {};
+  const connected = CLASSROOM.connected === true;
+  chip('#chip-classroom2', connected ? 'ok' : 'ko', connected ? 'Connecté' : 'Non connecté');
+  setDot('#d-classroom2', connected ? 'ok' : 'ko');
+  const st = $('#g-status2'); if (st) st.innerHTML = connected ? '<span class="v ok">Connectée</span>' : '<span class="v ko">Non connectée</span>';
+  const ac = $('#g-account2'); if (ac) ac.textContent = CLASSROOM.account || 'non renseigné';
+  const learnersN = ROSTER && Array.isArray(ROSTER.learners) ? ROSTER.learners.length : null;
+  const ccN = ROSTER && typeof ROSTER.classroomCount === 'number' ? ROSTER.classroomCount : null;
+  const gs = $('#g-students2'); if (gs) gs.textContent = learnersN == null ? '—' : ccN + ' / ' + learnersN + ' apprenants présents';
+  renderTech(); renderHome();
+  const pv1 = $('#person-view'); if (pv1 && !pv1.hidden && pv1.dataset.id) openPerson(pv1.dataset.id);
+  if (connected) { loadCoursework(); loadInvitations(); }
+}
+async function loadCoursework() {
+  const r = await api('/api/classroom/coursework');
+  if (!r.ok) { COURSEWORK = null; const el = $('#cw-list'); if (el) el.innerHTML = '<span class="empty">Devoirs indisponibles.</span>'; renderHome(); return; }
+  COURSEWORK = Array.isArray(r.data && r.data.coursework) ? r.data.coursework : [];
+  renderClassroomOps(); renderHome();
+}
+async function loadInvitations() {
+  const r = await api('/api/classroom/invitations');
+  INVITATIONS = r.ok && Array.isArray(r.data.invitations) ? r.data.invitations : null;
+  INV_NOTE = r.ok && Array.isArray(r.data.empty) && r.data.empty.length ? r.data.empty[0] : null;
+  renderClassroomOps(); renderHome();
+}
+function renderClassroomOps() {
+  const cw = $('#cw-list'); const inv = $('#inv-list');
+  if (cw) {
+    if (COURSEWORK == null) cw.innerHTML = '<span class="v mut">—</span>';
+    else if (!COURSEWORK.length) cw.innerHTML = '<span class="v">0 coursework publié</span>';
+    else {
+      const pub = COURSEWORK.filter(c => String(c.state || 'PUBLISHED').toUpperCase() === 'PUBLISHED');
+      const hors = pub.filter(c => { const m = /\bM(\d{1,3})\b/i.exec(c.title || ''); return m && Number(m[1]) > 18; });
+      cw.innerHTML = pub.length + ' publié(s)' + (hors.length ? ' · <span class="v ko">' + hors.length + ' titre(s) hors M01–M18</span>' : '') +
+        '<details class="tech" style="margin:6px 0 0"><summary>Détail des devoirs</summary><div class="body"><ul class="facts">' +
+        pub.slice(0, 20).map(c => '<li><span class="k">' + esc(c.title) + '</span><span class="v mut">' + esc(c.state || '—') + '</span></li>').join('') + '</ul></div></details>';
+    }
+  }
+  if (inv) {
+    if (INVITATIONS == null) inv.innerHTML = '<span class="v mut">' + esc(INV_NOTE || 'indisponible') + '</span>';
+    else if (INV_NOTE && !INVITATIONS.length) inv.innerHTML = '<span class="v mut">' + esc(INV_NOTE) + '</span>';
+    else {
+      const pendingInv = INVITATIONS.filter(v => !v.state || /PENDING/i.test(v.state)).length;
+      const accepted = INVITATIONS.filter(v => /ACCEPTED/i.test(v.state || '')).length;
+      inv.innerHTML = INVITATIONS.length + ' invitation(s) en cours (' + pendingInv + ' en attente, ' + accepted + ' acceptées)';
+    }
+  }
+}
+
+/* ---------- Accueil : centre de commandement (100% donnees API) ---------- */
+let CANDIDATES = null; let BILLING = null;
+function fmtDate(iso) { if (!iso) return '—'; try { return new Date(iso).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' }); } catch (e) { return '—'; } }
+function renderHome() {
+  const g = $('#statgrid'); if (!g) return;
+  const learners = ROSTER && Array.isArray(ROSTER.learners) ? ROSTER.learners : [];
+  const cc = ROSTER && typeof ROSTER.classroomCount === 'number' ? ROSTER.classroomCount : null;
+  const rosterOk = !!ROSTER;
+  const cN = CANDIDATES && CANDIDATES.counts ? CANDIDATES.counts : null;
+  const connected = CLASSROOM && CLASSROOM.connected === true;
+  const cwN = COURSEWORK == null ? null : COURSEWORK.length;
+  const start = ROSTER && ROSTER.cohortStart ? ROSTER.cohortStart : null;
+  g.innerHTML =
+    '<a class="stat" href="#inscriptions">' +
+      '<span class="k"><span>Candidats</span><span class="stat-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span></span>' +
+      '<span class="v">' + (cN ? cN.total : '—') + '</span>' +
+      '<span class="s">' + (cN ? (cN.nouveauxJour > 0 ? cN.nouveauxJour + ' aujourd\'hui' : 'aucun nouveau aujourd\'hui') : 'chargement…') + '</span>' +
+    '</a>' +
+    '<a class="stat" href="#apprenants">' +
+      '<span class="k"><span>Apprenants</span><span class="stat-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span></span>' +
+      '<span class="v">' + (rosterOk ? learners.length : '—') + '</span>' +
+      '<span class="s">' + (rosterOk ? 'comptes Hoja créés' : 'API indisponible') + '</span>' +
+    '</a>' +
+    '<a class="stat" href="#apprenants">' +
+      '<span class="k"><span>Classroom</span><span class="stat-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg></span></span>' +
+      '<span class="v">' + (rosterOk && cc != null ? cc + ' / ' + learners.length : '—') + '</span>' +
+      '<span class="s">' + (rosterOk && cc != null ? 'dans la classe' : 'chargement…') + '</span>' +
+    '</a>' +
+    '<a class="stat" href="#classroom">' +
+      '<span class="k"><span><span class="dot ' + (connected ? 'ok' : CLASSROOM ? 'ko' : '') + '"></span> Passerelle</span><span class="stat-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg></span></span>' +
+      '<span class="v" style="font-size:18px">' + (CLASSROOM ? (connected ? 'Connectée' : 'Non connectée') : '—') + '</span>' +
+      '<span class="s">' + (connected && cwN != null ? cwN + ' coursework' : 'état via /api/classroom') + '</span>' +
+    '</a>' +
+    '<a class="stat" href="#programme">' +
+      '<span class="k"><span>Programme</span><span class="stat-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg></span></span>' +
+      '<span class="v">18 / 18</span>' +
+      '<span class="s">4 blocs · 8 semaines</span>' +
+    '</a>';
+
+  const coh = $('#home-cohort');
+  if (coh) coh.innerHTML = '<span style="font-size:13.5px">' + (start ? 'Cohorte 01 — début le <b>' + esc(new Date(start).toLocaleDateString('fr-FR')) + '</b>' : 'Prochaine cohorte : <b>date à définir</b> <span style="color:var(--muted)">(réglage serveur COHORT_START)</span>') + '</span> <a class="btn small secondary" style="vertical-align:middle" href="#programme">Voir le programme</a>';
+
+  const b = $('#billing');
+  if (b) {
+    const price = BILLING && BILLING.price ? BILLING.price : null;
+    const cur = BILLING && BILLING.currency ? BILLING.currency : '';
+    const paye = CANDIDATES && CANDIDATES.counts ? CANDIDATES.counts.payeCount : null;
+    const attendu = CANDIDATES && CANDIDATES.counts ? CANDIDATES.counts.attendu : null;
+    const aVerif = CANDIDATES && CANDIDATES.counts ? CANDIDATES.counts.aVerifier : null;
+    b.innerHTML =
+      '<a class="stat" href="#inscriptions">' +
+        '<span class="k"><span>Tarif formation</span><span class="stat-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><line x1="12" x2="12" y1="6" y2="18"/></svg></span></span>' +
+        '<span class="v" style="font-size:18px">' + (price ? esc(String(price)) + ' ' + esc(cur) : '<span class="v mut" style="font-size:16px">non configuré</span>') + '</span>' +
+        '<span class="s">' + (price ? 'montant de référence (réglage admin)' : 'configurer dans Inscriptions ↓') + '</span>' +
+      '</a>' +
+      '<a class="stat" href="#inscriptions">' +
+        '<span class="k"><span>Encaissé</span><span class="stat-ico" style="color:var(--teal)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></span>' +
+        '<span class="v">' + (price == null ? '—' : (paye != null ? esc(String(paye * price)) + ' ' + esc(cur) : '—')) + '</span>' +
+        '<span class="s">' + (paye != null ? paye + ' paiement(s) confirmé(s)' + (cur === '' && price ? ' (devise à régler)' : '') : 'chargement…') + '</span>' +
+      '</a>' +
+      '<a class="stat" href="#inscriptions">' +
+        '<span class="k"><span>Paiements à traiter</span><span class="stat-ico" style="color:var(--amber)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span></span>' +
+        '<span class="v">' + (aVerif == null ? '—' : aVerif) + '</span>' +
+        '<span class="s">' + (aVerif != null && attendu != null && price ? '≈ ' + esc(String(attendu * price)) + ' ' + esc(cur) + ' attendus' : 'vérification humaine') + '</span>' +
+      '</a>';
+  }
+
+  /* Activite recente : uniquement evenements reels (candidatures + comptes) */
+  const act = $('#activity');
+  if (act) {
+    const evts = [];
+    if (CANDIDATES && Array.isArray(CANDIDATES.candidates)) {
+      for (const c of CANDIDATES.candidates) for (const e0 of (c.events || [])) evts.push({ ts: e0.ts, label: e0.label + ' — ' + (c.name || c.email || '—') });
+    }
+    evts.sort((x, y) => String(y.ts).localeCompare(String(x.ts)));
+    if (!evts.length) act.innerHTML = '<li><span class="lbl" style="color:var(--muted)">Pas encore d\'activité enregistrée.</span></li>';
+    else act.innerHTML = evts.slice(0, 8).map(e0 =>
+      '<li>' +
+      '<span class="todo-ico-wrap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--teal-light)"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg></span>' +
+      '<span class="lbl">' + esc(e0.label) + '<small>' + esc(fmtDate(e0.ts)) + '</small></span></li>'
+    ).join('');
+  }
+}
+
+/* ---------- Inscriptions (vue de travail) ---------- */
+const PAY_LABEL = { non_verifie: 'Non vérifié', en_attente: 'En attente', paye: 'Payé', refuse: 'Refusé' };
+const ST_LABEL = { nouveau: 'Nouveau', verifie: 'Vérifié', admis: 'Admis', refuse: 'Refusé', annule: 'Annulé' };
+function payChipCls(st) { return st === 'paye' ? 'done' : st === 'refuse' ? 'blocked' : st === 'en_attente' ? 'todo' : 'wait'; }
+function stChipCls(st) { return st === 'admis' ? 'done' : (st === 'refuse' || st === 'annule') ? 'blocked' : st === 'verifie' ? 'wait' : 'todo'; }
+
+async function loadCandidates() {
+  const r = await api('/api/candidates');
+  if (!r.ok) { CANDIDATES = null; renderInscriptions(null, (r.data && r.data.error) || ('HTTP ' + r.status)); renderHome(); return; }
+  CANDIDATES = r.data || { candidates: [] };
+  renderInscriptions(CANDIDATES, null);
+  renderTodo(); renderHome(); renderLearners();
+}
+function renderInscriptions(data, err) {
+  const box = $('#cand-list'); if (!box) return;
+  const sync = $('#cand-sync');
+  if (sync) sync.innerHTML = data && data.sync && !data.sync.ok ? '<div class="alert warn">' + esc(data.sync.note) + '</div>' : '';
+  if (err) { box.innerHTML = errBox('Candidatures indisponibles — ' + esc(err) + '. Aucune donnée inventée.'); return; }
+  const cs = (data.candidates || []);
+  const k = $('#cand-counts');
+  if (k && data.counts) {
+    k.innerHTML =
+      '<a class="stat"><span class="k"><span>Candidats</span><span class="stat-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span></span><span class="v">' + data.counts.total + '</span><span class="s">' + data.counts.nouveauxJour + ' reçu(s) aujourd\'hui</span></a>' +
+      '<a class="stat"><span class="k"><span>Paiements à vérifier</span><span class="stat-ico" style="color:var(--amber)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span></span><span class="v">' + data.counts.aVerifier + '</span><span class="s">état non vérifié ou en attente</span></a>' +
+      '<a class="stat"><span class="k"><span>Admis</span><span class="stat-ico" style="color:var(--teal)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span></span><span class="v">' + data.counts.admis + '</span><span class="s">comptes apprenants créés</span></a>' +
+      '<a class="stat"><span class="k"><span>À vérifier</span><span class="stat-ico" style="color:var(--blue)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="16" y2="12"/><line x1="12" x2="12.01" y1="8" y2="8"/></svg></span></span><span class="v">' + data.counts.nouveaux + '</span><span class="s">statut « nouveau »</span></a>';
+  }
+  if (!cs.length) { box.innerHTML = '<p class="empty">Aucune candidature reçue pour le moment. Dès qu\'une réponse arrive dans le Google Form, elle apparaît ici au rafraîchissement.</p>'; return; }
+  box.innerHTML = '<div class="tablewrap"><table><thead><tr><th>Candidat</th><th>Profil</th><th>Reçue</th><th>Paiement</th><th>Statut</th><th></th></tr></thead><tbody>' +
+    cs.map(c =>
+      '<tr data-id="' + esc(c.responseId) + '">' +
+      '<td data-label="Candidat"><b><a href="#apprenants/p/' + encodeURIComponent(c.responseId) + '" style="color:inherit;text-decoration:none">' + esc(c.name) + ' <span style="font-size:11px;color:var(--muted)">↗</span></a></b><br><span style="color:var(--muted);font-size:12px">' + esc(c.email || '—') + (c.phone ? ' · ' + esc(c.phone) : '') + '</span></td>' +
+      '<td data-label="Profil"><span style="font-size:12px">' + esc(c.profile || '—') + (c.level ? ' · ' + esc(c.level) : '') + '</span>' + (c.goal ? '<details class="tech" style="margin:2px 0 0;border:0;background:none;padding:0"><summary style="min-height:24px;font-size:11.5px;color:var(--blue)">Objectif</summary><div style="font-size:12px;color:var(--muted);padding:2px 0 8px">' + esc(c.goal) + '</div></details>' : '') + '</td>' +
+      '<td data-label="Reçue" style="white-space:nowrap">' + esc(fmtDate(c.submittedAt || c.createdAt)) + '</td>' +
+      '<td data-label="Paiement"><span class="st ' + payChipCls(c.payment.state) + '">' + esc(PAY_LABEL[c.payment.state] || c.payment.state) + '</span>' + (c.payment.amount != null ? '<div style="font-size:11px;color:var(--muted);margin-top:3px">' + esc(String(c.payment.amount)) + (c.payment.confirmedAt ? ' · ' + esc(fmtDate(c.payment.confirmedAt)) : '') + '</div>' : '') + '</td>' +
+      '<td data-label="Statut"><span class="st ' + stChipCls(c.status) + '">' + esc(ST_LABEL[c.status] || c.status) + '</span>' + (c.learnerEmail ? '<div style="font-size:11px;color:var(--muted);margin-top:3px">compte apprenant ✓</div>' : '') + '</td>' +
+      '<td data-label="Actions"><div class="cand-actions" style="display:flex;flex-direction:column;gap:4px;align-items:flex-end">' +
+        (c.payment.state !== 'paye' && !['refuse','annule'].includes(c.status)
+          ? '<span style="display:flex;gap:4px;align-items:center"><input class="cand-amt" type="number" min="0" step="any" placeholder="Montant reçu" style="width:110px;padding:6px 8px;border-radius:6px;border:1px solid var(--line);background:var(--bg);color:var(--text);font-size:12px;font-family:inherit" aria-label="Montant reçu"><button class="small secondary cand-pay" type="button">Marquer payé</button></span>'
+          : '') +
+        (c.payment.state === 'paye' && c.status !== 'admis'
+          ? '<button class="small cand-admit" type="button">Admettre → apprenant</button>' : '') +
+        (c.status === 'nouveau' ? '<button class="small ghost cand-verify" type="button">Marquer vérifié</button>' : '') +
+        (['refuse','annule'].includes(c.status) ? '<button class="small ghost cand-reopen" type="button">Réouvrir</button>' : '') +
+        (!['admis','refuse','annule'].includes(c.status) ? '<button class="small ghost cand-refuse" type="button" style="color:var(--red)">Refuser</button>' : '') +
+      '</div></td></tr>'
+    ).join('') + '</tbody></table></div>';
+}
+/* actions Inscriptions — une seule source de verite (candidat.id) */
+async function candPatch(id, body, okMsg) {
+  const r = await api('/api/candidates/' + encodeURIComponent(id), { method: 'PATCH', body: JSON.stringify(body) });
+  const out = $('#cand-out') || $('#cand-list');
+  if (!r.ok) { alert0(out, 'Opération refusée (HTTP ' + r.status + ') — ' + ((r.data && r.data.error) || 'erreur'), true); return false; }
+  await loadCandidates();
+  if (r.data && r.data.candidate) { const t = $('#todo'); }
+  return true;
+}
+function alert0(host, msg, isErr) {
+  if (!host) return;
+  const d = document.createElement('div');
+  d.className = 'alert ' + (isErr ? 'err' : 'info'); d.textContent = msg;
+  host.prepend(d); setTimeout(() => d.remove(), 6000);
+}
+$('#cand-list') === null; // noop guard (elements rendus dynamiquement)
+document.addEventListener('click', async e => {
+  const btn = e.target.closest('.cand-pay,.cand-admit,.cand-verify,.cand-refuse,.cand-reopen');
+  if (!btn) return;
+  const tr = btn.closest('tr[data-id]'); if (!tr) return;
+  const id = tr.dataset.id;
+  btn.disabled = true;
+  try {
+    if (btn.classList.contains('cand-pay')) {
+      const amt = (tr.querySelector('.cand-amt') || {}).value;
+      if (!amt) { alert0($('#cand-list'), 'Indiquez le montant réellement reçu avant de marquer PAYÉ.', true); return; }
+      await candPatch(id, { paymentState: 'paye', amount: Number(amt) }, '');
+    } else if (btn.classList.contains('cand-verify')) {
+      await candPatch(id, { status: 'verifie' }, '');
+    } else if (btn.classList.contains('cand-refuse')) {
+      const why = prompt('Motif du refus (optionnel) :');
+      await candPatch(id, { status: 'refuse', note: why || '' }, '');
+    } else if (btn.classList.contains('cand-reopen')) {
+      await candPatch(id, { status: 'nouveau' }, '');
+    } else if (btn.classList.contains('cand-admit')) {
+      const r = await api('/api/candidates/' + encodeURIComponent(id) + '/admit', { method: 'POST' });
+      if (!r.ok) { alert0($('#cand-list'), 'Admission refusée (HTTP ' + r.status + ') — ' + ((r.data && r.data.error) || 'erreur'), true); return; }
+      await loadCandidates(); await loadRoster();
+      const acc = r.data && r.data.account;
+      if (acc && acc.initialPassword) {
+        const box = $('#cand-list');
+        const d = document.createElement('div'); d.className = 'alert warn';
+        d.innerHTML = '<b>Compte apprenant créé pour ' + esc(acc.email) + '</b> — mot de passe initial (affiché une seule fois, à transmettre en main propre) : <code>' + esc(acc.initialPassword) + '</code>';
+        box.prepend(d);
+      } else alert0($('#cand-list'), 'Candidat admis — apprenant dans la liste. Invitation Classroom : onglet Apprenants.', false);
+    }
+  } finally { btn.disabled = false; }
+});
+const _btncr = $('#btn-cand-refresh'); if (_btncr) _btncr.addEventListener('click', () => loadCandidates());
+
+async function loadBilling() {
+  const r = await api('/api/settings/billing');
+  BILLING = r.ok ? (r.data.billing || {}) : {};
+  renderHome();
+}
+function renderBillingConfig() {
+  let host = $('#billing-config');
+  if (host) return;
+  host = document.createElement('section');
+  host.className = 'card'; host.id = 'billing-config';
+  host.innerHTML = '<details class="tool"><summary>Tarif de la formation (configuration)</summary>' +
+    '<label for="bill-price">Montant attendu par apprenant — <b>aucune valeur par défaut</b></label>' +
+    '<input id="bill-price" type="number" min="0" step="any" style="max-width:220px" placeholder="ex. 250000">' +
+    '<label for="bill-cur">Devise</label><input id="bill-cur" maxlength="8" style="max-width:120px" placeholder="ex. USD / CDF / EUR">' +
+    '<div class="btnrow"><button type="button" id="btn-bill-save" class="secondary small">Enregistrer le tarif</button></div>' +
+    '<div id="bill-out"></div></details>';
+  const anchor = $('#cand-list');
+  anchor.parentNode.insertBefore(host, anchor.nextSibling);
+  $('#btn-bill-save').addEventListener('click', async () => {
+    const price = $('#bill-price').value, cur = $('#bill-cur').value.trim();
+    const r = await api('/api/settings/billing', { method: 'POST', body: JSON.stringify({ price: price === '' ? null : Number(price), currency: cur }) });
+    const out = $('#bill-out');
+    if (!r.ok) { out.innerHTML = errBox('Enregistrement refusé — ' + ((r.data && r.data.error) || 'HTTP ' + r.status)); return; }
+    out.innerHTML = '<div class="alert info">Tarif enregistré pour cette installation (interne — jamais public).</div>';
+    loadBilling();
+  });
+}
+
+
+/* ================= LISTE APPRENANTS + FICHE 360 ================= */
+let PROGRESS = null; let LearnerFilter = 'tous';
+function globalStatus(cand, learner) {
+  if (!cand && learner) return { k: 'ACTIF', cls: 'done' };
+  if (!cand) return { k: '—', cls: 'wait' };
+  if (cand.status === 'refuse') return { k: 'REFUSÉ', cls: 'blocked' };
+  if (cand.status === 'annule') return { k: 'ANNULÉ', cls: 'blocked' };
+  if (cand.status === 'admis') return { k: learner ? (learner.joinedClassroom ? 'ACTIF' : 'CLASSROOM EN ATTENTE') : 'ADMIS (compte absent)', cls: learner ? (learner.joinedClassroom ? 'done' : 'todo') : 'warn' };
+  if (cand.payment && cand.payment.state === 'paye') return { k: 'PAYÉ', cls: 'todo' };
+  if (cand.payment && cand.payment.state === 'en_attente') return { k: 'PAIEMENT EN ATTENTE', cls: 'todo' };
+  if (cand.status === 'verifie') return { k: 'VÉRIFIÉ', cls: 'wait' };
+  return { k: 'NOUVEAU', cls: 'todo' };
+}
+function findCandByEmail(email) {
+  if (!CANDIDATES || !CANDIDATES.candidates) return null;
+  const e = String(email || '').toLowerCase();
+  return CANDIDATES.candidates.find(c => (c.learnerEmail || c.email || '').toLowerCase() === e) || null;
+}
+function normPhone(p) {
+  const d = String(p || '').replace(/[^\d+]/g, '');
+  return d.length >= 8 && d.length <= 15 ? d.replace(/^\+/, '') : null;
+}
+function renderLearners() {
+  const host = $('#learners-table'); if (!host) return;
+  const learners = ROSTER && Array.isArray(ROSTER.learners) ? ROSTER.learners : null;
+  if (!learners) { host.innerHTML = '<p class="empty">Chargement…</p>'; return; }
+  const q = (($('#learner-search') || {}).value || '').trim().toLowerCase();
+  let list = learners.map(l => {
+    const cand = findCandByEmail(l.email);
+    const st = globalStatus(cand, l);
+    return { ...l, cand, st, phone: cand && cand.phone ? cand.phone : '' };
+  });
+  if (LearnerFilter === 'actif') list = list.filter(l => l.joinedClassroom);
+  if (LearnerFilter === 'inviter') list = list.filter(l => !l.joinedClassroom);
+  if (q) list = list.filter(l => ((l.name || '') + ' ' + (l.email || '') + ' ' + (l.phone || '')).toLowerCase().includes(q));
+  $('#learners-count').textContent = learners.length + (learners.length > 1 ? ' apprenants' : ' apprenant');
+  if (!list.length) { host.innerHTML = '<p class="empty">' + (learners.length ? 'Aucun apprenant ne correspond.' : 'Aucun apprenant — les admissions depuis Inscriptions créent les comptes ici.') + '</p>'; return; }
+  host.innerHTML = list.map(l =>
+    '<a class="lrow" href="#apprenants/p/' + encodeURIComponent(l.email) + '">' +
+    '<span class="who2"><b>' + esc(l.name) + '</b><small>' + esc(l.email) + (l.phone ? ' · ' + esc(l.phone) : '') + '</small></span>' +
+    '<span class="w">' + (l.cand ? esc(l.cand.profile || '—') : (l.via === 'candidature' ? 'Admis' : 'Import')) + '</span>' +
+    '<span class="st ' + l.st.cls + '">' + esc(l.st.k) + '</span>' +
+    '<span class="arw" style="display:flex;align-items:center;color:var(--muted)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span></a>'
+  ).join('');
+}
+$('#learners-list') || null;
+document.addEventListener('click', e => {
+  const fc = e.target.closest('.fchip'); if (fc) {
+    LearnerFilter = fc.dataset.f;
+    document.querySelectorAll('.fchip').forEach(x => x.classList.toggle('on', x === fc));
+    renderLearners(); return;
+  }
+});
+document.addEventListener('input', e => { if (e.target && e.target.id === 'learner-search') renderLearners(); });
+
+async function loadProgress() {
+  const r = await api('/api/progress');
+  PROGRESS = r.ok && Array.isArray(r.data.rows) ? r.data.rows : null;
+  if (PROGRESS == null) { const el = $('#p-prog'); if (el) el.innerHTML = '<p class="empty">Progression indisponible (API).</p>'; }
+}
+function personProgress(email) {
+  if (PROGRESS == null) return '<p class="empty">Chargement de la progression…</p>';
+  const row = PROGRESS.find(x => x.email === String(email).toLowerCase()) || PROGRESS.find(x => x.email === email);
+  if (!row) return '<p class="empty">Aucune donnée de progression pour cette personne (compte sans rendu Classroom, ou candidat non apprenant).</p>';
+  const mods = [];
+  for (const m of row.missions || []) for (const n of (m.modules || [])) if (!mods.includes(n)) mods.push(n);
+  const doneMods = (row.missions || []).filter(m => m.state === 'graded').flatMap(m => m.modules || []);
+  const uniq = [...new Set(doneMods)].length;
+  let html = '<div style="font-size:12.5px;color:var(--muted)">' + uniq + ' / 18 modules validés' + (row.total ? ' · ' + (row.missions || []).length + ' devoir(s) publié(s)' : '') + '</div>';
+  html += '<div class="pbar"><i style="width:' + Math.round(uniq / 18 * 100) + '%"></i></div>';
+  if (row.empty || !(row.missions || []).length) html += '<p class="empty" style="margin-top:8px">Aucun devoir publié pour le moment.</p>';
+  else html += (row.missions || []).map(m => {
+    const label = m.state === 'graded' ? 'Validé' + (m.grade != null ? ' · note ' + esc(String(m.grade)) + (m.maxPoints ? '/' + esc(String(m.maxPoints)) : '') : '') : m.state === 'returned' ? 'Corrigé (sans note)' : m.state === 'submitted' ? 'Déposé — en attente de correction' : m.state === 'draft' ? 'Brouillon' : 'À venir';
+    const cls = m.state === 'graded' ? 'done' : m.state === 'returned' ? 'wait' : m.state === 'submitted' ? 'todo' : 'wait';
+    return '<div class="mstat"><span class="mm">M' + pad2(((m.modules || [])[0]) || 0) + '</span><span class="st ' + cls + '">' + esc(label) + '</span><span class="mw">' + esc(m.title) + '</span></div>';
+  }).join('');
+  const last = [...(row.missions || [])].reverse().find(m => m.returnedAt);
+  if (last) html += '<p class="note">Dernier travail corrigé : ' + esc(last.title) + ' · ' + esc(fmtDate(last.returnedAt)) + '</p>';
+  return html;
+}
+const ICO = {
+  mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>',
+  phone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>',
+  wa: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>',
+};
+/* etape(cls, titre, valeur) -> cls: done|todo|wait|blocked|na (na = non applicable) */
+function personSituation(cand, learner) {
+  const payState = cand ? cand.payment.state : 'non_verifie';
+  const dead = cand && ['refuse', 'annule'].includes(cand.status);
+  return [
+    { k: 'Candidature', v: cand ? (ST_LABEL[cand.status] || cand.status) : '—', cls: cand ? (cand.status === 'nouveau' ? 'todo' : cand.status === 'verifie' ? 'wait' : cand.status === 'admis' ? 'done' : 'blocked') : 'na' },
+    { k: 'Paiement', v: cand ? (PAY_LABEL[payState] || payState) : (learner ? 'non suivi' : '—'), cls: dead ? 'blocked' : payState === 'paye' && cand ? 'done' : payState === 'refuse' ? 'blocked' : learner ? 'na' : payState === 'en_attente' ? 'todo' : 'wait' },
+    { k: 'Admission', v: cand ? (cand.status === 'admis' ? 'Admis' : dead ? 'Refusé' : 'En cours') : (learner ? 'import' : '—'), cls: cand && cand.status === 'admis' ? 'done' : dead ? 'blocked' : 'wait' },
+    { k: 'Compte Hoja', v: learner ? 'Créé' : 'Non créé', cls: learner ? 'done' : 'wait' },
+    { k: 'Classroom', v: learner ? (learner.joinedClassroom ? 'Dans la classe' : 'À inviter') : '—', cls: learner ? (learner.joinedClassroom ? 'done' : 'todo') : 'na' },
+    { k: 'Progression', v: learner ? progressSummaryShort(learner.email) : '—', cls: learner ? 'wait' : 'na' },
+  ];
+}
+function progressSummaryShort(email) {
+  if (PROGRESS == null) return 'chargement…';
+  const row = PROGRESS.find(x => x.email === String(email).toLowerCase());
+  if (!row) return '—';
+  const done = [...new Set((row.missions || []).filter(m => m.state === 'graded').flatMap(m => m.modules || []))].length;
+  return done + ' / 18 modules';
+}
+/* LA prochaine action (unique, base etat reel) */
+function personNextAction(cand, learner) {
+  if (cand && cand.status === 'refuse') return { step: 0, txt: 'Candidature refusée', why: 'Réouvrir la candidature pour reprendre le traitement.', btn: '<button class="small ghost cand-reopen" data-id="' + esc(cand.responseId) + '" type="button">Réouvrir</button>' };
+  if (cand && cand.status === 'annule') return { step: 0, txt: 'Candidature annulée', why: '', btn: '<button class="small ghost cand-reopen" data-id="' + esc(cand.responseId) + '" type="button">Réouvrir</button>' };
+  if (cand && cand.status === 'nouveau') return { step: 0, txt: 'Vérifier la candidature', why: 'Contrôler le profil et les coordonnées avant d’attendre le paiement.', btn: '<button class="small cand-verify-inline" data-id="' + esc(cand.responseId) + '" type="button">Marquer vérifiée</button>' };
+  if (cand && cand.payment.state !== 'paye') return { step: 1, txt: 'Paiement non vérifié', why: 'Confirmer le montant réellement reçu — vérification humaine, jamais automatique.', btn: '<button class="cand-pay-inline" data-id="' + esc(cand.responseId) + '" type="button">Marquer le paiement vérifié</button>' };
+  if (cand && cand.status !== 'admis' && !learner) return { step: 2, txt: 'Paiement vérifié — admettre', why: 'Créer le compte apprenant Hoja (email déjà saisi, aucune ressaisie).', btn: '<button class="cand-admit-inline" data-id="' + esc(cand.responseId) + '" type="button">Admettre → apprenant</button>' };
+  if (learner && !learner.joinedClassroom) return { step: 4, txt: 'Invitation Classroom en attente', why: 'Envoyer l’invitation depuis la liste Apprenants (bouton d’invitation).', btn: '<a class="btn small" href="#apprenants">Inviter dans Classroom</a>' };
+  if (learner) return { step: 5, txt: 'Formation en cours', why: 'Suivi des missions et corrections depuis Classroom / espace formateur.', btn: '<a class="btn small secondary" href="/ui/suivi/" target="_blank" rel="noopener">Ouvrir le suivi</a>' };
+  return { txt: 'Aucune action disponible', why: '', btn: '' };
+}
+async function openPerson(id) {
+  const view = $('#person-view'); const list = $('#learners-list'); const tools = $('#learners-tools');
+  let cand = null, learner = null, email = null;
+  if (String(id).includes('@')) {
+    email = decodeURIComponent(String(id)).toLowerCase();
+    learner = ROSTER && Array.isArray(ROSTER.learners) ? (ROSTER.learners.find(l => l.email === email) || null) : null;
+    cand = findCandByEmail(email);
+  } else {
+    cand = CANDIDATES && CANDIDATES.candidates ? CANDIDATES.candidates.find(c => c.responseId === id) : null;
+    if (cand) email = (cand.learnerEmail || cand.email || '').toLowerCase();
+  }
+  if (!cand && !learner) { list.style.display = ''; if (tools) tools.style.display = ''; const hd = $('#learners-head'); if (hd) hd.style.display = ''; view.hidden = true; return; } /* introuvable: on laisse la liste */
+  list.style.display = 'none'; if (tools) tools.style.display = 'none';
+  const head = $('#learners-head'); if (head) head.style.display = 'none';
+  view.hidden = false;
+  const st = globalStatus(cand, learner);
+  const price = BILLING && BILLING.price ? BILLING.price : null;
+  const na = personNextAction(cand, learner);
+  const cur = BILLING && BILLING.currency ? ' ' + BILLING.currency : '';
+  const paid = cand && cand.payment && cand.payment.state === 'paye' ? cand.payment.amount : null;
+  const back = cand && !learner ? '#inscriptions' : '#apprenants';
+  const backTxt = cand && !learner ? 'Inscriptions' : 'Apprenants';
+  const inv = INVITATIONS && email ? INVITATIONS.find(v => (v.email || '').toLowerCase() === email) : null;
+  const cls = (typeof CLASSROOM !== 'undefined' && CLASSROOM) ? (CLASSROOM.courseName || null) : null;
+  const phoneDigits = cand ? normPhone(cand.phone) : null;
+  let actions = [];
+  if (learner) actions.push('<button class="small ghost" id="btn-pwreset" data-email="' + esc(email) + '" type="button">Réinitialiser le mot de passe</button>');
+  const contactMail = (cand && cand.email) || (learner && learner.email) || null;
+  const contact = (contactMail ? '<a class="btn secondary small" href="mailto:' + esc(contactMail) + '">' + ICO.mail + 'E-mail</a>' : '') +
+    (phoneDigits ? '<a class="btn secondary small" href="tel:+' + esc(phoneDigits) + '">' + ICO.phone + 'Téléphone</a><a class="btn secondary small" href="https://wa.me/' + esc(phoneDigits) + '" target="_blank" rel="noopener">' + ICO.wa + 'WhatsApp</a>' : '');
+  const events = [];
+  if (cand) for (const e0 of cand.events || []) events.push({ ts: e0.ts, label: e0.label });
+  if (learner && learner.createdAt && !cand) events.push({ ts: learner.createdAt, label: 'Compte apprenant créé (' + (learner.via || 'import') + ')' });
+  if (inv && inv.state) events.push({ ts: null, label: 'Invitation Classroom : ' + (/ACCEPTED/i.test(inv.state) ? 'acceptée' : 'envoyée, en attente') });
+  events.sort((a, b) => String(b.ts || '').localeCompare(String(a.ts || '')));
+  const sit = personSituation(cand, learner);
+  view.innerHTML =
+    '<a class="back" href="' + back + '"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg><span>' + backTxt + '</span></a>' +
+    '<div class="phead">' +
+      '<div><div class="nm"><h2>' + esc((cand && cand.name) || (learner && learner.name) || email) + '</h2><span class="st ' + st.cls + '">' + esc(st.k) + '</span></div>' +
+      '<p class="meta">' + [cand && cand.profile, cand && cand.level].filter(Boolean).map(esc).join(' · ') +
+        (cand ? ' · inscrit le ' + esc(fmtDate(cand.submittedAt || cand.createdAt)) : (learner && learner.createdAt ? ' · compte créé le ' + esc(fmtDate(learner.createdAt)) : '')) + '</p></div>' +
+      '<div class="contactrow">' + contact + '</div>' +
+    '</div>' +
+    '<div class="pcta"><span class="why">' + esc(na.txt) + (na.why ? '<small>' + esc(na.why) + '</small>' : '') + '</span><span>' + na.btn + '</span></div>' +
+    '<div class="pstrip" aria-label="Étapes du dossier">' + sit.map((x, xi) =>
+      '<div class="ps ' + x.cls + (xi === (na.step != null ? na.step : -1) ? ' cur' : '') + '"><span class="k">' + esc(x.k) + '</span><span class="st ' + (x.cls === 'na' ? 'wait' : x.cls) + '"' + (x.cls === 'na' ? ' style="opacity:.55"' : '') + '>' + esc(x.cls === 'na' ? 'n/a' : x.v) + '</span></div>'
+    ).join('') + '</div>' +
+    '<div class="pgrid">' +
+      '<div class="psec"><h3>Inscription</h3>' +
+        '<div class="kv"><span class="k">E-mail</span><span class="v">' + esc((cand && cand.email) || email || '—') + '</span></div>' +
+        '<div class="kv"><span class="k">Téléphone</span><span class="v">' + esc((cand && cand.phone) || '—') + '</span></div>' +
+        '<div class="kv"><span class="k">Profil · niveau</span><span class="v">' + esc(((cand && cand.profile) || '—') + ' · ' + ((cand && cand.level) || '—')) + '</span></div>' +
+        '<div class="kv"><span class="k">Objectif</span><span class="v" style="font-weight:400">' + esc((cand && cand.goal) || '—') + '</span></div>' +
+        ((cand && cand.note) ? '<div class="kv"><span class="k">Note interne</span><span class="v" style="font-weight:400">' + esc(cand.note) + '</span></div>' : '') +
+        ((cand && cand.extra && cand.extra.length) ? '<div class="kv"><span class="k">Réponses supplémentaires</span><span class="v" style="font-weight:400">' + cand.extra.map(x0 => esc(x0.value)).join('<br>') + '</span></div>' : '') +
+      '</div>' +
+      (cand ?
+      '<div class="psec"><h3>Admission &amp; compte Hoja</h3>' +
+        '<div class="kv"><span class="k">Candidature</span><span class="v">' + esc(ST_LABEL[cand.status] || cand.status) + '</span></div>' +
+        '<div class="kv"><span class="k">Compte apprenant</span><span class="v">' + (learner ? '<span class="st done">créé</span> ' + esc(learner.email) : '<span class="v mut">non créé</span>') + '</span></div>' +
+        (learner ? '<div class="kv"><span class="k">Mot de passe</span><span class="v">' + (learner.mustChange ? 'provisoire — à changer' : 'inchangé') + '</span></div>' : '') +
+        (actions.length ? '<div class="btnrow" style="margin-top:10px">' + actions.join('') + '</div>' : '') +
+      '</div>' : (learner ?
+      '<div class="psec"><h3>Compte Hoja</h3>' +
+        '<div class="kv"><span class="k">Identifiant</span><span class="v">' + esc(learner.email) + '</span></div>' +
+        '<div class="kv"><span class="k">Origine</span><span class="v">' + esc(learner.via === 'candidature' ? 'admission candidature' : 'import liste') + '</span></div>' +
+        '<div class="kv"><span class="k">Mot de passe</span><span class="v">' + (learner.mustChange ? 'provisoire — à changer' : 'inchangé') + '</span></div>' +
+        (actions.length ? '<div class="btnrow" style="margin-top:10px">' + actions.join('') + '</div>' : '') +
+      '</div>' : '')) +
+      '<div class="psec"><h3>Facturation</h3>' +
+        '<div class="kv"><span class="k">Tarif formation</span><span class="v">' + (price != null ? esc(String(price)) + esc(cur) : '<span class="v mut">non configuré</span>') + '</span></div>' +
+        '<div class="kv"><span class="k">Paiement</span><span class="v">' + (cand ? '<span class="st ' + payChipCls(cand.payment.state) + '">' + esc(PAY_LABEL[cand.payment.state] || cand.payment.state) + '</span>' : '<span class="v mut">non suivi (import sans candidature)</span>') + '</span></div>' +
+        (cand && cand.payment.state === 'paye' ? '<div class="kv"><span class="k">Montant reçu</span><span class="v">' + (paid != null ? esc(String(paid)) + esc(cur) : '—') + '</span></div>' +
+          '<div class="kv"><span class="k">Confirmé par / le</span><span class="v">' + esc((cand.payment.confirmedBy || '—') + ' · ' + fmtDate(cand.payment.confirmedAt)) + '</span></div>' :
+          (cand ? '<div class="kv"><span class="k">Montant attendu</span><span class="v">' + (price != null ? esc(String(price)) + esc(cur) : '<span class="v mut">tarif non configuré</span>') + '</span></div>' : '')) +
+      '</div>' +
+      '<div class="psec"><h3>Google Classroom</h3>' +
+        '<div class="kv"><span class="k">Classe</span><span class="v">' + (!CLASSROOM ? 'chargement…' : (CLASSROOM.connected ? (cls ? esc(cls) : 'Cohorte 01 — classe connectée') : '<span class="v ko">passerelle non connectée</span>')) + '</span></div>' +
+        '<div class="kv"><span class="k">Invitation</span><span class="v">' + (learner ? (learner.joinedClassroom ? '<span class="st done">présent dans la classe</span>' : inv ? (inv.state && /PENDING/i.test(inv.state) ? '<span class="st todo">envoyée — en attente</span>' : 'invitée (' + esc(inv.state || '?') + ')') : (INVITATIONS == null && INV_NOTE ? esc(INV_NOTE) : '<span class="st wait">non invitée</span>')) : '<span class="v mut">non applicable (candidat)</span>') + '</span></div>' +
+      '</div>' +
+      (learner ? '<div class="psec" style="grid-column:1/-1"><h3>Formation &amp; progression</h3><div id="p-prog">' + personProgress(email) + '</div></div>' : '') +
+      '<div class="psec" style="grid-column:1/-1"><h3>Historique</h3>' +
+        (events.length ? events.map(e0 => '<div class="evt"><time>' + esc(e0.ts ? fmtDate(e0.ts) : '—') + '</time><span>' + esc(e0.label) + '</span></div>').join('') : '<p class="empty">Pas encore d\'activité enregistrée.</p>') + '</div>' +
+    '</div>';
+  if (learner && PROGRESS == null) loadProgress().then(() => { const el = $('#p-prog'); if (el) el.innerHTML = personProgress(email); });
+  if (learner && INVITATIONS == null && CLASSROOM && CLASSROOM.connected) loadInvitations().then(() => { if (parseHash().person) openPerson(parseHash().person); });
+  $('#person-view').dataset.id = String(id);
+}
+function closePerson() {
+  const view = $('#person-view'); if (!view) return;
+  view.hidden = true; view.innerHTML = '';
+  const list = $('#learners-list'); if (list) list.style.display = '';
+  const tools = $('#learners-tools'); if (tools) tools.style.display = '';
+  const head = $('#learners-head'); if (head) head.style.display = '';
+  renderLearners();
+}
+document.addEventListener('click', async e => {
+  const pw = e.target.closest('#btn-pwreset');
+  if (pw) {
+    if (!confirm('Réinitialiser le mot de passe de ' + pw.dataset.email + ' ? Un nouveau mot de passe provisoire sera généré (affiché une seule fois).')) return;
+    const r = await api('/api/users/reset-password', { method: 'POST', body: JSON.stringify({ email: pw.dataset.email }) });
+    const box = $('#person-view');
+    if (!r.ok) { alert0(box, 'Réinitialisation impossible — ' + ((r.data && r.data.error) || 'HTTP ' + r.status), true); return; }
+    const d = document.createElement('div'); d.className = 'alert warn';
+    d.innerHTML = '<b>Nouveau mot de passe provisoire (' + esc(r.data.email) + ')</b> — affiché une seule fois, à transmettre en main propre : <code>' + esc(r.data.initialPassword) + '</code>';
+    box.prepend(d);
+    return;
+  }
+  const payB = e.target.closest('.cand-pay-inline');
+  if (payB) {
+    const amt = prompt('Montant réellement reçu (devise configurée) :');
+    if (amt == null || amt === '') return;
+    const r = await api('/api/candidates/' + encodeURIComponent(payB.dataset.id), { method: 'PATCH', body: JSON.stringify({ paymentState: 'paye', amount: Number(amt) }) });
+    if (!r.ok) { alert0($('#person-view'), 'Refusé — ' + ((r.data && r.data.error) || 'HTTP ' + r.status), true); return; }
+    await loadCandidates(); showTab();
+  }
+  const adB = e.target.closest('.cand-admit-inline');
+  if (adB) {
+    const r = await api('/api/candidates/' + encodeURIComponent(adB.dataset.id) + '/admit', { method: 'POST' });
+    if (!r.ok) { alert0($('#person-view'), 'Admission refusée — ' + ((r.data && r.data.error) || 'HTTP ' + r.status), true); return; }
+    await loadCandidates(); await loadRoster(); showTab();
+    const acc = r.data && r.data.account;
+    if (acc && acc.initialPassword) {
+      const d = document.createElement('div'); d.className = 'alert warn';
+      d.innerHTML = '<b>Compte créé</b> — mot de passe initial (1 seule fois) : <code>' + esc(acc.initialPassword) + '</code>';
+      $('#person-view').prepend(d);
+    }
+  }
+  const vb = e.target.closest('.cand-verify-inline');
+  if (vb) {
+    const r = await api('/api/candidates/' + encodeURIComponent(vb.dataset.id), { method: 'PATCH', body: JSON.stringify({ status: 'verifie' }) });
+    if (!r.ok) { alert0($('#person-view'), 'Refusé — ' + ((r.data && r.data.error) || 'HTTP ' + r.status), true); return; }
+    await loadCandidates(); showTab();
+  }
+  const rb = e.target.closest('#person-view .cand-reopen');
+  if (rb) {
+    const r = await api('/api/candidates/' + encodeURIComponent(rb.dataset.id), { method: 'PATCH', body: JSON.stringify({ status: 'nouveau' }) });
+    if (!r.ok) { alert0($('#person-view'), 'Refusé — ' + ((r.data && r.data.error) || 'HTTP ' + r.status), true); return; }
+    await loadCandidates(); showTab();
+  }
+});
+
+
+/* ---------- A faire (dérivé 100% API) ---------- */
+function renderTodo() {
+  const box = $('#todo'); if (!box) return;
+  const learners = ROSTER && Array.isArray(ROSTER.learners) ? ROSTER.learners : [];
+  const cc = ROSTER && typeof ROSTER.classroomCount === 'number' ? ROSTER.classroomCount : null;
+  const pending = cc == null ? null : Math.max(0, learners.length - cc);
+  const connected = CLASSROOM && CLASSROOM.connected === true;
+  const cwCount = COURSEWORK ? COURSEWORK.length : null;
+  const items = [];
+  if (CANDIDATES && CANDIDATES.counts && CANDIDATES.counts.admis === 0 && CANDIDATES.counts.total > 0) {
+    items.push({ label: 'Traiter ' + CANDIDATES.counts.nouveaux + ' candidature(s) nouvelle(s)', sub: 'Vérification puis paiement avant admission.', st: 'todo', txt: 'En attente', href: '#inscriptions' });
+  }
+  const payeNonAdmis = CANDIDATES && CANDIDATES.counts ? CANDIDATES.counts.payeNonAdmis : 0;
+  if (payeNonAdmis > 0) items.push({ label: 'Admettre ' + payeNonAdmis + ' candidat(s) au(x)quel(s) le paiement est vérifié', sub: 'Paiement marqué payé — admission non faite.', st: 'todo', txt: 'En attente', href: '#inscriptions' });
+  items.push({ label: 'Définir la date de début de la cohorte', sub: 'Valeur actuelle : À définir. Réglage serveur (COHORT_START) — pas depuis ce cockpit.', st: 'todo', txt: 'En attente' });
+  items.push(learners.length
+    ? { label: 'Importer les apprenants', sub: learners.length + ' compte(s) créé(s) (import + admissions).', st: 'done', txt: 'Fait' }
+    : { label: 'Importer les apprenants', sub: 'Aucun compte apprenant pour le moment.', st: 'todo', txt: 'En attente', href: '#apprenants' });
+  if (!learners.length) items.push({ label: 'Inviter les apprenants dans Classroom', sub: 'Nécessite d\'abord des admissions ou une importation.', st: 'blocked', txt: 'Bloqué' });
+  else if (pending === null) items.push({ label: 'Inviter les apprenants dans Classroom', sub: 'Nombre d\'invitations restantes indisponible.', st: 'todo', txt: 'En attente' });
+  else if (pending > 0) items.push({ label: 'Inviter les apprenants dans Classroom', sub: pending + ' invitation(s) restante(s).', st: 'todo', txt: 'En attente', href: '#apprenants' });
+  else items.push({ label: 'Inviter les apprenants dans Classroom', sub: 'Tous les apprenants sont présents dans Classroom.', st: 'done', txt: 'Fait' });
+  items.push({ label: 'Vérifier les comptes formateurs', sub: 'L\'API ne liste pas les comptes formateurs — à contrôler au cas par cas lors de la création.', st: 'wait', txt: 'À vérifier' });
+  if (!connected) items.push({ label: 'Préparer Google Classroom', sub: 'Passerelle déconnectée — reconnexion via l\'onglet Classroom.', st: 'blocked', txt: 'Bloqué' });
+  else items.push(cwCount && cwCount > 0
+    ? { label: 'Publier les prochaines missions', sub: 'Connectée · ' + cwCount + ' devoir(s) publié(s) — la liaison modules se fait par titre M01→M18.', st: 'done', txt: 'Fait' }
+    : { label: 'Préparer Google Classroom', sub: 'Connectée · aucun devoir publié dans la classe pour le moment.', st: 'todo', txt: 'En attente' });
+  box.innerHTML = items.map(i => {
+    let ico = '';
+    if (i.st === 'done') {
+      ico = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--teal-light)"><polyline points="20 6 9 17 4 12"/></svg>';
+    } else if (i.st === 'blocked') {
+      ico = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--red)"><circle cx="12" cy="12" r="10"/><line x1="4.93" x2="19.07" y1="4.93" y2="19.07"/></svg>';
+    } else if (i.st === 'wait') {
+      ico = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--muted)"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="16" y2="12"/><line x1="12" x2="12.01" y1="8" y2="8"/></svg>';
+    } else {
+      ico = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--amber)"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>';
+    }
+    return '<li>' +
+      '<span class="todo-ico-wrap">' + ico + '</span>' +
+      '<span class="lbl">' + (i.href ? '<a href="' + i.href + '">' + esc(i.label) + '</a>' : esc(i.label)) + '<small>' + esc(i.sub) + '</small></span>' +
+      '<span class="st ' + i.st + '">' + esc(i.txt) + '</span>' +
+    '</li>';
+  }).join('');
+}
+
+/* ---------- Détails techniques ---------- */
+const EXPECTED_SCOPES = ['classroom.courses', 'classroom.rosters.readonly', 'classroom.topics', 'classroom.coursework.students', 'classroom.courseworkmaterials', 'classroom.announcements'];
+function renderTech() {
+  const d = CLASSROOM || {};
+  const have = (d.scopes || []).map(s => String(s).replace(/^https:\/\/www\.googleapis\.com\/auth\//, ''));
+  const missing = EXPECTED_SCOPES.filter(s => !have.some(h => h === s || h.endsWith(s)));
+  let html = '<ul class="facts">';
+  html += '<li><span class="k">Passerelle Classroom</span><span class="v ' + (d.connected ? 'ok">connectée' : 'ko">non connectée') + '</span></li>';
+  html += '<li><span class="k">Compte Google</span><span class="v mut">' + (d.account ? '<code>' + esc(d.account) + '</code>' : 'non renseigné') + '</span></li>';
+  html += '<li><span class="k">Client OAuth (clientConfigured)</span><span class="v">' + (typeof d.clientConfigured === 'boolean' ? (d.clientConfigured ? '<span class="v ok">oui</span>' : '<span class="v ko">non</span>') : '<span class="v mut">champ non remonté</span>') + '</span></li>';
+  html += '<li><span class="k">Redirect URI</span><span class="v mut"><code>' + esc(d.redirectUri || '—') + '</code></span></li>';
+  html += '<li><span class="k">Scopes accordés</span><span class="v mut">' + (have.length ? have.map(esc).join('<br>') : 'aucun') + '</span></li>';
+  html += '<li><span class="k">Scopes manquants</span><span class="v">' + (missing.length ? '<span class="v ko">' + missing.map(esc).join('<br>') + '</span>' : '<span class="v ok">aucun</span>') + '</span></li>';
+  html += '<li><span class="k">Devoirs publiés</span><span class="v mut">' + (COURSEWORK == null ? 'non chargé' : COURSEWORK.length) + '</span></li>';
+  html += '<li><span class="k">Espace admin historique (Basic)</span><span class="v mut"><a href="/admin/" target="_blank" rel="noopener noreferrer">/admin/</a></span></li>';
+  html += '</ul>';
+  if (!d.connected) html += '<div class="alert warn">Passerelle non connectée — lancez l\'autorisation OAuth depuis « Reconnexion OAuth Classroom » ci-dessus.</div>';
+  else if (missing.length) html += '<div class="alert warn">' + missing.length + ' scope(s) Google Classroom manquant(s) — reconsentez depuis « Reconnexion OAuth Classroom ».</div>';
+  if (ROSTER && Array.isArray(ROSTER.empty) && ROSTER.empty.length) html += '<p class="note">Notes passerelle : ' + ROSTER.empty.map(esc).join(' · ') + '</p>';
+  $('#tech-body').innerHTML = html;
+}
+
+/* ---------- Programme (listes denses, données HOJA_PROGRAMME inchangées) ---------- */
+let MOD_CACHE = {};
+let MOD_LABELS = {};
+let HOME_DONE = false;
+function renderProgramme() {
+  const P = window.HOJA_PROGRAMME;
+  const el = $('#programme-body');
+  if (!P || !P.blocs) { el.innerHTML = errBox('Données du programme absentes (programme.js non chargé).'); return; }
+  if (!HOME_DONE) {
+    $('#home-blocs').innerHTML = P.blocs.map(b =>
+      '<a class="blocmini" href="#programme"><b><span class="bid">BLOC ' + b.id + '</span> · ' + esc(b.title) + '</b><span>M' + pad2(b.from) + '→M' + pad2(b.to) + ' · ' + esc(b.weeks) + ' · ' + b.modules.length + ' modules</span></a>'
+    ).join('');
+    P.blocs.forEach(b => b.modules.forEach(m => { MOD_LABELS[m.num] = m.title; }));
+    HOME_DONE = true;
+  }
+  if (el.dataset.done === P.generatedAt) return;
+  el.innerHTML = P.blocs.map(b =>
+    '<div class="bloc" id="bloc-' + b.id + '"><div class="bloc-h"><span class="bid">BLOC ' + b.id + '</span> ' + esc(b.title) +
+    '<small>M' + pad2(b.from) + '→M' + pad2(b.to) + ' · ' + esc(b.weeks) + ' · ' + b.modules.length + ' modules</small></div><div class="modlist">' +
+    b.modules.map(m =>
+      '<a class="mrow" href="#programme/m/' + pad2(m.num) + '">' +
+      '<span class="mnum">M' + m.numStr + '</span>' +
+      '<span class="mt">' + esc(m.title) + '</span>' +
+      '<span class="w">' + esc(m.seance || ('Semaine ' + m.week)) + (m.durationLabel ? ' · ' + esc(m.durationLabel) : '') + '</span>' +
+      '<span class="st ' + (m.status === 'ready' ? 'done' : 'wait') + '">' + (m.status === 'ready' ? 'Prêt' : 'À vérifier') + '</span>' +
+      '<span class="arw" style="display:flex;align-items:center;color:var(--muted)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span></a>'
+    ).join('') + '</div></div>'
+  ).join('') +
+  '<p class="note">Programme officiel : 4 blocs · 18 modules · 16 séances live · 8 semaines (source : parcours pédagogique verrouillé). Les contenus affichés proviennent des fichiers de la dernière version déployée.</p>';
+  el.dataset.done = P.generatedAt;
+}
+
+/* ---------- Vue module ---------- */
+const DETAIL_TABS = [
+  ['fiche', 'Fiche'],
+  ['phases', 'Déroulé'],
+  ['exercices', 'Exercices'],
+  ['mission', 'Mission'],
+  ['notes', 'Notes formateur'],
+  ['presentation', 'Présentation'],
+];
+function showModRoute(mod) {
+  if (mod == null) { $('#programme-body').style.display = ''; $('#mod-view').style.display = 'none'; return; }
+  openModule(mod);
+}
+function tabFromQuery(q) {
+  const mt = (q || '').match(/(?:^|&)(?:t|modtab)=([a-z]+)/);
+  if (mt && DETAIL_TABS.some(t => t[0] === mt[1])) return mt[1];
+  return 'fiche';
+}
+async function openModule(num) {
+  let d = MOD_CACHE[num];
+  if (!d) {
+    try { const rr = await fetch('data/M' + pad2(num) + '.json', { credentials: 'same-origin' }); if (!rr.ok) throw new Error('HTTP ' + rr.status); d = MOD_CACHE[num] = await rr.json(); }
+    catch (e) {
+      $('#programme-body').style.display = 'none';
+      $('#mod-view').style.display = '';
+      $('#mod-head').innerHTML = '<a class="back" href="#programme"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg><span>Programme</span></a>' + errBox('Module M' + pad2(num) + ' indisponible : ' + e.message);
+      $('#mod-tabs').innerHTML = ''; $('#mod-body').innerHTML = '';
+      return;
+    }
+  }
+  $('#programme-body').style.display = 'none';
+  $('#mod-view').style.display = '';
+  $('#mod-tabs').innerHTML = DETAIL_TABS.map(t => '<button type="button" role="tab" data-t="' + t[0] + '">' + t[1] + '</button>').join('');
+  $('#mod-head').innerHTML =
+    '<a class="back" href="#programme"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg><span>Programme</span></a>' +
+    '<div class="mod-h"><h2><span class="mchip bloc" style="vertical-align:3px">M' + d.numStr + '</span> ' + esc(d.title) + '</h2>' +
+    '<div class="mod-chips">' +
+      (d.blocId ? '<span class="mchip bloc">Bloc ' + d.blocId + ' · ' + esc(d.blocTitle || '') + '</span>' : '') +
+      (d.seance ? '<span class="mchip">' + esc(d.seance) + '</span>' : '<span class="mchip">Semaine ' + d.week + '</span>') +
+      (d.durationLabel ? '<span class="mchip">' + esc(d.durationLabel) + '</span>' : '') +
+    '</div></div>';
+  const cur = parseHash();
+  $('#view-label').textContent = 'M' + pad2(num) + ' — ' + (d.title || 'module');
+  renderModTab(d, tabFromQuery(cur.query));
+}
+function ficheByName(d, rx) { return (d.fiches || []).find(f => rx.test(f.name)) || null; }
+function renderModTab(d, tab) {
+  document.querySelectorAll('#mod-tabs button').forEach(b => {
+    const on = b.dataset.t === tab;
+    b.classList.toggle('on', on);
+    b.setAttribute('aria-selected', on ? 'true' : 'false');
+  });
+  const body = $('#mod-body');
+  const md = (src, stripH1) => '<div class="md">' + window.mdRender(stripH1 ? String(src).replace(/^#{1,3}\s+[^\n]*?Fiche\s+Synth[^\n]*\n+/, '') : src) + '</div>';
+  const obj = '<div class="mod-obj"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg><span><b>Objectif du module</b>' + esc(d.objective || '—') + '</span></div>';
+  if (tab === 'fiche') {
+    const f = ficheByName(d, /^01_/);
+    body.innerHTML = obj + (f ? md(f.content, true) : '<p class="empty">Fiche de contenu non embarquée dans cette version déployée.</p>');
+  } else if (tab === 'phases') {
+    const g = ficheByName(d, /^00_/);
+    body.innerHTML =
+      (d.phases && d.phases.length ? '<h5 style="margin:6px 0 2px;color:var(--muted);font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase">Déroulé de la séance</h5>' : '') +
+      '<ul class="phases">' + (d.phases || []).map(p => '<li><span class="ptime">' + esc(p.time || '') + '</span><span>' + esc(p.name || '') + '</span></li>').join('') + '</ul>' +
+      (d.promptChips && d.promptChips.length ? '<div class="mod-chips" style="margin-top:14px">' + d.promptChips.map(p => '<span class="mchip" title="' + esc(p.cat || '') + '">' + esc(p.title || p.cat || '') + '</span>').join('') + '</div>' : '') +
+      (g ? '<details class="guide"><summary>Guide d\'animation complet (' + (g.name || 'fiche').replace(/\.md$/i, '').replace(/^\d+_/, '').replace(/_/g, ' ') + ')</summary><div class="gbody">' + md(g.content) + '</div></details>' : '');
+  } else if (tab === 'exercices') {
+    const f = ficheByName(d, /^02_/);
+    body.innerHTML = f ? md(f.content) : '<p class="empty">Fiche exercices non embarquée.</p>';
+  } else if (tab === 'mission') {
+    body.innerHTML =
+      obj +
+      '<div class="keybox"><b>Consigne de la mission</b>' + esc(d.mission || 'Aucune consigne définie dans le registre.') + '</div>' +
+      '<div class="mod-chips" style="margin:12px 0 0"><span class="mchip bloc">Titre Classroom : « Mission M' + d.numStr + ' »</span></div>' +
+      (d.workKit ? '<div class="keybox" style="margin-top:12px"><b>Work Kit (à préparer)</b>' + esc(d.workKit) + '</div>' : '') +
+      '<p class="note">La publication dans Google Classroom reste une action explicite (onglet Classroom, étape P7). Les missions publiées sont reliées automatiquement aux modules par leur titre M01→M18.</p>';
+  } else if (tab === 'notes') {
+    const n = d.notes || {};
+    body.innerHTML =
+      (n.goal ? '<div class="keybox"><b>Objectif pédagogique</b>' + esc(n.goal) + '</div>' : '') +
+      (n.talk ? '<div class="keybox"><b>Ce qu\'on dit au groupe</b>' + esc(n.talk) + '</div>' : '') +
+      (n.transition ? '<div class="keybox"><b>Transition</b>' + esc(n.transition) + '</div>' : '') +
+      '<div class="alert info">Ces notes <b>formateur</b> ne sont jamais visibles par les apprenants (leur version est sanitisée à la publication). Édition en ligne des notes = étape P3 ; pour l\'instant, modifier le contenu publié passe par les fichiers sources puis <code>npm run release</code>.</div>';
+  } else if (tab === 'presentation') {
+    body.innerHTML =
+      '<div class="pres-frame"><div class="ptool"><span>Présentation M' + d.numStr + ' — ' + esc(d.title) + ' · slides + notes formateur · session protégée</span>' +
+      '<a class="small secondary" href="modules/' + d.numStr + '/" target="_blank" rel="noopener">Ouvrir en plein écran ↗</a></div>' +
+      '<iframe title="Présentation M' + d.numStr + '" src="modules/' + d.numStr + '/" loading="lazy"></iframe></div>';
+  }
+}
+/* délégation : sous-onglets module -> route #programme/m/NN?t=... */
+document.addEventListener('click', e => {
+  const b = e.target.closest('#mod-tabs button');
+  if (!b) return;
+  const cur = parseHash();
+  if (cur.mod == null || !MOD_CACHE[cur.mod]) return;
+  const base = '#programme/m/' + pad2(cur.mod);
+  history.replaceState(null, '', location.pathname + location.search + base + '?t=' + b.dataset.t);
+  renderModTab(MOD_CACHE[cur.mod], b.dataset.t);
+});
+
+/* ---------- Import / Invite / Users ---------- */
+function parseInput() {
+  const raw = $('#csv').value.trim();
+  if (!raw) return { err: 'Renseignez d\'abord la liste des apprenants (une ligne par personne : Nom, email).' };
+  let arr = null;
+  if (raw[0] === '[' || raw[0] === '{') {
+    let data; try { data = JSON.parse(raw); } catch (e) { return { err: 'JSON invalide : ' + e.message }; }
+    arr = Array.isArray(data) ? data : (data && Array.isArray(data.learners) ? data.learners : null);
+    if (!arr) return { err: 'JSON attendu : un tableau d\'objets, ou {"learners":[…]}' };
+  } else {
+    arr = raw.split(/\r?\n/).map(l => l.trim()).filter(Boolean).map(l => {
+      const i = l.lastIndexOf(',');
+      return i < 0 ? { name: '', email: l } : { name: l.slice(0, i).trim(), email: l.slice(i + 1).trim() };
+    });
+  }
+  const bad = arr.filter(l => !l || !String(l.email || '').trim());
+  if (bad.length) return { err: bad.length + ' ligne(s) sans email — corrigez la liste.' };
+  const mail = arr.filter(l => !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(l.email).trim()));
+  if (mail.length) return { err: 'Email invalide : ' + String(mail[0].email).trim() };
+  return { list: arr.map(l => ({ name: String(l.name || '').trim(), email: String(l.email).trim() })) };
+}
+function pwBlock(items) {
+  if (!items.length) return '';
+  let html = '<div class="alert warn" role="alert"><b>Notez ces mots de passe maintenant — ils ne seront plus jamais réaffichés.</b></div><div style="margin-top:10px">';
+  for (const it of items) {
+    html += '<div class="pw-item"><span class="mail">' + esc(it.name ? it.name + ' · ' : '') + esc(it.email || '—') + '</span>' +
+      '<span style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span class="pw">' + esc(it.initialPassword != null ? it.initialPassword : '(non renvoyé)') + '</span>' +
+      '<button class="ghost small" type="button" data-copy="' + esc(it.initialPassword != null ? it.email + ' :: ' + it.initialPassword : it.email || '') + '">Copier</button></span></div>';
+  }
+  return html + '</div>';
+}
+function renderImportResult(res) {
+  const out = $('#import-out');
+  if (res.status === 409 || (res.status >= 400 && res.data && res.data.error)) { out.innerHTML = errBox('Import refusé (HTTP ' + res.status + ') — ' + res.data.error); return; }
+  if (!res.ok) { out.innerHTML = errBox((res.data && res.data.error) || 'Échec de l\'import (HTTP ' + res.status + ').'); return; }
+  const d = res.data || {};
+  const imported = Array.isArray(d.imported) ? d.imported : [];
+  const skipped = Array.isArray(d.skipped) ? d.skipped : [];
+  let html = '<div class="alert info">Import traité : ' + imported.length + ' créé(s), ' + skipped.length + ' ignoré(s).' + (d.note ? '<br>Note : « ' + esc(d.note) + ' »' : '') + '</div>';
+  html += pwBlock(imported);
+  if (skipped.length) {
+    html += '<div class="tablewrap"><table><thead><tr><th>E-mail ignoré</th><th>Raison</th></tr></thead><tbody>';
+    for (const s of skipped) { const o = typeof s === 'object' ? s : { email: s, reason: '' };
+      html += '<tr><td data-label="E-mail ignoré">' + esc(o.email || '—') + '</td><td data-label="Raison">' + esc(o.reason || o.error || o.why || (typeof s === 'object' ? pretty(o) : '—')) + '</td></tr>'; }
+    html += '</tbody></table></div>';
+  }
+  out.innerHTML = html;
+}
+$('#btn-import').addEventListener('click', async () => {
+  const p = parseInput(); const out = $('#import-out');
+  if (p.err) { out.innerHTML = errBox(p.err); return; }
+  const btn = $('#btn-import'); btn.disabled = true; btn.textContent = 'Import en cours…'; out.innerHTML = '';
+  try {
+    const res = await api('/api/roster/import', { method: 'POST', body: JSON.stringify({ learners: p.list }) });
+    renderImportResult(res);
+    if (res.ok) { $('#csv').value = ''; loadRoster(); }
+  } catch (e) { out.innerHTML = errBox('Requête impossible : ' + e.message); }
+  finally { btn.disabled = false; btn.textContent = 'Importer les apprenants'; }
+});
+$('#btn-invite').addEventListener('click', async () => {
+  const out = $('#invite-out'); const btn = $('#btn-invite');
+  const learners = ROSTER && Array.isArray(ROSTER.learners) ? ROSTER.learners : [];
+  if (!learners.length) { out.innerHTML = errBox('Aucun apprenant importé à inviter — importez d\'abord la liste.'); return; }
+  const emails = [...new Set(learners.map(l => l.email).filter(Boolean))];
+  btn.disabled = true; btn.textContent = 'Invitation en cours…'; out.innerHTML = '';
+  try {
+    const res = await api('/api/roster/invite', { method: 'POST', body: JSON.stringify({ emails }) });
+    if (!res.ok) {
+      const msg = (res.data && res.data.error) || 'Échec (HTTP ' + res.status + ')';
+      out.innerHTML = errBox(res.status === 409 ? 'Invitations bloquées — ' + msg : 'Invitation refusée (HTTP ' + res.status + ') — ' + msg);
+    } else {
+      const d = res.data || {}; const results = Array.isArray(d.results) ? d.results : [];
+      let html = '<div class="alert info">Invitations traitées (' + results.length + ' résultat(s)).' + (d.note ? ' Note : « ' + esc(d.note) + ' »' : '') + '</div>';
+      if (results.length) {
+        html += '<div class="tablewrap"><table><thead><tr><th>E-mail</th><th>Résultat</th></tr></thead><tbody>';
+        for (const x of results) { const o = typeof x === 'object' ? x : { email: x, status: '—' };
+          html += '<tr><td data-label="E-mail">' + esc(o.email || '—') + '</td><td data-label="Résultat">' + esc(o.status || o.result || o.error || pretty(o)) + '</td></tr>'; }
+        html += '</tbody></table></div>';
+      }
+      out.innerHTML = html;
+      loadRoster();
+    }
+  } catch (e) { out.innerHTML = errBox('Requête impossible : ' + e.message); }
+  finally { btn.disabled = false; btn.textContent = 'Inviter les apprenants importés'; }
+});
+$('#btn-user').addEventListener('click', async () => {
+  const out = $('#users-out'); out.innerHTML = '';
+  const email = $('#u-email').value.trim(), name = $('#u-name').value.trim();
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { out.innerHTML = errBox('Adresse e-mail invalide.'); return; }
+  if (!name) { out.innerHTML = errBox('Le nom est requis.'); return; }
+  const btn = $('#btn-user'); btn.disabled = true; btn.textContent = 'Création en cours…';
+  try {
+    const res = await api('/api/users', { method: 'POST', body: JSON.stringify({ users: [{ email, name, role: 'formateur' }] }) });
+    if (res.ok) {
+      const created = Array.isArray(res.data && res.data.created) ? res.data.created : [];
+      let html = '<div class="alert info">Compte formateur « ' + esc(name) + ' » créé.</div>';
+      html += pwBlock(created.filter(c => c && c.initialPassword));
+      out.innerHTML = html;
+      $('#u-email').value = ''; $('#u-name').value = '';
+    } else {
+      out.innerHTML = errBox('Création refusée (HTTP ' + res.status + ') — ' + ((res.data && res.data.error) || 'erreur inconnue'));
+    }
+  } catch (e) { out.innerHTML = errBox('Requête impossible : ' + e.message); }
+  finally { btn.disabled = false; btn.textContent = 'Créer le compte formateur'; }
+});
+document.addEventListener('click', e => {
+  const b = e.target.closest('button[data-copy]'); if (!b) return;
+  const txt = b.dataset.copy;
+  const done = ok => { const old = b.textContent; b.textContent = ok ? 'Copié' : 'Copie impossible'; setTimeout(() => { b.textContent = old; }, 1800); };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(() => done(true), () => done(false));
+  else { const ta = document.createElement('textarea'); ta.value = txt; ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select(); let ok = false; try { ok = document.execCommand('copy'); } catch (e) {} ta.remove(); done(ok); }
+});
+$('#btn-logout').addEventListener('click', async () => {
+  try { await api('/api/logout', { method: 'POST' }); } catch (e) {}
+  location.replace('/ui/login/');
+});
+
+/* ---------- Boot ---------- */
+(async function boot() {
+  renderProgramme(); /* peuple #home-blocs + MOD_LABELS des le chargement */
+  showTab();
+  let r;
+  try { r = await api('/api/whoami'); }
+  catch (e) { $('#who').textContent = 'API injoignable'; $('#todo').innerHTML = '<li><span class="lbl">' + esc('API injoignable : ' + e.message) + '</span></li>'; return; }
+  if (!r.ok || String(r.data && r.data.role).toLowerCase() !== 'admin') { location.replace('/ui/login/'); return; }
+  $('#who').textContent = r.data.name || r.data.email || 'admin';
+  $('#who-role').textContent = 'session ' + (r.data.role || 'admin');
+  try { $('#demoHint').hidden = !/@mock\.local$/i.test(r.data.email || ''); } catch (e) {}
+  await loadRoster();
+  loadClassroom();
+  loadCandidates();
+  loadBilling();
+})();
+</script>
+</body>
+</html>

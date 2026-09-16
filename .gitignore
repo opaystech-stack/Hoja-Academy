@@ -1,0 +1,49 @@
+# ─── Dépendances & artefacts de build ───────────────────────────────
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# ─── Résultats de tests & captures (régénérables) ────────────────────
+screenshots/
+scripts/*_results.json
+scripts/*results*.json
+*.test-results.json
+
+# ─── Site public Next.js (hoja-site/) ────────────────────────────────
+hoja-site/node_modules/
+hoja-site/.next/
+hoja-site/out/
+hoja-site/dist/
+hoja-site/*.tsbuildinfo
+
+# Artefacts de build / déploiement
+deploy/bundle-tmp/
+deploy/academy-bundle.tar.gz
+
+# ─── OS / Éditeurs ──────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ─── Données d'outillage local (non projet) ─────────────────────────
+.workbuddy-ai/
+
+# ─── Environnement & secrets ────────────────────────────────────────
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# ─── Logs ────────────────────────────────────────────────────────────
+*.log
+logs/
+
+e2e_result.txt
+release-out.txt
+build-bundle-err.txt
+nul

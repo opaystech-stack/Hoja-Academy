@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>OPAYS ACADEMY — Course Hub</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#070b12;--surface:#0d1522;--surface2:#111b2b;--surface3:#182438;
+  --blue:#0066FF;--blue-light:#38BDF8;--gold:#D4AF37;--gold-dim:rgba(212,175,55,0.15);
+  --navy:#001F4D;--text:#e2e8f0;--muted:#94a3b8;--line:rgba(255,255,255,0.06);
+  --danger:#ef4444;--ok:#22c55e;--warn:#f59e0b;
+  --radius:16px;--radius-sm:10px;
+  --shadow:0 8px 32px rgba(0,0,0,0.5);
+  --font:'Inter',system-ui,-apple-system,sans-serif;
+}
+html{scroll-behavior:smooth;overflow-x:clip;}
+body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;min-height:100vh;}
+
+/* Ambient */
+.ambient{position:fixed;border-radius:50%;filter:blur(120px);opacity:0.08;pointer-events:none;z-index:0;}
+.amb-1{width:600px;height:600px;background:var(--blue);top:-200px;left:-100px;}
+.amb-2{width:500px;height:500px;background:var(--gold);bottom:-150px;right:-100px;}
+.grain{position:fixed;inset:0;opacity:0.03;pointer-events:none;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+
+/* Header */
+header{position:sticky;top:0;z-index:100;background:rgba(7,11,18,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--line);padding:0 32px;}
+.header-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text);}
+.brand svg{width:36px;height:36px;}
+.brand-text{font-weight:700;font-size:15px;letter-spacing:0.5px;}
+.brand-sub{font-size:11px;color:var(--muted);font-weight:400;display:block;letter-spacing:1px;}
+.header-actions{display:flex;gap:10px;}
+.header-btn{background:var(--surface2);border:1px solid var(--line);color:var(--text);padding:8px 16px;border-radius:var(--radius-sm);cursor:pointer;font-size:13px;font-family:var(--font);transition:all 0.2s;}
+.header-btn:hover{background:var(--surface3);border-color:rgba(255,255,255,0.12);}
+.header-btn.primary{background:var(--blue);border-color:var(--blue);color:#fff;}
+.header-btn.primary:hover{background:#0055dd;}
+
+/* Main */
+main{max-width:1280px;margin:0 auto;padding:32px;position:relative;z-index:1;}
+
+/* Stats bar */
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:40px;}
+.stat-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px;text-align:center;}
+.stat-value{font-size:28px;font-weight:800;color:var(--blue);display:block;}
+.stat-label{font-size:12px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-top:4px;}
+.stat-card.gold .stat-value{color:var(--gold);}
+
+/* Week sections */
+.week-section{margin-bottom:48px;}
+.week-header{display:flex;align-items:center;gap:16px;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--line);}
+.week-badge{background:var(--blue);color:#fff;font-weight:700;font-size:12px;padding:6px 14px;border-radius:20px;letter-spacing:0.5px;white-space:nowrap;}
+.week-title{font-size:20px;font-weight:600;}
+.week-dates{font-size:13px;color:var(--muted);margin-left:auto;}
+.week-theme{font-size:13px;color:var(--blue-light);}
+
+/* Module cards */
+.module-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+.module-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;gap:12px;transition:all 0.3s;position:relative;overflow:hidden;}
+.module-card:hover{border-color:rgba(0,102,255,0.3);transform:translateY(-2px);box-shadow:var(--shadow);}
+.module-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--blue-light));opacity:0;transition:opacity 0.3s;}
+.module-card:hover::before{opacity:1;}
+.module-card.current{border-color:var(--blue);box-shadow:0 0 0 1px var(--blue),var(--shadow);}
+.module-card.current::before{opacity:1;}
+.module-card.locked{opacity:0.5;pointer-events:none;}
+
+.module-top{display:flex;align-items:center;gap:12px;}
+.module-num{background:var(--surface3);color:var(--blue-light);font-weight:800;font-size:13px;padding:6px 12px;border-radius:8px;min-width:45px;text-align:center;}
+.module-card.current .module-num{background:var(--blue);color:#fff;}
+.module-title{font-size:16px;font-weight:600;flex:1;}
+.module-status{font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:0.5px;white-space:nowrap;}
+.status-ready{background:rgba(34,197,94,0.12);color:var(--ok);}
+.status-current{background:rgba(0,102,255,0.15);color:var(--blue-light);}
+.status-upcoming{background:rgba(148,163,184,0.1);color:var(--muted);}
+
+.module-objective{font-size:13px;color:var(--muted);line-height:1.6;flex:1;}
+
+.module-meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:auto;}
+.meta-tag{font-size:11px;color:var(--muted);background:var(--surface2);padding:4px 10px;border-radius:6px;}
+.meta-tag.gold{color:var(--gold);border:1px solid var(--gold-dim);}
+
+.module-actions{display:flex;gap:8px;margin-top:4px;}
+.mod-btn{padding:8px 16px;border-radius:var(--radius-sm);border:1px solid var(--line);background:var(--surface2);color:var(--text);font-size:12px;font-family:var(--font);cursor:pointer;transition:all 0.2s;text-decoration:none;display:inline-flex;align-items:center;gap:6px;}
+.mod-btn:hover{background:var(--surface3);border-color:rgba(255,255,255,0.12);}
+.mod-btn.launch{background:var(--blue);border-color:var(--blue);color:#fff;font-weight:600;}
+.mod-btn.launch:hover{background:#0055dd;}
+
+/* Footer */
+footer{border-top:1px solid var(--line);padding:24px 32px;text-align:center;}
+.footer-inner{max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;}
+.footer-text{font-size:12px;color:var(--muted);}
+
+/* Mobile */
+@media(max-width:900px){
+  .header-actions{overflow-x:auto;max-width:58vw;padding-bottom:4px;scrollbar-width:none;}
+}
+@media(max-width:768px){
+  .stats-bar{grid-template-columns:repeat(2,1fr);}
+  .module-grid{grid-template-columns:1fr;}
+  .week-header{flex-wrap:wrap;}
+  .week-dates{margin-left:0;}
+  header{padding:0 16px;}
+  main{padding:20px 16px;}
+  .header-actions{overflow-x:auto;max-width:58vw;padding-bottom:4px;scrollbar-width:none;}
+}
+@media(max-width:480px){
+  .stats-bar{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div class="ambient amb-1"></div>
+<div class="ambient amb-2"></div>
+<div class="grain"></div>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <svg viewBox="0 0 1000 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 680 200 A 380 380 0 1 0 680 800" fill="none" stroke="#001f4d" stroke-width="120" stroke-linecap="butt"/>
+        <g fill="#0066FF">
+          <path d="M 280 400 L 780 380 L 820 440 L 740 480 L 560 510 L 420 820 L 320 820 L 460 510 L 280 480 Z" />
+          <rect x="850" y="340" width="100" height="100" rx="16"/>
+          <rect x="960" y="440" width="80" height="80" rx="14"/>
+        </g>
+      </svg>
+      <div>
+        <span class="brand-text">OPAYS ACADEMY</span>
+        <span class="brand-sub">COURSE HUB • FORMATEUR</span>
+      </div>
+    </a>
+    <div class="header-actions" id="headerActions">
+      <a href="classroom.html" class="header-btn">📋 Classroom</a>
+      <button class="header-btn" onclick="filterModules('all')">Tous les modules</button>
+      <button class="header-btn" onclick="filterModules('ready')">✅ Disponibles</button>
+      <a href="formateur-dashboard.html" class="header-btn primary">📊 Dashboard Formateur</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Stats (calculées dynamiquement depuis le registre) -->
+  <div class="stats-bar">
+    <div class="stat-card">
+      <span class="stat-value" id="statModules">—</span>
+      <span class="stat-label">Modules</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-value" id="statSeances">—</span>
+      <span class="stat-label">Séances Live</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-value" id="statWeeks">—</span>
+      <span class="stat-label">Semaines</span>
+    </div>
+    <div class="stat-card gold">
+      <span class="stat-value" id="statPrompts">—</span>
+      <span class="stat-label">Prompts Copiables</span>
+    </div>
+  </div>
+
+  <div id="courseContent"></div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-text">© OPAYS ACADEMY 2026 — Course Hub Formateur</span>
+    <span class="footer-text" id="footerCounts">—</span>
+  </div>
+</footer>
+
+<script src="data/modules.js"></script>
+<script src="data/cohorte.js"></script>
+<script>
+const WEEKS = [
+  { num: 1, title: "Démystification & Formule C.O.R.E.", dates: "Semaine 1 — Mardi & Jeudi" },
+  { num: 2, title: "Cartographie Métier & Documents Lourds", dates: "Semaine 2 — Mardi & Jeudi" },
+  { num: 3, title: "Skills Métiers & Workflows Multi-Étapes", dates: "Semaine 3 — Mardi & Jeudi" },
+  { num: 4, title: "Assistants Spécialisés & Standard MCP", dates: "Semaine 4 — Mardi & Jeudi + Coaching 1-on-1" },
+  { num: 5, title: "Grand Atelier d'Assemblage & Écosystèmes", dates: "Semaine 5 — Mardi & Jeudi" },
+  { num: 6, title: "Rigueur Analytique & Sécurité des Données", dates: "Semaine 6 — Mardi & Jeudi" },
+  { num: 7, title: "Automatisation & Ancrage Quotidien", dates: "Semaine 7 — Mardi & Jeudi" },
+  { num: 8, title: "Spécialisation, Soutenances & Certification", dates: "Semaine 8 — Mardi & Jeudi (sessions étendues)" },
+];
+
+// Registre central (data/modules.js) — ordre pédagogique officiel
+const modules = OPAYS_MODULES;
+
+// ─── Stats dynamiques ────────────────────────────────────────────────
+const totalSlides = modules.reduce((s, m) => s + m.slides, 0);
+const totalPrompts = modules.reduce((s, m) => s + m.prompts, 0);
+const totalSeances = new Set(modules.map(m => m.seanceNum)).size;
+document.getElementById('statModules').textContent = modules.length;
+document.getElementById('statSeances').textContent = totalSeances;
+document.getElementById('statWeeks').textContent = WEEKS.length;
+document.getElementById('statPrompts').textContent = totalPrompts;
+document.getElementById('footerCounts').textContent =
+  `${modules.length} modules • ${totalSlides} slides • ${totalPrompts} prompts`;
+
+// ─── Rendu ───────────────────────────────────────────────────────────
+// Boutons cohorte (Meet / Classroom) — visibles uniquement si configurés
+(function initCohorteButtons() {
+  const actions = document.getElementById('headerActions');
+  if (!actions || !window.OPAYS_COHORTE) return;
+  const c = OPAYS_COHORTE;
+  if (c.meetUrl) {
+    const a = document.createElement('a');
+    a.href = c.meetUrl;
+    a.target = '_blank';
+    a.className = 'header-btn';
+    a.textContent = '📹 Meet';
+    a.title = 'Salle virtuelle — lien permanent';
+    actions.insertBefore(a, actions.firstChild);
+  }
+  if (c.classroomUrl) {
+    const a = document.createElement('a');
+    a.href = c.classroomUrl;
+    a.target = '_blank';
+    a.className = 'header-btn';
+    a.textContent = '🏫 Classroom';
+    a.title = 'Classe Google Classroom de la cohorte';
+    actions.insertBefore(a, actions.firstChild);
+  }
+  if (c.nom) {
+    const badge = document.createElement('span');
+    badge.className = 'header-btn';
+    badge.style.cursor = 'default';
+    badge.style.opacity = '0.85';
+    badge.textContent = '👥 ' + c.nom;
+    actions.insertBefore(badge, actions.firstChild);
+  }
+})();
+
+function renderHub() {
+  const container = document.getElementById('courseContent');
+  let html = '';
+
+  WEEKS.forEach(week => {
+    const weekModules = modules.filter(m => m.week === week.num);
+    if (weekModules.length === 0) return;
+
+    html += `<div class="week-section" data-week="${week.num}">
+      <div class="week-header">
+        <span class="week-badge">SEMAINE ${String(week.num).padStart(2,'0')}</span>
+        <div>
+          <div class="week-title">${week.title}</div>
+          <div class="week-theme">${week.dates}</div>
+        </div>
+      </div>
+      <div class="module-grid">`;
+
+    weekModules.forEach(mod => {
+      const modNum = String(mod.num).padStart(2, '0');
+      const statusClass = mod.status === 'ready' ? 'status-ready' : mod.status === 'current' ? 'status-current' : 'status-upcoming';
+      const statusText = mod.status === 'ready' ? '✅ Disponible' : mod.status === 'current' ? '▶ En cours' : '🔒 À venir';
+      const cardClass = mod.status === 'current' ? 'current' : mod.status === 'upcoming' ? 'locked' : '';
+
+      html += `<div class="module-card ${cardClass}" data-status="${mod.status}">
+        <div class="module-top">
+          <span class="module-num">M${modNum}</span>
+          <span class="module-title">${mod.title}</span>
+          <span class="module-status ${statusClass}">${statusText}</span>
+        </div>
+        <div style="font-size:13px;color:var(--blue-light);font-weight:500;">${mod.subtitle}</div>
+        <div class="module-objective">${mod.objective}</div>
+        <div class="module-meta">
+          <span class="meta-tag">⏱ ${mod.durationLabel}</span>
+          <span class="meta-tag">${mod.seance}</span>
+          <span class="meta-tag">${mod.slides} slides</span>
+          <span class="meta-tag gold">🧰 ${mod.prompts} prompt${mod.prompts > 1 ? 's' : ''}</span>
+        </div>
+        <div class="module-actions">
+          <a href="modules/${mod.numStr}/index.html" class="mod-btn launch" target="_blank">▶ Lancer le cours</a>
+          <a href="modules/${mod.numStr}/index.html#notes" class="mod-btn" target="_blank">📝 Notes formateur</a>
+        </div>
+      </div>`;
+    });
+
+    html += `</div></div>`;
+  });
+
+  container.innerHTML = html;
+}
+
+function filterModules(filter) {
+  const cards = document.querySelectorAll('.module-card');
+  cards.forEach(card => {
+    if (filter === 'all') {
+      card.style.display = '';
+    } else if (filter === 'ready') {
+      card.style.display = card.dataset.status === 'ready' ? '' : 'none';
+    }
+  });
+}
+
+renderHub();
+</script>
+</body>
+</html>

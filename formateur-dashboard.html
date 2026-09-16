@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>OPAYS ACADEMY — Formateur Dashboard</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#070b12;--surface:#0d1522;--surface2:#111b2b;--surface3:#182438;
+  --blue:#0066FF;--blue-light:#38BDF8;--gold:#D4AF37;--gold-dim:rgba(212,175,55,0.15);
+  --navy:#001F4D;--text:#e2e8f0;--muted:#94a3b8;--line:rgba(255,255,255,0.06);
+  --danger:#ef4444;--ok:#22c55e;--warn:#f59e0b;
+  --radius:16px;--radius-sm:10px;
+  --font:'Inter',system-ui,-apple-system,sans-serif;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;min-height:100vh;}
+
+.ambient{position:fixed;border-radius:50%;filter:blur(120px);opacity:0.06;pointer-events:none;z-index:0;}
+.amb-1{width:600px;height:600px;background:var(--blue);top:-200px;right:-100px;}
+.amb-2{width:400px;height:400px;background:var(--gold);bottom:-100px;left:-80px;}
+
+/* Header */
+header{position:sticky;top:0;z-index:100;background:rgba(7,11,18,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--line);padding:0 24px;}
+.header-inner{max-width:1440px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);}
+.brand svg{width:30px;height:30px;}
+.brand-text{font-weight:700;font-size:14px;letter-spacing:0.5px;}
+.brand-sub{font-size:10px;color:var(--muted);font-weight:400;display:block;letter-spacing:1px;}
+.header-right{display:flex;align-items:center;gap:12px;}
+
+/* Timer */
+.timer-zone{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);padding:6px 16px;}
+.timer-display{font-family:'JetBrains Mono',monospace,var(--font);font-size:28px;font-weight:800;letter-spacing:2px;min-width:120px;text-align:center;}
+.timer-display.warning{color:var(--warn);}
+.timer-display.danger{color:var(--danger);animation:pulse 1s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.5;}}
+.timer-btn{background:var(--surface2);border:1px solid var(--line);color:var(--text);width:36px;height:36px;border-radius:8px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:0.2s;}
+.timer-btn:hover{background:var(--surface3);}
+.timer-btn.active{background:var(--blue);border-color:var(--blue);color:#fff;}
+.timer-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;}
+
+/* Main Layout */
+.dashboard{max-width:1440px;margin:0 auto;padding:20px 24px;display:grid;grid-template-columns:320px 1fr;gap:20px;position:relative;z-index:1;height:calc(100vh - 56px);}
+
+/* Left Panel */
+.left-panel{display:flex;flex-direction:column;gap:16px;overflow-y:auto;padding-right:8px;}
+.panel-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px;}
+.panel-title{font-size:11px;color:var(--blue-light);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.panel-title kbd{background:var(--surface3);color:var(--muted);font-size:9px;padding:2px 6px;border-radius:4px;font-family:var(--font);}
+
+.mod-select{width:100%;background:var(--surface2);border:1px solid var(--line);color:var(--text);padding:10px 12px;border-radius:var(--radius-sm);font-family:var(--font);font-size:13px;cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%2394a3b8' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;}
+.mod-select:focus{outline:1px solid var(--blue);border-color:var(--blue);}
+
+.session-progress{display:flex;flex-direction:column;gap:8px;}
+.progress-row{display:flex;justify-content:space-between;align-items:center;font-size:12px;}
+.progress-bar{height:6px;background:var(--surface3);border-radius:99px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--blue-light));border-radius:99px;transition:width 0.5s ease;}
+
+.phase-list{display:flex;flex-direction:column;gap:6px;}
+.phase-item{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;font-size:12px;cursor:pointer;transition:0.2s;border:1px solid transparent;}
+.phase-item:hover{background:var(--surface2);}
+.phase-item.active{background:rgba(0,102,255,0.08);border-color:var(--line);}
+.phase-item.done{opacity:0.5;}
+.phase-dot{width:8px;height:8px;border-radius:50%;background:var(--surface3);flex-shrink:0;}
+.phase-item.active .phase-dot{background:var(--blue);box-shadow:0 0 8px var(--blue);}
+.phase-item.done .phase-dot{background:var(--ok);}
+.phase-time{color:var(--muted);margin-left:auto;font-size:11px;white-space:nowrap;}
+
+/* Right Panel */
+.right-panel{display:grid;grid-template-rows:auto 1fr auto;gap:16px;overflow:hidden;}
+
+.slide-info-bar{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px 18px;}
+.slide-num{background:var(--blue);color:#fff;font-weight:800;font-size:14px;padding:6px 14px;border-radius:8px;min-width:50px;text-align:center;}
+.slide-title{font-size:16px;font-weight:600;flex:1;}
+.slide-chapter{font-size:12px;color:var(--blue-light);}
+
+.notes-area{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px;overflow-y:auto;display:flex;flex-direction:column;gap:16px;}
+.note-section{border-left:3px solid var(--blue);padding-left:14px;}
+.note-section.transition{border-color:var(--gold);}
+.note-label{font-size:11px;color:var(--blue-light);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;}
+.note-section.transition .note-label{color:var(--gold);}
+.note-text{font-size:14px;line-height:1.7;color:var(--text);}
+
+.prompts-bar{display:flex;gap:10px;overflow-x:auto;padding:4px 0;}
+.prompt-chip{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);padding:10px 16px;cursor:pointer;transition:0.2s;white-space:nowrap;flex-shrink:0;display:flex;flex-direction:column;gap:4px;min-width:200px;}
+.prompt-chip:hover{border-color:var(--blue);transform:translateY(-1px);}
+.prompt-chip-cat{font-size:10px;color:var(--blue-light);font-weight:700;letter-spacing:0.5px;}
+.prompt-chip-title{font-size:13px;font-weight:600;}
+.prompt-chip-copy{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:4px;}
+
+.action-row{display:flex;gap:10px;}
+.action-btn{flex:1;padding:12px;border-radius:var(--radius-sm);border:1px solid var(--line);background:var(--surface);color:var(--text);font-size:13px;font-family:var(--font);cursor:pointer;transition:0.2s;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:600;text-decoration:none;}
+.action-btn:hover{background:var(--surface2);border-color:rgba(255,255,255,0.12);}
+.action-btn.primary{background:var(--blue);border-color:var(--blue);color:#fff;}
+.action-btn.primary:hover{background:#0055dd;}
+.action-btn.gold{background:rgba(212,175,55,0.1);border-color:var(--gold-dim);color:var(--gold);}
+
+/* Mobile */
+@media(max-width:900px){
+  .dashboard{grid-template-columns:1fr;height:auto;}
+  .left-panel{max-height:300px;}
+  .timer-display{font-size:22px;min-width:90px;}
+  .timer-zone{padding:4px 10px;gap:8px;}
+  .timer-label{display:none;}
+}
+
+/* Toast */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--ok);color:#000;padding:10px 24px;border-radius:var(--radius-sm);font-size:13px;font-weight:600;z-index:999;opacity:0;transition:opacity 0.3s;pointer-events:none;}
+.toast.show{opacity:1;}
+</style>
+</head>
+<body>
+
+<div class="ambient amb-1"></div>
+<div class="ambient amb-2"></div>
+
+<header>
+  <div class="header-inner">
+    <a href="course-hub.html" class="brand">
+      <svg viewBox="0 0 1000 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 680 200 A 380 380 0 1 0 680 800" fill="none" stroke="#001f4d" stroke-width="120" stroke-linecap="butt"/>
+        <g fill="#0066FF">
+          <path d="M 280 400 L 780 380 L 820 440 L 740 480 L 560 510 L 420 820 L 320 820 L 460 510 L 280 480 Z"/>
+          <rect x="850" y="340" width="100" height="100" rx="16"/>
+          <rect x="960" y="440" width="80" height="80" rx="14"/>
+        </g>
+      </svg>
+      <div>
+        <span class="brand-text">OPAYS ACADEMY</span>
+        <span class="brand-sub">FORMATEUR DASHBOARD</span>
+      </div>
+    </a>
+    <div class="header-right">
+      <a href="course-hub.html" class="header-btn" style="text-decoration:none;background:var(--surface2);border:1px solid var(--line);color:var(--text);padding:8px 14px;border-radius:10px;font-size:12px;font-family:var(--font);cursor:pointer;">🏠 Hub</a>
+      <a href="#" id="meetBtn" target="_blank" class="header-btn" style="display:none;text-decoration:none;background:rgba(212,175,55,0.1);border:1px solid var(--gold-dim);color:var(--gold);padding:8px 14px;border-radius:10px;font-size:12px;font-family:var(--font);cursor:pointer;">📹 Meet</a>
+      <div class="timer-zone">
+        <span class="timer-label">SÉANCE</span>
+        <button class="timer-btn" id="timerReset" title="Reset">↺</button>
+        <span class="timer-display" id="timerDisplay">01:50:00</span>
+        <button class="timer-btn" id="timerToggle" title="Play / Pause">▶</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="dashboard">
+  <!-- LEFT PANEL -->
+  <div class="left-panel">
+    <div class="panel-card">
+      <div class="panel-title">📋 Module en cours</div>
+      <select class="mod-select" id="moduleSelect"></select>
+    </div>
+
+    <div class="panel-card">
+      <div class="panel-title">⏱️ Progression de la séance</div>
+      <div class="session-progress">
+        <div class="progress-row">
+          <span id="phaseLabel">Phase 1/5</span>
+          <span id="timeElapsed" style="color:var(--muted)">0 min écoulées</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" id="sessionProgress" style="width:0%"></div></div>
+      </div>
+    </div>
+
+    <div class="panel-card">
+      <div class="panel-title">🎯 Déroulé de la séance <kbd id="durationKbd">110 min</kbd></div>
+      <div class="phase-list" id="phaseList"></div>
+    </div>
+
+    <div class="panel-card">
+      <div class="panel-title">📝 Mission à donner</div>
+      <div id="missionText" style="font-size:13px;line-height:1.6;color:var(--muted);"></div>
+    </div>
+
+    <div class="action-row">
+      <a class="action-btn primary" id="launchBtn" target="_blank">▶ Lancer le cours</a>
+      <a class="action-btn gold" id="workKitBtn" target="_blank">📁 Work Kit</a>
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="right-panel">
+    <div class="slide-info-bar">
+      <span class="slide-num" id="slideNum">M01</span>
+      <div>
+        <div class="slide-title" id="slideTitle">Sélectionnez un module</div>
+        <div class="slide-chapter" id="slideChapter">—</div>
+      </div>
+    </div>
+
+    <div class="notes-area" id="notesArea">
+      <div class="note-section">
+        <div class="note-label">🎯 Objectif de cette phase</div>
+        <div class="note-text" id="noteGoal">Choisissez un module pour afficher les notes formateur.</div>
+      </div>
+      <div class="note-section">
+        <div class="note-label">💬 Arguments & Points clés</div>
+        <div class="note-text" id="noteTalk">—</div>
+      </div>
+      <div class="note-section transition">
+        <div class="note-label">➡️ Transition</div>
+        <div class="note-text" id="noteTransition">—</div>
+      </div>
+    </div>
+
+    <div class="prompts-bar" id="promptsBar">
+      <div class="prompt-chip" style="opacity:0.5;">
+        <span class="prompt-chip-cat">Sélectionnez un module</span>
+        <span class="prompt-chip-title">Les prompts apparaîtront ici</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast">✅ Prompt copié dans le presse-papier</div>
+
+<script src="data/modules.js"></script>
+<script src="data/cohorte.js"></script>
+<script>
+// ===== MODULES (registre central data/modules.js) =====
+const modulesData = OPAYS_MODULES;
+
+// Bouton Meet — visible uniquement si l'URL est configurée dans data/cohorte.js
+if (window.OPAYS_COHORTE && OPAYS_COHORTE.meetUrl) {
+  const meetBtn = document.getElementById('meetBtn');
+  meetBtn.href = OPAYS_COHORTE.meetUrl;
+  meetBtn.style.display = '';
+}
+
+let currentModule = modulesData[0];
+let currentPhaseIdx = 0;
+
+// ===== TIMER =====
+let timerSeconds = currentModule.duration * 60;
+let timerRunning = false;
+let timerInterval = null;
+
+function formatTime(secs) {
+  const h = Math.floor(secs / 3600);
+  const m = Math.floor((secs % 3600) / 60);
+  const s = secs % 60;
+  return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+}
+
+function updateTimerDisplay() {
+  const el = document.getElementById('timerDisplay');
+  el.textContent = formatTime(timerSeconds);
+  el.className = 'timer-display';
+  if (timerSeconds <= 300) el.classList.add('danger');
+  else if (timerSeconds <= 600) el.classList.add('warning');
+
+  const elapsed = (currentModule.duration * 60) - timerSeconds;
+  document.getElementById('timeElapsed').textContent = `${Math.floor(elapsed/60)} min écoulées`;
+
+  const pct = Math.min(100, (elapsed / (currentModule.duration * 60)) * 100);
+  document.getElementById('sessionProgress').style.width = pct + '%';
+
+  let cumDuration = 0;
+  currentModule.phases.forEach((p, i) => {
+    if (elapsed >= cumDuration * 60 && elapsed < (cumDuration + p.duration) * 60) {
+      setPhase(i);
+    }
+    cumDuration += p.duration;
+  });
+}
+
+function toggleTimer() {
+  timerRunning = !timerRunning;
+  const btn = document.getElementById('timerToggle');
+  btn.textContent = timerRunning ? '⏸' : '▶';
+  btn.classList.toggle('active', timerRunning);
+  if (timerRunning) {
+    timerInterval = setInterval(() => {
+      if (timerSeconds > 0) { timerSeconds--; updateTimerDisplay(); }
+      else { clearInterval(timerInterval); timerRunning = false; }
+    }, 1000);
+  } else {
+    clearInterval(timerInterval);
+  }
+}
+
+function resetTimer() {
+  clearInterval(timerInterval);
+  timerRunning = false;
+  timerSeconds = currentModule.duration * 60;
+  document.getElementById('timerToggle').textContent = '▶';
+  document.getElementById('timerToggle').classList.remove('active');
+  updateTimerDisplay();
+}
+
+document.getElementById('timerToggle').onclick = toggleTimer;
+document.getElementById('timerReset').onclick = resetTimer;
+
+// ===== MODULE SELECTOR =====
+function populateModuleSelect() {
+  const sel = document.getElementById('moduleSelect');
+  sel.innerHTML = '';
+  modulesData.forEach(mod => {
+    const opt = document.createElement('option');
+    opt.value = mod.num;
+    opt.textContent = `M${String(mod.num).padStart(2,'0')} — ${mod.title} (${mod.seance})`;
+    sel.appendChild(opt);
+  });
+  sel.onchange = () => {
+    const mod = modulesData.find(m => m.num == sel.value);
+    if (mod) loadModule(mod);
+  };
+}
+
+function loadModule(mod) {
+  currentModule = mod;
+  currentPhaseIdx = 0;
+
+  document.getElementById('launchBtn').href = `modules/${mod.code}/presentation.html`;
+  document.getElementById('durationKbd').textContent = `${mod.duration} min`;
+
+  const phaseList = document.getElementById('phaseList');
+  phaseList.innerHTML = '';
+  mod.phases.forEach((p, i) => {
+    const item = document.createElement('div');
+    item.className = 'phase-item' + (i === 0 ? ' active' : '');
+    item.innerHTML = `<span class="phase-dot"></span><span>${p.name}</span><span class="phase-time">${p.time}</span>`;
+    item.onclick = () => setPhase(i);
+    item.setAttribute('role', 'button');
+    item.setAttribute('tabindex', '0');
+    item.onkeydown = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setPhase(i); } };
+    phaseList.appendChild(item);
+  });
+
+  document.getElementById('missionText').textContent = mod.mission;
+
+  document.getElementById('noteGoal').textContent = mod.notes.goal;
+  document.getElementById('noteTalk').textContent = mod.notes.talk;
+  document.getElementById('noteTransition').textContent = mod.notes.transition;
+
+  document.getElementById('slideTitle').textContent = mod.title;
+  document.getElementById('slideChapter').textContent = mod.subtitle + ' — ' + mod.seance;
+  document.getElementById('slideNum').textContent = 'M' + String(mod.num).padStart(2,'0');
+
+  document.getElementById('workKitBtn').href = 'docs/work-kit/TEMPLATE_MON_AI_WORK_KIT.md';
+
+  loadPrompts(mod);
+  resetTimer();
+  setPhase(0);
+}
+
+function setPhase(idx) {
+  currentPhaseIdx = idx;
+  const items = document.querySelectorAll('.phase-item');
+  items.forEach((item, i) => {
+    item.classList.remove('active', 'done');
+    if (i < idx) item.classList.add('done');
+    if (i === idx) item.classList.add('active');
+  });
+  document.getElementById('phaseLabel').textContent = `Phase ${idx+1}/${currentModule.phases.length}`;
+}
+
+// ===== PROMPTS (depuis le registre central) =====
+function loadPrompts(mod) {
+  const bar = document.getElementById('promptsBar');
+  bar.innerHTML = '';
+
+  const prompts = mod.promptChips || [];
+  prompts.forEach(p => {
+    const chip = document.createElement('div');
+    chip.className = 'prompt-chip';
+    chip.innerHTML = `<span class="prompt-chip-cat">${p.cat}</span><span class="prompt-chip-title">${p.title}</span><span class="prompt-chip-copy">📂 Ouvrir dans la présentation</span>`;
+    chip.setAttribute('role', 'button');
+    chip.setAttribute('tabindex', '0');
+    chip.onkeydown = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); chip.click(); } };
+    chip.onclick = () => {
+      window.open(`modules/${mod.code}/presentation.html`, '_blank');
+      showToast('▶ Présentation ouverte — trouvez le prompt dans le dock ressources [R]');
+    };
+    bar.appendChild(chip);
+  });
+
+  if (prompts.length === 0) {
+    bar.innerHTML = '<div class="prompt-chip" style="opacity:0.5;"><span class="prompt-chip-title">Aucun prompt pour ce module</span></div>';
+  }
+}
+
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2500);
+}
+
+// ===== KEYBOARD SHORTCUTS =====
+document.addEventListener('keydown', e => {
+  if (e.key === ' ' && (!(e.target instanceof Element) || !e.target.matches('input,select,textarea,a,button,[role="button"]'))) {
+    e.preventDefault();
+    toggleTimer();
+  }
+});
+
+// ===== INIT =====
+populateModuleSelect();
+loadModule(modulesData[0]);
+</script>
+</body>
+</html>

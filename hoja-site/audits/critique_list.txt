@@ -1,0 +1,34 @@
+images/027064cfa81b.jpg#seq1 :: photo eleves reels ed1 (visioconf, visages ident.
+images/06c64cffc9dd.png#seq6 :: photo eleves reels ed2
+images/075d4d6a430e.png#seq9 :: photo eleves reels ed4
+images/081b9bd99eaa.png#seq10 :: photo eleves reels ed2
+images/0c07842406dd.png#seq14 :: photo eleves reels ed5
+images/0f23e139c391.png#seq17 :: photo eleves reels ed2
+images/18b783dffdb9.png#seq24 :: photo eleves reels ed3
+images/2f90436459cc.jpg#seq33 :: miniature iframe video temoignage Yahir (personne reelle)
+images/31f11f656d9f.jpg#seq34 :: miniature iframe video temoignage Yahir (personne reelle)
+images/32476298cfab.png#seq35 :: photo eleves reels ed2
+images/44ff4277a669.jpg#seq47 :: photo eleves reels ed1 (visioconf, visages ident.
+images/59748a15b9ec.jpg#seq55 :: photo eleves reels ed1 (visioconf, visages ident.
+images/63b1ab385780.png#seq60 :: photo eleves reels ed5
+images/66cca504e7e1.png#seq62 :: photo eleves reels ed5
+images/715aa8527076.png#seq69 :: portrait personne reelle identifiee (ALEJAVI RIVERA)
+images/7341b2ddddf4.png#seq71 :: photo eleves reels ed5
+images/734d92c11395.png#seq72 :: photo eleves reels ed5
+images/874795be0693.png#seq86 :: photo eleves reels ed2
+images/89dd3dac41c1.png#seq91 :: photo eleves reels ed4
+images/8d1544118b55.png#seq94 :: photo eleves reels ed4
+images/9470b406091e.png#seq99 :: photo eleves reels ed3
+images/9dd92c8d35ca.jpg#seq107 :: portrait personne reelle identifiee (JOSE MORAL)
+images/a5b5e8504da2.png#seq112 :: photo eleves reels ed4
+images/a68d49a3ce64.png#seq113 :: photo eleves reels ed4
+images/aa589c4c569a.jpg#seq116 :: photo eleves reels ed1 (visioconf, visages ident.
+images/b3f4d804c887.webp#seq123 :: miniature video/asset personne reelle
+images/b97f813e2591.png#seq126 :: capture d'interface outil herite + miniature video
+images/cf21e800176b.png#seq137 :: photo eleves reels ed3
+images/d91bbe528cd7.jpg#seq142 :: photo eleves reels ed1 (visioconf, visages ident.
+images/dcea3cfe0cb3.png#seq145 :: photo eleves reels ed3
+images/e853281d170b.png#seq153 :: photo eleves reels ed3
+images/f033dfba39b9.png#seq159 :: photo eleves reels ed3
+images/f8bf71f6840c.png#seq165 :: photo eleves reels ed4
+images/ff52ab84d186.png#seq167 :: photo eleves reels ed5

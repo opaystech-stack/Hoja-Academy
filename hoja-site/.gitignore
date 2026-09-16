@@ -1,0 +1,22 @@
+node_modules
+.next
+out
+dist
+
+# Artefacts de build & caches
+*.tsbuildinfo
+
+# OS / éditeurs
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Environnement
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log

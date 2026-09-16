@@ -1,0 +1,16 @@
+{
+  "_note": "FIXTURES DE TEST UNIQUEMENT — mode GATEWAY_FIXTURES. Elles simulent les reponses Google Classroom pour les tests E2E/P2B-10. AUCUNE donnee de production ; le compte reel connecte (opaystech@...) n'est pas utilise dans ce mode. Emails en .example = reserve a la documentation (RFC 2606).",
+  "students": [
+    { "userId": "g-awa", "profile": { "emailAddress": "awa.diallo@example.test", "name": { "givenName": "Awa", "familyName": "Diallo" } } },
+    { "userId": "g-jean", "profile": { "emailAddress": "jean.mokoko@example.test", "name": { "givenName": "Jean", "familyName": "Mokoko" } } }
+  ],
+  "courseWork": [
+    { "id": "cw-1", "title": "Mission M01 — Comparatif 2 modèles", "description": "Tester 3 tâches sur 2 modèles IA. Déposer le comparatif.", "state": "PUBLISHED", "dueDate": { "year": 2026, "month": 9, "day": 14 }, "maxPoints": 100, "alternateLink": "https://classroom.google.com/c/fixture/a/cw-1/details" },
+    { "id": "cw-2", "title": "Mission M02 — Grille de sélection d'outil", "description": "Un outil par famille, grille remplie.", "state": "PUBLISHED", "dueDate": { "year": 2026, "month": 9, "day": 21 }, "maxPoints": 100, "alternateLink": "https://classroom.google.com/c/fixture/a/cw-2/details" }
+  ],
+  "studentSubmissions": [
+    { "id": "sub-1", "courseWorkId": "cw-1", "userId": "g-awa", "state": "UNCLAIMED", "creationTime": "2026-09-08T10:00:00Z", "updateTime": "2026-09-08T10:00:00Z" },
+    { "id": "sub-2", "courseWorkId": "cw-2", "userId": "g-awa", "state": "UNCLAIMED", "creationTime": "2026-09-08T10:00:00Z", "updateTime": "2026-09-08T10:00:00Z" },
+    { "id": "sub-3", "courseWorkId": "cw-1", "userId": "g-jean", "state": "UNCLAIMED", "creationTime": "2026-09-08T10:00:00Z", "updateTime": "2026-09-08T10:00:00Z" }
+  ]
+}

@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HOJA ACADEMY — Formation pratique à l’intelligence artificielle pour les professionnels</title>
+<meta name="description" content="Apprenez à intégrer l’intelligence artificielle dans votre travail, construire vos propres assistants et automatiser vos tâches avec HOJA ACADEMY.">
+<meta property="og:title" content="HOJA ACADEMY — Formation pratique à l’intelligence artificielle pour les professionnels">
+<meta property="og:description" content="Apprenez à intégrer l’intelligence artificielle dans votre travail, construire vos propres assistants et automatiser vos tâches avec HOJA ACADEMY.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#F7F8FA">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0A0F1E; --ink2:#1A2233;
+  --bg:#F7F8FA; --surface:#FFFFFF;
+  --line:#E4E7EE; --line2:#D3D8E2;
+  --txt:#0A0F1E; --muted:#5A6478; --faint:#8A93A6;
+  --accent:#1D4ED8; --accent-soft:#E8EEFC;
+  --gold:#B8860B;
+  --radius:16px;
+  --shadow-sm:0 1px 2px rgba(10,15,30,.05),0 2px 8px rgba(10,15,30,.05);
+  --shadow-md:0 4px 12px rgba(10,15,30,.07),0 12px 32px rgba(10,15,30,.08);
+  --font-d:'Sora',system-ui,sans-serif;
+  --font-b:'Inter',system-ui,sans-serif;
+  --font-m:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-b);background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+a{color:inherit;text-decoration:none}
+img,svg{display:block}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.skip-link{position:absolute;left:16px;top:-60px;z-index:100;background:var(--ink);color:#fff;padding:12px 20px;border-radius:10px;font-weight:600;font-size:14px;transition:top .2s ease}
+.skip-link:focus-visible{top:16px}
+section[id],main[id]{scroll-margin-top:96px}
+h1,h2{text-wrap:balance}
+h1,h2,h3{font-family:var(--font-d);line-height:1.12;letter-spacing:-.025em;font-weight:600}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+section{position:relative;padding:96px 0}
+section.alt{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+button,a,summary{touch-action:manipulation}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-m);font-size:11.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+.kicker::before{content:'';width:7px;height:7px;background:var(--gold);border-radius:2px}
+.sec-head{max-width:760px;margin-bottom:56px}
+.sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
+.sec-head.center .kicker{justify-content:center}
+.sec-head h2{font-size:clamp(28px,4.2vw,44px);margin:16px 0 14px}
+.sec-head p{color:var(--muted);font-size:17px;max-width:640px}
+.sec-head.center p{margin:0 auto}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.16,.84,.32,1);transition-delay:var(--d,0ms)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+}
+/* ── Boutons ── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--font-b);font-weight:600;font-size:15.5px;line-height:1;border-radius:12px;padding:16px 28px;min-height:48px;cursor:pointer;border:0;transition:transform .22s ease,box-shadow .22s ease,background .22s ease,border-color .22s ease;will-change:transform}
+.btn:active{transform:scale(.98)}
+.btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.btn-primary{background:var(--ink);color:#fff;box-shadow:var(--shadow-sm)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);background:var(--ink2)}
+.btn-primary .btn-ic{width:18px;height:18px;transition:transform .22s ease}
+.btn-primary:hover .btn-ic{transform:translateX(3px)}
+.btn-ghost{background:transparent;border:1px solid var(--line2);color:var(--txt)}
+.btn-ghost:hover{border-color:var(--ink);transform:translateY(-2px)}
+.btn-sm{padding:9px 18px;font-size:13.5px;border-radius:10px;min-height:40px}
+.btn-sm .btn-ic{width:15px;height:15px}
+/* ── Header flottant (réf. 21st Floating Header #8137) ── */
+header{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:60;width:min(860px,calc(100% - 24px));transition:box-shadow .3s ease,top .3s ease}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:14px;background:rgba(255,255,255,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:999px;padding:8px 10px 8px 18px;box-shadow:var(--shadow-sm)}
+header.scrolled{top:8px}
+header.scrolled .nav{box-shadow:var(--shadow-md)}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--font-d);font-weight:600;font-size:15.5px;letter-spacing:.01em}
+.brand small{display:block;font-family:var(--font-m);font-size:9px;font-weight:500;letter-spacing:.22em;color:var(--faint);text-transform:uppercase;margin-top:1px}
+.nav-links{display:flex;gap:4px}
+.nav-links a{font-size:14px;font-weight:500;color:var(--muted);padding:8px 14px;border-radius:999px;transition:color .2s ease,background .2s ease}
+.nav-links a:hover{color:var(--txt);background:var(--bg)}
+.nav-cta{display:flex;align-items:center;gap:8px}
+.menu-btn{display:none;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--txt);cursor:pointer;align-items:center;justify-content:center;transition:border-color .2s ease}
+.menu-btn:hover{border-color:var(--ink)}
+.menu-btn svg{width:20px;height:20px}
+.menu-btn .ic-close{display:none}
+body.menu-open .menu-btn .ic-open{display:none}
+body.menu-open .menu-btn .ic-close{display:block}
+.mobile-menu{display:none;position:fixed;top:76px;left:12px;right:12px;z-index:59;background:var(--surface);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow-md);padding:10px;opacity:0;transform:translateY(-8px);transition:opacity .25s ease,transform .25s ease;pointer-events:none}
+body.menu-open .mobile-menu{opacity:1;transform:none;pointer-events:auto}
+.mobile-menu a{display:block;padding:14px 18px;font-size:15.5px;font-weight:500;border-radius:12px;color:var(--txt)}
+.mobile-menu a:hover{background:var(--bg)}
+.mobile-menu .btn{width:100%;margin-top:8px}
+/* ── Hero ── */
+.hero{padding:172px 0 88px;text-align:center}
+.hero .wrap{max-width:880px}
+.hero h1{font-size:clamp(36px,6.4vw,64px);font-weight:600;margin:20px 0 22px;letter-spacing:-.03em}
+.hero .lead{font-size:clamp(16.5px,2.2vw,19px);color:var(--muted);max-width:640px;margin:0 auto 36px}
+.cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.hero-meta{margin-top:34px;font-family:var(--font-m);font-size:12px;letter-spacing:.08em;color:var(--faint);text-transform:uppercase}
+.hero-meta b{color:var(--muted);font-weight:500}
+/* ── Diagramme système (signature) ── */
+.sys{position:relative;max-width:760px;margin:64px auto 0;aspect-ratio:2/1}
+.sys svg.lines{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.sys path.link{fill:none;stroke:var(--line2);stroke-width:1.5;stroke-dasharray:420;stroke-dashoffset:420;animation:draw 1.6s ease-out forwards}
+.sys path.link.l2{animation-delay:.15s}.sys path.link.l3{animation-delay:.3s}.sys path.link.l4{animation-delay:.45s}
+@keyframes draw{to{stroke-dashoffset:0}}
+.sys .dot{fill:var(--accent);opacity:.85}
+.sys .dot.d2{fill:var(--gold)}
+.node{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:2px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px 16px;box-shadow:var(--shadow-sm);white-space:nowrap;transition:border-color .25s ease,box-shadow .25s ease}
+.node:hover{border-color:var(--line2);box-shadow:var(--shadow-md)}
+.node .n-lbl{font-family:var(--font-m);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+.node .n-t{font-family:var(--font-d);font-size:13.5px;font-weight:600}
+.node.hub{background:var(--ink);border-color:var(--ink);padding:14px 22px;animation:hubPulse 4s ease-in-out infinite}
+.node.hub .n-lbl{color:rgba(255,255,255,.55)}
+.node.hub .n-t{color:#fff;font-size:15px}
+@keyframes hubPulse{0%,100%{box-shadow:0 0 0 0 rgba(29,78,216,.14)}50%{box-shadow:0 0 0 12px rgba(29,78,216,0)}}
+.n-doc{left:14.6%;top:18.9%}
+.n-data{left:85.4%;top:18.9%}
+.n-hub{left:50%;top:50%}
+.n-wf{left:14.6%;top:81.1%}
+.n-auto{left:85.4%;top:81.1%}
+@media (prefers-reduced-motion:reduce){
+  .sys path.link{stroke-dashoffset:0;animation:none}
+  .sys .dot{display:none}
+  .node.hub{animation:none}
+}
+/* ── Problème ── */
+.prob .sec-head{max-width:820px}
+.prob-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:start}
+.prob-txt p{color:var(--muted);font-size:16.5px;margin-bottom:18px}
+.prob-txt p strong{color:var(--txt);font-weight:600}
+.prob-txt .punch{font-family:var(--font-d);font-size:clamp(19px,2.4vw,23px);color:var(--txt);line-height:1.35;letter-spacing:-.01em;margin-top:28px;padding-top:28px;border-top:1px solid var(--line)}
+.tasks{display:flex;flex-wrap:wrap;gap:10px}
+.tasks span{font-family:var(--font-m);font-size:12px;letter-spacing:.06em;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:9px 16px;transition:border-color .25s ease,color .25s ease}
+.tasks span:hover{border-color:var(--accent);color:var(--accent)}
+/* ── Promesse (bento, réf. 21st bento grid 01 #9594) ── */
+.bento{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+.bento-cell{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:34px;display:flex;flex-direction:column;gap:26px;transition:border-color .3s ease,box-shadow .3s ease,transform .3s ease;overflow:hidden}
+.bento-cell:hover{border-color:var(--line2);box-shadow:var(--shadow-md);transform:translateY(-3px)}
+.b1{grid-column:span 7;grid-row:span 2}
+.b2,.b3{grid-column:span 5}
+.bento-vis{flex:1;display:flex;align-items:center;justify-content:center;min-height:120px;border-radius:12px;background:var(--bg);border:1px solid var(--line)}
+.bento-txt .bento-ic{display:inline-flex;width:44px;height:44px;border-radius:12px;background:var(--accent-soft);color:var(--accent);align-items:center;justify-content:center;margin-bottom:16px}
+.bento-txt .bento-ic svg{width:22px;height:22px}
+.bento-txt h3{font-size:21px;margin-bottom:8px}
+.bento-txt p{color:var(--muted);font-size:15px}
+.vis-bars{display:flex;align-items:flex-end;gap:10px;height:90px}
+.vis-bars i{width:26px;border-radius:6px 6px 2px 2px;background:var(--accent);opacity:.9;transform-origin:bottom;animation:grow 1.1s cubic-bezier(.16,.84,.32,1) forwards;transform:scaleY(0)}
+.vis-bars i:nth-child(1){height:38%;animation-delay:.1s}
+.vis-bars i:nth-child(2){height:58%;animation-delay:.25s}
+.vis-bars i:nth-child(3){height:46%;animation-delay:.4s}
+.vis-bars i:nth-child(4){height:78%;animation-delay:.55s}
+.vis-bars i:nth-child(5){height:100%;animation-delay:.7s;background:var(--gold)}
+@keyframes grow{to{transform:scaleY(1)}}
+.vis-doc{position:relative;width:150px;height:110px;background:var(--surface);border:1px solid var(--line2);border-radius:10px;padding:18px 16px;display:flex;flex-direction:column;gap:10px;box-shadow:var(--shadow-sm)}
+.vis-doc .d-line{height:7px;border-radius:4px;background:var(--line2)}
+.vis-doc .w80{width:80%}.vis-doc .w60{width:60%}.vis-doc .w70{width:70%}
+.vis-doc .d-check{position:absolute;right:-14px;bottom:-14px;width:40px;height:40px;border-radius:12px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-md)}
+.vis-doc .d-check svg{width:20px;height:20px}
+.vis-nodes{position:relative;width:170px;height:110px}
+.vis-nodes span{position:absolute;border-radius:50%;background:var(--surface);border:1.5px solid var(--accent)}
+.vis-nodes .n1{width:34px;height:34px;left:0;top:38px}
+.vis-nodes .n2{width:34px;height:34px;right:0;top:38px}
+.vis-nodes .n3{width:44px;height:44px;left:63px;top:33px;background:var(--ink);border-color:var(--ink)}
+.vis-nodes .l1,.vis-nodes .l2{position:absolute;height:1.5px;background:var(--line2);top:55px;border:0;border-radius:0}
+.vis-nodes .l1{left:34px;width:29px}
+.vis-nodes .l2{right:34px;width:29px}
+/* ── Pour qui ── */
+.profils{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0 64px}
+.profils li{padding:26px 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
+.profils li:last-child{border-bottom:1px solid var(--line)}
+.profils h3{font-size:18.5px}
+.profils p{color:var(--muted);font-size:15px}
+/* ── Méthode ── */
+.meth-wrap{position:relative}
+.meth-track{position:absolute;top:0;left:0;right:0;height:2px;background:var(--line)}
+.meth-bar{position:absolute;top:0;left:0;height:2px;background:var(--accent);width:0;transition:width .15s linear}
+.meth{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding-top:44px}
+.mstep{position:relative}
+.mstep::before{content:'';position:absolute;top:-50px;left:0;width:10px;height:10px;border-radius:50%;background:var(--surface);border:2px solid var(--line2);transition:border-color .3s ease,background .3s ease}
+.mstep.on::before{border-color:var(--accent);background:var(--accent)}
+.mnum{font-family:var(--font-m);font-size:12px;letter-spacing:.14em;color:var(--faint)}
+.mstep h3{font-size:19px;margin:10px 0 8px}
+.mstep p{color:var(--muted);font-size:14.5px}
+/* ── Ce que vous construisez (bento) ── */
+.cb{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.cb-cell{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:30px;transition:border-color .3s ease,box-shadow .3s ease,transform .3s ease}
+.cb-cell:hover{border-color:var(--line2);box-shadow:var(--shadow-md);transform:translateY(-3px)}
+.cb-cell.wide{grid-column:span 2}
+.cb-ic{display:inline-flex;width:42px;height:42px;border-radius:11px;background:var(--accent-soft);color:var(--accent);align-items:center;justify-content:center;margin-bottom:18px}
+.cb-ic svg{width:21px;height:21px}
+.cb-cell h3{font-size:18px;margin-bottom:8px}
+.cb-cell p{color:var(--muted);font-size:14.5px}
+/* ── Format ── */
+.fmt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.fmt{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px;transition:border-color .3s ease,transform .3s ease}
+.fmt:hover{border-color:var(--line2);transform:translateY(-3px)}
+.fmt-ic{display:inline-flex;width:40px;height:40px;border-radius:10px;background:var(--bg);border:1px solid var(--line);color:var(--ink);align-items:center;justify-content:center;margin-bottom:16px}
+.fmt-ic svg{width:20px;height:20px}
+.fmt h3{font-size:16.5px;margin-bottom:6px}
+.fmt p{color:var(--muted);font-size:13.5px}
+/* ── Différenciation ── */
+.cmp{max-width:820px;margin:0 auto;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--surface)}
+.cmp-head{display:grid;grid-template-columns:1fr 1fr;font-family:var(--font-m);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase}
+.cmp-head span{padding:16px 24px;color:var(--faint)}
+.cmp-head span:last-child{background:var(--ink);color:#fff;text-align:center}
+.cmp-row{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+.cmp-row span{padding:18px 24px;font-size:15px}
+.cmp-row .cmp-a{color:var(--muted)}
+.cmp-row .cmp-b{background:var(--ink);color:#fff;font-weight:500;text-align:center}
+/* ── FAQ ── */
+.faq{max-width:760px;margin:0 auto}
+.faq-item{border:1px solid var(--line);border-radius:14px;background:var(--surface);margin-bottom:10px;transition:border-color .25s ease}
+.faq-item[open]{border-color:var(--line2)}
+.faq-item summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 24px;cursor:pointer;font-family:var(--font-d);font-weight:600;font-size:16px}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary:hover{color:var(--accent)}
+.faq-ic{position:relative;width:18px;height:18px;flex-shrink:0}
+.faq-ic::before,.faq-ic::after{content:'';position:absolute;background:var(--ink);border-radius:2px;transition:transform .25s ease}
+.faq-ic::before{left:0;top:8px;width:18px;height:2px}
+.faq-ic::after{left:8px;top:0;width:2px;height:18px}
+.faq-item[open] .faq-ic::after{transform:scaleY(0)}
+.faq-a{padding:0 24px 22px;color:var(--muted);font-size:15px;max-width:640px}
+/* ── CTA final ── */
+.final{background:var(--ink);color:#fff;text-align:center;padding:120px 0}
+.final .kicker{color:#fff;justify-content:center}
+.final .kicker::before{background:var(--gold)}
+.final h2{font-size:clamp(30px,4.6vw,50px);margin:18px 0 14px;letter-spacing:-.03em}
+.final p{color:rgba(255,255,255,.72);font-size:17.5px;max-width:560px;margin:0 auto 36px}
+.final .btn-primary{background:#fff;color:var(--ink)}
+.final .btn-primary:hover{background:#fff}
+.final .note{margin-top:22px;font-family:var(--font-m);font-size:12px;letter-spacing:.06em;color:rgba(255,255,255,.5)}
+/* ── Footer ── */
+footer{background:var(--surface);border-top:1px solid var(--line);padding:40px 0}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.foot-brand{display:flex;align-items:center;gap:10px;font-family:var(--font-d);font-weight:600;font-size:14.5px}
+.foot-brand small{display:block;font-family:var(--font-m);font-size:9px;letter-spacing:.2em;color:var(--faint);text-transform:uppercase}
+.foot-links{display:flex;gap:26px;font-size:14px;color:var(--muted)}
+.foot-links a:hover{color:var(--txt)}
+.foot-copy{font-size:12.5px;color:var(--faint)}
+/* ── Responsive ── */
+@media(max-width:900px){
+  section{padding:72px 0}
+  .hero{padding:150px 0 64px}
+  .prob-grid{grid-template-columns:1fr;gap:36px}
+  .b1{grid-column:span 12;grid-row:auto}
+  .b2,.b3{grid-column:span 12}
+  .meth{grid-template-columns:repeat(2,1fr);gap:36px 24px}
+  .mstep::before{top:-44px}
+  .cb{grid-template-columns:1fr 1fr}
+  .cb-cell.wide{grid-column:span 2}
+  .fmt-grid{grid-template-columns:1fr 1fr}
+  .profils{grid-template-columns:1fr;gap:0}
+}
+@media(max-width:640px){
+  .wrap{padding:0 18px}
+  section{padding:60px 0}
+  .hero{padding:132px 0 52px}
+  .nav-links{display:none}
+  .menu-btn{display:inline-flex}
+  .mobile-menu{display:block}
+  .nav{padding:6px 8px 6px 14px}
+  .brand{font-size:14px}
+  .brand small{display:none}
+  .menu-btn{width:44px;height:44px}
+  .btn{padding:14px 22px;font-size:15px;min-height:48px}
+  .cta-row{flex-direction:column;align-items:stretch}
+  .cta-row .btn{width:100%}
+  .hero-meta{line-height:2}
+  .sys{margin-top:48px}
+  .node{padding:7px 10px;border-radius:10px}
+  .node .n-lbl{font-size:8.5px}
+  .node .n-t{font-size:11px}
+  .node.hub{padding:9px 14px}
+  .node.hub .n-t{font-size:12px}
+  .bento-cell{padding:24px;gap:18px}
+  .bento-vis{min-height:96px}
+  .meth{grid-template-columns:1fr;gap:28px}
+  .mstep::before{display:none}
+  .meth-track,.meth-bar{display:none}
+  .cb{grid-template-columns:1fr}
+  .cb-cell.wide{grid-column:span 1}
+  .fmt-grid{grid-template-columns:1fr}
+  .cmp-head span,.cmp-row span{padding:14px 16px;font-size:13.5px}
+  .cmp-head{font-size:10px}
+  .faq-item summary{padding:17px 18px;font-size:15px}
+  .faq-a{padding:0 18px 18px}
+  .final{padding:84px 0}
+  .foot{flex-direction:column;text-align:center}
+}
+
+</style>
+</head>
+<body>
+<a class="skip-link" href="#top">Aller au contenu principal</a>
+<header id="hdr">
+  <div class="nav">
+    <a class="brand" href="#top"><img src="data:image/png;base64,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" alt="HOJA ACADEMY" style="width:30px;height:30px;border-radius:7px"><span>HOJA<small>Academy</small></span></a>
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a href="#pourquoi">Pourquoi</a>
+      <a href="#pour-qui">Pour qui</a>
+      <a href="#methode">Méthode</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="https://docs.google.com/forms/d/e/1FAIpQLSfGQL_eANGDh2AKWJpnKbvKHuXR9rKlGcKxwOJeVBma3vcleA/viewform?usp=sharing&ouid=110842743704567712489" target="_blank" rel="noopener">Candidater</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span class="ic-open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></span><span class="ic-close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></span>
+      </button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#pourquoi">Pourquoi</a>
+  <a href="#pour-qui">Pour qui</a>
+  <a href="#methode">Méthode</a>
+  <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSfGQL_eANGDh2AKWJpnKbvKHuXR9rKlGcKxwOJeVBma3vcleA/viewform?usp=sharing&ouid=110842743704567712489" target="_blank" rel="noopener">Candidater</a>
+</div>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <span class="kicker">HOJA ACADEMY</span>
+      <h1>L’IA ne doit pas seulement répondre. Elle doit travailler pour vous.</h1>
+      <p class="lead">Une formation pratique pour apprendre à intégrer l’intelligence artificielle dans votre travail, automatiser vos tâches et construire vos propres systèmes de travail augmentés.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSfGQL_eANGDh2AKWJpnKbvKHuXR9rKlGcKxwOJeVBma3vcleA/viewform?usp=sharing&ouid=110842743704567712489" target="_blank" rel="noopener">Candidater à la prochaine cohorte<span class="btn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        <a class="btn btn-ghost" href="#methode">Découvrir l’approche</a>
+      </div>
+      <p class="hero-meta">Formation pratique <b>·</b> Cohortes limitées <b>·</b> En ligne et en présentiel</p>
+
+      <!-- Diagramme : système de travail augmenté -->
+      <div class="sys" aria-hidden="true">
+        <svg class="lines" viewBox="0 0 720 360" fill="none" preserveAspectRatio="xMidYMid meet">
+          <path class="link l1" d="M 360 180 C 250 150, 150 120, 105 68"/>
+          <path class="link l2" d="M 360 180 C 470 150, 570 120, 615 68"/>
+          <path class="link l3" d="M 360 180 C 250 210, 150 240, 105 292"/>
+          <path class="link l4" d="M 360 180 C 470 210, 570 240, 615 292"/>
+          <circle class="dot d1" r="4"><animateMotion dur="7s" repeatCount="indefinite" path="M 360 180 C 250 150, 150 120, 105 68"/></circle>
+          <circle class="dot d2" r="4"><animateMotion dur="9s" repeatCount="indefinite" path="M 360 180 C 470 150, 570 120, 615 68"/></circle>
+          <circle class="dot d1" r="4"><animateMotion dur="8s" repeatCount="indefinite" path="M 360 180 C 250 210, 150 240, 105 292"/></circle>
+          <circle class="dot d2" r="4"><animateMotion dur="10s" repeatCount="indefinite" path="M 360 180 C 470 210, 570 240, 615 292"/></circle>
+        </svg>
+        <div class="node n-doc"><span class="n-lbl">Documents</span><span class="n-t">PDF · Rapports</span></div>
+        <div class="node n-data"><span class="n-lbl">Données</span><span class="n-t">Tableaux · Analyses</span></div>
+        <div class="node hub n-hub"><span class="n-lbl">Votre système</span><span class="n-t">Assistant IA</span></div>
+        <div class="node n-wf"><span class="n-lbl">Workflows</span><span class="n-t">Étapes · Contrôle</span></div>
+        <div class="node n-auto"><span class="n-lbl">Automatisations</span><span class="n-t">Tâches · Boucles</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLÈME -->
+  <section class="alt prob" id="pourquoi">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Le constat</span>
+        <h2>L’IA est partout. Mais elle n’est pas encore dans votre travail.</h2>
+      </div>
+      <div class="prob-grid">
+        <div class="prob-txt">
+          <p>Beaucoup de professionnels utilisent déjà ChatGPT ou d’autres assistants IA. Pourtant, ils continuent à perdre du temps sur les mêmes tâches : rédiger, rechercher, analyser, organiser, produire des rapports ou répéter les mêmes opérations chaque semaine.</p>
+          <p class="punch">Le vrai problème n’est pas d’avoir accès à l’IA. C’est de savoir quoi lui confier, comment la cadrer et comment l’intégrer à son travail.</p>
+        </div>
+        <div class="tasks reveal" aria-label="Tâches répétitives">
+          <span>Rédiger</span><span>Rechercher</span><span>Analyser</span><span>Organiser</span><span>Produire des rapports</span><span>Répéter les mêmes opérations</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROMESSE -->
+  <section id="promesse">
+    <div class="wrap">
+      <div class="sec-head center">
+        <span class="kicker">La promesse</span>
+        <h2>Transformez l’IA en véritable levier de travail.</h2>
+      </div>
+      <div class="bento">
+        <div class="bento-cell b1 reveal" data-delay="0"><div class="bento-vis"><div class="vis-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div><div class="bento-txt"><span class="bento-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span><h3>Gagner du temps</h3><p>Identifiez les tâches qui vous ralentissent et construisez des méthodes pour les traiter plus rapidement.</p></div></div>
+      <div class="bento-cell b2 reveal" data-delay="90"><div class="bento-vis"><div class="vis-doc" aria-hidden="true"><span class="d-line w80"></span><span class="d-line w60"></span><span class="d-line w70"></span><span class="d-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h10v4H7z"/><path d="M5 7h14v13H5z"/><path d="M9 12h6M9 16h4"/></svg></span></div></div><div class="bento-txt"><span class="bento-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h10v4H7z"/><path d="M5 7h14v13H5z"/><path d="M9 12h6M9 16h4"/></svg></span><h3>Mieux travailler</h3><p>Utilisez l’IA pour rechercher, analyser, rédiger, synthétiser et décider avec davantage de méthode.</p></div></div>
+      <div class="bento-cell b3 reveal" data-delay="180"><div class="bento-vis"><div class="vis-nodes" aria-hidden="true"><span class="n1"></span><span class="n2"></span><span class="n3"></span><span class="l1"></span><span class="l2"></span></div></div><div class="bento-txt"><span class="bento-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="6" r="2.5"/><circle cx="19" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M7.2 7.4 10 15.6M16.8 7.4 14 15.6"/></svg></span><h3>Construire vos propres systèmes</h3><p>Passez du simple prompt à des assistants, workflows et automatisations adaptés à votre métier.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POUR QUI -->
+  <section class="alt" id="pour-qui">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Pour qui</span>
+        <h2>Pour les professionnels qui veulent passer à l’étape suivante.</h2>
+        <p>Vous utilisez déjà l’IA de temps en temps. Vous savez qu’elle peut faire plus — mais vous ne savez pas par où commencer pour l’intégrer durablement à votre travail.</p>
+      </div>
+      <ul class="profils">
+        <li class="reveal" data-delay="0"><h3>Dirigeants et cadres</h3><p>Pour gagner du temps sur les tâches de pilotage et de décision.</p></li>
+      <li class="reveal" data-delay="70"><h3>Professionnels administratifs</h3><p>Pour transformer les tâches documentaires répétitives.</p></li>
+      <li class="reveal" data-delay="140"><h3>Entrepreneurs</h3><p>Pour produire plus vite et structurer leurs opérations.</p></li>
+      <li class="reveal" data-delay="210"><h3>Organisations, ONG et institutions</h3><p>Pour intégrer l’IA dans les processus réels de travail.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- MÉTHODE -->
+  <section id="methode">
+    <div class="wrap">
+      <div class="sec-head center">
+        <span class="kicker">La méthode</span>
+        <h2>On ne vous apprend pas simplement à utiliser l’IA.</h2>
+        <p class="punch-line">On vous apprend à l’intégrer à votre travail.</p>
+      </div>
+      <div class="meth-wrap">
+        <div class="meth-track" aria-hidden="true"><div class="meth-bar" id="methBar"></div></div>
+        <div class="meth">
+          <div class="mstep reveal" data-delay="0"><span class="mnum">01</span><h3>Comprendre</h3><p>Ce que l’IA sait faire — et ce qu’elle ne sait pas faire.</p></div>
+      <div class="mstep reveal" data-delay="80"><span class="mnum">02</span><h3>Expérimenter</h3><p>Sur vos propres documents, vos propres cas.</p></div>
+      <div class="mstep reveal" data-delay="160"><span class="mnum">03</span><h3>Construire</h3><p>Des assistants et des workflows adaptés à votre métier.</p></div>
+      <div class="mstep reveal" data-delay="240"><span class="mnum">04</span><h3>Automatiser</h3><p>Des tâches entières qui se traitent sans vous.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CE QUE VOUS CONSTRUISEZ -->
+  <section class="alt" id="construire">
+    <div class="wrap">
+      <div class="sec-head center">
+        <span class="kicker">Le résultat</span>
+        <h2>Vous repartez avec quelque chose que vous pouvez réellement utiliser.</h2>
+        <p>La formation ne se termine pas avec quelques prompts sauvegardés dans un document. Vous construisez progressivement votre propre environnement de travail augmenté par l’IA.</p>
+      </div>
+      <div class="cb">
+        <div class="cb-cell wide reveal" data-delay="0"><span class="cb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8.5v.01M12 12v3.5"/><path d="M8.5 12h7"/></svg></span><h3>Assistant IA</h3><p>Un assistant configuré pour votre métier, avec ses règles et sa mémoire.</p></div>
+      <div class="cb-cell reveal" data-delay="70"><span class="cb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="6" height="6" rx="1.5"/><rect x="15" y="14" width="6" height="6" rx="1.5"/><path d="M9 7h4a3 3 0 0 1 3 3v4"/></svg></span><h3>Workflows</h3><p>Des enchaînements d’étapes à contrôle humain.</p></div>
+      <div class="cb-cell reveal" data-delay="140"><span class="cb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 7l8 4 8-4-8-4z"/><path d="M4 12l8 4 8-4"/><path d="M4 17l8 4 8-4"/></svg></span><h3>Skills</h3><p>Vos procédures métier transformées en capacités réutilisables.</p></div>
+      <div class="cb-cell wide reveal" data-delay="210"><span class="cb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 3v4h-4"/></svg></span><h3>Automatisations</h3><p>Des tâches entières qui se traitent sans vous.</p></div>
+      <div class="cb-cell reveal" data-delay="280"><span class="cb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span><h3>Méthodes de recherche</h3><p>Des synthèses sourcées et vérifiables.</p></div>
+      <div class="cb-cell wide reveal" data-delay="350"><span class="cb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></span><h3>Système de travail personnel</h3><p>Votre environnement complet, documenté et durable.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMAT -->
+  <section id="format">
+    <div class="wrap">
+      <div class="sec-head center">
+        <span class="kicker">Le format</span>
+        <h2>Une formation conçue pour les professionnels actifs.</h2>
+      </div>
+      <div class="fmt-grid">
+        <div class="fmt reveal" data-delay="0"><span class="fmt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg></span><h3>8 semaines</h3><p>Un rythme soutenu, un objectif clair.</p></div>
+      <div class="fmt reveal" data-delay="60"><span class="fmt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="3"/><path d="m16 10 5-3v10l-5-3"/></svg></span><h3>2 séances live par semaine</h3><p>En visioconférence, en petit groupe.</p></div>
+      <div class="fmt reveal" data-delay="120"><span class="fmt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-4.5-7.8"/><path d="M21 3v4h-4"/><path d="M8.5 10.5h7M8.5 13.5h4.5"/></svg></span><h3>Accompagnement entre les séances</h3><p>Permanences et suivi individuel.</p></div>
+      <div class="fmt reveal" data-delay="180"><span class="fmt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="3"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 12h18"/></svg></span><h3>Travail sur vos propres cas</h3><p>Vos documents, vos tâches, vos outils.</p></div>
+      <div class="fmt reveal" data-delay="240"><span class="fmt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span><h3>En ligne + présentiel possible</h3><p>Selon la localisation des participants.</p></div>
+      <div class="fmt reveal" data-delay="300"><span class="fmt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0"/><circle cx="17" cy="9" r="2.5"/><path d="M15.5 14.5a5 5 0 0 1 5 4.5"/></svg></span><h3>Cohortes limitées</h3><p>Pour garantir la qualité des ateliers.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFFÉRENCIATION -->
+  <section class="alt" id="difference">
+    <div class="wrap">
+      <div class="sec-head center">
+        <span class="kicker">La différence</span>
+        <h2>Pas une formation de plus sur ChatGPT.</h2>
+        <p>HOJA ACADEMY part de votre travail réel. L’objectif n’est pas de vous faire mémoriser une liste d’outils, mais de vous apprendre à construire une méthode durable pour travailler avec l’IA.</p>
+      </div>
+      <div class="cmp">
+        <div class="cmp-head"><span>Formation classique</span><span>HOJA ACADEMY</span></div>
+        <div class="cmp-row reveal" data-delay="0"><span class="cmp-a">Apprendre des outils</span><span class="cmp-b">Résoudre des problèmes</span></div>
+      <div class="cmp-row reveal" data-delay="60"><span class="cmp-a">Accumuler des prompts</span><span class="cmp-b">Construire des systèmes</span></div>
+      <div class="cmp-row reveal" data-delay="120"><span class="cmp-a">Théorie</span><span class="cmp-b">Pratique</span></div>
+      <div class="cmp-row reveal" data-delay="180"><span class="cmp-a">Démonstrations génériques</span><span class="cmp-b">Cas réels</span></div>
+      <div class="cmp-row reveal" data-delay="240"><span class="cmp-a">Certificat de présence</span><span class="cmp-b">Preuve de compétence</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head center">
+        <span class="kicker">Questions</span>
+        <h2>Ce qu’il faut savoir avant de candidater.</h2>
+      </div>
+      <div class="faq">
+        <details class="faq-item"><summary><span>À qui s’adresse la formation ?</span><span class="faq-ic" aria-hidden="true"></span></summary><div class="faq-a"><p>Aux professionnels en activité : dirigeants, cadres, responsables administratifs, entrepreneurs, équipes d’ONG et d’institutions. Aucun prérequis technique — seulement l’envie de mieux travailler.</p></div></details>
+      <details class="faq-item"><summary><span>Faut-il savoir coder ?</span><span class="faq-ic" aria-hidden="true"></span></summary><div class="faq-a"><p>Non. La formation utilise des assistants IA grand public et leurs options avancées. Si vous savez utiliser un navigateur, vous êtes éligible.</p></div></details>
+      <details class="faq-item"><summary><span>Comment se déroulent les séances ?</span><span class="faq-ic" aria-hidden="true"></span></summary><div class="faq-a"><p>Deux séances live par semaine, en petit groupe. Chaque séance alterne explication, démonstration sur un cas réel et pratique guidée sur vos propres documents.</p></div></details>
+      <details class="faq-item"><summary><span>Est-ce en ligne ou en présentiel ?</span><span class="faq-ic" aria-hidden="true"></span></summary><div class="faq-a"><p>En ligne, en visioconférence. Des sessions en présentiel peuvent être organisées selon la localisation des participants.</p></div></details>
+      <details class="faq-item"><summary><span>Comment candidater ?</span><span class="faq-ic" aria-hidden="true"></span></summary><div class="faq-a"><p>Remplissez le formulaire de candidature. Votre dossier est examiné, puis nous vous contactons pour confirmer votre place et les modalités d’inscription.</p></div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="final">
+    <div class="wrap">
+      <span class="kicker">Prochaine cohorte</span>
+      <h2>Votre travail peut déjà être augmenté par l’IA.</h2>
+      <p>Commencez par apprendre à l’utiliser correctement.</p>
+      <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSfGQL_eANGDh2AKWJpnKbvKHuXR9rKlGcKxwOJeVBma3vcleA/viewform?usp=sharing&ouid=110842743704567712489" target="_blank" rel="noopener">Candidater à la prochaine cohorte<span class="btn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <p class="note">Les candidatures sont examinées avant validation de l’inscription.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div class="foot-brand"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAWZUlEQVR42u2beXxcV5Xnv+fe915VSSWVJG/xviS2Eys2ZE9DIBskJqGbsMjQ0xBoaMjAhCUDw7C27EkPpOlPMwwkYTrQQ1gm00TQQHcWxyaNjbOThCy2nHiJN9mWbMmyLKmW9969p/94VbLDZ+gsDoGZyf183keqkurVO7/3O+f8zrnnwSvrlfXKemX9f7zkZf++7m6ht1M4sOnZ3z21U1mySVm1UkH0/yEAug3nY5jaqfSscM/vI92GdRguwLNqlf+/E4CuWy3AsUYv6bo12uOSuT6uzHHqTxBJ2xAR8fYIov0isrdYyu8c+MGV488Co7dTnjd4v3cAurosPbf6Bo0Lb/3+LJ/Gl6qmlyZJero6Nwc1IQBesisQARyQqgRhXxCETwRi1vjU315bfdX27MQqdK+Ul5oRLyEAKnT1mMadyv3xTRep16viOFmON62ow+QtpWKOUmtz2trapLkwUhGoxbGMjldkZGTMHj5SFVdTUAHrK2EUrjEiN9Zuu2rNBLN6VnhA/3AAyC7KAeQv+/brnfFfSGrxG3HQUopYvGhmuuTkeTpn9hTT1tYi+VxEEBisyS5AFZIUKtUqI0fGdPfuA763dye9T+8Jx0ZqEFrCKPh54PwXK6s/8sCEa7wEbDh+AM7vDli/Km25+EuTKoVJX07j9IM4z8xZJXf+a5f5ZcsWmPa2FgFIEofzHu9AUUyDO4CIYI0QBAFhkL1/aHhMH3l0i1+34XEz0D9qiUIXBvaryY59X6B3VXws8L8fAOrG2zd+/SKC8Fsu9gtKpcC/+bLXuHPOXGgLTTnSGFIHXsFIZqz3CSJyjPnHOJKCavZeFAbk84axsZgN9zzpbrvzAVtNAhNGPGBc7d211R/f3riGlx+A+hcHy2/8sMdc76tlc/Y5JyVvf9tFdnJHMy6GagJHyk8Tp4NEwWRq7jA520qpaREef8zXe8AAKkZEVTOGiIJXT2Atzc0Bu/uG+P4t/5Ju29ofBYVwAFd9a3rXNfcfDwhyXMZfduMXnA+uJSn7Fe84z1+2/Ax78NAefXDjX3LizD+mf/gR9g+uQ71XY/NSSQ6yeNaVnLX405RrVRSDEYuIxWsMKAbBqyIiSAYKIDjvyeciFM8/9PzCrV/3RGgLhTFJq5ena6/55Yt1B/uijb/0G591kv+vAZXkg3+x3Fz0+qWye/8TPLb1bxgef5J9QxsYq+zEmgLGRBgREYwWm2ZIR8upBLYNayxea6TuCIWohdAGKBZrgzooHiVLlcYIaZqCKmecfpJNvHdbNu3KSy7/tmDe8tv9be/vp6vL0turvzsAum613HG1Cy/5+pXe5q83rpJc9aHLzLmnL5ShkbLc++RVHKk8Qy5ow9ocIuExwU6wJmC0vINn+n8steQwU0rzGR5/hl8+9gHK1T6cxgQmx/DYJpyrkgvb61FCEcAYk2WMxHHaq+abci12257qa5JCdInOv+gHnN5aZf0FAuv1pXeBetoJl9+wzBvzoKtWwyvf80Yufn2njI55tu69mad334yxObymE+lNEOqxD0Wh7t/Ol6WQm0Jr4SQOHH4ETw0RIQpKxPEoYdjMhad9l0I0i9THGBFMPXA2zpPLh3Ljt29LH3t0TxhE/qfp6qvf+kJdwT5voKZONXR2hZI03+Gq6awLLl7qr7j8HNM/uJOHt36enft/RhA04dVnws6LSj29aYZEPcRn7wUmj3NVxsq7MTZPEOTF2jzepxixWFtgwfS3Y20zqg5EJtxBVBqn4tQl8+yjj29Jx6t05hZdusv97M9/Tdetlt6e58UC8zypb+jpcdGRyZ90PnzVjNml5B1/8jp7ePQQ9/V+jANDvyIKSqrqMYKKShbCpcEAg6hgTF35iNZpbQnCJkG8qHpQjzEWE4RU4gM8s//HhBakHgizNKl4siCZJo6WYl7fteICo0nVJ57rWi/52w56NtWl5EvCgG5D73/QwkUnzEwM/1vTWvi+Ky+VBbMn0bvjFvYdXKdR2I5KKpnBdUyzRC9jtTGqSYVAAoyxmSlGRAwgGRQNTSAIKkf9fbSyi+kdFxAGrRPMkgkoMpeI45TZsyaZ/QNDbm/fkVZCm7pt//luzidg13p//Aw4HwOiaeSv8Y7WU5fNcacvmyePbv0hm3Z+kzAo4UmOFvDqM0uAWhpzyeI3yQdf8xFpb+6QJM18WVG8V0HAiGQpr26cqV+yNXnGy3vZ0f9TotCCugnDM05oFlhESFP0TZecbYJQfZz6Dxff/HeTM13w3Cwwz1ngrF+VcvmN7U71fSKJvvHC040A6moT4gVVFT2qaY0xlOMxXjP/dXz+klVy5VkfkE9e+DmJfdzApl4BHiWLUSG1QiVXz/3qiYKiHjj0C6rVAYKgANjMHequpfV4UqvGzJk1WU49da5TZzsSl7wru3kr7fEBUD9BzusV3plJ8+ZPdYtOnCmVCkwqLcFK0IjwAiAN9iN4PNOK0yZONalpMtNbZko1qWDUNNJBdiedo5ITWsccp+ys4EVwoogtSN/ILu7f/l1yZoycDOEJQbWOtU7kMlV47dmnAKkmqu/Obt5Kd3wAXIDPhKqswKV65mmLCaOsUhk88jhKWqdvFqa0Tl+njuaoyNotq1nde5tuG9yqQRDoN1d8R84/6WIZrR2RULKWgEk9SSi6eHuF61du4/qV2/n8jX2SOkNLUGP5DMe727/NO9xprJALyTGI1xDBN1IsIoZaLeXEBTNs26RmfOrPaHnTtxaCKN3d5kUCoMKqVb745r+bnKbpH9m8kSWL50iaeDyewcOPIFh8vXBp+HKjoLFiqaYVrvvFtRwuD8vstjlSKpT41EWfl6XTX81YeVitGq2lhgGJZPmaYaYOV4kjw3mPjvKZkZ1y02t76V68jcun91PUAdrcJuaxlkRA1OHVNSIBznlaW/IsPHFGig+CWNyFAKzjRQLQ1WMAEudPUzWlqVNa3ZTJbZIkKVYMHS3L6jn7qDgRYSKYKUpgAwphgcBkrKnUKuTDPF+89DrpaOuUsk/llLYaHz1pL1MW1kgJRI1IIsLSp8a1JZeQxhbUEoQWwhyRjNaDZEQuymFNmMUMARXkxAUzwHvU6XkTzdZ/YwW/9S/1rq3iz0SFOTOnukIhCMbHY5xP6Zz/IYbHnuTAoYclDFrUayq+TsdGJWfEkmpK912f0a++5QY5cfJCaknKtGbLX5+Vo3LoSTpLAsWEfW9vltFbAlqTVK3C2L0RufGAUuTYMl7k4UMRm2sXMGXeu2iyUI4PMjj4OK2FubQWF5G6BOdg5gmThABS75YqKtIj/sUBMIGcdKLKCdPaMdII3op65Y+WfIV7N17DweHHyIVt6knF+xSRLPhWkxGsCTlSGeYv7/yMfvWKm2RaS4H4qYt0QfIYtHeQOouMGFpOTvTIqwNaH1GqVliw3fOtu2fx0LQm+g7lGXdWjQwzZfQjEtgC4+W9OjK+W85bdj3tLSeToqhD29qKEuYtSTWe2dF1Uys9jGTp8P/cav/tLrBkk9YjwSzE095eNF4b7QvBqSOwzZy5+Is0F2ZKJR6SJB4jNEVAcd4xa8rFnLf0ayye/Ta2H3yYz97+OR3t/65G1ceIZXpW3bkhrB6mguHBMwtYhLwNuD8dZ+0jhu3VVgqRoS1MpSUSGR3focMjm7RaO0xHayfTO87BeYcVi3pHUyFHUz4Cr63lspuUGbNSXjgD6v0279MSQHMhn1lf79gIhiSNacrN5vxXf4uNO/47TbnZLJz5Dsq1AUDoaD0ZBZoLC2VSyxm6qe+f+au7/54vL2sn8oNUzWTyHW9hw4Eif3P/r2ld2sSy4ma+NjYsN5YSjdZuobjuGTr/YgmlGU342GODgogzWkkGWTjrTwmDAomr1ctnJQisRIFRVKPAabEG0A2semEASN1UgW/kEAgCe7R5Vc/8IobUxeTDyZx7yrUo4By0hR0gUEtibBjR1NSmJ3dcItOmdeptD72HD29cwMdOezuL5r9XyM2gEDzF8Ib36fZ7dnNaepAxSbWlqUhl3xhDQP+aPZQ+3ImLYw0STzkdYuGc98iC6VcQpzGCyUhO1nYzxnrAqk/D59IBvw2Ahv8r+g0FSJ0ekyCPEaVi8JpQS7IW10T1pxCEEaOD+xkbPkBSGdc9++7jwMY99EmBT77hfRLmpgOeJ3rXcc/nHoRqdopARE0gpHOLNNccX9+YEn2zjy+9dwY1Nyavmv1RFs97f2Z8VnLgvWJN9jN1XjACgXUvFoBjooSpkjiqtRrSkH3aUL1HlR9iUa23LlTJFSJ2PPkwX//AJVRGR/DeT3RB586dzdy2Ei5N8Apzp53IeWe8jnvu3YDFkHpPcqjKZ2dM4c99yMKDMWwYojRwWH785WuZseT9uJFaJj3rajJTokKtkmq1UrGgLlUtv3glWFdQRmQIhZGR8czgOv3NsyqzBhsyZaZesQEcGRpgfGQY7/VZ3ZfTzzyDXNiEc8pobZRT5p3KhnW/ZP70uRCpLrp8Pmf+l7M4a1E7C/eUSbynkgs4fUtVPvcfv02xdxNJLkRUMzbWryWwltHRMuVKghhGIxsdyuLZSn3hDMgUlBdkF2LoHxjOmC11IqiidQ3eMHzCd7IKjUkz5hHlC7g0ISo0aXNLGzEVpi6anLW9cxFpLeU93/uQvuvst7Psw+cyMiicfM5C0krCV/7dNDbOyvOpm/so1GpUckVt3vUA7bv2cPCUTsLqMW6JYi0MHDyMJorNh/1jZ+w7xG3/duMreB69oI1YS9/eg8SxxxrRhvzNMmtWlU3QQUGMIammnDD/ZL7wk8dJnaNQbKG52MFgeSMPbr6G7tWf1aXTl/FI3+M8cOAJNvz0Maa0l+CEZgYOjjI5n9eOESerX1eib0aB7m8Nyoy+p/TRP/s02y5dTv5IjDMGUT3afjOwY1e/R401yCa3apV/rhbZcwoh7/RBjGfv/iE7ODTCpEntxEkCIhh0olujml2FHlPmOqdMnbcw6/z7DJ9JwclEQYl1W9fwi6fXaiIixVwrmocoDagkVYbiKpMLeZwV2kYTti4s8aP/eYMu3ryTLecvJ6y4eqXv66JLMSJUq46nnt4DYYCS3nuson3hMSDbgOSEw5XHA/F7kvHYbNq8W6MQvM+UoEcmIJgIh5rJYK0fcTUmrsakcRUU9g/dRxwfpjXfQampxNRiG4vbSyxqayUMDQoM12pUvJNABA1CokOD9OeHePotf9JAFsQQ2VwGukKUC9m554D09R2wYr0X/N3HVrQvphxWum61fQ98soKxdxEV9P6Hn/K1xB9T9WlDG2VbXqr4idcqNNpdIhN9/h39P8J7px6PQyXxjmIYMimXZ0ohT2gs05qaiGyW21EhVa97964md9hJ1iDNmiZDo49jTIiqJwzgwV9tdpqKMaJPJucMb2xUtMffFHXyPRMa2bVtr9m4eReFQjixf6f1+rexwdlIS3Uu0PgvY0PK1f2Mju3ESh5fbx5I/bOJKm35HKdNm8yJpVZMfTdIEJyvEbsjeGPVmgK5KGDr3lt4fNvXEIEwCujvH+GhhzarNDcjqrewapU//o5QzwoH3Sa9a+Be8cnDBDlz19pfeed8vU1dZ8FESVw/VPDa6OBmr513RGEr+fxknE/ImuYKKioexauiaCCWxCtOPSjE8RHtaDtFFs5+LwiUa338avO1PLHtbzE2T+ocuchy592PaHW0ao3WRiNrvgdw/B0hgK5OgVUeZ79kCwV55qnd3PdgrzQ3h3inEyrMK3UbfiPr+DooPiUXtrBk3tV4TTLSNAQVgnrwqcd7PyE2vEtYMGuFXHTaD5jadi4I7Bj4R7b1/VCtFHRGx8W0FC2bt+7l/nue8Ka1ZHDupvIdV/dnIzrPPWz13AD0rHB0dxu39t//lLh8n2luCf7ptvvcgQNHJIoCnPcTWUCPCQgNF2m0zBBDNY6Z0fFaZk17gyTJGKIm0xP1oyGlRQR1qUZRiSVzrsJrQJyO13V+HrGhtDTPlbnTLqVcTen5x/XqvFhJa4ecj78CKtnewEu1MdLbm+3HOD4uom50eIxbfvgvaox5dou6LoKOBsL679rYp8gi9okzu7BhNLG7k21+1i/Fq6pXjImo1A7SP/xAZrgtMDy2m937b8c7ZdbUy5nU0cKtP9nA7i193hZbjabp51n7nw5k3aznNz3y/ADo6XF03WrTn3/0YZ/UrrOljmDz41vSn/7zBmktZq7QyAi+cTfrRVGjPtAsa+M8NOVnEQYtorg6MHJM/ABU1LsUa5qIwg6cByOGcjzIaHk3uXAmSxe+kzV398ovf/4rZ0sdoa+MrvU//8T/OGaG6CXeHe7tyXaH8y3rZHz4daa59aTtm7amYT5vO5fMplJ1R51fZKJxIsdWkAqqKfmolXJtgMHDj2FNHtTXOST13SFEReWczv/GlLbTiV0VIwFJOsqu/Xdw9tKPsWNbh9x880+cKTSHeNef91yWPnPHGL09vJDd4Re2Pd67ROi9WpsXLr8jUa6QXGFK72NPpTbKmc7O2SSJTgw3NBjxmzIsyw6WUnEhewdXi0trxwCHIEaStKLF5nlyypwPkvpGoPWEYYmli/6ULZsL8p3v/MQTRMZYmxiN3xyv+fgmujotvVf73+GAxHqlu9vEf/+Z8eikS+7wat4quXz7U489nY5VEnNq5zzCICBO0kz8NLax6gHyaEpMKeRaSTXlwKEHsJJDDSLG4n0CYuSsk6+jkJ9O6hOcV6IwIJcPWbtmo/zwH1Z7wpwxNoSktsKt+cQazu8OuOPql2FCZP16petW6/7pA0Ph3Atv99ZeZppbJu/YtD3ZtmOfmTN3GlOmtuBSSJ0/WizLMfNQoggBIgF7D9wJWFS9OFcF4LTFK5nWfi7VuIKRgGJzxOHDY/zgf90lv7z7wdQUWwKRIJa0+k639hM/OZ4ZIftiPkRvTwbCbR8cLJz4hp5U5SzTUlowtK/fP/TQZpLEmZkzp9BayqNqceomtMJRdWjxvsruAz8T52oSmIK2NC+S00/+aya3no2XlEJTjjhJueeeJ/n+91frnh37nC1NCvFun0lrV7i119z1+5sSmxiL7XGc3x3YpmlfxphPOVUYPZK2TW2Xc889VV716kWcMG0SQQhpmh3OO9RnFdyhsUcQNbQ2z6WpMIUwhCSBoeFRnnxim9x/3xN+YM+Ap5APbb6I1ip35qpjH6qs/0zf8Rr/Ek2Kdk/kXHvJDRdi5TqJcmen1QqUx11YbPLz5s8wixbOljmzp9HWUaLYnCcMAjCCEYNLoVKuMjR8iL69A2zb2sf27X2+PDwKuVxgm1rQuNaPur/yd330ht+cTv1DmBWWbIpkhaOry4ZjF/yZRz4m1pyRqoFqGZLEEwQuaspRLBbI5wMx1uKdo1aLKZdjrYxXIHaCkYBCMzaMII0HUL05Vx77Wnn9p/sz4bBSnq/QeXmnxZ91V1Tspd+8GPHvBHMRhgVqQryS+YF3jSkqMAZsgLEWUQ8uHhXMQ6A/ymv647HVHz/4Ut713/XzAkfZMDFn8J18mKt0gjsDQ6ci8xTaUXL1sDiKMABmizp5NLLpryurP973bGC7/Mv5JMlLBYSdeHDiRT1p0h0832GnP/RnhrJnhRp79VM7NavWVmXlUPfKo88RHf2b55X1ynplvbJeWa+s3+n6V6vRe3O2ETfsAAAAAElFTkSuQmCC" alt="HOJA ACADEMY" style="width:26px;height:26px;border-radius:6px"><span>HOJA<small>Academy</small></span></div>
+    <nav class="foot-links" aria-label="Liens de pied de page">
+      <a href="#top">Académie</a>
+      <a href="mailto:contact@opays.io">Contact</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfGQL_eANGDh2AKWJpnKbvKHuXR9rKlGcKxwOJeVBma3vcleA/viewform?usp=sharing&ouid=110842743704567712489" target="_blank" rel="noopener">Candidater</a>
+    </nav>
+    <span class="foot-copy">© 2026 HOJA ACADEMY — un projet Opays Tech. Tous droits réservés.</span>
+  </div>
+</footer>
+
+<script>
+
+// Header scroll
+var hdr = document.getElementById('hdr');
+addEventListener('scroll', function () { hdr.classList.toggle('scrolled', scrollY > 24); }, { passive: true });
+
+// Menu mobile
+var menuBtn = document.getElementById('menuBtn');
+menuBtn.addEventListener('click', function () {
+  var open = document.body.classList.toggle('menu-open');
+  menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+});
+document.querySelectorAll('.mobile-menu a').forEach(function (a) {
+  a.addEventListener('click', function () { document.body.classList.remove('menu-open'); });
+});
+
+// Reveal au scroll (stagger via data-delay)
+var io = new IntersectionObserver(function (es) {
+  es.forEach(function (e) {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+}, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(function (el) {
+  var d = el.getAttribute('data-delay');
+  if (d) el.style.setProperty('--d', d + 'ms');
+  io.observe(el);
+});
+
+// Méthode : progression au scroll (desktop uniquement — la barre est masquée en mobile)
+var meth = document.getElementById('methode');
+var bar = document.getElementById('methBar');
+var steps = document.querySelectorAll('.mstep');
+function methTick() {
+  var r = meth.getBoundingClientRect();
+  var total = r.height - innerHeight;
+  if (total <= 0) return;
+  var p = Math.min(1, Math.max(0, -r.top / total));
+  bar.style.width = (p * 100) + '%';
+  steps.forEach(function (s, i) { s.classList.toggle('on', p >= (i + 0.5) / steps.length); });
+}
+addEventListener('scroll', methTick, { passive: true });
+methTick();
+
+</script>
+</body>
+</html>
