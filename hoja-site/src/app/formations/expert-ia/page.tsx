@@ -233,13 +233,13 @@ export default function Page() {
             
             <div className="flex flex-wrap justify-center gap-4">
               <a
-                className="inline-block py-4 px-9 rounded-[60px] bg-primary text-color-001 text-[0.9375rem] font-semibold capitalize coursr-pointer"
+                className="inline-block py-4 px-9 rounded-[60px] bg-primary text-color-001 text-[0.9375rem] font-semibold capitalize cursor-pointer"
                 href="/postuler"
               >
                 Postuler
               </a>
               <a
-                className="inline-block py-4 px-9 rounded-[60px] border-2 border-solid border-background text-background text-[0.9375rem] font-semibold capitalize coursr-pointer"
+                className="inline-block py-4 px-9 rounded-[60px] border-2 border-solid border-background text-background text-[0.9375rem] font-semibold capitalize cursor-pointer"
                 href="/contact"
               >
                 Nous contacter

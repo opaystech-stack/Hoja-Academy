@@ -191,7 +191,7 @@ export default function Page() {
   return (
     <>
       {" "}
-      <a className="w-px h-px block absolute -top-37500 left-0 -m-px overflow-hidden text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] [clip-path:inset(50%)] coursr-pointer" href="#content">
+      <a className="w-px h-px block absolute -top-37500 left-0 -m-px overflow-hidden text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] [clip-path:inset(50%)] cursor-pointer" href="#content">
         Aller au contenu
       </a>
       {" "}
@@ -381,7 +381,7 @@ export default function Page() {
                     {" "}
                     <p className="block mb-[0.9rem]">
                       {"En utilisant la fonction IA « Alvi », vous acceptez que des données vocales, leurs transcriptions et métadonnées (date, heure, durée) soient collectées et traitées afin de faciliter la communication en temps réel et de garantir la sécurité du service. La base légale de ce traitement est l'exécution du contrat et votre consentement exprès ; les données sont conservées pendant la durée nécessaire conformément à la réglementation en vigueur. Vous pourrez exercer vos droits d'accès, de rectification, d'effacement, de portabilité et d'opposition en envoyant une demande à "}
-                      <a className="inline [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] coursr-pointer" data-ditto-id="style-span-47" data-component="link" href="mailto:info@hoja-academy.com" rel="noopener">
+                      <a className="inline [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] cursor-pointer" data-ditto-id="style-span-47" data-component="link" href="mailto:info@hoja-academy.com" rel="noopener">
                         info@hoja-academy.com
                       </a>
                       .
@@ -394,7 +394,7 @@ export default function Page() {
                     <p className="block mb-[0.9rem]" />
                     <p className="block mb-[0.9rem]" data-ditto-id="style-p-15">
                       {"Vous pouvez demander la liste de ces sociétés et organismes par le biais de notre adresse e-mail "}
-                      <a className="inline [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] coursr-pointer" data-ditto-id="style-footer-3" data-component="link" href="mailto:info@hoja-academy.com" rel="noopener">
+                      <a className="inline [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] cursor-pointer" data-ditto-id="style-footer-3" data-component="link" href="mailto:info@hoja-academy.com" rel="noopener">
                         info@hoja-academy.com
                       </a>
                     </p>
@@ -434,7 +434,7 @@ export default function Page() {
                       </p>
                       {" "}
                       <p className="block mb-[0.9rem]">
-                        En caso de que lo hagamos, te lo notificaremos mediante un banner informativo en la propia web.
+                        Si nous procédons à une telle modification, nous vous en informerons au moyen d'un bandeau d'information sur le présent site.
                       </p>
                       {" "}
                       <p className="block mb-[0.9rem]" data-ditto-id="style-p-2">
@@ -773,7 +773,7 @@ export default function Page() {
                     </p>
                     {" "}
                     <p className="block mb-[0.9rem]">
-                      •Referencias a cuentas propias, transacciones fraudulentas o toute activité suspecte de fraude dans le cadre du Programme.
+                      • Références à des comptes personnels, à des transactions frauduleuses ou à toute activité suspecte de fraude dans le cadre du Programme.
                     </p>
                     {" "}
                     <p className="block mb-[0.9rem]" data-ditto-id="style-image-5">

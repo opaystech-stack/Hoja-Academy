@@ -182,7 +182,7 @@ export default function Page() {
   return (
     <>
       {" "}
-      <a className="w-px h-px block absolute -top-37500 left-0 -m-px overflow-hidden text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] [clip-path:inset(50%)] coursr-pointer" href="#content">
+      <a className="w-px h-px block absolute -top-37500 left-0 -m-px overflow-hidden text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] [clip-path:inset(50%)] cursor-pointer" href="#content">
         Aller au contenu
       </a>
       {" "}

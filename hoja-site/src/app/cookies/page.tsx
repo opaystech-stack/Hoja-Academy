@@ -229,7 +229,7 @@ export default function Page() {
       {" "}
       <span className="w-1 h-1 border-2 border-inset border-foreground block absolute -top-[624.9375rem] overflow-clip" aria-hidden="true" role="presentation" title="Vidéo témoignage — apprenant HOJA ACADEMY"></span>
       {" "}
-      <a className="w-px h-px block absolute -top-37500 left-0 -m-px overflow-hidden text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] [clip-path:inset(50%)] coursr-pointer" href="#content">
+      <a className="w-px h-px block absolute -top-37500 left-0 -m-px overflow-hidden text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] [clip-path:inset(50%)] cursor-pointer" href="#content">
         Aller au contenu
       </a>
       {" "}
@@ -376,7 +376,7 @@ export default function Page() {
                   {" "}
                   <p className="block mb-[0.9rem]" data-ditto-id="interaction-li-2">
                     {"Plus d'informations sur ces cookies sur "}
-                    <a className="inline text-clr-45 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] coursr-pointer" data-ditto-id="interaction-sm-17672256027865476-1" data-component="link" href="https://www.google.es/analytics/terms/es.html">
+                    <a className="inline text-clr-45 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] cursor-pointer" data-ditto-id="interaction-sm-17672256027865476-1" data-component="link" href="https://www.google.es/analytics/terms/es.html">
                       <span className="inline" data-ditto-id="style-span-6">
                         Google Analytics
                       </span>
@@ -453,7 +453,7 @@ export default function Page() {
                   {" "}
                   <p className="block mb-[0.9rem]">
                     {"Vous pouvez obtenir plus d'informations sur les cookies sur Internet, "}
-                    <a className="inline [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] coursr-pointer" data-ditto-id="interaction-div-2" data-component="link" href="https://www.aboutcookies.org/">
+                    <a className="inline [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] cursor-pointer" data-ditto-id="interaction-div-2" data-component="link" href="https://www.aboutcookies.org/">
                       <span className="inline" data-ditto-id="style-link-2">
                         https://www.aboutcookies.org
                       </span>

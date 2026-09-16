@@ -78,7 +78,7 @@ export default function Page() {
                 <a
                   key={d.href}
                   href={d.href}
-                  className="flex flex-col gap-4 rounded-[38px] border-4 border-solid border-primary p-8 max-md:p-6 coursr-pointer hover:bg-color-038"
+                  className="flex flex-col gap-4 rounded-[38px] border-4 border-solid border-primary p-8 max-md:p-6 cursor-pointer hover:bg-color-038"
                 >
                   <div className="text-primary text-xs font-semibold tracking-[0.18em] uppercase">
                     Domaine de formation
@@ -118,13 +118,13 @@ export default function Page() {
             </p>
             <div className="flex flex-wrap justify-center gap-4 pt-2">
               <a
-                className="inline-block py-4 px-9 rounded-[60px] bg-primary text-color-001 text-[0.9375rem] font-semibold capitalize coursr-pointer"
+                className="inline-block py-4 px-9 rounded-[60px] bg-primary text-color-001 text-[0.9375rem] font-semibold capitalize cursor-pointer"
                 href="/postuler"
               >
                 Postuler
               </a>
               <a
-                className="inline-block py-4 px-9 rounded-[60px] border-2 border-solid border-accent text-accent text-[0.9375rem] font-semibold capitalize coursr-pointer"
+                className="inline-block py-4 px-9 rounded-[60px] border-2 border-solid border-accent text-accent text-[0.9375rem] font-semibold capitalize cursor-pointer"
                 href="/contact"
               >
                 Parler à un conseiller

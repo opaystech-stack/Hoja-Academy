@@ -152,13 +152,13 @@ export default function PostulerPage() {
             </div>
             <div className="flex flex-wrap items-center gap-5 mt-12 max-md:flex-col max-md:items-start">
               <a
-                className="inline-block py-[0.9375rem] px-7.5 rounded-[60px] text-color-001 text-[0.9375rem] font-semibold text-center bg-primary coursr-pointer"
+                className="inline-block py-[0.9375rem] px-7.5 rounded-[60px] text-color-001 text-[0.9375rem] font-semibold text-center bg-primary cursor-pointer"
                 href="/contact"
               >
                 Une question ? Contactez-nous
               </a>
               <a
-                className="inline-block py-[0.9375rem] px-7.5 rounded-[60px] text-color-001 text-[0.9375rem] font-semibold text-center border border-solid border-color-001/30 coursr-pointer"
+                className="inline-block py-[0.9375rem] px-7.5 rounded-[60px] text-color-001 text-[0.9375rem] font-semibold text-center border border-solid border-color-001/30 cursor-pointer"
                 href="https://hojanetwork.org"
                 target="_blank"
                 rel="noopener"

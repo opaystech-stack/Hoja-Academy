@@ -236,7 +236,7 @@ export default function Page() {
       {" "}
       <span className="w-1 h-1 border-2 border-inset border-foreground block absolute -top-[624.9375rem] overflow-clip" aria-hidden="true" role="presentation" title="Vidéo témoignage — apprenant HOJA ACADEMY"></span>
       {" "}
-      <a className="w-px h-px block absolute -top-37500 left-0 -m-px overflow-hidden text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] [clip-path:inset(50%)] coursr-pointer" href="#content">
+      <a className="w-px h-px block absolute -top-37500 left-0 -m-px overflow-hidden text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] [clip-path:inset(50%)] cursor-pointer" href="#content">
         Aller au contenu
       </a>
       {" "}
@@ -282,7 +282,7 @@ export default function Page() {
                     <div className="block relative min-w-0 max-w-full gap-y-[1.0625rem] max-md:text-center 2xl:gap-y-[1.9375rem]" data-ditto-id="interaction-div-26">
                       <div className="block max-lg:mt-2.5">
                         <div className="block">
-                          <a className="border-[5px] border-solid border-primary inline-block py-3 px-6 rounded-[25px] text-background [font-family:Montserrat,_sans-serif] text-sm font-medium leading-[1.1875rem] text-center bg-clr-3 coursr-pointer max-md:[text-align:inherit] 2xl:text-[0.9375rem]" data-ditto-id="style-p-6" data-component="link" href="/formations/expert-ia" target="_blank">
+                          <a className="border-[5px] border-solid border-primary inline-block py-3 px-6 rounded-[25px] text-background [font-family:Montserrat,_sans-serif] text-sm font-medium leading-[1.1875rem] text-center bg-clr-3 cursor-pointer max-md:[text-align:inherit] 2xl:text-[0.9375rem]" data-ditto-id="style-p-6" data-component="link" href="/formations/expert-ia" target="_blank">
                             {" "}
                             <span className="flex flex-row-reverse justify-center gap-3.5">
                               {" "}
@@ -697,7 +697,7 @@ export default function Page() {
                 <div className="block relative min-w-0 max-w-full gap-y-7.5 text-center" data-ditto-id="style-button-2">
                   <div className="block" data-ditto-id="style-span-14">
                     <div className="block" data-ditto-id="style-span-45">
-                      <a className="inline-block py-3 px-6 rounded-[25px] text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] bg-primary coursr-pointer" data-ditto-id="style-span-31" data-component="link" href="/formations/expert-ia" target="_blank">
+                      <a className="inline-block py-3 px-6 rounded-[25px] text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] bg-primary cursor-pointer" data-ditto-id="style-span-31" data-component="link" href="/formations/expert-ia" target="_blank">
                         {" "}
                         <span className="flex flex-row-reverse justify-center gap-3.5">
                           {" "}
@@ -823,7 +823,7 @@ export default function Page() {
                   <div className="block relative min-w-0 max-w-full self-start gap-5 text-center max-md:gap-[initial]">
                     <div className="block">
                       <div className="block">
-                        <a className="inline-block py-3 px-6 rounded-[25px] text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] bg-primary coursr-pointer" data-ditto-id="style-sin-completar-2" data-component="link" href="/formations/expert-ia" target="_blank">
+                        <a className="inline-block py-3 px-6 rounded-[25px] text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] bg-primary cursor-pointer" data-ditto-id="style-sin-completar-2" data-component="link" href="/formations/expert-ia" target="_blank">
                           {" "}
                           <span className="flex flex-row-reverse justify-center gap-3.5">
                             {" "}
@@ -1028,7 +1028,7 @@ export default function Page() {
                   <div className="block relative min-w-0 max-w-full gap-y-5.5 text-center" data-ditto-id="style-link-28">
                     <div className="block">
                       <div className="block">
-                        <a className="h-[2.6875rem] inline-block py-3 px-6 rounded-[25px] text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] bg-primary coursr-pointer" data-ditto-id="style-span-32" data-component="link" href="/" target="_blank">
+                        <a className="h-[2.6875rem] inline-block py-3 px-6 rounded-[25px] text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] bg-primary cursor-pointer" data-ditto-id="style-span-32" data-component="link" href="/" target="_blank">
                           {" "}
                           <span className="flex flex-row-reverse justify-center gap-3.5">
                             {" "}
@@ -1323,7 +1323,7 @@ export default function Page() {
                   <div className="w-[16.3125rem] block relative min-w-0 max-w-full self-start gap-5 text-center 2xl:w-[259.7px]">
                     <div className="block">
                       <div className="block" data-ditto-id="style-link-12">
-                        <a className="h-[2.6875rem] inline-block py-3 px-6 rounded-[25px] text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] bg-primary coursr-pointer" data-ditto-id="style-not-started-4" data-component="link" href="/formations/expert-ia" target="_blank">
+                        <a className="h-[2.6875rem] inline-block py-3 px-6 rounded-[25px] text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] bg-primary cursor-pointer" data-ditto-id="style-not-started-4" data-component="link" href="/formations/expert-ia" target="_blank">
                           {" "}
                           <span className="flex flex-row-reverse justify-center gap-3.5" data-ditto-id="style-div-32">
                             {" "}

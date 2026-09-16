@@ -179,7 +179,7 @@ export default function Page() {
   return (
     <>
       {" "}
-      <a className="w-px h-px block absolute -top-37500 left-0 -m-px overflow-hidden text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] [clip-path:inset(50%)] coursr-pointer" href="#content">
+      <a className="w-px h-px block absolute -top-37500 left-0 -m-px overflow-hidden text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] [clip-path:inset(50%)] cursor-pointer" href="#content">
         Aller au contenu
       </a>
       {" "}
@@ -316,12 +316,12 @@ export default function Page() {
                     <div className="w-full block relative min-w-0 max-w-full gap-y-[1.1875rem] text-background text-[1.125rem] leading-[2rem] max-md:text-base max-lg:leading-7.5 md:max-lg:text-lg 2xl:w-[84%]" data-ditto-id="interaction-p-3">
                       <div className="h-full block" data-ditto-id="interaction-button">
                         <p className="block mb-[0.9rem]">
-                          <a className="inline-block py-3 px-6 rounded-[33px] text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-semibold text-center bg-primary coursr-pointer" data-component="link" href="https://wa.me/243792369704" target="_blank" rel="noopener">WhatsApp</a>
+                          <a className="inline-block py-3 px-6 rounded-[33px] text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-semibold text-center bg-primary cursor-pointer" data-component="link" href="https://wa.me/243792369704" target="_blank" rel="noopener">WhatsApp</a>
                         </p>
                         <p className="block mb-[0.9rem]">
                           {"Téléphone / WhatsApp : "}
                           <span className="inline underline">
-                            <a className="inline [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] coursr-pointer" data-component="link" href="tel:+243792369704">
+                            <a className="inline [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] cursor-pointer" data-component="link" href="tel:+243792369704">
                               <strong className="inline font-bold">+243 792 369 704</strong>
                             </a>
                           </span>
@@ -330,7 +330,7 @@ export default function Page() {
                         <p className="block mb-[0.9rem]">
                           {"E-mail : "}
                           <span className="inline underline">
-                            <a className="inline [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] coursr-pointer" data-component="link" href="mailto:info@hoja-academy.com">
+                            <a className="inline [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] cursor-pointer" data-component="link" href="mailto:info@hoja-academy.com">
                               <strong className="inline font-bold">info@hoja-academy.com</strong>
                             </a>
                           </span>
@@ -377,7 +377,7 @@ export default function Page() {
             <h2 className="block mb-2 text-color-001 [font-family:Montserrat,_sans-serif] text-[1.6875rem] font-bold uppercase">Formulaire de contact</h2>
             <p className="block mb-8 text-foreground text-[0.9375rem] leading-6">
               {"Remplissez les champs ci-dessous : votre messagerie s'ouvre avec un e-mail prérempli à destination de "}
-              <a className="inline underline text-primary font-semibold coursr-pointer" href="mailto:info@hoja-academy.com">info@hoja-academy.com</a>
+              <a className="inline underline text-primary font-semibold cursor-pointer" href="mailto:info@hoja-academy.com">info@hoja-academy.com</a>
               {". Ce site ne dispose d'aucun serveur : rien n'est envoyé ni enregistré automatiquement."}
             </p>
             <ContactForm />

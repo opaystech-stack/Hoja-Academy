@@ -270,7 +270,7 @@ export default function Page() {
       {" "}
       <span className="w-1 h-1 border-2 border-inset border-foreground block absolute -top-[624.9375rem] overflow-clip" aria-hidden="true" role="presentation" title="Vidéo témoignage — apprenant HOJA ACADEMY"></span>
       {" "}
-      <a className="w-px h-px block absolute -top-37500 left-0 -m-px overflow-hidden text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] [clip-path:inset(50%)] coursr-pointer" href="#content">
+      <a className="w-px h-px block absolute -top-37500 left-0 -m-px overflow-hidden text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] [clip-path:inset(50%)] cursor-pointer" href="#content">
         Aller au contenu
       </a>
       {" "}
@@ -733,7 +733,7 @@ export default function Page() {
                         <span className="hidden 2xl:w-336 2xl:h-189 2xl:flex 2xl:max-w-full 2xl:overflow-clip 2xl:leading-5 2xl:bg-color-007" height="360" id="widget10" title="Vidéo témoignage — apprenant HOJA ACADEMY" width="640"></span>
                         <div className="block 2xl:hidden" data-ditto-id="style-iframe" />
                         {" "}
-                        <div className="h-[510.3px] block absolute top-0 inset-x-0 text-center bg-cover [background-position:50%_50%] coursr-pointer max-md:h-[172.1px] 2xl:hidden" style={{ backgroundImage: "url(\"/assets/hoja/hoja-promo-1.jpg\")" }}>
+                        <div className="h-[510.3px] block absolute top-0 inset-x-0 text-center bg-cover [background-position:50%_50%] cursor-pointer max-md:h-[172.1px] 2xl:hidden" style={{ backgroundImage: "url(\"/assets/hoja/hoja-promo-1.jpg\")" }}>
                           <div className="w-25 h-[6.8125rem] block absolute top-[clamp(86px,_50%,_calc(100%_-_86px))] left-[clamp(153px,_50%,_calc(100%_-_153px))] transform-[matrix(1,0,0,1,-50,-54.5)] 2xl:hidden" data-component="button" aria-label="Lire la vidéo" role="button">
                             <svg className="w-auto h-25 inline opacity-80 overflow-hidden [filter:drop-shadow(var(--clr-7)_1px_0px_6px)] 2xl:hidden" data-ditto-id="style-brevo-conversations" data-component="image" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                               <path d="M448 256           C448 210 444 180 436 160           C426 136 406 116 382 106           C362 98 332 96 256 96           C180 96 150 98 130 106           C106 116 86 136 76 160           C68 180 64 210 64 256           C64 302 68 332 76 352           C86 376 106 396 130 406           C150 414 180 416 256 416           C332 416 362 414 382 406           C406 396 426 376 436 352           C444 332 448 302 448 256Z" fill="#FF0000" />
@@ -891,14 +891,14 @@ export default function Page() {
                             </div>
                           </div>
                           {" "}
-                          <div className="w-[1.5625rem] h-[1.5625rem] flex absolute top-50 left-2.5 z-1 text-color-048 text-[1.5625rem] transform-[matrix(1,0,0,1,0,-12.5)] coursr-pointer" data-component="button" aria-controls="swiper-wrapper-4e3bfcdee84510aec" aria-label="Previous slide" role="button">
+                          <div className="w-[1.5625rem] h-[1.5625rem] flex absolute top-50 left-2.5 z-1 text-color-048 text-[1.5625rem] transform-[matrix(1,0,0,1,0,-12.5)] cursor-pointer" data-component="button" aria-controls="swiper-wrapper-4e3bfcdee84510aec" aria-label="Previous slide" role="button">
                             <svg className="w-auto h-[1.5625rem] block overflow-hidden" data-ditto-id="style-div-55" data-component="icon" aria-hidden="true" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                               <path d="M646 125C629 125 613 133 604 142L308 442C296 454 292 471 292 487 292 504 296 521 308 533L604 854C617 867 629 875 646 875 663 875 679 871 692 858 704 846 713 829 713 812 713 796 708 779 692 767L438 487 692 225C700 217 708 204 708 187 708 171 704 154 692 142 675 129 663 125 646 125Z" />
                             </svg>
                             {" "}
                           </div>
                           {" "}
-                          <div className="w-[1.5625rem] h-[1.5625rem] flex absolute top-50 right-2.5 z-1 text-color-048 text-[1.5625rem] transform-[matrix(1,0,0,1,0,-12.5)] coursr-pointer" data-ditto-id="style-div-93" data-component="button" aria-controls="swiper-wrapper-4e3bfcdee84510aec" aria-label="Next slide" role="button">
+                          <div className="w-[1.5625rem] h-[1.5625rem] flex absolute top-50 right-2.5 z-1 text-color-048 text-[1.5625rem] transform-[matrix(1,0,0,1,0,-12.5)] cursor-pointer" data-ditto-id="style-div-93" data-component="button" aria-controls="swiper-wrapper-4e3bfcdee84510aec" aria-label="Next slide" role="button">
                             <svg className="w-auto h-[1.5625rem] block overflow-hidden" data-ditto-id="style-a-5" data-component="icon" aria-hidden="true" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                               <path d="M696 533C708 521 713 504 713 487 713 471 708 454 696 446L400 146C388 133 375 125 354 125 338 125 325 129 313 142 300 154 292 171 292 187 292 204 296 221 308 233L563 492 304 771C292 783 288 800 288 817 288 833 296 850 308 863 321 871 338 875 354 875 371 875 388 867 400 854L696 533Z" />
                             </svg>
@@ -906,9 +906,9 @@ export default function Page() {
                           </div>
                           {" "}
                           <div className="h-[2.0625rem] block absolute bottom-[0.3125rem] inset-x-0 z-10 text-center">
-                            <span className="h-1.5 inline-block mx-1.5 rounded-[50%] bg-color-007 coursr-pointer" data-ditto-id="style-span-44" data-component="button" aria-current="true" aria-label="Go to slide 1" role="button" />
-                            <span className="h-1.5 inline-block opacity-20 mx-1.5 rounded-[50%] bg-color-007 coursr-pointer" data-ditto-id="interaction-div-20" data-component="button" aria-label="Go to slide 2" role="button" />
-                            <span className="h-1.5 inline-block opacity-20 mx-1.5 rounded-[50%] bg-color-007 coursr-pointer" data-component="button" aria-label="Go to slide 3" role="button" />
+                            <span className="h-1.5 inline-block mx-1.5 rounded-[50%] bg-color-007 cursor-pointer" data-ditto-id="style-span-44" data-component="button" aria-current="true" aria-label="Go to slide 1" role="button" />
+                            <span className="h-1.5 inline-block opacity-20 mx-1.5 rounded-[50%] bg-color-007 cursor-pointer" data-ditto-id="interaction-div-20" data-component="button" aria-label="Go to slide 2" role="button" />
+                            <span className="h-1.5 inline-block opacity-20 mx-1.5 rounded-[50%] bg-color-007 cursor-pointer" data-component="button" aria-label="Go to slide 3" role="button" />
                           </div>
                           {" "}
                         </div>
@@ -1163,14 +1163,14 @@ export default function Page() {
                       {" "}
                     </div>
                     {" "}
-                    <div className="w-[1.5625rem] h-[1.5625rem] flex absolute top-[210.5px] z-2 text-background text-[1.5625rem] transform-[matrix(1,0,0,1,0,-12.5)] coursr-pointer max-md:top-[248.5px] 2xl:top-78" data-ditto-id="style-not-completed-2" data-component="button" aria-controls="swiper-wrapper-c16d10d164a1f62ab" aria-label="Diapositive précédente" role="button">
+                    <div className="w-[1.5625rem] h-[1.5625rem] flex absolute top-[210.5px] z-2 text-background text-[1.5625rem] transform-[matrix(1,0,0,1,0,-12.5)] cursor-pointer max-md:top-[248.5px] 2xl:top-78" data-ditto-id="style-not-completed-2" data-component="button" aria-controls="swiper-wrapper-c16d10d164a1f62ab" aria-label="Diapositive précédente" role="button">
                       <svg className="w-auto h-[1.5625rem] block overflow-hidden" data-ditto-id="style-span-28" data-component="icon" aria-hidden="true" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                         <path d="M646 125C629 125 613 133 604 142L308 442C296 454 292 471 292 487 292 504 296 521 308 533L604 854C617 867 629 875 646 875 663 875 679 871 692 858 704 846 713 829 713 812 713 796 708 779 692 767L438 487 692 225C700 217 708 204 708 187 708 171 704 154 692 142 675 129 663 125 646 125Z" />
                       </svg>
                       {" "}
                     </div>
                     {" "}
-                    <div className="w-[1.5625rem] h-[1.5625rem] flex absolute top-[210.5px] right-[1.9375rem] z-2 text-background text-[1.5625rem] transform-[matrix(1,0,0,1,0,-12.5)] coursr-pointer max-md:top-[248.5px] 2xl:top-78" data-ditto-id="interaction-ld-table-list-item-18790" data-component="button" aria-controls="swiper-wrapper-c16d10d164a1f62ab" aria-label="Diapositive suivante" role="button">
+                    <div className="w-[1.5625rem] h-[1.5625rem] flex absolute top-[210.5px] right-[1.9375rem] z-2 text-background text-[1.5625rem] transform-[matrix(1,0,0,1,0,-12.5)] cursor-pointer max-md:top-[248.5px] 2xl:top-78" data-ditto-id="interaction-ld-table-list-item-18790" data-component="button" aria-controls="swiper-wrapper-c16d10d164a1f62ab" aria-label="Diapositive suivante" role="button">
                       <svg className="w-auto h-[1.5625rem] block overflow-hidden" data-ditto-id="style-div-50" data-component="icon" aria-hidden="true" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                         <path d="M696 533C708 521 713 504 713 487 713 471 708 454 696 446L400 146C388 133 375 125 354 125 338 125 325 129 313 142 300 154 292 171 292 187 292 204 296 221 308 233L563 492 304 771C292 783 288 800 288 817 288 833 296 850 308 863 321 871 338 875 354 875 371 875 388 867 400 854L696 533Z" />
                       </svg>
@@ -1178,12 +1178,12 @@ export default function Page() {
                     </div>
                     {" "}
                     <div className="h-2.5 block absolute top-[28.1875rem] right-[346.5px] left-[clamp(147.5px,_50%,_calc(100%_-_147.5px))] z-3 text-[0.625rem] leading-2.5 text-center transform-[matrix(1,0,0,1,-66,-10)] max-md:top-[32.9375rem] max-md:right-[15.5px] md:max-lg:right-50.5 2xl:h-4 2xl:top-163.5 2xl:right-185.5 2xl:text-base 2xl:leading-4 2xl:transform-[matrix(1,0,0,1,-84,-16)]">
-                      <span className="h-full inline-block mx-1.5 rounded-[50%] align-top bg-color-001 coursr-pointer" data-ditto-id="style-a-4" data-component="button" aria-current="true" aria-label="Aller à la diapositive 1" role="button" />
-                      <span className="h-full inline-block opacity-20 mx-1.5 rounded-[50%] align-top bg-color-001 coursr-pointer" data-ditto-id="style-sin-completar" data-component="button" aria-label="Aller à la diapositive 2" role="button" />
-                      <span className="h-full inline-block opacity-20 mx-1.5 rounded-[50%] align-top bg-color-001 coursr-pointer" data-ditto-id="style-span-29" data-component="button" aria-label="Aller à la diapositive 3" role="button" />
-                      <span className="h-full inline-block opacity-20 mx-1.5 rounded-[50%] align-top bg-color-001 coursr-pointer" data-ditto-id="style-div-51" data-component="button" aria-label="Aller à la diapositive 4" role="button" />
-                      <span className="h-full inline-block opacity-20 mx-1.5 rounded-[50%] align-top bg-color-001 coursr-pointer" data-ditto-id="style-div-52" data-component="button" aria-label="Aller à la diapositive 5" role="button" />
-                      <span className="h-full inline-block opacity-20 mx-1.5 rounded-[50%] align-top bg-color-001 coursr-pointer" data-ditto-id="style-ld-expand-17983" data-component="button" aria-label="Aller à la diapositive 6" role="button" />
+                      <span className="h-full inline-block mx-1.5 rounded-[50%] align-top bg-color-001 cursor-pointer" data-ditto-id="style-a-4" data-component="button" aria-current="true" aria-label="Aller à la diapositive 1" role="button" />
+                      <span className="h-full inline-block opacity-20 mx-1.5 rounded-[50%] align-top bg-color-001 cursor-pointer" data-ditto-id="style-sin-completar" data-component="button" aria-label="Aller à la diapositive 2" role="button" />
+                      <span className="h-full inline-block opacity-20 mx-1.5 rounded-[50%] align-top bg-color-001 cursor-pointer" data-ditto-id="style-span-29" data-component="button" aria-label="Aller à la diapositive 3" role="button" />
+                      <span className="h-full inline-block opacity-20 mx-1.5 rounded-[50%] align-top bg-color-001 cursor-pointer" data-ditto-id="style-div-51" data-component="button" aria-label="Aller à la diapositive 4" role="button" />
+                      <span className="h-full inline-block opacity-20 mx-1.5 rounded-[50%] align-top bg-color-001 cursor-pointer" data-ditto-id="style-div-52" data-component="button" aria-label="Aller à la diapositive 5" role="button" />
+                      <span className="h-full inline-block opacity-20 mx-1.5 rounded-[50%] align-top bg-color-001 cursor-pointer" data-ditto-id="style-ld-expand-17983" data-component="button" aria-label="Aller à la diapositive 6" role="button" />
                     </div>
                     {" "}
                   </div>
@@ -1788,7 +1788,7 @@ export default function Page() {
                           {", "}
                         </span>
                         {" dédié, qui anime la majeure partie des sessions et accompagne les apprenants tout au long du programme."}
-                        <a className="inline [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] bg-color-019 coursr-pointer" data-component="link" href="#" rel="noopener" target="_blank">
+                        <a className="inline [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] bg-color-019 cursor-pointer" data-component="link" href="#" rel="noopener" target="_blank">
                           LinkedIn
                         </a>
                       </p>
@@ -1849,7 +1849,7 @@ export default function Page() {
                       </p>
                       <p className="block mb-[0.9rem]">
                         {"Chaque module est animé par un formateur référent du domaine."}
-                        <a className="inline [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] bg-color-019 coursr-pointer" data-component="link" href="#" rel="noopener" target="_blank">
+                        <a className="inline [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] bg-color-019 cursor-pointer" data-component="link" href="#" rel="noopener" target="_blank">
                           LinkedIn
                         </a>
                       </p>

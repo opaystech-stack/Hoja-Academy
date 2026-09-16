@@ -63,7 +63,7 @@ export default function PageHero({
             <div className="block relative min-w-0 max-w-full gap-y-[1.0625rem] max-md:text-center 2xl:gap-y-[1.9375rem]">
               <div className="block max-lg:mt-2.5">
                 <div className="block">
-                  <a className="border-[5px] border-solid border-primary inline-block py-3 px-6 rounded-[25px] text-background [font-family:Montserrat,_sans-serif] text-sm font-medium leading-[1.1875rem] text-center bg-clr-3 coursr-pointer max-md:[text-align:inherit] 2xl:text-[0.9375rem] hover:transform-[matrix(1.08023,0,0,1.08023,0,0)] focus:transform-[matrix(1.1,0,0,1.1,0,0)]" data-component="link" href={ctaHref}>
+                  <a className="border-[5px] border-solid border-primary inline-block py-3 px-6 rounded-[25px] text-background [font-family:Montserrat,_sans-serif] text-sm font-medium leading-[1.1875rem] text-center bg-clr-3 cursor-pointer max-md:[text-align:inherit] 2xl:text-[0.9375rem] hover:transform-[matrix(1.08023,0,0,1.08023,0,0)] focus:transform-[matrix(1.1,0,0,1.1,0,0)]" data-component="link" href={ctaHref}>
                     {" "}
                     <span className="flex flex-row-reverse justify-center gap-3.5">
                       {" "}

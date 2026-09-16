@@ -17,7 +17,7 @@ export default function MediaTile2({ d, styles }: { d: MediaTile2Data; styles: M
           <div className="block">
             <div className="block" aria-label="Accordion. Open links with Enter or Space, close with Escape, and navigate with Arrow Keys">
               <details className="flex relative flex-col" id={d.id}>
-                <summary className="border-b border-solid border-b-color-011 flex pb-2.5 justify-between items-center gap-x-2.5 text-color-003 coursr-pointer 2xl:pb-5" aria-controls={d.ariacontrols} aria-expanded="false">
+                <summary className="border-b border-solid border-b-color-011 flex pb-2.5 justify-between items-center gap-x-2.5 text-color-003 cursor-pointer 2xl:pb-5" aria-controls={d.ariacontrols} aria-expanded="false">
                   <span className="flex">
                     <div className={cn("block items-center font-medium max-lg:text-[1.1875rem] 2xl:text-[1.875rem]", styles.className)}>
                       {d.text}
@@ -57,7 +57,7 @@ export default function MediaTile2({ d, styles }: { d: MediaTile2Data; styles: M
           <div className="block">
             <div className="block" aria-label="Accordion. Open links with Enter or Space, close with Escape, and navigate with Arrow Keys">
               <details className="flex relative flex-col" id={d.id2}>
-                <summary className="border-b border-solid border-b-color-011 flex pb-2.5 justify-between items-center gap-x-2.5 text-color-003 coursr-pointer 2xl:pb-5" aria-controls={d.ariacontrols2} aria-expanded="false">
+                <summary className="border-b border-solid border-b-color-011 flex pb-2.5 justify-between items-center gap-x-2.5 text-color-003 cursor-pointer 2xl:pb-5" aria-controls={d.ariacontrols2} aria-expanded="false">
                   <span className="flex">
                     <div className={cn("block items-center font-medium max-lg:text-[1.1875rem] 2xl:text-[1.875rem]", styles.className2)}>
                       {d.text2}

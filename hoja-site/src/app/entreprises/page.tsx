@@ -227,7 +227,7 @@ export default function Page() {
   return (
     <>
       {" "}
-      <a className="w-px h-px block absolute -top-37500 left-0 -m-px overflow-hidden text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] [clip-path:inset(50%)] coursr-pointer" href="#content">
+      <a className="w-px h-px block absolute -top-37500 left-0 -m-px overflow-hidden text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] [clip-path:inset(50%)] cursor-pointer" href="#content">
         Aller au contenu
       </a>
       {" "}
@@ -325,7 +325,7 @@ export default function Page() {
                   <div className="block relative min-w-0 max-w-full self-center gap-5" data-ditto-id="style-p-14">
                     <div className="block py-4 px-8">
                       <div className="block" data-ditto-id="style-p-11">
-                        <a className="h-[2.6875rem] inline-block py-3 px-6 rounded-[25px] text-color-007 [font-family:Montserrat,_sans-serif] text-base font-semibold leading-[1.1875rem] text-center bg-primary shadow-[var(--clr-19)_0px_0px_10px_0px] coursr-pointer max-md:text-[0.9375rem]" data-ditto-id="style-p-8" data-component="link" href="/contact" target="_blank">
+                        <a className="h-[2.6875rem] inline-block py-3 px-6 rounded-[25px] text-color-007 [font-family:Montserrat,_sans-serif] text-base font-semibold leading-[1.1875rem] text-center bg-primary shadow-[var(--clr-19)_0px_0px_10px_0px] cursor-pointer max-md:text-[0.9375rem]" data-ditto-id="style-p-8" data-component="link" href="/contact" target="_blank">
                           {" "}
                           <span className="flex justify-center gap-[0.3125rem]" data-ditto-id="style-p-9">
                             {" "}
@@ -346,7 +346,7 @@ export default function Page() {
                   <div className="block relative min-w-0 max-w-full self-center gap-5" data-ditto-id="style-p-12">
                     <div className="block py-4 px-8" data-ditto-id="style-p-4">
                       <div className="block" data-ditto-id="interaction-p-2">
-                        <a className="h-[2.9375rem] border-2 border-solid border-primary inline-block py-3 px-6 text-background [font-family:Montserrat,_sans-serif] text-base font-semibold leading-[1.1875rem] text-center bg-clr-3 shadow-[var(--clr-19)_0px_0px_10px_0px] coursr-pointer max-md:text-[0.9375rem]" data-ditto-id="interaction-p-3" data-component="link" href="#formaciones">
+                        <a className="h-[2.9375rem] border-2 border-solid border-primary inline-block py-3 px-6 text-background [font-family:Montserrat,_sans-serif] text-base font-semibold leading-[1.1875rem] text-center bg-clr-3 shadow-[var(--clr-19)_0px_0px_10px_0px] cursor-pointer max-md:text-[0.9375rem]" data-ditto-id="interaction-p-3" data-component="link" href="#formaciones">
                           {" "}
                           <span className="flex justify-center gap-[0.3125rem]" data-ditto-id="interaction-button">
                             {" "}
@@ -622,7 +622,7 @@ export default function Page() {
                     <div className="block relative min-w-0 max-w-full self-center gap-5 text-center" data-ditto-id="style-div-69">
                       <div className="block -ml-10">
                         <div className="block" data-ditto-id="style-div-70">
-                          <a className="h-[3.8375rem] inline-block p-3.5 rounded-[25px] text-background [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] bg-color-016 coursr-pointer" data-ditto-id="style-div-71" data-component="link" href={"mailto:info@hoja-academy.com?subject=Demande%20-%20Formation%20IA%20pour%20organisation&body=(Indiquez-nous%20votre%20organisation%2C%20vos%20effectifs%20et%20vos%20objectifs%20%3B%20nous%20reviendrons%20vers%20vous%20rapidement%20et%20sans%20engagement.)"} target="_blank">
+                          <a className="h-[3.8375rem] inline-block p-3.5 rounded-[25px] text-background [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] bg-color-016 cursor-pointer" data-ditto-id="style-div-71" data-component="link" href={"mailto:info@hoja-academy.com?subject=Demande%20-%20Formation%20IA%20pour%20organisation&body=(Indiquez-nous%20votre%20organisation%2C%20vos%20effectifs%20et%20vos%20objectifs%20%3B%20nous%20reviendrons%20vers%20vous%20rapidement%20et%20sans%20engagement.)"} target="_blank">
                             {" "}
                             <span className="flex justify-center gap-[0.3125rem]" data-ditto-id="style-link-9">
                               {" "}
@@ -838,7 +838,7 @@ export default function Page() {
                 <div className="block relative min-w-0 max-w-full gap-5">
                   <div className="block">
                     <div className="block">
-                      <a className="h-[3.1875rem] inline-block py-4 px-10 rounded-[30px] text-color-052 [font-family:Montserrat,_sans-serif] text-lg font-medium leading-[1.1875rem] text-center [text-shadow:var(--clr-7)_0px_0px_10px] bg-primary coursr-pointer max-md:text-[0.9375rem]" data-ditto-id="style-span-37" data-component="link" href="/contact" target="_blank">
+                      <a className="h-[3.1875rem] inline-block py-4 px-10 rounded-[30px] text-color-052 [font-family:Montserrat,_sans-serif] text-lg font-medium leading-[1.1875rem] text-center [text-shadow:var(--clr-7)_0px_0px_10px] bg-primary cursor-pointer max-md:text-[0.9375rem]" data-ditto-id="style-span-37" data-component="link" href="/contact" target="_blank">
                         {" "}
                         <span className="flex justify-center gap-[0.3125rem]" data-ditto-id="style-div-81">
                           {" "}
@@ -1065,7 +1065,7 @@ export default function Page() {
                 <div className="h-full block overflow-hidden" data-ditto-id="style-div-42">
                   <div className="box-content h-full flex relative z-15 flex-col overflow-hidden bg-primary shadow-[var(--clr-7)_0px_0px_10px_0px]">
                     <div className="box-content block shrink-0">
-                      <button className="w-15 h-15 min-h-full block absolute top-0 left-0 z-18 max-w-15 leading-0 text-left bg-primary [animation-name:header-appear] [animation-duration:0.25s] [animation-timing-function:ease-out] [animation-fill-mode:both] coursr-pointer" data-component="button" aria-label="Discutez avec nous, nous sommes en ligne !" title="Discutez avec nous, nous sommes en ligne !" type="button">
+                      <button className="w-15 h-15 min-h-full block absolute top-0 left-0 z-18 max-w-15 leading-0 text-left bg-primary [animation-name:header-appear] [animation-duration:0.25s] [animation-timing-function:ease-out] [animation-fill-mode:both] cursor-pointer" data-component="button" aria-label="Discutez avec nous, nous sommes en ligne !" title="Discutez avec nous, nous sommes en ligne !" type="button">
                         <div className="inline-block max-w-full pr-[0.6875rem] pl-4 overflow-hidden align-top text-foreground whitespace-nowrap [overflow-wrap:normal] text-nowrap" aria-hidden="true">
                           {" "}
                           <span className="box-content hidden [overflow-wrap:break-word] before:content-[''] before:inline-block before:relative before:w-2 before:h-2 before:mr-0.5 before:bg-clr-8 before:shadow-[var(--clr-9)_0px_0px_0px_1px] before:rounded-tl-[5px]">

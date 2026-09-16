@@ -178,7 +178,7 @@ export default function Page() {
   return (
     <>
       {" "}
-      <a className="w-px h-px block absolute -top-37500 left-0 -m-px overflow-hidden text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] [clip-path:inset(50%)] coursr-pointer" href="#content">
+      <a className="w-px h-px block absolute -top-37500 left-0 -m-px overflow-hidden text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] [clip-path:inset(50%)] cursor-pointer" href="#content">
         Aller au contenu
       </a>
       {" "}
@@ -212,7 +212,7 @@ export default function Page() {
                     {" Les informations suivantes sont fournies conformément à la législation applicable sur le commerce électronique :"}
                     <br className="inline" data-ditto-id="style-span-40" />
                     {"Qu'il est titulaire du domaine et du site web : "}
-                    <a className="inline [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] coursr-pointer" data-component="link" href="/">
+                    <a className="inline [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] cursor-pointer" data-component="link" href="/">
                       https://hoja-academy.com/
                     </a>
                   </p>
