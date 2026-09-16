@@ -84,11 +84,11 @@
 
   h1{font-size:22px;font-weight:700;line-height:1.25;letter-spacing:-0.02em;color:var(--text-bright);}
   p.lead{color:var(--muted);font-size:13px;margin-top:6px;line-height:1.5;max-width:70ch;}
-  h2.zone{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-dark);margin:26px 0 12px;display:flex;align-items:center;gap:10px;}
-  h2.zone::after{content:"";flex:1;height:1px;background:var(--line);opacity:.6;}
+  .zone{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-dark);margin:26px 0 12px;display:flex;align-items:center;gap:10px;}
+  .zone::after{content:"";flex:1;height:1px;background:var(--line);opacity:.6;}
 
   section.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:18px 20px;margin-bottom:14px;overflow-wrap:break-word;box-shadow:0 1px 3px rgba(0,0,0,.15);}
-  section.card>h3{font-size:14px;font-weight:600;display:flex;align-items:center;gap:10px;flex-wrap:wrap;color:var(--text-bright);}
+  section.card>h2{font-size:14px;font-weight:600;display:flex;align-items:center;gap:10px;flex-wrap:wrap;color:var(--text-bright);}
   section.card>p.sub{color:var(--muted);font-size:12px;margin:4px 0 12px;line-height:1.5;}
   .chip{display:inline-flex;align-items:center;gap:6px;height:22px;border-radius:999px;padding:0 9px;font-size:11.5px;font-weight:600;letter-spacing:.02em;border:1px solid var(--line);}
   .chip.ok{color:var(--teal-light);background:var(--teal-soft);border-color:rgba(16,185,129,.35);}
@@ -101,7 +101,10 @@
   .dot.warn{background:var(--amber);box-shadow:0 0 6px rgba(245,158,11,.5);}
 
   /* État de l'Academy & Métriques SaaS */
-  .statgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;border:0;border-radius:0;background:transparent;overflow:visible;margin-bottom:14px;}
+  /* 5 indicateurs : à 190 px de largeur minimale la grille retombait sur 4 colonnes
+     et laissait « Programme » seule sur une deuxième ligne. 175 px les aligne sur
+     une seule ligne dès 1040 px, sans casser le repli mobile. */
+  .statgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:12px;border:0;border-radius:0;background:transparent;overflow:visible;margin-bottom:14px;}
   a.stat{display:flex;flex-direction:column;justify-content:space-between;padding:16px 18px;border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--card);color:var(--text);text-decoration:none;transition:border-color .15s,background-color .15s,transform .15s;min-height:108px;box-shadow:0 1px 3px rgba(0,0,0,.15);}
   a.stat:hover{background:var(--card-hover);border-color:rgba(255,255,255,.16);transform:translateY(-1px);}
   a.stat .k{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;justify-content:space-between;gap:8px;}
@@ -279,7 +282,7 @@
   .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;align-items:start;}
   @media(max-width:900px){.pgrid{grid-template-columns:1fr;}}
   .psec{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:14px 16px;}
-  .psec h3{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+  .psec h2{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
   .psec .kv{display:grid;grid-template-columns:minmax(96px,128px) 1fr;gap:4px 14px;padding:7px 0;border-bottom:1px solid var(--line);align-items:baseline;}
   .psec .kv:last-child{border-bottom:0;}
   .psec .kv .k{color:var(--muted);font-size:12px;font-weight:400;}
@@ -455,22 +458,22 @@
     <h1>Vue d'ensemble</h1>
     <p class="lead">Cohorte 01 — inscriptions, apprenants, import &amp; invitations, programme et Classroom. Données réelles via l'API, rien d'inventé.</p>
 
-    <h2 class="zone">À faire</h2>
+    <p class="zone">À faire</p>
     <ul class="todo card" id="todo" style="padding:0;"><li><span class="lbl">Chargement des données (passerelle, roster, candidatures)…</span></li></ul>
 
-    <h2 class="zone">État de l'Academy</h2>
+    <p class="zone">État de l'Academy</p>
     <div class="statgrid" id="statgrid"><a class="stat"><span class="k">Chargement…</span></a></div>
 
-    <h2 class="zone">Facturation</h2>
+    <p class="zone">Facturation</p>
     <div class="statgrid" id="billing"><a class="stat"><span class="k">Chargement…</span></a></div>
 
-    <h2 class="zone">Prochaine cohorte</h2>
+    <p class="zone">Prochaine cohorte</p>
     <div id="home-cohort" class="card" style="padding:12px 16px;margin-bottom:0"><span class="empty">Chargement…</span></div>
 
-    <h2 class="zone">Activité récente</h2>
+    <p class="zone">Activité récente</p>
     <ul class="todo card" id="activity" style="padding:0"><li><span class="lbl">Chargement…</span></li></ul>
 
-    <h2 class="zone">Programme</h2>
+    <p class="zone">Programme</p>
     <div class="blocs" id="home-blocs"><p class="empty">Chargement…</p></div>
   </section>
 
@@ -536,7 +539,8 @@
 
   <!-- ================= PROGRAMME ================= -->
   <section id="tab-programme" hidden>
-    <h2 class="zone" style="margin-top:4px">Programme — 4 blocs · 18 modules · 8 semaines</h2>
+    <h1>Programme</h1>
+    <p class="lead">4 blocs · 18 modules · 8 semaines. Contenu réel des modules, rien d'inventé.</p>
     <div id="programme-body"><p class="empty">Chargement du programme…</p></div>
     <div id="mod-view" style="display:none">
       <div id="mod-head"></div>
@@ -550,7 +554,7 @@
     <h1>Google Classroom</h1>
     <p class="lead">État de la connexion, suivi des apprenants et pilotage des publications.</p>
     <section class="card" style="margin-top:16px;">
-      <h3><span class="dot" id="d-classroom2"></span>État de la passerelle <span class="chip neutral" id="chip-classroom2">chargement…</span></h3>
+      <h2><span class="dot" id="d-classroom2"></span>État de la passerelle <span class="chip neutral" id="chip-classroom2">chargement…</span></h2>
       <ul class="facts">
         <li><span class="k">Connexion</span><span class="v" id="g-status2">—</span></li>
         <li><span class="k">Compte Google</span><span class="v mut" id="g-account2">—</span></li>
@@ -1122,7 +1126,7 @@ async function openPerson(id) {
       '<div class="ps ' + x.cls + (xi === (na.step != null ? na.step : -1) ? ' cur' : '') + '"><span class="k">' + esc(x.k) + '</span><span class="st ' + (x.cls === 'na' ? 'wait' : x.cls) + '"' + (x.cls === 'na' ? ' style="opacity:.55"' : '') + '>' + esc(x.cls === 'na' ? 'n/a' : x.v) + '</span></div>'
     ).join('') + '</div>' +
     '<div class="pgrid">' +
-      '<div class="psec"><h3>Inscription</h3>' +
+      '<div class="psec"><h2>Inscription</h2>' +
         '<div class="kv"><span class="k">E-mail</span><span class="v">' + esc((cand && cand.email) || email || '—') + '</span></div>' +
         '<div class="kv"><span class="k">Téléphone</span><span class="v">' + esc((cand && cand.phone) || '—') + '</span></div>' +
         '<div class="kv"><span class="k">Profil · niveau</span><span class="v">' + esc(((cand && cand.profile) || '—') + ' · ' + ((cand && cand.level) || '—')) + '</span></div>' +
@@ -1131,31 +1135,31 @@ async function openPerson(id) {
         ((cand && cand.extra && cand.extra.length) ? '<div class="kv"><span class="k">Réponses supplémentaires</span><span class="v" style="font-weight:400">' + cand.extra.map(x0 => esc(x0.value)).join('<br>') + '</span></div>' : '') +
       '</div>' +
       (cand ?
-      '<div class="psec"><h3>Admission &amp; compte Hoja</h3>' +
+      '<div class="psec"><h2>Admission &amp; compte Hoja</h2>' +
         '<div class="kv"><span class="k">Candidature</span><span class="v">' + esc(ST_LABEL[cand.status] || cand.status) + '</span></div>' +
         '<div class="kv"><span class="k">Compte apprenant</span><span class="v">' + (learner ? '<span class="st done">créé</span> ' + esc(learner.email) : '<span class="v mut">non créé</span>') + '</span></div>' +
         (learner ? '<div class="kv"><span class="k">Mot de passe</span><span class="v">' + (learner.mustChange ? 'provisoire — à changer' : 'inchangé') + '</span></div>' : '') +
         (actions.length ? '<div class="btnrow" style="margin-top:10px">' + actions.join('') + '</div>' : '') +
       '</div>' : (learner ?
-      '<div class="psec"><h3>Compte Hoja</h3>' +
+      '<div class="psec"><h2>Compte Hoja</h2>' +
         '<div class="kv"><span class="k">Identifiant</span><span class="v">' + esc(learner.email) + '</span></div>' +
         '<div class="kv"><span class="k">Origine</span><span class="v">' + esc(learner.via === 'candidature' ? 'admission candidature' : 'import liste') + '</span></div>' +
         '<div class="kv"><span class="k">Mot de passe</span><span class="v">' + (learner.mustChange ? 'provisoire — à changer' : 'inchangé') + '</span></div>' +
         (actions.length ? '<div class="btnrow" style="margin-top:10px">' + actions.join('') + '</div>' : '') +
       '</div>' : '')) +
-      '<div class="psec"><h3>Facturation</h3>' +
+      '<div class="psec"><h2>Facturation</h2>' +
         '<div class="kv"><span class="k">Tarif formation</span><span class="v">' + (price != null ? esc(String(price)) + esc(cur) : '<span class="v mut">non configuré</span>') + '</span></div>' +
         '<div class="kv"><span class="k">Paiement</span><span class="v">' + (cand ? '<span class="st ' + payChipCls(cand.payment.state) + '">' + esc(PAY_LABEL[cand.payment.state] || cand.payment.state) + '</span>' : '<span class="v mut">non suivi (import sans candidature)</span>') + '</span></div>' +
         (cand && cand.payment.state === 'paye' ? '<div class="kv"><span class="k">Montant reçu</span><span class="v">' + (paid != null ? esc(String(paid)) + esc(cur) : '—') + '</span></div>' +
           '<div class="kv"><span class="k">Confirmé par / le</span><span class="v">' + esc((cand.payment.confirmedBy || '—') + ' · ' + fmtDate(cand.payment.confirmedAt)) + '</span></div>' :
           (cand ? '<div class="kv"><span class="k">Montant attendu</span><span class="v">' + (price != null ? esc(String(price)) + esc(cur) : '<span class="v mut">tarif non configuré</span>') + '</span></div>' : '')) +
       '</div>' +
-      '<div class="psec"><h3>Google Classroom</h3>' +
+      '<div class="psec"><h2>Google Classroom</h2>' +
         '<div class="kv"><span class="k">Classe</span><span class="v">' + (!CLASSROOM ? 'chargement…' : (CLASSROOM.connected ? (cls ? esc(cls) : 'Cohorte 01 — classe connectée') : '<span class="v ko">passerelle non connectée</span>')) + '</span></div>' +
         '<div class="kv"><span class="k">Invitation</span><span class="v">' + (learner ? (learner.joinedClassroom ? '<span class="st done">présent dans la classe</span>' : inv ? (inv.state && /PENDING/i.test(inv.state) ? '<span class="st todo">envoyée — en attente</span>' : 'invitée (' + esc(inv.state || '?') + ')') : (INVITATIONS == null && INV_NOTE ? esc(INV_NOTE) : '<span class="st wait">non invitée</span>')) : '<span class="v mut">non applicable (candidat)</span>') + '</span></div>' +
       '</div>' +
-      (learner ? '<div class="psec" style="grid-column:1/-1"><h3>Formation &amp; progression</h3><div id="p-prog">' + personProgress(email) + '</div></div>' : '') +
-      '<div class="psec" style="grid-column:1/-1"><h3>Historique</h3>' +
+      (learner ? '<div class="psec" style="grid-column:1/-1"><h2>Formation &amp; progression</h2><div id="p-prog">' + personProgress(email) + '</div></div>' : '') +
+      '<div class="psec" style="grid-column:1/-1"><h2>Historique</h2>' +
         (events.length ? events.map(e0 => '<div class="evt"><time>' + esc(e0.ts ? fmtDate(e0.ts) : '—') + '</time><span>' + esc(e0.label) + '</span></div>').join('') : '<p class="empty">Pas encore d\'activité enregistrée.</p>') + '</div>' +
     '</div>';
   if (learner && PROGRESS == null) loadProgress().then(() => { const el = $('#p-prog'); if (el) el.innerHTML = personProgress(email); });
@@ -1378,7 +1382,7 @@ function renderModTab(d, tab) {
   } else if (tab === 'phases') {
     const g = ficheByName(d, /^00_/);
     body.innerHTML =
-      (d.phases && d.phases.length ? '<h5 style="margin:6px 0 2px;color:var(--muted);font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase">Déroulé de la séance</h5>' : '') +
+      (d.phases && d.phases.length ? '<h3 style="margin:6px 0 2px;color:var(--muted);font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase">Déroulé de la séance</h3>' : '') +
       '<ul class="phases">' + (d.phases || []).map(p => '<li><span class="ptime">' + esc(p.time || '') + '</span><span>' + esc(p.name || '') + '</span></li>').join('') + '</ul>' +
       (d.promptChips && d.promptChips.length ? '<div class="mod-chips" style="margin-top:14px">' + d.promptChips.map(p => '<span class="mchip" title="' + esc(p.cat || '') + '">' + esc(p.title || p.cat || '') + '</span>').join('') + '</div>' : '') +
       (g ? '<details class="guide"><summary>Guide d\'animation complet (' + (g.name || 'fiche').replace(/\.md$/i, '').replace(/^\d+_/, '').replace(/_/g, ' ') + ')</summary><div class="gbody">' + md(g.content) + '</div></details>' : '');

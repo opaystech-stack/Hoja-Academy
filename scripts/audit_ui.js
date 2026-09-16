@@ -35,16 +35,18 @@ const WIDTHS = [360, 390, 430, 820, 1366];
 const MOCK_PORT = Number(process.env.MOCK_PORT || 9098);
 const JSON_OUT = process.argv.includes('--json');
 
+// [libellé, route, rôle mock] — chaque surface exige son rôle, sinon elle
+// affiche l'écran de connexion au lieu de l'application.
 const PAGES = [
-  ['cockpit · accueil', '/ui/cockpit/index.html#accueil'],
-  ['cockpit · inscriptions', '/ui/cockpit/index.html#inscriptions'],
-  ['cockpit · apprenants', '/ui/cockpit/index.html#apprenants'],
-  ['cockpit · programme', '/ui/cockpit/index.html#programme'],
-  ['cockpit · classroom', '/ui/cockpit/index.html#classroom'],
-  ['cockpit · formateurs', '/ui/cockpit/index.html#formateurs'],
-  ['campus apprenant', '/ui/campus/index.html'],
-  ['espace formateur', '/ui/suivi/index.html'],
-  ['login', '/ui/login/index.html'],
+  ['cockpit · accueil', '/ui/cockpit/index.html#accueil', 'admin'],
+  ['cockpit · inscriptions', '/ui/cockpit/index.html#inscriptions', 'admin'],
+  ['cockpit · apprenants', '/ui/cockpit/index.html#apprenants', 'admin'],
+  ['cockpit · programme', '/ui/cockpit/index.html#programme', 'admin'],
+  ['cockpit · classroom', '/ui/cockpit/index.html#classroom', 'admin'],
+  ['cockpit · formateurs', '/ui/cockpit/index.html#formateurs', 'admin'],
+  ['campus apprenant', '/ui/campus/index.html', 'apprenant'],
+  ['espace formateur', '/ui/suivi/index.html', 'formateur'],
+  ['login', '/ui/login/index.html', 'admin'],
 ];
 
 const MIME = {
@@ -250,14 +252,14 @@ function contrastScan() {
 
   const report = {};
   const consoleErrors = [];
-  for (const [name, route] of PAGES) {
+  for (const [name, route, role] of PAGES) {
     report[name] = {};
     for (const w of WIDTHS) {
       const page = await browser.newPage();
       page.on('pageerror', (e) => consoleErrors.push(`${name}@${w} : ${e.message}`));
       page.on('console', (m) => { if (m.type() === 'error') consoleErrors.push(`${name}@${w} : ${m.text().slice(0, 120)}`); });
       await page.setViewport({ width: w, height: 900, deviceScaleFactor: 1 });
-      await page.setCookie({ name: 'mockrole', value: 'admin', domain: '127.0.0.1', path: '/' });
+      await page.setCookie({ name: 'mockrole', value: role || 'admin', domain: '127.0.0.1', path: '/' });
       await page.goto(base + route, { waitUntil: 'networkidle0', timeout: 60000 });
       await page.evaluate(() => new Promise((r) => setTimeout(r, 500)));
       const d = await page.evaluate(collect);
