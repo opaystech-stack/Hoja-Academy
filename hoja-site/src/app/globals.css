@@ -20,6 +20,7 @@
   --color-clr-1: var(--clr-1);
   --color-primary: var(--primary);
   --color-primary-text: var(--primary-text);
+  --color-primary-text-dark: var(--primary-text-dark);
   --color-clr-3: var(--clr-3);
   --color-color-026: var(--color-026);
   --color-color-029: var(--color-029);
@@ -38,6 +39,7 @@
   --color-clr-8: var(--clr-8);
   --color-clr-9: var(--clr-9);
   --color-muted: var(--muted);
+  --color-muted-on-dark: var(--muted-on-dark);
   --color-border: var(--border);
   --color-color-024: var(--color-024);
   --color-surface-10: var(--surface-10);
@@ -121,11 +123,20 @@
      Regle : --primary reste la couleur de marque (fonds de boutons, grands
      titres, aplats). --primary-text est reservee au TEXTE vert sur fond clair. */
   --primary-text: rgb(23, 128, 95);
+  /* Variante TEXTE sur fond SOMBRE.
+     #21A87D sur #0C1B24 ne donne que 3,58:1 et #17805F encore moins.
+     Cette teinte atteint 9,08:1 sur le bleu nuit de la marque.
+     Regle : --primary-text pour le texte vert sur fond CLAIR,
+             --primary-text-dark pour le texte vert sur fond SOMBRE. */
+  --primary-text-dark: rgb(52, 211, 153);
   --accent: rgb(18, 79, 114);
   --border: rgb(223, 234, 240);
   --surface: rgba(255, 255, 255, 0.09);
   --muted-foreground: rgb(73, 82, 85);
   --muted: rgb(97, 113, 117);
+  /* Texte secondaire sur fond SOMBRE. --muted (#617175) ne donne que 3,48:1
+     sur le bleu nuit de la marque ; cette teinte atteint 6,85:1. */
+  --muted-on-dark: rgb(148, 163, 184);
   --surface-2: rgb(225, 227, 241);
   --surface-3: rgba(255, 255, 255, 0.15);
   --surface-4: rgb(234, 234, 234);
@@ -290,6 +301,21 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helve
 @media (max-width:767px){
   .whitespace-nowrap{white-space:normal !important;}
   .break-words, a, p, span, li{overflow-wrap:anywhere;}
+}
+
+/* === Hoja: cibles tactiles (consigne produit : 44 px minimum) ===
+   La navigation et le pied de page utilisent des liens de 19 a 32 px de haut,
+   sous le minimum tactile. On garantit 44 px partout : un lien de navigation
+   peut recevoir un appui tactile sur un portable a ecran tactile comme sur un
+   ordinateur de bureau.
+   Le lien d'evitement ("Aller au contenu") est exclu : il est volontairement
+   reduit a 1 px et ne se revele qu'au focus clavier. */
+nav a:not([class*="w-px"]),
+footer a:not([class*="w-px"]),
+header a:not([class*="w-px"]) {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
 }
 
 /* === Hoja: focus visible (accessibilite) ===

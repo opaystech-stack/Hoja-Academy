@@ -93,17 +93,22 @@ export default function WhyHojaCarousel({ cards, metas, styles }: WhyHojaCarouse
       </div>
 
       {/* Pagination Dots */}
-      <div className="flex justify-center items-center gap-2 mt-2">
+      <div className="flex justify-center items-center gap-1 mt-2">
         {cards.map((_, i) => (
           <button
             key={i}
             type="button"
             onClick={() => scrollToIndex(i)}
             aria-label={`Aller à la diapositive ${i + 1}`}
-            className={`h-3 rounded-full transition-all cursor-pointer ${
-              activeIndex === i ? "bg-primary w-8" : "bg-color-001/40 w-3 hover:bg-color-001/70"
-            }`}
-          />
+            aria-current={activeIndex === i ? 'true' : undefined}
+            className="carousel-dot min-h-11 min-w-6 flex items-center justify-center cursor-pointer"
+          >
+            <span
+              className={`block h-3 rounded-full transition-all ${
+                activeIndex === i ? "bg-primary w-8" : "bg-color-001/40 w-3 hover:bg-color-001/70"
+              }`}
+            />
+          </button>
         ))}
       </div>
     </div>

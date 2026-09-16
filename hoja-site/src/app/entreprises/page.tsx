@@ -171,7 +171,7 @@ const ListRow2_styles = [
     { className: "" }];
 const ListRow3_styles = [
     { className: "text-color-001" },
-    { className: "text-primary-text bg-color-001" },
+    { className: "text-primary-text-dark bg-color-001" },
     { className: "text-color-001 max-lg:rounded-br-[10px] max-lg:rounded-bl-[10px]" }
 ,
     { className: "" },
@@ -325,7 +325,7 @@ export default function Page() {
                   <div className="block relative min-w-0 max-w-full self-center gap-5" data-ditto-id="style-p-14">
                     <div className="block py-4 px-8">
                       <div className="block" data-ditto-id="style-p-11">
-                        <a className="h-[2.6875rem] inline-block py-3 px-6 rounded-[25px] text-color-007 [font-family:Montserrat,_sans-serif] text-base font-semibold leading-[1.1875rem] text-center bg-primary shadow-[var(--clr-19)_0px_0px_10px_0px] cursor-pointer max-md:text-[0.9375rem]" data-ditto-id="style-p-8" data-component="link" href="/contact" target="_blank">
+                        <a className="h-11 inline-block min-h-11 py-3 px-6 rounded-[25px] text-color-007 [font-family:Montserrat,_sans-serif] text-base font-semibold leading-[1.1875rem] text-center bg-primary shadow-[var(--clr-19)_0px_0px_10px_0px] cursor-pointer max-md:text-[0.9375rem]" data-ditto-id="style-p-8" data-component="link" href="/contact" target="_blank">
                           {" "}
                           <span className="flex justify-center gap-[0.3125rem]" data-ditto-id="style-p-9">
                             {" "}
@@ -511,7 +511,7 @@ export default function Page() {
 
                       <div className="flex flex-col items-center gap-6 mt-8">
                         <img className="w-48 h-auto inline-block" alt="Formation IA pour equipes" height="534" src="/assets/hoja/badge-entreprises.png" width="800" />
-                        <a className="w-full max-w-xs py-3 px-6 rounded-[25px] text-background [font-family:Montserrat,_sans-serif] text-sm font-semibold text-center bg-color-016 hover:opacity-90 transition-opacity" href="/formations">
+                        <a className="w-full max-w-xs min-h-11 py-3 px-6 rounded-[25px] text-background [font-family:Montserrat,_sans-serif] text-sm font-semibold text-center bg-color-016 hover:opacity-90 transition-opacity" href="/formations">
                           Voir le programme
                         </a>
                       </div>
@@ -544,7 +544,7 @@ export default function Page() {
                       </div>
 
                       <div className="flex flex-col items-center gap-6 mt-8">
-                        <a className="w-full max-w-xs py-3 px-6 rounded-[25px] text-background [font-family:Montserrat,_sans-serif] text-sm font-semibold text-center bg-color-016 hover:opacity-90 transition-opacity" href="/contact">
+                        <a className="w-full max-w-xs min-h-11 py-3 px-6 rounded-[25px] text-background [font-family:Montserrat,_sans-serif] text-sm font-semibold text-center bg-color-016 hover:opacity-90 transition-opacity" href="/contact">
                           Racontez-nous votre cas
                         </a>
                       </div>
@@ -838,7 +838,7 @@ export default function Page() {
                 <div className="block relative min-w-0 max-w-full gap-5">
                   <div className="block">
                     <div className="block">
-                      <a className="h-[3.1875rem] inline-block py-4 px-10 rounded-[30px] text-color-052 [font-family:Montserrat,_sans-serif] text-lg font-medium leading-[1.1875rem] text-center [text-shadow:var(--clr-7)_0px_0px_10px] bg-primary cursor-pointer max-md:text-[0.9375rem]" data-ditto-id="style-span-37" data-component="link" href="/contact" target="_blank">
+                      <a className="h-[3.1875rem] inline-block py-4 px-10 rounded-[30px] text-color-001 [font-family:Montserrat,_sans-serif] text-lg font-medium leading-[1.1875rem] text-center [text-shadow:var(--clr-7)_0px_0px_10px] bg-primary cursor-pointer max-md:text-[0.9375rem]" data-ditto-id="style-span-37" data-component="link" href="/contact" target="_blank">
                         {" "}
                         <span className="flex justify-center gap-[0.3125rem]" data-ditto-id="style-div-81">
                           {" "}
@@ -915,7 +915,7 @@ export default function Page() {
       {" "} <div className="box-content w-15 h-15 block fixed right-5 bottom-5 z-9999 max-w-[calc(100%_-_40px)] max-h-[calc(100%_-_40px)]" id="brevo-conversations">
         <div className="w-15 h-full min-h-full block absolute top-0 min-w-full max-w-full max-h-full rounded-[50%] overflow-hidden shadow-[var(--clr-6)_0px_0px_3px_0px,var(--clr-7)_0px_0px_10px_0px]">
           <div className="w-15 h-15 min-h-full block absolute min-w-full max-w-full max-h-full overflow-hidden" title="Brevo live chat">
-            <div className="box-content h-full block overflow-hidden text-color-006 [font-family:'Noto_Color_Emoji',_-apple-system,_BlinkMacSystemFont,_'Segoe_UI',_Roboto,_Oxygen,_Ubuntu,_Cantarell,_'Open_Sans',_'Helvetica_Neue',_sans-serif] text-base leading-6 [overflow-wrap:break-word]">
+            <div className="box-content h-full block overflow-hidden text-color-006 [font-family:Montserrat,_sans-serif] text-base leading-6 [overflow-wrap:break-word]">
               <svg className="box-content hidden overflow-hidden" fill="currentColor">
                 <defs>
                   <symbol id="ei-arrow-down-icon" viewBox="8 8 34 34">

@@ -211,7 +211,7 @@ const ListRow4_styles = [
     { className: "" },
     { className: "" }];
 const MediaCard_styles = [
-    { className: "px-12.5 bg-color-001 max-lg:min-h-[7.0625rem] before:opacity-84", className2: "py-12.5 items-center 2xl:py-[4.0625rem]", className3: "md:max-lg:w-[66%]", className4: "gap-4.5 2xl:gap-[1.8125rem]", className5: "text-primary-text", className6: "w-auto", className7: "mb-[0.6875rem] text-background max-md:leading-7.5 2xl:mb-[2.0625rem]", className8: "text-background max-md:leading-[1.625rem]" },
+    { className: "px-12.5 bg-color-001 max-lg:min-h-[7.0625rem] before:opacity-84", className2: "py-12.5 items-center 2xl:py-[4.0625rem]", className3: "md:max-lg:w-[66%]", className4: "gap-4.5 2xl:gap-[1.8125rem]", className5: "text-primary-text-dark", className6: "w-auto", className7: "mb-[0.6875rem] text-background max-md:leading-7.5 2xl:mb-[2.0625rem]", className8: "text-background max-md:leading-[1.625rem]" },
     { className: "px-12.5 bg-primary before:opacity-79", className2: "py-12.5 items-start 2xl:pt-[4.0625rem] 2xl:pb-[3.0625rem]", className4: "gap-4.5 2xl:gap-[1.8125rem]", className5: "text-color-001", className6: "w-auto", className7: "mb-[0.6875rem] text-color-001 max-md:leading-7.5 2xl:mb-[2.0625rem]", className8: "text-color-001 max-md:leading-[1.625rem]" },
     { className: "px-[2.8125rem] bg-primary before:opacity-79", className2: "py-[2.8125rem] items-start 2xl:py-[4.0625rem]", className4: "gap-[1.6875rem] 2xl:gap-[4.9375rem]", className5: "text-color-001", className6: "w-16 max-md:w-11.5 2xl:w-20.5", className7: "mb-[0.9375rem] text-color-001 max-md:leading-8 2xl:mb-9.5", className8: "text-color-001 max-md:leading-[1.375rem]" }
 ,
@@ -891,14 +891,14 @@ export default function Page() {
                             </div>
                           </div>
                           {" "}
-                          <div className="w-[1.5625rem] h-[1.5625rem] flex absolute top-50 left-2.5 z-1 text-color-048 text-[1.5625rem] transform-[matrix(1,0,0,1,0,-12.5)] cursor-pointer" data-component="button" aria-controls="swiper-wrapper-4e3bfcdee84510aec" aria-label="Previous slide" role="button">
+                          <div className="touch-target w-11 h-11 flex items-center justify-center absolute top-50 left-2.5 z-1 text-color-048 text-[1.5625rem] transform-[matrix(1,0,0,1,0,-12.5)] cursor-pointer" data-component="button" aria-controls="swiper-wrapper-4e3bfcdee84510aec" aria-label="Previous slide" role="button">
                             <svg className="w-auto h-[1.5625rem] block overflow-hidden" data-ditto-id="style-div-55" data-component="icon" aria-hidden="true" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                               <path d="M646 125C629 125 613 133 604 142L308 442C296 454 292 471 292 487 292 504 296 521 308 533L604 854C617 867 629 875 646 875 663 875 679 871 692 858 704 846 713 829 713 812 713 796 708 779 692 767L438 487 692 225C700 217 708 204 708 187 708 171 704 154 692 142 675 129 663 125 646 125Z" />
                             </svg>
                             {" "}
                           </div>
                           {" "}
-                          <div className="w-[1.5625rem] h-[1.5625rem] flex absolute top-50 right-2.5 z-1 text-color-048 text-[1.5625rem] transform-[matrix(1,0,0,1,0,-12.5)] cursor-pointer" data-ditto-id="style-div-93" data-component="button" aria-controls="swiper-wrapper-4e3bfcdee84510aec" aria-label="Next slide" role="button">
+                          <div className="touch-target w-11 h-11 flex items-center justify-center absolute top-50 right-2.5 z-1 text-color-048 text-[1.5625rem] transform-[matrix(1,0,0,1,0,-12.5)] cursor-pointer" data-ditto-id="style-div-93" data-component="button" aria-controls="swiper-wrapper-4e3bfcdee84510aec" aria-label="Next slide" role="button">
                             <svg className="w-auto h-[1.5625rem] block overflow-hidden" data-ditto-id="style-a-5" data-component="icon" aria-hidden="true" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                               <path d="M696 533C708 521 713 504 713 487 713 471 708 454 696 446L400 146C388 133 375 125 354 125 338 125 325 129 313 142 300 154 292 171 292 187 292 204 296 221 308 233L563 492 304 771C292 783 288 800 288 817 288 833 296 850 308 863 321 871 338 875 354 875 371 875 388 867 400 854L696 533Z" />
                             </svg>
@@ -1163,14 +1163,14 @@ export default function Page() {
                       {" "}
                     </div>
                     {" "}
-                    <div className="w-[1.5625rem] h-[1.5625rem] flex absolute top-[210.5px] z-2 text-background text-[1.5625rem] transform-[matrix(1,0,0,1,0,-12.5)] cursor-pointer max-md:top-[248.5px] 2xl:top-78" data-ditto-id="style-not-completed-2" data-component="button" aria-controls="swiper-wrapper-c16d10d164a1f62ab" aria-label="Diapositive précédente" role="button">
+                    <div className="touch-target w-11 h-11 flex items-center justify-center absolute top-[210.5px] z-2 text-background text-[1.5625rem] transform-[matrix(1,0,0,1,0,-12.5)] cursor-pointer max-md:top-[248.5px] 2xl:top-78" data-ditto-id="style-not-completed-2" data-component="button" aria-controls="swiper-wrapper-c16d10d164a1f62ab" aria-label="Diapositive précédente" role="button">
                       <svg className="w-auto h-[1.5625rem] block overflow-hidden" data-ditto-id="style-span-28" data-component="icon" aria-hidden="true" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                         <path d="M646 125C629 125 613 133 604 142L308 442C296 454 292 471 292 487 292 504 296 521 308 533L604 854C617 867 629 875 646 875 663 875 679 871 692 858 704 846 713 829 713 812 713 796 708 779 692 767L438 487 692 225C700 217 708 204 708 187 708 171 704 154 692 142 675 129 663 125 646 125Z" />
                       </svg>
                       {" "}
                     </div>
                     {" "}
-                    <div className="w-[1.5625rem] h-[1.5625rem] flex absolute top-[210.5px] right-[1.9375rem] z-2 text-background text-[1.5625rem] transform-[matrix(1,0,0,1,0,-12.5)] cursor-pointer max-md:top-[248.5px] 2xl:top-78" data-ditto-id="interaction-ld-table-list-item-18790" data-component="button" aria-controls="swiper-wrapper-c16d10d164a1f62ab" aria-label="Diapositive suivante" role="button">
+                    <div className="touch-target w-11 h-11 flex items-center justify-center absolute top-[210.5px] right-[1.9375rem] z-2 text-background text-[1.5625rem] transform-[matrix(1,0,0,1,0,-12.5)] cursor-pointer max-md:top-[248.5px] 2xl:top-78" data-ditto-id="interaction-ld-table-list-item-18790" data-component="button" aria-controls="swiper-wrapper-c16d10d164a1f62ab" aria-label="Diapositive suivante" role="button">
                       <svg className="w-auto h-[1.5625rem] block overflow-hidden" data-ditto-id="style-div-50" data-component="icon" aria-hidden="true" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                         <path d="M696 533C708 521 713 504 713 487 713 471 708 454 696 446L400 146C388 133 375 125 354 125 338 125 325 129 313 142 300 154 292 171 292 187 292 204 296 221 308 233L563 492 304 771C292 783 288 800 288 817 288 833 296 850 308 863 321 871 338 875 354 875 371 875 388 867 400 854L696 533Z" />
                       </svg>

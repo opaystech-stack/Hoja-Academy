@@ -376,7 +376,7 @@ export default function Page() {
                   {" "}
                   <p className="block mb-[0.9rem]" data-ditto-id="interaction-li-2">
                     {"Plus d'informations sur ces cookies sur "}
-                    <a className="inline text-clr-45 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] cursor-pointer" data-ditto-id="interaction-sm-17672256027865476-1" data-component="link" href="https://www.google.es/analytics/terms/es.html">
+                    <a className="inline text-accent [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] cursor-pointer" data-ditto-id="interaction-sm-17672256027865476-1" data-component="link" href="https://www.google.es/analytics/terms/es.html">
                       <span className="inline" data-ditto-id="style-span-6">
                         Google Analytics
                       </span>

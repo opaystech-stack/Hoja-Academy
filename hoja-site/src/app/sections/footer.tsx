@@ -80,7 +80,7 @@ export default function Footer({ listRowData2 = listRowData2Content, listRow5Dat
               <div className="block relative min-w-0 max-w-full gap-y-[0.1875rem]">
                 <div className="block">
                   <div className="block" data-ditto-id="interaction-span-6">
-                    <a className="w-42 h-[2.6875rem] inline-block py-3 px-6 rounded-[33px] text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] text-center bg-primary cursor-pointer hover:bg-clr-22 hover:border-clr-23 focus:bg-clr-32 focus:border-primary" data-ditto-id="style-span-33" data-component="link" href="/contact">
+                    <a className="w-42 h-11 inline-block min-h-11 py-3 px-6 rounded-[33px] text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] text-center bg-primary cursor-pointer hover:bg-clr-22 hover:border-clr-23 focus:bg-clr-32 focus:border-primary" data-ditto-id="style-span-33" data-component="link" href="/contact">
                       {" "}
                       <span className="flex flex-row-reverse justify-center gap-[1.9375rem]">
                         {" "}

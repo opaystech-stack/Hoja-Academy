@@ -184,7 +184,7 @@ export default function Page() {
                 Nous contacter
               </a>
             </div>
-            <p className="text-color-028 text-sm">
+            <p className="text-muted-on-dark text-sm">
               Prochaine cohorte : à définir · Tarif : à définir
             </p>
           </div>

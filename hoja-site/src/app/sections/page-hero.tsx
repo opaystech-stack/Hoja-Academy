@@ -38,12 +38,12 @@ export default function PageHero({
           <div className="w-full min-h-150 flex relative min-w-0 pt-15 pl-7.5 flex-col justify-center gap-y-[1.0625rem] max-md:min-h-[35.525rem] max-md:pb-5 max-md:flex-wrap max-md:items-center max-md:pt-0 max-md:pl-0 md:max-lg:min-h-[491.5px] 2xl:min-h-[48.6rem] 2xl:gap-y-[1.9375rem]">
             <div className="block relative min-w-0 max-w-full gap-y-[1.0625rem] max-md:text-center 2xl:gap-y-[1.9375rem]">
               <div className="block pt-[2.0625rem] 2xl:pt-13">
-                <h1 className="block text-background text-[1.1875rem] font-light leading-5 2xl:text-[1.625rem]" data-component="heading">
+                <p className="block text-background text-[1.1875rem] font-light leading-5 2xl:text-[1.625rem]" data-component="heading">
                   <span className="inline text-primary-text font-medium">
                     {eyebrow}
                   </span>
                   {" " + eyebrowRest}
-                </h1>
+                </p>
                 {" "}
               </div>
               {" "}
@@ -51,10 +51,10 @@ export default function PageHero({
             {" "}
             <div className="block relative min-w-0 max-w-full gap-y-[1.0625rem] max-md:text-center 2xl:gap-y-[1.9375rem]">
               <div className="block">
-                <h2 className="block text-background [font-family:Montserrat,_sans-serif] text-[3.125rem] leading-16.5 max-md:text-3xl max-md:leading-[inherit] 2xl:text-[5.3125rem] 2xl:leading-[6.3125rem]" data-component="heading">
+                <h1 className="block text-background [font-family:Montserrat,_sans-serif] text-[3.125rem] leading-16.5 max-md:text-3xl max-md:leading-[inherit] 2xl:text-[5.3125rem] 2xl:leading-[6.3125rem]" data-component="heading">
                   {title}
                   {title2 ? <><br className="inline" />{title2}</> : null}
-                </h2>
+                </h1>
                 {" "}
               </div>
               {" "}
@@ -63,7 +63,7 @@ export default function PageHero({
             <div className="block relative min-w-0 max-w-full gap-y-[1.0625rem] max-md:text-center 2xl:gap-y-[1.9375rem]">
               <div className="block max-lg:mt-2.5">
                 <div className="block">
-                  <a className="border-[5px] border-solid border-primary inline-block py-3 px-6 rounded-[25px] text-background [font-family:Montserrat,_sans-serif] text-sm font-medium leading-[1.1875rem] text-center bg-clr-3 cursor-pointer max-md:[text-align:inherit] 2xl:text-[0.9375rem] hover:transform-[matrix(1.08023,0,0,1.08023,0,0)] focus:transform-[matrix(1.1,0,0,1.1,0,0)]" data-component="link" href={ctaHref}>
+                  <a className="border-[5px] border-solid border-primary inline-block min-h-11 py-3 px-6 rounded-[25px] text-background [font-family:Montserrat,_sans-serif] text-sm font-medium leading-[1.1875rem] text-center bg-clr-3 cursor-pointer max-md:[text-align:inherit] 2xl:text-[0.9375rem] hover:transform-[matrix(1.08023,0,0,1.08023,0,0)] focus:transform-[matrix(1.1,0,0,1.1,0,0)]" data-component="link" href={ctaHref}>
                     {" "}
                     <span className="flex flex-row-reverse justify-center gap-3.5">
                       {" "}
