@@ -24,7 +24,7 @@ production** dans les 18 présentations de modules.
 3. **~398 Ko de CSS strictement identique** répété dans les 18 modules
    (22 102 octets × 18, md5 vérifiés identiques pour les modules 09 et 18).
 4. **~60 fichiers de composants quasi identiques** : 11 variantes `list-row*`
-   dupliquées dans ~7 dossiers de route, plus 22 icônes SVG dont 11 inutilisées.
+   dupliquées dans ~7 dossiers de route, plus 22 icônes SVG mortes sur 26.
 5. **212 règles `@font-face`** pour ~34 fichiers, dont la quasi-totalité est morte
    (Exo 2 du clone appliqué au corps de texte, Orbitron, polices d'icônes
    WordPress / LearnDash / WooCommerce / Swiper).
@@ -141,13 +141,29 @@ fichiers. `accessibilite/`, `confidentialite/`, `contact/`, `cookies/`,
 
 → Fusion en **un composant `<ListRow variant="…"/>`**, les copies de route supprimées.
 
-### 4.2 `svg-icon*.tsx` — 22 fichiers, 11 morts
+### 4.2 `svg-icon*.tsx` — 26 fichiers, 22 morts au total
 
 La plupart sont des formes 7 lignes à chemin unique ne différant que par `viewBox`
-et `d`. Inutilisés : `svg-icon`, `2`, `3`, `4`, `5`, `6`, `7`, `19`, `20` (104 l.),
-`21` (47 l.), `22` — **0 importateur chacun, vérifié**.
+et `d`.
 
-→ Fusion en **un composant `<Icon name="…"/>`** + table de données.
+**CORRECTION (constatée en Phase C/D) :** l'audit initial supposait que les icônes
+`8` à `18` et les illustrations `1` à `4` étaient vivantes. La vérification
+exhaustive (importateurs **et** toute référence textuelle) a montré que **seuls 4
+fichiers sont réellement utilisés** :
+
+| Fichier | Utilisé par |
+|---|---|
+| `svg-icon8.tsx` | `sections/page-hero.tsx` |
+| `svg-icon13.tsx` | `sections/footer.tsx` |
+| `svg-icon18.tsx` | `sections/footer.tsx` |
+| `svg-illustration.tsx` | `sections/page-hero.tsx` |
+
+**Morts (22 au total)** : `svg-icon`, `2`, `3`, `4`, `5`, `6`, `7`, `9`, `10`, `11`,
+`12`, `14`, `15`, `16`, `17`, `19`, `20` (104 l.), `21` (47 l.), `22` — plus
+`svg-illustration2`, `3`, `4`.
+
+→ `svgs/` : **26 → 4 fichiers**. Les 4 restants sont des composants React distincts
+(chemins SVG différents, pas de paramétrage utile) : pas de fusion pertinente.
 
 ### 4.3 CSS des modules — ~398 Ko
 
