@@ -65,10 +65,10 @@ export default function Page() {
         {/* Cartes des domaines */}
         <section className="bg-background py-20 max-md:py-12">
           <div className="max-w-6xl mx-auto px-6">
-            <h2 className="text-color-001 text-[2.1875rem] max-md:text-2xl font-bold text-center pb-3">
+            <h2 className="text-color-001 text-[2.25rem] max-md:text-[1.375rem] font-bold text-center pb-3">
               Quatre domaines, une même approche pratique
             </h2>
-            <p className="text-muted-foreground text-base leading-7 text-center max-w-2xl mx-auto pb-10">
+            <p className="text-muted-foreground text-[1rem] leading-7 text-center max-w-2xl mx-auto pb-10">
               Chaque domaine correspond à un usage concret de l&apos;IA en
               situation professionnelle ou scientifique. Choisissez le parcours
               qui correspond à votre travail, vos projets ou votre organisation.
@@ -80,21 +80,21 @@ export default function Page() {
                   href={d.href}
                   className="flex flex-col gap-4 rounded-[38px] border-4 border-solid border-primary p-8 max-md:p-6 cursor-pointer hover:bg-color-038"
                 >
-                  <div className="text-primary-text text-xs font-semibold tracking-[0.18em] uppercase">
+                  <div className="text-primary-text text-[0.75rem] font-semibold tracking-[0.18em] uppercase">
                     Domaine de formation
                   </div>
                   <div>
-                    <h3 className="text-color-001 text-2xl font-bold leading-8">
+                    <h3 className="text-color-001 text-[1.75rem] font-bold leading-8">
                       {d.title}
                     </h3>
                     <p className="text-accent font-medium leading-6 pt-1">
                       {d.tagline}
                     </p>
                   </div>
-                  <p className="text-muted-foreground text-sm leading-6 grow">
+                  <p className="text-muted-foreground text-[0.875rem] leading-6 grow">
                     {d.description}
                   </p>
-                  <span className="text-color-001 text-sm font-semibold">
+                  <span className="text-color-001 text-[0.875rem] font-semibold">
                     Découvrir la formation →
                   </span>
                 </a>
@@ -106,10 +106,10 @@ export default function Page() {
         {/* Rappel programme */}
         <section className="bg-surface-5 py-16 max-md:py-10">
           <div className="max-w-4xl mx-auto px-6 flex flex-col gap-6 text-center">
-            <h2 className="text-color-001 text-[1.75rem] max-md:text-xl font-bold">
+            <h2 className="text-color-001 text-[1.75rem] max-md:text-[1.375rem] font-bold">
               Le socle : le programme Expert IA
             </h2>
-            <p className="text-muted-foreground text-base leading-8">
+            <p className="text-muted-foreground text-[1rem] leading-8">
               Le parcours Expert IA est structuré en 8 semaines et 18 modules,
               du fondement à la production d&apos;un système de travail augmenté.
               Les autres domaines déclinent cette approche pratique : cas réels,
@@ -118,13 +118,13 @@ export default function Page() {
             </p>
             <div className="flex flex-wrap justify-center gap-4 pt-2">
               <a
-                className="inline-block py-4 px-9 rounded-[60px] bg-primary text-color-001 text-[0.9375rem] font-semibold capitalize cursor-pointer"
+                className="inline-block py-4 px-9 rounded-[60px] bg-primary text-color-001 text-[1rem] font-semibold capitalize cursor-pointer"
                 href="/postuler"
               >
                 Postuler
               </a>
               <a
-                className="inline-block py-4 px-9 rounded-[60px] border-2 border-solid border-accent text-accent text-[0.9375rem] font-semibold capitalize cursor-pointer"
+                className="inline-block py-4 px-9 rounded-[60px] border-2 border-solid border-accent text-accent text-[1rem] font-semibold capitalize cursor-pointer"
                 href="/contact"
               >
                 Parler à un conseiller

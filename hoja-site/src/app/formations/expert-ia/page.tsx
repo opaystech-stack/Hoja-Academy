@@ -71,7 +71,7 @@ function Section({
     <section className={`${bg} py-16 max-md:py-10`} id={id}>
       <div className="max-w-5xl mx-auto px-6">
         <h2
-          className={`text-[1.75rem] max-md:text-xl font-bold pb-2 ${
+          className={`text-[1.75rem] max-md:text-[1.375rem] font-bold pb-2 ${
             tone === "dark" ? "text-background" : "text-color-001"
           }`}
         >
@@ -79,7 +79,7 @@ function Section({
         </h2>
         {intro ? (
           <p
-            className={`text-base leading-7 pb-8 max-w-3xl ${
+            className={`text-[1rem] leading-7 pb-8 max-w-3xl ${
               tone === "dark" ? "text-color-029" : "text-muted-foreground"
             }`}
           >
@@ -119,7 +119,7 @@ export default function Page() {
           intro="Ce parcours s'adresse à des personnes en activité, pas à des développeurs. Aucun prérequis technique : la logique métier et la régularité du travail priment sur le code."
           tone="soft"
         >
-          <ul className="grid md:grid-cols-2 gap-4 text-color-001 text-sm leading-6">
+          <ul className="grid md:grid-cols-2 gap-4 text-color-001 text-[0.875rem] leading-6">
             <li className="rounded-2xl border-2 border-solid border-border bg-background p-5">
               <strong>Professionnels en activité</strong> — intégrer l&apos;IA
               dans vos tâches quotidiennes, sans quitter votre poste.
@@ -144,7 +144,7 @@ export default function Page() {
           title="Ce que vous allez apprendre"
           intro="Le programme couvre l'ensemble de la chaîne : de la compréhension de l'IA générative jusqu'au déploiement d'un environnement de travail complet."
         >
-          <ul className="grid md:grid-cols-2 gap-x-8 gap-y-4 text-color-001 text-sm leading-7">
+          <ul className="grid md:grid-cols-2 gap-x-8 gap-y-4 text-color-001 text-[0.875rem] leading-7">
             {apprendre.map((item) => (
               <li key={item} className="flex gap-3">
                 <span className="text-primary-text font-bold shrink-0">—</span>
@@ -160,7 +160,7 @@ export default function Page() {
           intro="L'objectif n'est pas le diplôme : c'est le changement observable dans votre façon de travailler."
           tone="soft"
         >
-          <ul className="grid md:grid-cols-2 gap-4 text-color-001 text-sm leading-6">
+          <ul className="grid md:grid-cols-2 gap-4 text-color-001 text-[0.875rem] leading-6">
             {pouvoirFaire.map((item) => (
               <li
                 key={item}
@@ -177,9 +177,9 @@ export default function Page() {
           title="Approche pédagogique"
           intro="Vous travaillez sur vos propres documents, vos propres projets et des cas réels. La formation est construite comme une production, pas comme un cours magistral."
         >
-          <div className="grid md:grid-cols-2 gap-6 text-sm leading-7 text-color-001">
+          <div className="grid md:grid-cols-2 gap-6 text-[0.875rem] leading-7 text-color-001">
             <div className="flex flex-col gap-3">
-              <h3 className="text-accent font-bold text-base">
+              <h3 className="text-accent font-bold text-[1rem]">
                 Pratique et accompagnement
               </h3>
               <p>
@@ -189,7 +189,7 @@ export default function Page() {
               </p>
             </div>
             <div className="flex flex-col gap-3">
-              <h3 className="text-accent font-bold text-base">
+              <h3 className="text-accent font-bold text-[1rem]">
                 Structure du parcours
               </h3>
               <p>
@@ -216,7 +216,7 @@ export default function Page() {
                 <h3 className="text-color-001 font-bold leading-6 pb-2">
                   {ex.title}
                 </h3>
-                <p className="text-muted-foreground text-sm leading-6">
+                <p className="text-muted-foreground text-[0.875rem] leading-6">
                   {ex.text}
                 </p>
               </div>
@@ -227,25 +227,25 @@ export default function Page() {
         {/* CTA final */}
         <section className="bg-color-001 py-16 max-md:py-10">
           <div className="max-w-4xl mx-auto px-6 flex flex-col items-center gap-6 text-center">
-            <h2 className="text-background text-[1.75rem] max-md:text-xl font-bold">
+            <h2 className="text-background text-[1.75rem] max-md:text-[1.375rem] font-bold">
               Prêt à transformer votre travail avec l&apos;IA ?
             </h2>
             
             <div className="flex flex-wrap justify-center gap-4">
               <a
-                className="inline-block py-4 px-9 rounded-[60px] bg-primary text-color-001 text-[0.9375rem] font-semibold capitalize cursor-pointer"
+                className="inline-block py-4 px-9 rounded-[60px] bg-primary text-color-001 text-[1rem] font-semibold capitalize cursor-pointer"
                 href="/postuler"
               >
                 Postuler
               </a>
               <a
-                className="inline-block py-4 px-9 rounded-[60px] border-2 border-solid border-background text-background text-[0.9375rem] font-semibold capitalize cursor-pointer"
+                className="inline-block py-4 px-9 rounded-[60px] border-2 border-solid border-background text-background text-[1rem] font-semibold capitalize cursor-pointer"
                 href="/contact"
               >
                 Nous contacter
               </a>
             </div>
-            <p className="text-muted-on-dark text-sm">
+            <p className="text-muted-on-dark text-[0.875rem]">
               Prochaine cohorte : à définir · Tarif : à définir
             </p>
           </div>

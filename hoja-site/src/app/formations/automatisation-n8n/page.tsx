@@ -70,16 +70,16 @@ export default function Page() {
         {/* Pour qui */}
         <section className="bg-surface-5 py-16 max-md:py-10">
           <div className="max-w-5xl mx-auto px-6">
-            <h2 className="text-color-001 text-[1.75rem] max-md:text-xl font-bold pb-2">
+            <h2 className="text-color-001 text-[1.75rem] max-md:text-[1.375rem] font-bold pb-2">
               Pour qui ?
             </h2>
-            <p className="text-muted-foreground text-base leading-7 pb-8 max-w-3xl">
+            <p className="text-muted-foreground text-[1rem] leading-7 pb-8 max-w-3xl">
               Pour toute personne confrontée à des tâches répétitives dans son
               travail. Aucune expérience du développement n&apos;est requise :
               la rigueur et la connaissance de son métier comptent plus que le
               code.
             </p>
-            <ul className="grid md:grid-cols-2 gap-4 text-color-001 text-sm leading-6">
+            <ul className="grid md:grid-cols-2 gap-4 text-color-001 text-[0.875rem] leading-6">
               <li className="rounded-2xl border-2 border-solid border-border bg-background p-5">
                 <strong>Professionnels opérationnels</strong> — supprimer les
                 copier-coller et les saisies manuelles récurrentes.
@@ -103,14 +103,14 @@ export default function Page() {
         {/* Ce que vous allez apprendre */}
         <section className="bg-background py-16 max-md:py-10">
           <div className="max-w-5xl mx-auto px-6">
-            <h2 className="text-color-001 text-[1.75rem] max-md:text-xl font-bold pb-2">
+            <h2 className="text-color-001 text-[1.75rem] max-md:text-[1.375rem] font-bold pb-2">
               Ce que vous allez apprendre
             </h2>
-            <p className="text-muted-foreground text-base leading-7 pb-8 max-w-3xl">
+            <p className="text-muted-foreground text-[1rem] leading-7 pb-8 max-w-3xl">
               Les fondamentaux de l&apos;automatisation appliqués avec n8n, de
               la conception du workflow jusqu&apos;à sa maintenance.
             </p>
-            <ul className="grid md:grid-cols-2 gap-x-8 gap-y-4 text-color-001 text-sm leading-7">
+            <ul className="grid md:grid-cols-2 gap-x-8 gap-y-4 text-color-001 text-[0.875rem] leading-7">
               {apprendre.map((item) => (
                 <li key={item} className="flex gap-3">
                   <span className="text-primary-text font-bold shrink-0">—</span>
@@ -124,14 +124,14 @@ export default function Page() {
         {/* Ce que vous pourrez faire */}
         <section className="bg-surface-5 py-16 max-md:py-10">
           <div className="max-w-5xl mx-auto px-6">
-            <h2 className="text-color-001 text-[1.75rem] max-md:text-xl font-bold pb-2">
+            <h2 className="text-color-001 text-[1.75rem] max-md:text-[1.375rem] font-bold pb-2">
               Ce que vous pourrez faire
             </h2>
-            <p className="text-muted-foreground text-base leading-7 pb-8 max-w-3xl">
+            <p className="text-muted-foreground text-[1rem] leading-7 pb-8 max-w-3xl">
               À l&apos;issue du parcours, vous êtes capable de concevoir et faire
               vivre des automatisations dans votre environnement de travail.
             </p>
-            <ul className="grid md:grid-cols-2 gap-4 text-color-001 text-sm leading-6">
+            <ul className="grid md:grid-cols-2 gap-4 text-color-001 text-[0.875rem] leading-6">
               {pouvoirFaire.map((item) => (
                 <li
                   key={item}
@@ -147,10 +147,10 @@ export default function Page() {
         {/* Approche pratique */}
         <section className="bg-background py-16 max-md:py-10">
           <div className="max-w-5xl mx-auto px-6">
-            <h2 className="text-color-001 text-[1.75rem] max-md:text-xl font-bold pb-2">
+            <h2 className="text-color-001 text-[1.75rem] max-md:text-[1.375rem] font-bold pb-2">
               Approche pédagogique
             </h2>
-            <p className="text-muted-foreground text-base leading-7 max-w-3xl">
+            <p className="text-muted-foreground text-[1rem] leading-7 max-w-3xl">
               La formation suit la même logique que le programme Expert IA :
               pratique sur vos propres cas, exercices progressifs, production de
               workflows réels et accompagnement. Vous travaillez à partir de vos
@@ -164,10 +164,10 @@ export default function Page() {
         {/* Exemples */}
         <section className="bg-surface-5 py-16 max-md:py-10">
           <div className="max-w-5xl mx-auto px-6">
-            <h2 className="text-color-001 text-[1.75rem] max-md:text-xl font-bold pb-2">
+            <h2 className="text-color-001 text-[1.75rem] max-md:text-[1.375rem] font-bold pb-2">
               Exemples de mise en pratique
             </h2>
-            <p className="text-muted-foreground text-base leading-7 pb-8 max-w-3xl">
+            <p className="text-muted-foreground text-[1rem] leading-7 pb-8 max-w-3xl">
               Des réalisations types, sobres et vérifiables — sans promesse de
               gains chiffrés, qui dépendent de chaque contexte.
             </p>
@@ -180,7 +180,7 @@ export default function Page() {
                   <h3 className="text-color-001 font-bold leading-6 pb-2">
                     {ex.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm leading-6">
+                  <p className="text-muted-foreground text-[0.875rem] leading-6">
                     {ex.text}
                   </p>
                 </div>
@@ -192,28 +192,28 @@ export default function Page() {
         {/* CTA final */}
         <section className="bg-color-001 py-16 max-md:py-10">
           <div className="max-w-4xl mx-auto px-6 flex flex-col items-center gap-6 text-center">
-            <h2 className="text-background text-[1.75rem] max-md:text-xl font-bold">
+            <h2 className="text-background text-[1.75rem] max-md:text-[1.375rem] font-bold">
               Automatiser votre travail, concrètement ?
             </h2>
-            <p className="text-color-029 text-base leading-7 max-w-2xl">
+            <p className="text-color-029 text-[1rem] leading-7 max-w-2xl">
               Postulez à la prochaine cohorte ou contactez-nous pour cartographier
               avec vous les processus à automatiser en priorité.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a
-                className="inline-block py-4 px-9 rounded-[60px] bg-primary text-color-001 text-[0.9375rem] font-semibold capitalize cursor-pointer"
+                className="inline-block py-4 px-9 rounded-[60px] bg-primary text-color-001 text-[1rem] font-semibold capitalize cursor-pointer"
                 href="/postuler"
               >
                 Postuler
               </a>
               <a
-                className="inline-block py-4 px-9 rounded-[60px] border-2 border-solid border-background text-background text-[0.9375rem] font-semibold capitalize cursor-pointer"
+                className="inline-block py-4 px-9 rounded-[60px] border-2 border-solid border-background text-background text-[1rem] font-semibold capitalize cursor-pointer"
                 href="/contact"
               >
                 Nous contacter
               </a>
             </div>
-            <p className="text-muted-on-dark text-sm">
+            <p className="text-muted-on-dark text-[0.875rem]">
               Prochaine cohorte : à définir · Tarif : à définir
             </p>
           </div>

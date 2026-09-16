@@ -26,7 +26,7 @@ export default function MediaCard({ d, meta, styles }: { d: MediaCardData; meta:
             <div data-ditto-id={meta[4]?.anchor} className="block">
               <div data-ditto-id={meta[5]?.anchor} className={cn("flex flex-col max-md:gap-[2.4375rem] 2xl:gap-[2.6875rem]", styles.className4)}>
                 <div data-ditto-id={meta[6]?.anchor} className="block shrink-0 leading-0">
-                  <span data-ditto-id={meta[7]?.anchor} className={cn("inline-block text-color-001 text-center 2xl:text-[5.125rem] 2xl:leading-20.5", styles.className5)}>
+                  <span data-ditto-id={meta[7]?.anchor} className={cn("inline-block text-color-001 text-center 2xl:text-[5.25rem] 2xl:leading-21", styles.className5)}>
                     {" "}
                     <svg data-ditto-id={meta[8]?.anchor} className={cn("block relative overflow-hidden 2xl:h-20.5", styles.className6)} data-component={d.kind} height={d.height} viewBox={d.viewBox} width={d.width} xmlns="http://www.w3.org/2000/svg" fill="currentColor">{d.icon}</svg>
                     {" "}
@@ -35,7 +35,7 @@ export default function MediaCard({ d, meta, styles }: { d: MediaCardData; meta:
                 </div>
                 {" "}
                 <div data-ditto-id={meta[9]?.anchor} className="block grow">
-                  <h3 data-ditto-id={meta[10]?.anchor} className="block mt-2 mb-4 text-background [font-family:Montserrat,_sans-serif] text-[1.5625rem] leading-10 2xl:text-[2.8125rem] 2xl:leading-[3.5625rem]" data-component={d.kind2}>
+                  <h3 data-ditto-id={meta[10]?.anchor} className="block mt-2 mb-4 text-background [font-family:Montserrat,_sans-serif] text-[1.75rem] leading-10 2xl:text-[3rem] 2xl:leading-[3.5625rem]" data-component={d.kind2}>
                     <span data-ditto-id={meta[11]?.anchor} className="inline">
                       {d.title}
                       <br data-ditto-id={meta[12]?.anchor} className="inline" />

@@ -50,10 +50,10 @@ export default function Page() {
         {/* Cadre de la formation */}
         <section className="bg-surface-5 py-16 max-md:py-10">
           <div className="max-w-4xl mx-auto px-6">
-            <h2 className="text-color-001 text-[1.75rem] max-md:text-xl font-bold pb-2">
+            <h2 className="text-color-001 text-[1.75rem] max-md:text-[1.375rem] font-bold pb-2">
               Le cadre de cette formation
             </h2>
-            <p className="text-muted-foreground text-base leading-8">
+            <p className="text-muted-foreground text-[1rem] leading-8">
               Ce parcours est une formation de compréhension et
               d&apos;application. Il vise à vous donner les bases solides pour
               lire un projet robotique, en discuter les choix techniques et
@@ -69,14 +69,14 @@ export default function Page() {
         {/* Pour qui */}
         <section className="bg-background py-16 max-md:py-10">
           <div className="max-w-5xl mx-auto px-6">
-            <h2 className="text-color-001 text-[1.75rem] max-md:text-xl font-bold pb-2">
+            <h2 className="text-color-001 text-[1.75rem] max-md:text-[1.375rem] font-bold pb-2">
               Pour qui ?
             </h2>
-            <p className="text-muted-foreground text-base leading-7 pb-8 max-w-3xl">
+            <p className="text-muted-foreground text-[1rem] leading-7 pb-8 max-w-3xl">
               Un public curieux des systèmes physiques intelligents, avec un
               projet académique, technique ou scientifique en tête.
             </p>
-            <ul className="grid md:grid-cols-2 gap-4 text-color-001 text-sm leading-6">
+            <ul className="grid md:grid-cols-2 gap-4 text-color-001 text-[0.875rem] leading-6">
               <li className="rounded-2xl border-2 border-solid border-border bg-background p-5">
                 <strong>Étudiants</strong> — construire une culture solide de la
                 robotique et de ses liens avec l&apos;IA.
@@ -100,14 +100,14 @@ export default function Page() {
         {/* Ce que vous allez apprendre */}
         <section className="bg-surface-5 py-16 max-md:py-10">
           <div className="max-w-5xl mx-auto px-6">
-            <h2 className="text-color-001 text-[1.75rem] max-md:text-xl font-bold pb-2">
+            <h2 className="text-color-001 text-[1.75rem] max-md:text-[1.375rem] font-bold pb-2">
               Ce que vous allez apprendre
             </h2>
-            <p className="text-muted-foreground text-base leading-7 pb-8 max-w-3xl">
+            <p className="text-muted-foreground text-[1rem] leading-7 pb-8 max-w-3xl">
               Les grands domaines de la robotique contemporaine et la place de
               l&apos;IA embarquée dans chacun d&apos;eux.
             </p>
-            <ul className="grid md:grid-cols-2 gap-x-8 gap-y-4 text-color-001 text-sm leading-7">
+            <ul className="grid md:grid-cols-2 gap-x-8 gap-y-4 text-color-001 text-[0.875rem] leading-7">
               {apprendre.map((item) => (
                 <li key={item} className="flex gap-3">
                   <span className="text-primary-text font-bold shrink-0">—</span>
@@ -121,14 +121,14 @@ export default function Page() {
         {/* Ce que vous pourrez faire */}
         <section className="bg-background py-16 max-md:py-10">
           <div className="max-w-5xl mx-auto px-6">
-            <h2 className="text-color-001 text-[1.75rem] max-md:text-xl font-bold pb-2">
+            <h2 className="text-color-001 text-[1.75rem] max-md:text-[1.375rem] font-bold pb-2">
               Ce que vous pourrez faire
             </h2>
-            <p className="text-muted-foreground text-base leading-7 pb-8 max-w-3xl">
+            <p className="text-muted-foreground text-[1rem] leading-7 pb-8 max-w-3xl">
               Des capacités intellectuelles et professionnelles directement
               mobilisables dans vos études, vos projets ou vos décisions.
             </p>
-            <ul className="grid md:grid-cols-2 gap-4 text-color-001 text-sm leading-6">
+            <ul className="grid md:grid-cols-2 gap-4 text-color-001 text-[0.875rem] leading-6">
               {pouvoirFaire.map((item) => (
                 <li
                   key={item}
@@ -144,10 +144,10 @@ export default function Page() {
         {/* Approche */}
         <section className="bg-surface-5 py-16 max-md:py-10">
           <div className="max-w-5xl mx-auto px-6">
-            <h2 className="text-color-001 text-[1.75rem] max-md:text-xl font-bold pb-2">
+            <h2 className="text-color-001 text-[1.75rem] max-md:text-[1.375rem] font-bold pb-2">
               Approche pédagogique
             </h2>
-            <p className="text-muted-foreground text-base leading-8 max-w-3xl">
+            <p className="text-muted-foreground text-[1rem] leading-8 max-w-3xl">
               Cours structurés, études de cas professionnels et scientifiques,
               démonstrations et travaux dirigés sur des problèmes concrets. Les
               modalités pratiques sont précisées lors de l&apos;inscription, en
@@ -159,28 +159,28 @@ export default function Page() {
         {/* CTA final */}
         <section className="bg-color-001 py-16 max-md:py-10">
           <div className="max-w-4xl mx-auto px-6 flex flex-col items-center gap-6 text-center">
-            <h2 className="text-background text-[1.75rem] max-md:text-xl font-bold">
+            <h2 className="text-background text-[1.75rem] max-md:text-[1.375rem] font-bold">
               Un intérêt pour la robotique ou l&apos;IA embarquée ?
             </h2>
-            <p className="text-color-029 text-base leading-7 max-w-2xl">
+            <p className="text-color-029 text-[1rem] leading-7 max-w-2xl">
               Postulez à la prochaine cohorte ou contactez-nous pour vérifier
               l&apos;adéquation de ce parcours avec votre projet.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a
-                className="inline-block py-4 px-9 rounded-[60px] bg-primary text-color-001 text-[0.9375rem] font-semibold capitalize cursor-pointer"
+                className="inline-block py-4 px-9 rounded-[60px] bg-primary text-color-001 text-[1rem] font-semibold capitalize cursor-pointer"
                 href="/postuler"
               >
                 Postuler
               </a>
               <a
-                className="inline-block py-4 px-9 rounded-[60px] border-2 border-solid border-background text-background text-[0.9375rem] font-semibold capitalize cursor-pointer"
+                className="inline-block py-4 px-9 rounded-[60px] border-2 border-solid border-background text-background text-[1rem] font-semibold capitalize cursor-pointer"
                 href="/contact"
               >
                 Nous contacter
               </a>
             </div>
-            <p className="text-muted-on-dark text-sm">
+            <p className="text-muted-on-dark text-[0.875rem]">
               Prochaine cohorte : à définir · Tarif : à définir
             </p>
           </div>

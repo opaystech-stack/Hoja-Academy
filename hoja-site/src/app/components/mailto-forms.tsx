@@ -14,12 +14,12 @@ function openMailto(subject: string, lines: string[]) {
 }
 
 const labelCls =
-  "block mb-1.5 text-xs font-semibold uppercase tracking-[0.08em] text-color-001";
+  "block mb-1.5 text-[0.75rem] font-semibold uppercase tracking-[0.08em] text-color-001";
 const fieldCls =
-  "w-full rounded-[14px] border border-solid border-black/15 bg-white px-4 py-3 text-sm text-color-001 focus:border-primary";
+  "w-full rounded-[14px] border border-solid border-black/15 bg-white px-4 py-3 text-[0.875rem] text-color-001 focus:border-primary";
 const btnCls =
-  "inline-block py-[0.9375rem] px-7.5 rounded-[60px] text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-semibold text-center bg-primary cursor-pointer hover:opacity-90";
-const notaCls = "mt-4 text-[0.8125rem] leading-5 text-color-001/70";
+  "inline-block py-[0.9375rem] px-7.5 rounded-[60px] text-color-001 [font-family:Montserrat,_sans-serif] text-[1rem] font-semibold text-center bg-primary cursor-pointer hover:opacity-90";
+const notaCls = "mt-4 text-[0.875rem] leading-5 text-color-001/70";
 
 function Nota() {
   return (

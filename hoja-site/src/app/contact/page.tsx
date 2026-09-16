@@ -179,7 +179,7 @@ export default function Page() {
   return (
     <>
       {" "}
-      <a className="w-px h-px block absolute -top-37500 left-0 -m-px overflow-hidden text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] [clip-path:inset(50%)] cursor-pointer" href="#content">
+      <a className="w-px h-px block absolute -top-37500 left-0 -m-px overflow-hidden text-color-001 [font-family:Montserrat,_sans-serif] text-[1rem] font-medium leading-[1.1875rem] [clip-path:inset(50%)] cursor-pointer" href="#content">
         Aller au contenu
       </a>
       {" "}
@@ -196,7 +196,7 @@ export default function Page() {
                     <div className="block relative min-w-0 max-w-full self-center gap-5 max-md:gap-x-[0.4375rem] max-md:gap-y-[initial]" data-ditto-id="style-span-39">
                       <div className="block pt-2.5" data-ditto-id="style-section">
                         <div className="block 2xl:text-end" data-ditto-id="style-div-83">
-                          <div className="inline-block text-color-001 text-[3.0625rem] leading-[3.0625rem] text-center" data-ditto-id="style-p-10">
+                          <div className="inline-block text-color-001 text-[3rem] leading-[3rem] text-center" data-ditto-id="style-p-10">
                             {" "}
                             <svg className="w-[3.0625rem] h-[3.0625rem] block relative overflow-hidden" data-ditto-id="style-heading-4" data-component="image" height="31" viewBox="0 0 69 31" width="69" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                               <g id="Grupo_241" data-name="Grupo 241" transform="translate(-251 -1259)">
@@ -218,7 +218,7 @@ export default function Page() {
                     {" "}
                     <div className="w-[27%] block relative min-w-0 max-w-full gap-5 max-md:w-[61.5%] max-md:gap-x-[0.4375rem] max-md:gap-y-[initial] md:max-lg:w-[35.5%] 2xl:w-[34%]" data-ditto-id="style-div-84">
                       <div className="block" data-ditto-id="style-span-40">
-                        <h3 className="block text-primary text-[1.1875rem] leading-5 uppercase max-md:text-[1rem] 2xl:text-[1.625rem]" data-component="heading">
+                        <h3 className="block text-primary text-[1.125rem] leading-5 uppercase max-md:text-[1rem] 2xl:text-[1.75rem]" data-component="heading">
                           {"Vous avez une question ? "}
                         </h3>
                         {" "}
@@ -230,9 +230,9 @@ export default function Page() {
                   {" "}
                   <div className="block relative min-w-0 max-w-full text-center" data-ditto-id="interaction-span-11">
                     <div className="block">
-                      <h2 className="block text-background [font-family:Montserrat,_sans-serif] text-[3.4375rem] leading-22 max-md:text-3xl max-md:leading-9 2xl:text-[5rem] 2xl:leading-[6.3125rem]" data-ditto-id="style-section-2" data-component="heading">
+                      <h1 className="block text-background [font-family:Montserrat,_sans-serif] text-[3rem] leading-22 max-md:text-[1.75rem] max-md:leading-9 2xl:text-[5.25rem] 2xl:leading-[6.3125rem]" data-ditto-id="style-section-2" data-component="heading">
                         Parlons de votre projet.
-                      </h2>
+                      </h1>
                       {" "}
                     </div>
                     {" "}
@@ -251,7 +251,7 @@ export default function Page() {
                     <div className="w-[7.5%] block relative min-w-0 max-w-full self-center gap-x-9 max-md:w-[16%] max-lg:gap-x-3 md:max-lg:w-[14.5%] 2xl:w-[6%] 2xl:gap-5">
                       <div className="block pt-[0.1875rem]" data-ditto-id="style-p-13">
                         <div className="block" data-ditto-id="style-p-7">
-                          <div className="inline-block text-color-001 text-[3.0625rem] leading-[3.0625rem] text-center">
+                          <div className="inline-block text-color-001 text-[3rem] leading-[3rem] text-center">
                             {" "}
                             <svg className="w-[3.0625rem] h-[3.0625rem] block relative overflow-hidden" data-ditto-id="style-div-101" data-component="image" height="23.665" viewBox="0 0 52.673 23.665" width="52.673" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                               <g id="mark_deac" data-name="mark deac" transform="translate(-251 -1259)">
@@ -273,7 +273,7 @@ export default function Page() {
                     {" "}
                     <div className="w-[84.5%] block relative min-w-0 max-w-full gap-x-9 max-md:w-[70.5%] max-lg:gap-x-3 md:max-lg:w-[82%] 2xl:w-[91%] 2xl:gap-5">
                       <div className="block 2xl:-mt-[0.4375rem]">
-                        <h3 className="block text-background text-[1.1875rem] leading-6 max-md:text-[0.9375rem] max-md:leading-[1.4375rem] md:max-lg:text-[1rem] 2xl:text-[1.625rem] 2xl:leading-7.5" data-component="heading">
+                        <h3 className="block text-background text-[1.125rem] leading-6 max-md:text-[1rem] max-md:leading-[1.4375rem] md:max-lg:text-[1rem] 2xl:text-[1.75rem] 2xl:leading-7.5" data-component="heading">
                           Réponse directe
                         </h3>
                         {" "}
@@ -286,7 +286,7 @@ export default function Page() {
                   <div className="w-full min-h-[14.5625rem] flex relative z-4 min-w-0 p-2.5 flex-col justify-between gap-5 max-md:min-h-[11.8125rem] max-md:flex-wrap max-lg:p-0">
                     <div className="w-full block relative min-w-0 max-w-full gap-5 max-md:text-center 2xl:w-[95%]" data-ditto-id="style-p-14">
                       <div className="block">
-                        <h2 className="block text-background [font-family:Montserrat,_sans-serif] text-[2.1875rem] leading-[3.3125rem] max-md:text-[1.5625rem] max-md:leading-[2.375rem] md:max-lg:text-3xl md:max-lg:leading-[2.8125rem] 2xl:text-[2.8125rem] 2xl:leading-16.5" data-ditto-id="style-p-11" data-component="heading">
+                        <h2 className="block text-background [font-family:Montserrat,_sans-serif] text-[2.25rem] leading-[3.3125rem] max-md:text-[1.75rem] max-md:leading-[2.375rem] md:max-lg:text-[1.75rem] md:max-lg:leading-[2.8125rem] 2xl:text-[3rem] 2xl:leading-16.5" data-ditto-id="style-p-11" data-component="heading">
                           <span className="inline text-primary-text font-bold" data-ditto-id="style-p-8">
                             {" Parlons de votre projet "}
                           </span>
@@ -305,7 +305,7 @@ export default function Page() {
                   <div className="w-[87%] h-full min-h-[20.8125rem] border border-solid border-foreground flex relative min-w-0 p-18 rounded-[38px] flex-col justify-center gap-y-[1.1875rem] bg-surface-9 [backdrop-filter:blur(6.4px)] max-md:w-full max-md:min-h-[18.0625rem] max-lg:p-7.5 max-md:flex-wrap 2xl:min-h-[18.9375rem]" data-ditto-id="interaction-p" id="containerFormacion">
                     <div className="block relative min-w-0 max-w-full gap-y-[1.1875rem]" data-ditto-id="style-p-12">
                       <div className="block" data-ditto-id="style-p-4">
-                        <h2 className="block text-background text-[1.6875rem] font-bold uppercase max-md:leading-7.5 max-md:[font-size:inherit] 2xl:leading-5" data-ditto-id="interaction-p-2" data-component="heading">
+                        <h2 className="block text-background text-[1.75rem] font-bold uppercase max-md:leading-7.5 max-md:[font-size:inherit] 2xl:leading-5" data-ditto-id="interaction-p-2" data-component="heading">
                           Nous écrire
                         </h2>
                         {" "}
@@ -313,15 +313,15 @@ export default function Page() {
                       {" "}
                     </div>
                     {" "}
-                    <div className="w-full block relative min-w-0 max-w-full gap-y-[1.1875rem] text-background text-[1.125rem] leading-[2rem] max-md:text-base max-lg:leading-7.5 md:max-lg:text-lg 2xl:w-[84%]" data-ditto-id="interaction-p-3">
+                    <div className="w-full block relative min-w-0 max-w-full gap-y-[1.1875rem] text-background text-[1.125rem] leading-[2rem] max-md:text-[1rem] max-lg:leading-7.5 md:max-lg:text-[1.125rem] 2xl:w-[84%]" data-ditto-id="interaction-p-3">
                       <div className="h-full block" data-ditto-id="interaction-button">
                         <p className="block mb-[0.9rem]">
-                          <a className="inline-block min-h-11 py-3 px-6 rounded-[33px] text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-semibold text-center bg-primary cursor-pointer" data-component="link" href="https://wa.me/243792369704" target="_blank" rel="noopener">WhatsApp</a>
+                          <a className="inline-block min-h-11 py-3 px-6 rounded-[33px] text-color-001 [font-family:Montserrat,_sans-serif] text-[1rem] font-semibold text-center bg-primary cursor-pointer" data-component="link" href="https://wa.me/243792369704" target="_blank" rel="noopener">WhatsApp</a>
                         </p>
                         <p className="block mb-[0.9rem]">
                           {"Téléphone / WhatsApp : "}
                           <span className="inline underline">
-                            <a className="inline [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] cursor-pointer" data-component="link" href="tel:+243792369704">
+                            <a className="inline [font-family:Montserrat,_sans-serif] text-[1rem] font-medium leading-[1.1875rem] cursor-pointer" data-component="link" href="tel:+243792369704">
                               <strong className="inline font-bold">+243 792 369 704</strong>
                             </a>
                           </span>
@@ -330,7 +330,7 @@ export default function Page() {
                         <p className="block mb-[0.9rem]">
                           {"E-mail : "}
                           <span className="inline underline">
-                            <a className="inline [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] cursor-pointer" data-component="link" href="mailto:info@hoja-academy.com">
+                            <a className="inline [font-family:Montserrat,_sans-serif] text-[1rem] font-medium leading-[1.1875rem] cursor-pointer" data-component="link" href="mailto:info@hoja-academy.com">
                               <strong className="inline font-bold">info@hoja-academy.com</strong>
                             </a>
                           </span>
@@ -342,7 +342,7 @@ export default function Page() {
                     {" "}
                     <div className="block relative min-w-0 max-w-full gap-y-[1.1875rem]">
                       <div className="block" data-ditto-id="style-br-2">
-                        <h2 className="block text-background text-[1.6875rem] font-bold uppercase max-md:leading-7.5 max-md:[font-size:inherit] 2xl:leading-5" data-ditto-id="interaction-br" data-component="heading">
+                        <h2 className="block text-background text-[1.75rem] font-bold uppercase max-md:leading-7.5 max-md:[font-size:inherit] 2xl:leading-5" data-ditto-id="interaction-br" data-component="heading">
                           Pourquoi nous contacter
                         </h2>
                         {" "}
@@ -350,7 +350,7 @@ export default function Page() {
                       {" "}
                     </div>
                     {" "}
-                    <div className="w-full block relative min-w-0 max-w-full text-background text-[1.0625rem] leading-[1.9rem] max-md:text-base 2xl:w-[84%]">
+                    <div className="w-full block relative min-w-0 max-w-full text-background text-[1rem] leading-[1.9rem] max-md:text-[1rem] 2xl:w-[84%]">
                       <ul className="block [list-style-type:disc] pl-5 m-0">
                         <li>{"Une question sur les formations"}</li>
                         <li>{"Une candidature"}</li>
@@ -374,8 +374,8 @@ export default function Page() {
           </div>
           {" "}
           <div className="w-full max-w-[min(100%,_1140px)] mx-17.5 px-[2.1875rem] py-16 max-md:px-5 max-lg:mx-0 2xl:mx-97.5" id="formulaire-contact">
-            <h2 className="block mb-2 text-color-001 [font-family:Montserrat,_sans-serif] text-[1.6875rem] font-bold uppercase">Formulaire de contact</h2>
-            <p className="block mb-8 text-foreground text-[0.9375rem] leading-6">
+            <h2 className="block mb-2 text-color-001 [font-family:Montserrat,_sans-serif] text-[1.75rem] font-bold uppercase">Formulaire de contact</h2>
+            <p className="block mb-8 text-foreground text-[1rem] leading-6">
               {"Remplissez les champs ci-dessous : votre messagerie s'ouvre avec un e-mail prérempli à destination de "}
               <a className="inline underline text-primary-text font-semibold cursor-pointer" href="mailto:info@hoja-academy.com">info@hoja-academy.com</a>
               {". Ce site ne dispose d'aucun serveur : rien n'est envoyé ni enregistré automatiquement."}

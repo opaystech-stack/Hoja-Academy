@@ -182,7 +182,7 @@ export default function Page() {
   return (
     <>
       {" "}
-      <a className="w-px h-px block absolute -top-37500 left-0 -m-px overflow-hidden text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] [clip-path:inset(50%)] cursor-pointer" href="#content">
+      <a className="w-px h-px block absolute -top-37500 left-0 -m-px overflow-hidden text-color-001 [font-family:Montserrat,_sans-serif] text-[1rem] font-medium leading-[1.1875rem] [clip-path:inset(50%)] cursor-pointer" href="#content">
         Aller au contenu
       </a>
       {" "}
@@ -196,7 +196,7 @@ export default function Page() {
               <div className="w-240 min-h-[16.3125rem] flex relative min-w-0 flex-col justify-end gap-5 max-md:w-[21.5625rem] max-md:min-h-41 max-md:flex-wrap md:max-lg:w-[569.3px] 2xl:w-[106.1875rem] 2xl:p-2.5">
                 <div className="block relative min-w-0 max-w-full gap-5">
                   <div className="block">
-                    <h1 className="block text-primary [font-family:Montserrat,_sans-serif] text-[2.625rem] font-bold leading-[6.3125rem] max-md:text-3xl max-md:leading-9" data-ditto-id="style-span-39" data-component="heading">
+                    <h1 className="block text-primary [font-family:Montserrat,_sans-serif] text-[3rem] font-bold leading-[6.3125rem] max-md:text-[1.75rem] max-md:leading-9" data-ditto-id="style-span-39" data-component="heading">
                       Accesibilidad
                     </h1>
                     {" "}
@@ -209,7 +209,7 @@ export default function Page() {
             </div>
             {" "}
             <div className="min-h-229 flex relative max-w-full py-16 px-[3.2rem] justify-center gap-5 max-md:pt-10 max-md:pb-5 max-md:px-5 max-md:flex-wrap md:max-lg:py-[2.4rem] md:max-lg:px-[30.7px] 2xl:py-24 2xl:px-[4.8rem]" data-ditto-id="style-section">
-              <div className="w-4/5 block relative min-w-0 max-w-full gap-5 text-color-001 max-md:text-base max-md:leading-[1.3125rem]" data-ditto-id="style-div-83">
+              <div className="w-4/5 block relative min-w-0 max-w-full gap-5 text-color-001 max-md:text-[1rem] max-md:leading-[1.3125rem]" data-ditto-id="style-div-83">
                 <div className="h-full block" data-ditto-id="style-p-10">
                   <p className="block mb-[0.9rem]">
                     HOJA ACADEMY s'engage à rendre ce site accessible, conformément aux règles WCAG 2.1 (niveau AA visé).

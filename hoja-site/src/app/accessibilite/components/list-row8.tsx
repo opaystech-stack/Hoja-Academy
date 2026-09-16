@@ -10,7 +10,7 @@ export type ListRow8Data = {
 export default function ListRow8({ d, meta, styles }: { d: ListRow8Data; meta: DittoNodeMetaMap; styles: ListRow8Styles }) {
   return (
     <li data-ditto-id={meta[0]?.anchor} className="flex relative">
-      <a data-ditto-id={meta[1]?.anchor} className={cn("h-[1.5625rem] flex relative py-3 items-center grow text-background text-[0.8125rem] leading-px tracking-[0.1px] whitespace-nowrap text-nowrap cursor-pointer 2xl:text-[0.9375rem]", styles.className)} data-component="link" href={d.href} aria-current={d.ariacurrent}>
+      <a data-ditto-id={meta[1]?.anchor} className={cn("h-[1.5625rem] flex relative py-3 items-center grow text-background text-[0.875rem] leading-px tracking-[0.1px] whitespace-nowrap text-nowrap cursor-pointer 2xl:text-[1rem]", styles.className)} data-component="link" href={d.href} aria-current={d.ariacurrent}>
         {d.label}
       </a>
     </li>

@@ -22,7 +22,7 @@ export default function MediaCard({ d, meta, styles }: { d: MediaCardData; meta:
             <div data-ditto-id={meta[4]?.anchor} className="block">
               <div data-ditto-id={meta[5]?.anchor} className={cn("flex flex-col", styles.className4)}>
                 <div data-ditto-id={meta[6]?.anchor} className="block shrink-0 leading-0">
-                  <span data-ditto-id={meta[7]?.anchor} className={cn("inline-block text-[4rem] leading-16 text-center max-md:text-[2.875rem] max-md:leading-11.5 2xl:text-[5.125rem] 2xl:leading-20.5", styles.className5)}>
+                  <span data-ditto-id={meta[7]?.anchor} className={cn("inline-block text-[3.75rem] leading-15 text-center max-md:text-[3rem] max-md:leading-12 2xl:text-[5.25rem] 2xl:leading-21", styles.className5)}>
                     {" "}
                     <svg data-ditto-id={meta[8]?.anchor} className={cn("h-16 block relative overflow-hidden max-md:h-11.5 2xl:h-20.5", styles.className6)} data-component="image" height={d.height} viewBox={d.viewBox} width={d.width} xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden={d.ariahidden}>{d.icon}</svg>
                     {" "}
@@ -31,14 +31,14 @@ export default function MediaCard({ d, meta, styles }: { d: MediaCardData; meta:
                 </div>
                 {" "}
                 <div data-ditto-id={meta[9]?.anchor} className="block grow">
-                  <h3 data-ditto-id={meta[10]?.anchor} className={cn("block mt-2 [font-family:Montserrat,_sans-serif] text-[1.5625rem] leading-10 max-md:[font-size:inherit] 2xl:text-[2.1875rem] 2xl:leading-[3.5625rem]", styles.className7)} data-component="heading">
+                  <h3 data-ditto-id={meta[10]?.anchor} className={cn("block mt-2 [font-family:Montserrat,_sans-serif] text-[1.75rem] leading-10 max-md:[font-size:inherit] 2xl:text-[2.25rem] 2xl:leading-[3.5625rem]", styles.className7)} data-component="heading">
                     <span data-ditto-id={meta[11]?.anchor} className="inline">
                       {d.title}
                     </span>
                     {" "}
                   </h3>
                   {" "}
-                  <p data-ditto-id={meta[12]?.anchor} className={cn("block text-lg leading-6.5 max-md:text-base 2xl:[font-size:inherit] 2xl:leading-[inherit]", styles.className8)}>
+                  <p data-ditto-id={meta[12]?.anchor} className={cn("block text-[1.125rem] leading-6.5 max-md:text-[1rem] 2xl:[font-size:inherit] 2xl:leading-[inherit]", styles.className8)}>
                     {d.description}
                   </p>
                   {" "}

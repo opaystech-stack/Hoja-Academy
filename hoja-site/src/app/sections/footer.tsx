@@ -20,16 +20,16 @@ export default function Footer({ listRowData2 = listRowData2Content, listRow5Dat
                 <nav className="flex" data-component="nav" aria-label="Menu">
                   <ul className="flex relative z-2 flex-wrap justify-start leading-6 [list-style-type:none] list-outside 2xl:mr-2.5 after:content-[' '] after:block after:w-0 after:h-0 after:text-foreground after:text-[0rem] after:leading-0 after:[overflow:hidden]" id="menu-1-516d334">
                     <li className="flex relative">
-                      <a className="flex relative mx-[17.5px] py-4 items-center grow text-background [font-family:Montserrat,_sans-serif] text-sm leading-0 whitespace-nowrap text-nowrap cursor-pointer max-md:mx-[0.5625rem] max-md:text-[0.8125rem] 2xl:mx-[21.5px] 2xl:text-[0.9375rem] hover:underline" href="/formations/expert-ia">Expert IA</a>
+                      <a className="flex relative mx-[17.5px] py-4 items-center grow text-background [font-family:Montserrat,_sans-serif] text-[0.875rem] leading-0 whitespace-nowrap text-nowrap cursor-pointer max-md:mx-[0.5625rem] max-md:text-[0.875rem] 2xl:mx-[21.5px] 2xl:text-[0.875rem] hover:underline" href="/formations/expert-ia">Expert IA</a>
                     </li>
                     <li className="flex relative">
-                      <a className="flex relative mx-[17.5px] py-4 items-center grow text-background [font-family:Montserrat,_sans-serif] text-sm leading-0 whitespace-nowrap text-nowrap cursor-pointer max-md:mx-[0.5625rem] max-md:text-[0.8125rem] 2xl:mx-[21.5px] 2xl:text-[0.9375rem] hover:underline" href="/formations/automatisation-n8n">Automatisation &amp; n8n</a>
+                      <a className="flex relative mx-[17.5px] py-4 items-center grow text-background [font-family:Montserrat,_sans-serif] text-[0.875rem] leading-0 whitespace-nowrap text-nowrap cursor-pointer max-md:mx-[0.5625rem] max-md:text-[0.875rem] 2xl:mx-[21.5px] 2xl:text-[0.875rem] hover:underline" href="/formations/automatisation-n8n">Automatisation &amp; n8n</a>
                     </li>
                     <li className="flex relative">
-                      <a className="flex relative mx-[17.5px] py-4 items-center grow text-background [font-family:Montserrat,_sans-serif] text-sm leading-0 whitespace-nowrap text-nowrap cursor-pointer max-md:mx-[0.5625rem] max-md:text-[0.8125rem] 2xl:mx-[21.5px] 2xl:text-[0.9375rem] hover:underline" href="/formations/robotique">Robotique</a>
+                      <a className="flex relative mx-[17.5px] py-4 items-center grow text-background [font-family:Montserrat,_sans-serif] text-[0.875rem] leading-0 whitespace-nowrap text-nowrap cursor-pointer max-md:mx-[0.5625rem] max-md:text-[0.875rem] 2xl:mx-[21.5px] 2xl:text-[0.875rem] hover:underline" href="/formations/robotique">Robotique</a>
                     </li>
                     <li className="flex relative">
-                      <a className="flex relative mx-[17.5px] py-4 items-center grow text-background [font-family:Montserrat,_sans-serif] text-sm leading-0 whitespace-nowrap text-nowrap cursor-pointer max-md:mx-[0.5625rem] max-md:text-[0.8125rem] 2xl:mx-[21.5px] 2xl:text-[0.9375rem] hover:underline" href="/formations/ia-recherche-sciences">IA, Recherche &amp; Sciences</a>
+                      <a className="flex relative mx-[17.5px] py-4 items-center grow text-background [font-family:Montserrat,_sans-serif] text-[0.875rem] leading-0 whitespace-nowrap text-nowrap cursor-pointer max-md:mx-[0.5625rem] max-md:text-[0.875rem] 2xl:mx-[21.5px] 2xl:text-[0.875rem] hover:underline" href="/formations/ia-recherche-sciences">IA, Recherche &amp; Sciences</a>
                     </li>
                     {listRow5Data.map((d, i) => <ListRow5 key={i} d={d} styles={ListRow5_styles[i]} />)}
                   </ul>
@@ -45,7 +45,7 @@ export default function Footer({ listRowData2 = listRowData2Content, listRow5Dat
                 <div className="block">
                   <div className="flex flex-col" data-ditto-id="style-div-43">
                     <div className="block grow">
-                      <h3 className="block mt-2 mb-1.5 text-background [font-family:Montserrat,_sans-serif] text-[0.8125rem] leading-1.5 uppercase" data-ditto-id="style-link-14" data-component="heading">
+                      <h3 className="block mt-2 mb-1.5 text-background [font-family:Montserrat,_sans-serif] text-[0.875rem] leading-1.5 uppercase" data-ditto-id="style-link-14" data-component="heading">
                         <a className="inline cursor-pointer" data-component="link" href="mailto:info@hoja-academy.com">
                           {" Email "}
                         </a>
@@ -53,7 +53,7 @@ export default function Footer({ listRowData2 = listRowData2Content, listRow5Dat
                       </h3>
                       {" "}
                       <p className="block text-background text-[0.875rem]">
-                        <a className="inline [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] cursor-pointer" data-component="link" href="mailto:info@hoja-academy.com">
+                        <a className="inline [font-family:Montserrat,_sans-serif] text-[0.875rem] font-medium leading-[1.1875rem] cursor-pointer" data-component="link" href="mailto:info@hoja-academy.com">
                           info@hoja-academy.com
                         </a>
                         {" "}
@@ -80,7 +80,7 @@ export default function Footer({ listRowData2 = listRowData2Content, listRow5Dat
               <div className="block relative min-w-0 max-w-full gap-y-[0.1875rem]">
                 <div className="block">
                   <div className="block" data-ditto-id="interaction-span-6">
-                    <a className="w-42 h-11 inline-block min-h-11 py-3 px-6 rounded-[33px] text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] text-center bg-primary cursor-pointer hover:bg-clr-22 hover:border-clr-23 focus:bg-clr-32 focus:border-primary" data-ditto-id="style-span-33" data-component="link" href="/contact">
+                    <a className="w-42 h-11 inline-block min-h-11 py-3 px-6 rounded-[33px] text-color-001 [font-family:Montserrat,_sans-serif] text-[0.875rem] font-medium leading-[1.1875rem] text-center bg-primary cursor-pointer hover:bg-clr-22 hover:border-clr-23 focus:bg-clr-32 focus:border-primary" data-ditto-id="style-span-33" data-component="link" href="/contact">
                       {" "}
                       <span className="flex flex-row-reverse justify-center gap-[1.9375rem]">
                         {" "}
@@ -109,7 +109,7 @@ export default function Footer({ listRowData2 = listRowData2Content, listRow5Dat
           <div className="w-[30%] flex relative min-w-0 flex-col justify-start items-center gap-5 max-md:w-full max-md:min-h-[2.3125rem] max-md:flex-wrap max-lg:items-start max-lg:order-[-99999] md:max-lg:w-[70%] 2xl:w-[31.5%]">
             <div className="block relative min-w-0 max-w-full gap-5 text-center">
               <div className="block">
-                <a className="inline-block text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] cursor-pointer" data-component="link" href="/">
+                <a className="inline-block text-color-001 [font-family:Montserrat,_sans-serif] text-[0.875rem] font-medium leading-[1.1875rem] cursor-pointer" data-component="link" href="/">
                   {" "}
                   <img className="w-[22.5625rem] h-[2.3125rem] inline-block max-w-full overflow-clip aspect-[auto_2893/295] align-middle max-md:w-[20.9375rem] max-md:h-8.5 md:max-lg:w-[22.6875rem] 2xl:w-122.5 2xl:h-12.5" data-component="image" alt="" height="295" src="/assets/cloned/images/ca7c98260b3d.png" width="2893" />
                   {" "}
@@ -122,7 +122,7 @@ export default function Footer({ listRowData2 = listRowData2Content, listRow5Dat
           </div>
           {" "}
           <div className="w-1/3 flex relative min-w-0 pt-2.5 flex-col items-end gap-y-[1.8125rem] max-md:w-full max-md:flex-wrap max-lg:items-start md:max-lg:w-[77%] 2xl:pt-0">
-            <div className="w-[70%] block relative min-w-0 max-w-full gap-y-[1.8125rem] text-background text-sm font-light leading-[1.1875rem] text-end max-lg:[text-align:inherit] 2xl:text-[1rem]">
+            <div className="w-[70%] block relative min-w-0 max-w-full gap-y-[1.8125rem] text-background text-[0.875rem] font-light leading-[1.1875rem] text-end max-lg:[text-align:inherit] 2xl:text-[1rem]">
               <div className="block">
                 <p className="block mb-[0.9rem]">
                   <strong className="inline font-normal">
@@ -135,7 +135,7 @@ export default function Footer({ listRowData2 = listRowData2Content, listRow5Dat
               {" "}
             </div>
             {" "}
-            <div className="block relative min-w-0 max-w-full gap-y-[1.8125rem] text-background text-base font-light leading-[1.1875rem] text-end max-lg:[text-align:inherit]">
+            <div className="block relative min-w-0 max-w-full gap-y-[1.8125rem] text-background text-[1rem] font-light leading-[1.1875rem] text-end max-lg:[text-align:inherit]">
               <div className="block whitespace-nowrap">
                 {" HOJA ACADEMY © 2026 — Copyright "}
               </div>

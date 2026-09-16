@@ -24,7 +24,7 @@ export default function MediaTile({ d, styles }: { d: MediaTileData; styles: Med
                   {" "}
                 </span>
                 {" "}
-                <span className="block pl-[0.3125rem] self-center text-color-001 font-medium 2xl:text-[1.875rem]">
+                <span className="block pl-[0.3125rem] self-center text-color-001 font-medium 2xl:text-[1.75rem]">
                   {d.text}
                 </span>
                 {" "}
@@ -37,7 +37,7 @@ export default function MediaTile({ d, styles }: { d: MediaTileData; styles: Med
         {" "}
       </div>
       {" "}
-      <div className="block relative min-w-0 max-w-full gap-5 text-color-001 text-base leading-[1.3125rem] 2xl:[font-size:inherit] 2xl:leading-[inherit]">
+      <div className="block relative min-w-0 max-w-full gap-5 text-color-001 text-[1rem] leading-[1.3125rem] 2xl:[font-size:inherit] 2xl:leading-[inherit]">
         <div className="block">
           <p className="block mb-[0.9rem]">
             {d.description}

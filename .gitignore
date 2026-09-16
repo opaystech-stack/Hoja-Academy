@@ -47,3 +47,8 @@ e2e_result.txt
 release-out.txt
 build-bundle-err.txt
 nul
+
+# ─── Snapshots temporaires de comparaison avant/après ────────────────
+# (le sandbox ne voit pas /tmp : les snapshots vivent dans le projet)
+.tmp_*/
+.tmp_*

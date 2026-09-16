@@ -191,7 +191,7 @@ export default function Page() {
   return (
     <>
       {" "}
-      <a className="w-px h-px block absolute -top-37500 left-0 -m-px overflow-hidden text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] [clip-path:inset(50%)] cursor-pointer" href="#content">
+      <a className="w-px h-px block absolute -top-37500 left-0 -m-px overflow-hidden text-color-001 [font-family:Montserrat,_sans-serif] text-[1rem] font-medium leading-[1.1875rem] [clip-path:inset(50%)] cursor-pointer" href="#content">
         Aller au contenu
       </a>
       {" "}
@@ -205,7 +205,7 @@ export default function Page() {
               <div className="w-240 min-h-[16.3125rem] flex relative min-w-0 flex-col justify-end gap-5 max-md:w-[21.5625rem] max-md:min-h-41 max-md:flex-wrap md:max-lg:w-[569.3px] 2xl:w-[106.1875rem] 2xl:p-2.5">
                 <div className="block relative min-w-0 max-w-full gap-5">
                   <div className="block">
-                    <h1 className="block text-primary [font-family:Montserrat,_sans-serif] text-[2.625rem] font-bold leading-[6.3125rem] max-md:text-3xl max-md:leading-9 md:max-lg:leading-[3.125rem]" data-ditto-id="style-span-39" data-component="heading">
+                    <h1 className="block text-primary [font-family:Montserrat,_sans-serif] text-[3rem] font-bold leading-[6.3125rem] max-md:text-[1.75rem] max-md:leading-9 md:max-lg:leading-[3.125rem]" data-ditto-id="style-span-39" data-component="heading">
                       Politique de Confidentialité
                     </h1>
                     {" "}
@@ -218,7 +218,7 @@ export default function Page() {
             </div>
             {" "}
             <div className="min-h-[44.8125rem] flex relative max-w-full py-16 px-[3.2rem] justify-center gap-5 max-md:pt-10 max-md:pb-5 max-md:px-5 max-md:flex-wrap md:max-lg:py-[2.4rem] md:max-lg:px-[30.7px] 2xl:py-24 2xl:px-[4.8rem]" data-ditto-id="style-section">
-              <div className="w-4/5 block relative min-w-0 max-w-full gap-5 text-color-001 max-md:text-base max-md:leading-[1.3125rem]" data-ditto-id="style-div-83">
+              <div className="w-4/5 block relative min-w-0 max-w-full gap-5 text-color-001 max-md:text-[1rem] max-md:leading-[1.3125rem]" data-ditto-id="style-div-83">
                 <div className="h-full block" data-ditto-id="style-p-10">
                   <p className="block mb-[0.9rem]" data-ditto-id="style-heading-4">
                     Dans la présente Politique de Confidentialité, vous trouverez toutes les informations relatives à l'usage que nous faisons des données à caractère personnel que vous utilisez pour interagir avec nous en tant qu'utilisateur. Vous disposez de manière permanente de cette Politique de Confidentialité, que vous pouvez consulter chaque fois que vous le jugerez opportun.
@@ -226,13 +226,13 @@ export default function Page() {
                   {" "}
                   <p className="block mb-[0.9rem]" data-ditto-id="style-div-84">
                     {"Si un doute vous vient à la lecture de ces informations, n'hésitez pas à nous poser une question par e-mail à l'adresse "}
-                    <a className="inline [font-family:Montserrat,_sans-serif] text-lg font-medium leading-[1.1875rem]" data-ditto-id="style-span-40">
+                    <a className="inline [font-family:Montserrat,_sans-serif] text-[1.125rem] font-medium leading-[1.1875rem]" data-ditto-id="style-span-40">
                       {"info@hoja-academy.com "}
                     </a>
                     .
                   </p>
                   {" "}
-                  <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.25rem]" data-component="heading">
+                  <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-component="heading">
                     <span className="inline font-bold" data-ditto-id="interaction-span-11">
                       Qui sommes-nous ?
                     </span>
@@ -242,7 +242,7 @@ export default function Page() {
                     HOJA ACADEMY, éditeur du site https://hoja-academy.com/, est responsable du traitement de vos données à caractère personnel, de leurs usages et de leur protection.
                   </p>
                   {" "}
-                  <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.25rem]" data-ditto-id="style-section-2" data-component="heading">
+                  <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-ditto-id="style-section-2" data-component="heading">
                     <span className="inline font-bold" data-ditto-id="interaction-div-26">
                       Pour quelle finalité utilisons-nous vos données ?
                     </span>
@@ -256,8 +256,8 @@ export default function Page() {
                     Répondre aux consultations, suggestions ou demandes que vous nous adressez par le biais du site web.
                   </p>
                   {" "}
-                  <h6 className="block mt-2 mb-4 text-base font-medium leading-[1.1875rem] max-md:[font-size:inherit]" data-ditto-id="style-p-6" data-component="heading">
-                    <span className="inline text-xl font-bold leading-6">
+                  <h6 className="block mt-2 mb-4 text-[1rem] font-medium leading-[1.1875rem] max-md:[font-size:inherit]" data-ditto-id="style-p-6" data-component="heading">
+                    <span className="inline text-[1.375rem] font-bold leading-6">
                       Gestion académique et suivi de l'activité de l'élève
                     </span>
                   </h6>
@@ -295,7 +295,7 @@ export default function Page() {
                     Le traitement sera effectué principalement sur la base de l'exécution de la relation contractuelle découlant de votre participation au Entreprises et, le cas échéant, pour le respect des obligations légales applicables.
                   </p>
                   {" "}
-                  <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.25rem]" data-ditto-id="style-p-11" data-component="heading">
+                  <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-ditto-id="style-p-11" data-component="heading">
                     <span className="inline font-bold" data-ditto-id="style-p-8">
                       Quelles données à caractère personnel vous demanderons-nous ?
                     </span>
@@ -327,7 +327,7 @@ export default function Page() {
                     De même, durant votre participation au Programme, nous pourrons enregistrer des informations relatives aux visites, aux parrainages, aux ventes attribuées, aux commissions générées et aux paiements effectués.
                   </p>
                   {" "}
-                  <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.25rem]" data-ditto-id="style-p" data-component="heading">
+                  <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-ditto-id="style-p" data-component="heading">
                     <span className="inline font-bold" data-ditto-id="interaction-link">
                       Pourquoi utilisons-nous vos données ?
                     </span>
@@ -341,7 +341,7 @@ export default function Page() {
                     Il existe d'autres raisons, telles que notre intérêt à répondre à vos consultations ou demandes et le consentement que vous nous accordez pour que nous puissions vous envoyer nos informations commerciales.
                   </p>
                   {" "}
-                  <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.25rem]" data-ditto-id="style-link-7" data-component="heading">
+                  <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-ditto-id="style-link-7" data-component="heading">
                     <span className="inline font-bold" data-ditto-id="style-br-3">
                       Combien de temps conservons-nous vos données ?
                     </span>
@@ -349,7 +349,7 @@ export default function Page() {
                   {" "}
                   <p className="block mb-[0.9rem]">
                     {"Vos données à caractère personnel seront conservées pendant le temps où votre compte utilisateur restera actif. Rappelez-vous que vous pouvez le supprimer à tout moment par une demande adressée à l'adresse e-mail "}
-                    <a className="inline [font-family:Montserrat,_sans-serif] text-lg font-medium leading-[1.1875rem]">
+                    <a className="inline [font-family:Montserrat,_sans-serif] text-[1.125rem] font-medium leading-[1.1875rem]">
                       {"info@hoja-academy.com "}
                     </a>
                     . Une fois le compte supprimé, vos données à caractère personnel seront conservées bloquées pendant la période exigée par la législation fiscale pour la prescription des responsabilités au cas où vous auriez effectué une acquisition de produits.
@@ -381,7 +381,7 @@ export default function Page() {
                     {" "}
                     <p className="block mb-[0.9rem]">
                       {"En utilisant la fonction IA « Alvi », vous acceptez que des données vocales, leurs transcriptions et métadonnées (date, heure, durée) soient collectées et traitées afin de faciliter la communication en temps réel et de garantir la sécurité du service. La base légale de ce traitement est l'exécution du contrat et votre consentement exprès ; les données sont conservées pendant la durée nécessaire conformément à la réglementation en vigueur. Vous pourrez exercer vos droits d'accès, de rectification, d'effacement, de portabilité et d'opposition en envoyant une demande à "}
-                      <a className="inline [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] cursor-pointer" data-ditto-id="style-span-47" data-component="link" href="mailto:info@hoja-academy.com" rel="noopener">
+                      <a className="inline [font-family:Montserrat,_sans-serif] text-[1rem] font-medium leading-[1.1875rem] cursor-pointer" data-ditto-id="style-span-47" data-component="link" href="mailto:info@hoja-academy.com" rel="noopener">
                         info@hoja-academy.com
                       </a>
                       .
@@ -394,7 +394,7 @@ export default function Page() {
                     <p className="block mb-[0.9rem]" />
                     <p className="block mb-[0.9rem]" data-ditto-id="style-p-15">
                       {"Vous pouvez demander la liste de ces sociétés et organismes par le biais de notre adresse e-mail "}
-                      <a className="inline [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] cursor-pointer" data-ditto-id="style-footer-3" data-component="link" href="mailto:info@hoja-academy.com" rel="noopener">
+                      <a className="inline [font-family:Montserrat,_sans-serif] text-[1rem] font-medium leading-[1.1875rem] cursor-pointer" data-ditto-id="style-footer-3" data-component="link" href="mailto:info@hoja-academy.com" rel="noopener">
                         info@hoja-academy.com
                       </a>
                     </p>
@@ -410,20 +410,20 @@ export default function Page() {
                   <div className="block">
                     <p className="block mb-[0.9rem]" data-ditto-id="interaction-div-6">
                       {"Indépendamment de la base juridique sur laquelle nous avons effectué le traitement de vos données à caractère personnel, vous disposez d'un ensemble de droits que vous pouvez exercer, par communication à l'adresse e-mail "}
-                      <a className="inline [font-family:Montserrat,_sans-serif] text-lg font-medium leading-[1.1875rem]" data-ditto-id="interaction-div-8">
+                      <a className="inline [font-family:Montserrat,_sans-serif] text-[1.125rem] font-medium leading-[1.1875rem]" data-ditto-id="interaction-div-8">
                         {"info@hoja-academy.com "}
                       </a>
                       .
                     </p>
                     {" "}
-                    <ul className="block pl-10 [list-style-type:disc] list-outside bg-background max-md:text-[1.25rem]" data-ditto-id="style-menu-2">
+                    <ul className="block pl-10 [list-style-type:disc] list-outside bg-background max-md:text-[1.375rem]" data-ditto-id="style-menu-2">
                       {ListRow5_data.map((d, i) => <ListRow5 key={i} d={d} />)}
                     </ul>
                     {" "}
                     <div className="block" data-ditto-id="interaction-sm-17672256027865476-1" />
                     {" "}
                     <div className="block" data-ditto-id="style-span-6">
-                      <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.25rem]" data-ditto-id="style-icon-2" data-component="heading">
+                      <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-ditto-id="style-icon-2" data-component="heading">
                         <span className="inline font-bold" data-ditto-id="interaction-sm-17672256027865476-2">
                           Modifications de la Politique de Confidentialité
                         </span>
@@ -441,7 +441,7 @@ export default function Page() {
                         Nous vous conseillons de vérifier périodiquement la présente Politique de Confidentialité.
                       </p>
                       {" "}
-                      <h3 className="block mt-2 mb-4 text-[1.6875rem] font-medium leading-[2.6875rem]" data-ditto-id="style-b-5" data-component="heading">
+                      <h3 className="block mt-2 mb-4 text-[1.75rem] font-medium leading-[2.6875rem]" data-ditto-id="style-b-5" data-component="heading">
                         <span className="inline font-bold">
                           CONDITIONS GÉNÉRALES DE CONTRACTATION
                         </span>
@@ -458,7 +458,7 @@ export default function Page() {
                         Votre inscription au site web et l'utilisation de ses services impliquent que les données à caractère personnel que vous avez fournies feront partie de fichiers destinés à leur traitement, selon les finalités, légitimations, cessions et durées de conservation détaillées dans la Politique de Confidentialité.
                       </p>
                       {" "}
-                      <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.25rem]" data-ditto-id="style-li-2" data-component="heading">
+                      <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-ditto-id="style-li-2" data-component="heading">
                         <span className="inline font-bold" data-ditto-id="interaction-b-2">
                           Limitaciones
                         </span>
@@ -468,7 +468,7 @@ export default function Page() {
                         Le contenu promotionnel du site web s'adresse à tous les utilisateurs, mais si vous souhaitez vous inscrire en tant que client ou effectuer un achat, vous devez être majeur.
                       </p>
                       {" "}
-                      <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.25rem]" data-ditto-id="style-b-3" data-component="heading">
+                      <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-ditto-id="style-b-3" data-component="heading">
                         <span className="inline font-bold">
                           Garantie et Politique de Remboursement
                         </span>
@@ -490,7 +490,7 @@ export default function Page() {
                         Une fois le délai indiqué écoulé ou les conditions d'utilisation mentionnées dépassées, le remboursement du montant versé ne sera pas dû.
                       </p>
                       {" "}
-                      <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.25rem]" data-ditto-id="style-div-15" data-component="heading">
+                      <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-ditto-id="style-div-15" data-component="heading">
                         <b className="inline font-bold" data-ditto-id="interaction-div-4">
                           Réservation de places dans les formations
                         </b>
@@ -523,7 +523,7 @@ export default function Page() {
                       {" "}
                     </div>
                     {" "}
-                    <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.25rem]" data-ditto-id="interaction-b" data-component="heading">
+                    <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-ditto-id="interaction-b" data-component="heading">
                       <span className="inline font-bold">
                         Accès au Contenu
                       </span>
@@ -551,7 +551,7 @@ export default function Page() {
                     {" "}
                     <p className="block mb-[0.9rem]" data-ditto-id="style-li-4" />
                     {" "}
-                    <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.25rem]" data-ditto-id="style-b-4" data-component="heading">
+                    <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-ditto-id="style-b-4" data-component="heading">
                       <span className="inline font-bold">
                         Modification des Contenus et de l'Organisation
                       </span>
@@ -573,7 +573,7 @@ export default function Page() {
                     {" "}
                     <p className="block mb-[0.9rem]" data-ditto-id="style-link-2" />
                     {" "}
-                    <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.25rem]" data-ditto-id="style-span-2" data-component="heading">
+                    <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-ditto-id="style-span-2" data-component="heading">
                       <span className="inline font-bold" data-ditto-id="interaction-span-2">
                         Exonération de Responsabilité concernant les Résultats
                       </span>
@@ -594,7 +594,7 @@ export default function Page() {
                     </p>
                     {" "}
                     <div className="block">
-                      <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.25rem]" data-ditto-id="style-link-4" data-component="heading">
+                      <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-ditto-id="style-link-4" data-component="heading">
                         <span className="inline font-bold" data-ditto-id="interaction-image">
                           Protection des Contenus et Interdiction de Téléchargement, de Distribution et de Commercialisation
                         </span>
@@ -624,7 +624,7 @@ export default function Page() {
                     {" "}
                     <p className="block mb-[0.9rem]" data-ditto-id="interaction-div-22" />
                     {" "}
-                    <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.25rem]" data-ditto-id="style-div-103" data-component="heading">
+                    <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-ditto-id="style-div-103" data-component="heading">
                       <span className="inline font-bold" data-ditto-id="style-div-5">
                         Suspension ou Annulation de l'Accès
                       </span>
@@ -642,7 +642,7 @@ export default function Page() {
                     {" "}
                     <p className="block mb-[0.9rem]" data-ditto-id="style-div-17" />
                     {" "}
-                    <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.25rem]" data-ditto-id="style-image" data-component="heading">
+                    <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-ditto-id="style-image" data-component="heading">
                       <span className="inline font-bold">
                         Utilisation Appropriée de la Plateforme
                       </span>
@@ -658,7 +658,7 @@ export default function Page() {
                       La publication de contenus offensants, illégaux, promotionnels non autorisés ou pouvant affecter négativement le déroulement normal du cours ou d'autres élèves ne sera pas permise.
                     </p>
                     {" "}
-                    <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.25rem]" data-ditto-id="style-div-27" data-component="heading">
+                    <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-ditto-id="style-div-27" data-component="heading">
                       <span className="inline font-bold">
                         Législation Applicable et Juridiction
                       </span>
@@ -672,7 +672,7 @@ export default function Page() {
                       Pour la résolution de tout litige, les parties s’efforceront de trouver une solution amiable ; à défaut, la juridiction compétente sera désignée par la législation applicable.
                     </p>
                     {" "}
-                    <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.25rem]" data-ditto-id="style-div-7" data-component="heading">
+                    <h5 className="block mt-2 mb-4 font-medium leading-6 max-md:text-[1.375rem]" data-ditto-id="style-div-7" data-component="heading">
                       <span className="inline font-bold" data-ditto-id="style-div-98">
                         CONDITIONS GÉNÉRALES DU PROGRAMME D'AFFILIATION DE HOJA ACADEMY
                       </span>

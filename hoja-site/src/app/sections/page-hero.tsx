@@ -38,7 +38,7 @@ export default function PageHero({
           <div className="w-full min-h-150 flex relative min-w-0 pt-15 pl-7.5 flex-col justify-center gap-y-[1.0625rem] max-md:min-h-[35.525rem] max-md:pb-5 max-md:flex-wrap max-md:items-center max-md:pt-0 max-md:pl-0 md:max-lg:min-h-[491.5px] 2xl:min-h-[48.6rem] 2xl:gap-y-[1.9375rem]">
             <div className="block relative min-w-0 max-w-full gap-y-[1.0625rem] max-md:text-center 2xl:gap-y-[1.9375rem]">
               <div className="block pt-[2.0625rem] 2xl:pt-13">
-                <p className="block text-background text-[1.1875rem] font-light leading-5 2xl:text-[1.625rem]" data-component="heading">
+                <p className="block text-background text-[1.125rem] font-light leading-5 2xl:text-[1.75rem]" data-component="heading">
                   <span className="inline text-primary-text font-medium">
                     {eyebrow}
                   </span>
@@ -51,7 +51,7 @@ export default function PageHero({
             {" "}
             <div className="block relative min-w-0 max-w-full gap-y-[1.0625rem] max-md:text-center 2xl:gap-y-[1.9375rem]">
               <div className="block">
-                <h1 className="block text-background [font-family:Montserrat,_sans-serif] text-[3.125rem] leading-16.5 max-md:text-3xl max-md:leading-[inherit] 2xl:text-[5.3125rem] 2xl:leading-[6.3125rem]" data-component="heading">
+                <h1 className="block text-background [font-family:Montserrat,_sans-serif] text-[3rem] leading-16.5 max-md:text-[1.75rem] max-md:leading-[inherit] 2xl:text-[5.25rem] 2xl:leading-[6.3125rem]" data-component="heading">
                   {title}
                   {title2 ? <><br className="inline" />{title2}</> : null}
                 </h1>
@@ -63,7 +63,7 @@ export default function PageHero({
             <div className="block relative min-w-0 max-w-full gap-y-[1.0625rem] max-md:text-center 2xl:gap-y-[1.9375rem]">
               <div className="block max-lg:mt-2.5">
                 <div className="block">
-                  <a className="border-[5px] border-solid border-primary inline-block min-h-11 py-3 px-6 rounded-[25px] text-background [font-family:Montserrat,_sans-serif] text-sm font-medium leading-[1.1875rem] text-center bg-clr-3 cursor-pointer max-md:[text-align:inherit] 2xl:text-[0.9375rem] hover:transform-[matrix(1.08023,0,0,1.08023,0,0)] focus:transform-[matrix(1.1,0,0,1.1,0,0)]" data-component="link" href={ctaHref}>
+                  <a className="border-[5px] border-solid border-primary inline-block min-h-11 py-3 px-6 rounded-[25px] text-background [font-family:Montserrat,_sans-serif] text-[0.875rem] font-medium leading-[1.1875rem] text-center bg-clr-3 cursor-pointer max-md:[text-align:inherit] 2xl:text-[1rem] hover:transform-[matrix(1.08023,0,0,1.08023,0,0)] focus:transform-[matrix(1.1,0,0,1.1,0,0)]" data-component="link" href={ctaHref}>
                     {" "}
                     <span className="flex flex-row-reverse justify-center gap-3.5">
                       {" "}
@@ -102,14 +102,14 @@ export default function PageHero({
                 <div className="block -mt-[1.5625rem] max-md:pt-17.5 max-md:mt-0">
                   <div className="flex flex-col max-md:text-center">
                     <div className="block grow">
-                      <h3 className="block mt-2 text-primary-text text-lg leading-[1.9375rem] max-lg:text-[1rem] 2xl:mb-[0.3125rem] 2xl:text-[1.3125rem]" data-component="heading">
+                      <p className="block mt-2 text-primary-text text-[1.125rem] leading-[1.9375rem] max-lg:text-[1rem] 2xl:mb-[0.3125rem] 2xl:text-[1.375rem]" data-component="paragraph">
                         <span className="inline">
                           {kicker || "L'intelligence artificielle "}
                         </span>
                         {" "}
-                      </h3>
+                      </p>
                       {" "}
-                      <p className="block text-background [font-family:Montserrat,_sans-serif] font-medium max-lg:text-lg max-lg:leading-[1.5625rem] 2xl:text-[1.4375rem] 2xl:leading-7" data-component="paragraph">
+                      <p className="block text-background [font-family:Montserrat,_sans-serif] font-medium max-lg:text-[1.125rem] max-lg:leading-[1.5625rem] 2xl:text-[1.375rem] 2xl:leading-7" data-component="paragraph">
                         {kickerLine || "réécrit les règles du monde. "}
                       </p>
                       {" "}
@@ -126,7 +126,7 @@ export default function PageHero({
               <div className="w-full max-w-12.5 block relative min-w-0 gap-5 max-md:hidden">
                 <div className="block -mb-[0.5625rem]">
                   <div className="block text-center">
-                    <div className="inline-block text-color-001 text-[3.125rem] leading-12.5">
+                    <div className="inline-block text-color-001 text-[3rem] leading-12">
                       {" "}
                       <Illustration />
                       {" "}
@@ -142,9 +142,9 @@ export default function PageHero({
             <div className="w-full min-h-37 flex relative min-w-0 flex-col justify-center items-center max-md:hidden md:max-lg:pl-5 md:max-lg:items-start 2xl:p-2.5 2xl:items-start 2xl:gap-5 2xl:[justify-content:initial]">
               <div className="block relative min-w-0 max-w-full 2xl:gap-5">
                 <div className="block">
-                  <h2 className="block text-background text-base leading-[1.5625rem] md:max-lg:text-[0.9375rem] md:max-lg:leading-[1.25rem] 2xl:leading-[1.8125rem] 2xl:[font-size:inherit]" data-component="heading">
+                  <p className="block text-background text-[1rem] leading-[1.5625rem] md:max-lg:text-[1rem] md:max-lg:leading-[1.25rem] 2xl:leading-[1.8125rem] 2xl:[font-size:inherit]" data-component="paragraph">
                     {lead}
-                  </h2>
+                  </p>
                   {" "}
                 </div>
                 {" "}

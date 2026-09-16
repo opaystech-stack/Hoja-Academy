@@ -229,7 +229,7 @@ export default function Page() {
       {" "}
       <span className="w-1 h-1 border-2 border-inset border-foreground block absolute -top-[624.9375rem] overflow-clip" aria-hidden="true" role="presentation" title="Vidéo témoignage — apprenant HOJA ACADEMY"></span>
       {" "}
-      <a className="w-px h-px block absolute -top-37500 left-0 -m-px overflow-hidden text-color-001 [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] [clip-path:inset(50%)] cursor-pointer" href="#content">
+      <a className="w-px h-px block absolute -top-37500 left-0 -m-px overflow-hidden text-color-001 [font-family:Montserrat,_sans-serif] text-[1rem] font-medium leading-[1.1875rem] [clip-path:inset(50%)] cursor-pointer" href="#content">
         Aller au contenu
       </a>
       {" "}
@@ -243,7 +243,7 @@ export default function Page() {
               <div className="w-240 min-h-[16.3125rem] flex relative min-w-0 flex-col justify-end gap-5 max-md:w-[21.5625rem] max-md:min-h-41 max-md:flex-wrap md:max-lg:w-[569.3px] 2xl:w-[106.1875rem] 2xl:p-2.5">
                 <div className="block relative min-w-0 max-w-full gap-5">
                   <div className="block" data-ditto-id="style-span-39">
-                    <h1 className="block text-primary [font-family:Montserrat,_sans-serif] text-[2.625rem] font-bold leading-[6.3125rem] max-md:text-3xl max-md:leading-9 md:max-lg:leading-[3.125rem]" data-ditto-id="style-section" data-component="heading">
+                    <h1 className="block text-primary [font-family:Montserrat,_sans-serif] text-[3rem] font-bold leading-[6.3125rem] max-md:text-[1.75rem] max-md:leading-9 md:max-lg:leading-[3.125rem]" data-ditto-id="style-section" data-component="heading">
                       Politique des Cookies
                     </h1>
                     {" "}
@@ -256,7 +256,7 @@ export default function Page() {
             </div>
             {" "}
             <div className="min-h-[44.8125rem] flex relative max-w-full py-16 px-[3.2rem] justify-center gap-5 max-md:pt-10 max-md:pb-5 max-md:px-5 max-md:flex-wrap md:max-lg:py-[2.4rem] md:max-lg:px-[30.7px] 2xl:py-24 2xl:px-[4.8rem]" data-ditto-id="style-div-83">
-              <div className="w-4/5 block relative min-w-0 max-w-full gap-5 text-color-001 max-md:text-base max-md:leading-[1.3125rem]" data-ditto-id="style-p-10">
+              <div className="w-4/5 block relative min-w-0 max-w-full gap-5 text-color-001 max-md:text-[1rem] max-md:leading-[1.3125rem]" data-ditto-id="style-p-10">
                 <div className="h-full block" data-ditto-id="style-heading-4">
                   <p className="block mb-[0.9rem]" data-ditto-id="style-div-84">
                     <b className="inline font-bold" data-ditto-id="style-span-40">
@@ -376,7 +376,7 @@ export default function Page() {
                   {" "}
                   <p className="block mb-[0.9rem]" data-ditto-id="interaction-li-2">
                     {"Plus d'informations sur ces cookies sur "}
-                    <a className="inline text-accent [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] cursor-pointer" data-ditto-id="interaction-sm-17672256027865476-1" data-component="link" href="https://www.google.es/analytics/terms/es.html">
+                    <a className="inline text-accent [font-family:Montserrat,_sans-serif] text-[1rem] font-medium leading-[1.1875rem] cursor-pointer" data-ditto-id="interaction-sm-17672256027865476-1" data-component="link" href="https://www.google.es/analytics/terms/es.html">
                       <span className="inline" data-ditto-id="style-span-6">
                         Google Analytics
                       </span>
@@ -453,7 +453,7 @@ export default function Page() {
                   {" "}
                   <p className="block mb-[0.9rem]">
                     {"Vous pouvez obtenir plus d'informations sur les cookies sur Internet, "}
-                    <a className="inline [font-family:Montserrat,_sans-serif] text-[0.9375rem] font-medium leading-[1.1875rem] cursor-pointer" data-ditto-id="interaction-div-2" data-component="link" href="https://www.aboutcookies.org/">
+                    <a className="inline [font-family:Montserrat,_sans-serif] text-[1rem] font-medium leading-[1.1875rem] cursor-pointer" data-ditto-id="interaction-div-2" data-component="link" href="https://www.aboutcookies.org/">
                       <span className="inline" data-ditto-id="style-link-2">
                         https://www.aboutcookies.org
                       </span>
