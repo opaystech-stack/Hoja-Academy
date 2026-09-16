@@ -90,7 +90,7 @@ export default function Navbar() {
                   aria-expanded={openF}
                   onClick={toggle}
                   onKeyDown={(e) => { if (e.key === "ArrowDown") { setOpenF(true); setLocked(true); } }}
-                  className="h-12.5 flex relative mx-[0.5px] px-4 items-center text-color-001 [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespace-nowrap cursor-pointer hover:text-primary focus-visible:text-primary outline-none"
+                  className="h-12.5 flex relative mx-[0.5px] px-4 items-center text-color-001 [font-family:Montserrat,_sans-serif] text-sm leading-12.5 whitespace-nowrap cursor-pointer hover:text-primary focus-visible:text-primary"
                 >
                   Formations
                   <span className={`flex py-2.5 pl-2 items-center transition-transform duration-200 ${openF ? "rotate-180" : ""}`}>
