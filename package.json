@@ -18,6 +18,7 @@
     "test:public": "node scripts/test_public.js",
     "build:site": "node scripts/build_hoja_site.js",
     "test:site": "node scripts/test_hoja_site.js",
+    "audit:design": "node scripts/audit_design_site.js",
     "clean:site-fonts": "node scripts/clean_hoja_fonts.js",
     "test:parcours": "node scripts/test_parcours_apprenant.js",
     "test:formateur": "node scripts/test_parcours_formateur.js",
