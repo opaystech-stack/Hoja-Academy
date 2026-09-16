@@ -25,6 +25,8 @@
     "typo:compare": "node scripts/typo_compare.js",
     "ditto:analyze": "node scripts/analyze_ditto.js",
     "ditto:clean": "node scripts/clean_ditto.js",
+    "audit:ui": "node scripts/audit_ui.js",
+    "capture:ui": "node scripts/capture_ui.js",
     "clean:site-fonts": "node scripts/clean_hoja_fonts.js",
     "test:parcours": "node scripts/test_parcours_apprenant.js",
     "test:formateur": "node scripts/test_parcours_formateur.js",

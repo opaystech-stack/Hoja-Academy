@@ -18,7 +18,7 @@
     --text:#f1f5f9;
     --text-bright:#ffffff;
     --muted:#94a3b8;
-    --muted-dark:#64748b;
+    --muted-dark:#7c8ba1;
     --teal:#10b981;
     --teal-light:#34d399;
     --teal-soft:rgba(16,185,129,.12);
@@ -35,7 +35,11 @@
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   html{-webkit-text-size-adjust:100%;background:var(--bg);}
-  body{font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:13px;line-height:1.5;background:var(--bg);color:var(--text);overflow-x:clip;-webkit-font-smoothing:antialiased;}
+  /* Police : pile système assumée. Aucune des surfaces applicatives ne charge de
+     police — déclarer 'Inter' (jamais chargée) faisait retomber silencieusement sur
+     la police système. Pour une interface dense et opérationnelle, la police native
+     est le bon choix : meilleure lisibilité en 11-13 px, zéro requête réseau. */
+  body{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:13px;line-height:1.5;background:var(--bg);color:var(--text);overflow-x:clip;-webkit-font-smoothing:antialiased;}
   a{color:var(--blue);text-decoration:none;}
   :is(a,button,summary,[tabindex]):focus-visible{outline:2px solid var(--teal);outline-offset:2px;}
   .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
@@ -48,7 +52,7 @@
   .sb-brand span em{display:block;font-style:normal;color:var(--teal-light);font-size:9.5px;letter-spacing:.22em;font-weight:600;}
   .sb-group{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-dark);padding:18px 16px 6px;}
   .sb-nav{display:flex;flex-direction:column;gap:3px;padding:0 10px;}
-  .sb-nav a{display:flex;align-items:center;gap:10px;height:36px;padding:0 10px;border-radius:var(--radius-sm);font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;background:transparent;transition:background-color .12s,color .12s;}
+  .sb-nav a{display:flex;align-items:center;gap:10px;min-height:44px;padding:0 10px;border-radius:var(--radius-sm);font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;background:transparent;transition:background-color .12s,color .12s;}
   .sb-nav a:hover{background:rgba(255,255,255,.05);color:var(--text);}
   .sb-nav a.on{background:var(--teal-soft);color:var(--teal-light);font-weight:600;}
   .sb-nav a .sb-icon{width:16px;height:16px;flex:none;color:var(--muted);transition:color .12s;}
@@ -62,7 +66,7 @@
   .sb-session .avatar::after{content:"";position:absolute;bottom:-1px;right:-1px;width:7px;height:7px;border-radius:50%;background:var(--teal);border:1.5px solid #0c111e;}
   .sb-session .info{min-width:0;flex:1;font-size:12.5px;font-weight:600;color:var(--text-bright);overflow-wrap:anywhere;}
   .sb-session .info small{display:block;color:var(--muted-dark);font-size:11px;font-weight:400;}
-  .sb-session .info button{background:none;border:0;color:var(--muted);font-size:11px;padding:2px 0 0;height:auto;min-height:0;font-weight:500;text-decoration:none;font-family:inherit;cursor:pointer;transition:color .12s;}
+  .sb-session .info button{background:none;border:0;color:var(--muted);font-size:11px;padding:2px 0 0;height:auto;min-height:44px;font-weight:500;text-decoration:none;font-family:inherit;cursor:pointer;transition:color .12s;}
   .sb-session .info button:hover{color:var(--red);text-decoration:underline;}
 
   /* ---------- Layout ---------- */
@@ -74,7 +78,7 @@
   .breadcrumb .bc-sep{color:var(--line2);font-size:12px;}
   .breadcrumb .view{color:var(--text-bright);font-weight:600;}
   .topbar-right{display:flex;align-items:center;gap:10px;}
-  .burger{display:none;align-items:center;justify-content:center;width:38px;height:38px;margin-left:-8px;border:0;border-radius:var(--radius-sm);background:none;color:var(--text);cursor:pointer;flex:none;}
+  .burger{display:none;align-items:center;justify-content:center;width:44px;height:44px;margin-left:-8px;border:0;border-radius:var(--radius-sm);background:none;color:var(--text);cursor:pointer;flex:none;}
   .burger:hover{background:rgba(255,255,255,.06);}
   .content{flex:1;padding:28px 32px 48px;max-width:1040px;width:100%;margin:0 auto;}
 
@@ -119,13 +123,16 @@
 
   /* Boutons */
   .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;}
-  a.btn,button{padding:0 15px;border:0;border-radius:var(--radius-sm);background:var(--teal);color:#04140a;font-weight:600;font-size:13px;line-height:1;cursor:pointer;min-height:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:inherit;text-decoration:none;white-space:nowrap;transition:background-color .12s,color .12s,border-color .12s,transform .12s;box-shadow:0 1px 2px rgba(0,0,0,.2);}
+  /* Cibles tactiles : 44 px partout (même standard que le site public).
+     `.small` reste une variante de densité (padding et corps plus petits),
+     mais sa hauteur ne descend plus sous 44 px. */
+  a.btn,button{padding:0 15px;border:0;border-radius:var(--radius-sm);background:var(--teal);color:#04140a;font-weight:600;font-size:13px;line-height:1;cursor:pointer;min-height:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:inherit;text-decoration:none;white-space:nowrap;transition:background-color .12s,color .12s,border-color .12s,transform .12s;box-shadow:0 1px 2px rgba(0,0,0,.2);}
   a.btn:hover,button:hover{background:#059669;color:#ffffff;}
   a.btn.secondary,button.secondary{background:rgba(255,255,255,.04);border:1px solid var(--line2);color:var(--text);box-shadow:none;}
   a.btn.secondary:hover,button.secondary:hover{background:rgba(255,255,255,.08);border-color:var(--muted);color:var(--text-bright);}
   a.btn.ghost,button.ghost{background:transparent;border:1px solid var(--line);color:var(--blue);box-shadow:none;}
   a.btn.ghost:hover,button.ghost:hover{background:var(--blue-soft);border-color:rgba(56,189,248,.35);}
-  a.btn.small,button.small{height:32px;min-height:32px;padding:0 11px;font-size:12px;}
+  a.btn.small,button.small{height:44px;min-height:44px;padding:0 11px;font-size:12px;}
   button:disabled{opacity:.55;cursor:wait;}
 
   /* À faire & Activité (Action Center) */
@@ -152,7 +159,7 @@
   .tool summary::after,.tech summary::after{content:"";width:14px;height:14px;flex:none;background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%2394a3b8" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>') center/contain no-repeat;transition:transform .15s;}
   .tool[open] summary::after,.tech[open] summary::after{transform:rotate(180deg);}
   .tool label{display:block;font-size:12px;font-weight:500;color:var(--muted);margin:14px 0 6px;}
-  .tool textarea,.tool input{width:100%;padding:10px 12px;border-radius:var(--radius-sm);border:1px solid var(--line);background:var(--bg);color:var(--text);font-size:13px;font-family:inherit;transition:border-color .12s;}
+  .tool textarea,.tool input{width:100%;min-height:44px;padding:10px 12px;border-radius:var(--radius-sm);border:1px solid var(--line);background:var(--bg);color:var(--text);font-size:13px;font-family:inherit;transition:border-color .12s;}
   .tool textarea:focus,.tool input:focus{border-color:var(--teal);}
   .tool textarea{min-height:120px;resize:vertical;line-height:1.5;}
   .tool .btnrow{margin:14px 0 16px;}
@@ -209,12 +216,12 @@
   .mrow .arw{flex:none;color:var(--muted);font-size:14px;}
 
   /* ---------- Vue module ---------- */
-  .back{display:inline-flex;align-items:center;gap:6px;height:32px;margin:4px 0 8px;font-size:12.5px;color:var(--muted);text-decoration:none;background:none;border:0;cursor:pointer;font-family:inherit;padding:0 6px 0 0;}
+  .back{display:inline-flex;align-items:center;gap:6px;min-height:44px;margin:4px 0 8px;font-size:12.5px;color:var(--muted);text-decoration:none;background:none;border:0;cursor:pointer;font-family:inherit;padding:0 6px 0 0;}
   .back:hover{color:var(--text);}
   .mod-h h2{font-size:18px;font-weight:600;line-height:1.35;}
   .mod-meta{font-size:12px;color:var(--muted);margin-top:4px;font-variant-numeric:tabular-nums;}
   .mod-tabs{display:flex;gap:2px;margin-top:16px;border-bottom:1px solid var(--line);overflow-x:auto;-webkit-overflow-scrolling:touch;}
-  .mod-tabs button{flex:0 0 auto;height:40px;padding:0 12px;background:none;border:0;border-bottom:2px solid transparent;margin-bottom:-1px;font-size:13px;font-weight:500;color:var(--muted);cursor:pointer;font-family:inherit;white-space:nowrap;}
+  .mod-tabs button{flex:0 0 auto;min-height:44px;padding:0 12px;background:none;border:0;border-bottom:2px solid transparent;margin-bottom:-1px;font-size:13px;font-weight:500;color:var(--muted);cursor:pointer;font-family:inherit;white-space:nowrap;}
   .mod-tabs button:hover{color:var(--text);}
   .mod-tabs button.on{color:var(--text);border-bottom-color:var(--teal);}
   .mod-wrap{max-width:820px;}
@@ -231,7 +238,7 @@
   .phases li+li{margin-top:0;}
   .phases .ptime{flex:none;min-width:86px;padding-left:30px;}
   details.guide{border:1px solid var(--line);border-radius:10px;background:var(--card);margin-top:14px;}
-  details.guide summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:40px;padding:0 14px;font-size:13px;font-weight:500;color:var(--muted);position:relative;}
+  details.guide summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:44px;padding:0 14px;font-size:13px;font-weight:500;color:var(--muted);position:relative;}
   details.guide summary::-webkit-details-marker{display:none;}
   details.guide summary::after{content:"";width:14px;height:14px;background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%2394a3b8" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>') center/contain no-repeat;transition:transform .12s;}
   details.guide[open] summary::after{transform:rotate(180deg);}
@@ -259,7 +266,7 @@
   #pres-frame iframe{width:100%;height:70vh;border:1px solid var(--line);border-radius:8px;background:var(--card2);margin-top:10px;display:block;}
   .overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:25;display:none;}
   .overlay.on{display:block;}
-  .fchip{height:28px;padding:0 10px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);font-size:12px;font-weight:500;cursor:pointer;font-family:inherit;}
+  .fchip{min-height:44px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);font-size:12px;font-weight:500;cursor:pointer;font-family:inherit;}
   .fchip.on{color:var(--teal);border-color:rgba(34,197,94,.45);background:rgba(34,197,94,.08);}
   .lrow{display:flex;align-items:center;gap:12px;width:100%;text-align:left;min-height:48px;padding:8px 10px;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--text);font:inherit;cursor:pointer;border-radius:8px;transition:background-color .12s;}
   .lrow:last-child{border-bottom:0;}
@@ -492,7 +499,7 @@
       <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
         <div style="flex:1 1 240px;position:relative;display:flex;align-items:center;">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;left:11px;color:var(--muted);pointer-events:none" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input id="learner-search" type="search" placeholder="Rechercher un nom, email ou téléphone…" aria-label="Rechercher un apprenant" style="width:100%;padding:9px 12px 9px 34px;border-radius:var(--radius-sm);border:1px solid var(--line);background:var(--card2);color:var(--text);font-size:13px;font-family:inherit;">
+          <input id="learner-search" type="search" placeholder="Rechercher un nom, email ou téléphone…" aria-label="Rechercher un apprenant" style="width:100%;min-height:44px;padding:9px 12px 9px 34px;border-radius:var(--radius-sm);border:1px solid var(--line);background:var(--card2);color:var(--text);font-size:13px;font-family:inherit;">
         </div>
         <div class="chip-row" id="learner-filters" role="group" aria-label="Filtres">
           <button class="fchip on" data-f="tous" type="button">Tous</button>
@@ -854,14 +861,14 @@ function renderInscriptions(data, err) {
   box.innerHTML = '<div class="tablewrap"><table><thead><tr><th>Candidat</th><th>Profil</th><th>Reçue</th><th>Paiement</th><th>Statut</th><th></th></tr></thead><tbody>' +
     cs.map(c =>
       '<tr data-id="' + esc(c.responseId) + '">' +
-      '<td data-label="Candidat"><b><a href="#apprenants/p/' + encodeURIComponent(c.responseId) + '" style="color:inherit;text-decoration:none">' + esc(c.name) + ' <span style="font-size:11px;color:var(--muted)">↗</span></a></b><br><span style="color:var(--muted);font-size:12px">' + esc(c.email || '—') + (c.phone ? ' · ' + esc(c.phone) : '') + '</span></td>' +
-      '<td data-label="Profil"><span style="font-size:12px">' + esc(c.profile || '—') + (c.level ? ' · ' + esc(c.level) : '') + '</span>' + (c.goal ? '<details class="tech" style="margin:2px 0 0;border:0;background:none;padding:0"><summary style="min-height:24px;font-size:11.5px;color:var(--blue)">Objectif</summary><div style="font-size:12px;color:var(--muted);padding:2px 0 8px">' + esc(c.goal) + '</div></details>' : '') + '</td>' +
+      '<td data-label="Candidat"><b><a href="#apprenants/p/' + encodeURIComponent(c.responseId) + '" style="color:inherit;text-decoration:none;display:inline-flex;align-items:center;min-height:44px">' + esc(c.name) + ' <span style="font-size:11px;color:var(--muted)">↗</span></a></b><br><span style="color:var(--muted);font-size:12px">' + esc(c.email || '—') + (c.phone ? ' · ' + esc(c.phone) : '') + '</span></td>' +
+      '<td data-label="Profil"><span style="font-size:12px">' + esc(c.profile || '—') + (c.level ? ' · ' + esc(c.level) : '') + '</span>' + (c.goal ? '<details class="tech" style="margin:2px 0 0;border:0;background:none;padding:0"><summary style="min-height:44px;font-size:11.5px;color:var(--blue)">Objectif</summary><div style="font-size:12px;color:var(--muted);padding:2px 0 8px">' + esc(c.goal) + '</div></details>' : '') + '</td>' +
       '<td data-label="Reçue" style="white-space:nowrap">' + esc(fmtDate(c.submittedAt || c.createdAt)) + '</td>' +
       '<td data-label="Paiement"><span class="st ' + payChipCls(c.payment.state) + '">' + esc(PAY_LABEL[c.payment.state] || c.payment.state) + '</span>' + (c.payment.amount != null ? '<div style="font-size:11px;color:var(--muted);margin-top:3px">' + esc(String(c.payment.amount)) + (c.payment.confirmedAt ? ' · ' + esc(fmtDate(c.payment.confirmedAt)) : '') + '</div>' : '') + '</td>' +
       '<td data-label="Statut"><span class="st ' + stChipCls(c.status) + '">' + esc(ST_LABEL[c.status] || c.status) + '</span>' + (c.learnerEmail ? '<div style="font-size:11px;color:var(--muted);margin-top:3px">compte apprenant ✓</div>' : '') + '</td>' +
       '<td data-label="Actions"><div class="cand-actions" style="display:flex;flex-direction:column;gap:4px;align-items:flex-end">' +
         (c.payment.state !== 'paye' && !['refuse','annule'].includes(c.status)
-          ? '<span style="display:flex;gap:4px;align-items:center"><input class="cand-amt" type="number" min="0" step="any" placeholder="Montant reçu" style="width:110px;padding:6px 8px;border-radius:6px;border:1px solid var(--line);background:var(--bg);color:var(--text);font-size:12px;font-family:inherit" aria-label="Montant reçu"><button class="small secondary cand-pay" type="button">Marquer payé</button></span>'
+          ? '<span style="display:flex;gap:4px;align-items:center"><input class="cand-amt" type="number" min="0" step="any" placeholder="Montant reçu" style="width:110px;min-height:44px;padding:6px 8px;border-radius:6px;border:1px solid var(--line);background:var(--bg);color:var(--text);font-size:12px;font-family:inherit" aria-label="Montant reçu"><button class="small secondary cand-pay" type="button">Marquer payé</button></span>'
           : '') +
         (c.payment.state === 'paye' && c.status !== 'admis'
           ? '<button class="small cand-admit" type="button">Admettre → apprenant</button>' : '') +
@@ -1270,7 +1277,7 @@ function renderTech() {
   html += '<li><span class="k">Scopes accordés</span><span class="v mut">' + (have.length ? have.map(esc).join('<br>') : 'aucun') + '</span></li>';
   html += '<li><span class="k">Scopes manquants</span><span class="v">' + (missing.length ? '<span class="v ko">' + missing.map(esc).join('<br>') + '</span>' : '<span class="v ok">aucun</span>') + '</span></li>';
   html += '<li><span class="k">Devoirs publiés</span><span class="v mut">' + (COURSEWORK == null ? 'non chargé' : COURSEWORK.length) + '</span></li>';
-  html += '<li><span class="k">Espace admin historique (Basic)</span><span class="v mut"><a href="/admin/" target="_blank" rel="noopener noreferrer">/admin/</a></span></li>';
+  html += '<li><span class="k">Espace admin historique (Basic)</span><span class="v mut"><a class="btn ghost small" href="/admin/" target="_blank" rel="noopener noreferrer">Ouvrir /admin/ ↗</a></span></li>';
   html += '</ul>';
   if (!d.connected) html += '<div class="alert warn">Passerelle non connectée — lancez l\'autorisation OAuth depuis « Reconnexion OAuth Classroom » ci-dessus.</div>';
   else if (missing.length) html += '<div class="alert warn">' + missing.length + ' scope(s) Google Classroom manquant(s) — reconsentez depuis « Reconnexion OAuth Classroom ».</div>';
