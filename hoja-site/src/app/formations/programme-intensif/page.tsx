@@ -308,7 +308,7 @@ export default function Page() {
                     {" "}
                     <div className="block relative min-w-0 max-w-full self-center gap-5 text-center max-md:gap-x-3.5 max-md:gap-y-[initial]">
                       <div className="block">
-                        <p className="block text-primary text-[1.125rem] leading-5 uppercase max-md:text-[1rem] 2xl:text-[1.75rem]" data-component="paragraph">
+                        <p className="block text-primary-text-dark text-[1.125rem] leading-5 uppercase max-md:text-[1rem] 2xl:text-[1.75rem]" data-component="paragraph">
                           PROGRAMME INTENSIF d'IA GÉNÉRATIVE
                         </p>
                         {" "}

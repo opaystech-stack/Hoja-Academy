@@ -205,6 +205,40 @@ for (const [f, t] of Object.entries(srcText)) {
 check('aucun texte blanc sur fond bg-primary', whiteOnGreen.length === 0,
   whiteOnGreen.slice(0, 3).join(', '));
 
+// ─── Jetons de texte : la marque en TEXTE exige le seuil « grand texte » ──
+// DESIGN_SYSTEM_HOJA.md §2.2.1 : --primary (#21A87D) ne donne que 3,02:1 sur
+// blanc et 3,58:1 sur fond sombre. Il n'est conforme qu'en grand texte
+// (>= 24 px, ou >= 19 px gras). En dessous, il faut --primary-text (fond clair)
+// ou --primary-text-dark (fond sombre).
+const smallPrimary = [];
+for (const [f, t] of Object.entries(srcText)) {
+  for (const m of t.matchAll(/className="([^"]*)"/g)) {
+    const c = m[1];
+    // `text-primary` seul — on exclut text-primary-text et text-primary-text-dark
+    if (!/(^|\s)text-primary(\s|$)/.test(c)) continue;
+    const small = [...c.matchAll(/(?:^|\s|:)text-\[(\d+(?:\.\d+)?)rem\]/g)]
+      .map((x) => Number(x[1]))
+      .filter((v) => v < 1.5);
+    if (small.length) smallPrimary.push(path.relative(SITE, f) + ' (' + small[0] + 'rem)');
+  }
+}
+check('aucun text-primary sous le seuil grand texte (< 24 px)', smallPrimary.length === 0,
+  smallPrimary.slice(0, 3).join(', '));
+
+// ─── Jetons de texte legacy : consolidation sur la palette sémantique ──
+// Mesure (scripts/inventory_site_text_colors.js) : ces six jetons étaient des
+// quasi-doublons, dont text-color-045 qui ÉCHOUAIT AA (2,86:1 sur #f8fafc).
+const LEGACY_TEXT_TOKENS = ['text-color-003', 'text-color-006', 'text-color-007',
+  'text-color-010', 'text-color-016', 'text-color-045'];
+const legacyHits = [];
+for (const [f, t] of Object.entries(srcText)) {
+  for (const tok of LEGACY_TEXT_TOKENS) {
+    if (t.includes(tok)) legacyHits.push(path.relative(SITE, f) + ' → ' + tok);
+  }
+}
+check('jetons de texte legacy consolidés (palette sémantique)', legacyHits.length === 0,
+  legacyHits.slice(0, 3).join(', '));
+
 // ─── Bilan ───────────────────────────────────────────────────────────
 console.log('\n' + '='.repeat(56));
 if (fail === 0) {

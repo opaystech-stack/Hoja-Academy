@@ -324,7 +324,7 @@ export default function Page() {
                   <div className="block relative min-w-0 max-w-full self-center gap-5">
                     <div className="block py-4 px-8">
                       <div className="block">
-                        <a className="h-11 inline-block min-h-11 py-3 px-6 rounded-[25px] text-color-007 [font-family:Montserrat,_sans-serif] text-[1rem] font-semibold leading-[1.1875rem] text-center bg-primary shadow-[var(--clr-19)_0px_0px_10px_0px] cursor-pointer max-md:text-[1rem]" data-ditto-id="style-p-8" data-component="link" href="/contact" target="_blank">
+                        <a className="h-11 inline-block min-h-11 py-3 px-6 rounded-[25px] text-color-001 [font-family:Montserrat,_sans-serif] text-[1rem] font-semibold leading-[1.1875rem] text-center bg-primary shadow-[var(--clr-19)_0px_0px_10px_0px] cursor-pointer max-md:text-[1rem]" data-ditto-id="style-p-8" data-component="link" href="/contact" target="_blank">
                           {" "}
                           <span className="flex justify-center gap-[0.3125rem]" data-ditto-id="style-p-9">
                             {" "}
@@ -427,7 +427,7 @@ export default function Page() {
                   {" "}
                   <div className="w-285 block relative min-w-0 max-w-full self-center shrink-0 gap-5 text-center max-md:w-[18.4375rem] md:max-lg:w-187">
                     <div className="block mt-7.5">
-                      <div className="block text-color-016 [font-family:Montserrat,_sans-serif] text-[3rem] leading-16.5 max-md:text-[1.75rem] max-md:leading-9" data-component="heading">
+                      <div className="block text-color-001 [font-family:Montserrat,_sans-serif] text-[3rem] leading-16.5 max-md:text-[1.75rem] max-md:leading-9" data-component="heading">
                         <p className="block mb-[0.9rem]">
                           <b className="inline font-bold">
                             Ce que nous pouvons faire avec votre organisation
@@ -439,7 +439,7 @@ export default function Page() {
                     {" "}
                   </div>
                   {" "}
-                  <div className="block relative min-w-0 max-w-full gap-5 text-color-016 text-[1.375rem] text-center max-md:text-[0.875rem]">
+                  <div className="block relative min-w-0 max-w-full gap-5 text-color-001 text-[1.375rem] text-center max-md:text-[0.875rem]">
                     <div className="block my-5">
                       <p className="block mb-[0.9rem]">
                         <b className="inline font-bold">
@@ -463,10 +463,10 @@ export default function Page() {
                     {" "}
                   </div>
                   {" "}
-                  <div className="block relative min-w-0 max-w-full gap-5 text-color-010 text-[1.75rem] text-center max-md:self-center max-md:text-[1.125rem]">
+                  <div className="block relative min-w-0 max-w-full gap-5 text-muted-foreground text-[1.75rem] text-center max-md:self-center max-md:text-[1.125rem]">
                     <div className="block mt-3 mb-[2.1875rem] max-md:mt-0" data-ditto-id="style-span-6">
                       <h3 className="block mt-2 mb-4 text-[1.75rem] font-medium leading-[2.6875rem]" data-component="heading">
-                        <span className="inline text-color-007">
+                        <span className="inline text-color-001">
                           <b className="inline font-bold">
                             Trois formats, selon votre point de départ :
                           </b>
@@ -493,15 +493,15 @@ export default function Page() {
                         </div>
 
                         <div className="text-center">
-                          <h4 className="text-color-016 text-[1.75rem] font-black leading-tight mb-2">
+                          <h4 className="text-color-001 text-[1.75rem] font-black leading-tight mb-2">
                             Programme Intensif IA
                           </h4>
-                          <p className="text-color-010 text-[0.875rem] leading-relaxed">
+                          <p className="text-muted-foreground text-[0.875rem] leading-relaxed">
                             8 semaines, 18 modules, 16 séances en direct et une soutenance finale : vos équipes maîtrisent l'IA générative sur leurs propres cas de travail.
                           </p>
                         </div>
 
-                        <div className="text-color-010 text-[0.875rem]">
+                        <div className="text-muted-foreground text-[0.875rem]">
                           <ul className="pl-6 list-disc space-y-2">
                             {ListRow5_data.map((d, i) => <ListRow5 key={i} d={d} />)}
                           </ul>
@@ -527,15 +527,15 @@ export default function Page() {
                         </div>
 
                         <div className="text-center">
-                          <h4 className="text-color-016 text-[1.75rem] font-black leading-tight mb-2">
+                          <h4 className="text-color-001 text-[1.75rem] font-black leading-tight mb-2">
                             Formation adaptée à votre équipe
                           </h4>
-                          <p className="text-color-010 text-[0.875rem] leading-relaxed">
+                          <p className="text-muted-foreground text-[0.875rem] leading-relaxed">
                             Partir de vos usages réels : identifier les cas d'usage, construire des workflows, automatiser — puis mesurer l'impact avec vous.
                           </p>
                         </div>
 
-                        <div className="text-color-010 text-[0.875rem]">
+                        <div className="text-muted-foreground text-[0.875rem]">
                           <ul className="pl-6 list-disc space-y-2">
                             {ListRow5_data2.map((d, i) => <ListRow5 key={i} d={d} />)}
                           </ul>
@@ -571,7 +571,7 @@ export default function Page() {
                   <div className="flex max-w-239 mx-[9.4375rem] py-2.5 flex-col justify-start items-start grow gap-5 max-md:max-w-[min(100%,_767px)] max-md:flex-wrap max-lg:mx-0 2xl:mx-[29.4375rem]">
                     <div className="block relative min-w-0 max-w-full gap-5 max-md:self-center max-md:text-center" data-ditto-id="style-div-90">
                       <div className="block mt-[2.1875rem]" data-ditto-id="style-div-91">
-                        <div className="block text-color-016 [font-family:Montserrat,_sans-serif] text-[3rem] leading-16.5 max-md:text-[1.75rem]" data-component="heading">
+                        <div className="block text-color-001 [font-family:Montserrat,_sans-serif] text-[3rem] leading-16.5 max-md:text-[1.75rem]" data-component="heading">
                           <p className="block mb-[0.9rem]">
                             <b className="inline font-bold">
                               Des programmes conçus pour les organisations, sur site ou à distance
@@ -584,7 +584,7 @@ export default function Page() {
                       {" "}
                     </div>
                     {" "}
-                    <div className="block relative min-w-0 max-w-full gap-5 text-color-010 text-[1rem] leading-[1.5rem] max-md:text-[1rem] max-md:leading-[1.375rem]">
+                    <div className="block relative min-w-0 max-w-full gap-5 text-muted-foreground text-[1rem] leading-[1.5rem] max-md:text-[1rem] max-md:leading-[1.375rem]">
                       <div className="block">
                         <p className="block mb-[0.9rem]">
                           {"Un plan de formation sur mesure est établi selon vos objectifs, vos effectifs et vos contraintes opérationnelles. "}
@@ -608,7 +608,7 @@ export default function Page() {
                       {" "}
                     </div>
                     {" "}
-                    <div className="w-full max-w-112 block relative min-w-0 gap-5 text-color-010 text-[1rem] max-md:text-[1rem]">
+                    <div className="w-full max-w-112 block relative min-w-0 gap-5 text-muted-foreground text-[1rem] max-md:text-[1rem]">
                       <div className="block">
                         <ul className="block pl-10 [list-style-type:disc] list-outside">
                           {ListRow6_data.map((d, i) => <ListRow6 key={i} d={d} meta={ListRow6_meta[i]} />)}
@@ -797,7 +797,7 @@ export default function Page() {
               <div className="w-full flex relative min-w-0 py-20 px-10 flex-col items-center gap-5 bg-color-002 max-md:-mb-10 max-md:flex-wrap">
                 <div className="w-full max-w-[68.9375rem] block relative min-w-0 gap-5 text-center">
                   <div className="block">
-                    <div className="block text-color-007 [font-family:Montserrat,_sans-serif] text-[3rem] leading-16.5 max-md:text-[1.375rem]" data-component="heading">
+                    <div className="block text-color-001 [font-family:Montserrat,_sans-serif] text-[3rem] leading-16.5 max-md:text-[1.375rem]" data-component="heading">
                       <p className="block mb-[0.9rem]">
                         <b className="inline font-bold">
                           Quelle formation correspond le mieux à votre équipe ?
@@ -816,12 +816,12 @@ export default function Page() {
                 <div className="w-full max-w-[47.6875rem] block relative min-w-0 gap-5 text-color-037 text-center max-md:text-[1rem]">
                   <div className="block">
                     <p className="block mb-[0.9rem]">
-                      <span className="inline text-color-007">
+                      <span className="inline text-color-001">
                         {" Nous analysons votre organisation, ses usages et ses contraintes, puis vous orientons vers la voie la plus adaptée."}
                       </span>
                     </p>
                     <p className="block mb-[0.9rem]">
-                      <span className="inline text-color-007">
+                      <span className="inline text-color-001">
                         <b className="inline font-bold">
                           Et si vous cherchez quelque chose de plus spécifique
                         </b>
@@ -855,7 +855,7 @@ export default function Page() {
                   {" "}
                 </div>
                 {" "}
-                <div className="w-full max-w-94.5 block relative min-w-0 gap-5 text-color-045 [font-family:Montserrat,_sans-serif] text-[1rem] font-medium leading-[1.1875rem] text-center max-md:text-[0.875rem]">
+                <div className="w-full max-w-94.5 block relative min-w-0 gap-5 text-muted [font-family:Montserrat,_sans-serif] text-[1rem] font-medium leading-[1.1875rem] text-center max-md:text-[0.875rem]">
                   <div className="block">
                     <p className="block mb-[0.9rem]">
                       <b className="inline font-bold">
@@ -914,7 +914,7 @@ export default function Page() {
       {" "} <div className="box-content w-15 h-15 block fixed right-5 bottom-5 z-9999 max-w-[calc(100%_-_40px)] max-h-[calc(100%_-_40px)]" id="brevo-conversations">
         <div className="w-15 h-full min-h-full block absolute top-0 min-w-full max-w-full max-h-full rounded-[50%] overflow-hidden shadow-[var(--clr-6)_0px_0px_3px_0px,var(--clr-7)_0px_0px_10px_0px]">
           <div className="w-15 h-15 min-h-full block absolute min-w-full max-w-full max-h-full overflow-hidden" title="Brevo live chat">
-            <div className="box-content h-full block overflow-hidden text-color-006 [font-family:Montserrat,_sans-serif] text-[1rem] leading-6 [overflow-wrap:break-word]">
+            <div className="box-content h-full block overflow-hidden text-color-001 [font-family:Montserrat,_sans-serif] text-[1rem] leading-6 [overflow-wrap:break-word]">
               <svg className="box-content hidden overflow-hidden" fill="currentColor">
                 <defs>
                   <symbol id="ei-arrow-down-icon" viewBox="8 8 34 34">

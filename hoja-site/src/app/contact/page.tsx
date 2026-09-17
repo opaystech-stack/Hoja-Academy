@@ -217,7 +217,7 @@ export default function Page() {
                     {" "}
                     <div className="w-[27%] block relative min-w-0 max-w-full gap-5 max-md:w-[61.5%] max-md:gap-x-[0.4375rem] max-md:gap-y-[initial] md:max-lg:w-[35.5%] 2xl:w-[34%]">
                       <div className="block">
-                        <h3 className="block text-primary text-[1.125rem] leading-5 uppercase max-md:text-[1rem] 2xl:text-[1.75rem]" data-component="heading">
+                        <h3 className="block text-primary-text-dark text-[1.125rem] leading-5 uppercase max-md:text-[1rem] 2xl:text-[1.75rem]" data-component="heading">
                           {"Vous avez une question ? "}
                         </h3>
                         {" "}

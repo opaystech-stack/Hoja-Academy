@@ -217,7 +217,7 @@ export default function Page() {
                     {"Si une page ou un contenu vous semble difficile d'accès (contraste, navigation clavier, lecture d'écran), écrivez-nous à "}
                     <b className="inline font-bold">info@hoja-academy.com</b>
                     {" ou via "}
-                    <a className="inline text-color-007 font-medium" href="https://wa.me/243792369704" target="_blank" rel="noopener noreferrer">
+                    <a className="inline text-color-001 font-medium" href="https://wa.me/243792369704" target="_blank" rel="noopener noreferrer">
                       WhatsApp
                     </a>
                     {". Nous corrigeons le problème et nous vous répondons directement."}

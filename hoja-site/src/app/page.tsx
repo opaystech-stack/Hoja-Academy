@@ -954,7 +954,7 @@ export default function Page() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
                   <div className="flex flex-col justify-between p-7 rounded-[32px] bg-color-001 shadow-xl border border-primary/20 hover:border-primary/50 transition-all min-h-[16rem]">
                     <div>
-                      <h2 className="block text-primary text-[1.125rem] font-bold leading-[1.6875rem] uppercase mb-4" data-component="heading">
+                      <h2 className="block text-primary-text-dark text-[1.125rem] font-bold leading-[1.6875rem] uppercase mb-4" data-component="heading">
                         CRÉER AVEC L'IA
                       </h2>
                       <p className="text-background/90 text-[1rem] leading-relaxed">
@@ -965,7 +965,7 @@ export default function Page() {
 
                   <div className="flex flex-col justify-between p-7 rounded-[32px] bg-color-001 shadow-xl border border-primary/20 hover:border-primary/50 transition-all min-h-[16rem]">
                     <div>
-                      <h2 className="block text-primary text-[1.125rem] font-bold leading-[1.6875rem] uppercase mb-4" data-component="heading">
+                      <h2 className="block text-primary-text-dark text-[1.125rem] font-bold leading-[1.6875rem] uppercase mb-4" data-component="heading">
                         DÉPLOYER SUR DES PROJETS RÉELS
                       </h2>
                       <p className="text-background/90 text-[1rem] leading-relaxed">
@@ -976,7 +976,7 @@ export default function Page() {
 
                   <div className="flex flex-col justify-between p-7 rounded-[32px] bg-color-001 shadow-xl border border-primary/20 hover:border-primary/50 transition-all min-h-[16rem]">
                     <div>
-                      <h2 className="block text-primary text-[1.125rem] font-bold leading-[1.6875rem] uppercase mb-4" data-component="heading">
+                      <h2 className="block text-primary-text-dark text-[1.125rem] font-bold leading-[1.6875rem] uppercase mb-4" data-component="heading">
                         DOMINER +60 OUTILS & MÉTHODES
                       </h2>
                       <p className="text-background/90 text-[1rem] leading-relaxed">
@@ -987,7 +987,7 @@ export default function Page() {
 
                   <div className="flex flex-col justify-between p-7 rounded-[32px] bg-color-001 shadow-xl border border-primary/20 hover:border-primary/50 transition-all min-h-[16rem]">
                     <div>
-                      <h2 className="block text-primary text-[1.125rem] font-bold leading-[1.6875rem] uppercase mb-4" data-component="heading">
+                      <h2 className="block text-primary-text-dark text-[1.125rem] font-bold leading-[1.6875rem] uppercase mb-4" data-component="heading">
                         ROBOTIQUE & IA POUR LA RECHERCHE
                       </h2>
                       <p className="text-background/90 text-[1rem] leading-relaxed">
