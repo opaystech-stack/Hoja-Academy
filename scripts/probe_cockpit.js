@@ -37,6 +37,8 @@ const VIEWS = {
   module: '/ui/cockpit/index.html#programme/m/01',
   classroom: '/ui/cockpit/index.html#classroom',
   formateurs: '/ui/cockpit/index.html#formateurs',
+  // Espace formateur — surface autonome (/ui/suivi/), pas une vue du cockpit.
+  suivi: '/ui/suivi/index.html',
 };
 
 function findChrome() {
@@ -78,7 +80,9 @@ const PROBE = () => {
   });
 
   // Répartition verticale : hauteur des blocs de premier niveau de la vue.
-  const view = [...document.querySelectorAll('main > section')].find(vis);
+  // `main > section` pour le cockpit, `.wrap` pour les surfaces autonomes
+  // (/ui/suivi/), qui n'ont pas de <main>.
+  const view = [...document.querySelectorAll('main > section,.wrap')].find(vis);
   const blocks = view
     ? [...view.children].filter(vis).map((el) => ({
         tag: el.tagName.toLowerCase(),
@@ -91,7 +95,7 @@ const PROBE = () => {
   // est presque toujours un mot coupé.
   const wrapped = [];
   const range = document.createRange();
-  [...document.querySelectorAll('.k,.zone,.st,.seg button,th,.toc button,.cell-id b')].filter(vis).forEach((el) => {
+  [...document.querySelectorAll('.k,.zone,.st,.seg button,th,.toc button,.cell-id b,.stat span,.lcard h3')].filter(vis).forEach((el) => {
     const cs = getComputedStyle(el);
     const lh = parseFloat(cs.lineHeight);
     const h = el.getBoundingClientRect().height;
@@ -155,8 +159,8 @@ const PROBE = () => {
   /* Libellés de KPI : un libellé sur 2 lignes dans une carte de ~150 px est
      presque toujours un mot coupé (« DANS CLASSRO / OM »). On rend le détail
      ligne par ligne, sans juger. */
-  const kpis = [...document.querySelectorAll('.statgrid .stat')].filter(vis).map((c) => {
-    const k = c.querySelector('.k');
+  const kpis = [...document.querySelectorAll('.statgrid .stat,.stats .stat')].filter(vis).map((c) => {
+    const k = c.querySelector('.k') || c.querySelector('span');
     let lines = null, rects = null;
     if (k) {
       const rng = document.createRange();
@@ -165,6 +169,29 @@ const PROBE = () => {
       lines = rects.length;
     }
     return { w: Math.round(c.getBoundingClientRect().width), h: Math.round(c.getBoundingClientRect().height), k: k ? label(k) : null, lines, rects };
+  });
+
+  /* Élément portant l'attribut `hidden` mais TOUJOURS VISIBLE.
+     Cause : une règle d'auteur `display:flex|grid|block` écrase le
+     `[hidden]{display:none}` de la feuille du navigateur — les styles d'auteur
+     priment sur les styles utilisateur, quelle que soit la spécificité.
+     Cas réel : `#skel` et `#mobile` portent `.cards{display:flex}` sur
+     /ui/suivi/ ; le squelette de chargement restait donc affiché après le
+     rendu, et les cartes mobiles revenaient sous le tableau après un
+     redimensionnement. Invisible à toute autre mesure. */
+  const hiddenVisible = [];
+  document.querySelectorAll('[hidden]').forEach((el) => {
+    const cs = getComputedStyle(el);
+    if (cs.display === 'none') return;
+    const r = el.getBoundingClientRect();
+    if (r.width <= 0 && r.height <= 0) return;
+    hiddenVisible.push({
+      tag: el.tagName.toLowerCase(),
+      id: el.id || null,
+      cls: el.className.toString().slice(0, 30),
+      display: cs.display,
+      h: Math.round(r.height),
+    });
   });
 
   return {
@@ -177,6 +204,7 @@ const PROBE = () => {
     wrapped: wrapped.slice(0, 12),
     truncated: truncated.slice(0, 12),
     overflow: overflow.slice(0, 12),
+    hiddenVisible,
     sticky,
     kpis,
   };
@@ -218,7 +246,9 @@ function serve(dir) {
       page.on('console', (m) => { if (m.type() === 'error') errs.push(m.text()); });
       page.on('pageerror', (e) => errs.push(String(e)));
       await page.setViewport({ width: w, height: 900 });
-      await page.setCookie({ name: 'mockrole', value: 'admin', domain: '127.0.0.1', path: '/' });
+      // Rôle réel de la surface : l'espace formateur est ouvert au rôle
+      // `formateur` (pas `admin`), et l'en-tête affiche ce rôle.
+      await page.setCookie({ name: 'mockrole', value: name === 'suivi' ? 'formateur' : 'admin', domain: '127.0.0.1', path: '/' });
       await page.goto(base + route, { waitUntil: 'networkidle0', timeout: 60000 });
       await page.addStyleTag({ content: '*{animation:none!important;transition:none!important}' });
       await page.evaluate(() => new Promise((r) => setTimeout(r, 600)));
@@ -241,6 +271,7 @@ function serve(dir) {
       if (r.wrapped.length) console.log(`         ⚠ libellés coupés : ${r.wrapped.map((x) => `"${x.text}" ${x.lines}l ${x.firstW}/${x.lastW}px`).join(' · ')}`);
       if (r.overflow.length) console.log(`         ⚠ débordement interne : ${r.overflow.map((x) => `${x.tag}.${x.cls}(+${x.over}px)`).join(' · ')}`);
       if (r.truncated.length) console.log(`         ⚠ texte tronqué (ellipsis) : ${r.truncated.map((x) => `${x.tag}.${x.cls}"${x.text}" −${x.hiddenPx}px`).join(' · ')}`);
+      if (r.hiddenVisible.length) console.log(`         ⚠ \`hidden\` mais affiché : ${r.hiddenVisible.map((x) => `${x.tag}${x.id ? '#' + x.id : ''}.${x.cls} display=${x.display} h=${x.h}px`).join(' · ')}`);
       if (r.errors.length) console.log(`         ⚠ console : ${r.errors.join(' | ')}`);
       const bad = r.kpis.filter((k) => k.lines && k.lines > 1);
       if (bad.length) console.log(`         KPI repliés : ${bad.map((k) => `"${k.k}" ${k.lines}l w=${k.w} [${k.rects}]`).join(' · ')}`);
