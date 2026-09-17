@@ -1,0 +1,36 @@
+# syntax=docker/dockerfile:1
+FROM node:20-alpine AS site
+WORKDIR /site
+COPY hoja-site/package.json hoja-site/package-lock.json ./
+RUN npm ci --no-audit --no-fund
+COPY hoja-site/src/ ./src/
+COPY hoja-site/public/ ./public/
+COPY hoja-site/next.config.mjs hoja-site/tsconfig.json hoja-site/postcss.config.mjs hoja-site/next-env.d.ts ./
+ARG NEXT_PUBLIC_SITE_ORIGIN=https://course-staging.opays.io
+ENV NEXT_PUBLIC_SITE_ORIGIN=$NEXT_PUBLIC_SITE_ORIGIN NEXT_TELEMETRY_DISABLED=1
+RUN test ! -e out && node --max-old-space-size=3072 node_modules/next/dist/bin/next build && test -s out/index.html && test -d out/_next/static
+
+FROM node:20-alpine AS academy
+WORKDIR /academy
+COPY scripts/ ./scripts/
+COPY data/ ./data/
+COPY modules/ ./modules/
+COPY ui/ ./ui/
+COPY admin/ ./admin/
+COPY systeme-operationnel/ ./systeme-operationnel/
+COPY course-hub.html formateur-dashboard.html ./
+RUN node scripts/build_all_presentations.js && node scripts/hoja_modules_identity.js && node scripts/build_registry.js && node scripts/build_cockpit_data.js && node scripts/build_admin.js && node scripts/build_public.js && node scripts/test_coherence.js && node scripts/verify_all_presentations.js
+
+FROM nginx:alpine
+ARG GIT_SHA=unknown
+LABEL org.opencontainers.image.revision=$GIT_SHA
+ENV GATEWAY_HOST=hoja-gateway-staging-vc8c8t NGINX_ENVSUBST_FILTER=GATEWAY_HOST
+COPY deploy/dokploy/nginx.conf.template /etc/nginx/templates/default.conf.template
+COPY deploy/dokploy/gateway-proxy.conf /etc/nginx/snippets/gateway-proxy.conf
+COPY --from=site /site/out/ /usr/share/nginx/html/
+COPY --from=academy /academy/admin/ /usr/share/nginx/html/admin/
+COPY --from=academy /academy/public/modules/ /usr/share/nginx/html/modules/
+COPY --from=academy /academy/ui/ /usr/share/nginx/html/ui/
+COPY Logo/favicon_hoja_64.png /usr/share/nginx/html/favicon.ico
+RUN printf '{"revision":"%s"}\n' "$GIT_SHA" > /usr/share/nginx/html/build-revision.json
+EXPOSE 80

@@ -1,0 +1,17 @@
+.git
+**/node_modules
+**/.next
+**/out
+**/.env
+**/.env.*
+**/*.key
+**/*.pem
+**/*.tar.gz
+**/logs
+screenshots
+deploy/credentials
+deploy/bundle-tmp
+hoja-site/audits
+hoja-site/scripts
+.workbuddy-ai
+.tmp_*

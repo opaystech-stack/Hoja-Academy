@@ -1,0 +1,106 @@
+server {
+    listen 80;
+    server_name _;
+    # IMPORTANT: Traefik (websecure) transmet a ce serveur en HTTP interne.
+    # Sans absolute_redirect off, le 301 "sans slash -> avec slash" genere
+    # Location: http://... que le navigateur suit sur le port 80 PUBLIC ou
+    # Traefik n'a AUCUN routeur http pour course.opays.io -> "404 page not found"
+    # (le 404 mobile du cockpit). Redirect relatif = le client garde son https.
+    absolute_redirect off;
+    # Entrees sans slash final (tapees/main): redirect propre, jamais 404
+    location = /admin { return 301 /admin/; }
+    location = /modules { return 301 /modules/; }
+    # Redirects SEO anciennes routes ES -> FR (frontend Next.js Hoja)
+    rewrite ^/accesibilidad$ /accessibilite permanent;
+    rewrite ^/aviso-legal$ /mentions-legales permanent;
+    rewrite ^/contacto$ /contact permanent;
+    rewrite ^/curso-de-chatgpt$ /formations/expert-ia permanent;
+    rewrite ^/curso-de-gemini$ /formations/expert-ia permanent;
+    rewrite ^/curso-de-make$ /formations/automatisation-n8n permanent;
+    rewrite ^/curso-ia$ /formations/programme-intensif permanent;
+    rewrite ^/empresas$ /entreprises permanent;
+    rewrite ^/institution$ / permanent;
+    rewrite ^/a-propos(/.*)?$ / permanent;
+    # Filet anti 404 : slash final -> sans slash (les fichiers servent formatures.html)
+    rewrite ^/((?:formations|entreprises|contact|postuler|mentions-legales|confidentialite|cookies|accessibilite)(?:/[a-z0-9\-]+)?)/$ /$1 permanent;
+    rewrite ^/(curso-ia|noticias-ia|empresas|contacto|registration|aviso-legal|politica-de-privacidad|politica-de-cookies|accesibilidad|programa-afiliados|curso-de-chatgpt|curso-de-gemini|curso-de-make)/$ / permanent;
+    rewrite ^/noticias-ia$ / permanent;
+    rewrite ^/politica-de-cookies$ /cookies permanent;
+    rewrite ^/politica-de-privacidad$ /confidentialite permanent;
+    rewrite ^/programa-afiliados$ /entreprises permanent;
+    rewrite ^/registration$ /postuler permanent;
+
+    # Same-origin API/OAuth, staging upstream only. Keep the original URI.
+    resolver 127.0.0.11 valid=10s ipv6=off;
+    set $gateway http://${GATEWAY_HOST}:9001;
+    location /api/ { include /etc/nginx/snippets/gateway-proxy.conf; }
+    location /oauth/ { include /etc/nginx/snippets/gateway-proxy.conf; }
+    location = /health { include /etc/nginx/snippets/gateway-proxy.conf; }
+
+    root /usr/share/nginx/html;
+    index index.html;
+
+    location = / {
+        try_files /index.html =404;
+        add_header Cache-Control "no-cache";
+    }
+
+    # Frontend Hoja Next.js : assets hashes = cache long ; pages HTML = revalidation
+    location /_next/ {
+        add_header Cache-Control "public, max-age=31536000, immutable";
+    }
+
+    location /modules/ {
+        auth_basic "Académie OPAYS — Espace apprenants";
+        auth_basic_user_file /etc/nginx/htpasswd-learn;
+        try_files $uri $uri/ $uri/index.html =404;
+    }
+
+    location /admin/ {
+        auth_basic "Academie OPAYS - Espace formateur";
+        auth_basic_user_file /etc/nginx/htpasswd-admin;
+        try_files $uri $uri/ $uri/index.html =404;
+    }
+
+    # Phase 2B — coquilles d'UI : les PAGES ne contiennent AUCUNE donnée ;
+    # tout passe par /api/* (session + rôle vérifiés côté gateway).
+    location /ui/ {
+        try_files $uri $uri/ $uri/index.html =404;
+    }
+    # Défense en profondeur : les pages staff exigent une session formateur/admin
+    # (subrequest auth_request vers le gateway — le cookie est transmis).
+    location = /_authz {
+        internal;
+        # Resolution DNS DYNAMIQUE (Docker embedded DNS) : nginx ne doit pas
+        # cacher l'IP du gateway, sinon tout redeploiement du gateway casse
+        # l'auth_request (500) jusqu'au prochain restart de nginx.
+        resolver 127.0.0.11 valid=10s ipv6=off;
+        set $authz_upstream http://${GATEWAY_HOST}:9001;
+        proxy_pass $authz_upstream/authz;
+        proxy_pass_request_body off;
+        proxy_set_header Content-Length "";
+        proxy_set_header X-Original-Uri $request_uri;
+        proxy_set_header Cookie $http_cookie;
+        proxy_set_header Authorization $http_authorization;
+    }
+    location /ui/suivi/ {
+        auth_request /_authz;
+        error_page 401 403 = @login_redirect;
+        try_files $uri $uri/ $uri/index.html =404;
+    }
+    location /ui/cockpit/ {
+        auth_request /_authz;
+        error_page 401 403 = @login_redirect;
+        try_files $uri $uri/ $uri/index.html =404;
+    }
+    location @login_redirect {
+        return 302 /ui/login/;
+    }
+
+    # Tout le reste → 404 strict (jamais de fallback vers la landing : les fichiers
+    # internes ne doivent PAS être masqués par un 200)
+    location / {
+        try_files $uri $uri.html =404;
+        add_header Cache-Control "no-cache";
+    }
+}

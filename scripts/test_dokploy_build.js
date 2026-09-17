@@ -1,0 +1,21 @@
+'use strict';
+const fs = require('fs');
+const path = require('path');
+const assert = require('node:assert/strict');
+const root = path.join(__dirname, '..');
+const file = path.join(root, 'deploy/dokploy/Dockerfile.public');
+assert.ok(fs.existsSync(file), 'Dockerfile public Dokploy absent');
+const d = fs.readFileSync(file, 'utf8');
+assert.ok(d.includes('npm ci'), 'Installation verrouillée requise');
+assert.ok(d.includes('test ! -e out'), 'Export initial absent requis');
+assert.ok(d.includes('next/dist/bin/next build'), 'Build Next direct requis');
+assert.ok(!d.includes('build_hoja_site.js'), 'Ne pas réutiliser le wrapper tolérant les erreurs');
+assert.ok(!d.includes('COPY hoja-site/out'), 'Interdit de copier un ancien export');
+const steps = ['build_all_presentations.js', 'hoja_modules_identity.js', 'build_cockpit_data.js', 'build_admin.js', 'build_public.js'];
+let prev = -1;
+for (const step of steps) { const pos = d.indexOf(step); assert.ok(pos > prev, `Ordre de génération: ${step}`); prev = pos; }
+assert.ok(d.includes('COPY --from=site /site/out/'), 'Export neuf seulement');
+const n = fs.readFileSync(path.join(root, 'deploy/dokploy/nginx.conf.template'), 'utf8');
+for (const marker of ['absolute_redirect off;', 'auth_request /_authz;', 'resolver 127.0.0.11', '${GATEWAY_HOST}', 'location /api/', 'location /oauth/', 'location = /health']) assert.ok(n.includes(marker), marker);
+assert.ok(!n.includes('opays-classroom-gateway:'), 'Aucun couplage au gateway de production');
+console.log('PASS: contrat build neuf, chaîne pédagogique, nginx staging (contrôle statique; build réel requis)');
