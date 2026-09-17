@@ -485,8 +485,20 @@
   .lrow .who2 small{color:var(--muted);font-size:12px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
   .lrow .w{flex:none;width:118px;font-size:12px;color:var(--muted);}
   @media(max-width:639px){.lrow .w{display:none;}}
-  .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);margin-top:var(--gap);align-items:start;}
-  @media(max-width:900px){.pgrid{grid-template-columns:1fr;}}
+  /* Corps de la fiche : DEUX COLONNES DÉCOUPLÉES, et non une grille de cartes.
+     Une grille synchronise la hauteur de ses rangées : « Inscription » (une
+     phrase) s'étirait à côté de « Compte Hoja » et laissait un grand vide à
+     droite de la première (visible sur `fiche-1366`). Deux colonnes
+     indépendantes suppriment ce vide et portent une hiérarchie : la substance
+     pédagogique à gauche, l'état administratif du dossier à droite. */
+  .pbody{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:var(--gap);margin-top:var(--gap);align-items:start;}
+  .pmain,.prail{display:flex;flex-direction:column;gap:var(--gap);min-width:0;}
+  @media(max-width:1023px){.pbody{grid-template-columns:1fr;}}
+  /* État vide COMPACT, pour l'intérieur d'une carte : `.estate` réserve 34 px
+     de padding vertical, trop lourd dans un bloc de 200 px. */
+  .estate.compact{padding:18px 16px;gap:6px;align-items:flex-start;text-align:left;}
+  .estate.compact .ei{width:30px;height:30px;}
+  .estate.compact p{max-width:none;}
   .psec{border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--panel);padding:16px 18px;box-shadow:var(--hair);}
   .psec h2{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
   .psec .kv{display:grid;grid-template-columns:minmax(96px,140px) minmax(0,1fr);gap:5px 16px;padding:9px 0;border-bottom:1px solid var(--line);align-items:baseline;}
@@ -494,8 +506,12 @@
   .psec .kv .k{color:var(--muted);font-size:12px;font-weight:400;}
   /* Les valeurs longues (« non suivi (import sans candidature) ») débordaient :
      elles passent à la ligne au lieu d'être forcées sur une seule ligne. */
-  .psec .kv .v{min-width:0;overflow-wrap:anywhere;font-size:14px;font-weight:500;text-align:left;}
+  .psec .kv .v{min-width:0;overflow-wrap:anywhere;font-size:14px;font-weight:400;text-align:left;}
   @media(max-width:639px){.psec .kv{grid-template-columns:1fr;gap:3px;}}
+  /* Dans le rail (320 px), une colonne de libellé de 140 px ne laisse que
+     ~126 px à la valeur : les pastilles d'état, qui ne se coupent jamais,
+     débordaient de 26 px (mesuré au DOM). Le rail empile libellé et valeur. */
+  .prail .psec .kv{grid-template-columns:1fr;gap:4px;}
   /* Bandeau d'étapes du dossier : le repère est TOUJOURS un numéro, l'état est
      porté par la pastille. Avant, les étapes 4 et 5 affichaient une coche à la
      place du numéro — deux repères différents pour la même colonne. */
@@ -523,8 +539,16 @@
   .contactrow{display:flex;gap:8px;flex-wrap:wrap;}
   .contactrow a{display:inline-flex;align-items:center;gap:6px;}
   .contactrow svg{width:13px;height:13px;flex:none;}
-  .pbar{height:6px;border-radius:3px;background:var(--panel-2);border:1px solid var(--line);overflow:hidden;margin:8px 0 4px;}
+  .pbar{height:8px;border-radius:4px;background:var(--panel-2);border:1px solid var(--line);overflow:hidden;margin:10px 0 4px;}
   .pbar i{display:block;height:100%;background:var(--teal);}
+  /* En-tête de progression : « 1 / 18 modules validés » est LA donnée de la
+     fiche. Elle reçoit le même traitement qu'un KPI d'accueil plutôt qu'une
+     ligne de texte parmi d'autres. */
+  .prog-top{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;}
+  .prog-n{font-size:28px;font-weight:700;letter-spacing:-0.03em;color:var(--text-bright);font-variant-numeric:tabular-nums;line-height:1;}
+  .prog-n span{font-size:15px;font-weight:600;color:var(--muted);letter-spacing:0;}
+  .prog-s{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;}
+  .mstats{margin-top:12px;border-top:1px solid var(--line);}
   /* Suivi des missions : le TITRE d'abord, l'état ensuite — on lit ce qui a été
      fait avant de lire où ça en est. */
   .mstat{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);font-size:13px;}
@@ -1010,8 +1034,12 @@ function skRows(n, cols) {
 }
 /* État vide : un constat, une explication, une porte de sortie. Jamais un
    paragraphe gris seul. */
-function emptyState(icon, title, body, action) {
-  return '<div class="estate"><span class="ei">' + (icon || '') + '</span><b>' + esc(title) + '</b>' +
+/* `compact` : état vide DANS une carte. Les 34 px de padding vertical de
+   `.estate` sont calibrés pour occuper un écran vide, pas pour tenir dans un
+   bloc de 200 px — sans ce réglage l'état vide de l'historique écrasait la
+   colonne principale. */
+function emptyState(icon, title, body, action, compact) {
+  return '<div class="estate' + (compact ? ' compact' : '') + '"><span class="ei">' + (icon || '') + '</span><b>' + esc(title) + '</b>' +
     (body ? '<p>' + body + '</p>' : '') + (action ? '<div class="btnrow">' + action + '</div>' : '') + '</div>';
 }
 const ICO_EMPTY = {
@@ -1622,21 +1650,22 @@ function personProgress(email) {
   const doneMods = (row.missions || []).filter(m => m.state === 'graded').flatMap(m => m.modules || []);
   const uniq = [...new Set(doneMods)].length;
   const pct = Math.round(uniq / 18 * 100);
-  let html = '<div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap">' +
-    '<span style="font-size:14px;font-weight:600;color:var(--text-bright)">' + uniq + ' / 18 modules validés</span>' +
-    '<span style="font-size:12px;color:var(--muted)">' + pct + ' % · ' + pl((row.missions || []).length, 'devoir publié', 'devoirs publiés') + '</span></div>';
+  let html = '<div class="prog-top">' +
+    '<span class="prog-n">' + uniq + '<span> / 18 modules validés</span></span>' +
+    '<span class="prog-s">' + pct + ' % · ' + pl((row.missions || []).length, 'devoir publié', 'devoirs publiés') + '</span></div>';
   html += '<div class="pbar"><i style="width:' + pct + '%"></i></div>';
-  if (row.empty || !(row.missions || []).length) html += '<p class="empty" style="margin-top:8px">Aucun devoir publié dans la classe pour le moment — la progression ne peut pas être calculée.</p>';
+  if (row.empty || !(row.missions || []).length) html += emptyState(ICO_EMPTY.inbox, 'Aucun devoir publié',
+    'La progression se calcule à partir des devoirs publiés dans la classe. Tant qu’aucun devoir n’est publié, elle ne peut pas être établie.', '', true);
   /* Le TITRE d'abord, l'état ensuite : on lit ce qui a été fait avant de lire
      où ça en est. Avant, la pastille d'état ouvrait la ligne. */
-  else html += (row.missions || []).map(m => {
+  else html += '<div class="mstats">' + (row.missions || []).map(m => {
     const label = m.state === 'graded' ? 'Validé' + (m.grade != null ? ' · ' + esc(String(m.grade)) + (m.maxPoints ? '/' + esc(String(m.maxPoints)) : '') : '') : m.state === 'returned' ? 'Corrigé, sans note' : m.state === 'submitted' ? 'Déposé — en correction' : m.state === 'draft' ? 'Brouillon' : 'À venir';
     const cls = m.state === 'graded' ? 'st-graded' : m.state === 'returned' ? 'st-returned' : m.state === 'submitted' ? 'st-submitted' : 'st-progress';
     return '<div class="mstat"><span class="mm">M' + pad2(((m.modules || [])[0]) || 0) + '</span>' +
       '<span class="mw">' + esc(m.title) + '</span>' +
       '<span class="mmeta">' + esc(fmtDate(m.due)) + '</span>' +
       '<span class="st ' + cls + '">' + esc(label) + '</span></div>';
-  }).join('');
+  }).join('') + '</div>';
   const last = [...(row.missions || [])].reverse().find(m => m.returnedAt);
   if (last) html += '<p class="note">Dernier travail corrigé : ' + esc(last.title) + ' · ' + esc(fmtDate(last.returnedAt)) + '</p>';
   return html;
@@ -1730,7 +1759,40 @@ async function openPerson(id) {
         ((cand && cand.note) ? '<div class="kv"><span class="k">Note interne</span><span class="v" style="font-weight:400">' + esc(cand.note) + '</span></div>' : '') +
         ((cand && cand.extra && cand.extra.length) ? '<div class="kv"><span class="k">Réponses supplémentaires</span><span class="v" style="font-weight:400">' + cand.extra.map(x0 => esc(x0.value)).join('<br>') + '</span></div>' : '') +
       '</div>'
-    : '<div class="psec"><h2>Inscription</h2><p class="empty" style="padding:4px 0">Aucune donnée de candidature — ce compte a été créé par import de liste, sans passer par le Google Form.</p></div>';
+    : (learner
+      /* Compte IMPORTÉ : aucune donnée de candidature, mais le dossier porte un
+         e-mail et souvent un téléphone. Sans cette carte, le téléphone d'un
+         apprenant importé n'apparaissait NULLE PART dans la fiche, alors qu'il
+         est affiché dans la liste Apprenants. Aucune donnée inventée : on lit
+         le compte apprenant, pas la candidature. */
+      ? '<div class="psec"><h2>Coordonnées</h2>' +
+          '<div class="kv"><span class="k">E-mail</span><span class="v">' + esc(learner.email) + '</span></div>' +
+          (learner.phone ? '<div class="kv"><span class="k">Téléphone</span><span class="v">' + esc(learner.phone) + '</span></div>' : '') +
+          '<div class="kv"><span class="k">Origine du compte</span><span class="v">' + esc(learner.via === 'candidature' ? 'admission sur candidature' : 'import de liste') + '</span></div>' +
+        '</div>'
+      : '<div class="psec"><h2>Inscription</h2>' + emptyState(ICO_EMPTY.inbox, 'Aucune donnée de candidature',
+          'Ce compte a été créé par import de liste, sans passer par le Google Form.', '', true) + '</div>');
+  /* Carte d'admission et carte de compte : deux vues du même dossier. Elles
+     changent de COLONNE selon qui ouvre la fiche — pour un candidat, l'admission
+     est la substance et va à gauche ; pour un apprenant, c'est la progression,
+     et l'état du compte va au rail. Sans cette règle, la colonne principale d'un
+     candidat restait à moitié vide sous l'historique. */
+  const admissionCard = cand
+    ? '<div class="psec"><h2>Admission &amp; compte Hoja</h2>' +
+        '<div class="kv"><span class="k">Candidature</span><span class="v">' + esc(ST_LABEL[cand.status] || cand.status) + '</span></div>' +
+        '<div class="kv"><span class="k">Compte apprenant</span><span class="v">' + (learner ? '<span class="st st-graded">créé</span> ' + esc(learner.email) : '<span class="v mut">non créé</span>') + '</span></div>' +
+        (learner ? '<div class="kv"><span class="k">Mot de passe</span><span class="v">' + (learner.mustChange ? 'provisoire — à changer' : 'inchangé') + '</span></div>' : '') +
+        (actions.length ? '<div class="btnrow" style="margin-top:10px">' + actions.join('') + '</div>' : '') +
+      '</div>'
+    : '';
+  const compteCard = learner
+    ? '<div class="psec"><h2>Compte Hoja</h2>' +
+        '<div class="kv"><span class="k">Identifiant</span><span class="v">' + esc(learner.email) + '</span></div>' +
+        '<div class="kv"><span class="k">Origine</span><span class="v">' + esc(learner.via === 'candidature' ? 'admission candidature' : 'import liste') + '</span></div>' +
+        '<div class="kv"><span class="k">Mot de passe</span><span class="v">' + (learner.mustChange ? 'provisoire — à changer' : 'inchangé') + '</span></div>' +
+        (actions.length ? '<div class="btnrow" style="margin-top:10px">' + actions.join('') + '</div>' : '') +
+      '</div>'
+    : '';
   view.innerHTML =
     '<a class="back" href="' + back + '"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg><span>' + backTxt + '</span></a>' +
     '<div class="phead">' +
@@ -1748,35 +1810,36 @@ async function openPerson(id) {
       '<span class="k">' + esc(x.k) + '</span>' +
       '<span class="st ' + (x.na ? 'st-na' : (x.cls === 'done' ? 'st-graded' : x.cls === 'blocked' ? 'st-blocked' : 'st-progress')) + '">' + esc(x.v) + '</span></div>'
     ).join('') + '</div>' +
-    '<div class="pgrid">' +
+    '<div class="pbody">' +
+      /* Colonne principale : la SUBSTANCE du dossier. Progression pour un
+         apprenant, admission pour un candidat — dans les deux cas, la question
+         qu'on se pose en ouvrant la fiche. */
+      '<div class="pmain">' +
+      (learner
+        ? '<div class="psec"><h2>Formation &amp; progression</h2><div id="p-prog">' + personProgress(email) + '</div></div>'
+        : admissionCard) +
       inscCard +
-      (cand ?
-      '<div class="psec"><h2>Admission &amp; compte Hoja</h2>' +
-        '<div class="kv"><span class="k">Candidature</span><span class="v">' + esc(ST_LABEL[cand.status] || cand.status) + '</span></div>' +
-        '<div class="kv"><span class="k">Compte apprenant</span><span class="v">' + (learner ? '<span class="st st-graded">créé</span> ' + esc(learner.email) : '<span class="v mut">non créé</span>') + '</span></div>' +
-        (learner ? '<div class="kv"><span class="k">Mot de passe</span><span class="v">' + (learner.mustChange ? 'provisoire — à changer' : 'inchangé') + '</span></div>' : '') +
-        (actions.length ? '<div class="btnrow" style="margin-top:10px">' + actions.join('') + '</div>' : '') +
-      '</div>' : (learner ?
-      '<div class="psec"><h2>Compte Hoja</h2>' +
-        '<div class="kv"><span class="k">Identifiant</span><span class="v">' + esc(learner.email) + '</span></div>' +
-        '<div class="kv"><span class="k">Origine</span><span class="v">' + esc(learner.via === 'candidature' ? 'admission candidature' : 'import liste') + '</span></div>' +
-        '<div class="kv"><span class="k">Mot de passe</span><span class="v">' + (learner.mustChange ? 'provisoire — à changer' : 'inchangé') + '</span></div>' +
-        (actions.length ? '<div class="btnrow" style="margin-top:10px">' + actions.join('') + '</div>' : '') +
-      '</div>' : '')) +
+      '<div class="psec"><h2>Historique</h2>' +
+        (events.length ? events.map(e0 => '<div class="evt"><time>' + esc(e0.ts ? fmtDate(e0.ts) : '—') + '</time><span class="lbl2">' + esc(e0.label) + '</span></div>').join('') : emptyState(ICO_EMPTY.inbox, 'Aucun événement enregistré', 'L’historique se remplit à chaque étape du dossier : candidature reçue, paiement vérifié, admission, invitation Classroom.', '', true)) + '</div>' +
+      '</div>' +
+      /* Colonne latérale : l'ÉTAT administratif du dossier. */
+      '<div class="prail">' +
+      (learner ? (cand ? admissionCard : compteCard) : '') +
       '<div class="psec"><h2>Facturation</h2>' +
         '<div class="kv"><span class="k">Tarif formation</span><span class="v">' + (price != null ? esc(String(price)) + esc(cur) : '<span class="v mut">non configuré</span>') + '</span></div>' +
         '<div class="kv"><span class="k">Paiement</span><span class="v">' + (cand ? '<span class="st ' + payChipCls(cand.payment.state) + '">' + esc(PAY_LABEL[cand.payment.state] || cand.payment.state) + '</span>' : '<span class="v mut">non suivi — compte importé</span>') + '</span></div>' +
         (cand && cand.payment.state === 'paye' ? '<div class="kv"><span class="k">Montant reçu</span><span class="v">' + (paid != null ? esc(String(paid)) + esc(cur) : '—') + '</span></div>' +
           '<div class="kv"><span class="k">Confirmé par / le</span><span class="v">' + esc((cand.payment.confirmedBy || '—') + ' · ' + fmtDate(cand.payment.confirmedAt)) + '</span></div>' :
-          (cand ? '<div class="kv"><span class="k">Montant attendu</span><span class="v">' + (price != null ? esc(String(price)) + esc(cur) : '<span class="v mut">tarif non configuré</span>') + '</span></div>' : '')) +
+          /* « Montant attendu » n'apparaît que si un tarif existe : sans tarif,
+             la ligne répétait « tarif non configuré » juste sous « Tarif
+             formation — non configuré ». Une donnée absente se dit une fois. */
+          (cand && price != null ? '<div class="kv"><span class="k">Montant attendu</span><span class="v">' + esc(String(price)) + esc(cur) + '</span></div>' : '')) +
       '</div>' +
       '<div class="psec"><h2>Google Classroom</h2>' +
         '<div class="kv"><span class="k">Classe</span><span class="v">' + (!CLASSROOM ? 'chargement…' : (CLASSROOM.connected ? (cls ? esc(cls) : 'Cohorte 01 — classe connectée') : '<span class="v ko">passerelle non connectée</span>')) + '</span></div>' +
         '<div class="kv"><span class="k">Invitation</span><span class="v">' + (learner ? (learner.joinedClassroom ? '<span class="st st-graded">présent dans la classe</span>' : inv ? (inv.state && /PENDING/i.test(inv.state) ? '<span class="st st-todo">envoyée — en attente</span>' : 'invitée (' + esc(inv.state || '?') + ')') : (INVITATIONS == null && INV_NOTE ? esc(INV_NOTE) : '<span class="st st-progress">non invitée</span>')) : '<span class="v mut">non applicable (candidat)</span>') + '</span></div>' +
       '</div>' +
-      (learner ? '<div class="psec" style="grid-column:1/-1"><h2>Formation &amp; progression</h2><div id="p-prog">' + personProgress(email) + '</div></div>' : '') +
-      '<div class="psec" style="grid-column:1/-1"><h2>Historique</h2>' +
-        (events.length ? events.map(e0 => '<div class="evt"><time>' + esc(e0.ts ? fmtDate(e0.ts) : '—') + '</time><span class="lbl2">' + esc(e0.label) + '</span></div>').join('') : '<p class="empty" style="padding:4px 0">Aucun événement enregistré pour cette personne.</p>') + '</div>' +
+      '</div>' +
     '</div>';
   if (learner && PROGRESS == null) loadProgress().then(() => { const el = $('#p-prog'); if (el) el.innerHTML = personProgress(email); });
   if (learner && INVITATIONS == null && CLASSROOM && CLASSROOM.connected) loadInvitations().then(() => { if (parseHash().person) openPerson(parseHash().person); });

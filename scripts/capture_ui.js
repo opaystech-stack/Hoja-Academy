@@ -43,6 +43,10 @@ const SURFACES = {
   // premier apprenant du roster mock — sur la passerelle réelle, la route est
   // la même, seule la valeur change.
   'cockpit-fiche': '/ui/cockpit/index.html#apprenants/p/awa.diallo%40example.test',
+  // Même fiche pour un CANDIDAT (sans compte apprenant) : la composition diffère
+  // — pas de progression, une carte « Admission & compte Hoja », les actions de
+  // traitement. C'est un état à part entière, pas un cas de bord.
+  'cockpit-fiche-candidat': '/ui/cockpit/index.html#apprenants/p/MOCK1',
   // Workspace module : route #programme/m/NN
   'cockpit-module': '/ui/cockpit/index.html#programme/m/01',
   campus: '/ui/campus/index.html',
