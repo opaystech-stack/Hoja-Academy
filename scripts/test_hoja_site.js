@@ -239,6 +239,35 @@ for (const [f, t] of Object.entries(srcText)) {
 check('jetons de texte legacy consolidés (palette sémantique)', legacyHits.length === 0,
   legacyHits.slice(0, 3).join(', '));
 
+// ─── Palier d'affichage 60/84 px : jamais atteint sans échelon intermédiaire ──
+// DESIGN_SYSTEM_HOJA.md §2.3.1. Le palier 84 px (text-[5.25rem]) est réservé au
+// grand affichage et ne doit s'activer qu'au point de rupture `2xl` (1601 px).
+//
+// Défaut réel trouvé le 17/09/2026 sur programme-intensif : son h1 portait
+// `text-[5.25rem]` en BASE, rabattu à 28 px seulement sous 572 px. Entre 572 et
+// ~1024 px, le titre s'affichait donc à 84 px sur une fenêtre de 600 à 1000 px :
+// 100 % de la largeur, chevauchement de l'en-tête. Les cinq autres héros du site
+// faisaient déjà `text-[3rem] … 2xl:text-[5.25rem]`.
+//
+// Règle contrôlée : toute déclaration de 84 px non préfixée `2xl:` est un défaut.
+const DISPLAY_TIER = 5.25; // rem — 84 px
+const displayOffenders = [];
+for (const [f, t] of Object.entries(srcText)) {
+  for (const m of t.matchAll(/className=(?:"([^"]*)"|\{cn\(\s*"([^"]*)")/g)) {
+    const c = m[1] ?? m[2] ?? '';
+    for (const x of c.matchAll(/(^|\s)((?:\w+:)*)text-\[(\d+(?:\.\d+)?)rem\]/g)) {
+      if (Number(x[3]) !== DISPLAY_TIER) continue;
+      const variants = x[2] || '';
+      // acceptable seulement si le palier est porté par une variante d'affichage large
+      if (!/(^|:)2xl:?$/.test(variants) && !variants.includes('2xl:')) {
+        displayOffenders.push(path.relative(SITE, f) + ` (variante « ${variants || 'base'} »)`);
+      }
+    }
+  }
+}
+check('palier d\'affichage 84 px réservé à `2xl` (jamais en base)', displayOffenders.length === 0,
+  displayOffenders.slice(0, 3).join(', '));
+
 // ─── Bilan ───────────────────────────────────────────────────────────
 console.log('\n' + '='.repeat(56));
 if (fail === 0) {

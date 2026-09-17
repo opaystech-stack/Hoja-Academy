@@ -210,6 +210,31 @@ qui n'était jamais chargée.
 > ont aligné les applications sur la même échelle. C'est cette échelle-là qui fait foi :
 > **une seule échelle pour tout le projet.**
 
+#### 2.3.1 Palier d'affichage 60 / 84 px — usage encadré
+
+Le palier 60 / 84 px est **conservé** (arbitrage Tbag, 17/09/2026) mais **strictement
+encadré**. Il n'est pas un neuvième et dixième pas de l'échelle : c'est une extension
+de **grand affichage** réservée au héros et aux grands nombres.
+
+| Règle | Détail |
+|---|---|
+| **Réserver à `2xl` (1601 px et plus)** | Sur le site public, 84 px ne s'active qu'au point de rupture `2xl` (`--breakpoint-2xl: 1601px`). En dessous, le héros est à **48 px**. |
+| **Jamais de saut direct** | Un héros ne passe jamais de 28 px à 84 px. La progression est **28 → 48 → 84** (`max-md` → base → `2xl`). |
+| **Toujours borner** | 84 px suppose une largeur de fenêtre ≥ 1601 px. Sous ce seuil, la place manque : le titre occupe 100 % de la largeur et entre en collision avec l'en-tête. |
+
+> **Défaut réel corrigé le 17/09/2026 (arbitrage Tbag).** L'audit visuel demandé sur
+> `programme-intensif` a montré que son `h1` **ignorait le palier intermédiaire** :
+> `text-[5.25rem]` en base, rabattu à 28 px seulement sous 572 px. Entre **572 px et
+> ~1024 px**, le titre s'affichait donc à **84 px sur une fenêtre de 600 à 1000 px** :
+> 100 % de la largeur, chevauchement de l'en-tête, paragraphe débordant du cadre.
+> Les cinq autres héros du site faisaient déjà `text-[3rem] … 2xl:text-[5.25rem]` —
+> `programme-intensif` était **la seule exception**, et c'était un défaut, pas une
+> composition voulue. Aligné. **Mesuré après correction : 28 px (< 572) → 48 px → 84 px
+> (≥ 1601). Débordement document 0 à toutes les largeurs.**
+>
+> **Leçon : un palier d'affichage n'est légitime que s'il est ATTEINT PAR PALIERS.**
+> Sauter l'échelon intermédiaire transforme une décision de composition en bug responsive.
+
 **Plancher absolu : 12 px.** Aucun texte d'interface en dessous. Les Phases F, G et H ont
 ramené **1 700 occurrences** de 9,5 / 10 / 10,5 / 11 / 11,5 / 12,5 / 13 / 13,5 px vers
 12 ou 14 px.

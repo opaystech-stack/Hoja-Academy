@@ -320,7 +320,7 @@ export default function Page() {
                   {" "}
                   <div className="w-full block relative min-w-0 max-w-full text-center">
                     <div className="block">
-                      <h1 className="block text-background [font-family:Montserrat,_sans-serif] text-[5.25rem] leading-[6.3125rem] max-md:text-[1.75rem] max-md:leading-10.5" data-component="heading">
+                      <h1 className="block text-background [font-family:Montserrat,_sans-serif] text-[3rem] leading-16.5 max-md:text-[1.75rem] max-md:leading-10.5 2xl:text-[5.25rem] 2xl:leading-[6.3125rem]" data-component="heading">
                         Intelligence Artificielle
                       </h1>
                       {" "}
