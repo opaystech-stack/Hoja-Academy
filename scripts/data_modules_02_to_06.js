@@ -97,7 +97,7 @@ Réponds précisément à ces 3 questions :
           <p class="lead">Chaque semaine, 50 nouveaux sites "IA" apparaissent. 90 % d'entre eux ne sont que des habillages branchés sur les 3 mêmes moteurs.</p>
           <div class="card reveal" style="border-color:var(--line-blue); background:rgba(0,102,255,0.04); margin-top:16px;">
             <span>L'ENCHAÎNEMENT RÉEL DE L'ÉCOSYSTÈME</span>
-            <b style="font-size:20px; color:#fff; margin:12px 0;">Entreprise Créatrice → Moteur (LLM) → Application → Connecteurs → Agent</b>
+            <b style="font-size:22px; color:#fff; margin:12px 0;">Entreprise Créatrice → Moteur (LLM) → Application → Connecteurs → Agent</b>
             <p style="font-size:12px; color:var(--muted);">Ne cherchez pas à tout tester. Maîtrisez les moteurs fondamentaux et vous saurez tout piloter.</p>
           </div>
         </div>

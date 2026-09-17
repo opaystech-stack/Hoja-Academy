@@ -27,7 +27,7 @@ function injectBackLink(html) {
   const bodyStart = html.indexOf('<body');
   if (bodyStart < 0) return html;
   const afterBody = html.indexOf('>', bodyStart) + 1;
-  const css = '\n.admin-home-link{position:fixed;top:82px;left:14px;z-index:200;background:rgba(13,21,34,.9);border:1px solid var(--line);color:var(--gold);font-size:11px;font-weight:800;letter-spacing:.06em;padding:7px 14px;border-radius:999px;text-decoration:none;backdrop-filter:blur(8px);transition:.2s;}\n.admin-home-link:hover{color:#fff;border-color:rgba(212,175,55,.5);}\n@media(max-width:650px){.admin-home-link{top:80px;left:8px;font-size:10px;padding:6px 10px;}}\n';
+  const css = '\n.admin-home-link{position:fixed;top:82px;left:14px;z-index:200;display:inline-flex;align-items:center;min-height:var(--touch-min);background:var(--card);border:1px solid var(--line);color:var(--blue);font-size:12px;font-weight:800;letter-spacing:.04em;padding:0 16px;border-radius:var(--radius-full);text-decoration:none;transition:.2s;}\n.admin-home-link:hover{color:var(--text-bright);border-color:var(--line-strong);background:var(--card-hover);}\n@media(max-width:650px){.admin-home-link{top:80px;left:8px;padding:0 14px;}}\n';
   return html.slice(0, afterBody) + css + html.slice(afterBody)
     + '\n' + backBtn + html.slice(afterBody + 0);
 }
@@ -40,7 +40,7 @@ modules.forEach(mod => {
   const html = fs.readFileSync(src, 'utf8');
   // Bouton retour après <body> (réinjecter proprement — position recalculée APRÈS l'insertion du CSS)
   const headEnd = html.indexOf('</head>');
-  const css = '<style>.admin-home-link{position:fixed;top:82px;left:14px;z-index:200;background:rgba(13,21,34,.92);border:1px solid rgba(212,175,55,.4);color:var(--gold);font-size:11px;font-weight:800;letter-spacing:.06em;padding:7px 14px;border-radius:999px;text-decoration:none;z-index:300;box-shadow:0 4px 20px rgba(0,0,0,.4);} .admin-home-link:hover{color:#fff;border-color:var(--gold);} @media(max-width:650px){.admin-home-link{top:80px;left:8px;font-size:10px;padding:6px 10px;}}</style>';
+  const css = '<style>.admin-home-link{position:fixed;top:82px;left:14px;z-index:200;box-shadow:var(--shadow-lg);display:inline-flex;align-items:center;min-height:var(--touch-min);background:var(--card);border:1px solid var(--line);color:var(--blue);font-size:12px;font-weight:800;letter-spacing:.04em;padding:0 16px;border-radius:var(--radius-full);text-decoration:none;}@media(max-width:650px){.admin-home-link{top:80px;left:8px;padding:0 14px;}}</style>';
   const withCss = html.slice(0, headEnd) + css + html.slice(headEnd);
   const bodyStart = withCss.indexOf('<body');
   const afterBody = withCss.indexOf('>', bodyStart) + 1;

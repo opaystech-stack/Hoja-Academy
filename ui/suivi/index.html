@@ -160,7 +160,7 @@ a:not([class]) { display: inline-block; min-height: var(--touch-min); }
     <div class="sEmail" id="pEmail">—</div>
     <div id="pMissions"></div>
     <hr style="border:0;border-top:1px solid var(--line);margin:16px 0;">
-    <h2 style="font-size:15px;">Corriger une copie déposée</h2>
+    <h2 style="font-size:16px;">Corriger une copie déposée</h2>
     <div class="meta">Renvoi Classroom + note via <code>POST /api/feedback</code>. Si l’écriture est désactivée côté serveur, le message d’erreur exact est affiché — rien n’est simulé.</div>
     <form class="grade" id="gradeForm">
       <label for="gSub">Copie déposée</label>
@@ -273,7 +273,7 @@ function render() {
   } else {
     $('#desktop').hidden = true; $('#mobile').hidden = false;
     $('#mobile').innerHTML = visible.map(r =>
-      '<div class="lcard" data-email="' + escapeHtml(r.email) + '" role="button" tabindex="0"><h3>' + escapeHtml(r.name) + ' <span class="cell ' + (r.done >= r.total && r.total ? 'st-graded' : 'st-assigned') + '" style="font-size:10px;">' + (r.done || 0) + '/' + (r.total || 0) + '</span></h3>' +
+      '<div class="lcard" data-email="' + escapeHtml(r.email) + '" role="button" tabindex="0"><h3>' + escapeHtml(r.name) + ' <span class="cell ' + (r.done >= r.total && r.total ? 'st-graded' : 'st-assigned') + '" style="font-size:12px;">' + (r.done || 0) + '/' + (r.total || 0) + '</span></h3>' +
       '<div class="sub">' + escapeHtml(r.email) + '</div>' +
       r.missions.map(m => { const st = missionStatus(m); return '<div class="mrow"><span class="grow">' + escapeHtml(short(m.title)) + ' <span class="meta">' + fmtDate(m.due) + '</span></span><span><span class="cell ' + CLS[st] + '">' + LABEL[st] + '</span>' + (m.late ? ' <span class="late">RETARD</span>' : '') + '</span></div>'; }).join('') +
       '</div>').join('');

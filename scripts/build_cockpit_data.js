@@ -85,7 +85,7 @@ for (const m of modules) {
   const headEnd = html.indexOf('</head>');
   const fav = '<link rel="icon" type="image/png" href="/favicon.ico">';
   html = html.slice(0, headEnd) + fav + html.slice(headEnd);
-  const css = '<style>.cockpit-back-link{position:fixed;top:82px;left:14px;z-index:9999;background:rgba(13,21,34,.92);border:1px solid rgba(34,197,94,.4);color:#22c55e;font-size:11px;font-weight:800;letter-spacing:.06em;padding:7px 14px;border-radius:999px;text-decoration:none;}@media(max-width:650px){.cockpit-back-link{top:80px;left:8px;font-size:10px;padding:6px 10px;}}</style>';
+  const css = '<style>.cockpit-back-link{position:fixed;top:82px;left:14px;z-index:200;display:inline-flex;align-items:center;min-height:var(--touch-min);background:var(--card);border:1px solid var(--line);color:var(--blue);font-size:12px;font-weight:800;letter-spacing:.04em;padding:0 16px;border-radius:var(--radius-full);text-decoration:none;}@media(max-width:650px){.cockpit-back-link{top:80px;left:8px;padding:0 14px;}}</style>';
   html = html.slice(0, headEnd) + css + html.slice(headEnd);
   const bodyStart = html.indexOf('<body');
   const afterBody = html.indexOf('>', bodyStart) + 1;

@@ -168,34 +168,55 @@ préservée, la lisibilité est corrigée. **Règle d'usage :**
 
 ### 2.3 Typographie
 
-**Famille unique : `Montserrat`.**
+**Deux piles, une seule décision assumée** (arbitrage Tbag, 17/09/2026 : « garde la pile
+système dans les applications ; la performance et la lisibilité priment »).
 
 ```css
+/* Site public — Montserrat est chargée */
 --font-display: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
 --font-body:    "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
---font-mono:    ui-monospace, "SFMono-Regular", "Cascadia Code", Consolas, monospace;
+
+/* Applications (cockpit, campus, suivi, login, modules) — aucune police chargée */
+--font-app: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+--font-mono: ui-monospace, "SFMono-Regular", "Cascadia Code", Consolas, monospace;
 ```
 
-**Suppression :** Exo 2 (clone), Orbitron, Noto Color Emoji, dashicons, fcicons,
-ld-icons, swiper-icons, WooCommerce, star, Futura, Helvetica.
-Inter (modules) est également retiré au profit de Montserrat.
+> **Correction de cette spécification.** Elle prescrivait Montserrat partout. Or les quatre
+> surfaces applicatives ne chargeaient **aucune** police : déclarer `'Inter'` en tête de pile
+> faisait retomber silencieusement sur la police du système. On ne charge pas ~30 ko de police
+> pour uniformiser un back-office dense. **Une pile système assumée et documentée vaut mieux
+> qu'une police déclarée mais absente.**
 
-**Échelle typographique :**
+**Suppression :** Exo 2 (clone), Orbitron, Noto Color Emoji, dashicons, fcicons,
+ld-icons, swiper-icons, WooCommerce, star, Futura, Helvetica — et `Inter` dans les modules,
+qui n'était jamais chargée.
+
+**Échelle typographique — 12 / 14 / 16 / 18 / 22 / 28 / 36 / 48**
 
 | Token | Taille | Interligne | Graisse | Usage |
 |---|---|---|---|---|
-| `--text-xs` | 12px | 1.4 | 500 | Métadonnées, badges |
-| `--text-sm` | 13px | 1.5 | 500 | Texte dense (tableaux, listes) |
-| `--text-base` | 15px | 1.6 | 400 | Corps de texte |
-| `--text-md` | 16px | 1.6 | 400 | Corps éditorial (public) |
-| `--text-lg` | 18px | 1.5 | 600 | Sous-titres |
-| `--text-xl` | 22px | 1.35 | 600 | Titres de section |
+| `--text-xs` | 12px | 1.4 | 600 | Métadonnées, badges, libellés de zone, plancher absolu |
+| `--text-sm` | 14px | 1.5 | 500 | Texte dense (tableaux, listes) — **corps par défaut des applications** |
+| `--text-md` | 16px | 1.6 | 400 | Corps éditorial, champs de formulaire |
+| `--text-lg` | 18px | 1.5 | 600 | Sous-titres, titres de carte |
+| `--text-xl` | 22px | 1.35 | 600 | Titres de section, indicateurs clés |
 | `--text-2xl` | 28px | 1.25 | 700 | Titres de page |
-| `--text-3xl` | 36px | 1.15 | 700 | Héros section (public) |
+| `--text-3xl` | 36px | 1.15 | 700 | Héros de section (public) |
 | `--text-4xl` | 48px | 1.1 | 700 | Héros principal (public) |
+
+> **Correction de cette spécification.** La table proposait 13 px et 15 px. Le Lot A a
+> établi **12 / 14 / 16 / 18 / 22 / 28 / 36 / 48** sur le site public, et les Phases E → H
+> ont aligné les applications sur la même échelle. C'est cette échelle-là qui fait foi :
+> **une seule échelle pour tout le projet.**
+
+**Plancher absolu : 12 px.** Aucun texte d'interface en dessous. Les Phases F, G et H ont
+ramené **1 700 occurrences** de 9,5 / 10 / 10,5 / 11 / 11,5 / 12,5 / 13 / 13,5 px vers
+12 ou 14 px.
 
 **Règle mobile :** `--text-4xl` et `--text-3xl` sont réduits d'un cran sous 480 px
 (36 px et 28 px). Jamais de titre > 36 px sur 360 px de large.
+**Champs de saisie : 16 px minimum** — en dessous, iOS Safari zoome au focus.
 
 ### 2.4 Espacements
 
