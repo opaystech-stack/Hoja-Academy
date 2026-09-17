@@ -480,25 +480,47 @@ Conformément à la consigne utilisateur :
 
 ---
 
-## 6. Dette à traiter — récapitulatif chiffré
+## 6. État du chantier — récapitulatif
 
-| Dette | Volume mesuré | Phase |
+> **Révision du 17/09/2026.** Ce tableau était un **plan de dette** rédigé avant les
+> Phases C → H. Il listait comme « à traiter » des points depuis **soldés**. Le
+> conserver tel quel aurait fait croire à un chantier inachevé. Il distingue
+> désormais ce qui est **fait** de ce qui **reste**.
+> **Un design system qui contredit le code ne documente rien : il fabrique la
+> prochaine incohérence.**
+
+### 6.1 Soldé
+
+| Dette | Volume traité | Phase |
 |---|---|---|
-| Sections jamais importées | **7 fichiers** | C |
-| Icônes SVG inutilisées | **11 fichiers** | C |
-| Règles `@font-face` mortes | **212 règles / ~30 fichiers de police** | C |
-| Variantes `list-row*` dupliquées | **11 fichiers × ~8 copies par route ≈ 60 fichiers** | C |
-| Texte espagnol en production | **2 passages** (`confidentialite:437,776`) | C |
-| CSS dupliqué dans les 18 modules | **~398 Ko** (22,1 Ko × 18, md5 identiques) | H |
-| Tokens OPAYS (or/navy) à retirer | **1 source** + 18 copies générées | H |
-| Systèmes de tokens à unifier | **4 → 1** | D→G |
-| Vocabulaires de statuts | **3 → 1** | E |
-| Champs sans `<label>` | **~8** | E/F/G |
-| `prompt()` / `confirm()` natifs | **3** | E |
-| Balayage 44 px absent | campus, cockpit 640–768 px | G |
-| `:focus-visible` absent | login, suivi | D |
-| Résidus `data-ditto-id` / `ditto.css` | 8 fichiers CSS + `ditto-meta.ts` | C |
-| Polices de police d'icônes WordPress/LearnDash/Swiper | 5 familles | C |
+| Sections jamais importées | 7 fichiers | C |
+| Icônes SVG inutilisées | 22 → 4 | C |
+| Règles `@font-face` mortes | 212 règles supprimées | C |
+| Variantes `list-row*` dupliquées | 34 copies → re-exports | C |
+| Texte espagnol en production | 2 passages | C |
+| CSS dupliqué dans les 18 modules | ~398 Ko | H |
+| Tokens OPAYS (or / navy / bleu / rayon 20) | 1 source + 18 modules + 36 copies | H |
+| Emojis dans les modules | 671 → 0 | H |
+| Systèmes de tokens | 4 → 1 | D→G |
+| Vocabulaires de statuts | 4 → 1 (`.st-*`) | E→G |
+| Champs sans `<label>` | tous traités | E/F/G/H |
+| Balayage 44 px | 9 surfaces × 5 largeurs, 0 cas | D→G |
+| `:focus-visible` absent | login, suivi, modules | D/G/H |
+| Résidus `data-ditto-id` / `ditto.css` | 0 sélecteur mort | B |
+| Plancher typographique | ~1 700 occurrences < 12 px | A→H |
+| Couleurs de texte du site public | 17 → 14, 0 échec AA | P7 |
+| Palier 84 px non borné | `programme-intensif` corrigé + garde-fou | arbitrage |
+
+### 6.2 Reste — dette de finition, non bloquante
+
+| Dette | Volume mesuré | Nature |
+|---|---|---|
+| 5 valeurs de texte legacy sur fonds image/dégradé | 16 occurrences | Contraste **non mesurable** depuis les styles calculés. Méthode disponible : `scripts/measure_contrast_on_image.js` (échantillonnage de pixels). |
+| Mentions « OPAYS » dans le contenu pédagogique | **67** dans les 18 modules | **Arbitrage éditorial.** Renommer change le cours, pas son habillage. |
+| Marque vectorielle des modules | 18 fichiers | Tracé OPAYS recoloré, pas le logo Hoja. Les fichiers sont autonomes (`file:///`) → une image externe casserait le rendu. **Décision d'identité.** |
+| Ancres `data-ditto-id` inertes dans le DOM | ~115 | Aucun CSS consommateur. Finition. |
+| `prompt()` / `confirm()` natifs du cockpit | — | À remplacer par l'idiome de modale (§3.6). |
+| Synthèse des états `.skeleton` / `.toast` | — | §3.7 décrit la cible ; le cockpit affiche encore du texte de chargement. |
 
 ---
 
