@@ -374,10 +374,15 @@ h2 strong { color: var(--teal-light); }
 .notes-panel { right: 0; left: auto; }
 .resource-dock.open, .notes-panel.open { transform: none; }
 .dock-head, .notes-head, .overview-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; gap: 12px; }
-.dock-head h3, .notes-head h3 { font-size: 22px; margin: 4px 0 0; color: var(--text-bright); font-weight: 900; }
+.dock-head h2, .notes-head h2 { font-size: 22px; margin: 4px 0 0; color: var(--text-bright); font-weight: 900; }
 .close-panel-btn {
   width: var(--touch-min); height: var(--touch-min); border: 1px solid var(--line); background: var(--card-2);
   color: var(--text); border-radius: var(--radius); cursor: pointer; font-size: 18px; display: grid; place-items: center;
+  /* flex: none — sans lui, cette cible de 44 px se faisait COMPRIMER par son
+     conteneur flex (.dock-head/.notes-head) et tombait à 34–41 px de large sur
+     écran étroit : mesuré sur les 18 modules, aux 4 largeurs. Une cible tactile
+     ne doit jamais dépendre de la place restante. */
+  flex: none;
 }
 .close-panel-btn:hover { border-color: var(--line-strong); background: var(--card-hover); }
 .dock-search { width: 100%; border: 1px solid var(--line); background: var(--card-2); color: var(--text); border-radius: var(--radius); padding: 12px 14px; outline: none; margin-bottom: 18px; font-size: 14px; min-height: var(--touch-min); }
@@ -405,7 +410,7 @@ h2 strong { color: var(--teal-light); }
 .modal.open .modal-shell { transform: none; }
 .modal-head { padding: 18px 24px; border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .modal-category { font-size: 12px; color: var(--blue); letter-spacing: 0.14em; font-weight: 900; }
-.modal-head h3 { font-size: 22px; margin: 4px 0 0; color: var(--text-bright); }
+.modal-head h2 { font-size: 22px; margin: 4px 0 0; color: var(--text-bright); }
 .modal-body { padding: 20px 24px; overflow: auto; }
 .modal-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
 .modal-meta > div { border: 1px solid var(--line); background: var(--card-2); border-radius: var(--radius); padding: 12px; }
@@ -639,7 +644,7 @@ Analyse le document suivant : <span class="prompt-var">[COLLER TEXTE]</span>.
   <div class="dock-head">
     <div>
       <small>HOJA ACADEMY • BOÎTE À PROMPTS</small>
-      <h3>Ressources du Module 12</h3>
+      <h2>Ressources du Module 12</h2>
     </div>
     <button class="close-panel-btn" id="closeDock"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg></button>
   </div>
@@ -671,7 +676,7 @@ Analyse le document suivant : <span class="prompt-var">[COLLER TEXTE]</span>.
     <div class="modal-head">
       <div>
         <span class="modal-category" id="modalCategory">CATÉGORIE</span>
-        <h3 id="modalTitle">Titre du Prompt</h3>
+        <h2 id="modalTitle">Titre du Prompt</h2>
       </div>
       <button class="close-panel-btn" id="modalClose"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg></button>
     </div>

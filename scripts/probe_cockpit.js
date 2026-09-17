@@ -39,6 +39,10 @@ const VIEWS = {
   formateurs: '/ui/cockpit/index.html#formateurs',
   // Espace formateur — surface autonome (/ui/suivi/), pas une vue du cockpit.
   suivi: '/ui/suivi/index.html',
+  // Onglets du workspace module : chacun a sa propre structure de titres.
+  'module-fiche': '/ui/cockpit/index.html#programme/m/01?t=fiche',
+  'module-exercices': '/ui/cockpit/index.html#programme/m/01?t=exercices',
+  'module-phases': '/ui/cockpit/index.html#programme/m/01?t=phases',
 };
 
 function findChrome() {
@@ -67,6 +71,20 @@ const PROBE = () => {
       weight: getComputedStyle(h).fontWeight,
     }));
 
+  /* Hiérarchie réelle des titres. Deux critères explicites, MESURÉS au lieu
+     d'être supposés :
+       - un saut de niveau (H1 → H4) rend le plan illisible pour un lecteur
+         d'écran : la vue module sautait de H1 à H4 sur ses six sections ;
+       - un titre sous 12 px passe sous le plancher typographique tenu partout
+         ailleurs — un <h6> sans règle dédiée retombait à 9 px (0,67 em de 14).
+     Le contrôle est indépendant de la largeur : il porte sur le DOM construit. */
+  const jumps = [];
+  for (let i = 1; i < headings.length; i++) {
+    const a = +headings[i - 1].tag[1], b = +headings[i].tag[1];
+    if (b > a + 1) jumps.push(`H${a}"${headings[i - 1].text.slice(0, 24)}" → H${b}"${headings[i].text.slice(0, 24)}"`);
+  }
+  const tiny = headings.filter((h) => h.size < 12).map((h) => `${h.tag}(${h.size}px)"${h.text.slice(0, 30)}"`);
+
   // Hauteur réelle de chaque ligne de tableau = densité de l'écran de travail.
   const tables = [...document.querySelectorAll('table')].filter(vis).map((t) => {
     const rows = [...t.querySelectorAll('tbody tr')].filter(vis);
@@ -91,27 +109,39 @@ const PROBE = () => {
       }))
     : [];
 
-  // Libellés qui se replient : un texte sur 2 lignes dont la 2e fait < 60 % de la 1re
-  // est presque toujours un mot coupé.
+  /* MOT COUPÉ — mesuré, et non plus déduit.
+     L'heuristique précédente (« dernière ligne < 62 % de la première ») ne
+     distinguait pas un simple repli de phrase d'une vraie coupure : elle
+     signalait « tous les apprenants sont présents » comme un mot cassé, alors
+     que la ligne 2 porte le mot entier « présents ». Un détecteur qui crie au
+     loup ne sert plus à rien.
+     On mesure la chose elle-même : le rect de CHAQUE caractère, groupé par
+     ligne. Une coupure existe si deux caractères VISIBLES se suivent dans le
+     texte sans espace entre eux ET se retrouvent sur deux lignes différentes. */
   const wrapped = [];
-  const range = document.createRange();
-  [...document.querySelectorAll('.k,.zone,.st,.seg button,th,.toc button,.cell-id b,.stat span,.lcard h3')].filter(vis).forEach((el) => {
+  const cible = [...document.querySelectorAll('.k,.zone,.st,.seg button,th,.toc button,.cell-id b,.stat span,.lcard h3')].filter(vis);
+  cible.forEach((el) => {
     const cs = getComputedStyle(el);
     const lh = parseFloat(cs.lineHeight);
-    const h = el.getBoundingClientRect().height;
     if (!lh || !isFinite(lh) || lh <= 0) return;
+    const h = el.getBoundingClientRect().height;
     const lines = Math.round(h / lh);
     if (lines < 2) return;
-    // Détecte une coupure À L'INTÉRIEUR d'un mot : on mesure la largeur de la
-    // dernière ligne via un range sur le dernier nœud texte.
     const tn = [...el.childNodes].filter((n) => n.nodeType === 3 && n.textContent.trim()).pop();
     if (!tn) return;
-    range.selectNodeContents(tn);
-    const rects = [...range.getClientRects()];
-    if (rects.length < 2) return;
-    const last = rects[rects.length - 1].width;
-    const first = rects[0].width;
-    if (last < first * 0.62) wrapped.push({ text: label(el), lines, firstW: Math.round(first), lastW: Math.round(last) });
+    const txt = tn.textContent;
+    const rng = document.createRange();
+    const tops = [];
+    for (let i = 0; i < txt.length; i++) {
+      rng.setStart(tn, i); rng.setEnd(tn, i + 1);
+      tops.push(Math.round(rng.getBoundingClientRect().top));
+    }
+    for (let i = 1; i < txt.length; i++) {
+      const coupe = tops[i] !== tops[i - 1] && txt[i].trim() && txt[i - 1].trim();
+      if (!coupe) continue;
+      wrapped.push({ text: label(el), lines, avant: txt.slice(Math.max(0, i - 10), i), apres: txt.slice(i, i + 10) });
+      break;
+    }
   });
 
   // Texte TRONQUÉ par `text-overflow:ellipsis` : le contenu est plus large que
@@ -199,6 +229,8 @@ const PROBE = () => {
     scrollW: document.documentElement.scrollWidth,
     clientW: document.documentElement.clientWidth,
     headings,
+    jumps,
+    tiny,
     tables,
     blocks,
     wrapped: wrapped.slice(0, 12),
@@ -268,10 +300,12 @@ function serve(dir) {
     for (const [w, r] of Object.entries(byW)) {
       const t = r.tables.map((x) => `table ${x.rows}r h=${x.min}→${x.max} th=${x.head}`).join(' | ') || 'aucune table';
       console.log(`  @${w}  doc=${r.docH}px  scrollW=${r.scrollW}/${r.clientW}  ${t}`);
-      if (r.wrapped.length) console.log(`         ⚠ libellés coupés : ${r.wrapped.map((x) => `"${x.text}" ${x.lines}l ${x.firstW}/${x.lastW}px`).join(' · ')}`);
+      if (r.wrapped.length) console.log(`         ⚠ MOT COUPÉ (césure en plein mot) : ${r.wrapped.map((x) => `"…${x.avant}|${x.apres}…" dans "${x.text}"`).join(' · ')}`);
       if (r.overflow.length) console.log(`         ⚠ débordement interne : ${r.overflow.map((x) => `${x.tag}.${x.cls}(+${x.over}px)`).join(' · ')}`);
       if (r.truncated.length) console.log(`         ⚠ texte tronqué (ellipsis) : ${r.truncated.map((x) => `${x.tag}.${x.cls}"${x.text}" −${x.hiddenPx}px`).join(' · ')}`);
       if (r.hiddenVisible.length) console.log(`         ⚠ \`hidden\` mais affiché : ${r.hiddenVisible.map((x) => `${x.tag}${x.id ? '#' + x.id : ''}.${x.cls} display=${x.display} h=${x.h}px`).join(' · ')}`);
+      if (r.jumps.length) console.log(`         ⚠ saut de niveau de titre : ${r.jumps.join(' · ')}`);
+      if (r.tiny.length) console.log(`         ⚠ titre sous 12 px : ${r.tiny.join(' · ')}`);
       if (r.errors.length) console.log(`         ⚠ console : ${r.errors.join(' | ')}`);
       const bad = r.kpis.filter((k) => k.lines && k.lines > 1);
       if (bad.length) console.log(`         KPI repliés : ${bad.map((k) => `"${k.k}" ${k.lines}l w=${k.w} [${k.rects}]`).join(' · ')}`);

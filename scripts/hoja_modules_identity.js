@@ -127,6 +127,32 @@ const REPLACEMENTS = [
   ['rgba(255,110,120,0.3)', 'rgba(244,63,94,0.3)', 'bordure alerte'],
   ['rgba(255,110,120,0.04)', 'rgba(244,63,94,0.04)', 'fond alerte'],
 
+  // ── Hiérarchie des titres des panneaux.
+  //    Sous le <h1> du titre de slide, ces titres étaient des <h3> : le document
+  //    sautait un niveau (H1 → H3) et son plan devenait illisible pour un lecteur
+  //    d'écran. Le panneau « Vue d'ensemble » était déjà en H2.
+  //    Les modules 01, 16 et 18 échappent à build_all_presentations.js (01 =
+  //    référence validée, 16/18 = PROTECTED_MODULES) : le template corrigé ne les
+  //    atteint pas, il faut donc les reprendre ici.
+  [
+    /<h3>(Ressources du Module[^<]*)<\/h3>/,
+    '<h2>$1</h2>',
+    'titre du panneau ressources en H2',
+    '<h2>Ressources du Module',
+  ],
+  [
+    /<h3 id="notesTitle">([^<]*)<\/h3>/,
+    '<h2 id="notesTitle">$1</h2>',
+    'titre du panneau notes en H2',
+    '<h2 id="notesTitle"',
+  ],
+  [
+    /<h3 id="modalTitle">([^<]*)<\/h3>/,
+    '<h2 id="modalTitle">$1</h2>',
+    'titre de la modale en H2',
+    '<h2 id="modalTitle"',
+  ],
+
   // ── Accessibilité : le champ de recherche n'avait aucun <label>
   //    (4ᵉ élément = garde d'idempotence : motif dont la PRÉSENCE fait sauter la règle)
   [
