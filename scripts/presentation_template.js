@@ -36,20 +36,24 @@ function generatePresentationHtml({
 :root {
   /* ── Surfaces ───────────────────────────────── */
   --bg: #090d16;
-  --card: #111726;
-  --card-hover: #151d30;
-  --card-2: #0d1322;
-  --elevated: #1a2334;
+  --card: #131a29;
+  --card-hover: #1a2233;
+  --card-2: #0d1320;
+  --elevated: #1a2233;
 
   /* ── Bordures ───────────────────────────────── */
   --line: #1e293b;
+  --line-2: #2b3648;
   --line-strong: rgba(255, 255, 255, 0.12);
   --line-soft: rgba(255, 255, 255, 0.06);
+  /* Liseré interne : donne au panneau une arête haute sans ombre externe. */
+  --hair: inset 0 1px 0 rgba(255, 255, 255, 0.045);
 
   /* ── Texte ──────────────────────────────────── */
-  --text: #f1f5f9;
+  --text: #e8eef7;
   --text-bright: #ffffff;
-  --muted: #94a3b8;
+  --muted: #93a2b8;
+  --muted-dark: #6f7f95;
 
   /* ── Marque & accents ───────────────────────── */
   --teal: #10b981;

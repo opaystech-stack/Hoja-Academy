@@ -51,6 +51,11 @@ const SURFACES = {
   'cockpit-module': '/ui/cockpit/index.html#programme/m/01',
   campus: '/ui/campus/index.html',
   suivi: '/ui/suivi/index.html',
+  // Page de module GÉNÉRÉE (modules/XX/presentation.html → ui/cockpit/modules/NN/
+  // index.html par build_cockpit_data.js). C'est cette copie que voit l'apprenant
+  // depuis le cockpit : la capturer est le seul moyen de vérifier une modification
+  // de palette faite dans scripts/presentation_template.js.
+  'module-presente': '/ui/cockpit/modules/01/index.html',
   login: '/ui/login/index.html',
 };
 

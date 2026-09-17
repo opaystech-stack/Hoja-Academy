@@ -158,12 +158,19 @@ Object.entries(expectedConcepts).forEach(([num, { teaches }]) => {
 console.log('\n🎨 7. COHÉRENCE VISUELLE ENTRE MODULES');
 console.log('─'.repeat(50));
 
-// Jetons Hoja attendus dans les 18 modules (DESIGN_SYSTEM_HOJA.md §2)
+// Jetons Hoja attendus dans les 18 modules (DESIGN_SYSTEM_HOJA.md §2).
+// Ces valeurs sont celles de scripts/presentation_template.js : c'est la source,
+// et les 18 fichiers n'en sont que des copies. Une valeur écrite ici doit donc
+// être changée ICI EN MÊME TEMPS que dans le template — sinon le test échoue à
+// juste titre (c'est ce qui s'est produit lors de l'harmonisation de palette).
 const designTokens = [
   { name: 'Fond Hoja', pattern: '--bg: #090d16' },
   { name: 'Vert Hoja (marque)', pattern: '--teal: #10b981' },
   { name: 'Sky Hoja (info)', pattern: '--blue: #38bdf8' },
-  { name: 'Surface carte', pattern: '--card: #111726' },
+  { name: 'Surface carte', pattern: '--card: #131a29' },
+  { name: 'Surface encart', pattern: '--card-2: #0d1320' },
+  { name: 'Texte principal', pattern: '--text: #e8eef7' },
+  { name: 'Texte secondaire', pattern: '--muted: #93a2b8' },
   { name: 'Marque vectorielle inline', pattern: 'M 680 200 A 380 380' },
   { name: 'Rayon standard', pattern: '--radius: 10px' },
   { name: 'Palier de rayons', pattern: '--radius-lg: 14px' },
@@ -206,6 +213,48 @@ forbiddenTokens.forEach(token => {
 });
 check('Design system cohérent sur les 18 modules', allDesignConsistent, 'Design system incohérent');
 console.log(allDesignConsistent ? '  🏆 Design system 100% cohérent sur les 18 modules' : '  ⚠️ Design system incohérent');
+
+// ─── 7 bis. PALETTE TRANSVERSALE ─────────────────────────────────────
+// Le contrôle ci-dessus compare les 18 modules ENTRE EUX. Il ne voyait pas la
+// divergence entre les SURFACES : cockpit, campus, espace formateur, login et
+// modules ont longtemps porté deux chartes différentes (--text:#e8eef7 contre
+// #f1f5f9, --card:#131a29 contre #111726). Aucun test ne le signalait, et le
+// produit changeait de couleur d'un écran à l'autre. Ce contrôle compare les
+// valeurs réelles, surface par surface.
+console.log('\n🎨 7 bis. PALETTE TRANSVERSALE ENTRE SURFACES');
+console.log('─'.repeat(50));
+
+const PALETTE_SURFACES = [
+  ['cockpit', 'ui/cockpit/index.html'],
+  ['campus', 'ui/campus/index.html'],
+  ['espace formateur', 'ui/suivi/index.html'],
+  ['login', 'ui/login/index.html'],
+  ['modules (générés)', 'modules/01-comprendre-ia/presentation.html'],
+];
+const PALETTE_TOKENS = ['--bg', '--text', '--muted'];
+// Les commentaires CSS citent parfois l'ancienne valeur pour expliquer un
+// changement : sans ce nettoyage, le relevé lit le commentaire, pas le jeton.
+const sansCommentaires = (s) => s.replace(/\/\*[\s\S]*?\*\//g, '');
+const lireJeton = (html, t) => {
+  const m = sansCommentaires(html).match(new RegExp('\\' + t + ':\\s*(#[0-9a-fA-F]{3,6})'));
+  return m ? m[1].toLowerCase() : null;
+};
+const releve = PALETTE_SURFACES.map(([nom, f]) => {
+  const abs = path.join(__dirname, '..', f);
+  const html = fs.existsSync(abs) ? fs.readFileSync(abs, 'utf8') : '';
+  return { nom, valeurs: PALETTE_TOKENS.map((t) => lireJeton(html, t)) };
+});
+releve.forEach((r) => console.log(`  ${r.nom.padEnd(20)}${r.valeurs.map((v) => (v || 'ABSENT').padEnd(9)).join('')}`));
+
+let paletteCoherente = true;
+PALETTE_TOKENS.forEach((t, i) => {
+  const manquants = releve.filter((r) => !r.valeurs[i]);
+  if (manquants.length) { paletteCoherente = false; console.log(`  ⚠️  ${t} : absent sur ${manquants.map((r) => r.nom).join(', ')}`); return; }
+  const uniq = [...new Set(releve.map((r) => r.valeurs[i]))];
+  if (uniq.length > 1) { paletteCoherente = false; console.log(`  ⚠️  ${t} : ${uniq.length} valeurs — ${releve.map((r) => r.nom + '=' + r.valeurs[i]).join(' · ')}`); }
+  else console.log(`  ✅ ${t} = ${uniq[0]} sur ${releve.length}/${releve.length} surfaces`);
+});
+check('Palette identique sur toutes les surfaces', paletteCoherente, 'Palette divergente entre surfaces');
 
 // ─── 8. REGISTRE vs PRÉSENTATIONS ────────────────────────────────────
 console.log('\n📦 8. REGISTRE CENTRAL vs PRÉSENTATIONS');
