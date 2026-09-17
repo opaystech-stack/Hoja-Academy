@@ -645,6 +645,9 @@
        colonnes secondaires (Profil, Reçue) et la colonne de navigation —
        la fiche reste accessible par le nom, qui est un lien. */
     table td.hide-sm,table td.td-act{display:none;}
+    /* En mode carte, un nombre aligné à droite sous son libellé se détache du
+       bloc : l'alignement à droite n'a de sens que dans une colonne. */
+    table td.num{text-align:left;}
     table td[data-label="Apprenant"]{padding-bottom:8px;}
     .rowact{justify-content:flex-start;flex-wrap:wrap;}
     details.rowmenu .menu{right:auto;left:0;}
@@ -907,29 +910,42 @@
 
   <!-- ================= CLASSROOM ================= -->
   <section id="tab-classroom" hidden>
-    <h1>Google Classroom</h1>
-    <p class="lead">État de la connexion, suivi des apprenants et pilotage des publications.</p>
-    <section class="card" style="margin-top:16px;">
-      <div class="card-h">
-        <h2><span class="dot" id="d-classroom2"></span>État de la passerelle <span class="chip neutral" id="chip-classroom2">chargement…</span></h2>
+    <div class="pagehead">
+      <div class="ph-txt">
+        <h1>Google Classroom</h1>
+        <p class="lead">État de la connexion, suivi des apprenants et pilotage des publications.</p>
       </div>
-      <ul class="facts">
-        <li><span class="k">Connexion</span><span class="v" id="g-status2">—</span></li>
-        <li><span class="k">Compte Google</span><span class="v mut" id="g-account2">—</span></li>
-        <li><span class="k">Apprenants dans la classe</span><span class="v" id="g-students2">—</span></li>
-        <li><span class="k">Invitations Classroom</span><span class="v" id="inv-list">—</span></li>
-        <li><span class="k">Coursework publié</span><span class="v" id="cw-list">—</span></li>
-      </ul>
-      <!-- Le détail des devoirs était imbriqué DANS une cellule de la liste
-           clé/valeur : une boîte flottante au milieu d'une ligne. Il vit
-           maintenant sous la liste. -->
-      <div id="cw-detail"></div>
-      <div class="btnrow">
-        <a class="btn" href="https://classroom.google.com/" target="_blank" rel="noopener noreferrer">Ouvrir Google Classroom</a>
-        <a class="btn secondary" href="/admin/classroom.html">Reconnexion OAuth Classroom</a>
+      <div class="ph-act">
+        <a class="btn secondary" href="https://classroom.google.com/" target="_blank" rel="noopener noreferrer">Ouvrir Classroom</a>
+        <a class="btn secondary" href="/admin/classroom.html">Reconnexion OAuth</a>
       </div>
-      <p class="note">La préparation et la publication des missions depuis ce cockpit arrivent à l'étape P7. Publier reste toujours une action explicite.</p>
-    </section>
+    </div>
+
+    <!-- Quatre indicateurs, puis deux tables : l'écran était une liste
+         clé/valeur unique où « 0 invitation en cours » pesait autant que
+         « passerelle non connectée ». -->
+    <div class="statgrid" id="cw-kpis">
+      <div class="stat"><span class="k">Passerelle</span><span class="sk lg" style="margin-top:10px"></span></div>
+      <div class="stat"><span class="k">Dans la classe</span><span class="sk lg" style="margin-top:10px"></span></div>
+      <div class="stat"><span class="k">Invitations</span><span class="sk lg" style="margin-top:10px"></span></div>
+      <div class="stat"><span class="k">Devoirs publiés</span><span class="sk lg" style="margin-top:10px"></span></div>
+    </div>
+
+    <div class="dash">
+      <div class="dcol-main">
+        <h2 class="zone">Devoirs publiés <span class="zc" id="cw-n" hidden></span></h2>
+        <div id="cw-host"></div>
+      </div>
+      <div class="dcol-rail">
+        <h2 class="zone">Connexion</h2>
+        <div id="cw-conn"></div>
+      </div>
+    </div>
+
+    <h2 class="zone">Rendus par apprenant</h2>
+    <div id="cw-learners"></div>
+
+    <p class="note">La préparation et la publication des missions depuis ce cockpit arrivent à l'étape P7. Publier reste toujours une action explicite.</p>
     <details class="tech" id="technique">
       <summary>Détails techniques</summary>
       <div class="body" id="tech-body"><p class="empty">Chargement…</p></div>
@@ -1093,6 +1109,16 @@ function showTab() {
     if (PROGRESS == null) pend.push(loadProgress().then(() => renderLearners()));
     Promise.all(pend).then(() => { if (person) openPerson(person); else closePerson(); });
   }
+  if (tab === 'classroom') {
+    /* Les taux de rendu par devoir et par apprenant viennent de /api/progress.
+       Elle n'était chargée que pour l'onglet Apprenants : le tableau « Rendus
+       par apprenant » restait indéfiniment sur son squelette. */
+    const pend = [];
+    if (PROGRESS == null) pend.push(loadProgress());
+    if (!ROSTER) pend.push(loadRoster());
+    if (!CLASSROOM) pend.push(loadClassroom());
+    Promise.all(pend).then(() => renderClassroomOps());
+  }
   window.scrollTo(0, 0);
 }
 window.addEventListener('hashchange', showTab);
@@ -1134,25 +1160,19 @@ async function loadClassroom() {
   const r = await api('/api/classroom/status');
   if (!r.ok) {
     CLASSROOM = { connected: false, error: 'indisponible (HTTP ' + r.status + ')' };
-    setDot('#d-classroom2', 'ko'); chip('#chip-classroom2', 'ko', 'indisponible');
-    renderTech(); renderHome(); return;
+    renderClassroomOps(); renderTech(); renderHome(); return;
   }
   CLASSROOM = r.data || {};
-  const connected = CLASSROOM.connected === true;
-  chip('#chip-classroom2', connected ? 'ok' : 'ko', connected ? 'Connecté' : 'Non connecté');
-  setDot('#d-classroom2', connected ? 'ok' : 'ko');
-  const st = $('#g-status2'); if (st) st.innerHTML = connected ? '<span class="v ok">Connectée</span>' : '<span class="v ko">Non connectée</span>';
-  const ac = $('#g-account2'); if (ac) ac.textContent = CLASSROOM.account || 'non renseigné';
-  const learnersN = ROSTER && Array.isArray(ROSTER.learners) ? ROSTER.learners.length : null;
-  const ccN = ROSTER && typeof ROSTER.classroomCount === 'number' ? ROSTER.classroomCount : null;
-  const gs = $('#g-students2'); if (gs) gs.textContent = learnersN == null ? '—' : ccN + ' / ' + learnersN + ' apprenants présents';
-  renderTech(); renderHome();
+  /* Tout l'affichage de Classroom est produit par `renderClassroomOps()` : un
+     seul endroit décrit l'état de la passerelle, au lieu d'écritures éparpillées
+     dans cinq cellules clé/valeur. */
+  renderClassroomOps(); renderTech(); renderHome();
   const pv1 = $('#person-view'); if (pv1 && !pv1.hidden && pv1.dataset.id) openPerson(pv1.dataset.id);
-  if (connected) { loadCoursework(); loadInvitations(); }
+  if (CLASSROOM.connected === true) { loadCoursework(); loadInvitations(); }
 }
 async function loadCoursework() {
   const r = await api('/api/classroom/coursework');
-  if (!r.ok) { COURSEWORK = null; const el = $('#cw-list'); if (el) el.innerHTML = '<span class="empty">Devoirs indisponibles.</span>'; renderHome(); return; }
+  if (!r.ok) { COURSEWORK = null; renderClassroomOps(); renderHome(); return; }
   COURSEWORK = Array.isArray(r.data && r.data.coursework) ? r.data.coursework : [];
   renderClassroomOps(); renderHome();
 }
@@ -1162,30 +1182,145 @@ async function loadInvitations() {
   INV_NOTE = r.ok && Array.isArray(r.data.empty) && r.data.empty.length ? r.data.empty[0] : null;
   renderClassroomOps(); renderHome();
 }
+/* Tout Classroom est décrit ici : indicateurs, devoirs, rendus, connexion.
+   L'écran était une liste clé/valeur unique où « 0 invitation en cours » pesait
+   autant que « passerelle non connectée », et où le détail des devoirs vivait
+   dans un `<details>` imbriqué au milieu d'une ligne. */
 function renderClassroomOps() {
-  const cw = $('#cw-list'); const inv = $('#inv-list'); const cwd = $('#cw-detail');
-  if (cwd) cwd.innerHTML = '';
-  if (cw) {
-    if (COURSEWORK == null) cw.innerHTML = '<span class="v mut">—</span>';
-    else if (!COURSEWORK.length) cw.innerHTML = '<span class="v mut">aucun devoir publié</span>';
-    else {
-      const pub = COURSEWORK.filter(c => String(c.state || 'PUBLISHED').toUpperCase() === 'PUBLISHED');
+  const kpis = $('#cw-kpis'), host = $('#cw-host'), conn = $('#cw-conn'), lrn = $('#cw-learners');
+  const connected = !!(CLASSROOM && CLASSROOM.connected === true);
+  const learners = ROSTER && Array.isArray(ROSTER.learners) ? ROSTER.learners : null;
+  const inClass = learners ? learners.filter(l => l.joinedClassroom).length : null;
+  const pub = COURSEWORK == null ? null : COURSEWORK.filter(c => String(c.state || 'PUBLISHED').toUpperCase() === 'PUBLISHED');
+  const invN = INVITATIONS == null ? null : INVITATIONS.length;
+  const pend = INVITATIONS == null ? null : INVITATIONS.filter(v => !v.state || /PENDING/i.test(v.state)).length;
+  const acc = INVITATIONS == null ? null : INVITATIONS.filter(v => /ACCEPTED/i.test(v.state || '')).length;
+
+  /* ---------- Indicateurs ---------- */
+  if (kpis) {
+    const kGateway = CLASSROOM
+      ? '<a class="stat' + (connected ? '' : ' act') + '" href="#classroom">' +
+          '<span class="k">Passerelle</span><span class="v sm">' + (connected ? 'Connectée' : 'Non connectée') + '</span>' +
+          '<span class="s">' + (CLASSROOM.account ? esc(CLASSROOM.account) : 'compte Google non renseigné') + '</span></a>'
+      : '<div class="stat"><span class="k">Passerelle</span><span class="sk lg" style="margin-top:10px"></span></div>';
+
+    const kClass = learners
+      ? '<a class="stat' + (inClass < learners.length ? ' act' : '') + '" href="#apprenants">' +
+          '<span class="k">Dans la classe</span><span class="v">' + inClass + '<span class="u"> / ' + learners.length + '</span></span>' +
+          '<span class="s">' + (inClass < learners.length ? pl(learners.length - inClass, 'apprenant à inviter', 'apprenants à inviter') : 'tous les apprenants sont présents') + '</span></a>'
+      : '<div class="stat"><span class="k">Dans la classe</span><span class="sk lg" style="margin-top:10px"></span></div>';
+
+    const kInv = INVITATIONS == null
+      ? '<div class="stat"><span class="k">Invitations</span><span class="v mut" style="font-size:15px;font-weight:500;color:var(--muted);letter-spacing:0">indisponible</span>' +
+          '<span class="s">' + esc(INV_NOTE || 'passerelle non connectée') + '</span></div>'
+      : '<div class="stat"><span class="k">Invitations</span><span class="v">' + invN + '</span>' +
+          '<span class="s">' + pl(pend, 'en attente') + ' · ' + pl(acc, 'acceptée', 'acceptées') + '</span></div>';
+
+    const kCw = COURSEWORK == null
+      ? '<div class="stat"><span class="k">Devoirs publiés</span><span class="v mut" style="font-size:15px;font-weight:500;color:var(--muted);letter-spacing:0">indisponible</span>' +
+          '<span class="s">' + (connected ? 'l’API Classroom n’a pas répondu' : 'passerelle non connectée') + '</span></div>'
+      : '<div class="stat"><span class="k">Devoirs publiés</span><span class="v">' + pub.length + '</span>' +
+          '<span class="s">' + (pub.length ? 'dans la classe de la cohorte' : 'aucun devoir publié') + '</span></div>';
+
+    kpis.innerHTML = kGateway + kClass + kInv + kCw;
+  }
+
+  /* Rendus par devoir : /api/progress porte l'état de chaque mission et par
+     apprenant. On agrège, on n'invente rien.
+     Attention : `PROGRESS` EST le tableau de lignes (`r.data.rows`), pas
+     l'enveloppe — `PROGRESS.rows` serait `undefined`. */
+  const perCw = {};
+  for (const r0 of (PROGRESS || [])) for (const m of (r0.missions || [])) {
+    if (!perCw[m.id]) perCw[m.id] = { sub: 0, done: 0 };
+    if (m.state === 'submitted' || m.state === 'returned' || m.state === 'graded') perCw[m.id].sub++;
+    if (m.state === 'graded') perCw[m.id].done++;
+  }
+  const nLearners = learners ? learners.length : null;
+
+  /* ---------- Devoirs publiés ---------- */
+  const zn = $('#cw-n');
+  if (zn) { zn.hidden = !(pub && pub.length); zn.textContent = pub ? String(pub.length) : ''; }
+  if (host) {
+    if (COURSEWORK == null) {
+      host.innerHTML = connected
+        ? emptyState(ICO_EMPTY.warn, 'Devoirs indisponibles',
+            'La passerelle est connectée, mais l’API Classroom n’a pas renvoyé la liste des devoirs. Réessayez ; si le problème persiste, vérifiez les autorisations OAuth.')
+        : emptyState(ICO_EMPTY.warn, 'Passerelle non connectée',
+            'Aucun appel à Classroom n’est possible tant que la passerelle n’est pas connectée.',
+            '<a class="btn small" href="/admin/classroom.html">Reconnexion OAuth</a>');
+    } else if (!pub.length) {
+      host.innerHTML = emptyState(ICO_EMPTY.inbox, 'Aucun devoir publié',
+        'La classe existe, mais aucun devoir n’y est publié. La progression des apprenants se calcule à partir de ces devoirs : tant qu’il n’y en a aucun, elle reste à zéro.');
+    } else {
       const hors = pub.filter(c => { const m = /\bM(\d{1,3})\b/i.exec(c.title || ''); return m && Number(m[1]) > 18; });
-      cw.innerHTML = '<span class="v ok">' + pl(pub.length, 'devoir publié', 'devoirs publiés') + '</span>' +
-        (hors.length ? ' · <span class="v ko">' + pl(hors.length, 'titre hors M01–M18', 'titres hors M01–M18') + '</span>' : '');
-      if (cwd) cwd.innerHTML = '<details class="tech" style="margin-top:10px"><summary>Détail des devoirs publiés (' + pub.length + ')</summary><div class="body"><ul class="facts">' +
-        pub.slice(0, 20).map(c => '<li><span class="k">' + esc(c.title) + '</span><span class="v mut">' + esc(c.state || '—') + '</span></li>').join('') +
-        '</ul></div></details>';
+      host.innerHTML = '<div class="tablewrap"><table><thead><tr>' +
+        '<th>Devoir</th><th class="hide-sm">Échéance</th><th class="num">Rendus</th><th class="hide-sm num">Validés</th><th>État</th>' +
+        '</tr></thead><tbody>' +
+        pub.map(c => {
+          const a = perCw[c.id] || { sub: 0, done: 0 };
+          const tot = nLearners == null ? a.sub : nLearners;
+          const pct = tot ? Math.round(a.sub / tot * 100) : 0;
+          const published = String(c.state || 'PUBLISHED').toUpperCase() === 'PUBLISHED';
+          return '<tr>' +
+            '<td data-label="Devoir"><span style="font-size:13px;color:var(--text)">' + esc(c.title) + '</span></td>' +
+            '<td class="hide-sm" data-label="Échéance" style="font-size:13px;white-space:nowrap;color:var(--muted)">' + esc(fmtDate(c.dueDate)) + '</td>' +
+            '<td class="num" data-label="Rendus">' + a.sub + ' / ' + tot +
+              '<span style="color:var(--muted);font-size:12px"> · ' + pct + ' %</span></td>' +
+            '<td class="hide-sm num" data-label="Validés">' + a.done + '</td>' +
+            '<td data-label="État"><span class="st ' + (published ? 'st-actif' : 'st-todo') + '">' + (published ? 'Publié' : esc(String(c.state || '—'))) + '</span></td>' +
+          '</tr>';
+        }).join('') + '</tbody></table></div>' +
+        '<p class="note" style="padding:10px 14px 0;margin:0">' + pl(pub.length, 'devoir publié', 'devoirs publiés') +
+          ' dans la classe de la cohorte. Les rendus proviennent des devoirs publiés — un apprenant sans rendu reste à 0.' +
+          (hors.length ? ' <span style="color:var(--warn)">' + pl(hors.length, 'titre hors M01–M18', 'titres hors M01–M18') + ' : à vérifier côté Classroom.</span>' : '') + '</p>';
     }
   }
-  if (inv) {
-    if (INVITATIONS == null) inv.innerHTML = '<span class="v mut">' + esc(INV_NOTE || 'indisponible') + '</span>';
-    else if (INV_NOTE && !INVITATIONS.length) inv.innerHTML = '<span class="v mut">' + esc(INV_NOTE) + '</span>';
-    else {
-      const pendingInv = INVITATIONS.filter(v => !v.state || /PENDING/i.test(v.state)).length;
-      const accepted = INVITATIONS.filter(v => /ACCEPTED/i.test(v.state || '')).length;
-      inv.innerHTML = '<span class="v">' + pl(INVITATIONS.length, 'invitation en cours', 'invitations en cours') + '</span>' +
-        '<div style="font-size:12px;color:var(--muted);margin-top:4px">' + pl(pendingInv, 'en attente', 'en attente') + ' · ' + pl(accepted, 'acceptée', 'acceptées') + '</div>';
+
+  /* ---------- Rendus par apprenant ---------- */
+  if (lrn) {
+    if (!learners || !learners.length) {
+      lrn.innerHTML = emptyState(ICO_EMPTY.users, 'Aucun apprenant',
+        'Aucun compte apprenant n’est importé. Importez une liste depuis l’écran Apprenants pour suivre les rendus.');
+    } else if (PROGRESS == null) {
+      lrn.innerHTML = '<div class="tablewrap" style="padding:12px 14px">' + skRows(3, 5) + '</div>';
+    } else {
+      const byEmail = {};
+      for (const r0 of (PROGRESS || [])) byEmail[String(r0.email).toLowerCase()] = r0;
+      lrn.innerHTML = '<div class="tablewrap"><table><thead><tr>' +
+        '<th>Apprenant</th><th>Dans la classe</th><th class="num">Rendus</th><th class="hide-sm num">Validés</th><th class="hide-sm">En retard</th>' +
+        '</tr></thead><tbody>' +
+        learners.map(l => {
+          const p0 = byEmail[String(l.email).toLowerCase()];
+          const tot = p0 ? (p0.total || 0) : 0;
+          const sub = p0 ? (p0.submitted || 0) : 0;
+          const done = p0 ? (p0.done || 0) : 0;
+          const late = p0 ? (p0.late || 0) : 0;
+          const href = '#apprenants/p/' + encodeURIComponent(l.email);
+          return '<tr>' +
+            '<td data-label="Apprenant"><a class="cell-id" href="' + href + '"><span class="avatar" aria-hidden="true">' + esc(initials(l.name, l.email)) + '</span>' +
+              '<span class="nm2"><b>' + esc(l.name) + '</b><small>' + esc(l.email) + '</small></span></a></td>' +
+            '<td data-label="Dans la classe"><span class="st ' + (l.joinedClassroom ? 'st-actif' : 'st-todo') + '">' + (l.joinedClassroom ? 'Présent' : 'À inviter') + '</span></td>' +
+            '<td class="num" data-label="Rendus">' + sub + ' / ' + tot + '</td>' +
+            '<td class="hide-sm num" data-label="Validés">' + done + '</td>' +
+            '<td class="hide-sm" data-label="En retard">' + (late > 0 ? '<span class="st st-attente">' + pl(late, 'en retard') + '</span>' : '<span style="color:var(--muted)">—</span>') + '</td>' +
+          '</tr>';
+        }).join('') + '</tbody></table></div>';
+    }
+  }
+
+  /* ---------- Connexion (rail) ---------- */
+  if (conn) {
+    if (!CLASSROOM) {
+      conn.innerHTML = '<div class="psec"><p class="empty" style="padding:4px 0">Chargement de l’état de la passerelle…</p></div>';
+    } else {
+      const scopes = Array.isArray(CLASSROOM.scopes) ? CLASSROOM.scopes : [];
+      conn.innerHTML = '<div class="psec">' +
+        '<div class="kv"><span class="k">État</span><span class="v">' + (connected ? '<span class="st st-actif">Connectée</span>' : '<span class="st st-attente">Non connectée</span>') + '</span></div>' +
+        '<div class="kv"><span class="k">Compte Google</span><span class="v">' + esc(CLASSROOM.account || 'non renseigné') + '</span></div>' +
+        (scopes.length ? '<div class="kv"><span class="k">Autorisations</span><span class="v" style="font-size:12px;font-family:ui-monospace,Consolas,monospace;color:var(--muted)">' + scopes.map(esc).join('<br>') + '</span></div>' : '') +
+        (CLASSROOM.error ? '<div class="kv"><span class="k">Erreur</span><span class="v" style="color:var(--danger)">' + esc(CLASSROOM.error) + '</span></div>' : '') +
+        '<div class="btnrow" style="margin-top:12px"><a class="btn small secondary" href="/admin/classroom.html">Reconnexion OAuth</a></div>' +
+      '</div>';
     }
   }
 }
@@ -1640,6 +1775,8 @@ async function loadProgress() {
   const r = await api('/api/progress');
   PROGRESS = r.ok && Array.isArray(r.data.rows) ? r.data.rows : null;
   if (PROGRESS == null) { const el = $('#p-prog'); if (el) el.innerHTML = '<p class="empty">Progression indisponible (API).</p>'; }
+  /* Les taux de rendu de l'écran Classroom viennent de /api/progress. */
+  renderClassroomOps();
 }
 function personProgress(email) {
   if (PROGRESS == null) return '<p class="empty">Chargement de la progression…</p>';
