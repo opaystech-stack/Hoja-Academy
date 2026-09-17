@@ -20,11 +20,15 @@ const ROOT = path.join(__dirname, '..');
 const WIDTHS = [360, 390, 430, 820, 1366];
 const DEST = path.join(ROOT, process.argv[2] || 'screenshots/ui-after');
 const WANT = process.argv.slice(3);
-
 // Le cockpit redirige vers /ui/login/ si /api/me n'est pas un admin : il faut le
 // mock API 2B (`scripts/mock_api_2b.js`), qui sert AUSSI les fichiers ui/.
 const MOCK_PORT = Number(process.env.MOCK_PORT || 9099);
-const USE_MOCK = process.env.USE_MOCK === '1';
+// Le mock est ACTIVÉ PAR DÉFAUT. Sans lui, le cockpit renvoie 404 sur `/api/me`
+// et redirige vers `/ui/login/` : on croyait capturer le cockpit, on capturait
+// l'écran de connexion (piège rencontré — 45 captures inexploitables). Pour
+// servir les seuls fichiers statiques, il faut le demander explicitement :
+// `USE_MOCK=0`.
+const USE_MOCK = process.env.USE_MOCK !== '0';
 const MOCK_ROLE = process.env.MOCK_ROLE || 'admin';
 
 const SURFACES = {
@@ -35,6 +39,12 @@ const SURFACES = {
   'cockpit-programme': '/ui/cockpit/index.html#programme',
   'cockpit-classroom': '/ui/cockpit/index.html#classroom',
   'cockpit-formateurs': '/ui/cockpit/index.html#formateurs',
+  // Fiche apprenant 360° : route #apprenants/p/<email>. L'email est celui du
+  // premier apprenant du roster mock — sur la passerelle réelle, la route est
+  // la même, seule la valeur change.
+  'cockpit-fiche': '/ui/cockpit/index.html#apprenants/p/awa.diallo%40example.test',
+  // Workspace module : route #programme/m/NN
+  'cockpit-module': '/ui/cockpit/index.html#programme/m/01',
   campus: '/ui/campus/index.html',
   suivi: '/ui/suivi/index.html',
   login: '/ui/login/index.html',
@@ -91,8 +101,15 @@ function serve(dir) {
     args: ['--no-sandbox', '--disable-dev-shm-usage', '--font-render-hinting=none'],
   });
 
-  const names = WANT.length ? WANT : Object.keys(SURFACES);
-  let n = 0;
+  // `WANT` est une liste de PRÉFIXES, pas de noms exacts : `capture_ui.js out cockpit`
+  // doit capturer toutes les surfaces du cockpit. Une correspondance exacte faisait
+  // silencieusement produire un seul écran (et un jeu de captures incomplet qu'on
+  // croyait complet — piège rencontré).
+  const names = WANT.length
+    ? Object.keys(SURFACES).filter((n) => WANT.some((p) => n === p || n.startsWith(p + '-')))
+    : Object.keys(SURFACES);
+  if (!names.length) { console.log('  ⚠ aucune surface ne correspond à : ' + WANT.join(', ')); process.exit(1); }
+  let n = 0, refused = 0;
   for (const name of names) {
     const route = SURFACES[name];
     if (!route) { console.log(`  ⚠ surface inconnue : ${name}`); continue; }
@@ -101,6 +118,10 @@ function serve(dir) {
       const errs = [];
       page.on('console', (m) => { if (m.type() === 'error') errs.push(m.text()); });
       page.on('pageerror', (e) => errs.push(String(e)));
+      // Un « 404 » sans URL ne dit rien : Chrome ne met pas l'adresse dans le
+      // texte du message console. On écoute aussi les réponses pour nommer la
+      // ressource fautive.
+      page.on('response', (r) => { if (r.status() >= 400) errs.push(r.status() + ' ' + r.url()); });
       await page.setViewport({ width: w, height: 900, deviceScaleFactor: 1 });
       if (USE_MOCK) {
         // Le cookie de rôle doit être posé AVANT le chargement de la page,
@@ -108,6 +129,16 @@ function serve(dir) {
         await page.setCookie({ name: 'mockrole', value: MOCK_ROLE, domain: '127.0.0.1', path: '/' });
       }
       await page.goto(base + route, { waitUntil: 'networkidle0', timeout: 60000 });
+      // Un écran de connexion n'est JAMAIS la vue demandée. Si le cockpit a
+      // redirigé (mock absent, rôle non posé), la capture est REFUSÉE au lieu
+      // d'être écrite : une capture fausse coûte plus cher qu'une capture
+      // absente, parce qu'on la croit.
+      if (/\/ui\/login\//.test(page.url()) && !/\/ui\/login\//.test(route)) {
+        console.log(`\n  ✗ ${name}@${w} : redirigé vers ${page.url()} — capture refusée (mock non lancé ?)`);
+        refused++;
+        await page.close();
+        continue;
+      }
       await page.addStyleTag({ content: '*{animation:none!important;transition:none!important}' });
       await page.evaluate(() => new Promise((r) => setTimeout(r, 500)));
       await page.screenshot({ path: path.join(DEST, `${name}-${w}.png`), fullPage: true });
@@ -121,4 +152,9 @@ function serve(dir) {
   if (server) server.close();
   if (mock) mock.kill();
   console.log(`\n${n} captures écrites dans ${DEST}`);
+  if (refused) {
+    console.log(`✗ ${refused} capture(s) REFUSÉE(S) — la page servie n'était pas la vue demandée.`);
+    process.exitCode = 1;
+  }
+  console.log(`source servie : ${base}${USE_MOCK ? ' (mock API 2B)' : ' (fichiers statiques — AUCUNE route /api)'}`);
 })();

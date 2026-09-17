@@ -9,25 +9,35 @@
 <meta name="robots" content="noindex">
 <style>
   :root{
-    /* Surfaces */
-    --bg:#090d16;--card:#111726;--card-hover:#151d30;--card-2:#0d1322;--elevated:#1a2334;
-    /* Bordures */
-    --line:#1e293b;--line-strong:rgba(255,255,255,.12);--line-soft:var(--card-hover);
-    /* Texte */
-    --text:#f1f5f9;--text-bright:#ffffff;--muted:#94a3b8;--muted-dark:#7c8ba1;
-    /* Marque & accents */
+    /* ---- Surfaces : 4 niveaux réellement distincts ----------------------
+       bg = page · panel = carte · panel-2 = zone interne (en-tête de tableau,
+       encart) · raised = survol et sélection. La profondeur vient du NIVEAU,
+       pas d'une ombre portée : une carte ne projette rien, elle est posée. */
+    --bg:#090d16;--panel:#131a29;--panel-2:#0d1320;--raised:#1a2233;
+    /* Alias historiques — conservés pour ne rien casser dans le reste de la feuille. */
+    --card:var(--panel);--card-hover:var(--raised);--card-2:var(--panel-2);--elevated:var(--raised);
+    /* ---- Filets ---- */
+    --line:#1e293b;--line-2:#2b3648;--line-strong:rgba(255,255,255,.12);
+    /* Liseré interne : donne au panneau une arête haute sans ombre externe. */
+    --hair:inset 0 1px 0 rgba(255,255,255,.045);
+    /* ---- Texte ---- */
+    --text:#e8eef7;--text-bright:#ffffff;--muted:#93a2b8;--muted-dark:#6f7f95;
+    /* ---- Marque & accents ---- */
     --teal:#10b981;--teal-light:#34d399;--teal-soft:rgba(16,185,129,.12);
     --blue:#38bdf8;--blue-soft:rgba(56,189,248,.12);
-    /* États */
+    /* ---- États ---- */
     --danger:#f43f5e;--danger-soft:rgba(244,63,94,.12);
     --warn:#f59e0b;--warn-soft:rgba(245,158,11,.12);
     --ok:#10b981;--ok-soft:rgba(16,185,129,.12);
     --info:#38bdf8;--info-soft:rgba(56,189,248,.12);
     --neutral-soft:rgba(148,163,184,.12);
-    /* Divers */
-    --input-bg:var(--input-bg);--on-accent:#06231a;--overlay:rgba(0,0,0,.68);
-    --shadow-sm:0 1px 2px rgba(0,0,0,.24);--shadow:0 4px 12px rgba(0,0,0,.28);--shadow-lg:0 12px 32px rgba(0,0,0,.36);
+    /* ---- Divers ---- */
+    --input-bg:var(--bg);--on-accent:#06231a;--overlay:rgba(0,0,0,.68);
+    /* Ombres : réservées aux SUPERPOSITIONS (tiroir, barre collante). */
+    --shadow-sm:var(--hair);--shadow:0 4px 12px rgba(0,0,0,.28);--shadow-lg:0 12px 32px rgba(0,0,0,.36);
     --radius-sm:6px;--radius:10px;--radius-lg:14px;--radius-full:999px;
+    /* Rythme vertical : une seule échelle, plus de marges improvisées. */
+    --gap:14px;--pad:18px;
     --touch-min:44px;--sb:240px;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
@@ -68,93 +78,241 @@
 
   /* ---------- Layout ---------- */
   .main{margin-left:var(--sb);min-height:100vh;display:flex;flex-direction:column;background:var(--bg);}
-  header.topbar{position:sticky;top:0;z-index:20;height:54px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 28px;background:rgba(9,13,22,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+  header.topbar{position:sticky;top:0;z-index:20;height:56px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 28px;background:rgba(9,13,22,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
   .topbar-left{display:flex;align-items:center;gap:10px;min-width:0;}
-  .breadcrumb{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:var(--muted);}
+  .breadcrumb{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--muted);min-width:0;}
   .breadcrumb .bc-root{color:var(--muted-dark);}
-  .breadcrumb .bc-sep{color:var(--line-strong);font-size:12px;}
-  .breadcrumb .view{color:var(--text-bright);font-weight:600;}
-  .topbar-right{display:flex;align-items:center;gap:10px;}
+  /* Le séparateur est du TEXTE : il doit passer AA comme le reste. Il portait
+     `--line-2`, un token de BORDURE — 1,6:1 mesuré, 30 cas relevés par l'audit.
+     `--muted-dark` donne 4,8:1 sur `--bg` et reste plus discret que le libellé
+     de vue, ce qui est son rôle. */
+  .breadcrumb .bc-sep{color:var(--muted-dark);font-size:12px;}
+  .breadcrumb .view{color:var(--text-bright);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .topbar-right{display:flex;align-items:center;gap:10px;flex:none;}
   .burger{display:none;align-items:center;justify-content:center;width:44px;height:44px;margin-left:-8px;border:0;border-radius:var(--radius-sm);background:none;color:var(--text);cursor:pointer;flex:none;}
-  .burger:hover{background:var(--card-hover);}
-  .content{flex:1;padding:28px 32px 48px;max-width:1040px;width:100%;margin:0 auto;}
+  .burger:hover{background:var(--raised);}
+  /* 1040 px laissait ~330 px de vide en 1366 : la densité chutait sans raison.
+     1320 px permet la grille dashboard à deux colonnes (voir .dash). */
+  .content{flex:1;padding:24px 32px 56px;max-width:1320px;width:100%;margin:0 auto;}
+  /* Grille de dashboard : colonne de travail + rail d'état. Le rail n'existe
+     qu'au-delà de 1200 px — en dessous, une seule colonne, dans l'ordre du DOM. */
+  .dash{display:block;}
+  @media(min-width:1200px){
+    .dash{display:grid;grid-template-columns:minmax(0,1fr) 336px;gap:var(--gap);align-items:start;}
+    .dash>.dcol-main{min-width:0;}
+    .dash>.dcol-rail{min-width:0;position:sticky;top:72px;}
+  }
 
+  /* ---------- En-tête de page : titre + actions ---------- */
+  .pagehead{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:20px;}
+  .pagehead .ph-txt{min-width:0;}
+  .pagehead .ph-act{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
   h1{font-size:22px;font-weight:700;line-height:1.25;letter-spacing:-0.02em;color:var(--text-bright);}
-  p.lead{color:var(--muted);font-size:14px;margin-top:6px;line-height:1.5;max-width:70ch;}
-  .zone{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-dark);margin:26px 0 12px;display:flex;align-items:center;gap:10px;}
-  .zone::after{content:"";flex:1;height:1px;background:var(--line);opacity:.6;}
+  p.lead{color:var(--muted);font-size:13px;margin-top:5px;line-height:1.55;max-width:78ch;}
+  /* Le libellé de section n'est plus un titre de document avec filet pleine
+     largeur : c'est une étiquette courte, sans filet, qui sépare sans peser. */
+  .zone{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-dark);margin:22px 0 10px;display:flex;align-items:center;gap:10px;}
+  .zone:first-child{margin-top:0;}
+  .zone .zc{color:var(--muted);font-weight:700;font-variant-numeric:tabular-nums;background:var(--panel-2);border:1px solid var(--line);border-radius:var(--radius-full);padding:0 7px;height:18px;display:inline-flex;align-items:center;}
+  .zone .zact{margin-left:auto;font-size:12px;font-weight:500;letter-spacing:0;text-transform:none;}
 
-  section.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:18px 20px;margin-bottom:14px;overflow-wrap:break-word;box-shadow:var(--shadow-sm);}
+  section.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-lg);padding:var(--pad);margin-bottom:var(--gap);overflow-wrap:break-word;box-shadow:var(--hair);}
   section.card>h2{font-size:14px;font-weight:600;display:flex;align-items:center;gap:10px;flex-wrap:wrap;color:var(--text-bright);}
   section.card>p.sub{color:var(--muted);font-size:12px;margin:4px 0 12px;line-height:1.5;}
+  /* En-tête de carte avec action alignée à droite (remplace les <h2> nus). */
+  .card-h{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px;}
+  .card-h h2{font-size:14px;font-weight:600;color:var(--text-bright);display:flex;align-items:center;gap:9px;}
+  .card-h .hact{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
   .chip{display:inline-flex;align-items:center;gap:6px;height:22px;border-radius:var(--radius-full);padding:0 9px;font-size:12px;font-weight:600;letter-spacing:.02em;border:1px solid var(--line);}
   .chip.ok{color:var(--teal-light);background:var(--teal-soft);border-color:var(--line-strong);}
   .chip.ko{color:var(--danger);background:var(--danger-soft);border-color:var(--line-strong);}
   .chip.warn{color:var(--warn);background:var(--warn-soft);border-color:var(--line-strong);}
-  .chip.neutral{color:var(--muted);background:var(--card-2);border-color:var(--line);}
+  .chip.neutral{color:var(--muted);background:var(--panel-2);border-color:var(--line);}
   .dot{width:7px;height:7px;border-radius:50%;background:var(--muted);flex:none;}
-  .dot.ok{background:var(--teal);;}
-  .dot.ko{background:var(--danger);;}
-  .dot.warn{background:var(--warn);;}
+  .dot.ok{background:var(--teal);}
+  .dot.ko{background:var(--danger);}
+  .dot.warn{background:var(--warn);}
 
-  /* État de l'Academy & Métriques SaaS */
-  /* 5 indicateurs : à 190 px de largeur minimale la grille retombait sur 4 colonnes
-     et laissait « Programme » seule sur une deuxième ligne. 175 px les aligne sur
-     une seule ligne dès 1040 px, sans casser le repli mobile. */
-  .statgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:12px;border:0;border-radius:0;background:transparent;overflow:visible;margin-bottom:14px;}
-  a.stat{display:flex;flex-direction:column;justify-content:space-between;padding:16px 18px;border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--card);color:var(--text);text-decoration:none;transition:border-color .15s,background-color .15s,transform .15s;min-height:108px;box-shadow:var(--shadow-sm);}
-  a.stat:hover{background:var(--card-hover);border-color:var(--line-strong);transform:translateY(-1px);}
-  a.stat .k{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;justify-content:space-between;gap:8px;}
-  a.stat .stat-ico{width:26px;height:26px;border-radius:var(--radius-sm);background:var(--card-2);border:1px solid var(--line);display:inline-flex;align-items:center;justify-content:center;color:var(--teal-light);flex:none;}
-  a.stat .v{display:block;font-size:28px;font-weight:700;font-variant-numeric:tabular-nums;margin-top:8px;line-height:1.2;color:var(--text-bright);letter-spacing:-0.02em;}
-  a.stat .v .chip{vertical-align:2px;}
-  a.stat .s{display:block;font-size:12px;color:var(--muted);margin-top:6px;line-height:1.4;}
+  /* ---------- KPI (héros du dashboard) ----------
+     Avant : 5 cartes de 108 px avec une icône encadrée décorative en haut à
+     droite. L'icône n'apportait rien (elle répétait le libellé) et le bloc
+     était relégué après la liste « À faire ». Ici : plus d'icône encadrée, un
+     chiffre plus grand, une ligne de contexte réelle, et un état « sans
+     donnée » qui devient une action au lieu d'un tiret. */
+  .statgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(184px,1fr));gap:var(--gap);border:0;border-radius:0;background:transparent;overflow:visible;margin-bottom:var(--gap);}
+  a.stat,div.stat{display:flex;flex-direction:column;justify-content:space-between;padding:15px 16px;border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--panel);color:var(--text);text-decoration:none;transition:border-color .14s,background-color .14s;min-height:96px;box-shadow:var(--hair);position:relative;overflow:hidden;}
+  a.stat:hover{background:var(--raised);border-color:var(--line-2);}
+  a.stat .k,div.stat .k{font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);display:block;}
+  a.stat .v,div.stat .v{display:block;font-size:30px;font-weight:700;font-variant-numeric:tabular-nums;margin-top:6px;line-height:1.1;color:var(--text-bright);letter-spacing:-0.03em;}
+  a.stat .v.sm,div.stat .v.sm{font-size:20px;letter-spacing:-0.01em;line-height:1.3;}
+  a.stat .v .u,div.stat .v .u{font-size:14px;font-weight:600;color:var(--muted);letter-spacing:0;}
+  a.stat .s,div.stat .s{display:block;font-size:12px;color:var(--muted);margin-top:8px;line-height:1.4;}
+  /* KPI « à traiter » : l'état appelle une action. L'accent est un filet de
+     2 px, PAS une couleur sur le chiffre — un total en ambre se lit comme une
+     alerte alors que c'est un compteur. */
+  a.stat.act{border-color:var(--line-2);}
+  a.stat.act::after{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--warn);}
+  a.stat.act.ok::after{background:var(--teal);}
+  /* KPI sans donnée : ni tiret ni faux zéro — une phrase et une porte de sortie. */
+  a.stat.todo-kpi{background:var(--panel-2);border-style:dashed;}
+  a.stat.todo-kpi .v{font-size:15px;font-weight:600;color:var(--muted);letter-spacing:0;margin-top:8px;line-height:1.4;}
+  a.stat.todo-kpi:hover .v{color:var(--text-bright);}
 
   /* Bannière cohorte */
-  #home-cohort{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:14px 18px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);margin-bottom:14px;}
+  #home-cohort{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:13px 16px;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-lg);margin-bottom:var(--gap);box-shadow:var(--hair);}
 
-  /* Mini-blocs programme */
-  .blocs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;}
-  a.blocmini{display:flex;flex-direction:column;justify-content:space-between;border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--card);padding:14px 16px;text-decoration:none;color:var(--text);transition:border-color .15s,background-color .15s,transform .15s;min-height:86px;}
-  a.blocmini:hover{background:var(--card-hover);border-color:var(--line-strong);transform:translateY(-1px);}
-  a.blocmini b{font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px;color:var(--text-bright);}
-  a.blocmini b .bid{color:var(--teal-light);font-size:12px;font-weight:700;letter-spacing:.06em;background:var(--teal-soft);border:1px solid var(--line-strong);padding:2px 6px;border-radius:var(--radius-sm);}
-  a.blocmini span{display:block;font-size:12px;color:var(--muted);margin-top:8px;}
+  /* Mini-blocs programme — le badge ne doit plus se couper en deux lignes, et
+     4 blocs doivent tenir en 2×2 plutôt qu'en 3 + 1 orphelin. */
+  .blocs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--gap);}
+  a.blocmini{display:flex;flex-direction:column;justify-content:space-between;border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--panel);padding:13px 15px;text-decoration:none;color:var(--text);transition:border-color .14s,background-color .14s;min-height:84px;box-shadow:var(--hair);}
+  a.blocmini:hover{background:var(--raised);border-color:var(--line-2);}
+  a.blocmini b{font-size:14px;font-weight:600;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;color:var(--text-bright);}
+  a.blocmini b .bid{color:var(--teal-light);font-size:12px;font-weight:700;letter-spacing:.04em;background:var(--teal-soft);border:1px solid var(--line-strong);padding:2px 6px;border-radius:var(--radius-sm);white-space:nowrap;flex:none;}
+  a.blocmini span{display:block;font-size:12px;color:var(--muted);margin-top:8px;font-variant-numeric:tabular-nums;}
 
-  /* Boutons */
-  .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;}
-  /* Cibles tactiles : 44 px partout (même standard que le site public).
-     `.small` reste une variante de densité (padding et corps plus petits),
-     mais sa hauteur ne descend plus sous 44 px. */
-  a.btn,button{padding:0 15px;border:0;border-radius:var(--radius-sm);background:var(--teal);color:var(--on-accent);font-weight:600;font-size:14px;line-height:1;cursor:pointer;min-height:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:inherit;text-decoration:none;white-space:nowrap;transition:background-color .12s,color .12s,border-color .12s,transform .12s;box-shadow:var(--shadow-sm);}
-  a.btn:hover,button:hover{background:var(--teal-light);color:#ffffff;}
-  a.btn.secondary,button.secondary{background:var(--card-2);border:1px solid var(--line-strong);color:var(--text);box-shadow:none;}
-  a.btn.secondary:hover,button.secondary:hover{background:var(--card-hover);border-color:var(--muted);color:var(--text-bright);}
-  a.btn.ghost,button.ghost{background:transparent;border:1px solid var(--line);color:var(--blue);box-shadow:none;}
-  a.btn.ghost:hover,button.ghost:hover{background:var(--blue-soft);border-color:var(--line-strong);}
+  /* Boutons — 3 niveaux : primaire (accent plein), secondaire (panneau + filet),
+     tertiaire (texte seul). Le primaire ne porte plus d'ombre : sur fond sombre
+     une ombre sous un aplat clair fait « bouton flottant », pas « action ». */
+  .btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;align-items:center;}
+  a.btn,button{padding:0 15px;border:1px solid transparent;border-radius:var(--radius-sm);background:var(--teal);color:var(--on-accent);font-weight:600;font-size:14px;line-height:1;cursor:pointer;min-height:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:inherit;text-decoration:none;white-space:nowrap;transition:background-color .12s,color .12s,border-color .12s;}
+  a.btn:hover,button:hover{background:var(--teal-light);color:#06231a;}
+  a.btn.secondary,button.secondary{background:var(--panel-2);border-color:var(--line-2);color:var(--text);}
+  a.btn.secondary:hover,button.secondary:hover{background:var(--raised);border-color:var(--muted-dark);color:var(--text-bright);}
+  a.btn.ghost,button.ghost{background:transparent;border-color:var(--line);color:var(--text);}
+  a.btn.ghost:hover,button.ghost:hover{background:var(--raised);border-color:var(--line-2);color:var(--text-bright);}
+  a.btn.link,button.link{background:none;border:0;color:var(--blue);padding:0 6px;}
+  a.btn.link:hover,button.link:hover{background:none;color:var(--text-bright);text-decoration:underline;}
+  a.btn.danger,button.danger{background:transparent;border-color:var(--line);color:var(--danger);}
+  a.btn.danger:hover,button.danger:hover{background:var(--danger-soft);border-color:var(--line-2);color:var(--danger);}
   a.btn.small,button.small{height:44px;min-height:44px;padding:0 11px;font-size:12px;}
+  /* Variante compacte pour les barres d'outils : la hauteur reste 44 px
+     (cible tactile), seule la largeur et le corps se resserrent. */
+  a.btn.tight,button.tight{padding:0 10px;font-size:12px;}
   button:disabled{opacity:.55;cursor:wait;}
+  .btn-icon{width:16px;height:16px;flex:none;}
 
-  /* À faire & Activité (Action Center) */
-  ul.todo{list-style:none;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm);}
-  ul.todo li{display:flex;gap:14px;align-items:center;min-height:50px;padding:12px 18px;border-bottom:1px solid var(--line);font-size:14px;transition:background-color .12s;}
-  ul.todo li:hover{background:var(--card-hover);}
+  /* ---------- Centre d'action (« À faire ») ----------
+     Avant : 6 lignes dont 2 « Fait », triées dans l'ordre de construction du
+     code. Ici : seules les tâches OUVERTES sont listées, triées par urgence
+     (bloqué → à faire → à vérifier) ; les tâches faites se replient. */
+  ul.todo{list-style:none;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--hair);}
+  ul.todo li{display:flex;gap:13px;align-items:center;min-height:52px;padding:11px 16px;border-bottom:1px solid var(--line);font-size:14px;transition:background-color .12s;}
+  ul.todo li:hover{background:var(--raised);}
   ul.todo li:last-child{border-bottom:0;}
-  ul.todo .todo-ico-wrap{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none;background:var(--card-2);border:1px solid var(--line);}
+  /* Priorité lisible sans couleur criarde : un filet de 2 px à gauche. */
+  ul.todo li.pri-blocked{box-shadow:inset 2px 0 0 var(--danger);}
+  ul.todo li.pri-todo{box-shadow:inset 2px 0 0 var(--warn);}
+  ul.todo li.pri-check{box-shadow:inset 2px 0 0 var(--muted-dark);}
   ul.todo .lbl{flex:1;min-width:0;line-height:1.45;}
   ul.todo .lbl a{color:var(--text-bright);font-weight:600;text-decoration:none;transition:color .12s;}
-  ul.todo .lbl a:hover{color:var(--teal-light);}
+  ul.todo .lbl a:hover{color:var(--teal-light);text-decoration:underline;}
   ul.todo .lbl small{display:block;color:var(--muted);font-size:12px;margin-top:2px;}
-  .st{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;letter-spacing:.02em;padding:4px 10px;border-radius:var(--radius-full);flex:none;border:1px solid var(--line);color:var(--muted);line-height:1.2;}
-  .st-assigned{color:var(--info);border-color:var(--line-strong);background:var(--info-soft);}
-  .st-submitted{color:var(--blue);border-color:var(--line-strong);background:var(--blue-soft);}
-  .st-returned{color:var(--danger);border-color:var(--line-strong);background:var(--danger-soft);}
-  .st-na{color:var(--muted-dark);border-color:var(--line);background:var(--neutral-soft);}
+  ul.todo .tact{flex:none;display:flex;align-items:center;gap:8px;}
+  /* Repli des tâches faites : un dépliant discret, pas 2 lignes de bruit. */
+  details.tododone{border-top:1px solid var(--line);background:var(--panel-2);}
+  details.tododone>summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:9px;min-height:44px;padding:0 16px;font-size:12px;color:var(--muted);font-weight:500;}
+  details.tododone>summary::-webkit-details-marker{display:none;}
+  details.tododone>summary::after{content:"";width:13px;height:13px;flex:none;margin-left:auto;background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="%2393a2b8" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>') center/contain no-repeat;transition:transform .15s;}
+  details.tododone[open]>summary::after{transform:rotate(180deg);}
+  details.tododone ul.todo{border:0;border-radius:0;background:transparent;box-shadow:none;}
+  details.tododone ul.todo li{min-height:44px;padding:9px 16px;color:var(--muted);font-size:13px;}
+  details.tododone ul.todo .lbl a{color:var(--muted);font-weight:500;}
+
+  /* États `.st-*` — jeu unique pour toutes les surfaces applicatives. */
+  .st{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;letter-spacing:.02em;padding:4px 10px;border-radius:var(--radius-full);flex:none;border:1px solid var(--line);color:var(--muted);line-height:1.2;white-space:nowrap;}
   .st::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;flex:none;}
-  .st.st-todo{color:var(--warn);border-color:var(--line-strong);background:var(--warn-soft);}
-  .st.st-graded{color:var(--teal-light);border-color:var(--line-strong);background:var(--ok-soft);}
-  .st.st-blocked{color:var(--danger);border-color:var(--line-strong);background:var(--danger-soft);}
-  .st.st-progress{color:var(--muted);border-color:var(--line-strong);background:var(--neutral-soft);}
+  .st-assigned,.st-nouveau{color:var(--warn);border-color:var(--line-2);background:var(--warn-soft);}
+  .st-submitted,.st-verifie{color:var(--blue);border-color:var(--line-2);background:var(--blue-soft);}
+  .st-returned{color:var(--danger);border-color:var(--line-2);background:var(--danger-soft);}
+  .st-na{color:var(--muted-dark);border-color:var(--line);background:var(--neutral-soft);}
+  .st.st-todo{color:var(--warn);border-color:var(--line-2);background:var(--warn-soft);}
+  .st.st-graded,.st-admis,.st-actif,.st-paye{color:var(--teal-light);border-color:var(--line-2);background:var(--ok-soft);}
+  .st.st-blocked,.st-refuse,.st-annule{color:var(--danger);border-color:var(--line-2);background:var(--danger-soft);}
+  .st.st-progress,.st-attente{color:var(--muted);border-color:var(--line-2);background:var(--neutral-soft);}
+  .st-termine{color:var(--muted-dark);border-color:var(--line);background:var(--panel-2);}
+
+  /* ---------- Barre d'outils (recherche + filtres) ----------
+     Collante : sur une liste longue, on ne perd plus les filtres en défilant. */
+  .toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:12px 0;}
+  .toolbar.sticky{position:sticky;top:56px;z-index:6;background:var(--bg);border-bottom:1px solid var(--line);}
+  .search{flex:1 1 240px;position:relative;display:flex;align-items:center;min-width:0;}
+  .search svg{position:absolute;left:11px;color:var(--muted);pointer-events:none;width:15px;height:15px;}
+  .search input{width:100%;min-height:44px;padding:9px 12px 9px 34px;border-radius:var(--radius-sm);border:1px solid var(--line);background:var(--panel-2);color:var(--text);font-size:14px;font-family:inherit;transition:border-color .12s,background-color .12s;}
+  .search input:focus{border-color:var(--teal);background:var(--bg);}
+  .seg{display:flex;gap:2px;padding:3px;background:var(--panel-2);border:1px solid var(--line);border-radius:var(--radius);flex-wrap:wrap;}
+  .seg button{background:none;border:0;color:var(--muted);font-size:12px;font-weight:600;height:38px;min-height:38px;padding:0 11px;border-radius:var(--radius-sm);display:inline-flex;align-items:center;gap:7px;font-family:inherit;cursor:pointer;white-space:normal;}
+  .seg button:hover{background:var(--raised);color:var(--text);}
+  .seg button.on{background:var(--panel);color:var(--text-bright);box-shadow:var(--hair);}
+  .seg button .n{font-variant-numeric:tabular-nums;color:var(--muted);font-weight:700;font-size:12px;}
+  .seg button.on .n{color:var(--teal-light);}
+  @media(max-width:639px){.seg button{height:44px;min-height:44px;}}
+
+  /* ---------- Tableaux ---------- */
+  .tablewrap{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--line);background:var(--panel);}
+  table{width:100%;border-collapse:collapse;font-size:14px;}
+  th,td{padding:12px 14px;text-align:left;border:0;border-bottom:1px solid var(--line);vertical-align:middle;}
+  tr:last-child td{border-bottom:0;}
+  th{color:var(--muted);font-weight:700;font-size:12px;letter-spacing:.05em;text-transform:uppercase;background:var(--panel-2);white-space:nowrap;}
+  tbody tr{transition:background-color .12s;}
+  tbody tr:hover{background:var(--raised);}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;}
+  td code,code{font-family:ui-monospace,Consolas,monospace;font-size:12px;overflow-wrap:anywhere;background:var(--panel-2);padding:2px 6px;border-radius:var(--radius-sm);border:1px solid var(--line);}
+  /* Cellule identité : nom + coordonnées, sans casser la hauteur de ligne.
+     Elle est cliquable EN ENTIER (`a.cell-id`) : cibler le seul nom donnait une
+     zone de 33 px de haut (mesuré par l'audit, seuil 44 px) et obligeait à viser
+     un mot précis. Avatar + nom + email forment désormais une seule cible. */
+  .cell-id{display:flex;align-items:center;gap:11px;min-width:0;}
+  a.cell-id{color:inherit;text-decoration:none;min-height:44px;border-radius:var(--radius-sm);}
+  a.cell-id:hover .nm2 b{text-decoration:underline;text-underline-offset:2px;}
+  a.cell-id:focus-visible{outline:2px solid var(--blue);outline-offset:2px;}
+  .avatar{width:32px;height:32px;border-radius:50%;background:var(--panel-2);border:1px solid var(--line-2);flex:none;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--teal-light);letter-spacing:.02em;}
+  .avatar.lg{width:44px;height:44px;font-size:16px;}
+  .cell-id .nm2{min-width:0;}
+  .cell-id .nm2 b{display:block;font-size:14px;font-weight:600;color:var(--text-bright);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .cell-id .nm2 small{display:block;font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .rowact{display:flex;gap:6px;justify-content:flex-end;align-items:center;flex-wrap:nowrap;}
+  /* Menu de ligne : les actions secondaires ne prennent plus 4 lignes. */
+  details.rowmenu{position:relative;display:inline-block;}
+  details.rowmenu>summary{cursor:pointer;list-style:none;width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--panel-2);color:var(--muted);}
+  details.rowmenu>summary::-webkit-details-marker{display:none;}
+  details.rowmenu>summary:hover{background:var(--raised);color:var(--text-bright);border-color:var(--line-2);}
+  details.rowmenu[open]>summary{background:var(--raised);color:var(--text-bright);border-color:var(--line-2);}
+  details.rowmenu .menu{position:absolute;right:0;top:calc(100% + 6px);z-index:12;min-width:210px;background:var(--panel);border:1px solid var(--line-2);border-radius:var(--radius);box-shadow:var(--shadow-lg);padding:5px;display:flex;flex-direction:column;gap:2px;}
+  details.rowmenu .menu button,details.rowmenu .menu a{justify-content:flex-start;width:100%;height:auto;min-height:44px;background:none;border:0;color:var(--text);font-weight:500;font-size:13px;padding:9px 11px;border-radius:var(--radius-sm);text-align:left;white-space:normal;line-height:1.4;}
+  details.rowmenu .menu button:hover,details.rowmenu .menu a:hover{background:var(--raised);color:var(--text-bright);}
+  details.rowmenu .menu .sep{height:1px;background:var(--line);margin:4px 0;}
+  details.rowmenu .menu .danger{color:var(--danger);}
+  details.rowmenu .menu .danger:hover{background:var(--danger-soft);color:var(--danger);}
+  /* Encart de saisie montant : dans la ligne, jamais en `prompt()` natif. */
+  .inline-amt{display:flex;gap:6px;align-items:center;}
+  .inline-amt input{width:118px;min-height:44px;padding:6px 9px;border-radius:var(--radius-sm);border:1px solid var(--line);background:var(--bg);color:var(--text);font-size:13px;font-family:inherit;}
+  .inline-amt input:focus{border-color:var(--teal);}
+
+  /* ---------- États vides, chargement, retour d'action ---------- */
+  .estate{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;padding:34px 20px;border:1px dashed var(--line-2);border-radius:var(--radius);background:var(--panel-2);}
+  .estate .ei{width:36px;height:36px;border-radius:50%;background:var(--panel);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--muted);}
+  .estate b{font-size:14px;font-weight:600;color:var(--text-bright);}
+  .estate p{font-size:13px;color:var(--muted);line-height:1.55;max-width:52ch;margin:0;}
+  .estate .btnrow{margin-top:6px;justify-content:center;}
+  .sk{background:linear-gradient(90deg,var(--panel-2) 0%,var(--raised) 50%,var(--panel-2) 100%);background-size:200% 100%;animation:sk 1.3s ease-in-out infinite;border-radius:var(--radius-sm);height:12px;display:block;}
+  @keyframes sk{0%{background-position:200% 0}100%{background-position:-200% 0}}
+  .sk.lg{height:26px;width:64px;}
+  .sk-row{display:flex;align-items:center;gap:12px;padding:13px 14px;border-bottom:1px solid var(--line);}
+  .sk-row:last-child{border-bottom:0;}
+  .sk-row .sk{height:11px;}
+  @media(prefers-reduced-motion:reduce){.sk{animation:none;}}
+  .toasts{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;flex-direction:column;gap:8px;max-width:min(400px,calc(100vw - 36px));pointer-events:none;}
+  .toast{pointer-events:auto;display:flex;gap:11px;align-items:flex-start;background:var(--panel);border:1px solid var(--line-2);border-radius:var(--radius);box-shadow:var(--shadow-lg);padding:12px 14px;font-size:13px;line-height:1.5;color:var(--text);animation:tin .18s ease-out;}
+  .toast.ok{box-shadow:inset 2px 0 0 var(--teal),var(--shadow-lg);}
+  .toast.err{box-shadow:inset 2px 0 0 var(--danger),var(--shadow-lg);}
+  .toast.warn{box-shadow:inset 2px 0 0 var(--warn),var(--shadow-lg);}
+  .toast b{color:var(--text-bright);display:block;}
+  .toast .tx{min-width:0;overflow-wrap:anywhere;}
+  .toast button{background:none;border:0;color:var(--muted);width:28px;height:28px;min-height:28px;padding:0;flex:none;border-radius:var(--radius-sm);}
+  .toast button:hover{background:var(--raised);color:var(--text-bright);}
+  @keyframes tin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @media(max-width:639px){.toasts{left:12px;right:12px;bottom:calc(70px + env(safe-area-inset-bottom));max-width:none;}}
+  @media(prefers-reduced-motion:reduce){.toast{animation:none;}}
 
   /* Formulaires */
   .tool{border:1px solid var(--line);border-radius:var(--radius);background:var(--card-2);padding:0 16px;margin-top:10px;}
@@ -170,25 +328,26 @@
   .tool[open]{padding:0 16px;}
   .hint{color:var(--muted);font-size:12px;line-height:1.5;margin-top:8px;}
 
-  .alert{margin-top:10px;padding:12px 14px;border-radius:var(--radius-sm);font-size:12px;line-height:1.5;}
-  .alert.warn{background:var(--warn-soft);border:1px solid var(--line-strong);color:var(--warn);}
-  .alert.err{background:rgba(244,63,94,.12);border:1px solid var(--line-strong);color:var(--danger);}
-  .alert.info{background:var(--blue-soft);border:1px solid var(--line-strong);color:var(--info);}
-  .empty{color:var(--muted);font-size:14px;line-height:1.55;padding:12px 0;}
-  .tablewrap{overflow-x:auto;margin-top:10px;border-radius:var(--radius);border:1px solid var(--line);background:var(--card);}
-  table{width:100%;border-collapse:collapse;font-size:14px;}
-  th,td{padding:11px 14px;text-align:left;border:0;border-bottom:1px solid var(--line);vertical-align:middle;}
-  tr:last-child td{border-bottom:0;}
-  th{color:var(--muted);font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;background:var(--card-2);}
-  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;}
-  td code,code{font-family:ui-monospace,Consolas,monospace;font-size:12px;overflow-wrap:anywhere;background:var(--card-2);padding:2px 6px;border-radius:var(--radius-sm);border:1px solid var(--line);}
+  .alert{margin-top:10px;padding:12px 14px;border-radius:var(--radius-sm);font-size:13px;line-height:1.5;}
+  .alert.warn{background:var(--warn-soft);border:1px solid var(--line-2);color:var(--warn);}
+  .alert.err{background:var(--danger-soft);border:1px solid var(--line-2);color:var(--danger);}
+  .alert.info{background:var(--blue-soft);border:1px solid var(--line-2);color:var(--info);}
+  .empty{color:var(--muted);font-size:13px;line-height:1.55;padding:10px 0;}
 
-  ul.facts{list-style:none;margin:4px 0 4px;}
-  ul.facts li{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px;flex-wrap:wrap;}
+  /* Liste clé/valeur : la valeur n'est plus collée à droite en gras (illisible
+     dès qu'elle dépasse une ligne) — deux colonnes alignées sur une grille. */
+  ul.facts{list-style:none;margin:2px 0;}
+  ul.facts li{display:grid;grid-template-columns:minmax(140px,auto) minmax(0,1fr);align-items:baseline;gap:6px 18px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14px;}
   ul.facts li:last-child{border-bottom:0;}
-  ul.facts .k{color:var(--muted);flex:none;}
-  ul.facts .v{text-align:right;min-width:0;font-weight:600;font-variant-numeric:tabular-nums;}
+  ul.facts .k{color:var(--muted);}
+  ul.facts .v{min-width:0;font-weight:600;font-variant-numeric:tabular-nums;overflow-wrap:anywhere;}
+  @media(max-width:639px){ul.facts li{grid-template-columns:1fr;gap:3px;}}
   .v.ok{color:var(--teal-light);}.v.ko{color:var(--danger);}.v.mut{color:var(--muted);font-weight:500;}
+  /* Grille de statut : remplace la liste clé/valeur quand la valeur est un état. */
+  .sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;}
+  .sg>div{background:var(--panel);padding:12px 14px;}
+  .sg .k{display:block;font-size:12px;color:var(--muted);margin-bottom:6px;}
+  .sg .v{font-size:14px;font-weight:600;color:var(--text-bright);overflow-wrap:anywhere;}
 
   details.tech{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:0 16px;margin-bottom:12px;}
   details.tech>summary{color:var(--muted);font-size:12px;}
@@ -209,26 +368,30 @@
   .bloc-h .bid{color:var(--teal);}
   .bloc-h small{font-size:12px;font-weight:400;color:var(--muted);}
   .modlist{display:flex;flex-direction:column;}
-  .mrow{display:flex;align-items:center;gap:12px;width:100%;text-align:left;height:44px;padding:0 16px;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--text);font:inherit;cursor:pointer;transition:background-color .12s;}
+  .mrow{display:flex;align-items:center;gap:12px;width:100%;text-align:left;height:46px;padding:0 16px;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--text);font:inherit;cursor:pointer;transition:background-color .12s;}
   .mrow:last-child{border-bottom:0;}
-  .mrow:hover,.mrow:focus-visible{background:var(--card-2);}
+  .mrow:hover,.mrow:focus-visible{background:var(--panel-2);}
   .mrow .mnum{flex:none;width:42px;font-size:12px;font-family:ui-monospace,Consolas,monospace;color:var(--teal);font-variant-numeric:tabular-nums;font-weight:500;}
-  .mrow .mt{flex:1;min-width:0;font-size:14px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .mrow .mt{flex:1 1 auto;min-width:0;font-size:14px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
   .mrow .mt small{font-weight:400;color:var(--muted);margin-left:8px;font-size:12px;}
-  .mrow .w{flex:none;width:124px;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap;}
-  .mrow .st{height:20px;padding:0 8px;font-size:12px;}
-  .mrow .arw{flex:none;color:var(--muted);font-size:14px;}
+  /* « Séance 02 (+ M03) · 110 min » débordait sur la pastille « Prêt » : la
+     cellule est désormais tronquée au lieu de pousser ses voisines. */
+  .mrow .w{flex:0 1 168px;min-width:0;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .mrow .st{flex:none;height:22px;padding:0 9px;font-size:12px;}
+  .mrow .arw{flex:none;color:var(--muted);display:flex;align-items:center;}
 
   /* ---------- Vue module ---------- */
   .back{display:inline-flex;align-items:center;gap:6px;min-height:44px;margin:4px 0 8px;font-size:12px;color:var(--muted);text-decoration:none;background:none;border:0;cursor:pointer;font-family:inherit;padding:0 6px 0 0;}
   .back:hover{color:var(--text);}
-  .mod-h h2{font-size:18px;font-weight:600;line-height:1.35;}
+  .mod-h h1{font-size:20px;font-weight:700;line-height:1.3;letter-spacing:-0.01em;}
   .mod-meta{font-size:12px;color:var(--muted);margin-top:4px;font-variant-numeric:tabular-nums;}
   .mod-tabs{display:flex;gap:2px;margin-top:16px;border-bottom:1px solid var(--line);overflow-x:auto;-webkit-overflow-scrolling:touch;}
   .mod-tabs button{flex:0 0 auto;min-height:44px;padding:0 12px;background:none;border:0;border-bottom:2px solid transparent;margin-bottom:-1px;font-size:14px;font-weight:500;color:var(--muted);cursor:pointer;font-family:inherit;white-space:nowrap;}
   .mod-tabs button:hover{color:var(--text);}
   .mod-tabs button.on{color:var(--text);border-bottom-color:var(--teal);}
-  .mod-wrap{max-width:820px;}
+  /* Mesure de lecture : 74 caractères, pas une largeur fixe en pixels — la
+     colonne s'adapte à la fenêtre au lieu de laisser un vide à droite. */
+  .mod-wrap{max-width:74ch;}
   .mod-chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;align-items:center;}
   .mchip{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 9px;border-radius:var(--radius-full);border:1px solid var(--line);font-size:12px;font-weight:500;color:var(--muted);background:var(--card);}
   .mchip.bloc{color:var(--teal-light);border-color:var(--teal-soft);background:var(--teal-soft);}
@@ -250,17 +413,57 @@
   .pres-frame{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);overflow:hidden;margin-top:12px;}
   .pres-frame .ptool{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 12px;border-bottom:1px solid var(--line);font-size:12px;color:var(--muted);}
   .pres-frame iframe{width:100%;height:72vh;border:0;display:block;background:var(--input-bg);}
-  .md{font-size:14px;line-height:1.65;overflow-wrap:anywhere;}
+  .md{font-size:14px;line-height:1.7;overflow-wrap:anywhere;color:var(--text);}
   .md p,.md li,.md td,.md th{overflow-wrap:anywhere;word-break:normal;}
-  .md h3,.md h4,.md h5{margin:18px 0 8px;line-height:1.3;}
-  .md p{margin:8px 0;}
-  .md ul,.md ol{margin:8px 0 8px 22px;}
-  .md li{margin:4px 0;}
-  .md pre{background:var(--card-2);border:1px solid var(--line);border-radius:var(--radius-sm);padding:10px;overflow-x:auto;font-size:12px;margin:10px 0;white-space:pre-wrap;overflow-wrap:anywhere;}
-  .md code{background:var(--card-2);border:1px solid var(--line);border-radius:var(--radius-sm);padding:1px 6px;}
-  .md pre code{border:0;background:none;padding:0;}
-  .md blockquote{border-left:2px solid var(--teal);padding:4px 12px;margin:10px 0;color:var(--muted);background:var(--card-2);border-radius:0 8px 8px 0;}
-  .md hr{border:0;border-top:1px solid var(--line);margin:16px 0;}
+  /* Hiérarchie de lecture : un titre de fiche doit se voir avant de se lire. */
+  .md h1{font-size:22px;margin:0 0 14px;padding-bottom:12px;border-bottom:1px solid var(--line);letter-spacing:-0.02em;}
+  .md h2{font-size:18px;font-weight:600;margin:30px 0 10px;letter-spacing:-0.01em;}
+  .md h3{font-size:16px;font-weight:600;margin:24px 0 8px;}
+  .md h4,.md h5{font-size:14px;font-weight:600;margin:18px 0 6px;color:var(--text-bright);}
+  .md h2:first-child,.md h3:first-child{margin-top:0;}
+  .md p{margin:10px 0;}
+  .md ul,.md ol{margin:10px 0 10px 22px;}
+  .md li{margin:5px 0;}
+  .md li>ul,.md li>ol{margin-top:5px;}
+  /* `white-space:pre-wrap` + `overflow-wrap:anywhere` détruisaient les schémas
+     ASCII du contenu pédagogique (les cadres ┌─┐ se repliaient). On garde la
+     mise en forme exacte et on défile horizontalement dans le bloc. */
+  .md pre{background:var(--panel-2);border:1px solid var(--line);border-radius:var(--radius-sm);padding:12px 14px;overflow-x:auto;font-size:12.5px;margin:14px 0;white-space:pre;color:var(--text);line-height:1.45;}
+  .md code{background:var(--panel-2);border:1px solid var(--line);border-radius:var(--radius-sm);padding:1px 6px;font-size:12.5px;color:var(--blue);}
+  .md pre code{border:0;background:none;padding:0;color:inherit;}
+  .md blockquote{border-left:2px solid var(--teal);padding:6px 14px;margin:14px 0;color:var(--muted);background:var(--panel-2);border-radius:0 var(--radius-sm) var(--radius-sm) 0;}
+  .md hr{border:0;border-top:1px solid var(--line);margin:22px 0;}
+  .md strong{color:var(--text-bright);font-weight:600;}
+  .md table{font-size:13px;margin:14px 0;}
+  .md table th,.md table td{padding:9px 12px;}
+  /* Sommaire de fiche : une fiche de 2 000 mots se parcourt mal sans repères.
+     Les entrées sont des BOUTONS, pas des liens `#ancre` — le routeur du
+     cockpit utilise déjà `location.hash`, une ancre de sommaire le ferait
+     sortir de la vue courante.
+     Mise en page en COLONNES CSS et non en grille : une grille
+     `minmax(230px,1fr)` laissait une piste s'élargir au-delà du conteneur
+     (mesuré : +47 px de débordement). Les colonnes CSS ne débordent jamais.
+     UNE SEULE colonne, volontairement : le sommaire vit dans `.mod-wrap`
+     (74 ch ≈ 580 px). À deux colonnes il ne restait que ~263 px par entrée,
+     insuffisant pour un titre français (« 2. Application vs Modèle : La
+     distinction essentielle » tombait sur 3 lignes — mesuré). Un sommaire qui
+     coupe les titres ne sert plus de sommaire. Le numéro est sorti du libellé
+     et posé dans une gouttière fixe : les titres s'alignent, la lecture est
+     verticale, et la hauteur reste celle d'une liste de 6 à 8 entrées. */
+  .toc{border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);padding:12px 16px;margin:14px 0 20px;box-shadow:var(--hair);}
+  .toc .toc-h{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 6px;}
+  .toc ol{margin:0;padding:0;list-style:none;columns:1;}
+  .toc li{min-width:0;border-top:1px solid var(--line);}
+  .toc li:first-child{border-top:0;}
+  .toc .toc-n{flex:none;width:18px;text-align:right;color:var(--muted-dark);font-size:12px;font-weight:600;font-variant-numeric:tabular-nums;}
+  .toc .toc-t{flex:1;min-width:0;}
+  /* `white-space:nowrap` est posé sur TOUS les `button` plus haut : tout bouton
+     qui contient du texte long doit le réautoriser explicitement, sinon son
+     contenu déborde au lieu de se replier (mesuré : +61 px sur le sommaire). */
+  .toc button{display:flex;gap:9px;align-items:baseline;width:100%;text-align:left;background:none;border:0;padding:7px 0;font-size:13px;font-weight:500;color:var(--text);font-family:inherit;cursor:pointer;overflow-wrap:anywhere;white-space:normal;height:auto;min-height:0;line-height:1.4;}
+  .toc button:hover{color:var(--teal-light);text-decoration:underline;}
+  .toc button:focus-visible{outline:2px solid var(--blue);outline-offset:2px;}
+  .md h4[id]{scroll-margin-top:72px;}
   
   .phases li{display:flex;gap:12px;align-items:baseline;padding:8px 0;border-bottom:1px solid var(--line);font-size:14px;}
   .phases li:last-child{border-bottom:0;}
@@ -272,49 +475,67 @@
   .overlay.on{display:block;}
   .fchip{min-height:44px;padding:0 12px;border-radius:var(--radius-full);border:1px solid var(--line);background:transparent;color:var(--muted);font-size:12px;font-weight:500;cursor:pointer;font-family:inherit;}
   .fchip.on{color:var(--teal);border-color:var(--teal-soft);background:var(--teal-soft);}
+  /* Ancienne liste apprenants — remplacée par une vraie table (voir .cell-id).
+     Conservée le temps que le rendu bascule. */
   .lrow{display:flex;align-items:center;gap:12px;width:100%;text-align:left;min-height:48px;padding:8px 10px;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--text);font:inherit;cursor:pointer;border-radius:var(--radius-sm);transition:background-color .12s;}
   .lrow:last-child{border-bottom:0;}
-  .lrow:hover{background:var(--card-2);}
+  .lrow:hover{background:var(--panel-2);}
   .lrow .who2{flex:1;min-width:0;}
   .lrow .who2 b{font-size:14px;font-weight:600;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
   .lrow .who2 small{color:var(--muted);font-size:12px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
   .lrow .w{flex:none;width:118px;font-size:12px;color:var(--muted);}
   @media(max-width:639px){.lrow .w{display:none;}}
-  .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;align-items:start;}
+  .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);margin-top:var(--gap);align-items:start;}
   @media(max-width:900px){.pgrid{grid-template-columns:1fr;}}
-  .psec{border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--card);padding:14px 16px;}
-  .psec h2{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
-  .psec .kv{display:grid;grid-template-columns:minmax(96px,128px) 1fr;gap:4px 14px;padding:7px 0;border-bottom:1px solid var(--line);align-items:baseline;}
+  .psec{border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--panel);padding:16px 18px;box-shadow:var(--hair);}
+  .psec h2{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+  .psec .kv{display:grid;grid-template-columns:minmax(96px,140px) minmax(0,1fr);gap:5px 16px;padding:9px 0;border-bottom:1px solid var(--line);align-items:baseline;}
   .psec .kv:last-child{border-bottom:0;}
   .psec .kv .k{color:var(--muted);font-size:12px;font-weight:400;}
+  /* Les valeurs longues (« non suivi (import sans candidature) ») débordaient :
+     elles passent à la ligne au lieu d'être forcées sur une seule ligne. */
   .psec .kv .v{min-width:0;overflow-wrap:anywhere;font-size:14px;font-weight:500;text-align:left;}
-  .pstrip{display:grid;grid-template-columns:repeat(6,1fr);border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--card);overflow:hidden;margin-top:16px;counter-reset:step;}
-  .pstrip .ps{padding:10px 12px 10px 26px;border-right:1px solid var(--line);position:relative;}
+  @media(max-width:639px){.psec .kv{grid-template-columns:1fr;gap:3px;}}
+  /* Bandeau d'étapes du dossier : le repère est TOUJOURS un numéro, l'état est
+     porté par la pastille. Avant, les étapes 4 et 5 affichaient une coche à la
+     place du numéro — deux repères différents pour la même colonne. */
+  .pstrip{display:grid;grid-template-columns:repeat(6,1fr);border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--panel);overflow:hidden;margin-top:var(--gap);counter-reset:step;box-shadow:var(--hair);}
+  .pstrip .ps{padding:12px 14px 12px 34px;border-right:1px solid var(--line);position:relative;min-width:0;}
   .pstrip .ps:last-child{border-right:0;}
-  .pstrip .ps::before{counter-increment:step;content:counter(step);position:absolute;left:11px;top:11px;width:10px;text-align:center;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;}
-  .pstrip .ps.st-graded::before{content:"\2713";color:var(--teal);}
-  .pstrip .ps.cur{background:var(--teal-soft);}
-  .pstrip .ps.cur .k{color:var(--text);}
-  .pstrip .ps .k{display:block;font-size:12px;color:var(--muted);margin-bottom:5px;}
-  .pcta{display:flex;align-items:center;gap:14px;margin-top:14px;padding:11px 12px 11px 14px;border:1px solid var(--line);border-left:2px solid var(--teal);border-radius:var(--radius);background:var(--card);flex-wrap:wrap;position:sticky;top:52px;z-index:4;}
-  .pcta .why{font-size:14px;min-width:0;}
-  .pcta .why small{display:block;color:var(--muted);font-size:12px;margin-top:2px;}
+  .pstrip .ps::before{counter-increment:step;content:counter(step);position:absolute;left:11px;top:11px;width:17px;height:17px;border-radius:50%;border:1px solid var(--line-2);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--muted-dark);font-variant-numeric:tabular-nums;background:var(--panel-2);}
+  .pstrip .ps.done::before{border-color:var(--teal);color:var(--teal-light);background:var(--teal-soft);}
+  .pstrip .ps.cur{background:var(--raised);}
+  .pstrip .ps.cur::before{border-color:var(--teal);color:var(--teal-light);}
+  .pstrip .ps.cur .k{color:var(--text-bright);}
+  .pstrip .ps .k{display:block;font-size:12px;color:var(--muted);margin-bottom:6px;}
+  /* Étapes non applicables : atténuées mais lisibles, jamais illisibles. */
+  .pstrip .ps.na{background:var(--panel-2);}
+  .pstrip .ps.na::before{opacity:.5;}
+  .pcta{display:flex;align-items:center;gap:14px;margin-top:var(--gap);padding:12px 14px;border:1px solid var(--line);border-left:2px solid var(--teal);border-radius:var(--radius);background:var(--panel);flex-wrap:wrap;position:sticky;top:56px;z-index:4;box-shadow:var(--hair);}
+  .pcta .why{font-size:14px;min-width:0;flex:1 1 220px;}
+  .pcta .why b{display:block;color:var(--text-bright);font-weight:600;}
+  .pcta .why small{display:block;color:var(--muted);font-size:12px;margin-top:3px;}
   .phead{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;flex-wrap:wrap;}
+  .phead .idbox{display:flex;gap:14px;align-items:center;min-width:0;}
   .phead .nm{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
-  .phead h2{font-size:22px;font-weight:600;line-height:1.3;}
-  .phead .meta{font-size:12px;color:var(--muted);margin-top:4px;font-variant-numeric:tabular-nums;}
+  .phead h1{font-size:22px;font-weight:700;line-height:1.25;letter-spacing:-0.02em;}
+  .phead .meta{font-size:12px;color:var(--muted);margin-top:5px;font-variant-numeric:tabular-nums;}
   .contactrow{display:flex;gap:8px;flex-wrap:wrap;}
   .contactrow a{display:inline-flex;align-items:center;gap:6px;}
   .contactrow svg{width:13px;height:13px;flex:none;}
-  .pbar{height:6px;border-radius:3px;background:var(--card-2);border:1px solid var(--line);overflow:hidden;margin:6px 0 2px;}
+  .pbar{height:6px;border-radius:3px;background:var(--panel-2);border:1px solid var(--line);overflow:hidden;margin:8px 0 4px;}
   .pbar i{display:block;height:100%;background:var(--teal);}
-  .mstat{display:flex;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid var(--line);font-size:12px;}
+  /* Suivi des missions : le TITRE d'abord, l'état ensuite — on lit ce qui a été
+     fait avant de lire où ça en est. */
+  .mstat{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);font-size:13px;}
   .mstat:last-child{border-bottom:0;}
-  .mstat .mm{flex:none;width:42px;font-family:ui-monospace,Consolas,monospace;color:var(--teal);font-size:12px;}
-  .mstat .mw{flex:1;min-width:0;color:var(--muted);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-  .evt{display:flex;gap:12px;padding:7px 0;border-bottom:1px solid var(--line);font-size:12px;}
+  .mstat .mm{flex:none;width:40px;font-family:ui-monospace,Consolas,monospace;color:var(--teal);font-size:12px;}
+  .mstat .mw{flex:1;min-width:0;color:var(--text);font-size:13px;overflow-wrap:anywhere;}
+  .mstat .mmeta{flex:none;color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums;}
+  .evt{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:13px;align-items:baseline;}
   .evt:last-child{border-bottom:0;}
   .evt time{flex:none;color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums;min-width:74px;}
+  .evt .lbl2{min-width:0;overflow-wrap:anywhere;}
 
   /* ---------- Responsive : 820 (drawer) ---------- */
   @media(max-width:1099px){
@@ -324,36 +545,87 @@
     .pstrip .ps:nth-child(3n){border-right:0;}
     .pstrip .ps:nth-child(n+4){border-bottom:0;}
     aside.sidebar{transform:translateX(-100%);transition:transform .12s;box-shadow:none;}
-    body.sb-open aside.sidebar{transform:none;box-shadow:0 4px 24px var(--shadow-lg);}
+    body.sb-open aside.sidebar{transform:none;box-shadow:var(--shadow-lg);}
     body.sb-open .overlay{display:block;}
     .main{margin-left:0;}
     .burger{display:inline-flex;}
     .content{padding:20px 16px;}
+    .toolbar.sticky{top:56px;}
   }
   .bottombar{display:none;}
   /* ---------- Responsive : 390 — mobile first ---------- */
   @media (max-width:639px){
     .content{padding:16px 12px 92px;}
     .topbar .burger{display:none;}
-    .bottombar{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));position:fixed;left:0;right:0;bottom:0;z-index:31;background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom);}
+    /* Fil d'Ariane en mobile : « Cockpit / » est redondant — le H1 est juste en
+       dessous et la barre inférieure marque la section. Le garder écrasait le
+       libellé de vue à une lettre (« Cockpit / A », mesuré à 390 px). */
+    .breadcrumb .bc-root,.breadcrumb .bc-sep{display:none;}
+    .breadcrumb{font-size:14px;}
+    /* La barre supérieure portait fil d'Ariane + pastille de cohorte + bouton
+       « Rafraîchir » avec son texte : le libellé de vue finissait tronqué
+       (« M01 — Comprendre l'IA » −71 px, « Fiche — awa.diallo@… » −129 px,
+       mesuré par la sonde). La pastille de cohorte est une information GLOBALE,
+       déjà affichée sur l'accueil (« Prochaine cohorte ») : elle sort de la
+       barre en mobile. L'actualisation reste, en icône seule (44×44), le
+       `aria-label` portant le nom accessible. */
+    #cohort-chip{display:none;}
+    #btn-refresh{padding:0;width:44px;min-width:44px;justify-content:center;}
+    #btn-refresh>span{display:none;}
+    .bottombar{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));position:fixed;left:0;right:0;bottom:0;z-index:31;background:var(--panel);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom);}
     .bottombar a,.bottombar button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:56px;padding:8px 2px 6px;background:none;border:0;color:var(--muted);font-size:12px;font-weight:500;font-family:inherit;text-decoration:none;position:relative;min-width:0;overflow:hidden;}
     .bottombar span{max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
     .bottombar svg{width:20px;height:20px;flex:none;}
     .bottombar a.on,.bottombar button.on{color:var(--teal-light);}
     .bottombar a.on::before,.bottombar button.on::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:22px;height:2px;background:var(--teal);border-radius:1px;}
     aside.sidebar{z-index:32;padding-bottom:76px;}
-    .statgrid{grid-template-columns:1fr 1fr;}
-    a.stat{border-bottom:1px solid var(--line);padding:12px;}
     .sb-nav a{height:44px;}
+    /* En-tête de page : le titre et les actions s'empilent, l'action passe
+       en pleine largeur — plus de bouton écrasé sur 2 cm. */
+    .pagehead{flex-direction:column;align-items:stretch;gap:12px;margin-bottom:16px;}
+    .pagehead .ph-act{width:100%;}
+    .pagehead .ph-act>.btn,.pagehead .ph-act>button{flex:1 1 auto;}
+    .zone{margin:18px 0 8px;}
+    /* KPI : 2 colonnes, la 5e carte ne reste plus orpheline (4 KPI sur l'accueil). */
+    .statgrid{grid-template-columns:1fr 1fr;gap:10px;}
+    a.stat,div.stat{padding:12px;min-height:88px;}
+    a.stat .v,div.stat .v{font-size:26px;}
+    .toolbar{gap:8px;padding:10px 0;}
+    .toolbar.sticky{position:static;}
+    .search{flex:1 1 100%;}
+    .seg{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+    .seg button{flex:1 0 auto;}
     .mrow{height:auto;min-height:60px;padding:10px 14px;flex-wrap:wrap;align-items:flex-start;}
     .mrow .mt{flex:1 1 auto;white-space:normal;}
     .mrow .mt small{display:block;margin-left:0;}
-    .mrow .w{flex-basis:100%;width:auto;margin-left:54px;}
+    .mrow .w{flex:1 1 100%;margin-left:0;}
+    .pstrip{grid-template-columns:1fr 1fr;}
+    .pstrip .ps:nth-child(3n){border-right:1px solid var(--line);}
+    .pstrip .ps:nth-child(2n){border-right:0;}
+    .pstrip .ps:nth-child(n+4){border-bottom:1px solid var(--line);}
+    .pstrip .ps:nth-child(n+5){border-bottom:0;}
+    .pcta{position:static;}
+    .pcta .why{flex:1 1 100%;}
+    .pcta>.btn,.pcta button{flex:1 1 auto;}
+    /* Tableau → cartes : le libellé de colonne devient une étiquette au-dessus
+       de la valeur, et la cellule garde son alignement à gauche. */
     .md table{display:block;overflow-x:auto;max-width:100%;}
     table thead{display:none;}
-    table tr{display:block;border-bottom:1px solid var(--line);padding:6px 0;}
-    table td{display:block;border:0;padding:2px 12px;}
-    table td::before{content:attr(data-label);display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:2px;}
+    table,tbody{display:block;}
+    table tr{display:block;border-bottom:1px solid var(--line);padding:10px 0;}
+    table tr:last-child{border-bottom:0;}
+    table td{display:block;border:0;padding:3px 14px;}
+    table td::before{content:attr(data-label);display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted-dark);margin-bottom:3px;}
+    table td[data-label=""]::before,table td:not([data-label])::before{display:none;}
+    /* Une carte mobile de 350 px par ligne est illisible : on retire les
+       colonnes secondaires (Profil, Reçue) et la colonne de navigation —
+       la fiche reste accessible par le nom, qui est un lien. */
+    table td.hide-sm,table td.td-act{display:none;}
+    table td[data-label="Apprenant"]{padding-bottom:8px;}
+    .rowact{justify-content:flex-start;flex-wrap:wrap;}
+    details.rowmenu .menu{right:auto;left:0;}
+    .inline-amt{flex-wrap:wrap;}
+    .inline-amt input{width:100%;}
     a:not([class]) {padding:6px 4px;display:inline-block;}
     button{min-height:44px;height:auto;}
     a.btn,button{min-height:44px;}
@@ -444,82 +716,129 @@
       </button>
       <div class="breadcrumb">
         <span class="bc-root">Cockpit</span>
-        <span class="bc-sep">/</span>
+        <span class="bc-sep" aria-hidden="true">/</span>
         <div class="view" id="view-label">Accueil</div>
       </div>
     </div>
     <div class="topbar-right">
-      <span class="chip ok"><span class="dot ok"></span>Cohorte 01</span>
+      <!-- Le chip « Cohorte 01 » vert permanent affirmait un état faux quand la
+           date de cohorte n'est pas définie. Il reflète désormais l'état réel
+           renvoyé par l'API (voir renderCohortChip). -->
+      <span class="chip neutral" id="cohort-chip">Cohorte 01</span>
+      <button type="button" class="secondary small" id="btn-refresh" aria-label="Rafraîchir les données" title="Rafraîchir les données">
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15.5-6.2L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15.5 6.2L3 16"/><path d="M3 21v-5h5"/></svg>
+        <span>Rafraîchir</span>
+      </button>
     </div>
   </header>
 
   <main id="main" class="content">
   <!-- ================= ACCUEIL ================= -->
   <section id="tab-accueil">
-    <h1>Vue d'ensemble</h1>
-    <p class="lead">Cohorte 01 — inscriptions, apprenants, import &amp; invitations, programme et Classroom. Données réelles via l'API, rien d'inventé.</p>
+    <div class="pagehead">
+      <div class="ph-txt">
+        <h1>Vue d'ensemble</h1>
+        <p class="lead">Cohorte 01 — inscriptions, apprenants, import &amp; invitations, programme et Classroom. Données réelles via l'API, rien d'inventé.</p>
+      </div>
+      <div class="ph-act">
+        <a class="btn secondary small" href="#inscriptions">Voir les inscriptions</a>
+        <a class="btn secondary small" href="#apprenants">Voir les apprenants</a>
+      </div>
+    </div>
 
-    <p class="zone">À faire</p>
-    <ul class="todo card" id="todo" style="padding:0;"><li><span class="lbl">Chargement des données (passerelle, roster, candidatures)…</span></li></ul>
+    <h2 class="zone">État de l'Academy</h2>
+    <div class="statgrid" id="statgrid">
+      <div class="stat"><span class="k">Chargement</span><span class="sk lg" style="margin-top:10px"></span><span class="s"><span class="sk" style="width:60%"></span></span></div>
+      <div class="stat"><span class="k">Chargement</span><span class="sk lg" style="margin-top:10px"></span><span class="s"><span class="sk" style="width:60%"></span></span></div>
+      <div class="stat"><span class="k">Chargement</span><span class="sk lg" style="margin-top:10px"></span><span class="s"><span class="sk" style="width:60%"></span></span></div>
+      <div class="stat"><span class="k">Chargement</span><span class="sk lg" style="margin-top:10px"></span><span class="s"><span class="sk" style="width:60%"></span></span></div>
+    </div>
 
-    <p class="zone">État de l'Academy</p>
-    <div class="statgrid" id="statgrid"><a class="stat"><span class="k">Chargement…</span></a></div>
+    <div class="dash">
+      <div class="dcol-main">
+        <h2 class="zone">À traiter <span class="zc" id="todo-n" hidden></span></h2>
+        <div id="todo-host">
+          <ul class="todo"><li><span class="lbl">Chargement des données (passerelle, roster, candidatures)…</span></li></ul>
+        </div>
 
-    <p class="zone">Facturation</p>
-    <div class="statgrid" id="billing"><a class="stat"><span class="k">Chargement…</span></a></div>
+        <h2 class="zone">Programme <span class="zact"><a href="#programme">Ouvrir le programme</a></span></h2>
+        <div class="blocs" id="home-blocs"><p class="empty">Chargement…</p></div>
+      </div>
 
-    <p class="zone">Prochaine cohorte</p>
-    <div id="home-cohort" class="card" style="padding:12px 16px;margin-bottom:0"><span class="empty">Chargement…</span></div>
+      <aside class="dcol-rail">
+        <h2 class="zone">Facturation</h2>
+        <div class="statgrid" id="billing">
+          <div class="stat"><span class="k">Chargement</span><span class="sk lg" style="margin-top:10px"></span></div>
+        </div>
 
-    <p class="zone">Activité récente</p>
-    <ul class="todo card" id="activity" style="padding:0"><li><span class="lbl">Chargement…</span></li></ul>
+        <h2 class="zone">Prochaine cohorte</h2>
+        <div id="home-cohort" class="card"><span class="empty">Chargement…</span></div>
 
-    <p class="zone">Programme</p>
-    <div class="blocs" id="home-blocs"><p class="empty">Chargement…</p></div>
+        <h2 class="zone">Activité récente</h2>
+        <ul class="todo" id="activity"><li><span class="lbl">Chargement…</span></li></ul>
+      </aside>
+    </div>
   </section>
 
   <!-- ================= INSCRIPTIONS ================= -->
   <section id="tab-inscriptions" hidden>
-    <h1>Inscriptions</h1>
-    <p class="lead">Candidatures reçues du Google Form officiel — vérification, paiement (humain), admission, puis apprenant. Le formulaire reste le point d'entrée public.</p>
-    <div id="cand-sync"></div>
-    <div class="statgrid" id="cand-counts" style="margin-top:16px"></div>
-    <div class="btnrow" style="margin:14px 0 2px">
-      <button type="button" class="secondary" id="btn-cand-refresh">Rafraîchir depuis le formulaire</button>
-      <a class="btn ghost" href="https://docs.google.com/forms/d/e/1FAIpQLSfGQL_eANGDh2AKWJpnKbvKHuXR9rKlGcKxwOJeVBma3vcleA/viewform" target="_blank" rel="noopener noreferrer">Voir le Google Form</a>
+    <div class="pagehead">
+      <div class="ph-txt">
+        <h1>Inscriptions</h1>
+        <p class="lead">Candidatures reçues du Google Form officiel — vérification, paiement (humain), admission, puis apprenant. Le formulaire reste le point d'entrée public.</p>
+      </div>
+      <div class="ph-act">
+        <button type="button" class="secondary small" id="btn-cand-refresh">Rafraîchir depuis le formulaire</button>
+        <a class="btn ghost small" href="https://docs.google.com/forms/d/e/1FAIpQLSfGQL_eANGDh2AKWJpnKbvKHuXR9rKlGcKxwOJeVBma3vcleA/viewform" target="_blank" rel="noopener noreferrer">Voir le Google Form</a>
+      </div>
     </div>
-    <div id="cand-list" style="margin-top:14px"><p class="empty">Chargement des candidatures…</p></div>
-    <p class="note">Candidature ≠ paiement ≠ admission ≠ apprenant : chaque étape est une action humaine distincte. Le paiement n'est jamais automatique — marquer « PAYÉ » exige le montant réellement reçu.</p>
+    <div id="cand-sync"></div>
+    <div class="statgrid" id="cand-counts"></div>
+    <div class="toolbar sticky">
+      <div class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input id="cand-search" type="search" placeholder="Rechercher un candidat, un e-mail, un téléphone…" aria-label="Rechercher une candidature">
+      </div>
+      <div class="seg" id="cand-filters" role="group" aria-label="Filtrer les candidatures par statut"></div>
+    </div>
+    <div id="cand-list"></div>
+    <p class="note" id="cand-note">Candidature ≠ paiement ≠ admission ≠ apprenant : chaque étape est une action humaine distincte. Le paiement n'est jamais automatique — marquer « PAYÉ » exige le montant réellement reçu.</p>
   </section>
 
   <!-- ================= APPRENANTS ================= -->
   <section id="tab-apprenants" hidden>
     <div id="learners-head">
-    <h1>Apprenants</h1>
-    <p class="lead"><span id="learners-count">—</span> — personnes admises ou importées, avec leur état Classroom. Cliquez une ligne pour ouvrir la fiche 360°.</p>
-    </div>
-    <div id="learners-list">
-    <section class="card" style="margin-top:16px;padding:12px 14px;">
-      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
-        <div style="flex:1 1 240px;position:relative;display:flex;align-items:center;">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;left:11px;color:var(--muted);pointer-events:none" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input id="learner-search" type="search" placeholder="Rechercher un nom, email ou téléphone…" aria-label="Rechercher un apprenant" style="width:100%;min-height:44px;padding:9px 12px 9px 34px;border-radius:var(--radius-sm);border:1px solid var(--line);background:var(--card-2);color:var(--text);font-size:14px;font-family:inherit;">
+      <div class="pagehead">
+        <div class="ph-txt">
+          <h1>Apprenants</h1>
+          <p class="lead"><span id="learners-count">—</span> — personnes admises ou importées, avec leur état Classroom et leur progression. Une ligne ouvre la fiche 360°.</p>
         </div>
-        <div class="chip-row" id="learner-filters" role="group" aria-label="Filtres">
-          <button class="fchip on" data-f="tous" type="button">Tous</button>
-          <button class="fchip" data-f="actif" type="button">Dans Classroom</button>
-          <button class="fchip" data-f="inviter" type="button">À inviter</button>
+        <div class="ph-act">
+          <a class="btn secondary small" href="#inscriptions">Traiter les candidatures</a>
         </div>
       </div>
-      <div id="learners-table" style="margin-top:10px"><p class="empty">Chargement…</p></div>
-    </section>
+    </div>
+    <div id="learners-list">
+      <div class="toolbar sticky">
+        <div class="search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input id="learner-search" type="search" placeholder="Rechercher un nom, un e-mail ou un téléphone…" aria-label="Rechercher un apprenant">
+        </div>
+        <div class="seg" id="learner-filters" role="group" aria-label="Filtrer les apprenants">
+          <button class="on" data-f="tous" type="button">Tous <span class="n" data-n="tous"></span></button>
+          <button data-f="actif" type="button">Dans Classroom <span class="n" data-n="actif"></span></button>
+          <button data-f="inviter" type="button">À inviter <span class="n" data-n="inviter"></span></button>
+        </div>
+      </div>
+      <div id="learners-table"><p class="empty">Chargement…</p></div>
     </div>
     <div id="person-view" hidden></div>
     <div id="learners-tools">
-    <section class="card" id="import" style="margin-top:16px;">
-      <details class="tool" open>
-        <summary>Importer les apprenants</summary>
-        <label for="csv">Liste des apprenants — un par ligne : <b>Nom complet, email</b></label>
+    <h2 class="zone">Outils — import &amp; invitations</h2>
+    <section class="card" id="import">
+      <details class="tool">
+        <summary>Importer une liste d'apprenants</summary>
+        <label for="csv">Un apprenant par ligne : <b>Nom complet, email</b></label>
         <textarea id="csv" spellcheck="false" placeholder="Awa Diallo, awa.diallo@exemple.com&#10;Jean Mbala, jean.mbala@exemple.com"></textarea>
         <div class="btnrow"><button id="btn-import" type="button">Importer les apprenants</button></div>
         <p class="hint">Chaque ligne crée un compte apprenant avec un mot de passe initial généré, affiché une seule fois. Format avancé JSON également accepté (tableau d'objets {name, email}).</p>
@@ -540,8 +859,20 @@
 
   <!-- ================= PROGRAMME ================= -->
   <section id="tab-programme" hidden>
-    <h1>Programme</h1>
-    <p class="lead">4 blocs · 18 modules · 8 semaines. Contenu réel des modules, rien d'inventé.</p>
+    <!-- L'en-tête « Programme » doit disparaître quand un module est ouvert :
+         avant, le h1 et le chapô restaient affichés au-dessus du module. -->
+    <div class="pagehead" id="programme-head">
+      <div class="ph-txt">
+        <h1>Programme</h1>
+        <p class="lead">4 blocs · 18 modules · 8 semaines. Contenu réel des modules, rien d'inventé.</p>
+      </div>
+      <div class="ph-act">
+        <div class="search" style="min-width:220px">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input id="mod-search" type="search" placeholder="Filtrer les modules…" aria-label="Filtrer les modules">
+        </div>
+      </div>
+    </div>
     <div id="programme-body"><p class="empty">Chargement du programme…</p></div>
     <div id="mod-view" style="display:none">
       <div id="mod-head"></div>
@@ -555,7 +886,9 @@
     <h1>Google Classroom</h1>
     <p class="lead">État de la connexion, suivi des apprenants et pilotage des publications.</p>
     <section class="card" style="margin-top:16px;">
-      <h2><span class="dot" id="d-classroom2"></span>État de la passerelle <span class="chip neutral" id="chip-classroom2">chargement…</span></h2>
+      <div class="card-h">
+        <h2><span class="dot" id="d-classroom2"></span>État de la passerelle <span class="chip neutral" id="chip-classroom2">chargement…</span></h2>
+      </div>
       <ul class="facts">
         <li><span class="k">Connexion</span><span class="v" id="g-status2">—</span></li>
         <li><span class="k">Compte Google</span><span class="v mut" id="g-account2">—</span></li>
@@ -563,6 +896,10 @@
         <li><span class="k">Invitations Classroom</span><span class="v" id="inv-list">—</span></li>
         <li><span class="k">Coursework publié</span><span class="v" id="cw-list">—</span></li>
       </ul>
+      <!-- Le détail des devoirs était imbriqué DANS une cellule de la liste
+           clé/valeur : une boîte flottante au milieu d'une ligne. Il vit
+           maintenant sous la liste. -->
+      <div id="cw-detail"></div>
       <div class="btnrow">
         <a class="btn" href="https://classroom.google.com/" target="_blank" rel="noopener noreferrer">Ouvrir Google Classroom</a>
         <a class="btn secondary" href="/admin/classroom.html">Reconnexion OAuth Classroom</a>
@@ -577,9 +914,16 @@
 
   <!-- ================= FORMATEURS ================= -->
   <section id="tab-formateurs" hidden>
-    <h1>Formateurs</h1>
-    <p class="lead">Création des comptes d'accès au suivi.</p>
-    <section class="card" id="formateur" style="margin-top:16px;">
+    <div class="pagehead">
+      <div class="ph-txt">
+        <h1>Formateurs</h1>
+        <p class="lead">Création des comptes d'accès à l'espace de suivi. Un compte formateur ouvre la correction des missions et le suivi des apprenants — il n'a pas les droits d'administration de ce cockpit.</p>
+      </div>
+      <div class="ph-act">
+        <a class="btn secondary small" href="/ui/suivi/" target="_blank" rel="noopener noreferrer">Ouvrir l'espace formateur</a>
+      </div>
+    </div>
+    <section class="card" id="formateur">
       <details class="tool" open>
         <summary>Créer un compte formateur</summary>
         <label for="u-name">Nom</label>
@@ -590,8 +934,13 @@
         <p class="hint">Le mot de passe initial est généré et affiché une seule fois — à transmettre au formateur en personne.</p>
         <div id="users-out"></div>
       </details>
-      <p class="note">Liste des comptes formateurs : l'API ne l'expose pas en lecture aujourd'hui (ajout prévu aux étapes backend minimales P3/P6). Aucun nombre inventé.</p>
     </section>
+    <h2 class="zone">Comptes existants</h2>
+    <div class="estate">
+      <span class="ei"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg></span>
+      <b>Liste indisponible</b>
+      <p>L'API n'expose pas encore la lecture des comptes formateurs (étapes backend P3/P6). Aucun nombre n'est affiché tant qu'il n'est pas réel — un total inventé serait pire qu'une absence.</p>
+    </div>
   </section>
 
   <footer>HOJA ACADEMY · cockpit admin — données réelles via l'API de la passerelle, aucun chiffre inventé.<br><span id="demoHint" hidden>Environnement de test : <a href="/api/mock/login-as?role=admin">basculer de rôle (mock)</a></span></footer>
@@ -616,6 +965,61 @@ async function api(path, opts) {
 function setDot(sel, cls) { const el = $(sel); if (el) el.className = 'dot ' + cls; }
 function chip(sel, cls, txt) { const el = $(sel); if (el) { el.className = 'chip ' + cls; el.textContent = txt; } }
 function errBox(msg) { return '<div class="alert err" role="alert">' + esc(msg) + '</div>'; }
+
+/* ---------- Retour d'action : un toast qui persiste, pas un bandeau qui fuit ----------
+   `alert0()` insérait un bandeau DANS le tableau et le supprimait au bout de
+   6 s : le retour disparaissait avant qu'on ait fini de lire, et il poussait
+   les lignes pendant ce temps. Le toast vit hors du flux. */
+function toast(msg, kind, title) {
+  let host = $('#toasts');
+  if (!host) { host = document.createElement('div'); host.className = 'toasts'; host.id = 'toasts'; document.body.appendChild(host); }
+  const d = document.createElement('div');
+  d.className = 'toast ' + (kind || 'ok');
+  d.setAttribute('role', kind === 'err' ? 'alert' : 'status');
+  d.innerHTML = '<span class="tx">' + (title ? '<b>' + esc(title) + '</b>' : '') + msg + '</span>' +
+    '<button type="button" aria-label="Fermer la notification">' +
+    '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>';
+  d.querySelector('button').addEventListener('click', () => d.remove());
+  host.appendChild(d);
+  const life = kind === 'err' ? 12000 : 6000;
+  setTimeout(() => { if (d.parentNode) d.remove(); }, life);
+  return d;
+}
+
+/* ---------- Petits formateurs d'affichage ---------- */
+/* Pluriel : « 1 candidature » / « 3 candidatures ». Le « (s) » générique est
+   une marque de gabarit, pas d'interface soignée. */
+function pl(n, one, many) {
+  return n + ' ' + (Number(n) > 1 ? (many || one + 's') : one);
+}
+function initials(name, email) {
+  const src = String(name || '').trim() || String(email || '').split('@')[0] || '?';
+  const parts = src.split(/[\s._-]+/).filter(Boolean);
+  const a = (parts[0] || '?')[0] || '?';
+  const b = parts.length > 1 ? (parts[parts.length - 1][0] || '') : '';
+  return (a + b).toUpperCase();
+}
+function skRows(n, cols) {
+  let h = '';
+  for (let i = 0; i < n; i++) {
+    h += '<div class="sk-row">';
+    for (let c = 0; c < (cols || 3); c++) h += '<span class="sk" style="flex:' + (c === 0 ? 2 : 1) + '"></span>';
+    h += '</div>';
+  }
+  return h;
+}
+/* État vide : un constat, une explication, une porte de sortie. Jamais un
+   paragraphe gris seul. */
+function emptyState(icon, title, body, action) {
+  return '<div class="estate"><span class="ei">' + (icon || '') + '</span><b>' + esc(title) + '</b>' +
+    (body ? '<p>' + body + '</p>' : '') + (action ? '<div class="btnrow">' + action + '</div>' : '') + '</div>';
+}
+const ICO_EMPTY = {
+  search: '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',
+  inbox: '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>',
+  users: '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+  warn: '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" x2="12" y1="9" y2="13"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg>',
+};
 
 let ROSTER = null, CLASSROOM = null, COURSEWORK = null;
 
@@ -656,6 +1060,9 @@ function showTab() {
     if (!ROSTER) pend.push(loadRoster());
     if (!CANDIDATES) pend.push(loadCandidates());
     if (!INVITATIONS && !(CLASSROOM && CLASSROOM.connected === false)) pend.push(loadInvitations());
+    /* La progression alimente une colonne du tableau : elle se charge avec la
+       liste, pas seulement à l'ouverture d'une fiche. */
+    if (PROGRESS == null) pend.push(loadProgress().then(() => renderLearners()));
     Promise.all(pend).then(() => { if (person) openPerson(person); else closePerson(); });
   }
   window.scrollTo(0, 0);
@@ -728,16 +1135,19 @@ async function loadInvitations() {
   renderClassroomOps(); renderHome();
 }
 function renderClassroomOps() {
-  const cw = $('#cw-list'); const inv = $('#inv-list');
+  const cw = $('#cw-list'); const inv = $('#inv-list'); const cwd = $('#cw-detail');
+  if (cwd) cwd.innerHTML = '';
   if (cw) {
     if (COURSEWORK == null) cw.innerHTML = '<span class="v mut">—</span>';
-    else if (!COURSEWORK.length) cw.innerHTML = '<span class="v">0 coursework publié</span>';
+    else if (!COURSEWORK.length) cw.innerHTML = '<span class="v mut">aucun devoir publié</span>';
     else {
       const pub = COURSEWORK.filter(c => String(c.state || 'PUBLISHED').toUpperCase() === 'PUBLISHED');
       const hors = pub.filter(c => { const m = /\bM(\d{1,3})\b/i.exec(c.title || ''); return m && Number(m[1]) > 18; });
-      cw.innerHTML = pub.length + ' publié(s)' + (hors.length ? ' · <span class="v ko">' + hors.length + ' titre(s) hors M01–M18</span>' : '') +
-        '<details class="tech" style="margin:6px 0 0"><summary>Détail des devoirs</summary><div class="body"><ul class="facts">' +
-        pub.slice(0, 20).map(c => '<li><span class="k">' + esc(c.title) + '</span><span class="v mut">' + esc(c.state || '—') + '</span></li>').join('') + '</ul></div></details>';
+      cw.innerHTML = '<span class="v ok">' + pl(pub.length, 'devoir publié', 'devoirs publiés') + '</span>' +
+        (hors.length ? ' · <span class="v ko">' + pl(hors.length, 'titre hors M01–M18', 'titres hors M01–M18') + '</span>' : '');
+      if (cwd) cwd.innerHTML = '<details class="tech" style="margin-top:10px"><summary>Détail des devoirs publiés (' + pub.length + ')</summary><div class="body"><ul class="facts">' +
+        pub.slice(0, 20).map(c => '<li><span class="k">' + esc(c.title) + '</span><span class="v mut">' + esc(c.state || '—') + '</span></li>').join('') +
+        '</ul></div></details>';
     }
   }
   if (inv) {
@@ -746,14 +1156,26 @@ function renderClassroomOps() {
     else {
       const pendingInv = INVITATIONS.filter(v => !v.state || /PENDING/i.test(v.state)).length;
       const accepted = INVITATIONS.filter(v => /ACCEPTED/i.test(v.state || '')).length;
-      inv.innerHTML = INVITATIONS.length + ' invitation(s) en cours (' + pendingInv + ' en attente, ' + accepted + ' acceptées)';
+      inv.innerHTML = '<span class="v">' + pl(INVITATIONS.length, 'invitation en cours', 'invitations en cours') + '</span>' +
+        '<div style="font-size:12px;color:var(--muted);margin-top:4px">' + pl(pendingInv, 'en attente', 'en attente') + ' · ' + pl(accepted, 'acceptée', 'acceptées') + '</div>';
     }
   }
 }
 
 /* ---------- Accueil : centre de commandement (100% donnees API) ---------- */
 let CANDIDATES = null; let BILLING = null;
-function fmtDate(iso) { if (!iso) return '—'; try { return new Date(iso).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' }); } catch (e) { return '—'; } }
+/* `new Date({year,month,day})` ne lève PAS : il renvoie un Invalid Date, et
+   `toLocaleDateString()` affiche alors « Invalid Date » à l'écran. L'API
+   Classroom renvoie les échéances sous cette forme — on la traite. */
+function fmtDate(iso) {
+  if (!iso) return '—';
+  let d = null;
+  if (typeof iso === 'object' && iso !== null && iso.year) d = new Date(iso.year, (iso.month || 1) - 1, iso.day || 1);
+  else if (typeof iso === 'object' && iso !== null && iso.seconds != null) d = new Date(iso.seconds * 1000);
+  else d = new Date(iso);
+  if (!d || isNaN(d.getTime())) return '—';
+  try { return d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' }); } catch (e) { return '—'; }
+}
 function renderHome() {
   const g = $('#statgrid'); if (!g) return;
   const learners = ROSTER && Array.isArray(ROSTER.learners) ? ROSTER.learners : [];
@@ -763,83 +1185,136 @@ function renderHome() {
   const connected = CLASSROOM && CLASSROOM.connected === true;
   const cwN = COURSEWORK == null ? null : COURSEWORK.length;
   const start = ROSTER && ROSTER.cohortStart ? ROSTER.cohortStart : null;
-  g.innerHTML =
-    '<a class="stat" href="#inscriptions">' +
-      '<span class="k"><span>Candidats</span><span class="stat-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span></span>' +
-      '<span class="v">' + (cN ? cN.total : '—') + '</span>' +
-      '<span class="s">' + (cN ? (cN.nouveauxJour > 0 ? cN.nouveauxJour + ' aujourd\'hui' : 'aucun nouveau aujourd\'hui') : 'chargement…') + '</span>' +
-    '</a>' +
-    '<a class="stat" href="#apprenants">' +
-      '<span class="k"><span>Apprenants</span><span class="stat-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span></span>' +
-      '<span class="v">' + (rosterOk ? learners.length : '—') + '</span>' +
-      '<span class="s">' + (rosterOk ? 'comptes Hoja créés' : 'API indisponible') + '</span>' +
-    '</a>' +
-    '<a class="stat" href="#apprenants">' +
-      '<span class="k"><span>Classroom</span><span class="stat-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg></span></span>' +
-      '<span class="v">' + (rosterOk && cc != null ? cc + ' / ' + learners.length : '—') + '</span>' +
-      '<span class="s">' + (rosterOk && cc != null ? 'dans la classe' : 'chargement…') + '</span>' +
-    '</a>' +
-    '<a class="stat" href="#classroom">' +
-      '<span class="k"><span><span class="dot ' + (connected ? 'ok' : CLASSROOM ? 'ko' : '') + '"></span> Passerelle</span><span class="stat-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg></span></span>' +
-      '<span class="v" style="font-size:18px">' + (CLASSROOM ? (connected ? 'Connectée' : 'Non connectée') : '—') + '</span>' +
-      '<span class="s">' + (connected && cwN != null ? cwN + ' coursework' : 'état via /api/classroom') + '</span>' +
-    '</a>' +
-    '<a class="stat" href="#programme">' +
-      '<span class="k"><span>Programme</span><span class="stat-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg></span></span>' +
-      '<span class="v">18 / 18</span>' +
-      '<span class="s">4 blocs · 8 semaines</span>' +
-    '</a>';
+  const pendingInv = cc == null ? null : Math.max(0, learners.length - cc);
 
+  /* 4 indicateurs, pas 5 : « Programme 18/18 » est une constante, pas un
+     indicateur — il occupait une carte et laissait une orpheline en 390. */
+  const kCand = cN
+    ? '<a class="stat' + (cN.aVerifier > 0 ? ' act' : '') + '" href="#inscriptions">' +
+        '<span class="k">Candidats</span>' +
+        '<span class="v">' + cN.total + '</span>' +
+        '<span class="s">' + (cN.nouveauxJour > 0 ? pl(cN.nouveauxJour, 'reçu aujourd\'hui', 'reçus aujourd\'hui') : 'aucun nouveau aujourd\'hui') +
+        (cN.aVerifier > 0 ? ' · ' + pl(cN.aVerifier, 'à traiter') : '') + '</span></a>'
+    : '<div class="stat"><span class="k">Candidats</span><span class="sk lg" style="margin-top:10px"></span><span class="s"><span class="sk" style="width:70%"></span></span></div>';
+
+  const kLearners = rosterOk
+    ? '<a class="stat" href="#apprenants">' +
+        '<span class="k">Apprenants</span><span class="v">' + learners.length + '</span>' +
+        '<span class="s">' + (learners.length ? 'comptes Hoja créés' : 'aucun compte pour le moment') + '</span></a>'
+    : '<div class="stat"><span class="k">Apprenants</span><span class="v mut" style="font-size:15px;font-weight:500;color:var(--muted);letter-spacing:0">indisponible</span><span class="s">roster non chargé</span></div>';
+
+  const kClassroom = rosterOk && cc != null
+    ? '<a class="stat' + (pendingInv > 0 ? ' act' : '') + '" href="#apprenants">' +
+        '<span class="k">Dans Classroom</span><span class="v">' + cc + '<span class="u"> / ' + learners.length + '</span></span>' +
+        '<span class="s">' + (pendingInv > 0 ? pl(pendingInv, 'invitation restante', 'invitations restantes') : 'tous les apprenants sont présents') + '</span></a>'
+    : '<div class="stat"><span class="k">Dans Classroom</span><span class="sk lg" style="margin-top:10px"></span><span class="s"><span class="sk" style="width:70%"></span></span></div>';
+
+  const kGateway = CLASSROOM
+    ? '<a class="stat' + (connected ? '' : ' act') + '" href="#classroom">' +
+        '<span class="k">Passerelle</span><span class="v sm">' + (connected ? 'Connectée' : 'Non connectée') + '</span>' +
+        '<span class="s">' + (connected ? (cwN != null ? pl(cwN, 'devoir publié', 'devoirs publiés') : 'état via /api/classroom') : 'reconnexion OAuth requise') + '</span></a>'
+    : '<div class="stat"><span class="k">Passerelle</span><span class="sk lg" style="margin-top:10px"></span><span class="s"><span class="sk" style="width:70%"></span></span></div>';
+
+  g.innerHTML = kCand + kLearners + kClassroom + kGateway;
+
+  /* ---------- Prochaine cohorte ---------- */
   const coh = $('#home-cohort');
-  if (coh) coh.innerHTML = '<span style="font-size:14px">' + (start ? 'Cohorte 01 — début le <b>' + esc(new Date(start).toLocaleDateString('fr-FR')) + '</b>' : 'Prochaine cohorte : <b>date à définir</b> <span style="color:var(--muted)">(réglage serveur COHORT_START)</span>') + '</span> <a class="btn small secondary" style="vertical-align:middle" href="#programme">Voir le programme</a>';
+  if (coh) {
+    coh.innerHTML = start
+      ? '<div style="min-width:0"><span style="font-size:13px;color:var(--muted)">Début de la cohorte</span>' +
+        '<b style="display:block;font-size:16px;color:var(--text-bright);margin-top:3px">' + esc(new Date(start).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })) + '</b></div>' +
+        '<a class="btn secondary small" href="#programme">Voir le programme</a>'
+      : '<div style="min-width:0"><b style="display:block;font-size:14px;color:var(--text-bright)">Date de début à définir</b>' +
+        '<span style="font-size:12px;color:var(--muted)">Réglage serveur <code>COHORT_START</code> — non modifiable depuis ce cockpit.</span></div>';
+  }
 
+  /* ---------- Facturation ----------
+     Trois cartes vides (« non configuré », « — », « 0 ») faisaient une ligne
+     entière de bruit. Tant que le tarif n'est pas défini, il n'y a qu'une
+     chose à dire, et c'est une action. */
   const b = $('#billing');
   if (b) {
     const price = BILLING && BILLING.price ? BILLING.price : null;
     const cur = BILLING && BILLING.currency ? BILLING.currency : '';
-    const paye = CANDIDATES && CANDIDATES.counts ? CANDIDATES.counts.payeCount : null;
-    const attendu = CANDIDATES && CANDIDATES.counts ? CANDIDATES.counts.attendu : null;
-    const aVerif = CANDIDATES && CANDIDATES.counts ? CANDIDATES.counts.aVerifier : null;
-    b.innerHTML =
-      '<a class="stat" href="#inscriptions">' +
-        '<span class="k"><span>Tarif formation</span><span class="stat-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><line x1="12" x2="12" y1="6" y2="18"/></svg></span></span>' +
-        '<span class="v" style="font-size:18px">' + (price ? esc(String(price)) + ' ' + esc(cur) : '<span class="v mut" style="font-size:16px">non configuré</span>') + '</span>' +
-        '<span class="s">' + (price ? 'montant de référence (réglage admin)' : 'configurer dans Inscriptions ↓') + '</span>' +
-      '</a>' +
-      '<a class="stat" href="#inscriptions">' +
-        '<span class="k"><span>Encaissé</span><span class="stat-ico" style="color:var(--teal)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></span>' +
-        '<span class="v">' + (price == null ? '—' : (paye != null ? esc(String(paye * price)) + ' ' + esc(cur) : '—')) + '</span>' +
-        '<span class="s">' + (paye != null ? paye + ' paiement(s) confirmé(s)' + (cur === '' && price ? ' (devise à régler)' : '') : 'chargement…') + '</span>' +
-      '</a>' +
-      '<a class="stat" href="#inscriptions">' +
-        '<span class="k"><span>Paiements à traiter</span><span class="stat-ico" style="color:var(--warn)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span></span>' +
-        '<span class="v">' + (aVerif == null ? '—' : aVerif) + '</span>' +
-        '<span class="s">' + (aVerif != null && attendu != null && price ? '≈ ' + esc(String(attendu * price)) + ' ' + esc(cur) + ' attendus' : 'vérification humaine') + '</span>' +
-      '</a>';
+    const paye = cN ? cN.payeCount : null;
+    const attendu = cN ? cN.attendu : null;
+    const aVerif = cN ? cN.aVerifier : null;
+    const payeNonAdmis = cN ? cN.payeNonAdmis : 0;
+    if (!BILLING) {
+      b.innerHTML = '<div class="stat"><span class="k">Facturation</span><span class="sk lg" style="margin-top:10px"></span></div>';
+    } else if (price == null) {
+      b.innerHTML =
+        '<a class="stat todo-kpi" href="#inscriptions">' +
+          '<span class="k">Tarif de la formation</span>' +
+          '<span class="v">Non configuré — définir le tarif</span>' +
+          '<span class="s">Sans tarif, aucun montant encaissé ni attendu ne peut être calculé.</span></a>';
+    } else {
+      b.innerHTML =
+        '<a class="stat" href="#inscriptions">' +
+          '<span class="k">Tarif de la formation</span>' +
+          '<span class="v sm">' + esc(String(price)) + ' <span class="u">' + esc(cur || 'devise à régler') + '</span></span>' +
+          '<span class="s">montant de référence</span></a>' +
+        '<a class="stat' + (payeNonAdmis > 0 ? ' act' : '') + '" href="#inscriptions">' +
+          '<span class="k">Paiements vérifiés</span>' +
+          '<span class="v">' + (paye == null ? '—' : paye) + '</span>' +
+          '<span class="s">' + (paye ? 'soit ' + esc(String(paye * price)) + ' ' + esc(cur) : 'aucun paiement confirmé') + '</span></a>' +
+        '<a class="stat' + (aVerif > 0 ? ' act' : '') + '" href="#inscriptions">' +
+          '<span class="k">Paiements à vérifier</span>' +
+          '<span class="v">' + (aVerif == null ? '—' : aVerif) + '</span>' +
+          '<span class="s">' + (aVerif && attendu != null ? '≈ ' + esc(String(attendu * price)) + ' ' + esc(cur) + ' attendus' : 'vérification humaine') + '</span></a>';
+    }
   }
 
-  /* Activite recente : uniquement evenements reels (candidatures + comptes) */
+  /* ---------- Activité récente (événements réels uniquement) ---------- */
   const act = $('#activity');
   if (act) {
     const evts = [];
     if (CANDIDATES && Array.isArray(CANDIDATES.candidates)) {
-      for (const c of CANDIDATES.candidates) for (const e0 of (c.events || [])) evts.push({ ts: e0.ts, label: e0.label + ' — ' + (c.name || c.email || '—') });
+      for (const c of CANDIDATES.candidates) for (const e0 of (c.events || [])) evts.push({ ts: e0.ts, label: e0.label, who: c.name || c.email || '—' });
     }
     evts.sort((x, y) => String(y.ts).localeCompare(String(x.ts)));
-    if (!evts.length) act.innerHTML = '<li><span class="lbl" style="color:var(--muted)">Pas encore d\'activité enregistrée.</span></li>';
-    else act.innerHTML = evts.slice(0, 8).map(e0 =>
-      '<li>' +
-      '<span class="todo-ico-wrap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--teal-light)"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg></span>' +
-      '<span class="lbl">' + esc(e0.label) + '<small>' + esc(fmtDate(e0.ts)) + '</small></span></li>'
-    ).join('');
+    if (!evts.length) {
+      act.innerHTML = '<li><span class="lbl" style="color:var(--muted)">Aucun événement enregistré. Les candidatures reçues et les comptes créés apparaîtront ici.</span></li>';
+    } else {
+      act.innerHTML = evts.slice(0, 6).map(e0 =>
+        '<li><span class="lbl"><b style="font-weight:600;color:var(--text-bright)">' + esc(e0.label) + '</b>' +
+        '<small>' + esc(e0.who) + ' · ' + esc(fmtDate(e0.ts)) + '</small></span></li>'
+      ).join('');
+    }
   }
+
+  renderCohortChip(start);
+}
+
+/* Le chip du topbar disait « Cohorte 01 » en vert même quand aucune date de
+   cohorte n'était définie. Il dit maintenant ce que l'API renvoie. */
+function renderCohortChip(start) {
+  const el = $('#cohort-chip'); if (!el) return;
+  if (ROSTER === null) { el.className = 'chip neutral'; el.textContent = 'Cohorte —'; return; }
+  if (!start) { el.className = 'chip warn'; el.textContent = 'Cohorte 01 · à définir'; return; }
+  el.className = 'chip ok';
+  el.textContent = 'Cohorte 01 · ' + new Date(start).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
 }
 
 /* ---------- Inscriptions (vue de travail) ---------- */
 const PAY_LABEL = { non_verifie: 'Non vérifié', en_attente: 'En attente', paye: 'Payé', refuse: 'Refusé' };
 const ST_LABEL = { nouveau: 'Nouveau', verifie: 'Vérifié', admis: 'Admis', refuse: 'Refusé', annule: 'Annulé' };
-function payChipCls(st) { return st === 'paye' ? 'st-graded' : st === 'refuse' ? 'st-blocked' : st === 'en_attente' ? 'st-todo' : 'st-progress'; }
-function stChipCls(st) { return st === 'admis' ? 'st-graded' : (st === 'refuse' || st === 'annule') ? 'st-blocked' : st === 'verifie' ? 'st-progress' : 'st-todo'; }
+function payChipCls(st) { return st === 'paye' ? 'st-paye' : st === 'refuse' ? 'st-refuse' : st === 'en_attente' ? 'st-todo' : 'st-progress'; }
+function stChipCls(st) { return st === 'admis' ? 'st-admis' : (st === 'refuse' || st === 'annule') ? 'st-refuse' : st === 'verifie' ? 'st-verifie' : 'st-nouveau'; }
+/* Famille de filtrage : un candidat n'appartient qu'à UNE famille, celle de
+   son étape la plus avancée. C'est ce qui rend les compteurs lisibles. */
+function candFamily(c) {
+  if (c.status === 'refuse' || c.status === 'annule') return 'refuse';
+  if (c.status === 'admis') return 'admis';
+  if (c.payment && c.payment.state === 'paye') return 'paye';
+  if (c.status === 'verifie') return 'verifie';
+  return 'nouveau';
+}
+const CAND_FILTERS = [
+  ['tous', 'Tous'], ['nouveau', 'Nouveau'], ['verifie', 'Vérifié'],
+  ['paye', 'À admettre'], ['admis', 'Admis'], ['refuse', 'Refusé'],
+];
+let CandFilter = 'tous';
 
 async function loadCandidates() {
   const r = await api('/api/candidates');
@@ -848,90 +1323,157 @@ async function loadCandidates() {
   renderInscriptions(CANDIDATES, null);
   renderTodo(); renderHome(); renderLearners();
 }
+function renderCandFilters(cs) {
+  const host = $('#cand-filters'); if (!host) return;
+  const counts = { tous: cs.length, nouveau: 0, verifie: 0, paye: 0, admis: 0, refuse: 0 };
+  for (const c of cs) counts[candFamily(c)]++;
+  host.innerHTML = CAND_FILTERS.map(f => {
+    const n = counts[f[0]];
+    return '<button type="button" data-cf="' + f[0] + '" class="' + (CandFilter === f[0] ? 'on' : '') + '"' +
+      (f[0] === 'tous' ? '' : ' aria-label="' + esc(f[1]) + ' — ' + pl(n, 'candidat') + '"') + '>' +
+      esc(f[1]) + ' <span class="n">' + n + '</span></button>';
+  }).join('');
+}
 function renderInscriptions(data, err) {
   const box = $('#cand-list'); if (!box) return;
   const sync = $('#cand-sync');
   if (sync) sync.innerHTML = data && data.sync && !data.sync.ok ? '<div class="alert warn">' + esc(data.sync.note) + '</div>' : '';
-  if (err) { box.innerHTML = errBox('Candidatures indisponibles — ' + esc(err) + '. Aucune donnée inventée.'); return; }
+  if (err) {
+    box.innerHTML = emptyState(ICO_EMPTY.warn, 'Candidatures indisponibles', esc(err) + ' — aucune donnée n\'est inventée pour combler le vide.',
+      '<button type="button" class="secondary small" id="btn-cand-retry">Réessayer</button>');
+    const b = $('#btn-cand-retry'); if (b) b.addEventListener('click', loadCandidates);
+    return;
+  }
   const cs = (data.candidates || []);
   const k = $('#cand-counts');
   if (k && data.counts) {
+    const c = data.counts;
+    /* « Admis » à zéro avec une coche verte se lisait comme une bonne nouvelle :
+       un zéro n'est neutre que s'il est neutre. */
     k.innerHTML =
-      '<a class="stat"><span class="k"><span>Candidats</span><span class="stat-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span></span><span class="v">' + data.counts.total + '</span><span class="s">' + data.counts.nouveauxJour + ' reçu(s) aujourd\'hui</span></a>' +
-      '<a class="stat"><span class="k"><span>Paiements à vérifier</span><span class="stat-ico" style="color:var(--warn)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span></span><span class="v">' + data.counts.aVerifier + '</span><span class="s">état non vérifié ou en attente</span></a>' +
-      '<a class="stat"><span class="k"><span>Admis</span><span class="stat-ico" style="color:var(--teal)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span></span><span class="v">' + data.counts.admis + '</span><span class="s">comptes apprenants créés</span></a>' +
-      '<a class="stat"><span class="k"><span>À vérifier</span><span class="stat-ico" style="color:var(--blue)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="16" y2="12"/><line x1="12" x2="12.01" y1="8" y2="8"/></svg></span></span><span class="v">' + data.counts.nouveaux + '</span><span class="s">statut « nouveau »</span></a>';
+      '<a class="stat' + (c.nouveaux > 0 ? ' act' : '') + '" href="#inscriptions">' +
+        '<span class="k">Candidats</span><span class="v">' + c.total + '</span>' +
+        '<span class="s">' + pl(c.nouveauxJour, 'reçu aujourd\'hui', 'reçus aujourd\'hui') + '</span></a>' +
+      '<a class="stat' + (c.aVerifier > 0 ? ' act' : '') + '" href="#inscriptions">' +
+        '<span class="k">Paiements à vérifier</span><span class="v">' + c.aVerifier + '</span>' +
+        '<span class="s">état non vérifié ou en attente</span></a>' +
+      '<a class="stat' + (c.payeNonAdmis > 0 ? ' act' : '') + '" href="#inscriptions">' +
+        '<span class="k">Payés, non admis</span><span class="v">' + c.payeNonAdmis + '</span>' +
+        '<span class="s">' + (c.payeNonAdmis > 0 ? 'à admettre pour créer les comptes' : 'aucun en attente d\'admission') + '</span></a>' +
+      '<a class="stat' + (c.nouveaux > 0 ? ' act' : '') + '" href="#inscriptions">' +
+        '<span class="k">À vérifier</span><span class="v">' + c.nouveaux + '</span>' +
+        '<span class="s">statut « nouveau »</span></a>';
   }
-  if (!cs.length) { box.innerHTML = '<p class="empty">Aucune candidature reçue pour le moment. Dès qu\'une réponse arrive dans le Google Form, elle apparaît ici au rafraîchissement.</p>'; return; }
-  box.innerHTML = '<div class="tablewrap"><table><thead><tr><th>Candidat</th><th>Profil</th><th>Reçue</th><th>Paiement</th><th>Statut</th><th></th></tr></thead><tbody>' +
-    cs.map(c =>
-      '<tr data-id="' + esc(c.responseId) + '">' +
-      '<td data-label="Candidat"><b><a href="#apprenants/p/' + encodeURIComponent(c.responseId) + '" style="color:inherit;text-decoration:none;display:inline-flex;align-items:center;min-height:44px">' + esc(c.name) + ' <span style="font-size:12px;color:var(--muted)">↗</span></a></b><br><span style="color:var(--muted);font-size:12px">' + esc(c.email || '—') + (c.phone ? ' · ' + esc(c.phone) : '') + '</span></td>' +
-      '<td data-label="Profil"><span style="font-size:12px">' + esc(c.profile || '—') + (c.level ? ' · ' + esc(c.level) : '') + '</span>' + (c.goal ? '<details class="tech" style="margin:2px 0 0;border:0;background:none;padding:0"><summary style="min-height:44px;font-size:12px;color:var(--blue)">Objectif</summary><div style="font-size:12px;color:var(--muted);padding:2px 0 8px">' + esc(c.goal) + '</div></details>' : '') + '</td>' +
-      '<td data-label="Reçue" style="white-space:nowrap">' + esc(fmtDate(c.submittedAt || c.createdAt)) + '</td>' +
-      '<td data-label="Paiement"><span class="st ' + payChipCls(c.payment.state) + '">' + esc(PAY_LABEL[c.payment.state] || c.payment.state) + '</span>' + (c.payment.amount != null ? '<div style="font-size:12px;color:var(--muted);margin-top:3px">' + esc(String(c.payment.amount)) + (c.payment.confirmedAt ? ' · ' + esc(fmtDate(c.payment.confirmedAt)) : '') + '</div>' : '') + '</td>' +
-      '<td data-label="Statut"><span class="st ' + stChipCls(c.status) + '">' + esc(ST_LABEL[c.status] || c.status) + '</span>' + (c.learnerEmail ? '<div style="font-size:12px;color:var(--muted);margin-top:3px">compte apprenant ✓</div>' : '') + '</td>' +
-      '<td data-label="Actions"><div class="cand-actions" style="display:flex;flex-direction:column;gap:4px;align-items:flex-end">' +
-        (c.payment.state !== 'paye' && !['refuse','annule'].includes(c.status)
-          ? '<span style="display:flex;gap:4px;align-items:center"><input class="cand-amt" type="number" min="0" step="any" placeholder="Montant reçu" style="width:110px;min-height:44px;padding:6px 8px;border-radius:6px;border:1px solid var(--line);background:var(--bg);color:var(--text);font-size:12px;font-family:inherit" aria-label="Montant reçu"><button class="small secondary cand-pay" type="button">Marquer payé</button></span>'
-          : '') +
-        (c.payment.state === 'paye' && c.status !== 'admis'
-          ? '<button class="small cand-admit" type="button">Admettre → apprenant</button>' : '') +
-        (c.status === 'nouveau' ? '<button class="small ghost cand-verify" type="button">Marquer vérifié</button>' : '') +
-        (['refuse','annule'].includes(c.status) ? '<button class="small ghost cand-reopen" type="button">Réouvrir</button>' : '') +
-        (!['admis','refuse','annule'].includes(c.status) ? '<button class="small ghost cand-refuse" type="button" style="color:var(--danger)">Refuser</button>' : '') +
-      '</div></td></tr>'
-    ).join('') + '</tbody></table></div>';
+  renderCandFilters(cs);
+  if (!cs.length) {
+    box.innerHTML = emptyState(ICO_EMPTY.inbox, 'Aucune candidature reçue',
+      'Dès qu\'une réponse arrive dans le Google Form officiel, elle apparaît ici après un rafraîchissement. Le formulaire reste le point d\'entrée public.',
+      '<button type="button" class="secondary small" id="btn-cand-empty-refresh">Rafraîchir depuis le formulaire</button>' +
+      '<a class="btn ghost small" href="https://docs.google.com/forms/d/e/1FAIpQLSfGQL_eANGDh2AKWJpnKbvKHuXR9rKlGcKxwOJeVBma3vcleA/viewform" target="_blank" rel="noopener noreferrer">Voir le Google Form</a>');
+    const b = $('#btn-cand-empty-refresh'); if (b) b.addEventListener('click', loadCandidates);
+    return;
+  }
+  const q = (($('#cand-search') || {}).value || '').trim().toLowerCase();
+  let list = cs;
+  if (CandFilter !== 'tous') list = list.filter(c => candFamily(c) === CandFilter);
+  if (q) list = list.filter(c => ((c.name || '') + ' ' + (c.email || '') + ' ' + (c.phone || '')).toLowerCase().includes(q));
+  if (!list.length) {
+    box.innerHTML = emptyState(ICO_EMPTY.search, 'Aucun résultat',
+      'Aucune candidature ne correspond à « ' + esc(q || CAND_FILTERS.find(f => f[0] === CandFilter)[1]) + ' ».',
+      '<button type="button" class="secondary small" id="btn-cand-reset">Réinitialiser les filtres</button>');
+    const b = $('#btn-cand-reset');
+    if (b) b.addEventListener('click', () => { CandFilter = 'tous'; const s = $('#cand-search'); if (s) s.value = ''; renderInscriptions(CANDIDATES, null); });
+    return;
+  }
+  box.innerHTML = '<div class="tablewrap"><table>' +
+    '<thead><tr><th>Candidat</th><th class="hide-sm">Profil</th><th class="hide-sm">Reçue</th><th>Paiement</th><th>Statut</th><th class="num">Action</th></tr></thead><tbody>' +
+    list.map(c => {
+      const fam = candFamily(c);
+      const dead = fam === 'refuse';
+      const amt = c.payment && c.payment.amount != null ? String(c.payment.amount) : null;
+      /* UNE action primaire par ligne : celle qui fait avancer le dossier. */
+      let main = '';
+      if (fam === 'nouveau') main = '<button class="small secondary cand-verify" type="button">Marquer vérifié</button>';
+      else if (fam === 'verifie') main = '<span class="inline-amt"><input class="cand-amt" type="number" min="0" step="any" placeholder="Montant reçu" aria-label="Montant reçu pour ' + esc(c.name) + '"><button class="small cand-pay" type="button">Marquer payé</button></span>';
+      else if (fam === 'paye') main = '<button class="small cand-admit" type="button">Admettre → apprenant</button>';
+      else if (fam === 'admis') main = '<span class="st st-admis">Compte créé</span>';
+      else main = '<button class="small ghost cand-reopen" type="button">Réouvrir</button>';
+      const menu = [];
+      menu.push('<a href="#apprenants/p/' + encodeURIComponent(c.responseId) + '" role="menuitem">Ouvrir la fiche 360°</a>');
+      if (!dead && fam !== 'admis') menu.push('<button type="button" class="cand-refuse danger" role="menuitem">Refuser la candidature</button>');
+      if (c.learnerEmail) menu.push('<a href="#apprenants/p/' + encodeURIComponent(c.learnerEmail) + '" role="menuitem">Ouvrir la fiche apprenant</a>');
+      return '<tr data-id="' + esc(c.responseId) + '">' +
+        '<td data-label="Candidat"><a class="cell-id" href="#apprenants/p/' + encodeURIComponent(c.responseId) + '"><span class="avatar" aria-hidden="true">' + esc(initials(c.name, c.email)) + '</span>' +
+          '<span class="nm2"><b>' + esc(c.name) + '</b>' +
+          '<small>' + esc(c.email || '—') + (c.phone ? ' · ' + esc(c.phone) : '') + '</small></span></a></td>' +
+        '<td class="hide-sm" data-label="Profil"><span style="font-size:13px">' + esc(c.profile || '—') + (c.level ? ' · ' + esc(c.level) : '') + '</span></td>' +
+        '<td class="hide-sm" data-label="Reçue" style="white-space:nowrap;font-size:13px">' + esc(fmtDate(c.submittedAt || c.createdAt)) + '</td>' +
+        '<td data-label="Paiement"><span class="st ' + payChipCls(c.payment.state) + '">' + esc(PAY_LABEL[c.payment.state] || c.payment.state) + '</span>' +
+          (amt ? '<div style="font-size:12px;color:var(--muted);margin-top:5px;font-variant-numeric:tabular-nums">' + esc(amt) + (c.payment.confirmedAt ? ' · ' + esc(fmtDate(c.payment.confirmedAt)) : '') + '</div>' : '') + '</td>' +
+        '<td data-label="Statut"><span class="st ' + stChipCls(c.status) + '">' + esc(ST_LABEL[c.status] || c.status) + '</span></td>' +
+        '<td data-label="Action"><div class="rowact">' + main +
+          '<details class="rowmenu"><summary aria-label="Autres actions pour ' + esc(c.name) + '">' +
+          '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/></svg>' +
+          '</summary><div class="menu" role="menu">' + menu.join('') + '</div></details>' +
+        '</div></td></tr>';
+    }).join('') + '</tbody></table></div>' +
+    '<p class="note" style="padding:0 14px 12px;margin:0">' + pl(list.length, 'candidature affichée', 'candidatures affichées') + ' sur ' + cs.length + '.</p>';
 }
-/* actions Inscriptions — une seule source de verite (candidat.id) */
+/* actions Inscriptions — une seule source de verite (candidat.responseId) */
 async function candPatch(id, body, okMsg) {
   const r = await api('/api/candidates/' + encodeURIComponent(id), { method: 'PATCH', body: JSON.stringify(body) });
-  const out = $('#cand-out') || $('#cand-list');
-  if (!r.ok) { alert0(out, 'Opération refusée (HTTP ' + r.status + ') — ' + ((r.data && r.data.error) || 'erreur'), true); return false; }
+  if (!r.ok) {
+    toast('Opération refusée (HTTP ' + r.status + ') — ' + esc((r.data && r.data.error) || 'erreur'), 'err', 'Échec');
+    return false;
+  }
   await loadCandidates();
-  if (r.data && r.data.candidate) { const t = $('#todo'); }
+  if (okMsg) toast(esc(okMsg), 'ok', 'Candidature mise à jour');
   return true;
 }
-function alert0(host, msg, isErr) {
-  if (!host) return;
-  const d = document.createElement('div');
-  d.className = 'alert ' + (isErr ? 'err' : 'info'); d.textContent = msg;
-  host.prepend(d); setTimeout(() => d.remove(), 6000);
-}
-$('#cand-list') === null; // noop guard (elements rendus dynamiquement)
+/* Conservé pour le reste de la feuille : délègue au toast. */
+function alert0(host, msg, isErr) { toast(esc(msg), isErr ? 'err' : 'ok'); }
 document.addEventListener('click', async e => {
+  const fc = e.target.closest('#cand-filters button[data-cf]');
+  if (fc) { CandFilter = fc.dataset.cf; renderInscriptions(CANDIDATES, null); return; }
   const btn = e.target.closest('.cand-pay,.cand-admit,.cand-verify,.cand-refuse,.cand-reopen');
   if (!btn) return;
   const tr = btn.closest('tr[data-id]'); if (!tr) return;
   const id = tr.dataset.id;
+  const menu = btn.closest('details.rowmenu'); if (menu) menu.open = false;
   btn.disabled = true;
   try {
     if (btn.classList.contains('cand-pay')) {
       const amt = (tr.querySelector('.cand-amt') || {}).value;
-      if (!amt) { alert0($('#cand-list'), 'Indiquez le montant réellement reçu avant de marquer PAYÉ.', true); return; }
-      await candPatch(id, { paymentState: 'paye', amount: Number(amt) }, '');
+      if (!amt) { toast('Indiquez le montant réellement reçu avant de marquer le paiement vérifié.', 'warn', 'Montant manquant'); return; }
+      await candPatch(id, { paymentState: 'paye', amount: Number(amt) }, 'Paiement marqué vérifié.');
     } else if (btn.classList.contains('cand-verify')) {
-      await candPatch(id, { status: 'verifie' }, '');
+      await candPatch(id, { status: 'verifie' }, 'Candidature marquée vérifiée.');
     } else if (btn.classList.contains('cand-refuse')) {
-      const why = prompt('Motif du refus (optionnel) :');
-      await candPatch(id, { status: 'refuse', note: why || '' }, '');
+      const why = window.prompt('Motif du refus (optionnel) :');
+      if (why === null) return;
+      await candPatch(id, { status: 'refuse', note: why || '' }, 'Candidature refusée.');
     } else if (btn.classList.contains('cand-reopen')) {
-      await candPatch(id, { status: 'nouveau' }, '');
+      await candPatch(id, { status: 'nouveau' }, 'Candidature réouverte.');
     } else if (btn.classList.contains('cand-admit')) {
       const r = await api('/api/candidates/' + encodeURIComponent(id) + '/admit', { method: 'POST' });
-      if (!r.ok) { alert0($('#cand-list'), 'Admission refusée (HTTP ' + r.status + ') — ' + ((r.data && r.data.error) || 'erreur'), true); return; }
+      if (!r.ok) { toast('Admission refusée (HTTP ' + r.status + ') — ' + esc((r.data && r.data.error) || 'erreur'), 'err', 'Échec'); return; }
       await loadCandidates(); await loadRoster();
       const acc = r.data && r.data.account;
       if (acc && acc.initialPassword) {
-        const box = $('#cand-list');
-        const d = document.createElement('div'); d.className = 'alert warn';
-        d.innerHTML = '<b>Compte apprenant créé pour ' + esc(acc.email) + '</b> — mot de passe initial (affiché une seule fois, à transmettre en main propre) : <code>' + esc(acc.initialPassword) + '</code>';
-        box.prepend(d);
-      } else alert0($('#cand-list'), 'Candidat admis — apprenant dans la liste. Invitation Classroom : onglet Apprenants.', false);
+        toast('Compte apprenant créé pour <b>' + esc(acc.email) + '</b>. Mot de passe initial, affiché une seule fois, à transmettre en main propre : <code>' + esc(acc.initialPassword) + '</code>', 'warn', 'Compte créé');
+      } else toast('Candidat admis — le compte apparaît dans Apprenants. Invitation Classroom depuis l\'onglet Apprenants.', 'ok', 'Candidat admis');
     }
   } finally { btn.disabled = false; }
 });
-const _btncr = $('#btn-cand-refresh'); if (_btncr) _btncr.addEventListener('click', () => loadCandidates());
+document.addEventListener('input', e => {
+  if (e.target && e.target.id === 'cand-search') renderInscriptions(CANDIDATES, null);
+  if (e.target && e.target.id === 'mod-search') applyModFilter();
+});
+/* Fermer les menus de ligne au clic extérieur / à Échap. */
+document.addEventListener('click', e => {
+  document.querySelectorAll('details.rowmenu[open]').forEach(d => { if (!d.contains(e.target)) d.open = false; });
+});
+const _btncr = $('#btn-cand-refresh'); if (_btncr) _btncr.addEventListener('click', loadCandidates);
 
 async function loadBilling() {
   const r = await api('/api/settings/billing');
@@ -943,13 +1485,16 @@ function renderBillingConfig() {
   if (host) return;
   host = document.createElement('section');
   host.className = 'card'; host.id = 'billing-config';
-  host.innerHTML = '<details class="tool"><summary>Tarif de la formation (configuration)</summary>' +
+  host.innerHTML = '<details class="tool" style="margin-top:0;border:0;background:none;padding:0">' +
+    '<summary>Tarif de la formation <span class="chip neutral" style="margin-left:8px">configuration</span></summary>' +
     '<label for="bill-price">Montant attendu par apprenant — <b>aucune valeur par défaut</b></label>' +
     '<input id="bill-price" type="number" min="0" step="any" style="max-width:220px" placeholder="ex. 250000">' +
     '<label for="bill-cur">Devise</label><input id="bill-cur" maxlength="8" style="max-width:120px" placeholder="ex. USD / CDF / EUR">' +
     '<div class="btnrow"><button type="button" id="btn-bill-save" class="secondary small">Enregistrer le tarif</button></div>' +
     '<div id="bill-out"></div></details>';
-  const anchor = $('#cand-list');
+  /* La configuration se plaçait AVANT la note explicative, ce qui coupait la
+     lecture du tableau. Elle passe après la note, en fin de section. */
+  const anchor = $('#cand-note') || $('#cand-list');
   anchor.parentNode.insertBefore(host, anchor.nextSibling);
   $('#btn-bill-save').addEventListener('click', async () => {
     const price = $('#bill-price').value, cur = $('#bill-cur').value.trim();
@@ -957,6 +1502,7 @@ function renderBillingConfig() {
     const out = $('#bill-out');
     if (!r.ok) { out.innerHTML = errBox('Enregistrement refusé — ' + ((r.data && r.data.error) || 'HTTP ' + r.status)); return; }
     out.innerHTML = '<div class="alert info">Tarif enregistré pour cette installation (interne — jamais public).</div>';
+    toast('Le tarif de la formation est enregistré. Les montants encaissés et attendus sont recalculés.', 'ok', 'Tarif enregistré');
     loadBilling();
   });
 }
@@ -984,36 +1530,81 @@ function normPhone(p) {
   const d = String(p || '').replace(/[^\d+]/g, '');
   return d.length >= 8 && d.length <= 15 ? d.replace(/^\+/, '') : null;
 }
+/* Statut du DOSSIER, sans la composante Classroom : celle-ci a sa propre
+   colonne. Sans ça, un apprenant présent dans la classe affichait « Présent »
+   ET « ACTIF » — la même information deux fois. */
+function dossierStatus(cand, learner) {
+  if (cand) {
+    if (cand.status === 'refuse') return { k: 'Refusé', cls: 'st-refuse' };
+    if (cand.status === 'annule') return { k: 'Annulé', cls: 'st-refuse' };
+    if (cand.status === 'admis') return { k: 'Admis', cls: 'st-admis' };
+    if (cand.payment && cand.payment.state === 'paye') return { k: 'Payé', cls: 'st-paye' };
+    if (cand.payment && cand.payment.state === 'en_attente') return { k: 'Paiement en attente', cls: 'st-todo' };
+    if (cand.status === 'verifie') return { k: 'Vérifié', cls: 'st-verifie' };
+    return { k: 'Nouveau', cls: 'st-nouveau' };
+  }
+  if (learner) return { k: 'Importé', cls: 'st-progress' };
+  return { k: '—', cls: 'st-progress' };
+}
 function renderLearners() {
   const host = $('#learners-table'); if (!host) return;
   const learners = ROSTER && Array.isArray(ROSTER.learners) ? ROSTER.learners : null;
-  if (!learners) { host.innerHTML = '<p class="empty">Chargement…</p>'; return; }
+  if (!learners) { host.innerHTML = '<div class="tablewrap">' + skRows(3, 4) + '</div>'; return; }
   const q = (($('#learner-search') || {}).value || '').trim().toLowerCase();
   let list = learners.map(l => {
     const cand = findCandByEmail(l.email);
-    const st = globalStatus(cand, l);
-    return { ...l, cand, st, phone: cand && cand.phone ? cand.phone : '' };
+    return { ...l, cand, st: dossierStatus(cand, l), phone: cand && cand.phone ? cand.phone : '' };
+  });
+  /* Compteurs des filtres : calculés sur la liste COMPLÈTE, pas sur le
+     résultat filtré — sinon les nombres changent quand on filtre. */
+  const nAll = list.length, nActif = list.filter(l => l.joinedClassroom).length, nInviter = nAll - nActif;
+  document.querySelectorAll('#learner-filters .n').forEach(el => {
+    el.textContent = el.dataset.n === 'tous' ? nAll : el.dataset.n === 'actif' ? nActif : nInviter;
   });
   if (LearnerFilter === 'actif') list = list.filter(l => l.joinedClassroom);
   if (LearnerFilter === 'inviter') list = list.filter(l => !l.joinedClassroom);
   if (q) list = list.filter(l => ((l.name || '') + ' ' + (l.email || '') + ' ' + (l.phone || '')).toLowerCase().includes(q));
-  $('#learners-count').textContent = learners.length + (learners.length > 1 ? ' apprenants' : ' apprenant');
-  if (!list.length) { host.innerHTML = '<p class="empty">' + (learners.length ? 'Aucun apprenant ne correspond.' : 'Aucun apprenant — les admissions depuis Inscriptions créent les comptes ici.') + '</p>'; return; }
-  host.innerHTML = list.map(l =>
-    '<a class="lrow" href="#apprenants/p/' + encodeURIComponent(l.email) + '">' +
-    '<span class="who2"><b>' + esc(l.name) + '</b><small>' + esc(l.email) + (l.phone ? ' · ' + esc(l.phone) : '') + '</small></span>' +
-    '<span class="w">' + (l.cand ? esc(l.cand.profile || '—') : (l.via === 'candidature' ? 'Admis' : 'Import')) + '</span>' +
-    '<span class="st ' + l.st.cls + '">' + esc(l.st.k) + '</span>' +
-    '<span class="arw" style="display:flex;align-items:center;color:var(--muted)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span></a>'
-  ).join('');
-}
-$('#learners-list') || null;
-document.addEventListener('click', e => {
-  const fc = e.target.closest('.fchip'); if (fc) {
-    LearnerFilter = fc.dataset.f;
-    document.querySelectorAll('.fchip').forEach(x => x.classList.toggle('on', x === fc));
-    renderLearners(); return;
+  const cnt = $('#learners-count');
+  if (cnt) cnt.textContent = pl(nAll, 'apprenant');
+  if (!learners.length) {
+    host.innerHTML = emptyState(ICO_EMPTY.users, 'Aucun apprenant',
+      'Les admissions depuis Inscriptions créent les comptes automatiquement, ou importez une liste depuis les outils ci-dessous.',
+      '<a class="btn small" href="#inscriptions">Traiter les candidatures</a>');
+    return;
   }
+  if (!list.length) {
+    host.innerHTML = emptyState(ICO_EMPTY.search, 'Aucun résultat',
+      'Aucun apprenant ne correspond à « ' + esc(q || (LearnerFilter === 'actif' ? 'Dans Classroom' : 'À inviter')) + ' ».',
+      '<button type="button" class="secondary small" id="btn-learners-reset">Réinitialiser</button>');
+    const b = $('#btn-learners-reset');
+    if (b) b.addEventListener('click', () => { LearnerFilter = 'tous'; const s = $('#learner-search'); if (s) s.value = ''; document.querySelectorAll('#learner-filters button').forEach(x => x.classList.toggle('on', x.dataset.f === 'tous')); renderLearners(); });
+    return;
+  }
+  host.innerHTML = '<div class="tablewrap"><table>' +
+    '<thead><tr><th>Apprenant</th><th class="hide-sm">Profil / origine</th><th>Classroom</th><th>Progression</th><th>Statut</th><th></th></tr></thead><tbody>' +
+    list.map(l => {
+      const href = '#apprenants/p/' + encodeURIComponent(l.email);
+      /* Une colonne « Profil » vide à 100 % (comptes importés) est un défaut de
+         composition : on retombe sur l'origine, toujours connue. */
+      const prof = (l.cand && l.cand.profile) ? l.cand.profile : (l.via === 'candidature' ? 'Admis (candidature)' : 'Import liste');
+      return '<tr>' +
+        '<td data-label="Apprenant"><a class="cell-id" href="' + href + '"><span class="avatar" aria-hidden="true">' + esc(initials(l.name, l.email)) + '</span>' +
+          '<span class="nm2"><b>' + esc(l.name) + '</b>' +
+          '<small>' + esc(l.email) + (l.phone ? ' · ' + esc(l.phone) : '') + '</small></span></a></td>' +
+        '<td class="hide-sm" data-label="Profil / origine" style="font-size:13px">' + esc(prof) + '</td>' +
+        '<td data-label="Classroom"><span class="st ' + (l.joinedClassroom ? 'st-actif' : 'st-todo') + '">' + (l.joinedClassroom ? 'Présent' : 'À inviter') + '</span></td>' +
+        '<td data-label="Progression" style="font-size:13px;font-variant-numeric:tabular-nums">' + esc(progressSummaryShort(l.email)) + '</td>' +
+        '<td data-label="Statut"><span class="st ' + l.st.cls + '">' + esc(l.st.k) + '</span></td>' +
+        '<td class="td-act"><div class="rowact"><a class="btn ghost small" href="' + href + '" aria-label="Ouvrir la fiche de ' + esc(l.name) + '">' +
+        '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a></div></td></tr>';
+    }).join('') + '</tbody></table></div>' +
+    '<p class="note" style="padding:0 14px 12px;margin:0">' + pl(list.length, 'ligne affichée', 'lignes affichées') + ' sur ' + nAll + '. La progression provient des devoirs Classroom publiés — un apprenant sans rendu reste à 0.</p>';
+}
+document.addEventListener('click', e => {
+  const fc = e.target.closest('#learner-filters button'); if (!fc) return;
+  LearnerFilter = fc.dataset.f;
+  document.querySelectorAll('#learner-filters button').forEach(x => x.classList.toggle('on', x === fc));
+  renderLearners();
 });
 document.addEventListener('input', e => { if (e.target && e.target.id === 'learner-search') renderLearners(); });
 
@@ -1030,13 +1621,21 @@ function personProgress(email) {
   for (const m of row.missions || []) for (const n of (m.modules || [])) if (!mods.includes(n)) mods.push(n);
   const doneMods = (row.missions || []).filter(m => m.state === 'graded').flatMap(m => m.modules || []);
   const uniq = [...new Set(doneMods)].length;
-  let html = '<div style="font-size:12px;color:var(--muted)">' + uniq + ' / 18 modules validés' + (row.total ? ' · ' + (row.missions || []).length + ' devoir(s) publié(s)' : '') + '</div>';
-  html += '<div class="pbar"><i style="width:' + Math.round(uniq / 18 * 100) + '%"></i></div>';
-  if (row.empty || !(row.missions || []).length) html += '<p class="empty" style="margin-top:8px">Aucun devoir publié pour le moment.</p>';
+  const pct = Math.round(uniq / 18 * 100);
+  let html = '<div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap">' +
+    '<span style="font-size:14px;font-weight:600;color:var(--text-bright)">' + uniq + ' / 18 modules validés</span>' +
+    '<span style="font-size:12px;color:var(--muted)">' + pct + ' % · ' + pl((row.missions || []).length, 'devoir publié', 'devoirs publiés') + '</span></div>';
+  html += '<div class="pbar"><i style="width:' + pct + '%"></i></div>';
+  if (row.empty || !(row.missions || []).length) html += '<p class="empty" style="margin-top:8px">Aucun devoir publié dans la classe pour le moment — la progression ne peut pas être calculée.</p>';
+  /* Le TITRE d'abord, l'état ensuite : on lit ce qui a été fait avant de lire
+     où ça en est. Avant, la pastille d'état ouvrait la ligne. */
   else html += (row.missions || []).map(m => {
-    const label = m.state === 'graded' ? 'Validé' + (m.grade != null ? ' · note ' + esc(String(m.grade)) + (m.maxPoints ? '/' + esc(String(m.maxPoints)) : '') : '') : m.state === 'returned' ? 'Corrigé (sans note)' : m.state === 'submitted' ? 'Déposé — en attente de correction' : m.state === 'draft' ? 'Brouillon' : 'À venir';
+    const label = m.state === 'graded' ? 'Validé' + (m.grade != null ? ' · ' + esc(String(m.grade)) + (m.maxPoints ? '/' + esc(String(m.maxPoints)) : '') : '') : m.state === 'returned' ? 'Corrigé, sans note' : m.state === 'submitted' ? 'Déposé — en correction' : m.state === 'draft' ? 'Brouillon' : 'À venir';
     const cls = m.state === 'graded' ? 'st-graded' : m.state === 'returned' ? 'st-returned' : m.state === 'submitted' ? 'st-submitted' : 'st-progress';
-    return '<div class="mstat"><span class="mm">M' + pad2(((m.modules || [])[0]) || 0) + '</span><span class="st ' + cls + '">' + esc(label) + '</span><span class="mw">' + esc(m.title) + '</span></div>';
+    return '<div class="mstat"><span class="mm">M' + pad2(((m.modules || [])[0]) || 0) + '</span>' +
+      '<span class="mw">' + esc(m.title) + '</span>' +
+      '<span class="mmeta">' + esc(fmtDate(m.due)) + '</span>' +
+      '<span class="st ' + cls + '">' + esc(label) + '</span></div>';
   }).join('');
   const last = [...(row.missions || [])].reverse().find(m => m.returnedAt);
   if (last) html += '<p class="note">Dernier travail corrigé : ' + esc(last.title) + ' · ' + esc(fmtDate(last.returnedAt)) + '</p>';
@@ -1047,21 +1646,26 @@ const ICO = {
   phone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>',
   wa: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>',
 };
-/* etape(cls, titre, valeur) -> cls: done|todo|wait|blocked|na (na = non applicable) */
+/* etape(cls, titre, valeur, na) -> cls: done|cur|todo|blocked ; na = non applicable */
 function personSituation(cand, learner) {
   const payState = cand ? cand.payment.state : 'non_verifie';
   const dead = cand && ['refuse', 'annule'].includes(cand.status);
+  const imported = !cand && !!learner;
   return [
-    { k: 'Candidature', v: cand ? (ST_LABEL[cand.status] || cand.status) : '—', cls: cand ? (cand.status === 'nouveau' ? 'st-todo' : cand.status === 'verifie' ? 'st-progress' : cand.status === 'admis' ? 'st-graded' : 'st-blocked') : 'st-na' },
-    { k: 'Paiement', v: cand ? (PAY_LABEL[payState] || payState) : (learner ? 'non suivi' : '—'), cls: dead ? 'st-blocked' : payState === 'paye' && cand ? 'st-graded' : payState === 'refuse' ? 'st-blocked' : learner ? 'st-na' : payState === 'en_attente' ? 'st-todo' : 'st-progress' },
-    { k: 'Admission', v: cand ? (cand.status === 'admis' ? 'Admis' : dead ? 'Refusé' : 'En cours') : (learner ? 'import' : '—'), cls: cand && cand.status === 'admis' ? 'st-graded' : dead ? 'st-blocked' : 'st-progress' },
-    { k: 'Compte Hoja', v: learner ? 'Créé' : 'Non créé', cls: learner ? 'st-graded' : 'st-progress' },
-    { k: 'Classroom', v: learner ? (learner.joinedClassroom ? 'Dans la classe' : 'À inviter') : '—', cls: learner ? (learner.joinedClassroom ? 'st-graded' : 'st-todo') : 'st-na' },
-    { k: 'Progression', v: learner ? progressSummaryShort(learner.email) : '—', cls: learner ? 'st-progress' : 'st-na' },
+    { k: 'Candidature', v: cand ? (ST_LABEL[cand.status] || cand.status) : 'aucune', na: imported,
+      cls: cand ? (cand.status === 'admis' ? 'done' : dead ? 'blocked' : 'cur') : '' },
+    { k: 'Paiement', v: cand ? (PAY_LABEL[payState] || payState) : 'non suivi', na: imported,
+      cls: dead ? 'blocked' : (cand && payState === 'paye') ? 'done' : (cand && payState === 'refuse') ? 'blocked' : '' },
+    { k: 'Admission', v: cand ? (cand.status === 'admis' ? 'admise' : dead ? 'refusée' : 'en cours') : (learner ? 'import' : '—'), na: false,
+      cls: (cand && cand.status === 'admis') || imported ? 'done' : dead ? 'blocked' : '' },
+    { k: 'Compte Hoja', v: learner ? 'créé' : 'non créé', na: false, cls: learner ? 'done' : '' },
+    { k: 'Classroom', v: learner ? (learner.joinedClassroom ? 'dans la classe' : 'à inviter') : '—', na: !learner,
+      cls: learner ? (learner.joinedClassroom ? 'done' : '') : '' },
+    { k: 'Progression', v: learner ? progressSummaryShort(learner.email) : '—', na: !learner, cls: '' },
   ];
 }
 function progressSummaryShort(email) {
-  if (PROGRESS == null) return 'chargement…';
+  if (PROGRESS == null) return '—';
   const row = PROGRESS.find(x => x.email === String(email).toLowerCase());
   if (!row) return '—';
   const done = [...new Set((row.missions || []).filter(m => m.state === 'graded').flatMap(m => m.modules || []))].length;
@@ -1114,27 +1718,38 @@ async function openPerson(id) {
   if (inv && inv.state) events.push({ ts: null, label: 'Invitation Classroom : ' + (/ACCEPTED/i.test(inv.state) ? 'acceptée' : 'envoyée, en attente') });
   events.sort((a, b) => String(b.ts || '').localeCompare(String(a.ts || '')));
   const sit = personSituation(cand, learner);
-  view.innerHTML =
-    '<a class="back" href="' + back + '"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg><span>' + backTxt + '</span></a>' +
-    '<div class="phead">' +
-      '<div><div class="nm"><h2>' + esc((cand && cand.name) || (learner && learner.name) || email) + '</h2><span class="st ' + st.cls + '">' + esc(st.k) + '</span></div>' +
-      '<p class="meta">' + [cand && cand.profile, cand && cand.level].filter(Boolean).map(esc).join(' · ') +
-        (cand ? ' · inscrit le ' + esc(fmtDate(cand.submittedAt || cand.createdAt)) : (learner && learner.createdAt ? ' · compte créé le ' + esc(fmtDate(learner.createdAt)) : '')) + '</p></div>' +
-      '<div class="contactrow">' + contact + '</div>' +
-    '</div>' +
-    '<div class="pcta"><span class="why">' + esc(na.txt) + (na.why ? '<small>' + esc(na.why) + '</small>' : '') + '</span><span>' + na.btn + '</span></div>' +
-    '<div class="pstrip" aria-label="Étapes du dossier">' + sit.map((x, xi) =>
-      '<div class="ps ' + x.cls + (xi === (na.step != null ? na.step : -1) ? ' cur' : '') + '"><span class="k">' + esc(x.k) + '</span><span class="st ' + (x.cls === 'st-na' ? 'st-progress' : x.cls) + '"' + (x.cls === 'st-na' ? ' style="opacity:.55"' : '') + '>' + esc(x.cls === 'st-na' ? 'n/a' : x.v) + '</span></div>'
-    ).join('') + '</div>' +
-    '<div class="pgrid">' +
-      '<div class="psec"><h2>Inscription</h2>' +
-        '<div class="kv"><span class="k">E-mail</span><span class="v">' + esc((cand && cand.email) || email || '—') + '</span></div>' +
-        '<div class="kv"><span class="k">Téléphone</span><span class="v">' + esc((cand && cand.phone) || '—') + '</span></div>' +
-        '<div class="kv"><span class="k">Profil · niveau</span><span class="v">' + esc(((cand && cand.profile) || '—') + ' · ' + ((cand && cand.level) || '—')) + '</span></div>' +
-        '<div class="kv"><span class="k">Objectif</span><span class="v" style="font-weight:400">' + esc((cand && cand.goal) || '—') + '</span></div>' +
+  /* Carte « Inscription » : pour un compte importé il n'y a aucune donnée de
+     candidature — 4 lignes de tirets cadratins se lisaient comme un bug. */
+  const hasCandData = !!(cand && (cand.email || cand.phone || cand.profile || cand.level || cand.goal || cand.note || (cand.extra && cand.extra.length)));
+  const inscCard = hasCandData
+    ? '<div class="psec"><h2>Inscription</h2>' +
+        ((cand && cand.email) ? '<div class="kv"><span class="k">E-mail</span><span class="v">' + esc(cand.email) + '</span></div>' : '') +
+        ((cand && cand.phone) ? '<div class="kv"><span class="k">Téléphone</span><span class="v">' + esc(cand.phone) + '</span></div>' : '') +
+        ((cand && (cand.profile || cand.level)) ? '<div class="kv"><span class="k">Profil · niveau</span><span class="v">' + esc((cand.profile || '—') + ' · ' + (cand.level || '—')) + '</span></div>' : '') +
+        ((cand && cand.goal) ? '<div class="kv"><span class="k">Objectif</span><span class="v" style="font-weight:400">' + esc(cand.goal) + '</span></div>' : '') +
         ((cand && cand.note) ? '<div class="kv"><span class="k">Note interne</span><span class="v" style="font-weight:400">' + esc(cand.note) + '</span></div>' : '') +
         ((cand && cand.extra && cand.extra.length) ? '<div class="kv"><span class="k">Réponses supplémentaires</span><span class="v" style="font-weight:400">' + cand.extra.map(x0 => esc(x0.value)).join('<br>') + '</span></div>' : '') +
+      '</div>'
+    : '<div class="psec"><h2>Inscription</h2><p class="empty" style="padding:4px 0">Aucune donnée de candidature — ce compte a été créé par import de liste, sans passer par le Google Form.</p></div>';
+  view.innerHTML =
+    '<a class="back" href="' + back + '"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg><span>' + backTxt + '</span></a>' +
+    '<div class="phead">' +
+      '<div class="idbox">' +
+        '<span class="avatar lg" aria-hidden="true">' + esc(initials((cand && cand.name) || (learner && learner.name), email)) + '</span>' +
+        '<div style="min-width:0"><div class="nm"><h1>' + esc((cand && cand.name) || (learner && learner.name) || email) + '</h1><span class="st ' + st.cls + '">' + esc(st.k) + '</span></div>' +
+        '<p class="meta">' + [cand && cand.profile, cand && cand.level].filter(Boolean).map(esc).join(' · ') +
+          (cand ? (cand.profile || cand.level ? ' · ' : '') + 'inscrit le ' + esc(fmtDate(cand.submittedAt || cand.createdAt)) : (learner && learner.createdAt ? 'compte créé le ' + esc(fmtDate(learner.createdAt)) : '')) + '</p></div>' +
       '</div>' +
+      '<div class="contactrow">' + contact + '</div>' +
+    '</div>' +
+    '<div class="pcta"><span class="why"><b>' + esc(na.txt) + '</b>' + (na.why ? '<small>' + esc(na.why) + '</small>' : '') + '</span><span>' + na.btn + '</span></div>' +
+    '<div class="pstrip" aria-label="Étapes du dossier">' + sit.map((x, xi) =>
+      '<div class="ps ' + (x.na ? 'na ' : '') + x.cls + (xi === (na.step != null ? na.step : -1) ? ' cur' : '') + '">' +
+      '<span class="k">' + esc(x.k) + '</span>' +
+      '<span class="st ' + (x.na ? 'st-na' : (x.cls === 'done' ? 'st-graded' : x.cls === 'blocked' ? 'st-blocked' : 'st-progress')) + '">' + esc(x.v) + '</span></div>'
+    ).join('') + '</div>' +
+    '<div class="pgrid">' +
+      inscCard +
       (cand ?
       '<div class="psec"><h2>Admission &amp; compte Hoja</h2>' +
         '<div class="kv"><span class="k">Candidature</span><span class="v">' + esc(ST_LABEL[cand.status] || cand.status) + '</span></div>' +
@@ -1150,7 +1765,7 @@ async function openPerson(id) {
       '</div>' : '')) +
       '<div class="psec"><h2>Facturation</h2>' +
         '<div class="kv"><span class="k">Tarif formation</span><span class="v">' + (price != null ? esc(String(price)) + esc(cur) : '<span class="v mut">non configuré</span>') + '</span></div>' +
-        '<div class="kv"><span class="k">Paiement</span><span class="v">' + (cand ? '<span class="st ' + payChipCls(cand.payment.state) + '">' + esc(PAY_LABEL[cand.payment.state] || cand.payment.state) + '</span>' : '<span class="v mut">non suivi (import sans candidature)</span>') + '</span></div>' +
+        '<div class="kv"><span class="k">Paiement</span><span class="v">' + (cand ? '<span class="st ' + payChipCls(cand.payment.state) + '">' + esc(PAY_LABEL[cand.payment.state] || cand.payment.state) + '</span>' : '<span class="v mut">non suivi — compte importé</span>') + '</span></div>' +
         (cand && cand.payment.state === 'paye' ? '<div class="kv"><span class="k">Montant reçu</span><span class="v">' + (paid != null ? esc(String(paid)) + esc(cur) : '—') + '</span></div>' +
           '<div class="kv"><span class="k">Confirmé par / le</span><span class="v">' + esc((cand.payment.confirmedBy || '—') + ' · ' + fmtDate(cand.payment.confirmedAt)) + '</span></div>' :
           (cand ? '<div class="kv"><span class="k">Montant attendu</span><span class="v">' + (price != null ? esc(String(price)) + esc(cur) : '<span class="v mut">tarif non configuré</span>') + '</span></div>' : '')) +
@@ -1161,7 +1776,7 @@ async function openPerson(id) {
       '</div>' +
       (learner ? '<div class="psec" style="grid-column:1/-1"><h2>Formation &amp; progression</h2><div id="p-prog">' + personProgress(email) + '</div></div>' : '') +
       '<div class="psec" style="grid-column:1/-1"><h2>Historique</h2>' +
-        (events.length ? events.map(e0 => '<div class="evt"><time>' + esc(e0.ts ? fmtDate(e0.ts) : '—') + '</time><span>' + esc(e0.label) + '</span></div>').join('') : '<p class="empty">Pas encore d\'activité enregistrée.</p>') + '</div>' +
+        (events.length ? events.map(e0 => '<div class="evt"><time>' + esc(e0.ts ? fmtDate(e0.ts) : '—') + '</time><span class="lbl2">' + esc(e0.label) + '</span></div>').join('') : '<p class="empty" style="padding:4px 0">Aucun événement enregistré pour cette personne.</p>') + '</div>' +
     '</div>';
   if (learner && PROGRESS == null) loadProgress().then(() => { const el = $('#p-prog'); if (el) el.innerHTML = personProgress(email); });
   if (learner && INVITATIONS == null && CLASSROOM && CLASSROOM.connected) loadInvitations().then(() => { if (parseHash().person) openPerson(parseHash().person); });
@@ -1222,50 +1837,65 @@ document.addEventListener('click', async e => {
 });
 
 
-/* ---------- A faire (dérivé 100% API) ---------- */
+/* ---------- À traiter (dérivé 100% API) ----------
+   Le bloc ne liste QUE ce qui reste à faire. Les tâches terminées se replient
+   dans un dépliant : elles ne consomment plus deux lignes en tête d'écran.
+   Tri par urgence : bloqué → à faire → à vérifier. */
 function renderTodo() {
-  const box = $('#todo'); if (!box) return;
+  const box = $('#todo-host'); if (!box) return;
+  /* Sans roster, on ne peut pas dériver l'état des tâches : on le dit au lieu
+     d'afficher « Rien à traiter », qui serait faux. */
+  if (ROSTER === null) {
+    box.innerHTML = '<ul class="todo"><li><span class="lbl"><b style="font-weight:600;color:var(--text-bright)">État indisponible</b>' +
+      '<small>Le roster n\'a pas pu être chargé — les tâches ne peuvent pas être dérivées.</small></span>' +
+      '<span class="tact"><a class="btn secondary small" href="#apprenants">Ouvrir Apprenants</a></span></li></ul>';
+    const n0 = $('#todo-n'); if (n0) n0.hidden = true;
+    return;
+  }
   const learners = ROSTER && Array.isArray(ROSTER.learners) ? ROSTER.learners : [];
   const cc = ROSTER && typeof ROSTER.classroomCount === 'number' ? ROSTER.classroomCount : null;
   const pending = cc == null ? null : Math.max(0, learners.length - cc);
   const connected = CLASSROOM && CLASSROOM.connected === true;
   const cwCount = COURSEWORK ? COURSEWORK.length : null;
-  const items = [];
-  if (CANDIDATES && CANDIDATES.counts && CANDIDATES.counts.admis === 0 && CANDIDATES.counts.total > 0) {
-    items.push({ label: 'Traiter ' + CANDIDATES.counts.nouveaux + ' candidature(s) nouvelle(s)', sub: 'Vérification puis paiement avant admission.', st: 'st-todo', txt: 'En attente', href: '#inscriptions' });
+  const cN = CANDIDATES && CANDIDATES.counts ? CANDIDATES.counts : null;
+  const open = [], done = [];
+
+  if (CLASSROOM && !connected) open.push({ p: 0, label: 'Reconnecter la passerelle Classroom', sub: 'Sans connexion, aucune invitation ni publication n\'aboutit.', href: '#classroom', act: 'Reconnecter' });
+  if (ROSTER && !learners.length) open.push({ p: 0, label: 'Aucun apprenant : importer ou admettre', sub: 'Les admissions depuis Inscriptions créent les comptes automatiquement.', href: '#apprenants', act: 'Importer' });
+  if (cN && cN.nouveaux > 0) open.push({ p: 1, label: 'Vérifier ' + pl(cN.nouveaux, 'candidature nouvelle', 'candidatures nouvelles'), sub: 'Contrôler le profil et les coordonnées avant d\'attendre le paiement.', href: '#inscriptions', act: 'Traiter' });
+  if (cN && cN.payeNonAdmis > 0) open.push({ p: 1, label: 'Admettre ' + pl(cN.payeNonAdmis, 'candidat dont le paiement est vérifié', 'candidats dont le paiement est vérifié'), sub: 'Paiement marqué payé — l\'admission n\'a pas encore été faite.', href: '#inscriptions', act: 'Admettre' });
+  if (ROSTER && !(ROSTER.cohortStart)) open.push({ p: 1, label: 'Définir la date de début de la cohorte', sub: 'Réglage serveur (COHORT_START) — pas modifiable depuis ce cockpit.', href: null, act: null });
+  if (ROSTER && learners.length && pending !== null && pending > 0) open.push({ p: 1, label: 'Inviter ' + pl(pending, 'apprenant', 'apprenants') + ' dans Classroom', sub: 'Le bouton d\'invitation envoie la liste réelle des comptes importés.', href: '#apprenants', act: 'Inviter' });
+  if (ROSTER && learners.length && pending === 0) done.push({ label: 'Inviter les apprenants dans Classroom', sub: 'Tous les apprenants sont présents dans la classe.' });
+  if (ROSTER && learners.length) done.push({ label: 'Importer les apprenants', sub: pl(learners.length, 'compte créé', 'comptes créés') + ' (import + admissions).' });
+  if (connected) done.push(cwCount > 0
+    ? { label: 'Publier les missions', sub: pl(cwCount, 'devoir publié', 'devoirs publiés') + ' — liaison par titre M01→M18.' }
+    : { label: 'Préparer Google Classroom', sub: 'Connectée · aucun devoir publié pour le moment.' });
+
+  const icoP = { 0: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--danger)" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="4.93" x2="19.07" y1="4.93" y2="19.07"/></svg>', 1: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--warn)" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>', 2: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--muted)" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="16" y2="12"/><line x1="12" x2="12.01" y1="8" y2="8"/></svg>' };
+  const clsP = { 0: 'pri-blocked', 1: 'pri-todo', 2: 'pri-check' };
+  const lblP = { 0: 'Bloqué', 1: 'À faire', 2: 'À vérifier' };
+
+  open.sort((a, b) => a.p - b.p);
+  let html;
+  if (!open.length) {
+    html = '<ul class="todo"><li><span class="lbl"><b style="font-weight:600;color:var(--text-bright)">Rien à traiter</b>' +
+      '<small>Toutes les étapes connues de l\'API sont à jour.</small></span></li></ul>';
+  } else {
+    html = '<ul class="todo">' + open.map(i =>
+      '<li class="' + clsP[i.p] + '">' +
+      '<span class="lbl"><b style="font-weight:600;color:var(--text-bright)">' + esc(i.label) + '</b><small>' + esc(i.sub) + '</small></span>' +
+      '<span class="tact">' + (i.href ? '<a class="btn secondary small" href="' + i.href + '">' + esc(i.act || 'Ouvrir') + '</a>' : '<span class="st st-progress">' + lblP[i.p] + '</span>') + '</span></li>'
+    ).join('') + '</ul>';
   }
-  const payeNonAdmis = CANDIDATES && CANDIDATES.counts ? CANDIDATES.counts.payeNonAdmis : 0;
-  if (payeNonAdmis > 0) items.push({ label: 'Admettre ' + payeNonAdmis + ' candidat(s) au(x)quel(s) le paiement est vérifié', sub: 'Paiement marqué payé — admission non faite.', st: 'st-todo', txt: 'En attente', href: '#inscriptions' });
-  items.push({ label: 'Définir la date de début de la cohorte', sub: 'Valeur actuelle : À définir. Réglage serveur (COHORT_START) — pas depuis ce cockpit.', st: 'st-todo', txt: 'En attente' });
-  items.push(learners.length
-    ? { label: 'Importer les apprenants', sub: learners.length + ' compte(s) créé(s) (import + admissions).', st: 'st-graded', txt: 'Fait' }
-    : { label: 'Importer les apprenants', sub: 'Aucun compte apprenant pour le moment.', st: 'st-todo', txt: 'En attente', href: '#apprenants' });
-  if (!learners.length) items.push({ label: 'Inviter les apprenants dans Classroom', sub: 'Nécessite d\'abord des admissions ou une importation.', st: 'st-blocked', txt: 'Bloqué' });
-  else if (pending === null) items.push({ label: 'Inviter les apprenants dans Classroom', sub: 'Nombre d\'invitations restantes indisponible.', st: 'st-todo', txt: 'En attente' });
-  else if (pending > 0) items.push({ label: 'Inviter les apprenants dans Classroom', sub: pending + ' invitation(s) restante(s).', st: 'st-todo', txt: 'En attente', href: '#apprenants' });
-  else items.push({ label: 'Inviter les apprenants dans Classroom', sub: 'Tous les apprenants sont présents dans Classroom.', st: 'st-graded', txt: 'Fait' });
-  items.push({ label: 'Vérifier les comptes formateurs', sub: 'L\'API ne liste pas les comptes formateurs — à contrôler au cas par cas lors de la création.', st: 'st-progress', txt: 'À vérifier' });
-  if (!connected) items.push({ label: 'Préparer Google Classroom', sub: 'Passerelle déconnectée — reconnexion via l\'onglet Classroom.', st: 'st-blocked', txt: 'Bloqué' });
-  else items.push(cwCount && cwCount > 0
-    ? { label: 'Publier les prochaines missions', sub: 'Connectée · ' + cwCount + ' devoir(s) publié(s) — la liaison modules se fait par titre M01→M18.', st: 'st-graded', txt: 'Fait' }
-    : { label: 'Préparer Google Classroom', sub: 'Connectée · aucun devoir publié dans la classe pour le moment.', st: 'st-todo', txt: 'En attente' });
-  box.innerHTML = items.map(i => {
-    let ico = '';
-    if (i.st === 'st-graded') {
-      ico = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--teal-light)"><polyline points="20 6 9 17 4 12"/></svg>';
-    } else if (i.st === 'st-blocked') {
-      ico = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--danger)"><circle cx="12" cy="12" r="10"/><line x1="4.93" x2="19.07" y1="4.93" y2="19.07"/></svg>';
-    } else if (i.st === 'st-progress') {
-      ico = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--muted)"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="16" y2="12"/><line x1="12" x2="12.01" y1="8" y2="8"/></svg>';
-    } else {
-      ico = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--warn)"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>';
-    }
-    return '<li>' +
-      '<span class="todo-ico-wrap">' + ico + '</span>' +
-      '<span class="lbl">' + (i.href ? '<a href="' + i.href + '">' + esc(i.label) + '</a>' : esc(i.label)) + '<small>' + esc(i.sub) + '</small></span>' +
-      '<span class="st ' + i.st + '">' + esc(i.txt) + '</span>' +
-    '</li>';
-  }).join('');
+  if (done.length) {
+    html += '<details class="tododone"><summary>' + pl(done.length, 'étape déjà faite', 'étapes déjà faites') + '</summary><ul class="todo">' +
+      done.map(i => '<li><span class="lbl"><b style="font-weight:500;color:var(--text)">' + esc(i.label) + '</b><small>' + esc(i.sub) + '</small></span>' +
+        '<span class="tact"><span class="st st-graded">Fait</span></span></li>').join('') + '</ul></details>';
+  }
+  box.innerHTML = html;
+  const n = $('#todo-n');
+  if (n) { n.textContent = String(open.length); n.hidden = open.length === 0; }
 }
 
 /* ---------- Détails techniques ---------- */
@@ -1285,7 +1915,7 @@ function renderTech() {
   html += '<li><span class="k">Espace admin historique (Basic)</span><span class="v mut"><a class="btn ghost small" href="/admin/" target="_blank" rel="noopener noreferrer">Ouvrir /admin/ ↗</a></span></li>';
   html += '</ul>';
   if (!d.connected) html += '<div class="alert warn">Passerelle non connectée — lancez l\'autorisation OAuth depuis « Reconnexion OAuth Classroom » ci-dessus.</div>';
-  else if (missing.length) html += '<div class="alert warn">' + missing.length + ' scope(s) Google Classroom manquant(s) — reconsentez depuis « Reconnexion OAuth Classroom ».</div>';
+  else if (missing.length) html += '<div class="alert warn">' + pl(missing.length, 'scope Google Classroom manquant', 'scopes Google Classroom manquants') + ' — reconsentez depuis « Reconnexion OAuth Classroom ».</div>';
   if (ROSTER && Array.isArray(ROSTER.empty) && ROSTER.empty.length) html += '<p class="note">Notes passerelle : ' + ROSTER.empty.map(esc).join(' · ') + '</p>';
   $('#tech-body').innerHTML = html;
 }
@@ -1299,27 +1929,46 @@ function renderProgramme() {
   const el = $('#programme-body');
   if (!P || !P.blocs) { el.innerHTML = errBox('Données du programme absentes (programme.js non chargé).'); return; }
   if (!HOME_DONE) {
+    /* Chaque bloc mène directement à son premier module : c'est ce qu'on veut
+       ouvrir depuis l'accueil, pas la liste complète. */
     $('#home-blocs').innerHTML = P.blocs.map(b =>
-      '<a class="blocmini" href="#programme"><b><span class="bid">BLOC ' + b.id + '</span> · ' + esc(b.title) + '</b><span>M' + pad2(b.from) + '→M' + pad2(b.to) + ' · ' + esc(b.weeks) + ' · ' + b.modules.length + ' modules</span></a>'
+      '<a class="blocmini" href="#programme/m/' + pad2(b.from) + '">' +
+      '<b><span class="bid">BLOC ' + b.id + '</span>' + esc(b.title) + '</b>' +
+      '<span>M' + pad2(b.from) + '→M' + pad2(b.to) + ' · ' + esc(b.weeks) + ' · ' + b.modules.length + ' modules</span></a>'
     ).join('');
     P.blocs.forEach(b => b.modules.forEach(m => { MOD_LABELS[m.num] = m.title; }));
     HOME_DONE = true;
   }
   if (el.dataset.done === P.generatedAt) return;
   el.innerHTML = P.blocs.map(b =>
-    '<div class="bloc" id="bloc-' + b.id + '"><div class="bloc-h"><span class="bid">BLOC ' + b.id + '</span> ' + esc(b.title) +
+    '<div class="bloc" id="bloc-' + b.id + '" data-blocs="' + b.id + '">' +
+    '<div class="bloc-h"><span class="bid">BLOC ' + b.id + '</span><span>' + esc(b.title) + '</span>' +
     '<small>M' + pad2(b.from) + '→M' + pad2(b.to) + ' · ' + esc(b.weeks) + ' · ' + b.modules.length + ' modules</small></div><div class="modlist">' +
     b.modules.map(m =>
-      '<a class="mrow" href="#programme/m/' + pad2(m.num) + '">' +
+      '<a class="mrow" href="#programme/m/' + pad2(m.num) + '" data-mod="' + m.num + '" data-q="' + esc(String(m.numStr + ' ' + m.title + ' ' + (m.seance || '')).toLowerCase()) + '">' +
       '<span class="mnum">M' + m.numStr + '</span>' +
       '<span class="mt">' + esc(m.title) + '</span>' +
-      '<span class="w">' + esc(m.seance || ('Semaine ' + m.week)) + (m.durationLabel ? ' · ' + esc(m.durationLabel) : '') + '</span>' +
+      '<span class="w" title="' + esc(m.seance || ('Semaine ' + m.week)) + (m.durationLabel ? ' · ' + m.durationLabel : '') + '">' + esc(m.seance || ('Semaine ' + m.week)) + (m.durationLabel ? ' · ' + esc(m.durationLabel) : '') + '</span>' +
       '<span class="st ' + (m.status === 'ready' ? 'st-graded' : 'st-progress') + '">' + (m.status === 'ready' ? 'Prêt' : 'À vérifier') + '</span>' +
-      '<span class="arw" style="display:flex;align-items:center;color:var(--muted)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span></a>'
+      '<span class="arw"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></span></a>'
     ).join('') + '</div></div>'
   ).join('') +
   '<p class="note">Programme officiel : 4 blocs · 18 modules · 16 séances live · 8 semaines (source : parcours pédagogique verrouillé). Les contenus affichés proviennent des fichiers de la dernière version déployée.</p>';
   el.dataset.done = P.generatedAt;
+  applyModFilter();
+}
+/* Filtre de modules : 18 lignes se parcourent mal sans recherche. */
+function applyModFilter() {
+  const q = (($('#mod-search') || {}).value || '').trim().toLowerCase();
+  document.querySelectorAll('#programme-body .bloc').forEach(bloc => {
+    let shown = 0;
+    bloc.querySelectorAll('.mrow').forEach(r => {
+      const hit = !q || (r.dataset.q || '').includes(q);
+      r.style.display = hit ? '' : 'none';
+      if (hit) shown++;
+    });
+    bloc.style.display = shown ? '' : 'none';
+  });
 }
 
 /* ---------- Vue module ---------- */
@@ -1332,7 +1981,14 @@ const DETAIL_TABS = [
   ['presentation', 'Présentation'],
 ];
 function showModRoute(mod) {
-  if (mod == null) { $('#programme-body').style.display = ''; $('#mod-view').style.display = 'none'; return; }
+  const head = $('#programme-head');
+  if (mod == null) {
+    $('#programme-body').style.display = '';
+    $('#mod-view').style.display = 'none';
+    if (head) head.style.display = '';
+    return;
+  }
+  if (head) head.style.display = 'none';
   openModule(mod);
 }
 function tabFromQuery(q) {
@@ -1357,7 +2013,7 @@ async function openModule(num) {
   $('#mod-tabs').innerHTML = DETAIL_TABS.map(t => '<button type="button" role="tab" data-t="' + t[0] + '">' + t[1] + '</button>').join('');
   $('#mod-head').innerHTML =
     '<a class="back" href="#programme"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg><span>Programme</span></a>' +
-    '<div class="mod-h"><h2><span class="mchip bloc" style="vertical-align:3px">M' + d.numStr + '</span> ' + esc(d.title) + '</h2>' +
+    '<div class="mod-h"><h1><span class="mchip bloc" style="vertical-align:3px">M' + d.numStr + '</span> ' + esc(d.title) + '</h1>' +
     '<div class="mod-chips">' +
       (d.blocId ? '<span class="mchip bloc">Bloc ' + d.blocId + ' · ' + esc(d.blocTitle || '') + '</span>' : '') +
       (d.seance ? '<span class="mchip">' + esc(d.seance) + '</span>' : '<span class="mchip">Semaine ' + d.week + '</span>') +
@@ -1367,7 +2023,40 @@ async function openModule(num) {
   $('#view-label').textContent = 'M' + pad2(num) + ' — ' + (d.title || 'module');
   renderModTab(d, tabFromQuery(cur.query));
 }
-function ficheByName(d, rx) { return (d.fiches || []).find(f => rx.test(f.name)) || null; }
+function ficheByName(d, rx) { return (d.fiches || []).find(f => f.name && rx.test(f.name)) || null; }
+/* Sommaire : on n'affiche rien en dessous de 4 sections — un sommaire de
+   deux entrées coûte plus qu'il ne rapporte. */
+function addFicheToc(host) {
+  const hs = [...host.querySelectorAll('.md h4')].filter(h => h.textContent.trim());
+  if (hs.length < 4) return;
+  const nav = document.createElement('nav');
+  nav.className = 'toc';
+  nav.setAttribute('aria-label', 'Sommaire de la fiche');
+  let html = '<p class="toc-h">Sommaire — ' + hs.length + ' sections</p><ol>';
+  hs.forEach((h, i) => {
+    const id = 'fiche-sec-' + (i + 1);
+    h.id = id;
+    // Le titre porte déjà son rang (« 2. Application vs Modèle… »). On le sort
+    // dans une gouttière pour que les libellés s'alignent au même bord gauche.
+    const raw = h.textContent.trim();
+    const m = raw.match(/^(\d+)\s*[.)]\s*(.+)$/);
+    const num = m ? m[1] : String(i + 1);
+    const label = m ? m[2] : raw;
+    html += '<li><button type="button" data-sec="' + id + '"><span class="toc-n">' +
+      esc(num) + '</span><span class="toc-t">' + esc(label) + '</span></button></li>';
+  });
+  nav.innerHTML = html + '</ol>';
+  host.insertBefore(nav, host.firstChild);
+}
+/* La fiche commence par un bloc-identité (« Académie OPAYS • Module NN ») que
+   l'en-tête du module affiche déjà juste au-dessus. On le retire du RENDU, la
+   source Markdown reste intacte — c'est une décision de présentation. */
+function stripFicheHead(src) {
+  return String(src)
+    .replace(/^#{1,3}\s+[^\n]*?Fiche\s+Synth[^\n]*\n+/, '')
+    .replace(/^>[^\n]*\*\*[^\n]*?(?:Module|MODULE)\s*\d+[^\n]*\n(?:>[^\n]*\n)*/, '')
+    .replace(/^\s*-{3,}\s*\n+/, '');
+}
 function renderModTab(d, tab) {
   document.querySelectorAll('#mod-tabs button').forEach(b => {
     const on = b.dataset.t === tab;
@@ -1375,11 +2064,12 @@ function renderModTab(d, tab) {
     b.setAttribute('aria-selected', on ? 'true' : 'false');
   });
   const body = $('#mod-body');
-  const md = (src, stripH1) => '<div class="md">' + window.mdRender(stripH1 ? String(src).replace(/^#{1,3}\s+[^\n]*?Fiche\s+Synth[^\n]*\n+/, '') : src) + '</div>';
+  const md = (src, stripHead) => '<div class="md">' + window.mdRender(stripHead ? stripFicheHead(src) : src) + '</div>';
   const obj = '<div class="mod-obj"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg><span><b>Objectif du module</b>' + esc(d.objective || '—') + '</span></div>';
   if (tab === 'fiche') {
     const f = ficheByName(d, /^01_/);
     body.innerHTML = obj + (f ? md(f.content, true) : '<p class="empty">Fiche de contenu non embarquée dans cette version déployée.</p>');
+    addFicheToc(body);
   } else if (tab === 'phases') {
     const g = ficheByName(d, /^00_/);
     body.innerHTML =
@@ -1421,6 +2111,13 @@ document.addEventListener('click', e => {
   history.replaceState(null, '', location.pathname + location.search + base + '?t=' + b.dataset.t);
   renderModTab(MOD_CACHE[cur.mod], b.dataset.t);
 });
+/* Sommaire de fiche : on fait défiler sans toucher à `location.hash`. */
+document.addEventListener('click', e => {
+  const b = e.target.closest('.toc button[data-sec]');
+  if (!b) return;
+  const t = document.getElementById(b.dataset.sec);
+  if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
 
 /* ---------- Import / Invite / Users ---------- */
 function parseInput() {
@@ -1438,7 +2135,7 @@ function parseInput() {
     });
   }
   const bad = arr.filter(l => !l || !String(l.email || '').trim());
-  if (bad.length) return { err: bad.length + ' ligne(s) sans email — corrigez la liste.' };
+  if (bad.length) return { err: pl(bad.length, 'ligne sans email', 'lignes sans email') + ' — corrigez la liste.' };
   const mail = arr.filter(l => !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(l.email).trim()));
   if (mail.length) return { err: 'Email invalide : ' + String(mail[0].email).trim() };
   return { list: arr.map(l => ({ name: String(l.name || '').trim(), email: String(l.email).trim() })) };
@@ -1460,7 +2157,7 @@ function renderImportResult(res) {
   const d = res.data || {};
   const imported = Array.isArray(d.imported) ? d.imported : [];
   const skipped = Array.isArray(d.skipped) ? d.skipped : [];
-  let html = '<div class="alert info">Import traité : ' + imported.length + ' créé(s), ' + skipped.length + ' ignoré(s).' + (d.note ? '<br>Note : « ' + esc(d.note) + ' »' : '') + '</div>';
+  let html = '<div class="alert info">Import traité : ' + pl(imported.length, 'créé', 'créés') + ', ' + pl(skipped.length, 'ignoré', 'ignorés') + '.' + (d.note ? '<br>Note : « ' + esc(d.note) + ' »' : '') + '</div>';
   html += pwBlock(imported);
   if (skipped.length) {
     html += '<div class="tablewrap"><table><thead><tr><th>E-mail ignoré</th><th>Raison</th></tr></thead><tbody>';
@@ -1494,7 +2191,7 @@ $('#btn-invite').addEventListener('click', async () => {
       out.innerHTML = errBox(res.status === 409 ? 'Invitations bloquées — ' + msg : 'Invitation refusée (HTTP ' + res.status + ') — ' + msg);
     } else {
       const d = res.data || {}; const results = Array.isArray(d.results) ? d.results : [];
-      let html = '<div class="alert info">Invitations traitées (' + results.length + ' résultat(s)).' + (d.note ? ' Note : « ' + esc(d.note) + ' »' : '') + '</div>';
+      let html = '<div class="alert info">Invitations traitées (' + pl(results.length, 'résultat', 'résultats') + ').' + (d.note ? ' Note : « ' + esc(d.note) + ' »' : '') + '</div>';
       if (results.length) {
         html += '<div class="tablewrap"><table><thead><tr><th>E-mail</th><th>Résultat</th></tr></thead><tbody>';
         for (const x of results) { const o = typeof x === 'object' ? x : { email: x, status: '—' };
@@ -1537,6 +2234,29 @@ document.addEventListener('click', e => {
 $('#btn-logout').addEventListener('click', async () => {
   try { await api('/api/logout', { method: 'POST' }); } catch (e) {}
   location.replace('/ui/login/');
+});
+
+/* ---------- Rafraîchir (en-tête) : une action explicite, avec son état ---------- */
+const _btnRefresh = $('#btn-refresh');
+if (_btnRefresh) _btnRefresh.addEventListener('click', async () => {
+  const btn = _btnRefresh;
+  btn.disabled = true;
+  const label = btn.querySelector('span');
+  const old = label ? label.textContent : '';
+  if (label) label.textContent = 'Rechargement…';
+  ROSTER = null; CLASSROOM = null; COURSEWORK = null; CANDIDATES = null;
+  INVITATIONS = null; PROGRESS = null; BILLING = null;
+  try {
+    await loadRoster();
+    await Promise.all([loadClassroom(), loadCandidates(), loadBilling()]);
+    showTab();
+    toast('Données rechargées depuis l\'API.', 'ok', 'À jour');
+  } catch (e) {
+    toast('Rechargement partiel — ' + esc(e.message), 'err', 'Échec');
+  } finally {
+    btn.disabled = false;
+    if (label) label.textContent = old;
+  }
 });
 
 /* ---------- Boot ---------- */
