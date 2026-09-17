@@ -1,4 +1,8 @@
-.git
+# provenance SHA : whitelist métadonnées Git (jamais .git bare, jamais config/objects)
+.git/*
+!.git/HEAD
+!.git/refs
+!.git/packed-refs
 **/node_modules
 **/.next
 **/out

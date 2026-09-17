@@ -21,9 +21,15 @@ COPY systeme-operationnel/ ./systeme-operationnel/
 COPY course-hub.html formateur-dashboard.html ./
 RUN node scripts/build_all_presentations.js && node scripts/hoja_modules_identity.js && node scripts/build_registry.js && node scripts/build_cockpit_data.js && node scripts/build_admin.js && node scripts/build_public.js && node scripts/test_coherence.js && node scripts/verify_all_presentations.js
 
+FROM node:20-alpine AS provenance
+WORKDIR /provenance
+COPY scripts/resolve-git-sha.js ./
+# SHA résolu depuis les métadonnées .git du checkout Dokploy (HEAD/refs/packed-refs
+# uniquement, whitelistées dans .dockerignore) ; échoue si absentes ou malformées.
+COPY .git/ /git/
+RUN node resolve-git-sha.js --git-dir /git --out /provenance/build-revision.json
+
 FROM nginx:alpine
-ARG GIT_SHA=unknown
-LABEL org.opencontainers.image.revision=$GIT_SHA
 ENV GATEWAY_HOST=hoja-gateway-staging-vc8c8t NGINX_ENVSUBST_FILTER=GATEWAY_HOST
 COPY deploy/dokploy/nginx.conf.template /etc/nginx/templates/default.conf.template
 COPY deploy/dokploy/gateway-proxy.conf /etc/nginx/snippets/gateway-proxy.conf
@@ -31,6 +37,6 @@ COPY --from=site /site/out/ /usr/share/nginx/html/
 COPY --from=academy /academy/admin/ /usr/share/nginx/html/admin/
 COPY --from=academy /academy/public/modules/ /usr/share/nginx/html/modules/
 COPY --from=academy /academy/ui/ /usr/share/nginx/html/ui/
+COPY --from=provenance /provenance/build-revision.json /usr/share/nginx/html/build-revision.json
 COPY Logo/favicon_hoja_64.png /usr/share/nginx/html/favicon.ico
-RUN printf '{"revision":"%s"}\n' "$GIT_SHA" > /usr/share/nginx/html/build-revision.json
 EXPOSE 80
