@@ -8,123 +8,143 @@
   <link rel="apple-touch-icon" href="/icon.png">
 <meta name="robots" content="noindex">
 <style>
-  /* ---- Tokens (harmonisés Hoja SaaS) ---- */
+  /* ---- Jetons Hoja — DESIGN_SYSTEM_HOJA.md §2.1 ---- */
   :root{
-    --bg:#090d16;--card:#111726;--card-hover:#151d30;--line:#1e293b;
-    --text:#f1f5f9;--muted:#94a3b8;--teal:#10b981;--teal-light:#34d399;--blue:#38bdf8;
-    --amber:#f59e0b;--red:#f43f5e;--radius:10px;
+    --bg:#090d16;--card:#111726;--card-hover:#151d30;--card-2:#0d1322;--elevated:#1a2334;
+    --line:#1e293b;--line-strong:rgba(255,255,255,.12);--line-soft:rgba(255,255,255,.06);
+    --text:#f1f5f9;--text-bright:#ffffff;--muted:#94a3b8;--muted-dark:#7c8ba1;
+    --teal:#10b981;--teal-light:#34d399;--teal-soft:rgba(16,185,129,.12);
+    --blue:#38bdf8;--blue-soft:rgba(56,189,248,.12);
+    --danger:#f43f5e;--danger-soft:rgba(244,63,94,.12);
+    --warn:#f59e0b;--warn-soft:rgba(245,158,11,.12);
+    --ok:#10b981;--ok-soft:rgba(16,185,129,.12);
+    --info:#38bdf8;--info-soft:rgba(56,189,248,.12);
+    --neutral-soft:rgba(148,163,184,.12);
+    --input-bg:#0a101c;
+    --on-accent:#06231a;
+    --shadow-sm:0 1px 2px rgba(0,0,0,.24);--shadow:0 4px 12px rgba(0,0,0,.28);--shadow-lg:0 12px 32px rgba(0,0,0,.36);
+    --radius-sm:6px;--radius:10px;--radius-lg:14px;--radius-full:999px;
+    --touch-min:44px;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   html{background:var(--bg);}
-  body{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.5;-webkit-font-smoothing:antialiased;}
+  body{font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.5;-webkit-font-smoothing:antialiased;}
   /* Les contrôles de formulaire n'héritent pas de la police du document par défaut. */
   button,input,select,textarea{font-family:inherit;}
   a{color:var(--blue);text-decoration:none;}
-  a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--teal);outline-offset:2px;border-radius:6px;}
+  /* Focus visible — identique sur toutes les surfaces Hoja (DESIGN_SYSTEM_HOJA.md §2.8) */
+  :focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:var(--radius-sm);}
+  .vh{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;}
+
+  /* ---- Boutons canoniques (§3.1) ---- */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:var(--touch-min);padding:0 20px;border:1px solid transparent;border-radius:var(--radius);background:var(--teal);color:var(--on-accent);font-weight:700;font-size:14px;letter-spacing:.02em;cursor:pointer;font-family:inherit;}
+  .btn:hover{background:var(--teal-light);}
+  .btn:disabled{opacity:.6;cursor:not-allowed;}
 
   /* ---- Header collant compact ---- */
   .top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:10px;padding:10px 16px;background:rgba(9,13,22,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
   .brand{display:flex;align-items:center;gap:8px;min-width:0;}
   .brand svg,.brand img{width:26px;height:26px;flex:0 0 auto;}
-  .brand b{font-size:12.5px;letter-spacing:.12em;white-space:nowrap;}
-  .brand small{display:block;color:var(--teal);font-size:10px;letter-spacing:.28em;}
+  .brand b{font-size:14px;letter-spacing:.12em;white-space:nowrap;}
+  .brand small{display:block;color:var(--teal);font-size:12px;letter-spacing:.18em;}
   .top .who{margin-left:auto;text-align:right;min-width:0;}
-  .top .who .nm{font-size:12.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:40vw;}
-  .top .who .rl{font-size:10px;color:var(--muted);letter-spacing:.06em;}
-  .logout{background:none;border:1px solid var(--line);color:var(--muted);font-size:10.5px;border-radius:999px;padding:8px 12px;min-height:44px;cursor:pointer;font-family:inherit;}
-  .logout:hover{color:var(--text);border-color:rgba(255,255,255,.2);}
+  .top .who .nm{font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:40vw;}
+  .top .who .rl{font-size:12px;color:var(--muted);letter-spacing:.04em;}
+  .logout{background:none;border:1px solid var(--line);color:var(--muted);font-size:12px;border-radius:var(--radius-full);padding:8px 14px;min-height:var(--touch-min);cursor:pointer;font-family:inherit;}
+  .logout:hover{color:var(--text);border-color:var(--line-strong);background:var(--card-hover);}
 
   main{max-width:960px;margin:0 auto;padding:14px 14px 56px;display:flex;flex-direction:column;gap:14px;word-wrap:break-word;overflow-wrap:break-word;}
 
   /* ---- Cartes ---- */
   .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 16px;}
-  h1{font-size:22px;font-weight:700;line-height:1.25;letter-spacing:-0.02em;color:var(--text);margin:2px 0 0;}
-  .card h2{font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;margin-bottom:10px;}
-  .kicker{font-size:12px;color:var(--muted);}
-  .big{font-size:19px;font-weight:700;}
-  @media (min-width:640px){ .big{font-size:22px;} .card{padding:20px;} }
+  h1{font-size:28px;font-weight:700;line-height:1.2;letter-spacing:-0.02em;color:var(--text);margin:2px 0 0;}
+  .card h2{font-size:18px;font-weight:700;letter-spacing:.01em;color:var(--text);margin-bottom:10px;}
+  .kicker{font-size:14px;color:var(--muted);}
+  .big{font-size:22px;font-weight:700;}
+  @media (min-width:768px){ .card{padding:20px;} }
 
   /* ---- Bannières ---- */
-  .banner{border-radius:var(--radius);padding:12px 14px;font-size:13px;border:1px solid var(--line);}
-  .banner.info{background:rgba(56,189,248,.08);border-color:rgba(56,189,248,.35);color:#bae6fd;}
-  .banner.warn{background:rgba(245,158,11,.09);border-color:rgba(245,158,11,.35);color:#fcd34d;}
-  .banner .bt{font-weight:700;font-size:12.5px;letter-spacing:.04em;margin-bottom:2px;}
+  .banner{border-radius:var(--radius);padding:12px 14px;font-size:14px;border:1px solid var(--line-strong);}
+  .banner.info{background:var(--info-soft);color:var(--info);}
+  .banner.warn{background:var(--warn-soft);color:var(--warn);}
+  .banner .bt{font-weight:700;font-size:14px;letter-spacing:.02em;margin-bottom:2px;}
   [hidden]{display:none !important;}
 
   /* ---- Q1 Où je suis + Q3 Progression ---- */
-  .pos-meta{display:flex;flex-wrap:wrap;gap:6px 14px;color:var(--muted);font-size:12.5px;margin-top:4px;}
+  .pos-meta{display:flex;flex-wrap:wrap;gap:6px 14px;color:var(--muted);font-size:14px;margin-top:4px;}
   .prog{margin-top:14px;}
-  .prog-row{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:13px;}
+  .prog-row{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:14px;}
   .prog-row .n{font-weight:800;font-size:16px;color:var(--teal);}
-  .bar{height:10px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid var(--line);overflow:hidden;margin-top:6px;}
-  .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--teal),#4ade80);border-radius:999px;transition:width .5s ease;}
-  .prog-note{font-size:11px;color:var(--muted);margin-top:5px;}
+  .bar{height:10px;border-radius:var(--radius-full);background:var(--neutral-soft);border:1px solid var(--line);overflow:hidden;margin-top:6px;}
+  .bar i{display:block;height:100%;background:var(--teal);border-radius:var(--radius-full);transition:width .5s ease;}
+  .prog-note{font-size:12px;color:var(--muted);margin-top:5px;}
 
   /* ---- Q2 CTA prochaine action ---- */
-  .cta-card{border-color:rgba(34,197,94,.35);background:linear-gradient(180deg,rgba(34,197,94,.07),var(--card) 55%);}
-  .cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 20px;border-radius:999px;background:var(--teal);color:#04140a;font-weight:800;font-size:15px;letter-spacing:.02em;margin-top:10px;width:100%;}
-  @media (min-width:640px){ .cta{width:auto;} }
-  a.cta:hover{filter:brightness(1.08);}
-  .cta.alt{background:var(--blue);color:#04121c;}
-  .cta-meta{font-size:12.5px;color:var(--muted);margin-top:8px;}
+  .cta-card{border-color:var(--teal-soft);background:var(--teal-soft);}
+  .cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 20px;border-radius:var(--radius);background:var(--teal);color:var(--on-accent);font-weight:800;font-size:16px;letter-spacing:.02em;margin-top:10px;width:100%;}
+  @media (min-width:768px){ .cta{width:auto;} }
+  a.cta:hover{background:var(--teal-light);}
+  .cta.alt{background:var(--blue);color:var(--on-accent);}
+  .cta-meta{font-size:14px;color:var(--muted);margin-top:8px;}
   .cta-meta b{color:var(--text);}
 
-  /* ---- Badges ---- */
-  .badge{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:700;letter-spacing:.05em;padding:4px 9px;border-radius:999px;border:1px solid var(--line);white-space:nowrap;}
-  .b-assigned{background:rgba(56,189,248,.12);border-color:rgba(56,189,248,.4);color:#7dd3fc;}
-  .b-draft{background:rgba(148,163,184,.12);border-color:rgba(148,163,184,.4);color:#cbd5e1;}
-  .b-submitted{background:rgba(245,158,11,.12);border-color:rgba(245,158,11,.4);color:#fcd34d;}
-  .b-returned{background:rgba(167,139,250,.14);border-color:rgba(167,139,250,.45);color:#d8b4fe;}
-  .b-graded{background:rgba(34,197,94,.12);border-color:rgba(34,197,94,.45);color:#86efac;}
-  .b-late{background:rgba(239,68,68,.13);border-color:rgba(239,68,68,.45);color:#fca5a5;}
-  .b-pending{background:rgba(148,163,184,.08);color:var(--muted);}
-  .b-cur{background:rgba(56,189,248,.14);border-color:rgba(56,189,248,.5);color:#7dd3fc;}
+  /* ---- Statuts — vocabulaire canonique unique (§3.2) ---- */
+  .st{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:700;letter-spacing:.02em;padding:6px 10px;border-radius:var(--radius-full);border:1px solid transparent;white-space:nowrap;}
+  .st-todo{background:var(--neutral-soft);color:var(--muted);}
+  .st-assigned{background:var(--info-soft);color:var(--info);}
+  .st-progress{background:var(--warn-soft);color:var(--warn);}
+  .st-submitted{background:var(--blue-soft);color:var(--blue);}
+  .st-returned{background:var(--danger-soft);color:var(--danger);}
+  .st-graded{background:var(--ok-soft);color:var(--ok);}
+  .st-blocked{background:var(--danger-soft);color:var(--danger);}
+  .st-na{background:var(--neutral-soft);color:var(--muted-dark);}
 
   /* ---- Q4 Missions ---- */
   .missions-grid{display:grid;gap:12px;}
-  @media (min-width:720px){ .missions-grid{grid-template-columns:1fr 1fr;} }
-  .mission{border:1px solid var(--line);border-radius:12px;padding:14px;background:rgba(255,255,255,.02);display:flex;flex-direction:column;gap:8px;}
+  @media (min-width:768px){ .missions-grid{grid-template-columns:1fr 1fr;} }
+  .mission{border:1px solid var(--line);border-radius:var(--radius);padding:14px;background:var(--card-2);display:flex;flex-direction:column;gap:8px;}
   .mission .m-top{display:flex;flex-wrap:wrap;gap:6px;align-items:center;}
-  .mission .m-title{font-size:14.5px;font-weight:700;}
-  .mission .m-meta{font-size:12px;color:var(--muted);}
-  .mission .m-link{min-height:44px;display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:700;border:1px solid rgba(56,189,248,.4);color:var(--blue);border-radius:10px;padding:8px 14px;width:100%;justify-content:center;}
-  @media (min-width:640px){ .mission .m-link{width:auto;} }
-  .mission .m-link:hover{background:rgba(56,189,248,.08);}
-  .m-nolink{font-size:11.5px;color:var(--muted);font-style:italic;}
+  .mission .m-title{font-size:16px;font-weight:700;color:var(--text-bright);line-height:1.35;}
+  .mission .m-meta{font-size:14px;color:var(--muted);}
+  .mission .m-link{min-height:var(--touch-min);display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:700;border:1px solid var(--blue-soft);color:var(--blue);border-radius:var(--radius);padding:8px 14px;width:100%;justify-content:center;}
+  @media (min-width:768px){ .mission .m-link{width:auto;} }
+  .mission .m-link:hover{background:var(--blue-soft);}
+  .m-nolink{font-size:12px;color:var(--muted);font-style:italic;}
   .m-modules a{margin-right:8px;}
-  .chip-mod{display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-size:11px;font-weight:700;padding:3px 10px;border-radius:8px;border:1px solid var(--line);color:var(--blue);background:rgba(56,189,248,.06);}
+  .chip-mod{display:inline-flex;align-items:center;justify-content:center;min-height:var(--touch-min);font-size:12px;font-weight:700;padding:3px 10px;border-radius:var(--radius-sm);border:1px solid var(--line);color:var(--blue);background:var(--blue-soft);}
 
   /* ---- Q6 Classroom ---- */
   .cl-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
-  .cl-state{font-size:14px;font-weight:700;}
-  .btn-line{min-height:44px;display:inline-flex;align-items:center;justify-content:center;padding:10px 18px;border-radius:999px;border:1px solid rgba(56,189,248,.45);color:var(--blue);font-weight:700;font-size:13.5px;background:transparent;cursor:pointer;font-family:inherit;}
-  .btn-line:hover{background:rgba(56,189,248,.08);}
+  .cl-state{font-size:16px;font-weight:700;}
+  .btn-line{min-height:var(--touch-min);display:inline-flex;align-items:center;justify-content:center;padding:10px 18px;border-radius:var(--radius);border:1px solid var(--blue-soft);color:var(--blue);font-weight:700;font-size:14px;background:transparent;cursor:pointer;font-family:inherit;}
+  .btn-line:hover{background:var(--blue-soft);}
 
   /* ---- Q5 Planning ---- */
-  details.week{border:1px solid var(--line);border-radius:12px;margin-bottom:8px;background:rgba(255,255,255,.02);overflow:hidden;}
-  details.week summary{display:flex;align-items:center;gap:10px;min-height:48px;padding:12px 14px;cursor:pointer;font-weight:700;font-size:13.5px;list-style:none;}
+  details.week{border:1px solid var(--line);border-radius:var(--radius);margin-bottom:8px;background:var(--card-2);overflow:hidden;}
+  details.week summary{display:flex;align-items:center;gap:10px;min-height:48px;padding:12px 14px;cursor:pointer;font-weight:700;font-size:14px;list-style:none;}
   details.week summary::-webkit-details-marker{display:none;}
-  details.week summary .chev{margin-left:auto;color:var(--muted);transition:transform .2s;font-size:12px;}
+  details.week summary .chev{margin-left:auto;color:var(--muted);transition:transform .2s;display:inline-flex;flex:0 0 auto;}
   details.week[open] summary .chev{transform:rotate(90deg);}
-  .wk-count{font-size:11px;font-weight:400;color:var(--muted);}
-  .mod-row{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;padding:11px 14px;border-top:1px solid var(--line);font-size:13.5px;}
+  .wk-count{font-size:12px;font-weight:400;color:var(--muted);}
+  .mod-row{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;padding:4px 14px;border-top:1px solid var(--line);font-size:14px;min-height:var(--touch-min);}
   .mod-row .num{font-weight:800;color:var(--muted);font-size:12px;letter-spacing:.04em;min-width:34px;}
   .mod-row .t{flex:1 1 auto;min-width:0;}
-  .mod-row .t a{color:var(--text);font-weight:600;}
+  .mod-row .t a{color:var(--text);font-weight:600;display:inline-flex;align-items:center;min-height:var(--touch-min);}
   .mod-row .t a:hover{color:var(--blue);}
-  .mod-row .sub{font-size:11px;color:var(--muted);}
-  .mod-row.current{background:rgba(56,189,248,.05);}
-  .mod-row .seance{font-size:11px;color:var(--muted);white-space:nowrap;}
+  .mod-row .sub{font-size:12px;color:var(--muted);}
+  .mod-row.current{background:var(--blue-soft);}
+  .mod-row .seance{font-size:12px;color:var(--muted);white-space:nowrap;}
 
   /* ---- Skeleton / erreur ---- */
   .sk{display:flex;flex-direction:column;gap:14px;}
-  .sk .box{border-radius:var(--radius);background:linear-gradient(90deg,rgba(255,255,255,.04) 25%,rgba(255,255,255,.09) 50%,rgba(255,255,255,.04) 75%);background-size:200% 100%;animation:pulse 1.3s ease-in-out infinite;}
+  .sk .box{border-radius:var(--radius);background:linear-gradient(90deg,var(--card) 25%,var(--card-hover) 50%,var(--card) 75%);background-size:200% 100%;animation:pulse 1.3s ease-in-out infinite;}
   @keyframes pulse{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
   .err-card{text-align:center;padding:28px 18px;}
-  .err-card p{color:var(--muted);font-size:13.5px;margin:8px 0 16px;}
-  .retry{min-height:44px;padding:10px 26px;border:0;border-radius:999px;background:var(--teal);color:#04140a;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit;}
+  .err-card p{color:var(--muted);font-size:14px;margin:8px 0 16px;}
+  .retry{min-height:var(--touch-min);padding:10px 26px;border:0;border-radius:var(--radius);background:var(--teal);color:var(--on-accent);font-weight:800;font-size:14px;cursor:pointer;font-family:inherit;}
+  .retry:hover{background:var(--teal-light);}
 
-  .foot{color:var(--muted);font-size:10.5px;text-align:center;margin-top:10px;letter-spacing:.03em;}
+  .foot{color:var(--muted);font-size:12px;text-align:center;margin-top:10px;letter-spacing:.02em;}
 </style>
 </head>
 <body>
@@ -151,7 +171,7 @@
 
   <!-- Erreur réseau -->
   <div class="card err-card" id="errbox" hidden role="alert">
-    <h2 style="justify-content:center;">Connexion indisponible</h2>
+    <h2>Connexion indisponible</h2>
     <p id="errmsg">Impossible de charger vos données. Vérifiez votre connexion, puis réessayez.</p>
     <button class="retry" id="btn-retry" type="button">Ressayer</button>
   </div>
@@ -166,8 +186,10 @@
     <div class="banner warn" id="b-pass" hidden>
       <div class="bt">Changez votre mot de passe provisoire</div>
       <form id="f-pass" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;">
-        <input id="p-cur" type="password" autocomplete="current-password" placeholder="Mot de passe actuel" style="flex:1 1 160px;min-height:44px;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:#0a101c;color:var(--text);font-size:14px;">
-        <input id="p-new" type="password" autocomplete="new-password" placeholder="Nouveau (10+ caractères)" style="flex:1 1 160px;min-height:44px;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:#0a101c;color:var(--text);font-size:14px;">
+        <label class="vh" for="p-cur">Mot de passe actuel</label>
+        <input id="p-cur" type="password" autocomplete="current-password" placeholder="Mot de passe actuel" style="flex:1 1 160px;min-height:44px;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--input-bg);color:var(--text);font-size:14px;">
+        <label class="vh" for="p-new">Nouveau mot de passe</label>
+        <input id="p-new" type="password" autocomplete="new-password" placeholder="Nouveau (10+ caractères)" style="flex:1 1 160px;min-height:44px;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--input-bg);color:var(--text);font-size:14px;">
         <button class="btn" type="submit" id="p-btn" style="min-height:44px;">Mettre à jour</button>
       </form>
       <div id="p-msg" style="margin-top:6px;font-size:12.5px;"></div>
@@ -213,7 +235,7 @@
     <section class="card" aria-label="Ma classe Google Classroom">
       <h2>Ma classe Google Classroom</h2>
       <div class="cl-row">
-        <span class="badge" id="cl-badge">—</span>
+        <span class="st st-todo" id="cl-badge">—</span>
         <span class="cl-state" id="cl-state"></span>
         <a class="btn-line" id="cl-link" href="#" hidden>Ouvrir ma classe</a>
       </div>
@@ -241,7 +263,8 @@
    ============================================================ */
 var MOIS = ['janv.','févr.','mars','avr.','mai','juin','juil.','août','sept.','oct.','nov.','déc.'];
 var STATE_LABEL = { assigned:'Mission à faire', draft:'Brouillon', submitted:'Déposé', returned:'En correction', graded:'Validé' };
-var STATE_CLASS = { assigned:'b-assigned', draft:'b-draft', submitted:'b-submitted', returned:'b-returned', graded:'b-graded' };
+var CHEV = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>';
+var STATE_CLASS = { assigned:'st-assigned', draft:'st-progress', submitted:'st-submitted', returned:'st-returned', graded:'st-graded' };
 
 function $(id){ return document.getElementById(id); }
 function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
@@ -277,10 +300,10 @@ function render(d){
           body: JSON.stringify({currentPassword: $('p-cur').value, newPassword: $('p-new').value})});
         var d = await r.json().catch(function(){return {};});
         if(!r.ok) throw new Error(d.error || ('HTTP '+r.status));
-        msg.style.color = 'var(--teal)'; msg.textContent = '✅ Mot de passe mis à jour.';
+        msg.style.color = 'var(--teal)'; msg.textContent = 'Mot de passe mis à jour.';
         $('p-cur').value = ''; $('p-new').value = '';
         setTimeout(function(){ $('b-pass').hidden = true; }, 1800);
-      }catch(err){ msg.style.color = '#fda4a4'; msg.textContent = '❌ ' + err.message; }
+      }catch(err){ msg.style.color = 'var(--danger)'; msg.textContent = err.message; }
       finally{ $('p-btn').disabled = false; }
     });
   })();
@@ -342,7 +365,7 @@ function render(d){
   } else if(next && next.type === 'mission'){
     var due = fmtDue(next.due);
     var lbl = esc(next.label || 'Mission en cours');
-    if(next.state && STATE_LABEL[next.state] && next.state !== 'assigned') lbl += ' <span class="badge '+(STATE_CLASS[next.state]||'')+'">'+esc(STATE_LABEL[next.state])+'</span>';
+    if(next.state && STATE_LABEL[next.state] && next.state !== 'assigned') lbl += ' <span class="st '+(STATE_CLASS[next.state]||'st-todo')+'">'+esc(STATE_LABEL[next.state])+'</span>';
     showCta(lbl, safeUrl(next.url),
       (due ? 'À rendre avant le <b>'+esc(due)+'</b>. ' : 'Échéance non communiquée. ') +
       (safeUrl(next.url) ? 'Le dépôt se fait sur Google Classroom.' : 'Lien de dépôt indisponible — voyez avec votre formateur.'));
@@ -371,7 +394,7 @@ function render(d){
     mEmpty.hidden = true;
     mBox.innerHTML = missions.map(function(m){
       var sLabel = STATE_LABEL[m.state] || 'État inconnu';
-      var sCls = STATE_CLASS[m.state] || 'b-pending';
+      var sCls = STATE_CLASS[m.state] || 'st-todo';
       var due = fmtDue(m.dueDate);
       var chips = (m.modules && m.modules.length)
         ? '<div class="m-modules">' + m.modules.map(function(n){ return '<a class="chip-mod" href="'+modUrl(n)+'">M'+pad2(n)+'</a>'; }).join('') + '</div>'
@@ -381,11 +404,11 @@ function render(d){
         ? '<a class="m-link" href="'+esc(u)+'" target="_blank" rel="noopener">Ouvrir sur Classroom ↗</a>'
         : '<div class="m-nolink">Lien de dépôt indisponible — voyez avec votre formateur.</div>';
       return '<article class="mission">' +
-        '<div class="m-top"><span class="badge '+sCls+'">'+esc(sLabel)+'</span>' +
-          (m.late ? '<span class="badge b-late">Retard</span>' : '') +
-          (m.submissionId ? '<span class="badge b-pending">Dépôt enregistré</span>' : '') +
+        '<div class="m-top"><span class="st '+sCls+'">'+esc(sLabel)+'</span>' +
+          (m.late ? '<span class="st st-blocked">En retard</span>' : '') +
+          (m.submissionId ? '<span class="st st-submitted">Dépôt enregistré</span>' : '') +
         '</div>' +
-        '<div class="m-title">'+esc(m.title)+'</div>' +
+        '<h3 class="m-title">'+esc(m.title)+'</h3>' +
         '<div class="m-meta">' + (due ? 'À rendre avant le <b style="color:var(--text)">'+esc(due)+'</b>' : 'Échéance non communiquée') + '</div>' +
         (m.feedback ? '<div class="m-meta">Un retour de votre formateur est disponible.</div>' : '') +
         chips + link +
@@ -397,17 +420,17 @@ function render(d){
   var badge = $('cl-badge'), state = $('cl-state'), link = $('cl-link'), note = $('cl-note');
   link.hidden = true;
   if(!cl.configured){
-    badge.className = 'badge b-pending'; badge.textContent = 'Non configuré';
+    badge.className = 'st st-todo'; badge.textContent = 'Non configuré';
     state.textContent = 'Espace de classe non configuré';
     note.innerHTML = 'Votre cohorte n\u2019est pas encore reliée à Google Classroom. Revenez vers votre formateur — aucune donnée n\u2019est simulée en attendant.';
   } else if(cl.joined){
-    badge.className = 'badge b-graded'; badge.textContent = 'Inscrit';
+    badge.className = 'st st-graded'; badge.textContent = 'Inscrit';
     state.textContent = 'Vous êtes inscrit à votre classe';
     var cu = safeUrl(cl.url);
     if(cu){ link.hidden = false; link.href = cu; link.target = '_blank'; link.rel = 'noopener'; }
     else { note.textContent = 'Lien de classe non communiqué par votre formateur.'; }
   } else {
-    badge.className = 'badge b-submitted'; badge.textContent = 'Non inscrit';
+    badge.className = 'st st-progress'; badge.textContent = 'Non inscrit';
     state.textContent = 'Rejoignez votre classe pour recevoir vos missions';
     var ju = safeUrl(cl.url);
     if(ju){ link.hidden = false; link.href = ju; link.textContent = 'Rejoindre la classe'; link.target = '_blank'; link.rel = 'noopener'; }
@@ -422,10 +445,10 @@ function render(d){
     var isCurrent = !!(current && String(current.week) === String(w));
     var rows = weeks[w].map(function(m){
       var b = m.done
-        ? '<span class="badge b-graded">Validé</span>'
+        ? '<span class="st st-graded">Validé</span>'
         : (current && m.num === current.num)
-          ? '<span class="badge b-cur">En cours</span>'
-          : '<span class="badge b-pending">À venir</span>';
+          ? '<span class="st st-progress">En cours</span>'
+          : '<span class="st st-todo">À venir</span>';
       return '<div class="mod-row'+((current && m.num===current.num)?' current':'')+'">' +
         '<span class="num">M'+esc(pad2(m.num))+'</span>' +
         '<span class="t"><a href="'+modUrl(m.num)+'">'+esc(m.title)+'</a><span class="sub"> — accès public au cours</span></span>' +
@@ -434,8 +457,8 @@ function render(d){
     }).join('');
     return '<details class="week"'+(isCurrent?' open':'')+'><summary>Semaine '+esc(w)+
       ' <span class="wk-count">('+weeks[w].length+' module'+(weeks[w].length>1?'s':'')+')</span>' +
-      (isCurrent?' <span class="badge b-cur">Votre semaine</span>':'') +
-      '<span class="chev">▶</span></summary>'+rows+'</details>';
+      (isCurrent?' <span class="st st-progress">Votre semaine</span>':'') +
+      '<span class="chev"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></span></summary>'+rows+'</details>';
   }).join('') || '<div class="kicker">Planning non disponible — aucun module renvoyé.</div>';
 
   /* ---- horodatage réel du chargement ---- */

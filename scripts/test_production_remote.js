@@ -137,7 +137,7 @@ function findBrowser() {
     const btn = document.getElementById('notesBtn');
     return btn && btn.offsetParent !== null;
   });
-  check('ADMIN : notes formateur accessibles (bouton 📝 visible)', notesPresent);
+  check('ADMIN : notes formateur accessibles (bouton Notes visible)', notesPresent);
 
   // ═══ 4. SÉCURITÉ — fichiers internes (fetch natif Node : aucun cache navigateur) ═══
   // NB : le navigateur mémorise les credentials Basic par domaine, ce qui fausse les

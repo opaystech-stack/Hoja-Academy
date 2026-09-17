@@ -83,7 +83,7 @@ function findBrowser() {
     if (!btn) return false;
     return btn.offsetParent !== null;
   });
-  check('S1 : AUCUN bouton notes formateur visible', !notesBtnVisible, 'le bouton 📝 est visible');
+  check('S1 : AUCUN bouton notes formateur visible', !notesBtnVisible, 'le bouton Notes est visible');
 
   // ═══ Navigation — l'apprenant avance dans les slides ═══
   await page.evaluate(() => { try { goTo(1); } catch (e) {} });

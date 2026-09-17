@@ -245,7 +245,11 @@ async function nav(page, p, ms) {
       await new Promise(res2 => setTimeout(res2, 2000));
       const respTxt = await page.$eval('#gResp', el => el.textContent);
       const okResp = await page.$eval('#gResp', el => el.classList.contains('ok'));
-      check('E2E formateur UI: retour serveur affiche (succes ou erreur verbatim)', /Retour envoy|✅|❌/.test(respTxt), respTxt.slice(0, 90));
+      // L'intention est « le serveur répond et sa réponse est affichée telle quelle ».
+      // Ne PAS dépendre d'un emoji : l'interface n'en contient plus (Phase F).
+      const shown = respTxt.trim();
+      check('E2E formateur UI: retour serveur affiche (succes ou erreur verbatim)',
+        shown.length > 0 && !/^Envoi…?$/.test(shown), respTxt.slice(0, 90));
       check('E2E formateur UI: reponse = succes', okResp, respTxt.slice(0, 90));
     }
     // cote apprenant: la copie notee = Valide
