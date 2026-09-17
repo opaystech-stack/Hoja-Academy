@@ -63,13 +63,13 @@ Réponds précisément à ces 3 questions :
             <h1>Découvrir <em>l'Écosystème</em> de l'IA.</h1>
             <p class="hero-lead">Comprendre les 5 grandes familles, décoder les annonces sans panique et <strong>choisir le bon outil pour chaque tâche</strong>.</p>
             <div class="hero-actions">
-              <button class="primary" data-next>Explorer l'écosystème ➔</button>
-              <button class="secondary" id="openPromptsHero">Boîte à outils 🧰</button>
+              <button class="primary" data-next>Explorer l'écosystème</button>
+              <button class="secondary" id="openPromptsHero">Boîte à outils</button>
             </div>
             <div class="hero-meta">
-              <span>🗺️ CARTOGRAPHIE CLAIRE</span>
-              <span>⚖️ 5 FAMILLES D'OUTILS</span>
-              <span>🛡️ RÈGLE DES 5 QUESTIONS</span>
+              <span>CARTOGRAPHIE CLAIRE</span>
+              <span>5 FAMILLES D'OUTILS</span>
+              <span>RÈGLE DES 5 QUESTIONS</span>
             </div>
           </div>
           <div class="hero-stage">
@@ -83,10 +83,10 @@ Réponds précisément à ces 3 questions :
                 </g>
               </svg>
             </div>
-            <div class="orbit orbit-1">🤖 OpenAI & ChatGPT</div>
-            <div class="orbit orbit-2">🧠 Claude & Anthropic</div>
-            <div class="orbit orbit-3">🔍 Perplexity & Recherche</div>
-            <div class="orbit orbit-4">⚡ DeepSeek & Open Source</div>
+            <div class="orbit orbit-1">OpenAI & ChatGPT</div>
+            <div class="orbit orbit-2">Claude & Anthropic</div>
+            <div class="orbit orbit-3">Perplexity & Recherche</div>
+            <div class="orbit orbit-4">DeepSeek & Open Source</div>
           </div>
         </div>
       </section>`,
@@ -97,7 +97,7 @@ Réponds précisément à ces 3 questions :
           <p class="lead">Chaque semaine, 50 nouveaux sites "IA" apparaissent. 90 % d'entre eux ne sont que des habillages branchés sur les 3 mêmes moteurs.</p>
           <div class="card reveal" style="border-color:var(--line-blue); background:rgba(0,102,255,0.04); margin-top:16px;">
             <span>L'ENCHAÎNEMENT RÉEL DE L'ÉCOSYSTÈME</span>
-            <b style="font-size:20px; color:#fff; margin:12px 0;">Entreprise Créatrice ➔ Moteur (LLM) ➔ Application ➔ Connecteurs ➔ Agent</b>
+            <b style="font-size:20px; color:#fff; margin:12px 0;">Entreprise Créatrice → Moteur (LLM) → Application → Connecteurs → Agent</b>
             <p style="font-size:12px; color:var(--muted);">Ne cherchez pas à tout tester. Maîtrisez les moteurs fondamentaux et vous saurez tout piloter.</p>
           </div>
         </div>
@@ -133,7 +133,7 @@ Réponds précisément à ces 3 questions :
               <p>Make, n8n, Zapier + LLM. Exécution de flux multi-étapes sans intervention manuelle.</p>
             </div>
             <div class="card" style="border-style:dashed;">
-              <span style="color:var(--ok)">🎯 RÈGLE OPAYS</span>
+              <span style="color:var(--ok)">RÈGLE OPAYS</span>
               <b>1 Outil Maître par Famille</b>
               <p>Inutile d'avoir 10 abonnements. 2 à 3 outils bien maîtrisés suffisent pour 95% de votre travail.</p>
             </div>
@@ -148,7 +148,7 @@ Réponds précisément à ces 3 questions :
           <div class="prompt-card reveal">
             <div class="prompt-header">
               <span>PROMPT COMPARATIF MULTI-MODÈLES</span>
-              <button class="copy-btn" data-copy="compPrompt">📋 Copier le prompt test</button>
+              <button class="copy-btn" data-copy="compPrompt">Copier le prompt test</button>
             </div>
             <p class="prompt-text" id="compPromptText">Agis en tant que conseiller d'orientation pour cadres d'entreprise.
 Donne-moi 3 recommandations stratégiques pour moderniser la communication interne d'un ministère de 500 agents avec des solutions concrètes et adaptées au contexte africain.</p>
@@ -186,7 +186,7 @@ Donne-moi 3 recommandations stratégiques pour moderniser la communication inter
             <div class="prompt-card">
               <div class="prompt-header">
                 <span>AUDIT D'UN NOUVEL OUTIL</span>
-                <button class="copy-btn" data-copy="q5Prompt">📋 Copier</button>
+                <button class="copy-btn" data-copy="q5Prompt">Copier</button>
               </div>
               <p class="prompt-text" id="q5PromptText">Agis en tant qu'auditeur de solutions logicielles IA.
 Voici un outil que je viens de découvrir : [NOM DE L'OUTIL].
@@ -195,12 +195,12 @@ Voici un outil que je viens de découvrir : [NOM DE L'OUTIL].
 3. Quels sont ses cas d'usage et limites de sécurité ?</p>
             </div>
             <div class="card gold-border">
-              <span>📁 WORK KIT • VOLET 02</span>
+              <span>WORK KIT • VOLET 02</span>
               <b>Ma Pile d'Outils Personnelle</b>
               <p style="font-size:12px; line-height:1.7; color:#cbd5e1; margin-top:8px;">
-                ✔ Mon Assistant principal (ChatGPT ou Claude)<br/>
-                ✔ Mon Moteur de recherche sourcé (Perplexity)<br/>
-                ✔ Mon Générateur documentaire (Gamma / Office Copilot)
+                Mon Assistant principal (ChatGPT ou Claude)<br/>
+                Mon Moteur de recherche sourcé (Perplexity)<br/>
+                Mon Générateur documentaire (Gamma / Office Copilot)
               </p>
             </div>
           </div>
@@ -213,8 +213,8 @@ Voici un outil que je viens de découvrir : [NOM DE L'OUTIL].
           <p class="lead">Prenez une vraie tâche professionnelle et soumettez-la à 2 outils différents. Notez les écarts de style et de précision.</p>
           <div class="hero-meta reveal" style="justify-content:center;">
             <span>⏱️ 25 MINUTES DE TEST</span>
-            <span>📝 DÉPÔT SUR CLASSROOM (THÈME 02)</span>
-            <span>📅 AVANT LUNDI 23H59</span>
+            <span>DÉPÔT SUR CLASSROOM (THÈME 02)</span>
+            <span>AVANT LUNDI 23H59</span>
           </div>
         </div>
       </section>`
@@ -285,13 +285,13 @@ Présente le résultat sous la forme :
             <h1>Bien Utiliser l'IA : <em>La Méthode C.O.R.E.</em></h1>
             <p class="hero-lead">Passez du prompt flou au cadrage professionnel d'élite. <strong>Obtenez des résultats impeccables du premier coup</strong>.</p>
             <div class="hero-actions">
-              <button class="primary" data-next>Maîtriser C.O.R.E. ➔</button>
-              <button class="secondary" id="openPromptsHero">Modèles de Prompts 🧰</button>
+              <button class="primary" data-next>Maîtriser C.O.R.E.</button>
+              <button class="secondary" id="openPromptsHero">Modèles de Prompts</button>
             </div>
             <div class="hero-meta">
-              <span>🎯 CADRAGE CHIRURGICAL</span>
-              <span>⚡ FORMULE EN 4 PILIERS</span>
-              <span>💎 ZÉRO TEXTE GÉNÉRIQUE</span>
+              <span>CADRAGE CHIRURGICAL</span>
+              <span>FORMULE EN 4 PILIERS</span>
+              <span>ZÉRO TEXTE GÉNÉRIQUE</span>
             </div>
           </div>
           <div class="hero-stage">
@@ -318,13 +318,13 @@ Présente le résultat sous la forme :
           <h2>Pourquoi l'IA vous donne-t-elle des <strong>réponses décevantes ?</strong></h2>
           <div class="versus reveal" style="margin-top:12px;">
             <div class="vs-card" style="border-color:var(--danger);">
-              <small style="color:var(--danger)">❌ LE PROMPT PAUVRE (AMATEUR)</small>
+              <small style="color:var(--danger)">LE PROMPT PAUVRE (AMATEUR)</small>
               <h3>« Rédige un rapport sur le budget »</h3>
               <p>Résultat : Texte plat, généraliste, verbeux, sans chiffres précis et inutilisable en réunion.</p>
             </div>
-            <div class="vs-mark">➔</div>
+            <div class="vs-mark"></div>
             <div class="vs-card active-blue">
-              <small style="color:var(--blue-light)">✔ LE PROMPT CADRÉ C.O.R.E. (OPAYS)</small>
+              <small style="color:var(--blue-light)">LE PROMPT CADRÉ C.O.R.E. (OPAYS)</small>
               <h3>Rôle + Document + Contraintes + Format</h3>
               <p>Résultat : Note de cadrage de 350 mots, chiffres clés surlignés, format exécutif prêt à être signé.</p>
             </div>
@@ -366,7 +366,7 @@ Présente le résultat sous la forme :
           <div class="prompt-card reveal">
             <div class="prompt-header">
               <span>TEMPLATE OFFICIEL C.O.R.E.</span>
-              <button class="copy-btn" data-copy="coreTemplate">📋 Copier le template</button>
+              <button class="copy-btn" data-copy="coreTemplate">Copier le template</button>
             </div>
             <p class="prompt-text" id="coreTemplateText">CONTEXTE :
 Tu es <span class="prompt-var">[MON RÔLE]</span>. Je travaille sur <span class="prompt-var">[MON CONTEXTE]</span>.
@@ -394,7 +394,7 @@ FORMAT ATTENDU :
           <div class="prompt-card reveal">
             <div class="prompt-header">
               <span>PROMPT D'AUTO-AUDIT EN CASCADE</span>
-              <button class="copy-btn" data-copy="cascadePrompt">📋 Copier</button>
+              <button class="copy-btn" data-copy="cascadePrompt">Copier</button>
             </div>
             <p class="prompt-text" id="cascadePromptText">Relis attentivement le texte que tu viens de produire avec le regard d'un directeur général exigeant.
 1. Quels sont les 2 points faibles ou imprécisions de ton document ?
@@ -408,9 +408,9 @@ FORMAT ATTENDU :
           <h2>Intégrez vos 3 Meilleurs Prompts dans votre <strong>Work Kit</strong></h2>
           <p class="lead">Remplissez le <strong>Volet 03 — Ma Bibliothèque de Prompts C.O.R.E.</strong> avec vos requêtes types de service.</p>
           <div class="hero-meta reveal" style="justify-content:center;">
-            <span>📁 ARCHIVAGE DU VOLET 03</span>
-            <span>📝 MISSION 03 SUR CLASSROOM</span>
-            <span>📅 DATE LIMITE : LUNDI 23H59</span>
+            <span>ARCHIVAGE DU VOLET 03</span>
+            <span>MISSION 03 SUR CLASSROOM</span>
+            <span>DATE LIMITE : LUNDI 23H59</span>
           </div>
         </div>
       </section>`
@@ -460,12 +460,12 @@ Voici mes responsabilités et mes tâches hebdomadaires :
             <h1>L'IA dans <em>Mon Travail</em>.</h1>
             <p class="hero-lead">Passez votre quotidien professionnel au microscope. <strong>Identifiez les tâches à fort ROI et libérez 5h chaque semaine</strong>.</p>
             <div class="hero-actions">
-              <button class="primary" data-next>Auditer mon poste ➔</button>
-              <button class="secondary" id="openPromptsHero">Outil d'audit 🧰</button>
+              <button class="primary" data-next>Auditer mon poste</button>
+              <button class="secondary" id="openPromptsHero">Outil d'audit</button>
             </div>
             <div class="hero-meta">
-              <span>🔬 MICROSCOPE MÉTIER</span>
-              <span>📊 MATRICE ROI</span>
+              <span>MICROSCOPE MÉTIER</span>
+              <span>MATRICE ROI</span>
               <span>⏳ 5H LIBÉRÉES / SEMAINE</span>
             </div>
           </div>
@@ -480,10 +480,10 @@ Voici mes responsabilités et mes tâches hebdomadaires :
                 </g>
               </svg>
             </div>
-            <div class="orbit orbit-1">📋 10 Tâches Clés</div>
-            <div class="orbit orbit-2">📈 Fréquence & Temps</div>
-            <div class="orbit orbit-3">🎯 Top 3 Cibles</div>
-            <div class="orbit orbit-4">💼 AI Work Kit</div>
+            <div class="orbit orbit-1">10 Tâches Clés</div>
+            <div class="orbit orbit-2">Fréquence & Temps</div>
+            <div class="orbit orbit-3">Top 3 Cibles</div>
+            <div class="orbit orbit-4">AI Work Kit</div>
           </div>
         </div>
       </section>`,
@@ -512,7 +512,7 @@ Voici mes responsabilités et mes tâches hebdomadaires :
           <div class="prompt-card reveal">
             <div class="prompt-header">
               <span>PROMPT AUDIT DE POSTE</span>
-              <button class="copy-btn" data-copy="auditPrompt">📋 Copier le prompt</button>
+              <button class="copy-btn" data-copy="auditPrompt">Copier le prompt</button>
             </div>
             <p class="prompt-text" id="auditPromptText">Agis en tant qu'expert en organisation du travail et productivité par l'IA.
 Voici mes responsabilités et mes tâches hebdomadaires :
@@ -530,9 +530,9 @@ Voici mes responsabilités et mes tâches hebdomadaires :
           <h2>Validez vos 3 Tâches Prioritaires dans votre <strong>AI Work Kit</strong></h2>
           <p class="lead">Complétez le <strong>Volet 04 — Mon Audit de Poste & Mes 3 Tâches Cibles</strong> pour préparer la construction de vos Skills.</p>
           <div class="hero-meta reveal" style="justify-content:center;">
-            <span>📁 WORK KIT : VOLET 04</span>
-            <span>📝 DÉPÔT CLASSROOM</span>
-            <span>📅 AVANT LUNDI 23H59</span>
+            <span>WORK KIT : VOLET 04</span>
+            <span>DÉPÔT CLASSROOM</span>
+            <span>AVANT LUNDI 23H59</span>
           </div>
         </div>
       </section>`
@@ -587,13 +587,13 @@ Rédige une note de 300 mots résumant les conditions d'octroi des congés spéc
             <h1>Documents & <em>Données</em>.</h1>
             <p class="hero-lead">Maîtrisez les PDF, classeurs Excel et rapports volumineux. <strong>Citations exactes et zéro hallucination avec NotebookLM</strong>.</p>
             <div class="hero-actions">
-              <button class="primary" data-next>Dompter mes documents ➔</button>
-              <button class="secondary" id="openPromptsHero">Boîte documentaire 🧰</button>
+              <button class="primary" data-next>Dompter mes documents</button>
+              <button class="secondary" id="openPromptsHero">Boîte documentaire</button>
             </div>
             <div class="hero-meta">
-              <span>📑 6 OPÉRATIONS CLÉS</span>
-              <span>🔍 CITATIONS À LA PAGE PRÈS</span>
-              <span>📊 EXTRACTION TABLEAUX</span>
+              <span>6 OPÉRATIONS CLÉS</span>
+              <span>CITATIONS À LA PAGE PRÈS</span>
+              <span>EXTRACTION TABLEAUX</span>
             </div>
           </div>
           <div class="hero-stage">
@@ -607,10 +607,10 @@ Rédige une note de 300 mots résumant les conditions d'octroi des congés spéc
                 </g>
               </svg>
             </div>
-            <div class="orbit orbit-1">📄 Analyse de PDF</div>
-            <div class="orbit orbit-2">📊 Tableaux Excel</div>
-            <div class="orbit orbit-3">📚 NotebookLM</div>
-            <div class="orbit orbit-4">🛡️ Zéro Hallucination</div>
+            <div class="orbit orbit-1">Analyse de PDF</div>
+            <div class="orbit orbit-2">Tableaux Excel</div>
+            <div class="orbit orbit-3">NotebookLM</div>
+            <div class="orbit orbit-4">Zéro Hallucination</div>
           </div>
         </div>
       </section>`,
@@ -660,7 +660,7 @@ Rédige une note de 300 mots résumant les conditions d'octroi des congés spéc
           <div class="prompt-card reveal">
             <div class="prompt-header">
               <span>PROMPT DE CONTRÔLE SOURCÉ</span>
-              <button class="copy-btn" data-copy="notebookLmPrompt">📋 Copier le prompt</button>
+              <button class="copy-btn" data-copy="notebookLmPrompt">Copier le prompt</button>
             </div>
             <p class="prompt-text" id="notebookLmPromptText">À partir exclusivement des documents sources déposés dans ce carnet :
 Rédige une note de 300 mots résumant les conditions d'octroi des congés spéciaux, en insérant pour chaque affirmation la citation exacte et le document source correspondant.</p>
@@ -673,9 +673,9 @@ Rédige une note de 300 mots résumant les conditions d'octroi des congés spéc
           <h2>Créez votre Premier Carnet de Sources dans votre <strong>AI Work Kit</strong></h2>
           <p class="lead">Complétez le <strong>Volet 05 — Traitement Documentaire & NotebookLM</strong> avec vos procédures officielles.</p>
           <div class="hero-meta reveal" style="justify-content:center;">
-            <span>📁 WORK KIT : VOLET 05</span>
-            <span>📝 DÉPÔT CLASSROOM</span>
-            <span>📅 AVANT LUNDI 23H59</span>
+            <span>WORK KIT : VOLET 05</span>
+            <span>DÉPÔT CLASSROOM</span>
+            <span>AVANT LUNDI 23H59</span>
           </div>
         </div>
       </section>`
@@ -739,13 +739,13 @@ Présenter la note prête à imprimer avec mentions d'en-tête officielles.`
             <h1>Les <em>Skills</em> Métiers.</h1>
             <p class="hero-lead">Ne réécrivez plus vos prompts chaque matin. <strong>Créez vos recettes professionnelles réutilisables à l'infini</strong>.</p>
             <div class="hero-actions">
-              <button class="primary" data-next>Construire mes Skills ➔</button>
-              <button class="secondary" id="openPromptsHero">Modèle de Skill 🧰</button>
+              <button class="primary" data-next>Construire mes Skills</button>
+              <button class="secondary" id="openPromptsHero">Modèle de Skill</button>
             </div>
             <div class="hero-meta">
-              <span>📋 LE SKILL CANVAS</span>
-              <span>⚡ EXÉCUTION EN 1 CLIC</span>
-              <span>🔄 GAIN DE TEMPS QUOTIDIEN</span>
+              <span>LE SKILL CANVAS</span>
+              <span>EXÉCUTION EN 1 CLIC</span>
+              <span>GAIN DE TEMPS QUOTIDIEN</span>
             </div>
           </div>
           <div class="hero-stage">
@@ -759,10 +759,10 @@ Présenter la note prête à imprimer avec mentions d'en-tête officielles.`
                 </g>
               </svg>
             </div>
-            <div class="orbit orbit-1">🎯 6 Piliers Canvas</div>
-            <div class="orbit orbit-2">⚡ Déclencheurs</div>
-            <div class="orbit orbit-3">📑 Règles Strictes</div>
-            <div class="orbit orbit-4">💼 AI Work Kit</div>
+            <div class="orbit orbit-1">6 Piliers Canvas</div>
+            <div class="orbit orbit-2">Déclencheurs</div>
+            <div class="orbit orbit-3">Règles Strictes</div>
+            <div class="orbit orbit-4">AI Work Kit</div>
           </div>
         </div>
       </section>`,
@@ -811,7 +811,7 @@ Présenter la note prête à imprimer avec mentions d'en-tête officielles.`
           <div class="prompt-card reveal">
             <div class="prompt-header">
               <span>CANVAS COMPLET PRÊT À L'EMPLOI</span>
-              <button class="copy-btn" data-copy="skillCanvasTemplate">📋 Copier le Skill Canvas</button>
+              <button class="copy-btn" data-copy="skillCanvasTemplate">Copier le Skill Canvas</button>
             </div>
             <p class="prompt-text" id="skillCanvasTemplateText">SKILL MÉTIER : [RÉDACTEUR DE NOTE DE SERVICE]
 
@@ -832,9 +832,9 @@ Présenter la note prête à imprimer avec mentions d'en-tête officielles.`
           <h2>Enregistrez votre Premier Skill dans votre <strong>AI Work Kit</strong></h2>
           <p class="lead">Complétez le <strong>Volet 06 — Mes Fiches Skills Métiers</strong> et testez-le sur 3 cas réels.</p>
           <div class="hero-meta reveal" style="justify-content:center;">
-            <span>📁 WORK KIT : VOLET 06</span>
-            <span>📝 DÉPÔT CLASSROOM</span>
-            <span>📅 AVANT LUNDI 23H59</span>
+            <span>WORK KIT : VOLET 06</span>
+            <span>DÉPÔT CLASSROOM</span>
+            <span>AVANT LUNDI 23H59</span>
           </div>
         </div>
       </section>`

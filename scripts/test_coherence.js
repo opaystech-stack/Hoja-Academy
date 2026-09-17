@@ -1,5 +1,5 @@
 /**
- * OPAYS ACADEMY — TEST DE COHÉRENCE TRANSVERSALE
+ * HOJA ACADEMY — TEST DE COHÉRENCE TRANSVERSALE
  * Vérifie : unicité du contenu, progression, Work Kit, missions, notes, prompts.
  * Consomme le registre central (data/modules.js) et la config (scripts/config.js).
  * Usage : node scripts/test_coherence.js
@@ -53,7 +53,7 @@ OPAYS_MODULES.forEach(mod => {
 });
 
 console.log('\n' + '═'.repeat(70));
-console.log('  🔗 TEST DE COHÉRENCE TRANSVERSALE — 18 MODULES OPAYS');
+console.log('  🔗 TEST DE COHÉRENCE TRANSVERSALE — 18 MODULES HOJA');
 console.log('═'.repeat(70));
 
 // ─── 1. UNICITÉ DU CONTENU ────────────────────────────────────────────
@@ -158,26 +158,51 @@ Object.entries(expectedConcepts).forEach(([num, { teaches }]) => {
 console.log('\n🎨 7. COHÉRENCE VISUELLE ENTRE MODULES');
 console.log('─'.repeat(50));
 
+// Jetons Hoja attendus dans les 18 modules (DESIGN_SYSTEM_HOJA.md §2)
 const designTokens = [
-  { name: 'Fond obsidienne', pattern: '--bg: #070b12', required: true },
-  { name: 'Bleu OPAYS', pattern: '--blue-opays: #0066FF', required: true },
-  { name: 'Or technologique', pattern: '--gold-opays: #D4AF37', required: true },
-  { name: 'Surface sombre', pattern: '--surface: #0d1522', required: true },
-  { name: 'Logo SVG inline', pattern: 'M 680 200 A 380 380', required: true },
-  { name: 'Police Inter', pattern: 'font-family: Inter', required: true },
-  { name: 'Radius standard', pattern: '--radius: 20px', required: true },
-  { name: 'Shadow standard', pattern: '--shadow:', required: true },
+  { name: 'Fond Hoja', pattern: '--bg: #090d16' },
+  { name: 'Vert Hoja (marque)', pattern: '--teal: #10b981' },
+  { name: 'Sky Hoja (info)', pattern: '--blue: #38bdf8' },
+  { name: 'Surface carte', pattern: '--card: #111726' },
+  { name: 'Marque vectorielle inline', pattern: 'M 680 200 A 380 380' },
+  { name: 'Rayon standard', pattern: '--radius: 10px' },
+  { name: 'Palier de rayons', pattern: '--radius-lg: 14px' },
+  { name: 'Ombre standard', pattern: '--shadow:' },
+  { name: 'Cible tactile 44 px', pattern: '--touch-min: 44px' },
+  { name: 'Focus visible global', pattern: ':focus-visible' },
 ];
+
+// Système de marque OPAYS proscrit (Phase H) — ne doit plus apparaître nulle part
+const forbiddenTokens = [
+  { name: 'Jeton OPAYS bleu', pattern: '--blue-opays' },
+  { name: 'Jeton OPAYS or', pattern: '--gold-opays' },
+  { name: 'Jeton OPAYS navy', pattern: '--navy' },
+  { name: 'Or OPAYS', pattern: '#D4AF37' },
+  { name: 'Bleu OPAYS', pattern: '#0066FF' },
+  { name: 'Navy OPAYS', pattern: '#001f4d' },
+  { name: 'Rayon 20 px', pattern: 'border-radius: 20px' },
+  { name: 'Ombre spectaculaire', pattern: '34px 90px' },
+  { name: 'Orbes décoratifs', pattern: 'class="ambient' },
+  { name: 'Grain décoratif', pattern: 'class="grain"' },
+  { name: 'Dégradé décoratif', pattern: 'gradient(' },
+  { name: 'Police Inter non chargée', pattern: 'font-family: Inter' },
+];
+
+const moduleHtml = {};
+Object.values(allData).forEach(d => {
+  moduleHtml[d.modNum] = fs.readFileSync(path.join(modulesDir, d.code, 'presentation.html'), 'utf8');
+});
 
 let allDesignConsistent = true;
 designTokens.forEach(token => {
-  const missingIn = [];
-  Object.values(allData).forEach(d => {
-    const html = fs.readFileSync(path.join(modulesDir, d.code, 'presentation.html'), 'utf8');
-    if (!html.includes(token.pattern)) missingIn.push(d.modNum);
-  });
+  const missingIn = Object.entries(moduleHtml).filter(([, html]) => !html.includes(token.pattern)).map(([n]) => n);
   if (missingIn.length > 0) allDesignConsistent = false;
   console.log(`  ${missingIn.length === 0 ? '✅' : '⚠️ '} ${token.name} : ${missingIn.length === 0 ? '18/18' : 'manquant dans ' + missingIn.join(', ')}`);
+});
+forbiddenTokens.forEach(token => {
+  const presentIn = Object.entries(moduleHtml).filter(([, html]) => html.includes(token.pattern)).map(([n]) => n);
+  if (presentIn.length > 0) allDesignConsistent = false;
+  console.log(`  ${presentIn.length === 0 ? '✅' : '⚠️ '} ${token.name} retiré : ${presentIn.length === 0 ? '18/18' : 'ENCORE PRÉSENT dans ' + presentIn.join(', ')}`);
 });
 check('Design system cohérent sur les 18 modules', allDesignConsistent, 'Design system incohérent');
 console.log(allDesignConsistent ? '  🏆 Design system 100% cohérent sur les 18 modules' : '  ⚠️ Design system incohérent');

@@ -51,13 +51,13 @@ Affiche le résultat final et attends ma validation explicite avant de générer
             <h1>Workflows & <em>Loops</em>.</h1>
             <p class="hero-lead">Passez de la question ponctuelle au pipeline de travail complet. <strong>Boucles d'auto-critique et contrôle humain souverain</strong>.</p>
             <div class="hero-actions">
-              <button class="primary" data-next>Explorer les workflows ➔</button>
-              <button class="secondary" id="openPromptsHero">Modèle de workflow 🧰</button>
+              <button class="primary" data-next>Explorer les workflows</button>
+              <button class="secondary" id="openPromptsHero">Modèle de workflow</button>
             </div>
             <div class="hero-meta">
-              <span>🔄 PROCESSUS MULTI-ÉTAPES</span>
-              <span>🔁 BOUCLES D'AUTO-CORRECTION</span>
-              <span>🛡️ HUMAN-IN-THE-LOOP</span>
+              <span>PROCESSUS MULTI-ÉTAPES</span>
+              <span>BOUCLES D'AUTO-CORRECTION</span>
+              <span>HUMAN-IN-THE-LOOP</span>
             </div>
           </div>
           <div class="hero-stage">
@@ -71,10 +71,10 @@ Affiche le résultat final et attends ma validation explicite avant de générer
                 </g>
               </svg>
             </div>
-            <div class="orbit orbit-1">📥 Étape 1 : Entrée</div>
-            <div class="orbit orbit-2">⚙️ Étape 2 : Calcul</div>
-            <div class="orbit orbit-3">🔁 Étape 3 : Loop</div>
-            <div class="orbit orbit-4">🛑 Étape 4 : Validation</div>
+            <div class="orbit orbit-1">Étape 1 : Entrée</div>
+            <div class="orbit orbit-2">Étape 2 : Calcul</div>
+            <div class="orbit orbit-3">Étape 3 : Loop</div>
+            <div class="orbit orbit-4">Étape 4 : Validation</div>
           </div>
         </div>
       </section>`,
@@ -108,7 +108,7 @@ Affiche le résultat final et attends ma validation explicite avant de générer
           <div class="prompt-card reveal">
             <div class="prompt-header">
               <span>WORKFLOW MULTI-ÉTAPES AVEC POINT D'ARRÊT</span>
-              <button class="copy-btn" data-copy="workflowTemplate">📋 Copier le workflow</button>
+              <button class="copy-btn" data-copy="workflowTemplate">Copier le workflow</button>
             </div>
             <p class="prompt-text" id="workflowTemplateText">Tu vas exécuter le workflow suivant en 4 étapes ordonnées :
 1. EXTRACTION : Extrais les 5 décisions majeures de : <span class="prompt-var">[TEXTE]</span>.
@@ -135,9 +135,9 @@ Affiche le résultat final et attends ma validation explicite avant de générer
           <h2>Modélisez votre Premier Workflow dans votre <strong>AI Work Kit</strong></h2>
           <p class="lead">Complétez le <strong>Volet 07 — Workflows & Processus Multi-Étapes</strong> avec un pipeline à 3 étapes minimum.</p>
           <div class="hero-meta reveal" style="justify-content:center;">
-            <span>📁 WORK KIT : VOLET 07</span>
-            <span>📝 DÉPÔT CLASSROOM</span>
-            <span>📅 AVANT LUNDI 23H59</span>
+            <span>WORK KIT : VOLET 07</span>
+            <span>DÉPÔT CLASSROOM</span>
+            <span>AVANT LUNDI 23H59</span>
           </div>
         </div>
       </section>`
@@ -196,13 +196,13 @@ Présenter chaque analyse sous forme de note de consultation prête à être tra
             <h1>Construire son <em>Assistant</em>.</h1>
             <p class="hero-lead">Créez la fiche de poste de votre IA. <strong>Le fichier Agent.md officiel et la maîtrise de la mémoire permanente</strong>.</p>
             <div class="hero-actions">
-              <button class="primary" data-next>Bâtir mon assistant ➔</button>
-              <button class="secondary" id="openPromptsHero">Template Agent.md 🧰</button>
+              <button class="primary" data-next>Bâtir mon assistant</button>
+              <button class="secondary" id="openPromptsHero">Template Agent.md</button>
             </div>
             <div class="hero-meta">
-              <span>📄 LE STANDARD AGENT.MD</span>
-              <span>🧠 GOUVERNANCE MÉMOIRE</span>
-              <span>🎯 PALIER 2 DU PARCOURS</span>
+              <span>LE STANDARD AGENT.MD</span>
+              <span>GOUVERNANCE MÉMOIRE</span>
+              <span>PALIER 2 DU PARCOURS</span>
             </div>
           </div>
           <div class="hero-stage">
@@ -216,10 +216,10 @@ Présenter chaque analyse sous forme de note de consultation prête à être tra
                 </g>
               </svg>
             </div>
-            <div class="orbit orbit-1">📋 Rôle Permanent</div>
-            <div class="orbit orbit-2">📄 Fichier Agent.md</div>
-            <div class="orbit orbit-3">🧠 Gestion Mémoire</div>
-            <div class="orbit orbit-4">💼 AI Work Kit</div>
+            <div class="orbit orbit-1">Rôle Permanent</div>
+            <div class="orbit orbit-2">Fichier Agent.md</div>
+            <div class="orbit orbit-3">Gestion Mémoire</div>
+            <div class="orbit orbit-4">AI Work Kit</div>
           </div>
         </div>
       </section>`,
@@ -258,7 +258,7 @@ Présenter chaque analyse sous forme de note de consultation prête à être tra
           <div class="prompt-card reveal">
             <div class="prompt-header">
               <span>AGENT.MD OFFICIEL OPAYS</span>
-              <button class="copy-btn" data-copy="agentMdTemplate">📋 Copier le template</button>
+              <button class="copy-btn" data-copy="agentMdTemplate">Copier le template</button>
             </div>
             <p class="prompt-text" id="agentMdTemplateText"># FICHE DE POSTE : [NOM DE L'ASSISTANT]
 
@@ -285,9 +285,9 @@ Notes structurées avec synthèse exécutive en tête.</p>
           <h2>Configurez votre Assistant dans votre <strong>AI Work Kit</strong></h2>
           <p class="lead">Complétez le <strong>Volet 08 — Mon Assistant Spécialisé & Fichier Agent.md</strong> et déployez-le sur votre outil.</p>
           <div class="hero-meta reveal" style="justify-content:center;">
-            <span>📁 WORK KIT : VOLET 08</span>
-            <span>📝 DÉPÔT CLASSROOM</span>
-            <span>📅 AVANT LUNDI 23H59</span>
+            <span>WORK KIT : VOLET 08</span>
+            <span>DÉPÔT CLASSROOM</span>
+            <span>AVANT LUNDI 23H59</span>
           </div>
         </div>
       </section>`
@@ -337,13 +337,13 @@ Voici les outils que je souhaite connecter à mon assistant : [LISTER: LECTURE G
             <h1>Connecteurs & <em>Standard MCP</em>.</h1>
             <p class="hero-lead">Quand l'IA interagit avec vos logiciels. <strong>L'analogie de la prise universelle et la sécurité du moindre privilège</strong>.</p>
             <div class="hero-actions">
-              <button class="primary" data-next>Comprendre les outils ➔</button>
-              <button class="secondary" id="openPromptsHero">Audit de connecteurs 🧰</button>
+              <button class="primary" data-next>Comprendre les outils</button>
+              <button class="secondary" id="openPromptsHero">Audit de connecteurs</button>
             </div>
             <div class="hero-meta">
-              <span>🔌 LE STANDARD UNIVERSEL MCP</span>
-              <span>🛡️ SÉCURITÉ & PERMISSIONS</span>
-              <span>🗺️ L'AGENT TOOL MAP</span>
+              <span>LE STANDARD UNIVERSEL MCP</span>
+              <span>SÉCURITÉ & PERMISSIONS</span>
+              <span>L'AGENT TOOL MAP</span>
             </div>
           </div>
           <div class="hero-stage">
@@ -357,10 +357,10 @@ Voici les outils que je souhaite connecter à mon assistant : [LISTER: LECTURE G
                 </g>
               </svg>
             </div>
-            <div class="orbit orbit-1">🔌 Standard MCP</div>
-            <div class="orbit orbit-2">📂 Lecture Fichiers</div>
-            <div class="orbit orbit-3">✉️ Actions & Écriture</div>
-            <div class="orbit orbit-4">🛡️ Moindre Privilège</div>
+            <div class="orbit orbit-1">Standard MCP</div>
+            <div class="orbit orbit-2">Lecture Fichiers</div>
+            <div class="orbit orbit-3">Actions & Écriture</div>
+            <div class="orbit orbit-4">Moindre Privilège</div>
           </div>
         </div>
       </section>`,
@@ -370,13 +370,13 @@ Voici les outils que je souhaite connecter à mon assistant : [LISTER: LECTURE G
           <h2>Le Protocole MCP : <strong>L'USB-C de l'Intelligence Artificielle</strong></h2>
           <div class="versus reveal" style="margin-top:12px;">
             <div class="vs-card" style="border-color:var(--danger)">
-              <small style="color:var(--danger)">❌ AVANT (CHAOS TECHNIQUE)</small>
+              <small style="color:var(--danger)">AVANT (CHAOS TECHNIQUE)</small>
               <h3>Un connecteur sur-mesure par outil</h3>
               <p>Chaque logiciel nécessitait un code personnalisé lourd, coûteux et fragile.</p>
             </div>
-            <div class="vs-mark">➔</div>
+            <div class="vs-mark"></div>
             <div class="vs-card active-blue">
-              <small style="color:var(--blue-light)">✔ AUJOURD'HUI (STANDARD UNIVERSEL)</small>
+              <small style="color:var(--blue-light)">AUJOURD'HUI (STANDARD UNIVERSEL)</small>
               <h3>Une prise unique standardisée (MCP)</h3>
               <p>N'importe quel modèle peut se brancher instantanément sur votre Drive, CRM ou base de données.</p>
             </div>
@@ -390,7 +390,7 @@ Voici les outils que je souhaite connecter à mon assistant : [LISTER: LECTURE G
           <div class="prompt-card reveal">
             <div class="prompt-header">
               <span>TOOL MAP & PERMISSIONS STRICTES</span>
-              <button class="copy-btn" data-copy="mcpAuditPrompt">📋 Copier le prompt</button>
+              <button class="copy-btn" data-copy="mcpAuditPrompt">Copier le prompt</button>
             </div>
             <p class="prompt-text" id="mcpAuditPromptText">Agis en tant qu'architecte de sécurité IA.
 Voici les outils que je souhaite connecter à mon assistant : <span class="prompt-var">[LISTE DES OUTILS]</span>.
@@ -424,9 +424,9 @@ Voici les outils que je souhaite connecter à mon assistant : <span class="promp
           <h2>Cartographiez les Outils de votre Agent dans votre <strong>AI Work Kit</strong></h2>
           <p class="lead">Complétez le <strong>Volet 09 — Connecteurs, Outils & Matrice de Sécurité</strong> en prévision de l'atelier d'assemblage.</p>
           <div class="hero-meta reveal" style="justify-content:center;">
-            <span>📁 WORK KIT : VOLET 09</span>
-            <span>📝 DÉPÔT CLASSROOM</span>
-            <span>📅 AVANT LUNDI 23H59</span>
+            <span>WORK KIT : VOLET 09</span>
+            <span>DÉPÔT CLASSROOM</span>
+            <span>AVANT LUNDI 23H59</span>
           </div>
         </div>
       </section>`
@@ -485,13 +485,13 @@ Demander d'effacer une donnée ou d'envoyer un mail. (Vérifier qu'il demande un
             <h1>Construire son <em>Premier Agent</em>.</h1>
             <p class="hero-lead">Le grand atelier d'ingénierie. <strong>Assemblez votre système en 12 étapes et passez le banc d'homologation des 5 tests critiques</strong>.</p>
             <div class="hero-actions">
-              <button class="primary" data-next>Démarrer l'assemblage ➔</button>
-              <button class="secondary" id="openPromptsHero">Banc d'essai 🧰</button>
+              <button class="primary" data-next>Démarrer l'assemblage</button>
+              <button class="secondary" id="openPromptsHero">Banc d'essai</button>
             </div>
             <div class="hero-meta">
-              <span>🏆 PALIER 3 ATTEINT</span>
-              <span>⚙️ 12 ÉTAPES MÉTHODIQUES</span>
-              <span>🧪 5 TESTS D'HOMOLOGATION</span>
+              <span>PALIER 3 ATTEINT</span>
+              <span>12 ÉTAPES MÉTHODIQUES</span>
+              <span>5 TESTS D'HOMOLOGATION</span>
             </div>
           </div>
           <div class="hero-stage">
@@ -505,10 +505,10 @@ Demander d'effacer une donnée ou d'envoyer un mail. (Vérifier qu'il demande un
                 </g>
               </svg>
             </div>
-            <div class="orbit orbit-1">📄 Agent.md</div>
-            <div class="orbit orbit-2">🧰 Skills Métiers</div>
-            <div class="orbit orbit-3">🔌 Outils Connectés</div>
-            <div class="orbit orbit-4">🧪 Banc 5 Tests</div>
+            <div class="orbit orbit-1">Agent.md</div>
+            <div class="orbit orbit-2">Skills Métiers</div>
+            <div class="orbit orbit-3">Outils Connectés</div>
+            <div class="orbit orbit-4">Banc 5 Tests</div>
           </div>
         </div>
       </section>`,
@@ -543,7 +543,7 @@ Demander d'effacer une donnée ou d'envoyer un mail. (Vérifier qu'il demande un
               <p>L'agent exige une validation humaine expresse avant toute écriture.</p>
             </div>
             <div class="card" style="border-style:dashed;">
-              <span style="color:var(--ok)">🏅 HOMOLOGATION OPAYS</span>
+              <span style="color:var(--ok)">HOMOLOGATION OPAYS</span>
               <b>5 / 5 Requis</b>
               <p>Un agent n'est certifié que s'il réussit l'ensemble des 5 épreuves.</p>
             </div>
@@ -557,7 +557,7 @@ Demander d'effacer une donnée ou d'envoyer un mail. (Vérifier qu'il demande un
           <div class="prompt-card reveal">
             <div class="prompt-header">
               <span>PROTOCOLE DES 5 TESTS EN DIRECT</span>
-              <button class="copy-btn" data-copy="benchTestPrompt">📋 Copier le protocole</button>
+              <button class="copy-btn" data-copy="benchTestPrompt">Copier le protocole</button>
             </div>
             <p class="prompt-text" id="benchTestPromptText">PROTOCOLE D'HOMOLOGATION DES 5 TESTS :
 1. Test Nominal : Exécution standard parfaite.
@@ -574,9 +574,9 @@ Demander d'effacer une donnée ou d'envoyer un mail. (Vérifier qu'il demande un
           <h2>Homologation Finale dans votre <strong>AI Work Kit</strong></h2>
           <p class="lead">Complétez le <strong>Volet 10 — Mon Premier Agent Homologué</strong> et préparez votre fiche de soutenance.</p>
           <div class="hero-meta reveal" style="justify-content:center;">
-            <span>📁 WORK KIT : VOLET 10</span>
-            <span>📝 DÉPÔT CLASSROOM</span>
-            <span>📅 AVANT LUNDI 23H59</span>
+            <span>WORK KIT : VOLET 10</span>
+            <span>DÉPÔT CLASSROOM</span>
+            <span>AVANT LUNDI 23H59</span>
           </div>
         </div>
       </section>`
@@ -626,13 +626,13 @@ Dresse un comparatif argumenté entre OpenAI (GPT-4o), Anthropic (Claude 3.5 Son
             <h1>Les Grands <em>Écosystèmes</em>.</h1>
             <p class="hero-lead">Comprendre les géants mondiaux, décrypter la révolution open source et <strong>appliquer la règle anti-hype pour décider sereinement</strong>.</p>
             <div class="hero-actions">
-              <button class="primary" data-next>Analyser le marché ➔</button>
-              <button class="secondary" id="openPromptsHero">Grille d'arbitrage 🧰</button>
+              <button class="primary" data-next>Analyser le marché</button>
+              <button class="secondary" id="openPromptsHero">Grille d'arbitrage</button>
             </div>
             <div class="hero-meta">
-              <span>🌍 VISION GÉOPOLITIQUE</span>
-              <span>⚖️ ARBITRAGE DES MODÈLES</span>
-              <span>🛡️ RÈGLE ANTI-HYPE</span>
+              <span>VISION GÉOPOLITIQUE</span>
+              <span>ARBITRAGE DES MODÈLES</span>
+              <span>RÈGLE ANTI-HYPE</span>
             </div>
           </div>
           <div class="hero-stage">
@@ -646,10 +646,10 @@ Dresse un comparatif argumenté entre OpenAI (GPT-4o), Anthropic (Claude 3.5 Son
                 </g>
               </svg>
             </div>
-            <div class="orbit orbit-1">🌐 OpenAI (GPT)</div>
-            <div class="orbit orbit-2">🧠 Anthropic (Claude)</div>
-            <div class="orbit orbit-3">🏢 Google (Gemini)</div>
-            <div class="orbit orbit-4">⚡ DeepSeek & Open Source</div>
+            <div class="orbit orbit-1">OpenAI (GPT)</div>
+            <div class="orbit orbit-2">Anthropic (Claude)</div>
+            <div class="orbit orbit-3">Google (Gemini)</div>
+            <div class="orbit orbit-4">DeepSeek & Open Source</div>
           </div>
         </div>
       </section>`,
@@ -683,7 +683,7 @@ Dresse un comparatif argumenté entre OpenAI (GPT-4o), Anthropic (Claude 3.5 Son
           <div class="prompt-card reveal">
             <div class="prompt-header">
               <span>GRILLE D'ARBITRAGE STRATÉGIQUE</span>
-              <button class="copy-btn" data-copy="decisionGridPrompt">📋 Copier le prompt</button>
+              <button class="copy-btn" data-copy="decisionGridPrompt">Copier le prompt</button>
             </div>
             <p class="prompt-text" id="decisionGridPromptText">Agis en tant que consultant stratégique en technologies IA.
 Voici les caractéristiques de mon organisation : <span class="prompt-var">[TAILLE, SECTEUR, BUDGET]</span>.
@@ -711,9 +711,9 @@ Dresse un comparatif argumenté entre OpenAI, Anthropic et un modèle Open Sourc
           <h2>Validez votre Stratégie de Modèles dans votre <strong>AI Work Kit</strong></h2>
           <p class="lead">Complétez le <strong>Volet 11 — Écosystèmes & Stratégie Technologique</strong>.</p>
           <div class="hero-meta reveal" style="justify-content:center;">
-            <span>📁 WORK KIT : VOLET 11</span>
-            <span>📝 DÉPÔT CLASSROOM</span>
-            <span>📅 AVANT LUNDI 23H59</span>
+            <span>WORK KIT : VOLET 11</span>
+            <span>DÉPÔT CLASSROOM</span>
+            <span>AVANT LUNDI 23H59</span>
           </div>
         </div>
       </section>`
@@ -761,13 +761,13 @@ Analyse le document suivant : [COLLER TEXTE].
             <h1>Recherche & <em>Vérification</em>.</h1>
             <p class="hero-lead">Devenez un vérificateur d'élite. <strong>La Pyramide des sources officielles et la grille Source Checker anti-fake news</strong>.</p>
             <div class="hero-actions">
-              <button class="primary" data-next>Apprendre à vérifier ➔</button>
-              <button class="secondary" id="openPromptsHero">Outil de vérification 🧰</button>
+              <button class="primary" data-next>Apprendre à vérifier</button>
+              <button class="secondary" id="openPromptsHero">Outil de vérification</button>
             </div>
             <div class="hero-meta">
-              <span>🔍 FACT-CHECKING PROFESSIONNEL</span>
-              <span>🏛️ PYRAMIDE DES SOURCES</span>
-              <span>🛡️ GRILLE SOURCE CHECKER</span>
+              <span>FACT-CHECKING PROFESSIONNEL</span>
+              <span>PYRAMIDE DES SOURCES</span>
+              <span>GRILLE SOURCE CHECKER</span>
             </div>
           </div>
           <div class="hero-stage">
@@ -781,10 +781,10 @@ Analyse le document suivant : [COLLER TEXTE].
                 </g>
               </svg>
             </div>
-            <div class="orbit orbit-1">🏛️ Sources Officielles</div>
-            <div class="orbit orbit-2">🔍 Recoupement Faits</div>
-            <div class="orbit orbit-3">🛡️ Source Checker</div>
-            <div class="orbit orbit-4">💼 AI Work Kit</div>
+            <div class="orbit orbit-1">Sources Officielles</div>
+            <div class="orbit orbit-2">Recoupement Faits</div>
+            <div class="orbit orbit-3">Source Checker</div>
+            <div class="orbit orbit-4">AI Work Kit</div>
           </div>
         </div>
       </section>`,
@@ -823,7 +823,7 @@ Analyse le document suivant : [COLLER TEXTE].
           <div class="prompt-card reveal">
             <div class="prompt-header">
               <span>PROMPT AUDIT DE VÉRITÉ</span>
-              <button class="copy-btn" data-copy="factCheckPrompt">📋 Copier le prompt</button>
+              <button class="copy-btn" data-copy="factCheckPrompt">Copier le prompt</button>
             </div>
             <p class="prompt-text" id="factCheckPromptText">Agis en tant que vérificateur de faits (Fact-Checker) professionnel.
 Analyse le document suivant : <span class="prompt-var">[COLLER TEXTE]</span>.
@@ -839,9 +839,9 @@ Analyse le document suivant : <span class="prompt-var">[COLLER TEXTE]</span>.
           <h2>Auditez un Dossier Réel dans votre <strong>AI Work Kit</strong></h2>
           <p class="lead">Complétez le <strong>Volet 12 — Protocole de Vérification & Fact-Checking</strong>.</p>
           <div class="hero-meta reveal" style="justify-content:center;">
-            <span>📁 WORK KIT : VOLET 12</span>
-            <span>📝 DÉPÔT CLASSROOM</span>
-            <span>📅 AVANT LUNDI 23H59</span>
+            <span>WORK KIT : VOLET 12</span>
+            <span>DÉPÔT CLASSROOM</span>
+            <span>AVANT LUNDI 23H59</span>
           </div>
         </div>
       </section>`

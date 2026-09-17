@@ -1,10 +1,10 @@
 /**
- * OPAYS ACADEMY — Build de la version publique (apprenants)
+ * HOJA ACADEMY — Build de la version publique (apprenants)
  *
  * Produit public/ — la version HÉBERGEABLE (GitHub Pages / Netlify / etc.) :
  *   - Présentations SANITISÉES : contenu des notes formateur vidé, panneau vidé,
  *     fonctions notes neutralisées par redéclaration no-op (aucun parsing fragile),
- *     bouton 📝 masqué par CSS
+ *     bouton Notes masqué par CSS
  *   - Fiches apprenantes (01_/02_/03_) copiées ; guides formateur (00_GUIDE) EXCLUS
  *   - index.html minimal de redirection
  *
@@ -36,7 +36,10 @@ function sanitizePresentation(html) {
     if (asideStart >= 0 && asideEnd >= 0) {
       out = out.slice(0, asideStart)
         + '<aside class="notes-panel" id="notesPanel" aria-hidden="true">'
-        + '<div class="notes-head"><button class="close-panel-btn" id="closeNotes">✕</button></div>'
+        + '<div class="notes-head"><button class="close-panel-btn" id="closeNotes" aria-label="Fermer">'
+        + '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" '
+        + 'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg>'
+        + '</button></div>'
         + '</aside>'
         + out.slice(asideEnd + '</aside>'.length);
     }
@@ -74,12 +77,12 @@ function sanitizePresentation(html) {
   // 4. Retirer les attributs data-note (clés internes formateur)
   out = out.replace(/ data-note="[^"]*"/g, '');
 
-  // 4bis. Bouton retour « ← Académie OPAYS » vers l'accueil public
-  const backBtn = '<a href="/" class="academy-home-link" title="Retour à l\u2019accueil Académie OPAYS">← Académie OPAYS</a>\n';
+  // 4bis. Bouton retour « ← Hoja Academy » vers l'accueil public
+  const backBtn = '<a href="/" class="academy-home-link" title="Retour à l\u2019accueil Hoja Academy">← Hoja Academy</a>\n';
   const bodyStart = out.indexOf('<body');
   if (bodyStart >= 0) {
     const afterBody = out.indexOf('>', bodyStart) + 1;
-    const css = '\n.academy-home-link{position:fixed;top:82px;left:14px;z-index:200;background:rgba(13,21,34,.9);border:1px solid var(--line);color:var(--blue-light);font-size:11px;font-weight:800;letter-spacing:.06em;padding:7px 14px;border-radius:999px;text-decoration:none;backdrop-filter:blur(8px);transition:.2s;}\n.academy-home-link:hover{color:#fff;border-color:rgba(56,189,248,.5);}\n@media(max-width:650px){.academy-home-link{top:80px;left:8px;font-size:10px;padding:6px 10px;}}\n';
+    const css = '\n.academy-home-link{position:fixed;top:82px;left:14px;z-index:200;display:inline-flex;align-items:center;min-height:var(--touch-min);background:var(--card);border:1px solid var(--line);color:var(--blue);font-size:12px;font-weight:800;letter-spacing:.04em;padding:0 16px;border-radius:var(--radius-full);text-decoration:none;transition:.2s;}\n.academy-home-link:hover{color:var(--text-bright);border-color:var(--line-strong);background:var(--card-hover);}\n@media(max-width:650px){.academy-home-link{top:80px;left:8px;padding:0 14px;}}\n';
     out = out.slice(0, afterBody) + css + out.slice(afterBody);
     out = out.slice(0, afterBody) + backBtn + out.slice(afterBody);
   }
@@ -127,22 +130,23 @@ const indexHtml = `<!DOCTYPE html>
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Académie OPAYS — Ressources de formation</title>
+<title>Hoja Academy — Ressources de formation</title>
 <style>
-body{background:#070b12;color:#e2e8f0;font-family:Inter,system-ui,sans-serif;margin:0;padding:40px 20px;}
+body{background:#090d16;color:#f1f5f9;font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;margin:0;padding:40px 20px;}
 main{max-width:800px;margin:0 auto;}
-h1{font-size:24px;color:#38BDF8;}
+h1{font-size:28px;color:#f1f5f9;}
 p{color:#94a3b8;line-height:1.7;}
-a{color:#0066FF;text-decoration:none;font-weight:600;}
+a{color:#34d399;text-decoration:none;font-weight:600;}
 a:hover{text-decoration:underline;}
+a:focus-visible{outline:2px solid #38bdf8;outline-offset:2px;border-radius:6px;}
 ul{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;}
-li{background:#0d1522;border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:12px 16px;}
-li small{display:block;color:#64748b;font-size:12px;margin-top:4px;}
+li{background:#111726;border:1px solid #1e293b;border-radius:10px;padding:12px 16px;}
+li small{display:block;color:#94a3b8;font-size:12px;margin-top:4px;}
 </style>
 </head>
 <body>
 <main>
-<h1>🎓 Académie OPAYS — Ressources de formation</h1>
+<h1>Hoja Academy — Ressources de formation</h1>
 <p>Ces ressources accompagnent votre parcours Google Classroom.
 Suivez le <strong>Thème 00 — COMMENCER ICI</strong> pour démarrer, puis la <strong>semaine en cours</strong>.</p>
 <ul>

@@ -1,5 +1,5 @@
 /**
- * OPAYS ACADEMY — Build de l'espace ADMIN / FORMATEUR
+ * HOJA ACADEMY — Build de l'espace ADMIN / FORMATEUR
  * Produit admin/ — ESPACE PRIVÉ (protégé par Basic Auth côté nginx) :
  *   - 18 présentations COMPLÈTES (avec notes formateur, prompts, data-note)
  *   - course-hub.html (renommé index.html — le hub devient l'entrée admin)

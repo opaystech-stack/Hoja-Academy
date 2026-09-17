@@ -16,7 +16,7 @@ const allModuleData = [
 ];
 
 console.log(`\n======================================================`);
-console.log(`🏭 OPAYS ACADEMY — MASTER PRESENTATION GENERATOR PIPELINE`);
+console.log(`🏭 HOJA ACADEMY — MASTER PRESENTATION GENERATOR PIPELINE`);
 console.log(`======================================================\n`);
 
 let successCount = 0;

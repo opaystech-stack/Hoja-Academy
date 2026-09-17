@@ -1,5 +1,5 @@
 /**
- * OPAYS ACADEMY — TEST NAVIGATEUR RÉEL (Puppeteer / Chrome Headless)
+ * HOJA ACADEMY — TEST NAVIGATEUR RÉEL (Puppeteer / Chrome Headless)
  * Ouvre les 18 modules dans un vrai Chrome, teste interactions et capture screenshots
  */
 
@@ -46,7 +46,7 @@ async function main() {
   });
 
   console.log('\n' + '═'.repeat(70));
-  console.log('  🔬 TEST NAVIGATEUR RÉEL — 18 MODULES OPAYS (Chrome Headless)');
+  console.log('  🔬 TEST NAVIGATEUR RÉEL — 18 MODULES HOJA (Chrome Headless)');
   console.log('═'.repeat(70));
 
   const results = [];
@@ -100,9 +100,10 @@ async function main() {
       const activeScene = await page.$('.scene.active');
       check('Slide active visible', activeScene !== null);
 
-      // Title in topbar
+      // Title in topbar — identité Hoja (Phase H : le système OPAYS est proscrit)
       const brandText = await page.$eval('#homeBtn', el => el.textContent.trim()).catch(() => '');
-      check('Topbar affiche OPAYS ACADEMY', brandText.includes('OPAYS ACADEMY'));
+      check('Topbar affiche HOJA ACADEMY', brandText.includes('HOJA ACADEMY'));
+      check('Topbar sans marque OPAYS', !brandText.includes('OPAYS'));
 
       // Progress bar at 0 or start
       const progressWidth = await page.$eval('#progressBar', el => el.style.width).catch(() => '');

@@ -6,7 +6,7 @@ const modules = require('../data/modules.js');
 const modulesDir = DIRS.modules;
 
 console.log(`\n======================================================`);
-console.log(`🔍 OPAYS ACADEMY — DEEP PRESENTATION QA BENCH (18/18)`);
+console.log(`🔍 HOJA ACADEMY — DEEP PRESENTATION QA BENCH (18/18)`);
 console.log(`======================================================\n`);
 
 // Liste des modules depuis le registre central (source de vérité unique)
@@ -57,12 +57,43 @@ moduleList.forEach((modCode, idx) => {
   // 3. Check Copy Buttons
   const copyMatches = [...html.matchAll(/data-copy="([^"]+)"/g)];
 
-  // 4. Check OPAYS Branding
-  const hasOpaysLogo = html.includes('M 680 200 A 380 380');
-  const hasBlueOpays = html.includes('--blue-opays');
+  // 4. Identité Hoja (Phase H) — le système de marque OPAYS est proscrit :
+  //    or #D4AF37, bleu #0066FF, navy #001F4D, rayon 20 px, ombre spectaculaire,
+  //    orbes/dégradés décoratifs, emojis dans le chrome fonctionnel.
+  const HOJA_FORBIDDEN = [
+    ['--blue-opays', 'jeton OPAYS bleu'],
+    ['--gold-opays', 'jeton OPAYS or'],
+    ['--navy', 'jeton OPAYS navy'],
+    ['#D4AF37', 'or OPAYS'],
+    ['#0066FF', 'bleu OPAYS'],
+    ['#001f4d', 'navy OPAYS'],
+    ['border-radius: 20px', 'rayon 20 px'],
+    ['34px 90px', 'ombre spectaculaire'],
+    ['class="ambient', 'orbes décoratifs'],
+    ['class="grain"', 'grain décoratif'],
+    ['gradient(', 'dégradé décoratif'],
+    ['font-family: Inter', 'police Inter non chargée'],
+  ];
+  // Aucun emoji nulle part (règle utilisateur explicite). Les flèches
+  // typographiques (→ ←) et les cases à cocher (□) ne sont pas des emojis.
+  const EMOJI_RE = /[\u{1F300}-\u{1FAFF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{2B00}-\u{2BFF}]/gu;
+  const emojiFound = [...new Set(html.match(EMOJI_RE) || [])];
 
-  if (!hasOpaysLogo || !hasBlueOpays) {
-    console.error(`❌ Module ${modNum} [${modCode}] : BRANDING ASSETS MISSING`);
+  const hasHojaMark = html.includes('M 680 200 A 380 380') && html.includes('stroke="#0b1220"');
+  const hasHojaTokens = html.includes('--teal: #10b981;') && html.includes('--radius: 10px;');
+
+  const violations = [
+    ...HOJA_FORBIDDEN.filter(([needle]) => html.includes(needle)).map(([, name]) => name),
+    ...emojiFound.map((e) => `emoji « ${e} »`),
+  ];
+
+  if (!hasHojaMark || !hasHojaTokens || violations.length) {
+    const why = [
+      !hasHojaMark ? 'marque vectorielle Hoja absente' : null,
+      !hasHojaTokens ? 'jetons Hoja absents' : null,
+      violations.length ? violations.join(', ') : null,
+    ].filter(Boolean).join(' · ');
+    console.error(`❌ Module ${modNum} [${modCode}] : IDENTITÉ HOJA NON CONFORME → ${why}`);
     totalFailed++;
     return;
   }

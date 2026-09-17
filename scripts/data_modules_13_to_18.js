@@ -47,13 +47,13 @@ Règles d'anonymisation :
             <h1>Sécurité & <em>Confidentialité</em>.</h1>
             <p class="hero-lead">Protéger vos données et votre organisation. <strong>Classification en 4 niveaux, anonymisation et parade contre le prompt injection</strong>.</p>
             <div class="hero-actions">
-              <button class="primary" data-next>Sécuriser mes usages ➔</button>
-              <button class="secondary" id="openPromptsHero">Protocole sécurité 🧰</button>
+              <button class="primary" data-next>Sécuriser mes usages</button>
+              <button class="secondary" id="openPromptsHero">Protocole sécurité</button>
             </div>
             <div class="hero-meta">
-              <span>🛡️ 4 NIVEAUX DE DONNÉES</span>
-              <span>🔒 ANONYMISATION SYSTÉMATIQUE</span>
-              <span>📜 AI SAFETY CARD</span>
+              <span>4 NIVEAUX DE DONNÉES</span>
+              <span>ANONYMISATION SYSTÉMATIQUE</span>
+              <span>AI SAFETY CARD</span>
             </div>
           </div>
           <div class="hero-stage">
@@ -67,10 +67,10 @@ Règles d'anonymisation :
                 </g>
               </svg>
             </div>
-            <div class="orbit orbit-1">🟢 Niveau 1 : Public</div>
-            <div class="orbit orbit-2">🔵 Niveau 2 : Interne</div>
-            <div class="orbit orbit-3">🟠 Niveau 3 : Confidentiel</div>
-            <div class="orbit orbit-4">🔴 Niveau 4 : Strict Interdit</div>
+            <div class="orbit orbit-1">Niveau 1 : Public</div>
+            <div class="orbit orbit-2">Niveau 2 : Interne</div>
+            <div class="orbit orbit-3">Niveau 3 : Confidentiel</div>
+            <div class="orbit orbit-4">Niveau 4 : Strict Interdit</div>
           </div>
         </div>
       </section>`,
@@ -109,7 +109,7 @@ Règles d'anonymisation :
           <div class="prompt-card reveal">
             <div class="prompt-header">
               <span>PROMPT ANONYMISATION DE DOCUMENT</span>
-              <button class="copy-btn" data-copy="anonymizePrompt">📋 Copier le prompt</button>
+              <button class="copy-btn" data-copy="anonymizePrompt">Copier le prompt</button>
             </div>
             <p class="prompt-text" id="anonymizePromptText">Agis en tant qu'officier de sécurité des données (DPO).
 Prends le document suivant et anonymise-le intégralement :
@@ -128,9 +128,9 @@ Règles d'anonymisation :
           <h2>Validez votre Charte de Sécurité dans votre <strong>AI Work Kit</strong></h2>
           <p class="lead">Complétez le <strong>Volet 13 — Sécurité, Confidentialité & AI Safety Card</strong>.</p>
           <div class="hero-meta reveal" style="justify-content:center;">
-            <span>📁 WORK KIT : VOLET 13</span>
-            <span>📝 DÉPÔT CLASSROOM</span>
-            <span>📅 AVANT LUNDI 23H59</span>
+            <span>WORK KIT : VOLET 13</span>
+            <span>DÉPÔT CLASSROOM</span>
+            <span>AVANT LUNDI 23H59</span>
           </div>
         </div>
       </section>`
@@ -181,13 +181,13 @@ Construis l'Automation Canvas complet :
             <h1>Automatiser <em>son Travail</em>.</h1>
             <p class="hero-lead">Mettre vos flux répétitifs en pilote automatique. <strong>L'Automation Canvas en 5 étapes et le calcul du retour sur investissement</strong>.</p>
             <div class="hero-actions">
-              <button class="primary" data-next>Automatiser mes flux ➔</button>
-              <button class="secondary" id="openPromptsHero">Automation Canvas 🧰</button>
+              <button class="primary" data-next>Automatiser mes flux</button>
+              <button class="secondary" id="openPromptsHero">Automation Canvas</button>
             </div>
             <div class="hero-meta">
-              <span>⚡ 3 NIVEAUX D'AUTOMATISATION</span>
-              <span>📈 GAIN DE TEMPS MESURABLE</span>
-              <span>🎯 L'AUTOMATION CANVAS</span>
+              <span>3 NIVEAUX D'AUTOMATISATION</span>
+              <span>GAIN DE TEMPS MESURABLE</span>
+              <span>L'AUTOMATION CANVAS</span>
             </div>
           </div>
           <div class="hero-stage">
@@ -201,10 +201,10 @@ Construis l'Automation Canvas complet :
                 </g>
               </svg>
             </div>
-            <div class="orbit orbit-1">📥 Déclencheur</div>
-            <div class="orbit orbit-2">⚙️ Traitement IA</div>
-            <div class="orbit orbit-3">🛡️ Validation Humaine</div>
-            <div class="orbit orbit-4">📤 Action Finale</div>
+            <div class="orbit orbit-1">Déclencheur</div>
+            <div class="orbit orbit-2">Traitement IA</div>
+            <div class="orbit orbit-3">Validation Humaine</div>
+            <div class="orbit orbit-4">Action Finale</div>
           </div>
         </div>
       </section>`,
@@ -221,7 +221,7 @@ Construis l'Automation Canvas complet :
             <div class="card gold-border">
               <span>NIVEAU 2 • SEMI-AUTOMATIQUE</span>
               <b>Déclencheur + Validation Humaine</b>
-              <p>Un nouvel email arrive ➔ l'IA prépare la réponse ➔ vous validez d'un clic avant envoi.</p>
+              <p>Un nouvel email arrive → l'IA prépare la réponse → vous validez d'un clic avant envoi.</p>
             </div>
             <div class="card">
               <span>NIVEAU 3 • AUTONOME SUPERVISÉ</span>
@@ -238,12 +238,12 @@ Construis l'Automation Canvas complet :
           <div class="prompt-card reveal">
             <div class="prompt-header">
               <span>AUTOMATION CANVAS OPAYS</span>
-              <button class="copy-btn" data-copy="automationCanvasPrompt">📋 Copier le template</button>
+              <button class="copy-btn" data-copy="automationCanvasPrompt">Copier le template</button>
             </div>
             <p class="prompt-text" id="automationCanvasPromptText">Agis en tant qu'ingénieur en automatisation des processus de travail.
 Voici une procédure manuelle de mon service : <span class="prompt-var">[DÉCRIRE LA PROCÉDURE]</span>.
 Construis l'Automation Canvas complet :
-1. Déclencheur ➔ 2. Traitement IA ➔ 3. Contrôle Humain ➔ 4. Action Finale ➔ 5. ROI estimé.</p>
+1. Déclencheur → 2. Traitement IA → 3. Contrôle Humain → 4. Action Finale → 5. ROI estimé.</p>
           </div>
         </div>
       </section>`,
@@ -253,9 +253,9 @@ Construis l'Automation Canvas complet :
           <h2>Formalisez votre Pipeline d'Automatisation dans votre <strong>Work Kit</strong></h2>
           <p class="lead">Complétez le <strong>Volet 14 — Automatisation des Tâches & Calcul du ROI</strong>.</p>
           <div class="hero-meta reveal" style="justify-content:center;">
-            <span>📁 WORK KIT : VOLET 14</span>
-            <span>📝 DÉPÔT CLASSROOM</span>
-            <span>📅 AVANT LUNDI 23H59</span>
+            <span>WORK KIT : VOLET 14</span>
+            <span>DÉPÔT CLASSROOM</span>
+            <span>AVANT LUNDI 23H59</span>
           </div>
         </div>
       </section>`
@@ -307,13 +307,13 @@ Rédige la trame de ma présentation de soutenance en 10 minutes chrono selon la
             <h1>Mon Système IA <em>Personnel</em>.</h1>
             <p class="hero-lead">Le grand assemblage des 10 volets. <strong>Préparez votre soutenance de 10 minutes et décrochez votre Certification Professionnelle</strong>.</p>
             <div class="hero-actions">
-              <button class="primary" data-next>Finaliser mon système ➔</button>
-              <button class="secondary" id="openPromptsHero">Trame de soutenance 🧰</button>
+              <button class="primary" data-next>Finaliser mon système</button>
+              <button class="secondary" id="openPromptsHero">Trame de soutenance</button>
             </div>
             <div class="hero-meta">
-              <span>🏆 PORTFOLIO DE 10 VOLETS</span>
-              <span>🎤 SOUTENANCE DE 10 MINUTES</span>
-              <span>🎓 CERTIFICATION OFFICIELLE</span>
+              <span>PORTFOLIO DE 10 VOLETS</span>
+              <span>SOUTENANCE DE 10 MINUTES</span>
+              <span>CERTIFICATION OFFICIELLE</span>
             </div>
           </div>
           <div class="hero-stage">
@@ -327,10 +327,10 @@ Rédige la trame de ma présentation de soutenance en 10 minutes chrono selon la
                 </g>
               </svg>
             </div>
-            <div class="orbit orbit-1">💼 10 Volets Work Kit</div>
-            <div class="orbit orbit-2">🎯 15 Critères Jury</div>
-            <div class="orbit orbit-3">🎤 Soutenance 10 min</div>
-            <div class="orbit orbit-4">🎓 Certificat OPAYS</div>
+            <div class="orbit orbit-1">10 Volets Work Kit</div>
+            <div class="orbit orbit-2">15 Critères Jury</div>
+            <div class="orbit orbit-3">Soutenance 10 min</div>
+            <div class="orbit orbit-4">Certificat OPAYS</div>
           </div>
         </div>
       </section>`,
@@ -369,7 +369,7 @@ Rédige la trame de ma présentation de soutenance en 10 minutes chrono selon la
           <div class="prompt-card reveal">
             <div class="prompt-header">
               <span>TRAME OFFICIELLE DU PITCH</span>
-              <button class="copy-btn" data-copy="pitchPrompt">📋 Copier la trame</button>
+              <button class="copy-btn" data-copy="pitchPrompt">Copier la trame</button>
             </div>
             <p class="prompt-text" id="pitchPromptText">MINUTAGE DE SOUTENANCE OFFICIELLE OPAYS :
 - 00 à 02 min : Mon métier, mon organisation et mon gisement de temps perdu.
@@ -385,9 +385,9 @@ Rédige la trame de ma présentation de soutenance en 10 minutes chrono selon la
           <h2>Déposez votre <strong>AI Work Kit Complet</strong></h2>
           <p class="lead">Votre classeur complet est déposé sur Google Classroom pour instruction par le jury d'évaluation.</p>
           <div class="hero-meta reveal" style="justify-content:center;">
-            <span>📁 DÉPÔT GLOBAL DU WORK KIT</span>
-            <span>🎓 ÉMISSION DU CERTIFICAT</span>
-            <span>🏆 PASSAGE DU JURY</span>
+            <span>DÉPÔT GLOBAL DU WORK KIT</span>
+            <span>ÉMISSION DU CERTIFICAT</span>
+            <span>PASSAGE DU JURY</span>
           </div>
         </div>
       </section>`
@@ -436,13 +436,13 @@ Voici mes priorités et mes emails urgents de la journée : [LISTE RAPIDE].
             <h1>L'IA au <em>Quotidien</em>.</h1>
             <p class="hero-lead">Ancrez vos super-pouvoirs pour toujours. <strong>La routine des 15 minutes du matin, l'AI Operating Plan et le réseau Alumni OPAYS</strong>.</p>
             <div class="hero-actions">
-              <button class="primary" data-next>Découvrir la routine ➔</button>
-              <button class="secondary" id="openPromptsHero">Briefing matinal 🧰</button>
+              <button class="primary" data-next>Découvrir la routine</button>
+              <button class="secondary" id="openPromptsHero">Briefing matinal</button>
             </div>
             <div class="hero-meta">
-              <span>☕ ROUTINE DES 15 MINUTES</span>
-              <span>📋 AI OPERATING PLAN</span>
-              <span>🤝 RÉSEAU ALUMNI ACTIF</span>
+              <span>ROUTINE DES 15 MINUTES</span>
+              <span>AI OPERATING PLAN</span>
+              <span>RÉSEAU ALUMNI ACTIF</span>
             </div>
           </div>
           <div class="hero-stage">
@@ -456,10 +456,10 @@ Voici mes priorités et mes emails urgents de la journée : [LISTE RAPIDE].
                 </g>
               </svg>
             </div>
-            <div class="orbit orbit-1">☕ 15 min Matin</div>
-            <div class="orbit orbit-2">📋 Operating Plan</div>
-            <div class="orbit orbit-3">🗓️ Suivi J+30</div>
-            <div class="orbit orbit-4">🤝 Communauté OPAYS</div>
+            <div class="orbit orbit-1">15 min Matin</div>
+            <div class="orbit orbit-2">Operating Plan</div>
+            <div class="orbit orbit-3">Suivi J+30</div>
+            <div class="orbit orbit-4">Communauté OPAYS</div>
           </div>
         </div>
       </section>`,
@@ -493,7 +493,7 @@ Voici mes priorités et mes emails urgents de la journée : [LISTE RAPIDE].
           <div class="prompt-card reveal">
             <div class="prompt-header">
               <span>BRIEFING MATINAL EN 15 MINUTES</span>
-              <button class="copy-btn" data-copy="morningRoutinePrompt">📋 Copier le prompt</button>
+              <button class="copy-btn" data-copy="morningRoutinePrompt">Copier le prompt</button>
             </div>
             <p class="prompt-text" id="morningRoutinePromptText">Agis en tant que chef de cabinet personnel.
 Voici mes priorités et urgences du jour : <span class="prompt-var">[LISTE BRUTE DES EMAILS / TÂCHES]</span>.
@@ -542,9 +542,9 @@ Voici mes priorités et urgences du jour : <span class="prompt-var">[LISTE BRUTE
           <h2>Vous êtes désormais un <strong>Leader Augmenté par l'IA.</strong></h2>
           <p class="lead">L'Académie OPAYS vous remercie pour votre engagement et votre rigueur d'ingénierie.</p>
           <div class="hero-meta reveal" style="justify-content:center; margin-top:12px;">
-            <span>🎓 CERTIFIÉ OPAYS ACADEMY</span>
-            <span>🤝 MEMBRE DU RÉSEAU ALUMNI</span>
-            <span>🚀 EN ROUTE POUR L'EXCELLENCE</span>
+            <span>CERTIFIÉ OPAYS ACADEMY</span>
+            <span>MEMBRE DU RÉSEAU ALUMNI</span>
+            <span>EN ROUTE POUR L'EXCELLENCE</span>
           </div>
         </div>
       </section>`
@@ -590,13 +590,13 @@ Adapte le prompt standard suivant pour respecter scrupuleusement la déontologie
             <h1>Spécialisation <em>Professionnelle</em>.</h1>
             <p class="hero-lead">Appliquez l'IA aux exigences de votre corporation. <strong>6 parcours sectoriels calibrés pour la Fonction Publique, PME, Finance, ONG et Santé</strong>.</p>
             <div class="hero-actions">
-              <button class="primary" data-next>Choisir mon parcours ➔</button>
-              <button class="secondary" id="openPromptsHero">Cadrage sectoriel 🧰</button>
+              <button class="primary" data-next>Choisir mon parcours</button>
+              <button class="secondary" id="openPromptsHero">Cadrage sectoriel</button>
             </div>
             <div class="hero-meta">
-              <span>🏛️ 6 PARCOURS DÉDIÉS</span>
-              <span>📑 CONFORMITÉ RÉGLEMENTAIRE</span>
-              <span>💼 CAS MÉTIERS AVANCÉS</span>
+              <span>6 PARCOURS DÉDIÉS</span>
+              <span>CONFORMITÉ RÉGLEMENTAIRE</span>
+              <span>CAS MÉTIERS AVANCÉS</span>
             </div>
           </div>
           <div class="hero-stage">
@@ -610,10 +610,10 @@ Adapte le prompt standard suivant pour respecter scrupuleusement la déontologie
                 </g>
               </svg>
             </div>
-            <div class="orbit orbit-1">🏛️ Fonction Publique</div>
-            <div class="orbit orbit-2">🏢 PME & Commerce</div>
-            <div class="orbit orbit-3">💰 Banque & Finance</div>
-            <div class="orbit orbit-4">🌍 ONG & Projets</div>
+            <div class="orbit orbit-1">Fonction Publique</div>
+            <div class="orbit orbit-2">PME & Commerce</div>
+            <div class="orbit orbit-3">Banque & Finance</div>
+            <div class="orbit orbit-4">ONG & Projets</div>
           </div>
         </div>
       </section>`,
@@ -662,7 +662,7 @@ Adapte le prompt standard suivant pour respecter scrupuleusement la déontologie
           <div class="prompt-card reveal">
             <div class="prompt-header">
               <span>CADRAGE DÉONTOLOGIQUE & SECTORIEL</span>
-              <button class="copy-btn" data-copy="sectorSpecializationPrompt">📋 Copier le prompt</button>
+              <button class="copy-btn" data-copy="sectorSpecializationPrompt">Copier le prompt</button>
             </div>
             <p class="prompt-text" id="sectorSpecializationPromptText">Agis en tant qu'expert métier senior dans le secteur : <span class="prompt-var">[VOTRE SECTEUR]</span>.
 Adapte le prompt standard suivant pour respecter scrupuleusement la déontologie, le vocabulaire officiel et les contraintes réglementaires de notre profession :
@@ -676,9 +676,9 @@ Adapte le prompt standard suivant pour respecter scrupuleusement la déontologie
           <h2>Enregistrez votre Classeur Sectoriel dans votre <strong>Work Kit</strong></h2>
           <p class="lead">Complétez le <strong>Volet 17 — Spécialisation Métier & Référentiel Sectoriel</strong>.</p>
           <div class="hero-meta reveal" style="justify-content:center;">
-            <span>📁 WORK KIT : VOLET 17</span>
-            <span>📝 DÉPÔT CLASSROOM</span>
-            <span>📅 AVANT LUNDI 23H59</span>
+            <span>WORK KIT : VOLET 17</span>
+            <span>DÉPÔT CLASSROOM</span>
+            <span>AVANT LUNDI 23H59</span>
           </div>
         </div>
       </section>`
@@ -727,13 +727,13 @@ Analyse les 10 actualités IA majeures de la semaine : [COLLER LIENS OU TITRES].
             <h1>AI Landscape <em>2026</em>.</h1>
             <p class="hero-lead">Anticipez les ruptures de demain. <strong>Petits modèles locaux, agents autonomes et organisation de votre veille stratégique sans saturation</strong>.</p>
             <div class="hero-actions">
-              <button class="primary" data-next>Découvrir l'avenir ➔</button>
-              <button class="secondary" id="openPromptsHero">Mémo de veille 🧰</button>
+              <button class="primary" data-next>Découvrir l'avenir</button>
+              <button class="secondary" id="openPromptsHero">Mémo de veille</button>
             </div>
             <div class="hero-meta">
-              <span>🔭 VISION PROSPECTIVE 2026</span>
-              <span>⚡ SMALL LANGUAGE MODELS</span>
-              <span>🛡️ VEILLE STRATÉGIQUE</span>
+              <span>VISION PROSPECTIVE 2026</span>
+              <span>SMALL LANGUAGE MODELS</span>
+              <span>VEILLE STRATÉGIQUE</span>
             </div>
           </div>
           <div class="hero-stage">
@@ -747,10 +747,10 @@ Analyse les 10 actualités IA majeures de la semaine : [COLLER LIENS OU TITRES].
                 </g>
               </svg>
             </div>
-            <div class="orbit orbit-1">📱 Modèles Locaux (SLM)</div>
-            <div class="orbit orbit-2">🤖 Essaims d'Agents</div>
-            <div class="orbit orbit-3">🛡️ Souveraineté Données</div>
-            <div class="orbit orbit-4">🚀 Roadmap 2026</div>
+            <div class="orbit orbit-1">Modèles Locaux (SLM)</div>
+            <div class="orbit orbit-2">Essaims d'Agents</div>
+            <div class="orbit orbit-3">Souveraineté Données</div>
+            <div class="orbit orbit-4">Roadmap 2026</div>
           </div>
         </div>
       </section>`,
@@ -779,7 +779,7 @@ Analyse les 10 actualités IA majeures de la semaine : [COLLER LIENS OU TITRES].
           <div class="prompt-card reveal">
             <div class="prompt-header">
               <span>MÉMO DE VEILLE STRATÉGIQUE</span>
-              <button class="copy-btn" data-copy="watchRoutinePrompt">📋 Copier le prompt</button>
+              <button class="copy-btn" data-copy="watchRoutinePrompt">Copier le prompt</button>
             </div>
             <p class="prompt-text" id="watchRoutinePromptText">Agis en tant que directeur de la prospective technologique.
 Analyse les actualités IA de la semaine : <span class="prompt-var">[COLLER LIENS / TITRES]</span>.
@@ -805,9 +805,9 @@ Analyse les actualités IA de la semaine : <span class="prompt-var">[COLLER LIEN
           <h2>Félicitations ! Les <strong>18 Modules de l'Académie OPAYS sont Déployés.</strong></h2>
           <p class="lead">Le standard d'excellence pédagogique et technologique OPAYS est désormais scellé.</p>
           <div class="hero-meta reveal" style="justify-content:center; margin-top:12px;">
-            <span>✅ 18 MODULES HTML INTERACTIFS</span>
-            <span>💎 STANDARDIZATION COMPLETE</span>
-            <span>🚀 PRÊT POUR LES COHORTES</span>
+            <span>18 MODULES HTML INTERACTIFS</span>
+            <span>STANDARDIZATION COMPLETE</span>
+            <span>PRÊT POUR LES COHORTES</span>
           </div>
         </div>
       </section>`
